@@ -1,7 +1,7 @@
 # Seedbank
 Infrastructure for the 3E Process Seedbank.
 
-Node in back, React in front.
+Node/Express in back, React in front.
 Both apps are stored here for now, although we'll probably want to split these out into separate repos eventually.
 
 ## Installation
