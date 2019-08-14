@@ -4,6 +4,9 @@ Infrastructure for the 3E Process Seedbank.
 Node in back, React in front.
 Both apps are stored here for now, although we'll probably want to split these out into separate repos eventually.
 
+## Installation
+`cd anarchive` and run `npm install`. Then do the same from the client directory. You'll also need to install knex globally, like `npm i -g knex`. Then copy `.env.example` as `.env` and fill out the values.
+
 ## Usage
 
 ### Development

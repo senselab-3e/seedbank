@@ -3,9 +3,6 @@
 require('dotenv').config({path: '../.env'});
 const express = require('express');
 const session = require('express-session');
-// const cookieParser = require('cookie-parser');
-// const passport = require('passport');
-// const flash = require('connect-flash');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -13,18 +10,8 @@ const fs = require('fs');
 const port = process.env.PORT;
 const app = express();
 const router = express.Router();
-// app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// require('./services/passport')(passport);
-
-// app.use(session({ secret: process.env.SESSION_SECRET,
-// 				  resave: true,
-// 				  saveUninitialized: true }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-// app.use(flash());
 
 // Configure API routes
 var api_routes = fs.readdirSync('./routes/api/');
