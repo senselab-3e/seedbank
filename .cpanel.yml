@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/senselab/public_html/seedbank/
+    - export DEPLOYPATH=/home/senselab/seedbank/
     - /bin/cp -R * $DEPLOYPATH
