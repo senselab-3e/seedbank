@@ -7,7 +7,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 
-const port = process.env.PORT;
+const port = process.env.DB_PORT;
 const app = express();
 const router = express.Router();
 app.use(bodyParser.json());
