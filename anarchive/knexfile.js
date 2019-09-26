@@ -8,7 +8,7 @@ module.exports = {
     database: env.DB_NAME,
     user:     env.DB_USER,
     password: env.DB_PASSWORD,
-    port: env.PORT
+    port: env.DB_PORT
   },
   pool: {
     min: 0,
