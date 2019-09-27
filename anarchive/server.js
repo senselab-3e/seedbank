@@ -22,10 +22,10 @@ for (var i=1; i<api_routes.length; i++) {
 
 function start_connection() {
 	const db = mysql.createConnection({
-		host: process.env.DB_HOST,
-	 	database: process.env.DB_NAME,
-		user: process.env.DB_USER,
-		password: process.env.DB_PASSWORD
+		host: process.env.DB_HOST || $DB_HOST,
+	 	database: process.env.DB_NAME || $DB_NAME,
+		user: process.env.DB_USER || $DB_USER,
+		password: process.env.DB_PASSWORD || $DB_PASSWORD
 	});
 
 	db.connect(function(err) {
