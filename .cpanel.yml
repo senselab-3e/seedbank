@@ -2,5 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/senselab/seedbank/
-    - /bin/cp -R anarchive $DEPLOYPATH
-    - /bin/cp -R client $DEPLOYPATH
+    - /bin/cp -R * $DEPLOYPATH
