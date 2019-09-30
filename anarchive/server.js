@@ -7,17 +7,18 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 
-const port = process.env.DB_PORT;
+const port = process.env.DB_PORT || $DB_PORT;
 const app = express();
 const router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Configure API routes
-var api_routes = fs.readdirSync('./routes/api/');
+var routes_path = 'routes/api/'; // './routes/api/'
+var api_routes = fs.readdirSync(routes_path);
 for (var i=1; i<api_routes.length; i++) {
 	var route = api_routes[i].slice(0,-3);
-	app.use('/api/' + route, require('./routes/api/' + route));
+	app.use('/api/' + route, require(routes_path + route));
 };
 
 function start_connection() {
