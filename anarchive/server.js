@@ -13,7 +13,9 @@ const router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-console.log(process.cwd());
+fs.readdirSync(process.cwd()).forEach(file => {
+  console.log(file);
+});
 
 // Configure API routes
 // var routes_path = 'routes/api/'; // './routes/api/'
