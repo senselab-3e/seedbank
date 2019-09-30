@@ -13,13 +13,15 @@ const router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+console.log(process.cwd());
+
 // Configure API routes
-var routes_path = 'routes/api/'; // './routes/api/'
-var api_routes = fs.readdirSync(routes_path);
-for (var i=1; i<api_routes.length; i++) {
-	var route = api_routes[i].slice(0,-3);
-	app.use('/api/' + route, require(routes_path + route));
-};
+// var routes_path = 'routes/api/'; // './routes/api/'
+// var api_routes = fs.readdirSync(routes_path);
+// for (var i=1; i<api_routes.length; i++) {
+// 	var route = api_routes[i].slice(0,-3);
+// 	app.use('/api/' + route, require(routes_path + route));
+// };
 
 function start_connection() {
 	const db = mysql.createConnection({
@@ -44,6 +46,6 @@ function start_connection() {
 	})
 }
 
-start_connection();
+// start_connection();
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+// app.listen(port, () => console.log(`Listening on port ${port}`));
