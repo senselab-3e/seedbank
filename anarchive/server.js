@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Configure API routes
-var routes_path = '.routes/api/'; // './routes/api/'
+var routes_path = './routes/api/'; // './routes/api/'
 var api_routes = fs.readdirSync(routes_path);
 for (var i=1; i<api_routes.length; i++) {
 	var route = api_routes[i].slice(0,-3);
