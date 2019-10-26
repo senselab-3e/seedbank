@@ -6,12 +6,14 @@ const session = require('express-session');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const morgan = require('morgan');
 
 const port = process.env.DB_PORT || $DB_PORT;
 const app = express();
 const router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(morgan('combined'));
 
 // Configure API routes
 var routes_path = './routes/api/'; // './routes/api/'
