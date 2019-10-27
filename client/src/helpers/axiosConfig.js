@@ -3,7 +3,7 @@ import axios from "axios";
 
 const app = axios.create({
   // baseURL: process.env.NODE_ENV === 'prod' ? 'wh464179.ispot.cc' : 'http://localhost:3000'
-  baseURL: 'wh464179.ispot.cc'
+  baseURL: 'https://3ecologies-seedbank.com'
 });
 
 // axios consumes rejected API responses by default,
