@@ -7,16 +7,24 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const port = process.env.DB_PORT || $DB_PORT;
+const inProduction = process.env.NODE_ENV === 'prod';
 const app = express();
 const router = express.Router();
+
+app.use(
+	cors({
+		origin: inProduction ? 'http://3ecologies-seedbank.com' : 'http://localhost:3000'
+	})
+);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('combined'));
 
 // Configure API routes
-var routes_path = './routes/api/'; // './routes/api/'
+var routes_path = './routes/api/';
 var api_routes = fs.readdirSync(routes_path);
 for (var i=1; i<api_routes.length; i++) {
 	var route = api_routes[i].slice(0,-3);
@@ -47,5 +55,12 @@ function start_connection() {
 }
 
 start_connection();
+
+if (inProduction) {
+  app.use(express.static(`../client/build`));
+  app.get("*", (req, res) =>
+    res.sendFile(resolve(`../client/build/index.html`))
+  );
+}
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
