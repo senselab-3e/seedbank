@@ -16,7 +16,7 @@ const router = express.Router();
 
 app.use(
 	cors({
-		origin: inProduction ? 'http://3ecologies-seedbank.com' : 'http://localhost:3000'
+		origin: inProduction ? 'wh464179.ispot.cc' : 'http://localhost:3000'
 	})
 );
 app.use(bodyParser.json());
