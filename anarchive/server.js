@@ -65,4 +65,6 @@ if (inProduction) {
   );
 }
 
+console.log(inProduction);
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
