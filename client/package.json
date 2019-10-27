@@ -17,7 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3306",
+  "homepage": "https://3ecologies-seedbank.com",
   "eslintConfig": {
     "extends": "react-app"
   },
