@@ -2,8 +2,8 @@ import get from "lodash/get";
 import axios from "axios";
 
 const app = axios.create({
-  // baseURL: process.env.NODE_ENV === 'prod' ? 'wh464179.ispot.cc' : 'http://localhost:3000'
-  baseURL: 'https://3ecologies-seedbank.com/api/'
+  baseURL: process.env.NODE_ENV === 'prod' ? 'https://3ecologies-seedbank.com' : 'http://localhost:3000'
+  // baseURL: 'https://3ecologies-seedbank.com'
 });
 
 // axios consumes rejected API responses by default,
