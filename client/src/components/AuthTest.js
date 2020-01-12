@@ -10,7 +10,7 @@ const headers = {
 // the token will be invalid as determined by the API.
 (async () => {
   try {
-    const res = await app.get("auth/verify", { headers });
+    const res = await app.get("/api/auth/verify", { headers });
 
     console.log("token", res.data.status);
   } catch (err) {

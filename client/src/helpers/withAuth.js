@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-// import axios from 'axios';
-import app from "./axiosConfig";
+import axios from 'axios';
+// import app from "./axiosConfig";
 
 // wraps component in router config to require authentication
 
@@ -19,7 +19,7 @@ export default function withAuth(ComponentToProtect) {
         'authorization': 'Bearer ' + localStorage.getItem('token')
       };
 
-      app.get('/api/auth/verify', { headers: headers })
+      axios.get('/api/auth/verify', { headers: headers })
       .then(res => {
         if (res.status === 200) {
             this.setState({ loading: false });

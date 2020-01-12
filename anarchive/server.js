@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const morgan = require('morgan');
 const cors = require('cors');
+const path = require('path');
 
 const port = process.env.DB_PORT || $DB_PORT;
 const inProduction = process.env.NODE_ENV === 'prod';
@@ -32,6 +33,13 @@ app.use(morgan('combined'));
 // };
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/events", require("./routes/api/events"));
+
+if (inProduction) {
+  app.use(express.static(path.join(__dirname, 'build')));
+	app.get('/*', function(req, res) {
+		res.sendFile(path.join(__dirname, 'build', 'index.html'));
+	});
+}
 
 function start_connection() {
 	const db = mysql.createConnection({
@@ -58,13 +66,7 @@ function start_connection() {
 
 start_connection();
 
-if (inProduction) {
-  app.use(express.static(`../client/build`));
-  app.get("*", (req, res) =>
-    res.sendFile(resolve(`../client/build/index.html`))
-  );
-}
-
 console.log(inProduction);
+// app.get('/api/auth/verify', (req, res) => res.send('Hello from the backend'));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
