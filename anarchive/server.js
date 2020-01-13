@@ -11,7 +11,7 @@ const cors = require('cors');
 const path = require('path');
 
 const port = process.env.DB_PORT || $DB_PORT;
-const inProduction = process.env.NODE_ENV === 'Production';
+const inProduction = process.env.NODE_ENV === 'production';
 const app = express();
 const router = express.Router();
 
