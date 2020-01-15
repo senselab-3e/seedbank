@@ -32,15 +32,15 @@ app.use(morgan('combined'));
 // 	app.use('/api/' + route, require(routes_path + route));
 // };
 
-app.get('/', (req, res) => res.send('Hello World!'))
-// app.use("/api/auth", require("./routes/api/auth"));
-// app.use("/api/events", require("./routes/api/events"));
+// app.get('/', (req, res) => res.send('Hello World!'))
+app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/events", require("./routes/api/events"));
 
 // if (inProduction) {
-  app.use(express.static('../build'));
-	app.get('/*', function(req, res) {
-		res.sendFile('../build/index.html');
-	});
+app.use(express.static('../client/build'));
+app.get('/*', function(req, res) {
+	res.sendFile('../client/build/index.html');
+});
 // }
 
 function start_connection() {
@@ -71,4 +71,4 @@ start_connection();
 console.log(inProduction);
 // app.get('/api/auth/verify', (req, res) => res.send('Hello from the backend'));
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(process.env.HTTP_PORT, () => console.log(`Listening on port ${process.env.HTTP_PORT}`));
