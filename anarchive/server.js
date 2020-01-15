@@ -31,15 +31,17 @@ app.use(morgan('combined'));
 // 	var route = api_routes[i].slice(0,-3);
 // 	app.use('/api/' + route, require(routes_path + route));
 // };
-app.use("/api/auth", require("./routes/api/auth"));
-app.use("/api/events", require("./routes/api/events"));
 
-if (inProduction) {
+app.get('/', (req, res) => res.send('Hello World!'))
+// app.use("/api/auth", require("./routes/api/auth"));
+// app.use("/api/events", require("./routes/api/events"));
+
+// if (inProduction) {
   app.use(express.static(path.join(__dirname, 'build')));
 	app.get('/*', function(req, res) {
 		res.sendFile(path.join(__dirname, 'build', 'index.html'));
 	});
-}
+// }
 
 function start_connection() {
 	const db = mysql.createConnection({
