@@ -37,9 +37,9 @@ app.get('/', (req, res) => res.send('Hello World!'))
 // app.use("/api/events", require("./routes/api/events"));
 
 // if (inProduction) {
-  app.use(express.static(path.join(__dirname, 'build')));
+  app.use(express.static('../build'));
 	app.get('/*', function(req, res) {
-		res.sendFile(path.join(__dirname, 'build', 'index.html'));
+		res.sendFile('../build/index.html');
 	});
 // }
 
