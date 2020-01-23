@@ -6,7 +6,7 @@ const session = require('express-session');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-// const cors = require('cors');
+const cors = require('cors');
 const path = require('path');
 
 const port = process.env.DB_PORT || $DB_PORT;
@@ -14,11 +14,11 @@ const inProduction = process.env.NODE_ENV === 'production';
 const app = express();
 const router = express.Router();
 
-// app.use(
-// 	cors({
-// 		origin: inProduction ? 'https://3ecologies-seedbank.com' : 'http://localhost:3000'
-// 	})
-// );
+app.use(
+	cors({
+		origin: inProduction ? 'https://3ecologies-seedbank.com' : 'http://localhost:3000'
+	})
+);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 if (!inProduction) { const morgan = require('morgan'); app.use(morgan('combined')) };
