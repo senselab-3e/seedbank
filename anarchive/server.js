@@ -16,26 +16,27 @@ const router = express.Router();
 
 // app.use(
 // 	cors({
-// 		origin: inProduction ? 'https://3ecologies-seedbank.com:50000' : 'http://localhost:3000'
+// 		origin: inProduction ? 'https://3ecologies-seedbank.com' : 'http://localhost:3000'
 // 	})
 // );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 if (!inProduction) { const morgan = require('morgan'); app.use(morgan('combined')) };
 
 // Configure API routes
-var routes_path = './routes/api/';
-var api_routes = fs.readdirSync(routes_path);
-for (var i=1; i<api_routes.length; i++) {
+var routes_path = "./routes/api/";
+var api_routes = fs.readdirSync(routes_path).filter(r => r != '.DS_Store');
+for (var i=0; i<api_routes.length; i++) {
 	var route = api_routes[i].slice(0,-3);
-	app.use('/api/' + route, require(routes_path + route));
+	app.use("/api/" + route, require(routes_path + route));
 };
 
 // if (inProduction) {
-	app.use(express.static('../client/build'));
-	app.get('*', function(req, res) {
-		res.sendFile('../client/build/index.html');
-	});
+app.use(express.static('../client/build'));
+app.get('*', function(req, res) {
+	res.sendFile('../client/build/index.html');
+});
 // };
 
 function start_connection() {
