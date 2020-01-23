@@ -6,8 +6,7 @@ const session = require('express-session');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const morgan = require('morgan');
-const cors = require('cors');
+// const cors = require('cors');
 const path = require('path');
 
 const port = process.env.DB_PORT || $DB_PORT;
@@ -15,33 +14,29 @@ const inProduction = process.env.NODE_ENV === 'production';
 const app = express();
 const router = express.Router();
 
-app.use(
-	cors({
-		origin: inProduction ? 'https://3ecologies-seedbank.com' : 'http://localhost:3000'
-	})
-);
+// app.use(
+// 	cors({
+// 		origin: inProduction ? 'https://3ecologies-seedbank.com' : 'http://localhost:3000'
+// 	})
+// );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(morgan('combined'));
+if (!inProduction) { const morgan = require('morgan'); app.use(morgan('combined')) };
 
 // Configure API routes
-// var routes_path = './routes/api/';
-// var api_routes = fs.readdirSync(routes_path);
-// for (var i=1; i<api_routes.length; i++) {
-// 	var route = api_routes[i].slice(0,-3);
-// 	app.use('/api/' + route, require(routes_path + route));
-// };
-
-// app.get('/', (req, res) => res.send('Hello World!'))
-app.use("/api/auth", require("./routes/api/auth"));
-app.use("/api/events", require("./routes/api/events"));
+var routes_path = './routes/api/';
+var api_routes = fs.readdirSync(routes_path);
+for (var i=1; i<api_routes.length; i++) {
+	var route = api_routes[i].slice(0,-3);
+	app.use('/api/' + route, require(routes_path + route));
+};
 
 // if (inProduction) {
-app.use(express.static('../client/build'));
-app.get('/*', function(req, res) {
-	res.sendFile('../client/build/index.html');
-});
-// }
+	app.use(express.static('../client/build'));
+	app.get('/*', function(req, res) {
+		res.sendFile('../client/build/index.html');
+	});
+// };
 
 function start_connection() {
 	const db = mysql.createConnection({
@@ -68,7 +63,6 @@ function start_connection() {
 
 start_connection();
 
-console.log(inProduction);
-// app.get('/api/auth/verify', (req, res) => res.send('Hello from the backend'));
+console.log('Running in ' + process.env.NODE_ENV + ' mode');
 
 app.listen(process.env.HTTP_PORT, () => console.log(`Listening on port ${process.env.HTTP_PORT}`));

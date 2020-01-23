@@ -1,9 +1,9 @@
+// NOTE: not used for now... would make sense to try after getting React visible in production
 import get from "lodash/get";
 import axios from "axios";
 
 const app = axios.create({
-  baseURL: process.env.NODE_ENV === 'prod' ? 'https://3ecologies-seedbank.com' : 'http://localhost:3000'
-  // baseURL: 'https://3ecologies-seedbank.com'
+  baseURL: process.env.NODE_ENV === 'production' ? 'https://3ecologies-seedbank.com' : 'http://localhost:50000'
 });
 
 // axios consumes rejected API responses by default,
