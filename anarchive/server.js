@@ -14,11 +14,11 @@ const inProduction = process.env.NODE_ENV === 'production';
 const app = express();
 const router = express.Router();
 
-app.use(
-	cors({
-		origin: inProduction ? 'https://3ecologies-seedbank.com' : 'http://localhost:3000'
-	})
-);
+// app.use(
+// 	cors({
+// 		origin: inProduction ? 'https://3ecologies-seedbank.com:50000' : 'http://localhost:3000'
+// 	})
+// );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 if (!inProduction) { const morgan = require('morgan'); app.use(morgan('combined')) };
@@ -33,7 +33,7 @@ for (var i=1; i<api_routes.length; i++) {
 
 // if (inProduction) {
 	app.use(express.static('../client/build'));
-	app.get('/*', function(req, res) {
+	app.get('*', function(req, res) {
 		res.sendFile('../client/build/index.html');
 	});
 // };
