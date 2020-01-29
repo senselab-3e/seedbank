@@ -7,8 +7,8 @@
     "client-install": "cd ../client && npm install",
     "start": "pm2 start server.js",
     "server": "nodemon server.js",
-    "client": "cd ../client && npm start"
-    ,"dev": "concurrently \"npm run server\" \"npm run client\""
+    "client": "cd ../client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "MIT",
@@ -25,6 +25,8 @@
     "express-session": "^1.16.2",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.19.5",
+    "lodash": "^4.17.15",
+    "md5": "^2.2.1",
     "morgan": "^1.9.1",
     "mysql": "^2.17.1",
     "passport": "^0.4.0",
