@@ -1,4 +1,5 @@
 .env
 .DS_STORE
 /anarchive/node_modules
+/anarchive/assets
 /client/node_modules
