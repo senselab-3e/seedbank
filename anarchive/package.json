@@ -5,10 +5,11 @@
   "main": "server.js",
   "scripts": {
     "client-install": "cd ../client && npm install",
-    "start": "pm2 start server.js",
-    "server": "nodemon server.js",
+    "start": "NODE_ENV=production pm2 start server.js",
+    "dev-server": "nodemon server.js",
     "client": "cd ../client && npm start",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "NODE_ENV=development concurrently \"npm run dev-server\" \"npm run client\"",
+    "local-bundled": "NODE_ENV=production nodemon server.js"
   },
   "author": "",
   "license": "MIT",
