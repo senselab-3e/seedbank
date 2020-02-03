@@ -10,7 +10,6 @@ const path = require('path');
 
 const inProduction = process.env.NODE_ENV === 'production';
 const http_port = inProduction ? process.env.HTTP_PORT : 5000;
-const db_port = process.env.DB_PORT || $DB_PORT;
 const app = express();
 const router = express.Router();
 
