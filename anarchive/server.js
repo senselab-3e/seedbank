@@ -9,7 +9,6 @@ const fs = require('fs');
 const path = require('path');
 
 const inProduction = process.env.NODE_ENV === 'production';
-const http_port = inProduction ? process.env.HTTP_PORT : 5000;
 const app = express();
 const router = express.Router();
 
@@ -35,10 +34,10 @@ if (inProduction) {
 
 function start_connection() {
 	const db = mysql.createConnection({
-		host: process.env.DB_HOST || $DB_HOST,
-	 	database: process.env.DB_NAME || $DB_NAME,
-		user: process.env.DB_USER || $DB_USER,
-		password: process.env.DB_PASSWORD || $DB_PASSWORD
+		host: process.env.DB_HOST,
+	 	database: process.env.DB_NAME,
+		user: process.env.DB_USER,
+		password: process.env.DB_PASSWORD
 	});
 
 	db.connect(function(err) {
@@ -60,4 +59,4 @@ start_connection();
 
 console.log('Running in ' + process.env.NODE_ENV + ' mode');
 
-app.listen(http_port, () => console.log(`Listening on port ${http_port}`));
+app.listen(process.env.HTTP_PORT, () => console.log(`Listening on port ${process.env.HTTP_PORT}`));
