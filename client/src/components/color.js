@@ -4,17 +4,25 @@ const Color = {
     yellow : "#E5CF41",
     random ="#81479b"
   }
+
+  
   
   import React, { Component } from 'react'
   
   export class color extends Component {
-      render() {
-          return (
-              <div>
-                  
-              </div>
-          )
-      }
+
+    const divStyle = {
+        color: Color.blue,
+        background: Color.yellow,
+        height: '300px'
+    };
+
+    render() {
+        return (
+            <div style={divStyle}>Hello World!
+            </div>
+        )
+    }
   }
   
   export default color
