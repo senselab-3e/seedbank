@@ -27,5 +27,5 @@ body img {
 } */
 
 .menu:hover {
-    color: var(--main-selection-color);
+    color: var(--main-highlight-color);
 }
