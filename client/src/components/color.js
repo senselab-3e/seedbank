@@ -1,8 +1,8 @@
 const Color = {
-    blue : '#70CFE1'
+    blue : '#70CFE1',
     green : '#85C85D',
     yellow : "#E5CF41",
-    random ="#81479b"
+    random : "#81479b"
   }
 
   
