@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import "../style/glitch.css";
 import glitch from "../assets/img/404_glitch2.gif";
 
-export class Glitch extends Component {
-  render() {
+const Glitch = () => {
+ 
     return (
       <div className="glitch">
         <h3>glitch</h3>
@@ -11,6 +11,6 @@ export class Glitch extends Component {
       </div>
     );
   }
-}
+
 
 export default Glitch;
