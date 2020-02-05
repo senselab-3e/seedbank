@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import teapot from "../assets/img/pot.jpg";
 import "../style/Header.css";
 import { NavLink } from "react-router-dom";
+import Color from "./color.js";
 
 export default class Header extends Component {
   render() {
@@ -15,6 +16,7 @@ export default class Header extends Component {
         <div className="Header">
           <img className="Cup" src={teapot} alt="teapot"></img>
         </div>
+        <Color />
         <nav>
           <NavLink to="/" className={className}>
             Home
