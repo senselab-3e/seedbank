@@ -1,8 +1,8 @@
 :root {
     --main-bg-color: rgb(34, 202, 160);
-    --main-primary-color: #777777;
+    --main-primary-color: rgb(248, 248, 248);
     --main-highlight-color: rgb(241, 59, 217);
-    --main-selection-color: rgb(248, 248, 248);
+    --main-selection-color: #777777;
 }
 
 body {
@@ -10,11 +10,13 @@ body {
     background-color: var(--main-bg-color);
 }
 
+.glitch {}
+
 body img {
     text-align: center;
 }
 
-.menu-active {
+.menu-visited {
     color: var(--main-selection-color);
 }
 
