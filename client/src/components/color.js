@@ -12,13 +12,26 @@ const divStyle = {
   height: "300px"
 };
 
+const changeColorRandom = () => {
+  const values = [Color.blue, Color.green, Color.yellow, Color.random];
+  const valueToUse = values[Math.floor(Math.random() * values.length)];
+  let color = valueToUse;
+  return color;
+};
+
 import React, { Component } from "react";
 
 export class color extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { color: changeColorRandom() };
+  }
+
   render() {
-    const getInitialState = () => {
-      return { color: Color.green };
-    };
+    // const getInitialState = () => {
+    //   return { color: Color.green };
+    // };
+
     return <div style={divStyle}>Hello World!</div>;
   }
 }
