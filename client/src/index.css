@@ -1,3 +1,31 @@
+:root {
+    --main-bg-color: rgb(34, 202, 160);
+    --main-primary-color: #777777;
+    --main-highlight-color: rgb(241, 59, 217);
+    --main-selection-color: rgb(248, 248, 248);
+}
+
+body {
+    color: var(--main-primary-color);
+    background-color: var(--main-bg-color);
+}
+
 body img {
     text-align: center;
+}
+
+.menu-active {
+    color: var(--main-selection-color);
+}
+
+.menu {
+    padding: 5px;
+}
+
+/* .menu:active {
+    color: var(--main-highlight-color);
+} */
+
+.menu:hover {
+    color: var(--main-selection-color);
 }

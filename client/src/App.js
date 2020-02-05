@@ -8,9 +8,9 @@ import withAuth from "./helpers/withAuth";
 import EventsPage from "./pages/events";
 import AuthPage from "./pages/auth";
 import About from "./pages/About";
-import Header from "./partials/Header";
+import Header from "./components/header";
 import Glitch from "./pages/Glitch";
-
+import './index.css';
 
 function Home() {
   return (
@@ -24,7 +24,6 @@ function Home() {
 class App extends Component {
   render() {
     return (
-      
         <Router> 
         <Header />
         <Switch>
