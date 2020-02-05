@@ -6,11 +6,11 @@ const Color = {
 };
 
 /* eslint-disable import/first */
-const divStyle = {
-  color: Color.blue,
-  background: Color.yellow,
-  height: "300px"
-};
+// const divStyle = {
+//   color: Color.blue,
+//   background: Color.yellow,
+//   height: "300px"
+// };
 
 const changeColorRandom = () => {
   const values = [Color.blue, Color.green, Color.yellow, Color.random];
@@ -32,7 +32,9 @@ export class color extends Component {
     //   return { color: Color.green };
     // };
 
-    return <div style={divStyle}>Hello World!</div>;
+    return (
+      <div style={{ background-color: this.state.color }}>Hello World!</div>
+    );
   }
 }
 
