@@ -15,11 +15,10 @@ const divStyle = {
 import React, { Component } from "react";
 
 export class color extends Component {
-    
   render() {
-    getInitialState: function () {
-        return { color: Color.green };
-        },
+    const getInitialState = () => {
+      return { color: Color.green };
+    };
     return <div style={divStyle}>Hello World!</div>;
   }
 }
