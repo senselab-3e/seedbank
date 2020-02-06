@@ -25,7 +25,8 @@ const NavButton = styled.a`
   background: ${props => (props.primary ? "teal" : "transparent")};
   color: ${props => (props.primary ? "white" : "teal")};
   &:hover {
-    color: ${props => (props.primary ? "deeppink" : "white")};
+    background: ${props => (props.primary ? "grey" : "transparent")};
+    border: 2px solid deeppink;
   }
   text-decoration: none;
   text-align: center;
