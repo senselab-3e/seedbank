@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Header from "./components/header";
 import Glitch from "./pages/Glitch";
 import "./index.css";
+import { ThemeProvider } from "styled-components";
 
 //NOTES: styled-components has full theming support by exporting a <ThemeProvider> wrapper component. This component provides a theme to all React components underneath itself via the context API. In the render tree all styled-components will have access to the provided theme, even when they are multiple levels deep.
 
@@ -26,31 +27,33 @@ function Home() {
 }
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      events: []
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     theme: theme
+  //   };
+  // }
 
   render() {
     return (
       <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about3e" component={About} />
-          <Route path="/oOoOs" component={Glitch} />
-          <Route
-            path="/patches"
-            render={() => (
-              <div style={{ backgroundColor: "#777777" }}>Patches</div>
-            )}
-          />
-          <Route path="/entryway" render={() => <div>Entry</div>} />
-          <Route exact path="/auth" component={AuthPage} />
-          <Route exact path="/events" component={withAuth(EventsPage)} />
-        </Switch>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about3e" component={About} />
+            <Route path="/oOoOs" component={Glitch} />
+            <Route
+              path="/patches"
+              render={() => (
+                <div style={{ backgroundColor: "#777777" }}>Patches</div>
+              )}
+            />
+            <Route path="/entryway" render={() => <div>Entry</div>} />
+            <Route exact path="/auth" component={AuthPage} />
+            <Route exact path="/events" component={withAuth(EventsPage)} />
+          </Switch>
+        </ThemeProvider>
       </Router>
     );
   }

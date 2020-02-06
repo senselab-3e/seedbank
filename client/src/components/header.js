@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // import "../style/Header.css";
 import { NavLink } from "react-router-dom";
 import Color from "./color.js";
+import { withTheme } from "styled-components";
 import styled from "styled-components";
 
 //Reasons for styled comonent. What We Liked About Styled Components https://medium.com/building-crowdriff/styled-components-to-use-or-not-to-use-a6bb4a7ffc21
@@ -51,7 +52,7 @@ const Button = styled.button`
   padding: 0.5rem 0;
 `;
 
-export default class Header extends Component {
+class Header extends Component {
   // constructor() {
   // 	super();
   // 	this.state = {
@@ -60,7 +61,8 @@ export default class Header extends Component {
   // }
   state = {
     isActive: "true",
-    count: 0
+    count: 0,
+    theme: {}
   };
 
   increment = () =>
@@ -105,6 +107,7 @@ export default class Header extends Component {
     );
   }
 }
+export default withTheme(Header);
 
 //another native approach
 
