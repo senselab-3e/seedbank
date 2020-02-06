@@ -29,6 +29,10 @@ const Wrapper = styled.section`
 `;
 
 export default class Header extends Component {
+  state = {
+    isActive: "true"
+  };
+
   render() {
     // let className = "menu";
     // if (this.props.isActive) {
@@ -39,7 +43,7 @@ export default class Header extends Component {
       <React.Fragment>
         <nav>
           <Wrapper>
-            <NavButton as={NavLink} to="/" primary="true">
+            <NavButton as={NavLink} to="/" primary={this.state.isActive}>
               Home
             </NavButton>
             <NavButton as={NavLink} to="/auth">
