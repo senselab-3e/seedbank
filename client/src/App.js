@@ -10,6 +10,7 @@ import "./index.css";
 import { ThemeProvider } from "styled-components";
 
 //NOTES: styled-components has full theming support by exporting a <ThemeProvider> wrapper component. This component provides a theme to all React components underneath itself via the context API. In the render tree all styled-components will have access to the provided theme, even when they are multiple levels deep.
+//there are more notes on how to use style-components in the header component.
 
 const theme = {
   mainBgColor: "rgb(34, 202, 160)",
@@ -27,13 +28,6 @@ function Home() {
 }
 
 class App extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     theme: theme
-  //   };
-  // }
-
   render() {
     return (
       <Router>
