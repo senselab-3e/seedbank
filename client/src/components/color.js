@@ -33,7 +33,9 @@ export class color extends Component {
     // };
 
     return (
-      <div style={{ backgroundColor: this.state.color }}>Hello World!</div>
+      <div
+        style={{ backgroundColor: this.state.color, height: 100, width: 100 }}
+      ></div>
     );
   }
 }

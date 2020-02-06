@@ -1,10 +1,16 @@
 import React, { Component } from "react";
+import teapot from "../assets/img/pot.jpg";
 // import ReactDOM from "react-dom";
 
 class About extends Component {
-
   render() {
-    return <div> ABOUT 3 Ecologgiiiesssss </div>;
+    return (
+      <div>
+        <div className="Center">
+          <img className="Cup" src={teapot} alt="teapot"></img>
+        </div>
+      </div>
+    );
   }
 }
 

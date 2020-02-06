@@ -1,12 +1,11 @@
-.Header {
-    text-align: center;
+.Center {
+  text-align: center;
 }
 
 .Cup {
-    text-align: center;
-    width: 50%;
-    height: 50%;
-    align-items: center;
-    justify-content: center;
-
+  text-align: center;
+  width: 50%;
+  height: 50%;
+  align-items: center;
+  justify-content: center;
 }
