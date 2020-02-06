@@ -62,7 +62,7 @@ class Header extends Component {
   state = {
     isActive: "true",
     count: 0,
-    theme: {}
+    theme: this.props.theme
   };
 
   increment = () =>
