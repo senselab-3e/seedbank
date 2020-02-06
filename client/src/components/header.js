@@ -65,7 +65,8 @@ class Header extends Component {
   state = {
     isActive: "true",
     count: 0,
-    theme: this.props.theme
+    theme: this.props.theme,
+    location: ""
   };
 
   increment = () =>
@@ -77,12 +78,22 @@ class Header extends Component {
       count: this.state.count !== 0 ? this.state.count - 1 : this.state.count
     });
 
+  location = () =>
+    this.setState({
+      location: this.props
+    });
+
   render() {
     return (
       <React.Fragment>
         <nav>
           <Wrapper>
-            <NavButton as={NavLink} to="/" primary={this.state.isActive}>
+            <NavButton
+              as={NavLink}
+              to="/"
+              primary={this.state.isActive}
+              onClick={this.location}
+            >
               Home
             </NavButton>
             <NavButton as={NavLink} to="/auth">

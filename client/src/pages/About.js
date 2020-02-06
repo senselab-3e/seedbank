@@ -7,6 +7,13 @@ const Cup = styled.img`
 `;
 
 class About extends Component {
+  state = {
+    location: ""
+  };
+
+  componentDidMount() {
+    this.setState({ location: this.props.location });
+  }
   render() {
     return (
       <div>

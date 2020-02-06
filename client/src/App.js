@@ -85,6 +85,15 @@ function Home() {
 }
 
 class App extends Component {
+  state = {
+    location: window.location.pathname
+  };
+
+  location = () =>
+    this.setState({
+      location: window.location.pathname
+    });
+
   render() {
     return (
       <Router>
