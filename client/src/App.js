@@ -28,7 +28,7 @@ class App extends Component {
           <Route
             path="/patches"
             render={() => (
-              <body style={{ backgroundColor: "#777777" }}>Patches</body>
+              <div style={{ backgroundColor: "#777777" }}>Patches</div>
             )}
           />
           <Route path="/entryway" render={() => <div>Entry</div>} />

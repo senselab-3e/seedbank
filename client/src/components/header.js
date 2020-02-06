@@ -3,6 +3,21 @@ import React, { Component } from "react";
 import "../style/Header.css";
 import { NavLink } from "react-router-dom";
 import Color from "./color.js";
+import styled from "styled-components";
+
+// Create a <Title> react component that renders an <h1> which is
+// centered, palevioletred and sized at 1.5em
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+const Wrapper = styled.section`
+  padding: 1em;
+  background: papayawhip;
+  text-align: center;
+`;
 
 export default class Header extends Component {
   render() {
@@ -13,8 +28,10 @@ export default class Header extends Component {
 
     return (
       <React.Fragment>
+        <Title>styled-component test</Title>
+
         <nav>
-          <div className="Center">
+          <Wrapper>
             <NavLink to="/" className={className}>
               Home
             </NavLink>
@@ -42,7 +59,7 @@ export default class Header extends Component {
             <NavLink to="/patches" className={className}>
               Patches
             </NavLink>
-          </div>
+          </Wrapper>
         </nav>
         <Color />
       </React.Fragment>
