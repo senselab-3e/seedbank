@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import teapot from "../assets/img/pot.jpg";
-// import "../style/Header.css";
 import { NavLink } from "react-router-dom";
 import Color from "./color.js";
 import { withTheme } from "styled-components";

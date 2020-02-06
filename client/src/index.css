@@ -10,14 +10,12 @@ body {
   background-color: var(--main-bg-color);
 }
 
-.glitch {
-}
-
-body img {
+.centerAlign {
   text-align: center;
 }
 
-.menu-visited {
+
+/* .menu-visited {
   color: var(--main-selection-color);
 }
 
@@ -25,10 +23,7 @@ body img {
   padding: 5px;
 }
 
-/* .menu:active {
-    color: var(--main-highlight-color);
-} */
 
 .menu:hover {
   color: var(--main-highlight-color);
-}
+} */
