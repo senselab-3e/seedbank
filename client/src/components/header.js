@@ -26,7 +26,7 @@ const NavButton = styled.a`
 const Wrapper = styled.section`
   padding: 0.3em;
   text-align: left;
-  width: 11rem;
+
   background: "#333";
 `;
 
@@ -36,6 +36,7 @@ const Button = styled.button`
   margin: 0.5rem 1rem;
   width: 4rem;
   font-size: 1em;
+  padding: 0.5rem 0;
 `;
 
 export default class Header extends Component {
@@ -44,7 +45,10 @@ export default class Header extends Component {
     count: 0
   };
 
-  increment = () => this.setState({ count: this.state.count + 1 });
+  increment = () =>
+    this.setState({
+      count: this.state.count < 50 ? this.state.count + 1 : this.state.count
+    });
   decrement = () =>
     this.setState({
       count: this.state.count !== 0 ? this.state.count - 1 : this.state.count
@@ -60,8 +64,6 @@ export default class Header extends Component {
       <React.Fragment>
         <nav>
           <Wrapper>
-            <Button onClick={this.increment}>+</Button>
-            <Button onClick={this.decrement}>-</Button>
             <NavButton as={NavLink} to="/" primary={this.state.isActive}>
               Home
             </NavButton>
@@ -80,8 +82,11 @@ export default class Header extends Component {
             <NavButton as={NavLink} to="/patches">
               picnicpatches
             </NavButton>
+            <Button onClick={this.increment}>+</Button>
+            <Button onClick={this.decrement}>-</Button>
           </Wrapper>
         </nav>
+
         <Color />
       </React.Fragment>
     );
