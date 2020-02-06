@@ -26,12 +26,29 @@ const NavButton = styled.a`
 const Wrapper = styled.section`
   padding: 0.3em;
   text-align: left;
+  width: 11rem;
+  background: "#333";
+`;
+
+const Button = styled.button`
+  display: inline-block;
+  border-radius: 3px;
+  margin: 0.5rem 1rem;
+  width: 4rem;
+  font-size: 1em;
 `;
 
 export default class Header extends Component {
   state = {
-    isActive: "true"
+    isActive: "true",
+    count: 0
   };
+
+  increment = () => this.setState({ count: this.state.count + 1 });
+  decrement = () =>
+    this.setState({
+      count: this.state.count !== 0 ? this.state.count - 1 : this.state.count
+    });
 
   render() {
     // let className = "menu";
@@ -43,6 +60,8 @@ export default class Header extends Component {
       <React.Fragment>
         <nav>
           <Wrapper>
+            <Button onClick={this.increment}>+</Button>
+            <Button onClick={this.decrement}>-</Button>
             <NavButton as={NavLink} to="/" primary={this.state.isActive}>
               Home
             </NavButton>
