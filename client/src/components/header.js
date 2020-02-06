@@ -13,12 +13,13 @@ const NavButton = styled.a`
   margin: 0.5rem 1rem;
   width: 11rem;
   font-size: 1em;
-  background: transparent;
+  /* Adapt the colors based on primary prop */
+  background: ${props => (props.primary ? "teal" : "white")};
+  color: ${props => (props.primary ? "white" : "teal")};
   text-align: center;
   padding: 0.5rem 0;
-  color: teal;
   margin: 10px 5px 10px 5px;
-  border: 2px solid white;
+  border: 2px solid teal;
 `;
 
 const Wrapper = styled.section`
