@@ -1,64 +1,48 @@
 import React, { Component } from "react";
 // import teapot from "../assets/img/pot.jpg";
-import "../style/Header.css";
+// import "../style/Header.css";
 import { NavLink } from "react-router-dom";
 import Color from "./color.js";
 import styled from "styled-components";
 
 // Create a <Title> react component that renders an <h1> which is
 // centered, palevioletred and sized at 1.5em
-const Title = styled.h1`
-  font-size: 1.5em;
+const NavButton = styled.a`
+  display: inline-block;
+  border-radius: 3px;
+  margin: 0.5rem 1rem;
+  width: 11rem;
+  font-size: 1em;
+  background: transparent;
   text-align: center;
-  color: palevioletred;
+  padding: 0.5rem 0;
+  color: teal;
+  margin: 10px 5px 10px 5px;
+  border: 2px solid white;
 `;
 
 const Wrapper = styled.section`
-  padding: 1em;
-  background: papayawhip;
-  text-align: center;
+  padding: 0.3em;
+  text-align: left;
 `;
 
 export default class Header extends Component {
   render() {
-    let className = "menu";
-    if (this.props.isActive) {
-      className += "menu-active";
-    }
+    // let className = "menu";
+    // if (this.props.isActive) {
+    //   className += "menu-active";
+    // }
 
     return (
       <React.Fragment>
-        <Title>styled-component test</Title>
-
         <nav>
           <Wrapper>
-            <NavLink to="/" className={className}>
+            <NavButton as={NavLink} to="/" primary>
               Home
-            </NavLink>
-            |
-            <NavLink to="/events" className={className}>
-              Go to events
-            </NavLink>
-            |
-            <NavLink to="/auth" className={className}>
-              Login or signup
-            </NavLink>
-            |
-            <NavLink to="/entryway" className={className}>
-              EntryWay
-            </NavLink>
-            |
-            <NavLink to="/about3e" className={className}>
-              3E About
-            </NavLink>
-            |
-            <NavLink to="/oOoOs" className={className}>
-              404 oOoO Portal
-            </NavLink>
-            |
-            <NavLink to="/patches" className={className}>
-              Patches
-            </NavLink>
+            </NavButton>
+            <NavButton as={NavLink} to="/auth">
+              login or signup
+            </NavButton>
           </Wrapper>
         </nav>
         <Color />
@@ -66,3 +50,37 @@ export default class Header extends Component {
     );
   }
 }
+
+//another approach
+
+/* <React.Fragment>
+<nav>
+  <Wrapper>
+    <NavLink to="/">Home</NavLink>|
+    <NavLink to="/events" className={className}>
+      Go to events
+    </NavLink>
+    |
+    <NavLink to="/auth" className={className}>
+      Login or signup
+    </NavLink>
+    |
+    <NavLink to="/entryway" className={className}>
+      EntryWay
+    </NavLink>
+    |
+    <NavLink to="/about3e" className={className}>
+      3E About
+    </NavLink>
+    |
+    <NavLink to="/oOoOs" className={className}>
+      404 oOoO Portal
+    </NavLink>
+    |
+    <NavLink to="/patches" className={className}>
+      Patches
+    </NavLink>
+  </Wrapper>
+</nav>
+<Color />
+</React.Fragment> */
