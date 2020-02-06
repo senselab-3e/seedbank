@@ -38,7 +38,7 @@ export default class Header extends Component {
       <React.Fragment>
         <nav>
           <Wrapper>
-            <NavButton as={NavLink} to="/" primary>
+            <NavButton as={NavLink} to="/" primary="true">
               Home
             </NavButton>
             <NavButton as={NavLink} to="/auth">
