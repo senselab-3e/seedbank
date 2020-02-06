@@ -5,7 +5,15 @@ import { NavLink } from "react-router-dom";
 import Color from "./color.js";
 import styled from "styled-components";
 
-//If the styled target is a simple element (e.g. styled.div), styled-components passes through any known HTML attribute to the DOM. If it is a custom React component (e.g. styled(MyComponent)), styled-components passes through all props.
+//Reasons for styled comonent. What We Liked About Styled Components https://medium.com/building-crowdriff/styled-components-to-use-or-not-to-use-a6bb4a7ffc21
+// It Makes Components Less Bulky
+// In a lot of cases, there’s a lot of heavy lifting that has to be done through CSS to inject user-specific styling into a component. Many components’ render methods end up containing style objects that clutter them up and split the CSS into two places, making the code harder to parse. Styled Components help keep the concerns of styling and element architecture separated and make components more readable.
+
+// Furthermore, when you have components that rely on JavaScript for their style, Styled Components gives control of those states back to CSS instead of using a multitude of conditional class names.
+
+//NOTES: It is important to define your styled components outside of the render method, otherwise it will be recreated on every single render pass. Defining a styled component within the render method will thwart caching and drastically slow down rendering speed, and should be avoided.
+
+//NOTES: If the styled target is a simple element (e.g. styled.div), styled-components passes through any known HTML attribute to the DOM. If it is a custom React component (e.g. styled(MyComponent)), styled-components passes through all props.
 
 const NavButton = styled.a`
   display: inline-block;
@@ -16,6 +24,9 @@ const NavButton = styled.a`
   /* Adapt the colors based on primary prop */
   background: ${props => (props.primary ? "teal" : "transparent")};
   color: ${props => (props.primary ? "white" : "teal")};
+  &:hover {
+    color: ${props => (props.primary ? "deeppink" : "white")};
+  }
   text-decoration: none;
   text-align: center;
   padding: 0.5rem 0;
@@ -40,6 +51,12 @@ const Button = styled.button`
 `;
 
 export default class Header extends Component {
+  // constructor() {
+  // 	super();
+  // 	this.state = {
+  // 		events: []
+  // 	}
+  // }
   state = {
     isActive: "true",
     count: 0
@@ -55,11 +72,6 @@ export default class Header extends Component {
     });
 
   render() {
-    // let className = "menu";
-    // if (this.props.isActive) {
-    //   className += "menu-active";
-    // }
-
     return (
       <React.Fragment>
         <nav>
@@ -93,7 +105,15 @@ export default class Header extends Component {
   }
 }
 
-//another approach
+//another native approach
+
+// render() {
+// let className = "menu";
+// if (this.props.isActive) {
+//   className += "menu-active";
+// }
+
+// return (
 
 /* <React.Fragment>
 <nav>

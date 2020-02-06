@@ -8,6 +8,15 @@ import Header from "./components/header";
 import Glitch from "./pages/Glitch";
 import "./index.css";
 
+//NOTES: styled-components has full theming support by exporting a <ThemeProvider> wrapper component. This component provides a theme to all React components underneath itself via the context API. In the render tree all styled-components will have access to the provided theme, even when they are multiple levels deep.
+
+const theme = {
+  mainBgColor: "rgb(34, 202, 160)",
+  mainLightColor: "rgb(248, 248, 248)",
+  mainDarkColor: "#777777",
+  mainHighlightColor: "rgb(241, 59, 217)"
+};
+
 function Home() {
   return (
     <div>
@@ -17,6 +26,13 @@ function Home() {
 }
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      events: []
+    };
+  }
+
   render() {
     return (
       <Router>
