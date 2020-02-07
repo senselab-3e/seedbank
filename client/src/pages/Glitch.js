@@ -13,10 +13,11 @@ const Portal404 = styled.img`
 const Tiny = styled.img`
   width: 30px;
   height: 30px;
-  margin: 200px;
-  border: 2px solid transparent;
+  margin: 300px;
+
+  border: 1px solid transparent;
   &:hover {
-    border: 2px solid orange;
+    border: 1px solid orange;
   }
 `;
 
