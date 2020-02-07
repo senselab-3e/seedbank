@@ -8,6 +8,7 @@ import Header from "./components/header";
 import Glitch from "./pages/Glitch";
 import "./index.css";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
+import glitch from "./assets/img/404_glitch2.gif";
 
 //NOTES: styled-components has full theming support by exporting a <ThemeProvider> wrapper component. This component provides a theme to all React components underneath itself via the context API. In the render tree all styled-components will have access to the provided theme, even when they are multiple levels deep.
 //there are more notes on how to use style-components in the header component.
@@ -19,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     background: ${props =>
       props.grabState === "/about" ? "blue" : props.theme.mainBgColor};
     font-family: Open-Sans;
+    background-image: url(${glitch});
   }
 `;
 const theme = {
@@ -108,7 +110,6 @@ class App extends Component {
 
   render() {
     var grabState = () => this.state.location;
-
     return (
       <Router>
         <ThemeProvider theme={theme}>
