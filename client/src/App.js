@@ -14,6 +14,8 @@ import glitch from "./assets/img/404_glitch2.gif";
 //there are more notes on how to use style-components in the header component.
 //background-image: url(${glitch});
 //i'm still going to run some detaul themeing through the index.css for now.
+
+// glitch is throwing invalid property value.... hmmmm
 const GlobalStyle = createGlobalStyle`
   body {
     color: ${props => (props.whiteColor ? "deeppink" : "black")};
@@ -21,7 +23,9 @@ const GlobalStyle = createGlobalStyle`
       props.grabState === "/about" ? "blue" : props.theme.mainBgColor};
     font-family: Open-Sans;
     background-image: ${props =>
-      props.grabState === "/about" ? props.glitch : props.theme.mainBgColor};
+      props.grabState === "/about"
+        ? "url(${props.glitch})"
+        : props.theme.mainBgColor};
   }
 `;
 const theme = {
