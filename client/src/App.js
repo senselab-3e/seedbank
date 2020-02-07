@@ -16,6 +16,7 @@ import { ThemeProvider, createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   body {
     color: ${props => (props.whiteColor ? "deeppink" : "black")};
+    background: ${props => props.theme.mainBgColor};
     font-family: Open-Sans;
   }
 `;
