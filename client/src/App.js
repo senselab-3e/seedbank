@@ -16,7 +16,8 @@ import { ThemeProvider, createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   body {
     color: ${props => (props.whiteColor ? "deeppink" : "black")};
-    background: ${props => props.theme.mainBgColor};
+    background: ${props =>
+      props.grabState.location === "/about" ? "blue" : "black"};
     font-family: Open-Sans;
   }
 `;
@@ -105,11 +106,14 @@ class App extends Component {
       location: location.pathname
     });
 
+  grabState = () => this.state.location;
+
   render() {
+    console.log(this.grabState);
     return (
       <Router>
         <ThemeProvider theme={theme}>
-          <GlobalStyle whiteColor />
+          <GlobalStyle whiteColor grabState={this.grabState} />
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
