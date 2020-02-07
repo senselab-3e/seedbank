@@ -11,7 +11,9 @@ class About extends Component {
     location: ""
   };
   //I'm trying out componentWillMount() so that the current location is passed up immediately to App, but this fires before anything else has loaded on the page. investigate docs for any shortcomings to this approach
-  componentWillMount() {
+  // they are depreciating this lifecyle -- investigate  static getDerivedStateFromProps(props, state)
+
+  UNSAFE_componentWillMount() {
     this.props.updateLocation(window.location);
   }
   // componentDidMount() {
