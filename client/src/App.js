@@ -93,21 +93,10 @@ class App extends Component {
     this.updateLocation = this.updateLocation.bind(this);
   }
 
-  location = () =>
-    this.setState({
-      location: window.location.pathname
-    });
-
-  // updateLocation = loc => console.log(loc); //this.setState({ location2: loc.location });
-  updateLocation(location) {
+  updateLocation = location =>
     this.setState({
       location: location.pathname
     });
-  }
-
-  componentDidMount() {
-    // this.setState({ location2: window.location.pathname });
-  }
 
   render() {
     return (
