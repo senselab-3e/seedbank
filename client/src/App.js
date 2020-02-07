@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: Open-Sans;
     background-image: ${props =>
       props.grabState === "/about"
-        ? "url(${props.glitch})"
+        ? "url(" + props.glitch + ")"
         : props.theme.mainBgColor};
   }
 `;
