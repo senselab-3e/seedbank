@@ -88,8 +88,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location1: window.location.pathname,
-      location2: ""
+      location: window.location.pathname
     };
     this.updateLocation = this.updateLocation.bind(this);
   }
@@ -102,7 +101,7 @@ class App extends Component {
   // updateLocation = loc => console.log(loc); //this.setState({ location2: loc.location });
   updateLocation(location) {
     this.setState({
-      location2: location.pathname
+      location: location.pathname
     });
   }
 
