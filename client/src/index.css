@@ -10,10 +10,10 @@
   --danger: "#f44336"
 }
 
-body {
+/* body {
 
   background-color: var(--main-bg-color);
-}
+} */
 
 p {
   color: var(--default);

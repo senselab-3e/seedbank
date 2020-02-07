@@ -7,12 +7,18 @@ import About from "./pages/About";
 import Header from "./components/header";
 import Glitch from "./pages/Glitch";
 import "./index.css";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 
 //NOTES: styled-components has full theming support by exporting a <ThemeProvider> wrapper component. This component provides a theme to all React components underneath itself via the context API. In the render tree all styled-components will have access to the provided theme, even when they are multiple levels deep.
 //there are more notes on how to use style-components in the header component.
 
 //i'm still going to run some detaul themeing through the index.css for now.
+const GlobalStyle = createGlobalStyle`
+  body {
+    color: ${props => (props.whiteColor ? "deeppink" : "black")};
+    font-family: Open-Sans;
+  }
+`;
 const theme = {
   mainBgColor: "rgb(34, 202, 160)",
   menuLightColor: "rgb(248, 248, 248)",
@@ -102,6 +108,7 @@ class App extends Component {
     return (
       <Router>
         <ThemeProvider theme={theme}>
+          <GlobalStyle whiteColor />
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
