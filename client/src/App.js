@@ -85,14 +85,24 @@ function Home() {
 }
 
 class App extends Component {
-  state = {
-    location: window.location.pathname
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      location1: window.location.pathname,
+      location2: ""
+    };
+  }
 
   location = () =>
     this.setState({
       location: window.location.pathname
     });
+
+  updateLocation = loc => this.setState({ location2: loc });
+
+  componentDidMount() {
+    this.setState({ location2: window.location.pathname });
+  }
 
   render() {
     return (
@@ -101,7 +111,10 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
+            <Route
+              path="/about"
+              render={() => <About updateLocation={this.updateLocation} />}
+            />
             <Route path="/oOoOs" component={Glitch} />
             <Route
               path="/patches"
