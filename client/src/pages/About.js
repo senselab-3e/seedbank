@@ -12,7 +12,8 @@ class About extends Component {
   };
 
   componentDidMount() {
-    this.setState({ location: this.props.location });
+    //this.setState({ location: this.props.location });
+    this.props.updateLocation(this.props.location);
   }
   render() {
     return (

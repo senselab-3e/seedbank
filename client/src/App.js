@@ -91,6 +91,7 @@ class App extends Component {
       location1: window.location.pathname,
       location2: ""
     };
+    this.updateLocation = this.updateLocation.bind(this);
   }
 
   location = () =>
