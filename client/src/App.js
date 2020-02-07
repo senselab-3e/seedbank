@@ -23,12 +23,12 @@ const GlobalStyle = createGlobalStyle`
       props.grabState === "/about"
         ? props.theme.palettes.g3.c1
         : props.theme.mainBgColor};
-    font-family: Open-Sans;
     background-image: ${props =>
       props.grabState === "/oOoOs" ? `url(${props.glitch})` : `url('')`};
   }
 `;
 const theme = {
+  font: "lato",
   mainBgColor: "rgb(34, 202, 160)",
   menuLightColor: "rgb(248, 248, 248)",
   menuDarkColor: "#777777",

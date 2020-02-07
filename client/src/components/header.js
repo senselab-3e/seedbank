@@ -20,6 +20,7 @@ const NavButton = styled.a`
   margin: 0.5rem 1rem;
   width: 11rem;
   font-size: 1em;
+  font-family: ${props => props.theme.font};
   /* Adapt the colors based on primary prop */
   background: ${props => (props.primary ? "teal" : "transparent")};
   color: ${props => (props.primary ? "white" : "teal")};
