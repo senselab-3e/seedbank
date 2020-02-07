@@ -8,12 +8,13 @@ const Cup = styled.img`
 
 class About extends Component {
   state = {
-    location: ""
+    apples: ""
   };
 
   componentDidMount() {
-    //this.setState({ location: this.props.location });
-    this.props.updateLocation(this.props.location);
+    this.setState({ location: this.props.location });
+    this.props.updateLocation(this.state.apples);
+    console.log(this.props.testprop);
   }
   render() {
     return (

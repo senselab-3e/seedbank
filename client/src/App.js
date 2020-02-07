@@ -114,7 +114,12 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route
               path="/about"
-              render={() => <About updateLocation={this.updateLocation} />}
+              render={() => (
+                <About
+                  updateLocation={this.updateLocation}
+                  testprop="hello prop"
+                />
+              )}
             />
             <Route path="/oOoOs" component={Glitch} />
             <Route
