@@ -99,10 +99,15 @@ class App extends Component {
       location: window.location.pathname
     });
 
-  updateLocation = loc => this.setState({ location2: loc });
+  // updateLocation = loc => console.log(loc); //this.setState({ location2: loc.location });
+  updateLocation(location) {
+    this.setState({
+      location2: location.pathname
+    });
+  }
 
   componentDidMount() {
-    this.setState({ location2: window.location.pathname });
+    // this.setState({ location2: window.location.pathname });
   }
 
   render() {
