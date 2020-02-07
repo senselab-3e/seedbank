@@ -22,6 +22,9 @@ class About extends Component {
       <div>
         <div className="centerAlign">
           <Cup src={teapot} alt="teapot"></Cup>
+          hello
+          <p>hello</p>
+          <h2>hello?</h2>
         </div>
       </div>
     );

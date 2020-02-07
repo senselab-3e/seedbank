@@ -19,6 +19,7 @@ import glitch from "./assets/img/404_glitch2.gif";
 const GlobalStyle = createGlobalStyle`
   body {
     color: ${props => (props.whiteColor ? "deeppink" : "black")};
+    font: "clear-sans";
     background: ${props =>
       props.grabState === "/about"
         ? props.theme.palettes.g3.c1
@@ -26,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
     background-image: ${props =>
       props.grabState === "/oOoOs" ? `url(${props.glitch})` : `url('')`};
   }
+
 `;
 const theme = {
   font: "lato",
@@ -97,6 +99,7 @@ const theme = {
 function Home() {
   return (
     <div>
+      <p>why is my font not loading</p>
       <h2>Home Hello</h2>
     </div>
   );

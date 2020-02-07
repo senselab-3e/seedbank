@@ -7,22 +7,17 @@
   --primary: "#382922";
   --success: "#64ac69";
   --warning: "#e29c31";
-  --danger: "#f44336"
+  --danger: "#f44336";
 }
 
-/* body {
-
-  background-color: var(--main-bg-color);
-} */
-
+/* 
 p {
   color: var(--default);
 }
 
 .centerAlign {
   text-align: center;
-}
-
+} */
 
 /* .menu-visited {
   color: var(--main-selection-color);
