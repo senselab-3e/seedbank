@@ -15,7 +15,6 @@ import glitch from "./assets/img/404_glitch2.gif";
 //background-image: url(${glitch});
 //i'm still going to run some detaul themeing through the index.css for now.
 
-// glitch is throwing invalid property value.... hmmmm
 const GlobalStyle = createGlobalStyle`
   body {
     color: ${props => (props.whiteColor ? "deeppink" : "black")};
@@ -27,8 +26,9 @@ const GlobalStyle = createGlobalStyle`
     background-image: ${props =>
       props.grabState === "/oOoOs" ? `url(${props.glitch})` : `url('')`};
   }
-
 `;
+
+//at the moment i'm passing most values to global style through the theme, including font style
 const theme = {
   font: "clear sans",
   mainBgColor: "rgb(34, 202, 160)",
