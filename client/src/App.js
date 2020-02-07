@@ -21,13 +21,11 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => (props.whiteColor ? "deeppink" : "black")};
     background: ${props =>
       props.grabState === "/about"
-        ? props.theme.palettes.g1.c4
+        ? props.theme.palettes.g3.c1
         : props.theme.mainBgColor};
     font-family: Open-Sans;
     background-image: ${props =>
-      props.grabState === "/oOoOs"
-        ? `url(${props.glitch})`
-        : props.theme.mainBgColor};
+      props.grabState === "/oOoOs" ? `url(${props.glitch})` : `url('')`};
   }
 `;
 const theme = {
