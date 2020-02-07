@@ -119,14 +119,12 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route
               path="/about"
-              render={() => (
-                <About
-                  updateLocation={this.updateLocation}
-                  testprop="hello prop"
-                />
-              )}
+              render={() => <About updateLocation={this.updateLocation} />}
             />
-            <Route path="/oOoOs" component={Glitch} />
+            <Route
+              path="/oOoOs"
+              render={() => <Glitch updateLocation={this.updateLocation} />}
+            />
             <Route
               path="/patches"
               render={() => (
