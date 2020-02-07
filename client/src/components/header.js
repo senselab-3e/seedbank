@@ -42,7 +42,6 @@ const NavButton = styled.a`
 const NavWrapper = styled.section`
   padding: 0.3em;
   text-align: left;
-
   background: "#333";
 `;
 
@@ -56,12 +55,6 @@ const Button = styled.button`
 `;
 
 class Header extends Component {
-  // constructor() {
-  // 	super();
-  // 	this.state = {
-  // 		events: []
-  // 	}
-  // }
   state = {
     isActive: "true",
     count: 0,

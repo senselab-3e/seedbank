@@ -12,13 +12,10 @@ const Portal404 = styled.img`
 const Tiny = styled.div``;
 
 class Glitch extends Component {
-  // componentDidMount() {
-  //   this.props.updateLocation(window.location);
-  // }
+  //I'm trying out componentWillMount() insted of componentDidMount() so that the current location is passed up immediately to App, but this fires before anything else has loaded on the page. investigate docs for any shortcomings to this approach
   componentWillMount() {
     this.props.updateLocation(window.location);
   }
-
   render() {
     return (
       <div>

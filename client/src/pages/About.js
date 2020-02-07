@@ -8,19 +8,15 @@ const Cup = styled.img`
 
 class About extends Component {
   state = {
-    location: "",
-    apples: ""
+    location: ""
   };
-
-  componentDidMount() {
-    //this.setState({ location: this.props.location });
-    // this.setState({ apples: this.props.apples });
-    //this.setState({ location: this.props.location });
+  //I'm trying out componentWillMount() so that the current location is passed up immediately to App, but this fires before anything else has loaded on the page. investigate docs for any shortcomings to this approach
+  componentWillMount() {
     this.props.updateLocation(window.location);
-
-    // console.log(this.props.updateLocation);
-    // console.log(window.location.pathname, "apples");
   }
+  // componentDidMount() {
+  //   this.props.updateLocation(window.location);
+  // }
   render() {
     return (
       <div>
