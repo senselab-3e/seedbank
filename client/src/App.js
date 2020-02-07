@@ -19,7 +19,7 @@ import glitch from "./assets/img/404_glitch2.gif";
 const GlobalStyle = createGlobalStyle`
   body {
     color: ${props => (props.whiteColor ? "deeppink" : "black")};
-    font: "clear-sans";
+    font-family: lato;
     background: ${props =>
       props.grabState === "/about"
         ? props.theme.palettes.g3.c1
