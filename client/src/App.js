@@ -33,6 +33,9 @@ const theme = {
   menuLightColor: "rgb(248, 248, 248)",
   menuDarkColor: "#777777",
   menuHighlightColor: "rgb(241, 59, 217)",
+  tiny: {
+    width: "4px"
+  },
   colors: {
     main: "rgb(34, 202, 160)",
     secondary: "#777777",

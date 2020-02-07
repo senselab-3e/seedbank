@@ -39,7 +39,7 @@ const NavButton = styled.a`
   border: 2px solid teal;
 `;
 
-const Wrapper = styled.section`
+const NavWrapper = styled.section`
   padding: 0.3em;
   text-align: left;
 
@@ -65,8 +65,7 @@ class Header extends Component {
   state = {
     isActive: "true",
     count: 0,
-    theme: this.props.theme,
-    location: ""
+    theme: this.props.theme
   };
 
   increment = () =>
@@ -78,44 +77,36 @@ class Header extends Component {
       count: this.state.count !== 0 ? this.state.count - 1 : this.state.count
     });
 
-  location = () =>
-    this.setState({
-      location: this.props
-    });
-
   render() {
     return (
       <React.Fragment>
-        <nav>
-          <Wrapper>
-            <NavButton
-              as={NavLink}
-              to="/"
-              primary={this.state.isActive}
-              onClick={this.location}
-            >
-              Home
-            </NavButton>
-            <NavButton as={NavLink} to="/auth">
-              login or signup
-            </NavButton>
-            <NavButton as={NavLink} to="/events">
-              eventlisting
-            </NavButton>
-            <NavButton as={NavLink} to="/about">
-              About oOoOs
-            </NavButton>
-            <NavButton as={NavLink} to="/oOoOs">
-              404 oOoO Portal
-            </NavButton>
-            <NavButton as={NavLink} to="/patches">
-              picnicpatches
-            </NavButton>
-            <Button onClick={this.increment}>+</Button>
-            <Button onClick={this.decrement}>-</Button>
-          </Wrapper>
-        </nav>
-
+        <NavWrapper>
+          <NavButton
+            as={NavLink}
+            to="/"
+            primary={this.state.isActive}
+            onClick={this.location}
+          >
+            Home
+          </NavButton>
+          <NavButton as={NavLink} to="/auth">
+            login or signup
+          </NavButton>
+          <NavButton as={NavLink} to="/events">
+            eventlisting
+          </NavButton>
+          <NavButton as={NavLink} to="/about">
+            About oOoOs
+          </NavButton>
+          <NavButton as={NavLink} to="/oOoOs">
+            404 oOoO Portal
+          </NavButton>
+          <NavButton as={NavLink} to="/patches">
+            picnicpatches
+          </NavButton>
+          <Button onClick={this.increment}> + </Button>
+          <Button onClick={this.decrement}> - </Button>
+        </NavWrapper>
         <Color />
       </React.Fragment>
     );
