@@ -19,7 +19,7 @@ import glitch from "./assets/img/404_glitch2.gif";
 const GlobalStyle = createGlobalStyle`
   body {
     color: ${props => (props.whiteColor ? "deeppink" : "black")};
-    font-family: lato;
+    font-family: ${props => props.theme.font};
     background: ${props =>
       props.grabState === "/about"
         ? props.theme.palettes.g3.c1
@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
 
 `;
 const theme = {
-  font: "lato",
+  font: "clear sans",
   mainBgColor: "rgb(34, 202, 160)",
   menuLightColor: "rgb(248, 248, 248)",
   menuDarkColor: "#777777",
@@ -99,7 +99,6 @@ const theme = {
 function Home() {
   return (
     <div>
-      <p>why is my font not loading</p>
       <h2>Home Hello</h2>
     </div>
   );
