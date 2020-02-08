@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import withAuth from "./helpers/withAuth";
 import EventsPage from "./pages/events";
 import AuthPage from "./pages/auth";
+import Entryway from "./pages/Entryway";
 import About from "./pages/About";
 import Header from "./components/header";
 import Glitch from "./pages/Glitch";
@@ -100,14 +101,6 @@ const theme = {
   }
 };
 
-function Home() {
-  return (
-    <div>
-      <h2>Home Hello</h2>
-    </div>
-  );
-}
-
 //     <GlobalStyle whiteColor grabState={grabState()} glitch={glitch} />
 
 class App extends Component {
@@ -132,7 +125,11 @@ class App extends Component {
           <GlobalStyle whiteColor />
           <Header />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/"
+              render={() => <Entryway updateLocation={this.updateLocation} />}
+            />
             <Route
               path="/about"
               render={() => <About updateLocation={this.updateLocation} />}
@@ -145,7 +142,6 @@ class App extends Component {
               path="/patches"
               render={() => <Patch updateLocation={this.updateLocation} />}
             />
-            <Route path="/entryway" render={() => <div>Entry</div>} />
             <Route exact path="/auth" component={AuthPage} />
             <Route exact path="/events" component={withAuth(EventsPage)} />
           </Switch>
