@@ -30,7 +30,6 @@ const GlobalStyle = createGlobalStyle`
         : props.theme.mainBgColor};
         background-image: ${props =>
           props.grabState === "/oOoOs" ? `url(${props.glitch})` : undefined};
-
   }
 `;
 

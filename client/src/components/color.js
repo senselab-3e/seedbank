@@ -6,11 +6,6 @@ const Color = {
 };
 
 /* eslint-disable import/first */
-// const divStyle = {
-//   color: Color.blue,
-//   background: Color.yellow,
-//   height: "300px"
-// };
 
 const changeColorRandom = () => {
   const values = [Color.blue, Color.green, Color.yellow, Color.random];
@@ -24,17 +19,26 @@ import React, { Component } from "react";
 export class color extends Component {
   constructor(props) {
     super(props);
-    this.state = { color: changeColorRandom() };
+    this.state = {
+      color: changeColorRandom()
+    };
   }
 
-  render() {
-    // const getInitialState = () => {
-    //   return { color: Color.green };
-    // };
+  updateColor = () => {
+    this.setState({
+      color: changeColorRandom()
+    });
+  };
 
+  render() {
     return (
       <div
-        style={{ backgroundColor: this.state.color, height: 100, width: 100 }}
+        style={{
+          backgroundColor: this.state.color,
+          height: 100,
+          width: 100
+        }}
+        onClick={this.updateColor}
       ></div>
     );
   }
