@@ -58,7 +58,7 @@ export class Patch extends Component {
     return (
       <React.Fragment>
         <Grid>
-          <Aside>a thing</Aside>
+          <Aside>a thing hllloooooeooo</Aside>
           <MainGrid>another thing</MainGrid>
           <Footer>last thing</Footer>
         </Grid>
