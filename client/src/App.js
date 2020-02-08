@@ -11,7 +11,7 @@ import Patch from "./pages/Patch";
 import "./index.css";
 // import { ThemeProvider } from "styled-components";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-// import glitch from "./assets/img/404_glitch2.gif";
+import glitch from "./assets/img/404_glitch2.gif";
 
 // import P5Wrapper from "react-p5-wrapper";
 
@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
       props.grabState === "/about"
         ? props.theme.palettes.g3.c1
         : props.theme.mainBgColor};
-  
+        background-image: url(${glitch});
   }
 `;
 
