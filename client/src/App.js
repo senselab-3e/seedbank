@@ -3,13 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import withAuth from "./helpers/withAuth";
 import EventsPage from "./pages/events";
 import AuthPage from "./pages/auth";
+import Entryway from "./pages/Entryway";
 import About from "./pages/About";
 import Header from "./components/header";
 import Glitch from "./pages/Glitch";
 import Patch from "./pages/Patch";
 import "./index.css";
+// import { ThemeProvider } from "styled-components";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import glitch from "./assets/img/404_glitch2.gif";
+
 // import P5Wrapper from "react-p5-wrapper";
 
 //NOTES: styled-components has full theming support by exporting a <ThemeProvider> wrapper component. This component provides a theme to all React components underneath itself via the context API. In the render tree all styled-components will have access to the provided theme, even when they are multiple levels deep.
@@ -19,14 +22,14 @@ import glitch from "./assets/img/404_glitch2.gif";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    color: ${props => (props.whiteColor ? "deeppink" : "black")};
+    color: ${props => (props.whiteColor ? "white" : "black")};
     font-family: ${props => props.theme.font};
     background: ${props =>
       props.grabState === "/about"
         ? props.theme.palettes.g3.c1
         : props.theme.mainBgColor};
-    background-image: ${props =>
-      props.grabState === "/oOoOs" ? `url(${props.glitch})` : `url('')`};
+        background-image: ${props =>
+          props.grabState === "/oOoOs" ? `url(${props.glitch})` : undefined};
   }
 `;
 
@@ -96,13 +99,7 @@ const theme = {
   }
 };
 
-function Home() {
-  return (
-    <div>
-      <h2>Home Hello</h2>
-    </div>
-  );
-}
+//     <GlobalStyle whiteColor grabState={grabState()} glitch={glitch} />
 
 class App extends Component {
   constructor(props) {
@@ -119,14 +116,22 @@ class App extends Component {
     });
 
   render() {
-    var grabState = () => this.state.location;
+    // var grabState = () => this.state.location;
     return (
       <Router>
         <ThemeProvider theme={theme}>
-          <GlobalStyle whiteColor grabState={grabState()} glitch={glitch} />
+          <GlobalStyle
+            whiteColor
+            grabState={this.state.location}
+            glitch={glitch}
+          />
           <Header />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/"
+              render={() => <Entryway updateLocation={this.updateLocation} />}
+            />
             <Route
               path="/about"
               render={() => <About updateLocation={this.updateLocation} />}
@@ -139,7 +144,6 @@ class App extends Component {
               path="/patches"
               render={() => <Patch updateLocation={this.updateLocation} />}
             />
-            <Route path="/entryway" render={() => <div>Entry</div>} />
             <Route exact path="/auth" component={AuthPage} />
             <Route exact path="/events" component={withAuth(EventsPage)} />
           </Switch>

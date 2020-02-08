@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import Color from "./color.js";
+
 import { withTheme } from "styled-components";
 import styled from "styled-components";
 
@@ -96,7 +96,6 @@ class Header extends Component {
           <Button onClick={this.increment}> + </Button>
           <Button onClick={this.decrement}> - </Button>
         </NavWrapper>
-        <Color />
       </React.Fragment>
     );
   }
