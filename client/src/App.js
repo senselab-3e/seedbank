@@ -6,6 +6,7 @@ import AuthPage from "./pages/auth";
 import About from "./pages/About";
 import Header from "./components/header";
 import Glitch from "./pages/Glitch";
+import Patch from "./pages/Patch";
 import "./index.css";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import glitch from "./assets/img/404_glitch2.gif";
@@ -135,9 +136,7 @@ class App extends Component {
             />
             <Route
               path="/patches"
-              render={() => (
-                <div style={{ backgroundColor: "#777777" }}>Patches</div>
-              )}
+              render={() => <Patch updateLocation={this.updateLocation} />}
             />
             <Route path="/entryway" render={() => <div>Entry</div>} />
             <Route exact path="/auth" component={AuthPage} />
