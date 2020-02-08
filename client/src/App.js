@@ -10,6 +10,7 @@ import Patch from "./pages/Patch";
 import "./index.css";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import glitch from "./assets/img/404_glitch2.gif";
+// import P5Wrapper from "react-p5-wrapper";
 
 //NOTES: styled-components has full theming support by exporting a <ThemeProvider> wrapper component. This component provides a theme to all React components underneath itself via the context API. In the render tree all styled-components will have access to the provided theme, even when they are multiple levels deep.
 //there are more notes on how to use style-components in the header component.
