@@ -8,8 +8,10 @@ import Header from "./components/header";
 import Glitch from "./pages/Glitch";
 import Patch from "./pages/Patch";
 import "./index.css";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
-import glitch from "./assets/img/404_glitch2.gif";
+import { ThemeProvider } from "styled-components";
+// import { ThemeProvider, createGlobalStyle } from "styled-components";
+// import glitch from "./assets/img/404_glitch2.gif";
+
 // import P5Wrapper from "react-p5-wrapper";
 
 //NOTES: styled-components has full theming support by exporting a <ThemeProvider> wrapper component. This component provides a theme to all React components underneath itself via the context API. In the render tree all styled-components will have access to the provided theme, even when they are multiple levels deep.
@@ -17,18 +19,18 @@ import glitch from "./assets/img/404_glitch2.gif";
 //background-image: url(${glitch});
 //i'm still going to run some detaul themeing through the index.css for now.
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    color: ${props => (props.whiteColor ? "deeppink" : "black")};
-    font-family: ${props => props.theme.font};
-    background: ${props =>
-      props.grabState === "/about"
-        ? props.theme.palettes.g3.c1
-        : props.theme.mainBgColor};
-    background-image: ${props =>
-      props.grabState === "/oOoOs" ? `url(${props.glitch})` : `url('')`};
-  }
-`;
+// const GlobalStyle = createGlobalStyle`
+//   body {
+//     color: ${props => (props.whiteColor ? "deeppink" : "black")};
+//     font-family: ${props => props.theme.font};
+//     background: ${props =>
+//       props.grabState === "/about"
+//         ? props.theme.palettes.g3.c1
+//         : props.theme.mainBgColor};
+//     background-image: ${props =>
+//       props.grabState === "/oOoOs" ? `url(${props.glitch})` : `url('')`};
+//   }
+// `;
 
 //at the moment i'm passing most values to global style through the theme, including font style
 const theme = {
@@ -104,6 +106,8 @@ function Home() {
   );
 }
 
+//     <GlobalStyle whiteColor grabState={grabState()} glitch={glitch} />
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -119,11 +123,10 @@ class App extends Component {
     });
 
   render() {
-    var grabState = () => this.state.location;
+    // var grabState = () => this.state.location;
     return (
       <Router>
         <ThemeProvider theme={theme}>
-          <GlobalStyle whiteColor grabState={grabState()} glitch={glitch} />
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
