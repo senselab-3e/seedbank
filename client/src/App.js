@@ -8,8 +8,8 @@ import Header from "./components/header";
 import Glitch from "./pages/Glitch";
 import Patch from "./pages/Patch";
 import "./index.css";
-import { ThemeProvider } from "styled-components";
-// import { ThemeProvider, createGlobalStyle } from "styled-components";
+// import { ThemeProvider } from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 // import glitch from "./assets/img/404_glitch2.gif";
 
 // import P5Wrapper from "react-p5-wrapper";
@@ -19,18 +19,20 @@ import { ThemeProvider } from "styled-components";
 //background-image: url(${glitch});
 //i'm still going to run some detaul themeing through the index.css for now.
 
-// const GlobalStyle = createGlobalStyle`
-//   body {
-//     color: ${props => (props.whiteColor ? "deeppink" : "black")};
-//     font-family: ${props => props.theme.font};
-//     background: ${props =>
-//       props.grabState === "/about"
-//         ? props.theme.palettes.g3.c1
-//         : props.theme.mainBgColor};
-//     background-image: ${props =>
-//       props.grabState === "/oOoOs" ? `url(${props.glitch})` : `url('')`};
-//   }
-// `;
+const GlobalStyle = createGlobalStyle`
+  body {
+    color: ${props => (props.whiteColor ? "deeppink" : "black")};
+    font-family: ${props => props.theme.font};
+    background: ${props =>
+      props.grabState === "/about"
+        ? props.theme.palettes.g3.c1
+        : props.theme.mainBgColor};
+  
+  }
+`;
+
+//  background-image: ${props =>
+//props.grabState === "/oOoOs" ? `url(${props.glitch})` : `url('')`};
 
 //at the moment i'm passing most values to global style through the theme, including font style
 const theme = {
@@ -127,6 +129,7 @@ class App extends Component {
     return (
       <Router>
         <ThemeProvider theme={theme}>
+          <GlobalStyle whiteColor />
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
