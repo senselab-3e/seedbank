@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import teapot from "../assets/img/pot.jpg";
-// import "../style/Header.css";
 import { NavLink } from "react-router-dom";
 import Color from "./color.js";
 import { withTheme } from "styled-components";
@@ -22,14 +20,17 @@ const NavButton = styled.a`
   margin: 0.5rem 1rem;
   width: 11rem;
   font-size: 1em;
+  font-family: ${props => props.theme.font};
   /* Adapt the colors based on primary prop */
   background: ${props => (props.primary ? "teal" : "transparent")};
   color: ${props => (props.primary ? "white" : "teal")};
   &:hover {
     background: ${props =>
-      props.primary ? props.theme.mainHighlightColor : "transparent"};
+      props.primary ? props.theme.menuLightColor : "transparent"};
     color: ${props =>
-      props.primary ? props.theme.mainBgColor : props.theme.mainLightColor};
+      props.primary
+        ? props.theme.menuHighlightColor
+        : props.theme.menuLightColor};
     border: 2px solid deeppink;
   }
   text-decoration: none;
@@ -39,10 +40,9 @@ const NavButton = styled.a`
   border: 2px solid teal;
 `;
 
-const Wrapper = styled.section`
+const NavWrapper = styled.section`
   padding: 0.3em;
   text-align: left;
-
   background: "#333";
 `;
 
@@ -56,12 +56,6 @@ const Button = styled.button`
 `;
 
 class Header extends Component {
-  // constructor() {
-  // 	super();
-  // 	this.state = {
-  // 		events: []
-  // 	}
-  // }
   state = {
     isActive: "true",
     count: 0,
@@ -80,31 +74,28 @@ class Header extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav>
-          <Wrapper>
-            <NavButton as={NavLink} to="/" primary={this.state.isActive}>
-              Home
-            </NavButton>
-            <NavButton as={NavLink} to="/auth">
-              login or signup
-            </NavButton>
-            <NavButton as={NavLink} to="/events">
-              eventlisting
-            </NavButton>
-            <NavButton as={NavLink} to="/about">
-              About oOoOs
-            </NavButton>
-            <NavButton as={NavLink} to="/oOoOs">
-              404 oOoO Portal
-            </NavButton>
-            <NavButton as={NavLink} to="/patches">
-              picnicpatches
-            </NavButton>
-            <Button onClick={this.increment}>+</Button>
-            <Button onClick={this.decrement}>-</Button>
-          </Wrapper>
-        </nav>
-
+        <NavWrapper>
+          <NavButton as={NavLink} to="/">
+            Home
+          </NavButton>
+          <NavButton as={NavLink} to="/auth">
+            login or signup
+          </NavButton>
+          <NavButton as={NavLink} to="/events">
+            eventlisting
+          </NavButton>
+          <NavButton as={NavLink} to="/about">
+            About oOoOs
+          </NavButton>
+          <NavButton as={NavLink} to="/oOoOs">
+            404 oOoO Portal
+          </NavButton>
+          <NavButton as={NavLink} to="/patches">
+            picnicpatches
+          </NavButton>
+          <Button onClick={this.increment}> + </Button>
+          <Button onClick={this.decrement}> - </Button>
+        </NavWrapper>
         <Color />
       </React.Fragment>
     );
