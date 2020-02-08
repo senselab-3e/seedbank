@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import patch from "../assets/img/threshold-1.gif";
+import patch2 from "../assets/img/threshold-2.gif";
+import patch3 from "../assets/img/threshold-8.gif";
+import { withTheme } from "styled-components";
 
 // import { withTheme } from "styled-components";
 
@@ -33,14 +36,17 @@ const Grid = styled.div`
 
 const MainGrid = styled.div`
   grid-area: content;
+  background: ${props => props.theme.palettes.g2.c2};
 `;
 
 const Footer = styled.div`
   grid-area: footer;
+  background: ${props => props.theme.palettes.g2.c3};
 `;
 
 const Aside = styled.div`
   grid-area: sidebar;
+  background: ${props => props.theme.palettes.g2.c4};
 `;
 
 export class Patch extends Component {
@@ -50,15 +56,17 @@ export class Patch extends Component {
 
   render() {
     return (
-      <Grid>
-        <Aside></Aside>
-        <MainGrid>
-          <img src={patch} alt="threshold"></img>
-        </MainGrid>
-        <Footer></Footer>
-      </Grid>
+      <React.Fragment>
+        <Grid>
+          <Aside>a thing</Aside>
+          <MainGrid>another thing</MainGrid>
+          <Footer>last thing</Footer>
+        </Grid>
+        <img src={patch} alt="threshold" width="100px"></img>
+        <img src={patch3} alt="threshold2" width="100px"></img>
+      </React.Fragment>
     );
   }
 }
 
-export default Patch;
+export default withTheme(Patch);

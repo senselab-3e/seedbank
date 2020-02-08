@@ -22,7 +22,7 @@ import glitch from "./assets/img/404_glitch2.gif";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    color: ${props => (props.whiteColor ? "deeppink" : "black")};
+    color: ${props => (props.whiteColor ? "white" : "black")};
     font-family: ${props => props.theme.font};
     background: ${props =>
       props.grabState === "/about"
