@@ -75,12 +75,7 @@ class Header extends Component {
     return (
       <React.Fragment>
         <NavWrapper>
-          <NavButton
-            as={NavLink}
-            to="/"
-            primary={this.state.isActive}
-            onClick={this.location}
-          >
+          <NavButton as={NavLink} to="/">
             Home
           </NavButton>
           <NavButton as={NavLink} to="/auth">
