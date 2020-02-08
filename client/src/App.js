@@ -28,12 +28,11 @@ const GlobalStyle = createGlobalStyle`
       props.grabState === "/about"
         ? props.theme.palettes.g3.c1
         : props.theme.mainBgColor};
-        background-image: url(${glitch});
+        background-image: ${props =>
+          props.grabState === "/oOoOs" ? `url(${props.glitch})` : undefined};
+
   }
 `;
-
-//  background-image: ${props =>
-//props.grabState === "/oOoOs" ? `url(${props.glitch})` : `url('')`};
 
 //at the moment i'm passing most values to global style through the theme, including font style
 const theme = {
@@ -122,7 +121,11 @@ class App extends Component {
     return (
       <Router>
         <ThemeProvider theme={theme}>
-          <GlobalStyle whiteColor />
+          <GlobalStyle
+            whiteColor
+            grabState={this.state.location}
+            glitch={glitch}
+          />
           <Header />
           <Switch>
             <Route
