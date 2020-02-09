@@ -10,7 +10,7 @@
   --danger: "#f44336";
 }
 
-/* styling for random comonent ---- begins */
+/* styling for randomlinkcomponent ---- begins */
 
 .dot {
   height: 1px;
@@ -37,6 +37,8 @@ a.dotlinks .dot {
 
 /* styling for random comonent ---- ends */
 
+/* styling for randomthingycomonent ---- begins */
+
 .thingy {
   transform: scale(0.2);
   /* transform: scale(0.6); */
@@ -61,3 +63,5 @@ a.dotlinks .dot {
   /* border-width: 20px;
   border: 3px solid rgba(249, 151, 3, 0.852); */
 }
+
+/* styling for randomthingycomonent ---- ends */

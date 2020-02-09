@@ -9,6 +9,7 @@ import Header from "./components/header";
 import Glitch from "./pages/Glitch";
 import Patch from "./pages/Patch";
 import "./index.css";
+import "./animation-library.css";
 // import { ThemeProvider } from "styled-components";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import glitch from "./assets/img/404_glitch2.gif";
@@ -127,6 +128,7 @@ class App extends Component {
         element.parentNode.remove();
       });
     }
+    //this can be brought back in to remove the presence of the pixel links on all over page views
     // else if (this.state.location !== "/patches") {
     //   currentDots.forEach(element => {
     //     element.parentNode.remove();
