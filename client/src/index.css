@@ -46,7 +46,7 @@ a.dotlinks .dot {
   /* width: 150px; */
   /* height: 250px; */
   /* //if i don't state a width every image will just load 'as is' */
-
+  z-index: 10;
   position: fixed;
   background-repeat: no-repeat;
 
@@ -62,6 +62,10 @@ a.dotlinks .dot {
   cursor: pointer;
   /* border-width: 20px;
   border: 3px solid rgba(249, 151, 3, 0.852); */
+}
+
+.ThingyContainer {
+  z-index: 10;
 }
 
 /* styling for randomthingycomonent ---- ends */
