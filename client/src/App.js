@@ -143,7 +143,7 @@ class App extends Component {
             grabState={this.state.location}
             glitch={glitch}
           />
-          <Header updateLocation={this.updateLocation} />
+          <Header location={this.state.location} />
           <Switch>
             <Route
               exact

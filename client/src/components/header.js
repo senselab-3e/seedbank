@@ -37,7 +37,9 @@ const NavButton = styled.a`
   text-align: center;
   padding: 0.5rem 0;
   margin: 10px 5px 10px 5px;
-  border: 2px solid teal;
+  border: ${window.location.pathname === "/oOoOs"
+    ? "2px solid deeppink"
+    : "2px solid white"};
 `;
 
 const NavWrapper = styled.section`
@@ -60,7 +62,7 @@ class Header extends Component {
     isActive: "true",
     count: 0,
     theme: this.props.theme,
-    location: window.location
+    location: this.props.location
   };
 
   increment = () =>
