@@ -118,6 +118,12 @@ class App extends Component {
 
   render() {
     // var grabState = () => this.state.location;
+    var currentDots = document.querySelectorAll("dots");
+    console.log(currentDots);
+    // this.state.location !== "patches"
+    //   ? .remove()
+    //   : console.log("right route");
+
     return (
       <Router>
         <ThemeProvider theme={theme}>
