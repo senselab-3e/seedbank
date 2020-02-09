@@ -62,11 +62,11 @@ const dotRandPos = () => {
 
 export class RandomLinkPlace extends Component {
   componentDidMount() {
-    setInterval(dotRandPos, 5000);
     createLinks();
+    dotRandPos();
+    setInterval(dotRandPos, 5000);
   }
   render() {
-    dotRandPos();
     return (
       <div>
         <div id="target"></div>

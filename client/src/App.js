@@ -117,12 +117,16 @@ class App extends Component {
     });
 
   render() {
-    // var grabState = () => this.state.location;
-    var currentDots = document.querySelectorAll("dots");
+    //this is a total hack method to remove the dynamically created and appended dot classes from the randomLinkCreator Component.
+    //refactorrrrrrr but for now....
+    var currentDots = document.querySelectorAll(".dot");
     console.log(currentDots);
-    // this.state.location !== "patches"
-    //   ? .remove()
-    //   : console.log("right route");
+
+    if (this.state.location !== "/patches") {
+      currentDots.forEach(element => {
+        element.parentNode.remove();
+      });
+    }
 
     return (
       <Router>
