@@ -121,7 +121,6 @@ class App extends Component {
     //refactorrrrrrr but for now....
     var currentDots = document.querySelectorAll(".dot");
     console.log(currentDots);
-
     if (this.state.location !== "/patches") {
       currentDots.forEach(element => {
         element.parentNode.remove();

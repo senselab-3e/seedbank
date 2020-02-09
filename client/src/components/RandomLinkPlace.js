@@ -66,7 +66,7 @@ export class RandomLinkPlace extends Component {
     };
 
     dotRandPos();
-    setInterval(dotRandPos, 1000);
+    setInterval(dotRandPos, 3000);
     return (
       <div>
         <div id="target"></div>

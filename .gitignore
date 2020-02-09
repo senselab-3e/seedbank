@@ -4,6 +4,7 @@
 /anarchive/assets
 /client/node_modules
 /client/src/components/RandomColor.js
+/client/src/components/RandomThingyPlace.js
 devNotes.md
 /client/src/sketches
 /client/build

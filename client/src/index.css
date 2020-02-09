@@ -13,9 +13,9 @@
 /* styling for random comonent ---- begins */
 
 .dot {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
+  height: 1px;
+  width: 1px;
+  /* border-radius: 50%; */
 
   position: absolute;
   z-index: 100;
