@@ -31,6 +31,8 @@ const newPosition4Circles = () => {
   return [nh, nw, s];
 };
 
+const target = document.querySelector(".target");
+
 linkList.forEach(function(txt2) {
   var newLinkDot = document.createElement("div");
   newLinkDot.className = "dot";
@@ -52,15 +54,19 @@ const dotRandPos = () => {
   });
 };
 
-setInterval(dotRandPos, 5000);
+//ok. not ideal. right now because the elements are being dynamically created and appended outside any of the component rendering, they are actually all loading from the beginning.
+//when the route is left, they are all persisting on screen. that's a little ok because it's still an intereseting effect but this will have to be figure out for the picture element version of this, rather then these small pixels
+//the styling also needs to be managed by styled-components in future refactoring
 
 export class RandomLinkPlace extends Component {
   componentDidMount() {
     dotRandPos();
+    setInterval(dotRandPos, 5000);
   }
   render() {
     return (
       <div>
+        <div className="target"></div>
         <LinkElementCreator linkList={linkList} />
       </div>
     );

@@ -13,13 +13,13 @@
 /* styling for random comonent ---- begins */
 
 .dot {
-  height: 35px;
-  width: 35px;
-
-  border-radius: 50%;
+  height: 1px;
+  width: 1px;
+  /* border-radius: 50%; */
   display: inline-block;
   position: absolute;
   z-index: 100;
+  border: 1rem dotted transparent;
 }
 
 a.dotlinks:hover .dot {
@@ -28,7 +28,7 @@ a.dotlinks:hover .dot {
 }
 
 a.dotlinks:visited .dot {
-  border: 0.1rem solid grey;
+  border: 0.1rem dotted yellow;
 }
 
 a.dotlinks .dot {
