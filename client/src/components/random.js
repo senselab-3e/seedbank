@@ -33,6 +33,19 @@ const randomColor = () => {
   return color;
 };
 
+let h, w, nh, nw, s;
+
+function newPosition4Circles() {
+  h = window.innerHeight - 100;
+  w = window.innerWidth - 100;
+  nh = Math.floor(Math.random() * h);
+  nw = Math.floor(Math.random() * w);
+
+  return [nh, nw, s];
+}
+
+var dotpatches = document.querySelectorAll(".dot");
+
 linkList.forEach(function(txt2) {
   var newLinkDot = document.createElement("div");
   newLinkDot.className = "dot";
