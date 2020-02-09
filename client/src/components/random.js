@@ -44,8 +44,6 @@ function newPosition4Circles() {
   return [nh, nw, s];
 }
 
-var dotpatches = document.querySelectorAll(".dot");
-
 linkList.forEach(function(txt2) {
   var newLinkDot = document.createElement("div");
   newLinkDot.className = "dot";
@@ -55,6 +53,14 @@ linkList.forEach(function(txt2) {
   a.className = "dotlinks";
   a.appendChild(newLinkDot);
   document.body.append(a);
+});
+
+var dotpatches = document.querySelectorAll(".dot");
+
+dotpatches.forEach(function(thingy3) {
+  var newCoor3 = newPosition4Circles();
+  thingy3.style.top = newCoor3[0] + "px";
+  thingy3.style.left = newCoor3[1] + "px";
 });
 
 // const chooseElement = assets =>
