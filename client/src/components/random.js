@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 //import styled from "styled-components";
+import LinkElementCreator from "./LinkElementCreator";
 
 var linkList = [
   "ecologyofvidz.html",
@@ -35,14 +36,14 @@ const randomColor = () => {
 
 let h, w, nh, nw, s;
 
-function newPosition4Circles() {
+const newPosition4Circles = () => {
   h = window.innerHeight - 100;
   w = window.innerWidth - 100;
   nh = Math.floor(Math.random() * h);
   nw = Math.floor(Math.random() * w);
 
   return [nh, nw, s];
-}
+};
 
 linkList.forEach(function(txt2) {
   var newLinkDot = document.createElement("div");
@@ -55,20 +56,28 @@ linkList.forEach(function(txt2) {
   document.body.append(a);
 });
 
-var dotpatches = document.querySelectorAll(".dot");
+const dotpatches = document.querySelectorAll(".dot");
 
-dotpatches.forEach(function(thingy3) {
-  var newCoor3 = newPosition4Circles();
-  thingy3.style.top = newCoor3[0] + "px";
-  thingy3.style.left = newCoor3[1] + "px";
-});
+const dotRandPos = () => {
+  dotpatches.forEach(function(patch) {
+    var newCoor4 = newPosition4Circles();
+    patch.style.top = newCoor4[0] + "px";
+    patch.style.left = newCoor4[1] + "px";
+  });
+};
 
-// const chooseElement = assets =>
-//   assets[Math.floor(Math.random() * assets.length)];
+setInterval(dotRandPos, 5000);
 
 export class random extends Component {
+  componentDidMount() {
+    dotRandPos();
+  }
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <LinkElementCreator linkList={linkList} />
+      </div>
+    );
   }
 }
 
