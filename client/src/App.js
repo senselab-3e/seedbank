@@ -126,11 +126,12 @@ class App extends Component {
       currentThingy.forEach(element => {
         element.parentNode.remove();
       });
-    } else if (this.state.location !== "/patches") {
-      currentDots.forEach(element => {
-        element.parentNode.remove();
-      });
     }
+    // else if (this.state.location !== "/patches") {
+    //   currentDots.forEach(element => {
+    //     element.parentNode.remove();
+    //   });
+    // }
 
     return (
       <Router>
