@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import patch from "../assets/img/threshold-1.gif";
-import patch2 from "../assets/img/threshold-2.gif";
+// import patch2 from "../assets/img/threshold-2.gif";
 import patch3 from "../assets/img/threshold-8.gif";
 import { withTheme } from "styled-components";
 

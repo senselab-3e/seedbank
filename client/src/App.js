@@ -100,6 +100,7 @@ const theme = {
 };
 
 //     <GlobalStyle whiteColor grabState={grabState()} glitch={glitch} />
+//<Route exact path="/events" component={withAuth(EventsPage)} />
 
 class App extends Component {
   constructor(props) {

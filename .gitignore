@@ -5,3 +5,8 @@
 /client/node_modules
 devNotes.md
 /client/src/sketches
+/client/build
+/client/build/service-worker.js
+/client/build/index.html
+/client/build/asset-manifest.json
+/client/build/precache-manifest.42997c6558725317ff8374f089fefab7.js
