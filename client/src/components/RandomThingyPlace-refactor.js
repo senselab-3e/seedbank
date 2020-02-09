@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, {
+  Component
+} from "react";
 
 var linkList = [
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F404_glitch2.gif?v=1575674309400",
@@ -61,9 +63,9 @@ const createLinks = () => {
       //this is because i want to attach a specific visual effect to just this element.
     } else if (
       element ===
-        "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fsponges.png?v=1576262906759" ||
+      "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fsponges.png?v=1576262906759" ||
       element ===
-        "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Forange2.png?v=1576262909483"
+      "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Forange2.png?v=1576262909483"
     ) {
       newImg.classList.add("scale-tinier");
     } else {
@@ -84,7 +86,7 @@ export class RandomThingyPlaceref extends Component {
   render() {
     const dotpatches = document.querySelectorAll(".thingy");
     const dotRandPos = () => {
-      dotpatches.forEach(function(patch) {
+      dotpatches.forEach(function (patch) {
         var newCoor4 = newPosition4Circles();
         patch.style.top = newCoor4[0] + "px";
         patch.style.left = newCoor4[1] + "px";
@@ -101,7 +103,7 @@ export class RandomThingyPlaceref extends Component {
     };
 
     dotRandPos();
-    return <div> </div>;
+    return <div > < /div>;
   }
 }
 
