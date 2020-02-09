@@ -44,13 +44,13 @@ const ArraySources = props => {
   console.log(props);
   //   const findArray = props => {
   var array;
-  switch (props) {
+  switch (props.arraytype) {
     case "link":
-      console.log(props);
+      console.log("link hit");
       array = linkList;
       break;
     case "thingies":
-      console.log(props);
+      console.log("thingy hit");
       array = thingyList;
       break;
     default:
