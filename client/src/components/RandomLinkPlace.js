@@ -33,18 +33,18 @@ const newPosition4Circles = () => {
 
 // const target = document.querySelector("#target");
 
-const createLinks = () => {
-  linkList.forEach(txt2 => {
-    var newLinkDot = document.createElement("div");
-    newLinkDot.className = "dot";
-    newLinkDot.style.backgroundColor = randomColor();
-    var a = document.createElement("a");
-    a.href = "https://convalizards.glitch.me/" + txt2;
-    a.className = "dotlinks";
-    a.appendChild(newLinkDot);
-    document.body.append(a);
-  });
-};
+//const createLinks = () => {
+linkList.forEach(txt2 => {
+  var newLinkDot = document.createElement("div");
+  newLinkDot.className = "dot";
+  newLinkDot.style.backgroundColor = randomColor();
+  var a = document.createElement("a");
+  a.href = "https://convalizards.glitch.me/" + txt2;
+  a.className = "dotlinks";
+  a.appendChild(newLinkDot);
+  document.body.append(a);
+});
+//};
 
 const dotpatches = document.querySelectorAll(".dot");
 
@@ -62,9 +62,9 @@ const dotRandPos = () => {
 
 export class RandomLinkPlace extends Component {
   componentDidMount() {
-    createLinks();
+    //createLinks();
     dotRandPos();
-    setInterval(dotRandPos, 5000);
+    setInterval(dotRandPos, 1000);
   }
   render() {
     return (
