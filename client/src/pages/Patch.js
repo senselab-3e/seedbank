@@ -3,6 +3,7 @@ import patch from "../assets/img/threshold-1.gif";
 // import patch2 from "../assets/img/threshold-2.gif";
 import patch3 from "../assets/img/threshold-8.gif";
 import { withTheme } from "styled-components";
+import Random from "../components/random";
 
 // import { withTheme } from "styled-components";
 
@@ -23,7 +24,7 @@ import { withTheme } from "styled-components";
 //below: The code block above says, let the .main class have an area name of content. Let the .footer class have an area name of footer. Finally, let the aside class have a grid name of sidebar
 // Now the grid items have all been assigned area names.
 //Note that the entries in the property value are the names of the grid items!
-import styled from "styled-components";
+// import styled from "styled-components";
 
 export class Patch extends Component {
   UNSAFE_componentWillMount() {
@@ -33,6 +34,7 @@ export class Patch extends Component {
   render() {
     return (
       <React.Fragment>
+        <Random />
         <img src={patch} alt="threshold" width="100px"></img>
         <img src={patch3} alt="threshold2" width="100px"></img>
       </React.Fragment>

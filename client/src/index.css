@@ -10,7 +10,26 @@
   --danger: "#f44336";
 }
 
-
 /* p {
   color: var(--default);
 } */
+
+.dot {
+  height: 35px;
+  width: 35px;
+
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  z-index: 100;
+}
+
+a.dotlinks:hover .dot {
+  border: 0.1rem solid deeppink;
+  opacity: 0.7;
+  /* color: deeppink; //this doesn't work because color has been assigned in js*/
+}
+
+a.dotlinks:visited .dot {
+  /* border: 0.1rem solid grey; */
+}
