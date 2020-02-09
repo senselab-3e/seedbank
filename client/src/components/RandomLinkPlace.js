@@ -11,20 +11,6 @@ var linkList = [
   "swerve.html"
 ];
 
-// const dot = styled.div`
-//   height: 35px;
-//   width: 35px;
-
-//   border-radius: 50%;
-//   display: inline-block;
-//   position: absolute;
-//   z-index: 100;
-//   &:hover {
-//     border: 0.1rem solid deeppink;
-//     opacity: 0.7;
-//   }
-// `;
-
 const randomColor = () => {
   var letters = "0123456789ABCDEF";
   var color = "#";
@@ -68,7 +54,7 @@ const dotRandPos = () => {
 
 setInterval(dotRandPos, 5000);
 
-export class random extends Component {
+export class RandomLinkPlace extends Component {
   componentDidMount() {
     dotRandPos();
   }
@@ -81,4 +67,4 @@ export class random extends Component {
   }
 }
 
-export default random;
+export default RandomLinkPlace;

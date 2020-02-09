@@ -3,6 +3,7 @@
 /anarchive/node_modules
 /anarchive/assets
 /client/node_modules
+/client/src/components/RandomColor.js
 devNotes.md
 /client/src/sketches
 /client/build
