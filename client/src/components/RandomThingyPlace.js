@@ -27,21 +27,24 @@ const newPosition4Circles = () => {
 
 const createLinks = () => {
   linkList.forEach(element => {
-    var newDiv = document.createElement("img");
-    newDiv.className = 'thingy';
-    newDiv.src = element;
+    var newImg = document.createElement("img");
+    newImg.className = 'thingy';
+    newImg.src = element;
     if (element === "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F404_glitch2.gif?v=1575674309400") {
       //console.log('glitch found' + element);
-      newDiv.classList.add('skew')
+      newImg.classList.add('skew')
       //this is because i want to attach a specific visual effect to just this element. 
     } else if (element === "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fsponges.png?v=1576262906759" || element === "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Forange2.png?v=1576262909483") {
-      newDiv.classList.add('scale-tinier')
+      newImg.classList.add('scale-tinier')
 
     } else {
-      newDiv.classList.add('scale-transform')
+      newImg.classList.add('scale-transform')
       //console.log('glitch not found' + element)
     }
-    document.body.append(newDiv)
+    var container = document.createElement("div");
+    container.className = "ThingyContainer";
+    container.appendChild(newImg);
+    document.body.append(container)
   });
 };
 
