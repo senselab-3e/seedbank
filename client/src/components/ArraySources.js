@@ -46,21 +46,21 @@ const ArraySources = props => {
   var array;
   switch (props.arraytype) {
     case "link":
-      console.log("link hit");
+      //console.log("link hit");
       array = linkList;
       break;
     case "thingies":
-      console.log("thingy hit");
+      //console.log("thingy hit");
       array = thingyList;
       break;
     default:
-      console.log(props);
+      //console.log(props);
       array = "no value";
       break;
   }
   //     return array;
   // };
-  return <div>{console.log(array)}APPLES</div>;
+  return <div>{array}APPLES</div>;
 };
 
 export default ArraySources;

@@ -7,10 +7,6 @@ import RandomLinkPlace from "../components/RandomLinkPlace";
 import ArraySources from "../components/ArraySources";
 
 export class Patch extends Component {
-  state = {
-    array: []
-  };
-
   UNSAFE_componentWillMount() {
     this.props.updateLocation(window.location);
   }

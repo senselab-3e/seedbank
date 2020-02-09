@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ChooseElement from "./ChooseElement";
 
 var linkList = [
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F404_glitch2.gif?v=1575674309400",
@@ -101,7 +102,11 @@ export class RandomThingyPlace extends Component {
     };
 
     dotRandPos();
-    return <div> </div>;
+    return (
+      <div>
+        <ChooseElement array={linkList} />
+      </div>
+    );
   }
 }
 
