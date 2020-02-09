@@ -25,30 +25,6 @@ import { withTheme } from "styled-components";
 //Note that the entries in the property value are the names of the grid items!
 import styled from "styled-components";
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 100px;
-  grid-template-columns: 50px 1fr;
-  grid-template-areas:
-    "sidebar  content"
-    "footer   footer";
-`;
-
-const MainGrid = styled.div`
-  grid-area: content;
-  background: ${props => props.theme.palettes.g2.c2};
-`;
-
-const Footer = styled.div`
-  grid-area: footer;
-  background: ${props => props.theme.palettes.g2.c3};
-`;
-
-const Aside = styled.div`
-  grid-area: sidebar;
-  background: ${props => props.theme.palettes.g2.c4};
-`;
-
 export class Patch extends Component {
   UNSAFE_componentWillMount() {
     this.props.updateLocation(window.location);
@@ -57,11 +33,6 @@ export class Patch extends Component {
   render() {
     return (
       <React.Fragment>
-        <Grid>
-          <Aside>a thing hllloooooeooo</Aside>
-          <MainGrid>another thing</MainGrid>
-          <Footer>last thing</Footer>
-        </Grid>
         <img src={patch} alt="threshold" width="100px"></img>
         <img src={patch3} alt="threshold2" width="100px"></img>
       </React.Fragment>
