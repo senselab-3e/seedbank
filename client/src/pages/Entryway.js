@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Color from "../components/color.js";
+import Color from "../components/color";
+import RandomThingy from "../components/RandomThingyPlace";
 
 export class Entryway extends Component {
   UNSAFE_componentWillMount() {
@@ -10,6 +11,7 @@ export class Entryway extends Component {
       <div>
         WELCOME
         <Color />
+        <RandomThingy />
       </div>
     );
   }
