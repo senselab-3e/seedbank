@@ -35,7 +35,7 @@ export class Patch extends Component {
     return (
       <React.Fragment>
         <ArraySources updateArray={this.props.updateArray} arraytype="links" />
-        <RandomLinkPlace />
+        <RandomLinkPlace array={this.state.patchlevelArray} />
         <img src={patch} alt="threshold" width="100px"></img>
         <img src={patch3} alt="threshold2" width="100px"></img>
       </React.Fragment>

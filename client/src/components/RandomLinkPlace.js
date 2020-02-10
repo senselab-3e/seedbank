@@ -50,30 +50,53 @@ const createLinks = () => {
 //when the route is left, they are all persisting on screen. that's a little ok because it's still an intereseting effect but this will have to be figure out for the picture element version of this, rather then these small pixels
 //the styling also needs to be managed by styled-components in future refactoring
 
-export class RandomLinkPlace extends Component {
-  componentDidMount() {
-    createLinks();
-  }
-  render() {
-    const dotpatches = document.querySelectorAll(".dot");
+const RandomLinkPlace = props => {
+  createLinks();
 
-    const dotRandPos = () => {
-      dotpatches.forEach(function(patch) {
-        var newCoor4 = newPosition4Circles();
-        patch.style.top = newCoor4[0] + "px";
-        patch.style.left = newCoor4[1] + "px";
-      });
-    };
+  const dotpatches = document.querySelectorAll(".dot");
 
-    dotRandPos();
-    setInterval(dotRandPos, 3000);
-    return (
-      <div>
-        <div id="target"></div>
-        <LinkElementCreator linkList={linkList} />
-      </div>
-    );
-  }
-}
+  const dotRandPos = () => {
+    dotpatches.forEach(function(patch) {
+      var newCoor4 = newPosition4Circles();
+      patch.style.top = newCoor4[0] + "px";
+      patch.style.left = newCoor4[1] + "px";
+    });
+  };
+
+  dotRandPos();
+  setInterval(dotRandPos, 3000);
+  return (
+    <div>
+      <div id="target"></div>
+      <LinkElementCreator linkList={linkList} />
+    </div>
+  );
+};
 
 export default RandomLinkPlace;
+
+// export class RandomLinkPlace extends Component {
+//   componentDidMount() {
+//     createLinks();
+//   }
+//   render() {
+//     const dotpatches = document.querySelectorAll(".dot");
+
+//     const dotRandPos = () => {
+//       dotpatches.forEach(function(patch) {
+//         var newCoor4 = newPosition4Circles();
+//         patch.style.top = newCoor4[0] + "px";
+//         patch.style.left = newCoor4[1] + "px";
+//       });
+//     };
+
+//     dotRandPos();
+//     setInterval(dotRandPos, 3000);
+//     return (
+//       <div>
+//         <div id="target"></div>
+//         <LinkElementCreator linkList={linkList} />
+//       </div>
+//     );
+//   }
+// }
