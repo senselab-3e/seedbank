@@ -10,26 +10,27 @@ export class Patch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      patchlevelArray: ""
+      patchlevelArray: [],
+      isLogged: false
     };
   }
 
-  //   const updateList = array =>
-  //     this.setState({
-  //       patchlevelArray: array
-  //     });
-
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.updateLocation(window.location);
   }
-
-  componentDidMount() {
-    console.log(this.props.test, "is this thing on?");
-    this.setState({
-      patchlevelArray: this.props.test
-    });
+  //this feels a little hack-y but this prevents an infinite loop of  the state of patchLevel Array
+  //being set infinitely. first i check if isLogged is false. if it is it is the first time i am logging a prop for
+  //the patchlevelArray. then isLogged from there on is set to true - preventing state for the array being set again.
+  // however this still doesn't feel reliable, bc this means this is being checked many times... even if the state isn't being set repeatedly... refactor later perhaps.
+  // i'm also not a fan of using all these lifecycles as it takes away from readability.
+  componentDidUpdate() {
+    if (!this.state.isLogged) {
+      this.setState({
+        patchlevelArray: this.props.test,
+        isLogged: true
+      });
+    }
   }
-
   render() {
     return (
       <React.Fragment>
