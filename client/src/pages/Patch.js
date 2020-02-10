@@ -15,13 +15,13 @@ export class Patch extends Component {
     // this.setState({
     //   array: this.props.array
     // });
-    this.props.updateArray(["test", "anohter", "apple"]);
+    //this.props.updateArray(["test", "anohter", "apple"]);
   }
 
   render() {
     return (
       <React.Fragment>
-        <ArraySources />
+        <ArraySources updateArray={this.props.updateArray} arraytype="links" />
         <RandomLinkPlace />
         <img src={patch} alt="threshold" width="100px"></img>
         <img src={patch3} alt="threshold2" width="100px"></img>

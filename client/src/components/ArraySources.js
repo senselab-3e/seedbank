@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 
 const thingyList = [
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F404_glitch2.gif?v=1575674309400",
@@ -40,29 +40,30 @@ var linkList = [
   "swerve.html"
 ];
 
-const ArraySources = props => {
-  console.log(props);
-  //   const findArray = props => {
-  var array;
-  switch (props.arraytype) {
-    case "link":
-      //console.log("link hit");
-      array = linkList;
-      break;
-    case "thingies":
-      //console.log("thingy hit");
-      array = thingyList;
-      break;
-    default:
-      //console.log(props);
-      array = "no value";
-      break;
+export class ArraySources extends Component {
+  componentDidMount() {
+    this.props.updateArray(linkList);
+    switch (this.props.arraytype) {
+      case "links":
+        //console.log("link hit");
+        this.props.updateArray(linkList);
+        break;
+      case "thingies":
+        //console.log("thingy hit");
+        this.props.updateArray(thingyList);
+        break;
+      default:
+        //console.log(props);
+        this.props.updateArray("no value");
+        break;
+    }
   }
 
-  //props.updateArray(array);
+  render() {
+    console.log(this.props.arraytype);
 
-  // };
-  return <div>{array}Apple</div>;
-};
+    return <div></div>;
+  }
+}
 
 export default ArraySources;

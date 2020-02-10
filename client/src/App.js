@@ -111,7 +111,7 @@ class App extends Component {
       elementarray: []
     };
     this.updateLocation = this.updateLocation.bind(this);
-    //this.updateArray = this.updateArray.bind(this);
+    this.updateArray = this.updateArray.bind(this);
   }
 
   updateLocation = location =>
