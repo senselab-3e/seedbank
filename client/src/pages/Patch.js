@@ -7,15 +7,27 @@ import RandomLinkPlace from "../components/RandomLinkPlace";
 import ArraySources from "../components/ArraySources";
 
 export class Patch extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      patchlevelArray: ""
+    };
+  }
+
+  //   const updateList = array =>
+  //     this.setState({
+  //       patchlevelArray: array
+  //     });
+
   UNSAFE_componentWillMount() {
     this.props.updateLocation(window.location);
   }
 
   componentDidMount() {
-    // this.setState({
-    //   array: this.props.array
-    // });
-    //this.props.updateArray(["test", "anohter", "apple"]);
+    // updateList(this.props.test);
+    this.setState({
+      patchlevelArray: "hello"
+    });
   }
 
   render() {

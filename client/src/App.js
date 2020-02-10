@@ -171,6 +171,7 @@ class App extends Component {
                 <Patch
                   updateLocation={this.updateLocation}
                   updateArray={this.updateArray}
+                  test={this.state.elementarray}
                 />
               )}
             />
