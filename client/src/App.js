@@ -107,14 +107,21 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: window.location.pathname
+      location: window.location.pathname,
+      elementarray: []
     };
     this.updateLocation = this.updateLocation.bind(this);
+    //this.updateArray = this.updateArray.bind(this);
   }
 
   updateLocation = location =>
     this.setState({
       location: location.pathname
+    });
+
+  updateArray = array =>
+    this.setState({
+      elementarray: array
     });
 
   render() {
@@ -160,7 +167,12 @@ class App extends Component {
             />
             <Route
               path="/patches"
-              render={() => <Patch updateLocation={this.updateLocation} />}
+              render={() => (
+                <Patch
+                  updateLocation={this.updateLocation}
+                  updateArray={this.updateArray}
+                />
+              )}
             />
             <Route exact path="/auth" component={AuthPage} />
             <Route exact path="/events" component={withAuth(EventsPage)} />

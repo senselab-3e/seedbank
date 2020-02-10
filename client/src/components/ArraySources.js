@@ -58,9 +58,11 @@ const ArraySources = props => {
       array = "no value";
       break;
   }
-  //     return array;
+
+  //props.updateArray(array);
+
   // };
-  return <div>{array}APPLES</div>;
+  return <div>{array}Apple</div>;
 };
 
 export default ArraySources;
