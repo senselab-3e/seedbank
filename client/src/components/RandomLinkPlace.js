@@ -1,14 +1,4 @@
 import React from "react";
-//import styled from "styled-components";
-
-// var linkList = [
-//   "ecologyofvidz.html",
-//   "mondayfiles.html",
-//   "oz-glob.html",
-//   "pink.html",
-//   "spincycle.html",
-//   "swerve.html"
-// ];
 
 const randomColor = () => {
   var letters = "0123456789ABCDEF";
@@ -19,57 +9,58 @@ const randomColor = () => {
   return color;
 };
 
-let h, w, nh, nw, s;
+let h, w, newheight, newwidth;
 
 const newPosition4Circles = () => {
   h = window.innerHeight - 100;
   w = window.innerWidth - 100;
-  nh = Math.floor(Math.random() * h);
-  nw = Math.floor(Math.random() * w);
+  newheight = Math.floor(Math.random() * h);
+  newwidth = Math.floor(Math.random() * w);
 
-  return [nh, nw, s];
+  return [newheight, newwidth];
 };
 
-// const target = document.querySelector("#target");
-
 const createLinks = (array, classname) => {
-  array.forEach(txt2 => {
+  array.forEach(el => {
     var newElement = document.createElement("div");
     newElement.className = classname;
     newElement.style.backgroundColor = randomColor();
+    //--->random placement if i want it from the beginning
+    // var newCoor = newPosition4Circles();
+    // newElement.style.top = newCoor[0] + "px";
+    // newElement.style.left = newCoor[1] + "px";
     var a = document.createElement("a");
-    a.href = "https://convalizards.glitch.me/" + txt2;
+    a.href = "https://convalizards.glitch.me/" + el;
     a.className = classname + "container";
     a.appendChild(newElement);
     document.body.append(a);
   });
 };
 
-//ok. not ideal. right now because the elements are being dynamically created and appended outside any of the component rendering, they are actually all loading from the beginning.
+//right now because the elements are being dynamically created and appended outside any of the component rendering, they are actually all loading from the beginning.
 //when the route is left, they are all persisting on screen. that's a little ok because it's still an intereseting effect but this will have to be figure out for the picture element version of this, rather then these small pixels
+//if you want to remove them, call the function on app level that does a selectqueryall for the classname dot.
 //the styling also needs to be managed by styled-components in future refactoring
 
 const RandomLinkPlace = props => {
-  let array = props.array;
-  createLinks(array, "dot");
-  const dotpatches = document.querySelectorAll(".dot");
+  createLinks(props.array, props.classname);
+  const target = document.querySelectorAll("." + props.classname);
   const dotRandPos = () => {
-    dotpatches.forEach(function(patch) {
-      var newCoor4 = newPosition4Circles();
-      patch.style.top = newCoor4[0] + "px";
-      patch.style.left = newCoor4[1] + "px";
+    target.forEach(function(el) {
+      var xyCoors = newPosition4Circles();
+      el.style.top = xyCoors[0] + "px";
+      el.style.left = xyCoors[1] + "px";
     });
   };
-  dotRandPos();
-  setInterval(dotRandPos, 3000);
-  return (
-    <div>
-      <div id="target"></div>
-    </div>
-  );
+  //remember that set Interval can not call a function eg. dotRandPost(parameter) --->only a callback
+  //only because a) the prop can only be read within the scope of this component, i have to use the random placement funciton within it.
+  setInterval(dotRandPos, 1000);
+  return <div></div>;
 };
 
 export default RandomLinkPlace;
+
+//-----> old component writing
 
 // export class RandomLinkPlace extends Component {
 //   componentDidMount() {

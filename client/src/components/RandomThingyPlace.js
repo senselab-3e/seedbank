@@ -48,17 +48,17 @@ const newPosition4Circles = () => {
   return [nh, nw, s];
 };
 
-const createLinks = () => {
-  linkList.forEach(element => {
-    var newImg = document.createElement("img");
-    newImg.className = "thingy";
-    newImg.src = element;
+const createLinks = (array, classname) => {
+  array.forEach(element => {
+    var newElement = document.createElement("img");
+    newElement.className = classname;
+    newElement.src = element;
     if (
       element ===
       "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F404_glitch2.gif?v=1575674309400"
     ) {
       //console.log('glitch found' + element);
-      newImg.classList.add("skew");
+      newElement.classList.add("skew");
       //this is because i want to attach a specific visual effect to just this element.
     } else if (
       element ===
@@ -66,21 +66,21 @@ const createLinks = () => {
       element ===
         "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Forange2.png?v=1576262909483"
     ) {
-      newImg.classList.add("scale-tinier");
+      newElement.classList.add("scale-tinier");
     } else {
-      newImg.classList.add("scale-transform");
+      newElement.classList.add("scale-transform");
       //console.log('glitch not found' + element)
     }
     var container = document.createElement("div");
-    container.className = "ThingyContainer";
-    container.appendChild(newImg);
+    container.className = classname + "container";
+    container.appendChild(newElement);
     document.body.append(container);
   });
 };
 
 export class RandomThingyPlace extends Component {
   componentDidMount() {
-    createLinks();
+    createLinks(linkList, "thingy");
   }
   render() {
     const dotpatches = document.querySelectorAll(".thingy");
