@@ -1,6 +1,7 @@
 .env
 .DS_STORE
 /anarchive/node_modules
+/client/components/RandomThingyPlace-refactor.js
 /anarchive/assets
 /client/node_modules
 /client/src/components/RandomColor.js
