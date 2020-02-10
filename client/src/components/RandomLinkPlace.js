@@ -54,7 +54,7 @@ const RandomLinkPlace = props => {
   };
   //remember that set Interval can not call a function eg. dotRandPost(parameter) --->only a callback
   //only because a) the prop can only be read within the scope of this component, i have to use the random placement funciton within it.
-  setInterval(dotRandPos, 1000);
+  setInterval(dotRandPos, 2000);
   return <div></div>;
 };
 
