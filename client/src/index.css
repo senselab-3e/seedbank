@@ -22,16 +22,16 @@
   border: 1rem dotted transparent;
 }
 
-a.dotlinks:hover .dot {
+a.dotcontainer:hover .dot {
   border: 0.1rem solid deeppink;
   opacity: 0.7;
 }
 
-a.dotlinks:visited .dot {
+a.dotcontainer:visited .dot {
   border: 0.1rem dotted yellow;
 }
 
-a.dotlinks .dot {
+a.dotcontainer .dot {
   border: 0.1rem dotted transparent;
 }
 

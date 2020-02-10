@@ -32,15 +32,15 @@ const newPosition4Circles = () => {
 
 // const target = document.querySelector("#target");
 
-const createLinks = array => {
+const createLinks = (array, classname) => {
   array.forEach(txt2 => {
-    var newLinkDot = document.createElement("div");
-    newLinkDot.className = "dot";
-    newLinkDot.style.backgroundColor = randomColor();
+    var newElement = document.createElement("div");
+    newElement.className = classname;
+    newElement.style.backgroundColor = randomColor();
     var a = document.createElement("a");
     a.href = "https://convalizards.glitch.me/" + txt2;
-    a.className = "dotlinks";
-    a.appendChild(newLinkDot);
+    a.className = classname + "container";
+    a.appendChild(newElement);
     document.body.append(a);
   });
 };
@@ -51,7 +51,7 @@ const createLinks = array => {
 
 const RandomLinkPlace = props => {
   let array = props.array;
-  createLinks(array);
+  createLinks(array, "dot");
   const dotpatches = document.querySelectorAll(".dot");
   const dotRandPos = () => {
     dotpatches.forEach(function(patch) {
