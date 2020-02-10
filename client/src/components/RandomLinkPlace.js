@@ -1,15 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 //import styled from "styled-components";
-import LinkElementCreator from "./LinkElementCreator";
 
-var linkList = [
-  "ecologyofvidz.html",
-  "mondayfiles.html",
-  "oz-glob.html",
-  "pink.html",
-  "spincycle.html",
-  "swerve.html"
-];
+// var linkList = [
+//   "ecologyofvidz.html",
+//   "mondayfiles.html",
+//   "oz-glob.html",
+//   "pink.html",
+//   "spincycle.html",
+//   "swerve.html"
+// ];
 
 const randomColor = () => {
   var letters = "0123456789ABCDEF";
@@ -33,8 +32,8 @@ const newPosition4Circles = () => {
 
 // const target = document.querySelector("#target");
 
-const createLinks = () => {
-  linkList.forEach(txt2 => {
+const createLinks = array => {
+  array.forEach(txt2 => {
     var newLinkDot = document.createElement("div");
     newLinkDot.className = "dot";
     newLinkDot.style.backgroundColor = randomColor();
@@ -51,10 +50,9 @@ const createLinks = () => {
 //the styling also needs to be managed by styled-components in future refactoring
 
 const RandomLinkPlace = props => {
-  createLinks();
-
+  let array = props.array;
+  createLinks(array);
   const dotpatches = document.querySelectorAll(".dot");
-
   const dotRandPos = () => {
     dotpatches.forEach(function(patch) {
       var newCoor4 = newPosition4Circles();
@@ -62,13 +60,11 @@ const RandomLinkPlace = props => {
       patch.style.left = newCoor4[1] + "px";
     });
   };
-
   dotRandPos();
   setInterval(dotRandPos, 3000);
   return (
     <div>
       <div id="target"></div>
-      <LinkElementCreator linkList={linkList} />
     </div>
   );
 };
