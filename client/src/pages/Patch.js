@@ -24,9 +24,9 @@ export class Patch extends Component {
   }
 
   componentDidMount() {
-    // updateList(this.props.test);
+    console.log(this.props.test, "is this thing on?");
     this.setState({
-      patchlevelArray: "hello"
+      patchlevelArray: this.props.test
     });
   }
 
