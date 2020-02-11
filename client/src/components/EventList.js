@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import axios from "axios"; // temporarily disabled for static data testing
+import axios from "axios"; // temporarily disabled for static data testing
 import styled from "styled-components";
 import { withTheme } from "styled-components";
 import EventCreate from "./EventCreate";
@@ -79,17 +79,19 @@ class EventList extends Component {
         event_end: "2019-12-22T05:00:00.000Z"
       }
     ];
-    this.setState({
-      array: staticData
-    });
-    // axios
-    //   .get("/api/events")
-    //   .then(events => {
-    //     this.setState({
-    //       events: events.data
-    //     });
-    //   })
-    //   .catch(err => console.log(err));
+    // this.setState({
+    //   array: staticData
+    // });
+    axios
+      .get("/api/events")
+      .then(events => {
+        this.setState({
+          events: events.data,
+          array: events.data,
+          staticData: staticData
+        });
+      })
+      .catch(err => console.log(err));
   }
   render() {
     var events = this.state.events;
@@ -116,7 +118,11 @@ class EventList extends Component {
           </MainGrid>
           <Footer>last thing</Footer>
         </Grid>
-        <RandomLinkPlace classname={"dot"} array={this.state.array} />
+        <RandomLinkPlace
+          classname={"dot"}
+          array={this.state.array}
+          staticData={this.state.staticData}
+        />
       </React.Fragment>
     );
   }
