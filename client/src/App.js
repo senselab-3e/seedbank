@@ -142,6 +142,8 @@ class App extends Component {
     //   });
     // }
 
+    //<Route exact path="/events" component={withAuth(EventsPage)} />
+
     return (
       <Router>
         <ThemeProvider theme={theme}>
@@ -176,7 +178,7 @@ class App extends Component {
               )}
             />
             <Route exact path="/auth" component={AuthPage} />
-            <Route exact path="/events" component={withAuth(EventsPage)} />
+            <Route exact path="/events" component={EventsPage} />
           </Switch>
         </ThemeProvider>
       </Router>
