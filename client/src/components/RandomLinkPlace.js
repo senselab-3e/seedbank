@@ -26,26 +26,25 @@ const createLinks = (array, classname) => {
     array.forEach(el => {
       var newElement = document.createElement("div");
       newElement.className = classname;
-
+      newElement.style.backgroundColor = randomColor();
       //--->random placement if i want it from the beginning
       // var newCoor = newPosition4Circles();
       // newElement.style.top = newCoor[0] + "px";
       // newElement.style.left = newCoor[1] + "px";
       console.log(el.name);
       if (classname === "database") {
-        var text = document.createElement("div");
-        text.textContent = el.name;
-        text.className = classname + "container";
-        text.appendChild(newElement);
-        document.body.append(text);
+        newElement.textContent = el.name;
+        let linkWrapper = document.createElement("a");
+        linkWrapper.className = classname + "container";
+        linkWrapper.appendChild(newElement);
+        document.body.append(linkWrapper);
         console.log("database condition check");
       } else {
-        newElement.style.backgroundColor = randomColor();
-        var a = document.createElement("a");
-        a.href = "https://convalizards.glitch.me/" + el;
-        a.className = classname + "container";
-        a.appendChild(newElement);
-        document.body.append(a);
+        let linkWrapper = document.createElement("a");
+        linkWrapper.href = "https://convalizards.glitch.me/" + el;
+        linkWrapper.className = classname + "container";
+        linkWrapper.appendChild(newElement);
+        document.body.append(linkWrapper);
       }
     });
   } else {
@@ -70,7 +69,7 @@ const RandomLinkPlace = props => {
   };
   //remember that set Interval can not call a function eg. dotRandPost(parameter) --->only a callback
   //only because a) the prop can only be read within the scope of this component, i have to use the random placement funciton within it.
-  setInterval(dotRandPos, 2000);
+  // setInterval(dotRandPos, 2000);
   return <div></div>;
 };
 
