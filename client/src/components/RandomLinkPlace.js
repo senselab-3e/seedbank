@@ -22,20 +22,24 @@ const newPosition4Circles = () => {
 };
 
 const createLinks = (array, classname) => {
-  array.forEach(el => {
-    var newElement = document.createElement("div");
-    newElement.className = classname;
-    newElement.style.backgroundColor = randomColor();
-    //--->random placement if i want it from the beginning
-    // var newCoor = newPosition4Circles();
-    // newElement.style.top = newCoor[0] + "px";
-    // newElement.style.left = newCoor[1] + "px";
-    var a = document.createElement("a");
-    a.href = "https://convalizards.glitch.me/" + el;
-    a.className = classname + "container";
-    a.appendChild(newElement);
-    document.body.append(a);
-  });
+  if (array) {
+    array.forEach(el => {
+      var newElement = document.createElement("div");
+      newElement.className = classname;
+      newElement.style.backgroundColor = randomColor();
+      //--->random placement if i want it from the beginning
+      // var newCoor = newPosition4Circles();
+      // newElement.style.top = newCoor[0] + "px";
+      // newElement.style.left = newCoor[1] + "px";
+      var a = document.createElement("a");
+      a.href = "https://convalizards.glitch.me/" + el;
+      a.className = classname + "container";
+      a.appendChild(newElement);
+      document.body.append(a);
+    });
+  } else {
+    console.log("array not valid");
+  }
 };
 
 //right now because the elements are being dynamically created and appended outside any of the component rendering, they are actually all loading from the beginning.

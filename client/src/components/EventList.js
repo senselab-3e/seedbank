@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
+//import axios from "axios"; // temporarily disabled for static data testing
 import styled from "styled-components";
 import { withTheme } from "styled-components";
 import EventCreate from "./EventCreate";
+import RandomLinkPlace from "./RandomLinkPlace";
 
 const Grid = styled.div`
   display: grid;
@@ -33,86 +34,90 @@ const Aside = styled.div`
   background: ${props => props.theme.palettes.g2.c3};
 `;
 
-
-
+//export default withTheme(EventList);
 class EventList extends Component {
   constructor() {
     super();
     this.state = {
-      events: []
+      events: [],
+      staticData: []
     };
   }
 
-  
-
-
   componentDidMount() {
-    axios
-      .get("/api/events")
-      .then(events => {
-        this.setState({
-          events: events.data
-        });
-      })
-      .catch(err => console.log(err));
-
-      const staticData = [{
-        id: 19
-        created_at: "2020-01-29T02:24:53.000Z"
-        updated_at: "2020-01-29T02:24:53.000Z"
-        name: "Means of Relation"
-        data: null
-        location: "Cluj"
-        event_type: "Minor Movement"
-        event_start: "2019-09-09T04:00:00.000Z"
+    const staticData = [
+      {
+        id: 19,
+        created_at: "2020-01-29T02:24:53.000Z",
+        updated_at: "2020-01-29T02:24:53.000Z",
+        name: "Means of Relation",
+        data: null,
+        location: "Cluj",
+        event_type: "Minor Movement",
+        event_start: "2019-09-09T04:00:00.000Z",
         event_end: "2019-09-11T04:00:00.000Z"
-        },
-        {id: 18
-        created_at: "2020-01-29T02:24:53.000Z"
-        updated_at: "2020-01-29T02:24:53.000Z"
-        name: "Instituent Noise and the Sensibility Soup for Collective Care"
-        data: null
-        location: "Zurich"
-        event_type: "Minor Movement"
-        event_start: "2019-07-05T04:00:00.000Z"
-        event_end: "2019-07-08T04:00:00.000Z"},
-        {id: 17
-        created_at: "2020-01-29T02:24:53.000Z"
-        updated_at: "2020-01-29T02:24:53.000Z"
-        name: "Oz"
-        data: null
-        location: "Oz"
-        event_type: "Minor Movement"
-        event_start: "2019-11-11T05:00:00.000Z"
-        event_end: "2019-12-22T05:00:00.000Z"}
-        ]
+      },
+      {
+        id: 18,
+        created_at: "2020-01-29T02:24:53.000Z",
+        updated_at: "2020-01-29T02:24:53.000Z",
+        name: "Instituent Noise and the Sensibility Soup for Collective Care",
+        data: null,
+        location: "Zurich",
+        event_type: "Minor Movement",
+        event_end: "2019-07-08T04:00:00.000Z"
+      },
+      {
+        id: 17,
+        created_at: "2020-01-29T02:24:53.000Z",
+        updated_at: "2020-01-29T02:24:53.000Z",
+        name: "Oz",
+        data: null,
+        location: "Oz",
+        event_type: "Minor Movement",
+        event_start: "2019-11-11T05:00:00.000Z",
+        event_end: "2019-12-22T05:00:00.000Z"
+      }
+    ];
+    this.setState({
+      array: staticData
+    });
+    // axios
+    //   .get("/api/events")
+    //   .then(events => {
+    //     this.setState({
+    //       events: events.data
+    //     });
+    //   })
+    //   .catch(err => console.log(err));
   }
   render() {
     var events = this.state.events;
     console.log(this.state.events);
     return (
-      <Grid>
-        <Header>
-          <EventCreate />
-        </Header>
-        <Aside>
-          <ul>
-            {events.map(({ id, name, data }) => (
-              <li key={id.toString()}>{name}</li>
-              
-            ))}
-          </ul>
-        </Aside>
-        <MainGrid>
-          <ul>
-            {events.map(({ id, name, data }) => (
-              <li key={id.toString()}>{data}</li>
-            ))}
-          </ul>
-        </MainGrid>
-        <Footer>last thing</Footer>
-      </Grid>
-      <RandomLinkPlace array={this.staticData} classname={"dot"} events={this.state.events}/>
+      <React.Fragment>
+        <Grid>
+          <Header>
+            <EventCreate />
+          </Header>
+          <Aside>
+            <ul>
+              {events.map(({ id, name, data }) => (
+                <li key={id.toString()}>{name}</li>
+              ))}
+            </ul>
+          </Aside>
+          <MainGrid>
+            <ul>
+              {events.map(({ id, name, data }) => (
+                <li key={id.toString()}>{data}</li>
+              ))}
+            </ul>
+          </MainGrid>
+          <Footer>last thing</Footer>
+        </Grid>
+        <RandomLinkPlace classname={"dot"} array={this.state.array} />
+      </React.Fragment>
     );
   }
 }

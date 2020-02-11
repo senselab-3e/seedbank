@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import withAuth from "./helpers/withAuth";
+//import withAuth from "./helpers/withAuth"; //*temporarily disabled for testing purposes
 import EventsPage from "./pages/events";
 import AuthPage from "./pages/auth";
 import Entryway from "./pages/Entryway";
@@ -142,6 +142,7 @@ class App extends Component {
     //   });
     // }
 
+    //---->Note: temporarily removed
     //<Route exact path="/events" component={withAuth(EventsPage)} />
 
     return (
