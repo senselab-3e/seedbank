@@ -119,7 +119,7 @@ class EventList extends Component {
           <Footer>last thing</Footer>
         </Grid>
         <RandomLinkPlace
-          classname={"dot"}
+          classname={"database"}
           array={this.state.array}
           staticData={this.state.staticData}
         />

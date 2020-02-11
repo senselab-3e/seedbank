@@ -26,16 +26,27 @@ const createLinks = (array, classname) => {
     array.forEach(el => {
       var newElement = document.createElement("div");
       newElement.className = classname;
-      newElement.style.backgroundColor = randomColor();
+
       //--->random placement if i want it from the beginning
       // var newCoor = newPosition4Circles();
       // newElement.style.top = newCoor[0] + "px";
       // newElement.style.left = newCoor[1] + "px";
-      var a = document.createElement("a");
-      a.href = "https://convalizards.glitch.me/" + el;
-      a.className = classname + "container";
-      a.appendChild(newElement);
-      document.body.append(a);
+      console.log(el.name);
+      if (classname === "database") {
+        var text = document.createElement("div");
+        text.textContent = el.name;
+        text.className = classname + "container";
+        text.appendChild(newElement);
+        document.body.append(text);
+        console.log("database condition check");
+      } else {
+        newElement.style.backgroundColor = randomColor();
+        var a = document.createElement("a");
+        a.href = "https://convalizards.glitch.me/" + el;
+        a.className = classname + "container";
+        a.appendChild(newElement);
+        document.body.append(a);
+      }
     });
   } else {
     console.log("array not valid");

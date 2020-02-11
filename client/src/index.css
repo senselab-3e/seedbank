@@ -69,3 +69,22 @@ a.dotcontainer .dot {
 }
 
 /* styling for randomthingycomonent ---- ends */
+
+/* styling for test div for database elements */
+
+.database {
+
+
+  /* border-radius: 50%; */
+
+  position: absolute;
+  z-index: 100;
+  border: 1rem dotted transparent;
+}
+
+
+.databasecontainer {
+  color: white;
+  width: 600px;
+  background-color: deeppink;
+}
