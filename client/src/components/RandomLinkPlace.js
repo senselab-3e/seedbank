@@ -8,6 +8,7 @@ const randomColor = () => {
   }
   return color;
 };
+//test
 
 let h, w, newheight, newwidth;
 
