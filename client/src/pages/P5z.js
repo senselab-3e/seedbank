@@ -6,8 +6,8 @@ import Shape from './Shape';
 const P5z = () => {
 	return (
 		<div>
-			<Shape/>
 			<Twizzle/>
+			<Shape/>
 			<br/><br/>
 			<Link to='/'>Back to entryway</Link>
 		</div>

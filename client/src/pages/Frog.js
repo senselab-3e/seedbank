@@ -1,15 +1,25 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
+
+const fadeIn = keyframes`
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+`
+
+const FadeInButton = styled.button`
+  animation: 1s ${fadeIn} ease-out;
+`
 const Div = styled.div`
   background: blue;
    color: ${props => props.inputColor || "palevioletred"};
-  width: 10px;
   height:500px;
-  /* &:hover {
-   width:100%
- } */
+  animation: 1s ${fadeIn} ease-out;
 `;
 
 
@@ -21,8 +31,7 @@ const Paragraph = styled.p`
 const Frog = () => {
 
   return (
-    <Div
-    onClick={() => this.setState({ inputColor: "red" })}>
+    <Div>
     <Paragraph>🐸🐸🐸🐸🐸🐸🐸🐸hello</Paragraph>
   </Div>
 );

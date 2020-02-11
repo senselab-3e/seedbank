@@ -8,7 +8,7 @@ import About from "./pages/About";
 import Header from "./components/header";
 import Glitch from "./pages/Glitch";
 import Patch from "./pages/Patch";
-import Frog from "./pages/Frog";
+import P5z from "./pages/P5z";
 import "./index.css";
 // import { ThemeProvider } from "styled-components";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
@@ -148,7 +148,7 @@ class App extends Component {
             />
             <Route
               path="/frog"
-              render={() => <Frog updateLocation={this.updateLocation} />}
+              render={() => <P5z updateLocation={this.updateLocation} />}
             />
             <Route exact path="/auth" component={AuthPage} />
             <Route exact path="/events" component={withAuth(EventsPage)} />
