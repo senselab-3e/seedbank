@@ -1,4 +1,5 @@
 import React from "react";
+import testimage from "../assets/img/threshold-1.gif";
 
 const randomColor = () => {
   var letters = "0123456789ABCDEF";
@@ -12,7 +13,7 @@ const randomColor = () => {
 
 let h, w, newheight, newwidth;
 
-const newPosition4Circles = () => {
+const uniquePositions = () => {
   h = window.innerHeight - 100;
   w = window.innerWidth - 100;
   newheight = Math.floor(Math.random() * h);
@@ -21,15 +22,34 @@ const newPosition4Circles = () => {
   return [newheight, newwidth];
 };
 
+const eventTypeStyling = type => {
+  //note: this is already running through a for each in the create links so i don't need to do a queryselect on all the nodes. each valid node is already passing through this function
+  console.log(type);
+  switch (type) {
+    case "Minor Movement":
+      let elType = document.createElement("div");
+      elType.className = "threshold";
+      elType.style.backgroundImage = testimage;
+      let newCoor = uniquePositions();
+      elType.style.top = newCoor[0] + "px";
+      elType.style.left = newCoor[1] + "px";
+      document.body.append(elType);
+      break;
+    default:
+    //console.log("no event to find name for");
+  }
+};
+
 const eventType = eventObj => {
   if (eventObj) {
     if (eventObj.event_type) {
-      console.log(eventObj.event_type, "belonging to", eventObj.name);
+      eventTypeStyling(eventObj.event_type);
+      //console.log(eventObj.event_type, "belonging to", eventObj.name);
     } else {
       console.log(eventObj.name + " has no event name");
     }
   } else {
-    console.log("no valie event object");
+    console.log("no valid event object");
   }
 };
 
@@ -41,7 +61,7 @@ const createLinks = (array, classname) => {
       newElement.className = classname;
       newElement.style.backgroundColor = randomColor();
       //--->random placement if i want it from the beginning
-      // var newCoor = newPosition4Circles();
+      // let newCoor = uniquePositions();
       // newElement.style.top = newCoor[0] + "px";
       // newElement.style.left = newCoor[1] + "px";
       //---->
@@ -78,7 +98,7 @@ const RandomLinkPlace = props => {
   const target = document.querySelectorAll("." + props.classname);
   const dotRandPos = () => {
     target.forEach(function(el) {
-      var xyCoors = newPosition4Circles();
+      var xyCoors = uniquePositions();
       el.style.top = xyCoors[0] + "px";
       el.style.left = xyCoors[1] + "px";
     });
@@ -103,7 +123,7 @@ export default RandomLinkPlace;
 
 //     const dotRandPos = () => {
 //       dotpatches.forEach(function(patch) {
-//         var newCoor4 = newPosition4Circles();
+//         let newCoor4 = uniquePositions();
 //         patch.style.top = newCoor4[0] + "px";
 //         patch.style.left = newCoor4[1] + "px";
 //       });

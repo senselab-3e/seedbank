@@ -73,8 +73,6 @@ a.dotcontainer .dot {
 /* styling for test div for database elements */
 
 .database {
-
-
   /* border-radius: 50%; */
   color: white;
   position: absolute;
@@ -92,5 +90,11 @@ a.dotcontainer .dot {
 
 .databasecontainer a:hover {
   color: black;
+}
 
+/*styling for test image appended to each event type loading into RandomList component
+*/
+.threshold {
+  width: 30px;
+  height: 30px;
 }
