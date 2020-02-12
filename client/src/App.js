@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Header from "./components/header";
 import Glitch from "./pages/Glitch";
 import Patch from "./pages/Patch";
+import EventIntensities from "./components/EventIntensities";
 import "./index.css";
 import "./animation-library.css";
 // import { ThemeProvider } from "styled-components";
@@ -198,6 +199,13 @@ class App extends Component {
               exact
               path="/events"
               render={() => <EventsPage updateLocation={this.updateLocation} />}
+            />
+            <Route
+              exact
+              path="/eventintensities"
+              render={() => (
+                <EventIntensities updateLocation={this.updateLocation} />
+              )}
             />
           </Switch>
         </ThemeProvider>

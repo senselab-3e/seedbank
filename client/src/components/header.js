@@ -96,6 +96,9 @@ class Header extends Component {
           <NavButton as={NavLink} to="/patches">
             picnicpatches
           </NavButton>
+          <NavButton as={NavLink} to="/eventintensities">
+            event intensities
+          </NavButton>
           <Button onClick={this.increment}> + </Button>
           <Button onClick={this.decrement}> - </Button>
         </NavWrapper>
