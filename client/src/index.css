@@ -95,6 +95,7 @@ a.dotcontainer .dot {
 /*styling for test image appended to each event type loading into RandomList component
 */
 .threshold {
+  position: absolute;
   width: 30px;
   height: 30px;
 }
