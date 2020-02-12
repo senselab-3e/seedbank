@@ -29,7 +29,7 @@ const eventTypeStyling = type => {
     case "Minor Movement":
       let elType = document.createElement("div");
       elType.className = "threshold";
-      elType.style.backgroundImage = testimage;
+      elType.style.backgroundImage = `url(${testimage})`;
       let newCoor = uniquePositions();
       elType.style.top = newCoor[0] + "px";
       elType.style.left = newCoor[1] + "px";
