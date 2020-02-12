@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios"; // temporarily disabled for static data testing
+import axios from "axios"; // temporarily disable for static data testing
 import styled from "styled-components";
 import { withTheme } from "styled-components";
 import EventCreate from "./EventCreate";

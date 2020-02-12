@@ -9,7 +9,6 @@ const randomColor = () => {
   }
   return color;
 };
-//test
 
 let h, w, newheight, newwidth;
 
@@ -34,7 +33,10 @@ const eventTypeStyling = type => {
       console.log(newCoor);
       elType.style.top = newCoor[0] + "px";
       elType.style.left = newCoor[1] + "px";
-      document.body.append(elType);
+      let elWrapper = document.createElement("a");
+      elWrapper.className = "thresholdcontainer";
+      elWrapper.appendChild(elType);
+      document.body.append(elWrapper);
       break;
     default:
       console.log("no event to find name for");

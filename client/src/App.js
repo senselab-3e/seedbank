@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //import withAuth from "./helpers/withAuth"; //*temporarily disabled for testing purposes
-import EventsPage from "./pages/events";
+import EventsPage from "./pages/EventsPage";
 import AuthPage from "./pages/auth";
 import Entryway from "./pages/Entryway";
 import About from "./pages/About";
@@ -127,14 +127,29 @@ class App extends Component {
   render() {
     //this is a total hack method to remove the dynamically created and appended dot classes from the randomLinkCreator Component.
     //refactorrrrrrr but for now....
-    //var currentDots = document.querySelectorAll(".dot");
+    var currentDots = document.querySelectorAll(".dot");
     var currentThingy = document.querySelectorAll(".thingy");
+    var currentEventlist = document.querySelectorAll(".database");
+    var currentThreshold = document.querySelectorAll(".threshold"); ///this needs a wrapper container to be removed otherwise it unloads body tag
     // console.log(currentDots);
     if (this.state.location !== "/") {
-      currentThingy.forEach(element => {
-        element.parentNode.remove();
+      currentDots.forEach(e => {
+        e.parentNode.remove();
+      });
+      currentThingy.forEach(m => {
+        m.parentNode.remove();
       });
     }
+
+    if (this.state.location !== "/events") {
+      currentThreshold.forEach(element => {
+        element.parentNode.remove();
+      });
+      currentEventlist.forEach(el => {
+        el.parentNode.remove();
+      });
+    }
+
     //this can be brought back in to remove the presence of the pixel links on all over page views
     // else if (this.state.location !== "/patches") {
     //   currentDots.forEach(element => {
@@ -179,7 +194,11 @@ class App extends Component {
               )}
             />
             <Route exact path="/auth" component={AuthPage} />
-            <Route exact path="/events" component={EventsPage} />
+            <Route
+              exact
+              path="/events"
+              render={() => <EventsPage updateLocation={this.updateLocation} />}
+            />
           </Switch>
         </ThemeProvider>
       </Router>
