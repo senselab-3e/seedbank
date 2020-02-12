@@ -142,7 +142,7 @@ class App extends Component {
       });
     }
 
-    if (this.state.location !== "/events") {
+    if (this.state.location !== "/eventintensities") {
       currentThreshold.forEach(element => {
         element.parentNode.remove();
       });

@@ -118,14 +118,15 @@ class EventList extends Component {
           </MainGrid>
           <Footer>last thing</Footer>
         </Grid>
-        <RandomLinkPlace
-          classname={"database"}
-          array={this.state.array}
-          staticData={this.state.staticData}
-        />
       </React.Fragment>
     );
   }
 }
 
 export default withTheme(EventList);
+
+// <RandomLinkPlace
+//           classname={"database"}
+//           array={this.state.array}
+//           staticData={this.state.staticData}
+//         />
