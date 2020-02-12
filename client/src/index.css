@@ -79,7 +79,14 @@ a.dotcontainer .dot {
   color: white;
   position: absolute;
   z-index: 100;
-  border: 1rem dotted transparent;
+  padding: 1rem;
+  border: 0.2rem dotted transparent;
+}
+
+.database:hover {
+  color: deeppink;
+  background-color: transparent;
+  border: 0.2rem solid white;
 }
 
 

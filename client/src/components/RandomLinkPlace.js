@@ -21,7 +21,20 @@ const newPosition4Circles = () => {
   return [newheight, newwidth];
 };
 
+const eventType = eventObj => {
+  if (eventObj) {
+    if (eventObj.event_type) {
+      console.log(eventObj.event_type, "belonging to", eventObj.name);
+    } else {
+      console.log(eventObj.name + " has no event name");
+    }
+  } else {
+    console.log("no valie event object");
+  }
+};
+
 const createLinks = (array, classname) => {
+  //refactor for more edge-cases - for not its just a truthy check for array value;
   if (array) {
     array.forEach(el => {
       var newElement = document.createElement("div");
@@ -31,15 +44,18 @@ const createLinks = (array, classname) => {
       // var newCoor = newPosition4Circles();
       // newElement.style.top = newCoor[0] + "px";
       // newElement.style.left = newCoor[1] + "px";
-      console.log(el.name);
+      //---->
+      eventType(el);
       if (classname === "database") {
+        //all of this can be excavated to a separate exterior function. refactor
         newElement.textContent = el.name;
         let linkWrapper = document.createElement("a");
         linkWrapper.className = classname + "container";
         linkWrapper.appendChild(newElement);
         document.body.append(linkWrapper);
-        console.log("database condition check");
+        // console.log("database condition check");
       } else {
+        //this is just the default script that was used for inital testing. creating a pixel link to every page currently on glitch. that is what is consisted of in the eventlist array
         let linkWrapper = document.createElement("a");
         linkWrapper.href = "https://convalizards.glitch.me/" + el;
         linkWrapper.className = classname + "container";
@@ -67,8 +83,9 @@ const RandomLinkPlace = props => {
       el.style.left = xyCoors[1] + "px";
     });
   };
-  //remember that set Interval can not call a function eg. dotRandPost(parameter) --->only a callback
+  //remember that set Interval can not call a function eg. NOT dotRandPost(parameter()) but dotRandPost(parameter) --->only a callback
   //only because a) the prop can only be read within the scope of this component, i have to use the random placement funciton within it.
+  dotRandPos();
   // setInterval(dotRandPos, 2000);
   return <div></div>;
 };
