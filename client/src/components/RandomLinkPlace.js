@@ -24,19 +24,20 @@ const uniquePositions = () => {
 
 const eventTypeStyling = type => {
   //note: this is already running through a for each in the create links so i don't need to do a queryselect on all the nodes. each valid node is already passing through this function
-  console.log(type);
+  //console.log(type);
   switch (type) {
     case "Minor Movement":
       let elType = document.createElement("div");
       elType.className = "threshold";
       elType.style.backgroundImage = `url(${testimage})`;
       let newCoor = uniquePositions();
+      console.log(newCoor);
       elType.style.top = newCoor[0] + "px";
       elType.style.left = newCoor[1] + "px";
       document.body.append(elType);
       break;
     default:
-    //console.log("no event to find name for");
+      console.log("no event to find name for");
   }
 };
 
@@ -98,9 +99,9 @@ const RandomLinkPlace = props => {
   const target = document.querySelectorAll("." + props.classname);
   const dotRandPos = () => {
     target.forEach(function(el) {
-      var xyCoors = uniquePositions();
-      el.style.top = xyCoors[0] + "px";
-      el.style.left = xyCoors[1] + "px";
+      var xyCoors = uniquePositions(); // returns array with x y values at index 0 and 1
+      el.style.top = xyCoors[0] + "px"; //x-axis value
+      el.style.left = xyCoors[1] + "px"; //y-axis value
     });
   };
   //remember that set Interval can not call a function eg. NOT dotRandPost(parameter()) but dotRandPost(parameter) --->only a callback
