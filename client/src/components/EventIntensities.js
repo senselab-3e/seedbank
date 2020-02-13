@@ -54,10 +54,12 @@ export class EventIntensities extends Component {
   constructor() {
     super();
     this.state = {
-      events: [],
+      events: null,
       staticData: [],
       randomArray: [],
-      isLogged: false
+      isLogged: false,
+      locObj: null,
+      locObjisLogged: false
     };
   }
 
@@ -85,7 +87,12 @@ export class EventIntensities extends Component {
           }
         }
       }
-      return selectObj;
+      if (!this.state.locObjisLogged) {
+        this.setState({
+          locObj: selectObj,
+          locObjisLogged: true
+        });
+      }
     }
   };
 
@@ -108,10 +115,22 @@ export class EventIntensities extends Component {
 
   render() {
     console.log(this.state.events);
-    console.log(this.eventListFilter(this.state.events, "location"));
+    //console.log(this.eventListFilter(this.state.events, "location"));
     //console.log(this.state.events);
+
+    //this is throwing undefined this.eventListFilter(this.state.events, "location")
+    // this.props.updateLocation(
+    if (this.state.events !== null) {
+      this.eventListFilter(this.state.events, "location");
+    }
+
+    // if(this.state.locObj !== null){
+
+    // }
+    // );
     return (
       <div>
+        {/* {this.eventListFilter(this.state.events, "location")} */}
         <EventCreate />
         <RandomLinkPlace classname={"database"} array={this.state.array} />
         <ChooseElement
