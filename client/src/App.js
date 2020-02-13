@@ -109,7 +109,8 @@ class App extends Component {
     super(props);
     this.state = {
       location: window.location.pathname,
-      elementarray: []
+      elementarray: [],
+      minorLocations: []
     };
     this.updateLocation = this.updateLocation.bind(this);
     this.updateArray = this.updateArray.bind(this);
@@ -123,6 +124,11 @@ class App extends Component {
   updateArray = array =>
     this.setState({
       elementarray: array
+    });
+
+  updateMinorLocations = objloc =>
+    this.setState({
+      minorLocations: objloc
     });
 
   render() {
@@ -178,7 +184,12 @@ class App extends Component {
             />
             <Route
               path="/about"
-              render={() => <About updateLocation={this.updateLocation} />}
+              render={() => (
+                <About
+                  updateLocation={this.updateLocation}
+                  minorLocations={this.state.minorLocations}
+                />
+              )}
             />
             <Route
               path="/oOoOs"
@@ -206,7 +217,7 @@ class App extends Component {
               render={() => (
                 <EventIntensities
                   updateLocation={this.updateLocation}
-                  updateArray={this.updateArray}
+                  updateMinorLocations={this.updateMinorLocations}
                 />
               )}
             />
