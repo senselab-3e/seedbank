@@ -110,10 +110,12 @@ class App extends Component {
     this.state = {
       location: window.location.pathname,
       elementarray: [],
-      minorLocations: []
+      minorLocations: [],
+      isLogged: false
     };
     this.updateLocation = this.updateLocation.bind(this);
     this.updateArray = this.updateArray.bind(this);
+    this.updateMinorLocations = this.updateMinorLocations.bind(this);
   }
 
   updateLocation = location =>
@@ -127,9 +129,12 @@ class App extends Component {
     });
 
   updateMinorLocations = objloc =>
-    this.setState({
-      minorLocations: objloc
-    });
+    !this.state.isLogged
+      ? this.setState({
+          minorLocations: objloc,
+          isLogged: true
+        })
+      : console.log("nothing");
 
   render() {
     //this is a total hack method to remove the dynamically created and appended dot classes from the randomLinkCreator Component.

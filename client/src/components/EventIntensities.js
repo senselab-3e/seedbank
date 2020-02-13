@@ -92,6 +92,7 @@ export class EventIntensities extends Component {
           locObj: selectObj,
           locObjisLogged: true
         });
+        console.log(this.state.locObj);
       }
     }
   };
@@ -111,6 +112,10 @@ export class EventIntensities extends Component {
 
     //console.log(this.state.events); // this is weirdly empty at this stage, even though axios set just above...
     // eventListFilter(staticData);
+    //   if (this.state.locObj !== null) {
+    //   this.props.updateMinorLocations(this.state.locObj);
+    // }
+    // );
   }
 
   render() {
@@ -123,14 +128,14 @@ export class EventIntensities extends Component {
     if (this.state.events !== null) {
       this.eventListFilter(this.state.events, "location");
     }
+    console.log(this.state.locObj);
 
-    // if(this.state.locObj !== null){
-
-    // }
+    if (this.state.locObj !== null) {
+      this.props.updateMinorLocations(this.state.locObj);
+    }
     // );
     return (
       <div>
-        {/* {this.eventListFilter(this.state.events, "location")} */}
         <EventCreate />
         <RandomLinkPlace classname={"database"} array={this.state.array} />
         <ChooseElement
