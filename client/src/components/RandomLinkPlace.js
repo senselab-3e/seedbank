@@ -64,9 +64,9 @@ const createLinks = (array, classname) => {
       newElement.className = classname;
       newElement.style.backgroundColor = randomColor();
       //--->random placement if i want it from the beginning
-      // let newCoor = uniquePositions();
-      // newElement.style.top = newCoor[0] + "px";
-      // newElement.style.left = newCoor[1] + "px";
+      let newCoor = uniquePositions();
+      newElement.style.top = newCoor[0] + "px";
+      newElement.style.left = newCoor[1] + "px";
       //---->
       eventType(el);
       if (classname === "database") {
@@ -97,20 +97,21 @@ const createLinks = (array, classname) => {
 //the styling also needs to be managed by styled-components in future refactoring
 
 const RandomLinkPlace = props => {
-  createLinks(props.array, props.classname);
   const target = document.querySelectorAll("." + props.classname);
-  const dotRandPos = () => {
-    target.forEach(function(el) {
-      var xyCoors = uniquePositions(); // returns array with x y values at index 0 and 1
-      el.style.top = xyCoors[0] + "px"; //x-axis value
-      el.style.left = xyCoors[1] + "px"; //y-axis value
-    });
-  };
+  // const dotRandPos = () => {
+  //   target.forEach(function(el) {
+  //     var xyCoors = uniquePositions(); // returns array with x y values at index 0 and 1
+  //     el.style.top = xyCoors[0] + "px"; //x-axis value
+  //     el.style.left = xyCoors[1] + "px"; //y-axis value
+  //   });
+  // };
+  // dotRandPos();
+
   //remember that set Interval can not call a function eg. NOT dotRandPost(parameter()) but dotRandPost(parameter) --->only a callback
   //only because a) the prop can only be read within the scope of this component, i have to use the random placement funciton within it.
-  dotRandPos();
+
   // setInterval(dotRandPos, 2000);
-  return <div></div>;
+  return <div>{createLinks(props.array, props.classname)}</div>;
 };
 
 export default RandomLinkPlace;
