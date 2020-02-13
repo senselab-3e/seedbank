@@ -4,6 +4,52 @@ import EventCreate from "./EventCreate";
 import RandomLinkPlace from "./RandomLinkPlace";
 import ChooseElement from "./ChooseElement";
 
+const staticData = [
+  {
+    id: 19,
+    created_at: "2020-01-29T02:24:53.000Z",
+    updated_at: "2020-01-29T02:24:53.000Z",
+    name: "Means of Relation",
+    data: null,
+    location: "Cluj",
+    event_type: "Minor Movement",
+    event_start: "2019-09-09T04:00:00.000Z",
+    event_end: "2019-09-11T04:00:00.000Z"
+  },
+  {
+    id: 18,
+    created_at: "2020-01-29T02:24:53.000Z",
+    updated_at: "2020-01-29T02:24:53.000Z",
+    name: "Instituent Noise and the Sensibility Soup for Collective Care",
+    data: null,
+    location: "Zurich",
+    event_type: "Major Movement",
+    event_end: "2019-07-08T04:00:00.000Z"
+  },
+  {
+    id: 17,
+    created_at: "2020-01-29T02:24:53.000Z",
+    updated_at: "2020-01-29T02:24:53.000Z",
+    name: "Oz",
+    data: null,
+    location: "Oz",
+    event_type: "Sponge",
+    event_start: "2019-11-11T05:00:00.000Z",
+    event_end: "2019-12-22T05:00:00.000Z"
+  },
+  {
+    id: 16,
+    created_at: "2020-01-29T02:24:53.000Z",
+    updated_at: "2020-01-29T02:24:53.000Z",
+    name: "Minor Gestures",
+    data: null,
+    location: "Montreal",
+    event_type: "Minor Movement",
+    event_start: "2019-08-15T04:00:00.000Z",
+    event_end: "2019-08-16T04:00:00.000Z"
+  }
+];
+
 export class EventIntensities extends Component {
   constructor() {
     super();
@@ -25,55 +71,25 @@ export class EventIntensities extends Component {
     }
   };
 
+  createNewObj = obj => {
+    if (obj) {
+      let selectObj = {};
+      for (const key in obj) {
+        if (selectObj.hasOwnProperty(obj[key].event_type)) {
+          selectObj[obj[key].event_type] += 1;
+        } else {
+          if (obj[key].event_type !== null) {
+            selectObj[obj[key].event_type] = [];
+            selectObj[obj[key].event_type] = 1;
+          }
+        }
+      }
+      return selectObj;
+    }
+  };
+
   componentDidMount() {
     this.props.updateLocation(window.location);
-
-    const staticData = [
-      {
-        id: 19,
-        created_at: "2020-01-29T02:24:53.000Z",
-        updated_at: "2020-01-29T02:24:53.000Z",
-        name: "Means of Relation",
-        data: null,
-        location: "Cluj",
-        event_type: "Minor Movement",
-        event_start: "2019-09-09T04:00:00.000Z",
-        event_end: "2019-09-11T04:00:00.000Z"
-      },
-      {
-        id: 18,
-        created_at: "2020-01-29T02:24:53.000Z",
-        updated_at: "2020-01-29T02:24:53.000Z",
-        name: "Instituent Noise and the Sensibility Soup for Collective Care",
-        data: null,
-        location: "Zurich",
-        event_type: "Major Movement",
-        event_end: "2019-07-08T04:00:00.000Z"
-      },
-      {
-        id: 17,
-        created_at: "2020-01-29T02:24:53.000Z",
-        updated_at: "2020-01-29T02:24:53.000Z",
-        name: "Oz",
-        data: null,
-        location: "Oz",
-        event_type: "Sponge",
-        event_start: "2019-11-11T05:00:00.000Z",
-        event_end: "2019-12-22T05:00:00.000Z"
-      },
-      {
-        id: 16,
-        created_at: "2020-01-29T02:24:53.000Z",
-        updated_at: "2020-01-29T02:24:53.000Z",
-        name: "Minor Gestures",
-        data: null,
-        location: "Montreal",
-        event_type: "Minor Movement",
-        event_start: "2019-08-15T04:00:00.000Z",
-        event_end: "2019-08-16T04:00:00.000Z"
-      }
-    ];
-
     axios
       .get("/api/events")
       .then(events => {
@@ -85,23 +101,14 @@ export class EventIntensities extends Component {
       })
       .catch(err => console.log(err));
 
-    const createNewObj = obj => {
-      let selectObj = {};
-      for (const key in obj) {
-        if (selectObj.hasOwnProperty(obj[key].event_type)) {
-          selectObj[obj[key].event_type] += 1;
-        } else {
-          selectObj[obj[key].event_type] = [];
-          selectObj[obj[key].event_type] = 1;
-        }
-      }
-      console.log(selectObj);
-    };
-
-    createNewObj(staticData);
+    //console.log(this.state.events); // this is weirdly empty at this stage, even though axios set just above...
+    // createNewObj(staticData);
   }
 
   render() {
+    //console.log(this.state.events);
+    console.log(this.createNewObj(this.state.events));
+    //console.log(this.state.events);
     return (
       <div>
         <EventCreate />
