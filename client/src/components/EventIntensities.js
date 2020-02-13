@@ -71,16 +71,16 @@ export class EventIntensities extends Component {
     }
   };
 
-  createNewObj = obj => {
+  createNewObj = (obj, valueKey) => {
     if (obj) {
       let selectObj = {};
       for (const key in obj) {
-        if (selectObj.hasOwnProperty(obj[key].event_type)) {
+        if (selectObj.hasOwnProperty(obj[key][valueKey])) {
           selectObj[obj[key].event_type] += 1;
         } else {
-          if (obj[key].event_type !== null) {
-            selectObj[obj[key].event_type] = [];
-            selectObj[obj[key].event_type] = 1;
+          if (obj[key][valueKey] !== null) {
+            selectObj[obj[key][valueKey]] = [];
+            selectObj[obj[key][valueKey]] = 1;
           }
         }
       }
@@ -106,8 +106,8 @@ export class EventIntensities extends Component {
   }
 
   render() {
-    //console.log(this.state.events);
-    console.log(this.createNewObj(this.state.events));
+    console.log(this.state.events);
+    console.log(this.createNewObj(this.state.events, "location"));
     //console.log(this.state.events);
     return (
       <div>
