@@ -128,6 +128,11 @@ class App extends Component {
       elementarray: array
     });
 
+  //the reason all these extra steps are requred is probably because the state value being passed into this function from child components is changing repeatedly, where
+  //as the above functions are having static values passed into them an array value and a window.pathname -- where as below it is a this.state.objLoc which is  vlaue that outputs 2 nulls then a value
+  // the isLogged way of preventing a the setState from being called to many times is not a perfect solution because once it's set to true, it will always take a value and the coniditon check will be null
+  //so if i use this function in another component i'll need to re setState that value to false again --- OR refactor everything.
+  // trying to call this function outside of the render in the childe component might solve the repeated calls -- but the value of this.state.events is only read at the render in EventIntensities so that value needs to passed into the function at that level. tricky.
   updateMinorLocations = objloc =>
     !this.state.isLogged
       ? this.setState({
