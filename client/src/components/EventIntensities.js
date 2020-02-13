@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import axios from "axios";
 import EventCreate from "./EventCreate";
 import RandomLinkPlace from "./RandomLinkPlace";
+import ChooseElement from "./ChooseElement";
 
 export class EventIntensities extends Component {
   constructor() {
     super();
     this.state = {
       events: [],
-      staticData: []
+      staticData: [],
+      randomArray: []
     };
   }
 
@@ -61,11 +63,16 @@ export class EventIntensities extends Component {
       .catch(err => console.log(err));
   }
 
+  updateArray = array => console.log(array, "captured");
   render() {
     return (
       <div>
         <EventCreate />
         <RandomLinkPlace classname={"database"} array={this.state.array} />
+        <ChooseElement
+          array={this.state.array}
+          updateArray={this.updateArray}
+        />
       </div>
     );
   }
