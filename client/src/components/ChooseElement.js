@@ -9,7 +9,9 @@ const ChooseElement = props => {
   //will continuously throw errors //then i need to site specifically the value props.array and not just props, because props is a long list of items in an object /// a catch all unique to functional components - where as props.array refects what i more exactly passed to this component from a parent element.
   if (props.array) {
     element = props.array[Math.floor(Math.random() * props.array.length)];
-    props.updateArray(element);
+    props.updateArray
+      ? props.updateArray(element)
+      : console.log("noupdatearray callback");
   } else {
     console.log("no array prop is happening");
   }
