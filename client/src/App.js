@@ -110,7 +110,7 @@ class App extends Component {
     this.state = {
       location: window.location.pathname,
       elementarray: [],
-      minorLocations: [],
+      minorLocations: null,
       isLogged: false
     };
     this.updateLocation = this.updateLocation.bind(this);
@@ -203,7 +203,12 @@ class App extends Component {
             />
             <Route
               path="/oOoOs"
-              render={() => <Glitch updateLocation={this.updateLocation} />}
+              render={() => (
+                <Glitch
+                  updateLocation={this.updateLocation}
+                  minorLocations={this.state.minorLocations}
+                />
+              )}
             />
             <Route
               path="/patches"
