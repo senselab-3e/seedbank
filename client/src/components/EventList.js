@@ -3,7 +3,7 @@ import axios from "axios"; // temporarily disable for static data testing
 import styled from "styled-components";
 import { withTheme } from "styled-components";
 import EventCreate from "./EventCreate";
-import RandomLinkPlace from "./RandomLinkPlace";
+//import RandomLinkPlace from "./RandomLinkPlace";
 
 const Grid = styled.div`
   display: grid;

@@ -30,7 +30,7 @@ const eventTypeStyling = type => {
       elType.className = "threshold";
       elType.style.backgroundImage = `url(${testimage})`;
       let newCoor = uniquePositions();
-      console.log(newCoor);
+      //(newCoor);
       elType.style.top = newCoor[0] + "px";
       elType.style.left = newCoor[1] + "px";
       let elWrapper = document.createElement("a");
@@ -58,8 +58,11 @@ const eventType = eventObj => {
 
 //check if elements have already been rendered:
 
-// var currentEventlist = document.querySelectorAll(".database");
-// var currentThreshold = document.querySelectorAll(".threshold");
+var currentEventlist = document.querySelectorAll(".database");
+var currentThreshold = document.querySelectorAll(".threshold");
+
+console.log(currentEventlist);
+console.log(currentThreshold);
 
 //--->random placement applied to each element created in createLinks
 const dotRandPos = el => {
@@ -106,12 +109,21 @@ const createLinks = (array, classname) => {
 
 const RandomLinkPlace = props => {
   const target = document.querySelectorAll("." + props.classname);
-
+  console.log(target);
+  // target.forEach(element => {
+  //   dotRandPos(element);
+  // });
   //remember that set Interval can not call a function eg. NOT dotRandPost(parameter()) but dotRandPost(parameter) --->only a callback
   //only because a) the prop can only be read within the scope of this component, i have to use the random placement funciton within it.
 
   // setInterval(dotRandPos, 2000);
-  return <div>{createLinks(props.array, props.classname)}</div>;
+  return (
+    <div>
+      {target.length > 0
+        ? console.log("already exists")
+        : createLinks(props.array, props.classname)}
+    </div>
+  );
 };
 
 export default RandomLinkPlace;
