@@ -120,7 +120,7 @@ const RandomLinkPlace = props => {
   return (
     <div>
       {target.length > 0
-        ? console.log("already exists")
+        ? console.log("elements already created")
         : createLinks(props.array, props.classname)}
     </div>
   );

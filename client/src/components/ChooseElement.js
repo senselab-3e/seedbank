@@ -1,6 +1,7 @@
 import React from "react";
 
-//syntax in parent =  <ChooseElement array = {array} />
+//syntax in parent =  <ChooseElement array={this.state.array} updateArray={this.updateArray}/>
+// this is working through a combination of a callback function which grabs the outcome from the function below and passing down a prop array to this component
 const ChooseElement = props => {
   //   console.log(props.array, "full array passing to choose element component");
   var element;

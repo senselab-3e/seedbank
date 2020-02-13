@@ -10,7 +10,8 @@ export class EventIntensities extends Component {
     this.state = {
       events: [],
       staticData: [],
-      randomArray: []
+      randomArray: [],
+      isLogged: false
     };
   }
 
@@ -63,7 +64,16 @@ export class EventIntensities extends Component {
       .catch(err => console.log(err));
   }
 
-  updateArray = array => console.log(array, "captured");
+  updateArray = array => {
+    if (!this.state.isLogged) {
+      this.setState({
+        randomArray: array,
+        isLogged: true
+      });
+      console.log(array, "captured");
+    }
+  };
+
   render() {
     return (
       <div>
