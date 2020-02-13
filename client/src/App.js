@@ -204,7 +204,10 @@ class App extends Component {
               exact
               path="/eventintensities"
               render={() => (
-                <EventIntensities updateLocation={this.updateLocation} />
+                <EventIntensities
+                  updateLocation={this.updateLocation}
+                  updateArray={this.updateArray}
+                />
               )}
             />
           </Switch>
