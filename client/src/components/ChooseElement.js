@@ -13,7 +13,7 @@ const ChooseElement = props => {
       ? props.updateArray(element)
       : console.log("noupdatearray callback");
   } else {
-    console.log("no array prop is happening");
+    //console.log("no array prop is happening");
   }
   return <div></div>;
 };

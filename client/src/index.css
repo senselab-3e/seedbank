@@ -82,8 +82,9 @@ a.dotcontainer .dot {
 }
 
 .database:hover {
-  color: deeppink;
+  color: black;
   background-color: transparent;
+  /*because the background color on the database element was dynamically assigned via js in the component i believe that's why this css stying for transparent isn't being applied it takes less presedence over the js*/
   border: 0.2rem solid white;
 }
 

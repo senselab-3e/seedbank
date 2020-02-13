@@ -15,6 +15,16 @@ export class EventIntensities extends Component {
     };
   }
 
+  updateArray = array => {
+    if (!this.state.isLogged) {
+      this.setState({
+        randomArray: array,
+        isLogged: true
+      });
+      //console.log(array, "captured");
+    }
+  };
+
   componentDidMount() {
     this.props.updateLocation(window.location);
 
@@ -37,7 +47,7 @@ export class EventIntensities extends Component {
         name: "Instituent Noise and the Sensibility Soup for Collective Care",
         data: null,
         location: "Zurich",
-        event_type: "Minor Movement",
+        event_type: "Major Movement",
         event_end: "2019-07-08T04:00:00.000Z"
       },
       {
@@ -47,11 +57,23 @@ export class EventIntensities extends Component {
         name: "Oz",
         data: null,
         location: "Oz",
-        event_type: "Minor Movement",
+        event_type: "Sponge",
         event_start: "2019-11-11T05:00:00.000Z",
         event_end: "2019-12-22T05:00:00.000Z"
+      },
+      {
+        id: 16,
+        created_at: "2020-01-29T02:24:53.000Z",
+        updated_at: "2020-01-29T02:24:53.000Z",
+        name: "Minor Gestures",
+        data: null,
+        location: "Montreal",
+        event_type: "Minor Movement",
+        event_start: "2019-08-15T04:00:00.000Z",
+        event_end: "2019-08-16T04:00:00.000Z"
       }
     ];
+
     axios
       .get("/api/events")
       .then(events => {
@@ -62,17 +84,22 @@ export class EventIntensities extends Component {
         });
       })
       .catch(err => console.log(err));
-  }
 
-  updateArray = array => {
-    if (!this.state.isLogged) {
-      this.setState({
-        randomArray: array,
-        isLogged: true
-      });
-      console.log(array, "captured");
-    }
-  };
+    const createNewObj = obj => {
+      let selectObj = {};
+      for (const key in obj) {
+        if (selectObj.hasOwnProperty(obj[key].event_type)) {
+          selectObj[obj[key].event_type] += 1;
+        } else {
+          selectObj[obj[key].event_type] = [];
+          selectObj[obj[key].event_type] = 1;
+        }
+      }
+      console.log(selectObj);
+    };
+
+    createNewObj(staticData);
+  }
 
   render() {
     return (

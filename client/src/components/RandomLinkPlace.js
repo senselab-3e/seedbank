@@ -21,11 +21,16 @@ const uniquePositions = () => {
   return [newheight, newwidth];
 };
 
+// let counter = 0;
+
+//running through a loop
+
 const eventTypeStyling = type => {
   //note: this is already running through a for each in the create links so i don't need to do a queryselect on all the nodes. each valid node is already passing through this function
   //console.log(type);
   switch (type) {
     case "Minor Movement":
+      // counter += 1;
       let elType = document.createElement("div");
       elType.className = "threshold";
       elType.style.backgroundImage = `url(${testimage})`;
@@ -41,7 +46,10 @@ const eventTypeStyling = type => {
     default:
       console.log("no event to find name for");
   }
+  //console.log(counter, "--counter");
 };
+
+//running through a loop
 
 const eventType = eventObj => {
   if (eventObj) {
@@ -49,20 +57,17 @@ const eventType = eventObj => {
       eventTypeStyling(eventObj.event_type);
       //console.log(eventObj.event_type, "belonging to", eventObj.name);
     } else {
-      console.log(eventObj.name + " has no event name");
+      //console.log(eventObj.name + " has no event name");
     }
   } else {
-    console.log("no valid event object");
+    //console.log("no valid event object");
   }
 };
 
 //check if elements have already been rendered:
 
-var currentEventlist = document.querySelectorAll(".database");
-var currentThreshold = document.querySelectorAll(".threshold");
-
-console.log(currentEventlist);
-console.log(currentThreshold);
+// var currentEventlist = document.querySelectorAll(".database");
+// var currentThreshold = document.querySelectorAll(".threshold");
 
 //--->random placement applied to each element created in createLinks
 const dotRandPos = el => {
@@ -84,8 +89,9 @@ const createLinks = (array, classname) => {
       // newElement.style.top = newCoor[0] + "px";
       // newElement.style.left = newCoor[1] + "px";
       //---->
-      eventType(el);
+
       if (classname === "database") {
+        eventType(el);
         //all of this can be excavated to a separate exterior function. refactor
         newElement.textContent = el.name;
         let linkWrapper = document.createElement("a");
@@ -93,7 +99,7 @@ const createLinks = (array, classname) => {
         linkWrapper.appendChild(newElement);
         document.body.append(linkWrapper);
         // console.log("database condition check");
-      } else {
+      } else if (classname === "dot") {
         //this is just the default script that was used for inital testing. creating a pixel link to every page currently on glitch. that is what is consisted of in the eventlist array
         let linkWrapper = document.createElement("a");
         linkWrapper.href = "https://convalizards.glitch.me/" + el;
@@ -103,13 +109,13 @@ const createLinks = (array, classname) => {
       }
     });
   } else {
-    console.log("array not valid");
+    // console.log("array not valid");
   }
 };
 
 const RandomLinkPlace = props => {
   const target = document.querySelectorAll("." + props.classname);
-  console.log(target);
+  //console.log(target);
   // target.forEach(element => {
   //   dotRandPos(element);
   // });
