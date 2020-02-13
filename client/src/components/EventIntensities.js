@@ -71,7 +71,8 @@ export class EventIntensities extends Component {
     }
   };
 
-  createNewObj = (obj, valueKey) => {
+  //this is up here because i couldn't put it in compoentDidMount because the this.state.events value was returning empty at that level. i had to call it within the render
+  eventListFilter = (obj, valueKey) => {
     if (obj) {
       let selectObj = {};
       for (const key in obj) {
@@ -102,12 +103,12 @@ export class EventIntensities extends Component {
       .catch(err => console.log(err));
 
     //console.log(this.state.events); // this is weirdly empty at this stage, even though axios set just above...
-    // createNewObj(staticData);
+    // eventListFilter(staticData);
   }
 
   render() {
     console.log(this.state.events);
-    console.log(this.createNewObj(this.state.events, "location"));
+    console.log(this.eventListFilter(this.state.events, "location"));
     //console.log(this.state.events);
     return (
       <div>
