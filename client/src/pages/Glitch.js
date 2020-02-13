@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../style/glitch.css";
 import glitch from "../assets/img/404_glitch2.gif";
 import styled from "styled-components";
+import ArraySources from "../components/ArraySources";
 
 const Portal404 = styled.img`
   border: 2px solid transparent;

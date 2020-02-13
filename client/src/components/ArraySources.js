@@ -40,6 +40,8 @@ var linkList = [
   "swerve.html"
 ];
 
+//this is currently being used in the PATCH component and grabbing states from app
+
 export class ArraySources extends Component {
   componentDidMount() {
     this.props.updateArray(linkList);
@@ -67,3 +69,26 @@ export class ArraySources extends Component {
 }
 
 export default ArraySources;
+
+///return to later. refactoring for functional component
+
+// export default function ArraySources(props) {
+//   //   const checking = arraytype => {
+//   //     switch (arraytype) {
+//   //       case "links":
+//   //         //console.log("link hit");
+//   //         props.updateArray(linkList);
+//   //         break;
+//   //       case "thingies":
+//   //         //console.log("thingy hit");
+//   //         props.updateArray(thingyList);
+//   //         break;
+//   //       default:
+//   //         //console.log(props);
+//   //         props.updateArray("no value");
+//   //         break;
+//   //     }
+//   //   };
+
+//   return <div></div>;
+// }

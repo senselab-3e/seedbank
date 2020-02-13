@@ -15,7 +15,7 @@ export class Patch extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.updateLocation(window.location);
   }
   //this feels a little hack-y but this prevents an infinite loop of  the state of patchLevel Array
