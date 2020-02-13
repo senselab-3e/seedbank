@@ -56,6 +56,18 @@ const eventType = eventObj => {
   }
 };
 
+//check if elements have already been rendered:
+
+// var currentEventlist = document.querySelectorAll(".database");
+// var currentThreshold = document.querySelectorAll(".threshold");
+
+//--->random placement applied to each element created in createLinks
+const dotRandPos = el => {
+  var xyCoors = uniquePositions(); // returns array with x y values at index 0 and 1
+  el.style.top = xyCoors[0] + "px"; //x-axis value
+  el.style.left = xyCoors[1] + "px"; //y-axis value
+};
+
 const createLinks = (array, classname) => {
   //refactor for more edge-cases - for not its just a truthy check for array value;
   if (array) {
@@ -63,10 +75,11 @@ const createLinks = (array, classname) => {
       var newElement = document.createElement("div");
       newElement.className = classname;
       newElement.style.backgroundColor = randomColor();
+      dotRandPos(newElement);
       //--->random placement if i want it from the beginning
-      let newCoor = uniquePositions();
-      newElement.style.top = newCoor[0] + "px";
-      newElement.style.left = newCoor[1] + "px";
+      // let newCoor = uniquePositions();
+      // newElement.style.top = newCoor[0] + "px";
+      // newElement.style.left = newCoor[1] + "px";
       //---->
       eventType(el);
       if (classname === "database") {
@@ -91,21 +104,8 @@ const createLinks = (array, classname) => {
   }
 };
 
-//right now because the elements are being dynamically created and appended outside any of the component rendering, they are actually all loading from the beginning.
-//when the route is left, they are all persisting on screen. that's a little ok because it's still an intereseting effect but this will have to be figure out for the picture element version of this, rather then these small pixels
-//if you want to remove them, call the function on app level that does a selectqueryall for the classname dot.
-//the styling also needs to be managed by styled-components in future refactoring
-
 const RandomLinkPlace = props => {
   const target = document.querySelectorAll("." + props.classname);
-  // const dotRandPos = () => {
-  //   target.forEach(function(el) {
-  //     var xyCoors = uniquePositions(); // returns array with x y values at index 0 and 1
-  //     el.style.top = xyCoors[0] + "px"; //x-axis value
-  //     el.style.left = xyCoors[1] + "px"; //y-axis value
-  //   });
-  // };
-  // dotRandPos();
 
   //remember that set Interval can not call a function eg. NOT dotRandPost(parameter()) but dotRandPost(parameter) --->only a callback
   //only because a) the prop can only be read within the scope of this component, i have to use the random placement funciton within it.
