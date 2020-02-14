@@ -36,10 +36,20 @@ export class Glitch extends Component {
     return color;
   };
 
+  // elementsExist = () => {
+  //   if (document.querySelectorAll(".locationmark").length > 1) {
+  //     this.populate(this.props.minorLocations);
+  //   } else {
+  //     return false;
+  //   }
+  // };
+
   populate = loc => {
     //console.log(loc);
-    if (loc !== null) {
+    if (loc !== null && document.querySelectorAll(".locationmark").length < 1) {
       console.log(loc, "valid");
+      //ineed to create a condition check so it doesn't repeatedly add more dynamic elements
+
       for (const key in loc) {
         console.log();
         var newElement = document.createElement("div");

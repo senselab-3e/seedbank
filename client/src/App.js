@@ -147,6 +147,7 @@ class App extends Component {
     var currentDots = document.querySelectorAll(".dot");
     var currentThingy = document.querySelectorAll(".thingy");
     var currentEventlist = document.querySelectorAll(".database");
+    var currentMinorLoc = document.querySelectorAll(".locationmark");
     var currentThreshold = document.querySelectorAll(".threshold"); ///this needs a wrapper container to be removed otherwise it unloads body tag
     // console.log(currentDots);
     if (this.state.location !== "/") {
@@ -164,6 +165,12 @@ class App extends Component {
       });
       currentEventlist.forEach(el => {
         el.parentNode.remove();
+      });
+    }
+
+    if (this.state.location !== "/oOoOs") {
+      currentMinorLoc.forEach(element => {
+        element.parentNode.remove();
       });
     }
 
