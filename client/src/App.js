@@ -7,6 +7,7 @@ import {
   //   useRouteMatch,
   //   useParams
 } from "react-router-dom";
+
 import withAuth from "./helpers/withAuth";
 import EventsPage from "./pages/events";
 import AuthPage from "./pages/auth";
