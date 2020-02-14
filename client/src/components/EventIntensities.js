@@ -97,8 +97,7 @@ export class EventIntensities extends Component {
     }
   };
 
-  componentDidMount() {
-    this.props.updateLocation(window.location);
+  checkForUpdates = () => {
     axios
       .get("/api/events")
       .then(events => {
@@ -109,6 +108,21 @@ export class EventIntensities extends Component {
         });
       })
       .catch(err => console.log(err));
+  };
+
+  componentDidMount() {
+    this.props.updateLocation(window.location);
+    this.checkForUpdates();
+    // axios
+    //   .get("/api/events")
+    //   .then(events => {
+    //     this.setState({
+    //       events: events.data,
+    //       array: events.data,
+    //       staticData: staticData
+    //     });
+    //   })
+    //   .catch(err => console.log(err));
 
     //console.log(this.state.events); // this is weirdly empty at this stage, even though axios set just above...
     // eventListFilter(staticData);
@@ -130,9 +144,10 @@ export class EventIntensities extends Component {
     }
     console.log(this.state.locObj);
 
-    if (this.state.locObj !== null) {
-      this.props.updateMinorLocations(this.state.locObj);
-    }
+    // if (this.state.events !== null) {
+    //   this.props.updateMinorLocations(this.state.events);
+    // }
+
     // );
     return (
       <div>

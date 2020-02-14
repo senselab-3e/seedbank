@@ -240,6 +240,7 @@ class App extends Component {
                 <EventIntensities
                   updateLocation={this.updateLocation}
                   updateMinorLocations={this.updateMinorLocations}
+                  updateArray={this.updateArray}
                 />
               )}
             />
