@@ -31,7 +31,9 @@ class EventCreate extends Component {
       .catch(err => {
         console.log(err);
       });
-    this.props.checkForUpdates();
+    this.props.checkForUpdates
+      ? this.props.checkForUpdates()
+      : console.log("no prop funciton present");
   }
 
   render() {
