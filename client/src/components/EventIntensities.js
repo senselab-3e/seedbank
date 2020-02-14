@@ -127,7 +127,7 @@ export class EventIntensities extends Component {
 
     //console.log(this.state.events); // this is weirdly empty at this stage, even though axios set just above...
     // eventListFilter(staticData);
-    //   if (this.state.locObj !== null) {
+    // if (this.state.locObj !== null) {
     //   this.props.updateMinorLocations(this.state.locObj);
     // }
     // );
@@ -145,9 +145,10 @@ export class EventIntensities extends Component {
     }
     console.log(this.state.locObj);
 
-    // if (this.state.events !== null) {
-    //   this.props.updateMinorLocations(this.state.events);
-    // }
+    //troubleshoot -- and refactor
+    if (this.state.locObj !== null) {
+      this.props.updateMinorLocations(this.state.locObj);
+    }
 
     // );
     return (

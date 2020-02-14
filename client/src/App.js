@@ -143,7 +143,7 @@ class App extends Component {
 
   render() {
     //this is a total hack method to remove the dynamically created and appended dot classes from the randomLinkCreator Component.
-    //refactorrrrrrr but for now....
+    //refactorrrrrrr but for now.... it would be better if for example, they always loaded into the samely named container class name and then i always just check for that.
     var currentDots = document.querySelectorAll(".dot");
     var currentThingy = document.querySelectorAll(".thingy");
     var currentEventlist = document.querySelectorAll(".database");
@@ -181,7 +181,7 @@ class App extends Component {
     //   });
     // }
 
-    //---->Note: temporarily removed
+    //---->Note: temporarily removed simply to speed up testing
     //<Route exact path="/events" component={withAuth(EventsPage)} />
 
     return (
