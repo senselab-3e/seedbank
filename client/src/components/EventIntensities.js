@@ -61,6 +61,7 @@ export class EventIntensities extends Component {
       locObj: null,
       locObjisLogged: false
     };
+    this.checkForUpdates = this.checkForUpdates.bind(this);
   }
 
   updateArray = array => {
