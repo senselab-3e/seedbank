@@ -21,8 +21,6 @@ const uniquePositions = () => {
   return [newheight, newwidth];
 };
 
-// let counter = 0;
-
 //running through a loop
 
 const eventTypeStyling = type => {
@@ -46,7 +44,6 @@ const eventTypeStyling = type => {
     default:
       console.log("no event to find name for");
   }
-  //console.log(counter, "--counter");
 };
 
 //running through a loop
@@ -63,11 +60,6 @@ const eventType = eventObj => {
     //console.log("no valid event object");
   }
 };
-
-//check if elements have already been rendered:
-
-// var currentEventlist = document.querySelectorAll(".database");
-// var currentThreshold = document.querySelectorAll(".threshold");
 
 //--->random placement applied to each element created in createLinks
 const dotRandPos = el => {
@@ -115,11 +107,6 @@ const createLinks = (array, classname) => {
 
 const RandomLinkPlace = props => {
   createLinks(props.array, props.classname);
-  //const target = document.querySelectorAll("." + props.classname);
-  //console.log(target);
-  // target.forEach(element => {
-  //   dotRandPos(element);
-  // });
   //remember that set Interval can not call a function eg. NOT dotRandPost(parameter()) but dotRandPost(parameter) --->only a callback
   //only because a) the prop can only be read within the scope of this component, i have to use the random placement funciton within it.
 

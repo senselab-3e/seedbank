@@ -43,6 +43,22 @@ const boundImages = [
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fbound-14.gif?v=1576614690245"
 ];
 
+function chooseElement(assets) {
+  var element = assets[Math.floor(Math.random() * assets.length)];
+  return element;
+}
+
+let h, w, newheight, newwidth;
+
+function uniquePositions() {
+  h = window.innerHeight - 100;
+  w = window.innerWidth - 100;
+  newheight = Math.floor(Math.random() * h);
+  newwidth = Math.floor(Math.random() * w);
+
+  return [newheight, newwidth];
+}
+
 export class Glitch extends Component {
   randomColor = () => {
     var letters = "0123456789ABCDEF";
@@ -53,14 +69,6 @@ export class Glitch extends Component {
     return color;
   };
 
-  // elementsExist = () => {
-  //   if (document.querySelectorAll(".locationmark").length > 1) {
-  //     this.populate(this.props.minorLocations);
-  //   } else {
-  //     return false;
-  //   }
-  // };
-
   populate = loc => {
     //console.log(loc);
     if (loc !== null && document.querySelectorAll(".locationmark").length < 1) {
@@ -69,14 +77,27 @@ export class Glitch extends Component {
 
       for (const key in loc) {
         console.log();
-        var newElement = document.createElement("div");
-        newElement.className = "locationmark";
+
+        var newElement = document.createElement("img");
+        newElement.className = "location";
+        newElement.src = chooseElement(boundImages);
         newElement.textContent = key;
-        newElement.style.backgroundColor = this.randomColor();
+        var newCoor4 = uniquePositions();
+        newElement.style.top = newCoor4[0] + "px";
+        newElement.style.left = newCoor4[1] + "px";
         let linkWrapper = document.createElement("a");
-        linkWrapper.className = "locationmarkcontainer";
+        linkWrapper.className = "locationcontainer";
         linkWrapper.appendChild(newElement);
         document.body.append(linkWrapper);
+        //---> dot with text rendering version of processing event locations
+        // var newElement = document.createElement("div");
+        // newElement.className = "locationmark";
+        // newElement.textContent = key;
+        // newElement.style.backgroundColor = this.randomColor();
+        // let linkWrapper = document.createElement("a");
+        // linkWrapper.className = "locationmarkcontainer";
+        // linkWrapper.appendChild(newElement);
+        // document.body.append(linkWrapper);
       }
     }
   };
