@@ -70,7 +70,6 @@ export class EventIntensities extends Component {
         randomArray: array,
         isLogged: true
       });
-      //console.log(array, "captured");
     }
   };
 
@@ -93,7 +92,6 @@ export class EventIntensities extends Component {
           locObj: selectObj,
           locObjisLogged: true
         });
-        console.log(this.state.locObj);
       }
     }
   };
@@ -114,30 +112,9 @@ export class EventIntensities extends Component {
   componentDidMount() {
     this.props.updateLocation(window.location);
     this.checkForUpdates();
-    // axios
-    //   .get("/api/events")
-    //   .then(events => {
-    //     this.setState({
-    //       events: events.data,
-    //       array: events.data,
-    //       staticData: staticData
-    //     });
-    //   })
-    //   .catch(err => console.log(err));
-
-    //console.log(this.state.events); // this is weirdly empty at this stage, even though axios set just above...
-    // eventListFilter(staticData);
-    // if (this.state.locObj !== null) {
-    //   this.props.updateMinorLocations(this.state.locObj);
-    // }
-    // );
   }
 
   render() {
-    console.log(this.state.events);
-    //console.log(this.eventListFilter(this.state.events, "location"));
-    //console.log(this.state.events);
-
     //this is throwing undefined this.eventListFilter(this.state.events, "location")
     // this.props.updateLocation(
     if (this.state.events !== null) {
