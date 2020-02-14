@@ -114,7 +114,8 @@ const createLinks = (array, classname) => {
 };
 
 const RandomLinkPlace = props => {
-  const target = document.querySelectorAll("." + props.classname);
+  createLinks(props.array, props.classname);
+  //const target = document.querySelectorAll("." + props.classname);
   //console.log(target);
   // target.forEach(element => {
   //   dotRandPos(element);
@@ -123,16 +124,20 @@ const RandomLinkPlace = props => {
   //only because a) the prop can only be read within the scope of this component, i have to use the random placement funciton within it.
 
   // setInterval(dotRandPos, 2000);
-  return (
-    <div>
-      {target.length > 0
-        ? console.log("elements already created")
-        : createLinks(props.array, props.classname)}
-    </div>
-  );
+  return <div></div>;
 };
 
 export default RandomLinkPlace;
+
+//---NOTE: i need to remove this specific kind of condition check (see below) because if i want t newly added element
+//to be rendered, this cancels it out
+// return (
+//   <div>
+//     {target.length > 0
+//       ? console.log("elements already created")
+//       : createLinks(props.array, props.classname)}
+//   </div>
+// );
 
 //-----> old component writing
 

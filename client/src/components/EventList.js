@@ -44,6 +44,18 @@ class EventList extends Component {
     };
   }
 
+  checkForUpdates = () => {
+    axios
+      .get("/api/events")
+      .then(events => {
+        this.setState({
+          events: events.data,
+          array: events.data
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
   componentDidMount() {
     const staticData = [
       {
@@ -100,7 +112,7 @@ class EventList extends Component {
       <React.Fragment>
         <Grid>
           <Header>
-            <EventCreate />
+            <EventCreate checkForUpdates={this.checkForUpdates} />
           </Header>
           <Aside>
             <ul>
