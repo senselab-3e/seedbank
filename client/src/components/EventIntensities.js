@@ -152,7 +152,7 @@ export class EventIntensities extends Component {
     // );
     return (
       <div>
-        <EventCreate />
+        <EventCreate checkForUpdates={this.checkForUpdates} />
         <RandomLinkPlace classname={"database"} array={this.state.array} />
         <ChooseElement
           array={this.state.array}
