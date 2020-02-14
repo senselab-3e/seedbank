@@ -26,10 +26,38 @@ const GlitchWrapper = styled.div`
   text-align: center;
 `;
 
-class Glitch extends Component {
+export class Glitch extends Component {
+  randomColor = () => {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
+  populate = loc => {
+    //console.log(loc);
+    if (loc !== null) {
+      console.log(loc, "valid");
+      for (const key in loc) {
+        console.log();
+        var newElement = document.createElement("div");
+        newElement.className = "locationmark";
+        newElement.textContent = key;
+        newElement.style.backgroundColor = this.randomColor();
+        let linkWrapper = document.createElement("a");
+        linkWrapper.className = "locationmarkcontainer";
+        linkWrapper.appendChild(newElement);
+        document.body.append(linkWrapper);
+      }
+    }
+  };
+
   //I'm trying out componentWillMount() insted of componentDidMount() so that the current location is passed up immediately to App, but this fires before anything else has loaded on the page. investigate docs for any shortcomings to this approach
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.updateLocation(window.location);
+    this.populate(this.props.minorLocations);
   }
   render() {
     return (

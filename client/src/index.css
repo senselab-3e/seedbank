@@ -100,3 +100,15 @@ a.dotcontainer .dot {
   width: 30px;
   height: 30px;
 }
+
+
+/*glitch test dynamic element created in relation to location instances in database*/
+
+
+.locationmark {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+}
