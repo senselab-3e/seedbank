@@ -20,6 +20,7 @@ export default class Header extends Component {
         <li><Link to="/about3e">3E About</Link></li>
         <li><Link to="/oOoOs">404 oOoO Portal</Link></li>
         <li><Link to="/patches">Patches</Link></li>
+        <li><Link to="/traces">Register a trace</Link></li>
       </ul>
     </nav>
     </React.Fragment>
