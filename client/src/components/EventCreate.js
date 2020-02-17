@@ -40,7 +40,6 @@ class EventCreate extends Component {
     return (
       <form onSubmit={this.submit}>
         <label>
-          {" "}
           Create an event <br /> <br />
           <input
             type="text"
@@ -48,15 +47,15 @@ class EventCreate extends Component {
             placeholder="name"
             value={this.state.value}
             onChange={this.handleChange}
-          />{" "}
+          />
           <input
             type="text"
             name="sponges"
             placeholder="sponges"
             value={this.state.value}
             onChange={this.handleChange}
-          />{" "}
-        </label>{" "}
+          />
+        </label>
         <br />
         <input type="submit" value="Create" />
       </form>

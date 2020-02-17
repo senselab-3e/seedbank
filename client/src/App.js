@@ -147,8 +147,9 @@ class App extends Component {
     var currentDots = document.querySelectorAll(".dot");
     var currentThingy = document.querySelectorAll(".thingy");
     var currentEventlist = document.querySelectorAll(".database");
-    var currentMinorLoc = document.querySelectorAll(".locationmark");
+    var currentMinorLoc = document.querySelectorAll(".location");
     var currentThreshold = document.querySelectorAll(".threshold"); ///this needs a wrapper container to be removed otherwise it unloads body tag
+    //var currentThreshold = document.querySelectorAll(".location");
     // console.log(currentDots);
     if (this.state.location !== "/") {
       currentDots.forEach(e => {
