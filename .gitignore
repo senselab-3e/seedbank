@@ -3,3 +3,8 @@
 /anarchive/node_modules
 /anarchive/assets
 /client/node_modules
+/client/devNotes.md
+/client/src/sketches/
+/client/build/
+/client/src/components/RandomColor.js
+/client/package-lock.json
