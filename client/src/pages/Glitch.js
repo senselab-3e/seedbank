@@ -81,12 +81,16 @@ export class Glitch extends Component {
         var newElement = document.createElement("img");
         newElement.className = "location";
         newElement.src = chooseElement(boundImages);
-        newElement.textContent = key;
+
         var newCoor4 = uniquePositions();
         newElement.style.top = newCoor4[0] + "px";
         newElement.style.left = newCoor4[1] + "px";
         let linkWrapper = document.createElement("a");
         linkWrapper.className = "locationcontainer";
+        //the reason there is a disjunction in the positioning of the image and the text is because the image is being scaled down to 0.2 in the code, but the position is still according to its original diameter. so i suspect the ext is overlying where the image at full size would be -- which is why they're all hanging out at the top left.
+        linkWrapper.style.top = newCoor4[0] + "px";
+        linkWrapper.style.left = newCoor4[1] + "px";
+        linkWrapper.textContent = key;
         linkWrapper.appendChild(newElement);
         document.body.append(linkWrapper);
         //---> dot with text rendering version of processing event locations
