@@ -91,10 +91,10 @@ router.get('/gifverse/:id', (req, res) => {
 
 //according to documentation --- upload.single is ok.... 
 router.post('/image', upload.single('image'), (req, res) => {
-	//THIS ISN"T HAppening. .. .. . 
+	//THIS ISN"T HAppening. .. .. . so brough back commented out cb(null, dir);
 	res.send(console.log(req.files, 'sending these files'));
 
-	// also commenting this out for testing purposes
+	// j NOTE : also commenting this out for testing purposes
 	// knex('images')
 	// 	.insert({ name: req.body.name,
 	// 			  type: req.body.type,
@@ -103,7 +103,9 @@ router.post('/image', upload.single('image'), (req, res) => {
 	// 			  filetype: req.body.name.split('.')[1].toLowerCase(),
 	// 			  path: assets.createPath(req.body.name)
 	// 			})
-	//// not working yet but stashing
+
+
+	//// not working yet but stashing for later. multerError scripts should be added to this component to help with future debugging. 
 	// upload(req, res, function (err) {
 	// 	if (err instanceof multer.MulterError) {
 	// 		console.log('A Multer error occurred when uploading')
