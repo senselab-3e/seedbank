@@ -54,30 +54,36 @@ router.get('/gifverse/:id', (req, res) => {
 
 // POST api/assets/images
 router.post('/images', upload.single('image'), (req, res) => {
-	knex('images')
-		.insert({ name: req.file.filename,
-				  type: req.body.type,
-				  tendencies: req.body.tendencies,
-				  notes: req.body.notes,
-				  filetype: req.file.originalname.split('.').slice(-1).toString().toLowerCase(),
-				  path: req.file.destination.replace('assets\/images\/', '')
-				})
-		.then(id => { res.send('Successfully uploaded image') })
-		.catch(err => { console.log(err) })
+	if (process.env.NODE_ENV != 'production') { res.send(console.log(req.file)) }
+	else {
+		knex('images')
+			.insert({ name: req.file.filename,
+					  type: req.body.type,
+					  tendencies: req.body.tendencies,
+					  notes: req.body.notes,
+					  filetype: req.file.originalname.split('.').slice(-1).toString().toLowerCase(),
+					  path: req.file.destination.replace('assets\/images\/', '')
+					})
+			.then(id => { res.send('Successfully uploaded image') })
+			.catch(err => { console.log(err) })
+	}
 });
 
 // POST api/assets/gifverse
 router.post('/gifverse', upload.single('image'), (req, res) => {
-	knex('gifverse')
-		.insert({ name: req.file.filename,
-				  type: req.body.type,
-				  tendencies: req.body.tendencies,
-				  notes: req.body.notes,
-				  filetype: req.file.originalname.split('.').slice(-1).toString().toLowerCase(),
-				  path: req.file.destination.replace('assets\/gifverse\/', '')
-				})
-		.then(id => { res.send('Successfully uploaded gif') })
-		.catch(err => { console.log(err) })
+	if (process.env.NODE_ENV != 'production') { res.send(console.log(req.file)) }
+	else {
+		knex('gifverse')
+			.insert({ name: req.file.filename,
+					  type: req.body.type,
+					  tendencies: req.body.tendencies,
+					  notes: req.body.notes,
+					  filetype: req.file.originalname.split('.').slice(-1).toString().toLowerCase(),
+					  path: req.file.destination.replace('assets\/gifverse\/', '')
+					})
+			.then(id => { res.send('Successfully uploaded gif') })
+			.catch(err => { console.log(err) })
+	}
 });
 
 module.exports = router;
