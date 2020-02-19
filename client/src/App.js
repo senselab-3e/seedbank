@@ -152,9 +152,9 @@ class App extends Component {
     //var currentThreshold = document.querySelectorAll(".location");
     // console.log(currentDots);
     if (this.state.location !== "/") {
-      currentDots.forEach(e => {
-        e.parentNode.remove();
-      });
+      // currentDots.forEach(e => {
+      //   e.parentNode.remove();
+      // });
       currentThingy.forEach(m => {
         m.parentNode.remove();
       });
@@ -176,11 +176,11 @@ class App extends Component {
     }
 
     //this can be brought back in to remove the presence of the pixel links on all over page views
-    // else if (this.state.location !== "/patches") {
-    //   currentDots.forEach(element => {
-    //     element.parentNode.remove();
-    //   });
-    // }
+    if (this.state.location !== "/patches") {
+      currentDots.forEach(element => {
+        element.parentNode.remove();
+      });
+    }
 
     //---->Note: temporarily removed simply to speed up testing
     //<Route exact path="/events" component={withAuth(EventsPage)} />

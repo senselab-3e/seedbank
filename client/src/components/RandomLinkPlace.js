@@ -21,6 +21,11 @@ const uniquePositions = () => {
   return [newheight, newwidth];
 };
 
+function chooseElement(assets) {
+  var element = assets[Math.floor(Math.random() * assets.length)];
+  return element;
+}
+
 //running through a loop
 
 const eventTypeStyling = type => {
@@ -74,8 +79,7 @@ const createLinks = (array, classname) => {
     array.forEach(el => {
       var newElement = document.createElement("div");
       newElement.className = classname;
-      newElement.style.backgroundColor = randomColor();
-      dotRandPos(newElement);
+
       //--->random placement if i want it from the beginning
       // let newCoor = uniquePositions();
       // newElement.style.top = newCoor[0] + "px";
@@ -83,6 +87,8 @@ const createLinks = (array, classname) => {
       //---->
 
       if (classname === "database") {
+        newElement.style.backgroundColor = randomColor();
+        dotRandPos(newElement);
         eventType(el);
         //all of this can be excavated to a separate exterior function. refactor
         newElement.textContent = el.name;
@@ -92,10 +98,37 @@ const createLinks = (array, classname) => {
         document.body.append(linkWrapper);
         // console.log("database condition check");
       } else if (classname === "dot") {
+        newElement.style.backgroundColor = randomColor();
+        dotRandPos(newElement);
         //this is just the default script that was used for inital testing. creating a pixel link to every page currently on glitch. that is what is consisted of in the eventlist array
         let linkWrapper = document.createElement("a");
         linkWrapper.href = "https://convalizards.glitch.me/" + el;
+        linkWrapper.className = "containerRandom";
+        linkWrapper.appendChild(newElement);
+        document.body.append(linkWrapper);
+      } else if (classname === "line") {
+        newElement.style.backgroundColor = randomColor();
+        dotRandPos(newElement);
+        //------>this was introduced if i wanted to random the x axis position only
+        // let newCoor2 = uniquePositions();
+        // newElement.style.top = "300px";
+        // newElement.style.left = newCoor2[1] + "px";
+        /// ------>
+        //this is just the default script that was used for inital testing. creating a pixel link to every page currently on glitch. that is what is consisted of in the eventlist array
+        let linkWrapper = document.createElement("div");
+        // linkWrapper.href = "https://convalizards.glitch.me/" + el;
         linkWrapper.className = classname + "container";
+        linkWrapper.appendChild(newElement);
+        document.body.append(linkWrapper);
+      } else if (classname === "gradient") {
+        console.log("happening");
+        dotRandPos(newElement);
+        newElement.style.backgroundImage = `url(${chooseElement(array)})`;
+        dotRandPos(newElement);
+        //this is just the default script that was used for inital testing. creating a pixel link to every page currently on glitch. that is what is consisted of in the eventlist array
+        let linkWrapper = document.createElement("a");
+
+        linkWrapper.className = "containerRandom";
         linkWrapper.appendChild(newElement);
         document.body.append(linkWrapper);
       }
@@ -107,10 +140,11 @@ const createLinks = (array, classname) => {
 
 const RandomLinkPlace = props => {
   createLinks(props.array, props.classname);
+  console.log(props.classname, "hello");
   //remember that set Interval can not call a function eg. NOT dotRandPost(parameter()) but dotRandPost(parameter) --->only a callback
   //only because a) the prop can only be read within the scope of this component, i have to use the random placement funciton within it.
 
-  // setInterval(dotRandPos, 2000);
+  //setInterval(dotRandPos, 2000);
   return <div></div>;
 };
 
@@ -125,31 +159,3 @@ export default RandomLinkPlace;
 //       : createLinks(props.array, props.classname)}
 //   </div>
 // );
-
-//-----> old component writing
-
-// export class RandomLinkPlace extends Component {
-//   componentDidMount() {
-//     createLinks();
-//   }
-//   render() {
-//     const dotpatches = document.querySelectorAll(".dot");
-
-//     const dotRandPos = () => {
-//       dotpatches.forEach(function(patch) {
-//         let newCoor4 = uniquePositions();
-//         patch.style.top = newCoor4[0] + "px";
-//         patch.style.left = newCoor4[1] + "px";
-//       });
-//     };
-
-//     dotRandPos();
-//     setInterval(dotRandPos, 3000);
-//     return (
-//       <div>
-//         <div id="target"></div>
-//         <LinkElementCreator linkList={linkList} />
-//       </div>
-//     );
-//   }
-// }

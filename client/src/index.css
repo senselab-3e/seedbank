@@ -12,28 +12,57 @@
 
 /* styling for randomlinkcomponent ---- begins */
 
-.dot {
-  height: 1px;
-  width: 1px;
-  /* border-radius: 50%; */
 
-  position: absolute;
+/*NOTES: Firefox won’t properly animate from a:visited to a:hover or vice versa. Instead, it will jump from a:visited to a:link and then transition to a:hover, as you can see in this example. This is mentioned somewhat in “Privacy and the :visited Selector”*/
+/*https://www.smashingmagazine.com/2013/04/css3-transitions-thank-god-specification/#a1*/
+.line {
+  height: 5px;
+  width: 5px;
   z-index: 100;
-  border: 1rem dotted transparent;
+  /* border: 20px solid rgb(34, 202, 160); */
+  -webkit-transition: width 2s ease-in-out;
+  -moz-transition: width 2s ease-in-out;
+  -ms-transition: width 2s ease-in-out;
+  -o-transition: width 2s ease-in-out;
+
+  transition: width 2s ease-in-out 1s, height 1s ease-in;
+  position: absolute;
+  /*this is a fake out to make the width of the dot appear thinner then 1px -- 1px being the minimum displayable size*/
 }
 
-a.dotcontainer:hover .dot {
-  border: 0.1rem solid deeppink;
-  opacity: 0.7;
+.line:hover {
+  /* opacity: 0.3; */
+  width: 60%;
+  height: 100%;
+
 }
 
-a.dotcontainer:visited .dot {
+
+.dot {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  position: absolute;
+
+  z-index: 100;
+
+}
+
+a:hover .dot {
+  /* border: 10px solid deeppink; */
+  /* background-color: transparent; */
+  opacity: 0.3;
+  /* border: 0.1rem solid deeppink;
+  opacity: 0.7; */
+}
+
+/* a.dotcontainer:visited .dot {
   border: 0.1rem dotted yellow;
-}
+} */
 
-a.dotcontainer .dot {
+/* a.dotcontainer .dot {
   border: 0.1rem dotted transparent;
-}
+} */
 
 /* styling for random comonent ---- ends */
 
@@ -115,4 +144,17 @@ a.dotcontainer .dot {
 
 .locationcontainer {
   position: absolute;
+}
+
+/*generic container*/
+.containerRandom {
+  position: absolute;
+
+}
+
+.gradient {
+  position: absolute;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
 }
