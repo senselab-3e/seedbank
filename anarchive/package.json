@@ -9,7 +9,7 @@
     "dev-server": "nodemon server.js",
     "client": "cd ../client && npm start",
     "dev": "NODE_ENV=development HTTP_PORT=3001 concurrently \"npm run dev-server\" \"npm run client\"",
-    "local-bundled": "NODE_ENV=production HTTP_PORT=3001 nodemon server.js"
+    "local-bundled": "NODE_ENV=local-bundled HTTP_PORT=3001 nodemon server.js"
   },
   "author": "",
   "license": "MIT",

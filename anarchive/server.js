@@ -8,14 +8,14 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 
-const inProduction = process.env.NODE_ENV === 'production';
+const node_env = process.env.NODE_ENV;
 const app = express();
 const router = express.Router();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-if (!inProduction) { const morgan = require('morgan'); app.use(morgan('combined')) };
+if (node_env != 'production') { const morgan = require('morgan'); app.use(morgan('combined')) };
 
 // Configure API routes
 var routes_path = "./routes/api/";
@@ -25,7 +25,7 @@ for (var i=0; i<api_routes.length; i++) {
 	app.use("/api/" + route, require(routes_path + route));
 };
 
-if (inProduction) {
+if (['production', 'local-bundled'].includes(node_env)) {
 	app.use(express.static('../client/build'));
 	app.get('*', function(req, res) {
 		res.sendFile(path.resolve(__dirname, '../client/build/index.html'));
@@ -57,6 +57,6 @@ function start_connection() {
 
 start_connection();
 
-console.log('Running in ' + process.env.NODE_ENV + ' mode');
+console.log('Running in ' + node_env + ' mode');
 
 app.listen(process.env.HTTP_PORT, () => console.log(`Listening on port ${process.env.HTTP_PORT}`));

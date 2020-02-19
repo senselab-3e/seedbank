@@ -6,15 +6,15 @@ function getPath(asset, type) {
 	return path.resolve(process.cwd(), 'assets', type, asset['path'], asset['name']);
 };
 
-function createPath(filename) {
+function hashPath(asset, type) {
 
-	var hash = md5(filename);
+	var hash = md5(asset.originalname);
     var chunked = hash.match(/.{1,2}/g).slice(0,4).join('/');
 
-    return path.join('../assets/images/', chunked, filename);
+    return path.join('./assets', type, chunked);
 };
 
 module.exports = {
     getPath,
-    createPath
+    hashPath
 }
