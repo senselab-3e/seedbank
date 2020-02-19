@@ -9,7 +9,7 @@ function getPath(asset, type) {
 function hashPath(asset, type) {
 
 	var hash = md5(asset.originalname);
-    var chunked = hash.match(/.{1,2}/g).slice(0,4).join('/');
+	var chunked = hash.match(/.{1,2}/g).slice(0,4).join('/');
 
     return path.join('./assets', type, chunked);
 };

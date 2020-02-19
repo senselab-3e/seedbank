@@ -21,13 +21,10 @@ class ImageCreate extends Component {
   }
 
   async submit(e) {
-    e.preventDefault(); // <-- not sure if this should be there or not; actually, this might be the problem, but I don't fully understand it yet
+    e.preventDefault();
 
     let formData = new FormData();
-    // console.log(this.state.image); // <-- this works
     await formData.append('image', this.state.image);
-    // console.log(formData.get('image'));
-    // note that FormData can't be logged; this is normal
 
     axios.post('/api/assets/images', formData, {'content-type': 'multipart/form-data'})
     .catch(err => { console.log(err); });
