@@ -23,9 +23,7 @@ export default function withAuth(ComponentToProtect, path) {
       //how the parameter path is being passed to this component should be refactored. this can be done by passing it through state. but it's ok for now
       if (path) {
         let text = path.slice(1);
-        console.log(text);
         text = text.replace(/-/g, " ");
-        console.log(text);
         this.setState({
           message: `Please log in to access ${text}`
         });
