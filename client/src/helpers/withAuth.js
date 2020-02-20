@@ -5,13 +5,14 @@ import axios from "axios";
 
 // wraps component in router config to require authentication
 
-export default function withAuth(ComponentToProtect, path) {
+export default function withAuth(ComponentToProtect, intendedPath) {
   return class extends Component {
     constructor() {
       super();
       this.state = {
         loading: true,
         redirect: false,
+        intendedPath: "",
         message: ""
       };
     }
@@ -21,8 +22,11 @@ export default function withAuth(ComponentToProtect, path) {
       };
       //create message to display on top of login
       //how the parameter path is being passed to this component should be refactored. this can be done by passing it through state. but it's ok for now
-      if (path) {
-        let text = path.slice(1);
+      if (intendedPath) {
+        this.setState({
+          intendedPath: intendedPath
+        });
+        let text = intendedPath.slice(1);
         text = text.replace(/-/g, " ");
         this.setState({
           message: `Please log in to access ${text}`
@@ -57,7 +61,7 @@ export default function withAuth(ComponentToProtect, path) {
             <Redirect
               to={{
                 pathname: "/auth",
-                state: { route: path, message: this.state.message }
+                state: { route: intendedPath, message: this.state.message }
               }}
             />
           </React.Fragment>
