@@ -18,7 +18,7 @@ export class AuthPage extends Component {
       console.log("nothing");
     }
   }
-  //this.props.location.state.route
+
   render() {
     return (
       <div>
@@ -38,17 +38,3 @@ export class AuthPage extends Component {
 }
 
 export default AuthPage;
-
-// const AuthPage = () => {
-// 	return (
-// 		<div>
-// 			<AuthLogin/>
-// 			<br/><br/>
-// 			<AuthSignup/>
-// 			<br/><br/>
-// 			<Link to='/'>Back to entryway</Link>
-// 			<br/><br/>
-// 			<AuthLogout/>
-// 		</div>
-// 	);
-// }

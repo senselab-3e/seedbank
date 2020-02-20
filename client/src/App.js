@@ -45,5 +45,3 @@ class App extends Component {
 }
 
 export default App;
-///<Route exact path="/events" component={withAuth(EventsPage)} />
-//<Route exact path="/traces" component={withAuth(ImagesPage)} />
