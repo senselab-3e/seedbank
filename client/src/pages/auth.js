@@ -8,9 +8,17 @@ export class AuthPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pathway: this.props.location.state.route
+      pathway: "/"
     };
   }
+  componentDidMount() {
+    if (this.props.location.state) {
+      this.setState({ pathway: this.props.location.state.route });
+    } else {
+      console.log("nothing");
+    }
+  }
+  //this.props.location.state.route
   render() {
     return (
       <div>

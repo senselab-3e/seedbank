@@ -5,7 +5,7 @@ import axios from "axios";
 
 // wraps component in router config to require authentication
 
-export default function withAuth(ComponentToProtect) {
+export default function withAuth(ComponentToProtect, path) {
   return class extends Component {
     constructor() {
       super();
@@ -38,9 +38,7 @@ export default function withAuth(ComponentToProtect) {
         return null;
       }
       if (redirect) {
-        return (
-          <Redirect to={{ pathname: "/auth", state: { route: "pathway" } }} />
-        );
+        return <Redirect to={{ pathname: "/auth", state: { route: path } }} />;
       }
       return (
         <React.Fragment>
