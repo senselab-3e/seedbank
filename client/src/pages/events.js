@@ -42,16 +42,3 @@ export class EventsPage extends Component {
 }
 
 export default EventsPage;
-
-// const EventsPage = () => {
-// 	return (
-// 		<div>
-// 			<EventCreate/>
-// 			<EventList/>
-// 			<br/><br/>
-// 			<Link to='/'>Back to entryway</Link>
-// 		</div>
-// 	);
-// }
-
-// export default EventsPage;

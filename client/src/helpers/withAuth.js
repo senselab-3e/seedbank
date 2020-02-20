@@ -11,13 +11,29 @@ export default function withAuth(ComponentToProtect, path) {
       super();
       this.state = {
         loading: true,
-        redirect: false
+        redirect: false,
+        message: ""
       };
     }
     componentDidMount() {
       const headers = {
         authorization: "Bearer " + localStorage.getItem("token")
       };
+      //create message to display on top of login
+      //how the parameter path is being passed to this component should be refactored. this can be done by passing it through state. but it's ok for now
+      if (path) {
+        let text = path.slice(1);
+        console.log(text);
+        text = text.replace(/-/g, " ");
+        console.log(text);
+        this.setState({
+          message: `Please log in to access ${text}`
+        });
+      } else {
+        this.setState({
+          message: "please log in"
+        });
+      }
 
       axios
         .get("/api/auth/verify", { headers: headers })
@@ -38,7 +54,16 @@ export default function withAuth(ComponentToProtect, path) {
         return null;
       }
       if (redirect) {
-        return <Redirect to={{ pathname: "/auth", state: { route: path } }} />;
+        return (
+          <React.Fragment>
+            <Redirect
+              to={{
+                pathname: "/auth",
+                state: { route: path, message: this.state.message }
+              }}
+            />
+          </React.Fragment>
+        );
       }
       return (
         <React.Fragment>
