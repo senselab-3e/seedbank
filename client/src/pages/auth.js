@@ -13,7 +13,15 @@ export class AuthPage extends Component {
       message: "",
       auth: false
     };
+    this.updateAuth = this.updateAuth.bind(this);
   }
+
+  updateAuth = status => {
+    console.log("triggered", status);
+    this.setState({
+      auth: status
+    });
+  };
 
   componentDidMount() {
     if (this.props.location.state) {
@@ -54,10 +62,18 @@ export class AuthPage extends Component {
       return (
         <div>
           <h3>{this.state.message}</h3>
-          <AuthLogin pathway={pathway} />
+          <AuthLogin
+            pathway={pathway}
+            updateAuth={this.updateAuth}
+            auth={this.auth}
+          />
           <br />
           <br />
-          <AuthSignup pathway={pathway} />
+          <AuthSignup
+            pathway={pathway}
+            updateAuth={this.updateAuth}
+            auth={this.auth}
+          />
           <br />
           <br />
           <Link to="/">Back to entryway</Link>

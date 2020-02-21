@@ -33,7 +33,7 @@ export default function withAuth(ComponentToProtect, intendedPath) {
         });
       } else {
         this.setState({
-          message: "please log in"
+          message: "Please log in"
         });
       }
 

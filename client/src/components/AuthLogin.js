@@ -5,7 +5,7 @@ import axios from "axios";
 class AuthLogin extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: "", authorize: false };
+    this.state = { email: "", password: "" };
     this.handleChange = this.handleChange.bind(this);
     this.login = this.login.bind(this);
   }
@@ -24,17 +24,14 @@ class AuthLogin extends Component {
       .then(res => {
         if (res.status === 200) {
           localStorage.setItem("token", res.data.token);
-          this.setState({
-            authorize: true
-          });
+          this.props.updateAuth(true);
         }
       })
       .catch(err => console.log(err));
   }
 
   render() {
-    if (this.state.authorize) {
-      console.log("authorized");
+    if (this.props.auth) {
       return <Redirect to={`${this.props.pathway}`} />;
     } else {
       return (

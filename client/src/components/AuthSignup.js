@@ -28,6 +28,7 @@ class AuthSignup extends Component {
           this.setState({
             authorize: true
           });
+          this.props.updateAuth(true);
         }
       })
       .catch(err => console.log(err));
