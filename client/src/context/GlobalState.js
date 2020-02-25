@@ -44,15 +44,16 @@ export const GlobalProvider = ({ children }) => {
   }
 
   async function addEvent(event) {
-    // const config = {
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   }
-    // };
+    const config = {
+      //i don't know if this is necessary -- removing or adding it makes no difference
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
 
     try {
-      const res = await axios.post("/api/events", event);
-      //const res = await axios.post("/api/events", event, config);
+      //const res = await axios.post("/api/events", event);
+      const res = await axios.post("/api/events", event, config);
       dispatch({
         type: "ADD_EVENT",
         payload: res.data

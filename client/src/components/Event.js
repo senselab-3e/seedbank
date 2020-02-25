@@ -10,7 +10,7 @@ export const Event = ({ event }) => {
       {event.name}
       <span>{event.location}</span>
       <span>{event.event_type}</span>
-      <button className="delete-btn">x</button>
+      <span>{event.data ? event.data : ""}</span>
     </li>
   );
 };
