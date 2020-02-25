@@ -2,9 +2,19 @@ import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 // import { v4 as uuidv4 } from "uuid";
 
+/* <div className="form-control">
+            <label htmlFor="location">Location</label>
+            <input
+              type="text"
+              value={location}
+              onChange={e => setLocation(e.target.value)}
+              placeholder="Enter Location..."
+            />
+          </div> */
+
 export default function AddEvent() {
   const [name, setName] = useState("");
-  const [sponge, setSponge] = useState("");
+  const [sponges, setSponges] = useState("");
   //   const [location, setLocation] = useState("");
   //   const [event_type, setEvent_type] = useState("");
 
@@ -17,7 +27,7 @@ export default function AddEvent() {
     const newEvent = {
       //id: Math.floor(Math.random() * 100000000),
       name,
-      sponge
+      sponges
       //   location,
       //   event_type
     };
@@ -41,8 +51,8 @@ export default function AddEvent() {
           <label htmlFor="event_type">Event Type</label>
           <input
             type="text"
-            value={sponge}
-            onChange={e => setSponge(e.target.value)}
+            value={sponges}
+            onChange={e => setSponges(e.target.value)}
             placeholder="Enter event type..."
           />
           <button className="btn">Add Event</button>
@@ -50,16 +60,4 @@ export default function AddEvent() {
       </form>
     </div>
   );
-}
-
-{
-  /* <div className="form-control">
-          <label htmlFor="location">Location</label>
-          <input
-            type="text"
-            value={location}
-            onChange={e => setLocation(e.target.value)}
-            placeholder="Enter Location..."
-          />
-        </div> */
 }
