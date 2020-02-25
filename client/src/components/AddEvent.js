@@ -18,7 +18,7 @@ export default function AddEvent() {
   //   const [location, setLocation] = useState("");
   //   const [event_type, setEvent_type] = useState("");
 
-  const { addEvent } = useContext(GlobalContext);
+  const { addEvent, fetchEvents } = useContext(GlobalContext);
   //function prop from gloablstate component
 
   const onSubmit = e => {
@@ -33,6 +33,7 @@ export default function AddEvent() {
     };
     //callback funtion to global state and reducer that will post
     addEvent(newEvent);
+    fetchEvents();
   };
   return (
     <div>
