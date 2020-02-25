@@ -35,7 +35,7 @@ export const GlobalProvider = ({ children }) => {
       const res = await axios.get("/api/events");
       dispatch({
         type: "FETCH_EVENTS",
-        payload: res.data.data
+        payload: res.data
       });
     } catch (err) {
       dispatch({
