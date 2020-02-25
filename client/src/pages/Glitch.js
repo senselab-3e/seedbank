@@ -8,6 +8,7 @@ import AddEvent from "../components/AddEvent";
 
 export default function Glitch() {
   const { events } = useContext(GlobalContext);
+  console.log(events);
   return (
     <>
       <div className="glitch">

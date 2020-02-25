@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
+import axios from "axios";
 // import axios from "axios";
 // import { v4 as uuidv4 } from "uuid";
 //eventually replace id numbering with uuid generator
@@ -17,68 +18,47 @@ import AppReducer from "./AppReducer";
 
 const initialState = {
   // NOTE: STATIC DATA for testing
-  events: [
-    //see below of old static array data
-    {
-      id: 0,
-      name: "Amsterdam",
-      location: "Amsterdam",
-      event_type: "Minor Movement",
-      event_start: "2019-08-24",
-      event_end: "2019-08-25"
-    }
-  ]
+  events: [],
+  error: null,
+  loading: true
 };
-
-// axios
-//       .get("/api/events")
-//       .then(events => {
-//         this.setState({
-//           events: events.data
-//         });
-//       })
-//       .catch(err => console.log(err));
-
-// export
-//// Similar to componentDidMount and componentDidUpdate: useEffect(() => {
-// const DataFetching = () => {
-//   const [events, setEvents] = useState({});
-//   const [loading, setLoading] = useState(false);
-//   useEffect(() => {
-//     setLoading(true);
-//     axios
-//       .get("/api/events")
-//       .then(events => {
-//         setEvents(events.data);
-//         setLoading(false);
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//   }, []);
-//   //createContext(events);
-//   console.log(events);
-// };
-
-// DataFetching();
 
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
+
   //actions
-  function addEvent(id) {
-    dispatch({
-      type: "ADD_EVENT",
-      payload: id
-    });
+
+  async function fetchEvents() {
+    try {
+      const res = await axios.get("/api/events");
+      dispatch({
+        type: "FETCH_EVENTS",
+        payload: res.data.data
+      });
+    } catch (err) {
+      dispatch({
+        type: "FETCH_ERROR",
+        payload: err.response.data.error
+      });
+    }
   }
+  //local data test only
+  //   function addEvent(id) {
+  //     dispatch({
+  //       type: "ADD_EVENT",
+  //       payload: id
+  //     });
+  //   }
 
   return (
     <GlobalContext.Provider
       value={{
         events: state.events,
-        addEvent
+        error: state.error,
+        loading: state.loading,
+        fetchEvents
       }}
     >
       {children}
