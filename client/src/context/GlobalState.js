@@ -1,8 +1,19 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 // import { v4 as uuidv4 } from "uuid";
+//eventually replace id numbering with uuid generator
+
+//NOTES:useState does not automatically merge update objects.
+//You can replicate this behavior by combining the function updater
+//form with object spread syntax:
+// setState(prevState => {
+//     // Object.assign would also work
+//     return {...prevState, ...updatedValues};
+//   });
+//   Another option is useReducer, which is more suited for managing state objects that contain multiple sub-values.
 
 const initialState = {
+  // NOTE: STATIC DATA for testing
   events: [
     {
       id: 0,
@@ -119,14 +130,39 @@ const initialState = {
   ]
 };
 
+// checkForEvents = () => {
+//     axios
+//       .get("/api/events")
+//       .then(events => {
+//         this.setState({
+//           events: events.data
+//         });
+//       })
+//       .catch(err => console.log(err));
+//   };
+
+//   componentDidMount() {
+//     this.checkForUpdates();
+//   }
+
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
+
+  //actions
+  function addEvent(id) {
+    dispatch({
+      type: "ADD_EVENT",
+      payload: id
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
-        events: state.events
+        events: state.events,
+        addEvent
       }}
     >
       {children}

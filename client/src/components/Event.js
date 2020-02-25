@@ -8,6 +8,7 @@ export const Event = ({ event }) => {
   return (
     <li className={""}>
       {event.name}
+      <span>{event.location}</span>
       <span>{event.event_type}</span>
       <button
         // onClick={() => deleteEvent(transaction.id)}

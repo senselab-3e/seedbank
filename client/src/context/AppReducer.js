@@ -1,6 +1,11 @@
 export default (state, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case "ADD_EVENT":
+      return {
+        ...state,
+        events: [action.payload, ...state.events]
+      };
+    default:
+      return state;
+  }
 };
