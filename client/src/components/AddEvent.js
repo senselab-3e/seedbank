@@ -11,7 +11,6 @@ export default function AddEvent() {
 
   const onSubmit = e => {
     e.preventDefault();
-
     //refactor later to use uuid to generate id:
     const newEvent = {
       id: Math.floor(Math.random() * 100000000),

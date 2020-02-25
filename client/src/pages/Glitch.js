@@ -4,6 +4,7 @@ import "../style/glitch.css";
 import glitch from "../assets/img/404_glitch2.gif";
 import { Event } from "../components/Event";
 import AddEvent from "../components/AddEvent";
+// import FetchEvents from "../components/FetchEvents";
 
 export default function Glitch() {
   const { events } = useContext(GlobalContext);
