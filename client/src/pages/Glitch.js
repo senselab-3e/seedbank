@@ -4,12 +4,11 @@ import "../style/glitch.css";
 import glitch from "../assets/img/404_glitch2.gif";
 import { Event } from "../components/Event";
 import AddEvent from "../components/AddEvent";
-// import FetchEvents from "../components/FetchEvents";
 
 export default function Glitch() {
   const { events, fetchEvents } = useContext(GlobalContext);
 
-  //use effect is a hook, for function components, that works like component did mount)
+  //useEffect is a hook, for function components, that works like component did mount. so it fetches the db values at component initialization
   useEffect(() => {
     fetchEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
