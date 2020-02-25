@@ -4,21 +4,24 @@ import { GlobalContext } from "../context/GlobalState";
 
 export default function AddEvent() {
   const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
-  const [event_type, setEvent_type] = useState("");
+  const [sponge, setSponge] = useState("");
+  //   const [location, setLocation] = useState("");
+  //   const [event_type, setEvent_type] = useState("");
 
   const { addEvent } = useContext(GlobalContext);
+  //function prop from gloablstate component
 
   const onSubmit = e => {
     e.preventDefault();
     //refactor later to use uuid to generate id:
     const newEvent = {
-      id: Math.floor(Math.random() * 100000000),
+      //id: Math.floor(Math.random() * 100000000),
       name,
-      location,
-      event_type
+      sponge
+      //   location,
+      //   event_type
     };
-    //+amount turn the value into a number -- where as simply passing along amount --> was a string
+    //callback funtion to global state and reducer that will post
     addEvent(newEvent);
   };
   return (
@@ -35,20 +38,11 @@ export default function AddEvent() {
           />
         </div>
         <div className="form-control">
-          <label htmlFor="location">Location</label>
-          <input
-            type="text"
-            value={location}
-            onChange={e => setLocation(e.target.value)}
-            placeholder="Enter Location..."
-          />
-        </div>
-        <div className="form-control">
           <label htmlFor="event_type">Event Type</label>
           <input
             type="text"
-            value={event_type}
-            onChange={e => setEvent_type(e.target.value)}
+            value={sponge}
+            onChange={e => setSponge(e.target.value)}
             placeholder="Enter event type..."
           />
           <button className="btn">Add Event</button>
@@ -56,4 +50,16 @@ export default function AddEvent() {
       </form>
     </div>
   );
+}
+
+{
+  /* <div className="form-control">
+          <label htmlFor="location">Location</label>
+          <input
+            type="text"
+            value={location}
+            onChange={e => setLocation(e.target.value)}
+            placeholder="Enter Location..."
+          />
+        </div> */
 }

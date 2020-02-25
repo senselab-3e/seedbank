@@ -42,13 +42,44 @@ export const GlobalProvider = ({ children }) => {
       });
     }
   }
-  //local data test only
-  //   function addEvent(id) {
-  //     dispatch({
-  //       type: "ADD_EVENT",
-  //       payload: id
-  //     });
-  //   }
+
+  async function addEvent(event) {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    try {
+      const res = await axios.post("/api/events", event, config);
+
+      dispatch({
+        type: "ADD_EVENT",
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: "TRANSACTION_ERROR",
+        payload: err.response.data.error
+      });
+    }
+  }
+
+  //NOTE: a route for deleting events does not yet exist
+  //   async function deleteEvent(id) {
+  //     try {
+  //       await axios.delete(`/api/events/:id`);
+
+  //       dispatch({
+  //         type: 'DELETE_TRANSACTION',
+  //         payload: id
+  //       });
+  //     } catch (err) {
+  //       dispatch({
+  //         type: 'TRANSACTION_ERROR',
+  //         payload: err.response.data.error
+  //       });
+  // }
 
   return (
     <GlobalContext.Provider
@@ -56,7 +87,8 @@ export const GlobalProvider = ({ children }) => {
         events: state.events,
         error: state.error,
         loading: state.loading,
-        fetchEvents
+        fetchEvents,
+        addEvent
       }}
     >
       {children}

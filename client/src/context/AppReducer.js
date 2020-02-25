@@ -1,5 +1,6 @@
 export default (state, action) => {
   switch (action.type) {
+    //this was written for local add event testing ---
     // case "ADD_EVENT":
     //   return {
     //     ...state,
@@ -10,6 +11,11 @@ export default (state, action) => {
         ...state,
         loading: false,
         events: action.payload
+      };
+    case "ADD_EVENT":
+      return {
+        ...state,
+        events: [...state.events, action.payload]
       };
     case "FETCH_ERROR":
       return {
