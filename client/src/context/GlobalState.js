@@ -28,6 +28,10 @@ export const GlobalProvider = ({ children }) => {
 
   //actions
 
+  //NOTE: await blocks JavaScript from executing the next line of code until a promise resolves. This may have the unintended consequence of slowing down code execution.
+  //A promise is an object that will return a value in future. Because of this “in future” thing, Promises are well suited for asynchronous JavaScript operations.
+  //references: https://zellwk.com/blog/async-await/   || https://zellwk.com/blog/js-promises/
+
   async function fetchEvents() {
     try {
       const res = await axios.get("/api/events");
