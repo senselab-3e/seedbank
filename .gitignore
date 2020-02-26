@@ -3,3 +3,7 @@
 /anarchive/node_modules
 /anarchive/assets
 /client/node_modules
+devNotes.md
+/client/src/components/RandomColor.js
+/client/build/
+/client/src/components/FetchEvents.js
