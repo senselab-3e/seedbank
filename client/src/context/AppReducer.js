@@ -22,7 +22,7 @@ export default (state, action) => {
         ...state,
         events: state.events.filter(event => event.id !== action.payload)
       };
-    case "FETCH_ERROR":
+    case "TRANSACTION_ERROR":
       return {
         ...state,
         error: action.payload

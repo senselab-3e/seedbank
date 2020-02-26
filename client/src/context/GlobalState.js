@@ -37,7 +37,7 @@ export const GlobalProvider = ({ children }) => {
       });
     } catch (err) {
       dispatch({
-        type: "FETCH_ERROR",
+        type: "TRANSACTION_ERROR",
         payload: err.response.data.error
       });
     }
@@ -71,10 +71,9 @@ export const GlobalProvider = ({ children }) => {
     console.log(id);
     try {
       await axios.delete(`/api/events/${id}`);
-      //await axios.delete(`/api/events/${id}`);
 
       dispatch({
-        type: "DELETE_TRANSACTION",
+        type: "DELETE_EVENT",
         payload: id
       });
     } catch (err) {

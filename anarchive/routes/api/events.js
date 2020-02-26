@@ -28,8 +28,6 @@ router.post("/", (req, res) => {
 //DELETE api/events
 
 router.delete("/:id", (req, res) => {
-	console.log("AAAAAAAAAA");
-	//   const event = await knex.findById(req.params.id);
 
 	let select = parseInt(req.params.id);
 	console.log(select)
