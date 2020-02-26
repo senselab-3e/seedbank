@@ -206,7 +206,7 @@ export const GlobalProvider = ({ children }) => {
       const res = await axios.post("/api/events", event, config);
       dispatch({
         type: "ADD_EVENT",
-        payload: res.data
+        payload: res.data.data
       });
     } catch (err) {
       dispatch({

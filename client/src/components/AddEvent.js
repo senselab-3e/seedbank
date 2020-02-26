@@ -33,7 +33,7 @@ export default function AddEvent() {
     };
     //callback funtion to global state and reducer that will post
     addEvent(newEvent);
-    fetchEvents();
+    //fetchEvents();
   };
   return (
     <div>
