@@ -67,20 +67,23 @@ export const GlobalProvider = ({ children }) => {
   }
 
   //NOTE: a route for deleting events does not yet exist
-  //   async function deleteEvent(id) {
-  //     try {
-  //       await axios.delete(`/api/events/:id`);
+  async function deleteEvent(id) {
+    console.log(id);
+    try {
+      await axios.delete(`/api/events/${id}`);
+      //await axios.delete(`/api/events/${id}`);
 
-  //       dispatch({
-  //         type: 'DELETE_TRANSACTION',
-  //         payload: id
-  //       });
-  //     } catch (err) {
-  //       dispatch({
-  //         type: 'TRANSACTION_ERROR',
-  //         payload: err.response.data.error
-  //       });
-  // }
+      dispatch({
+        type: "DELETE_TRANSACTION",
+        payload: id
+      });
+    } catch (err) {
+      dispatch({
+        type: "TRANSACTION_ERROR",
+        payload: err.response.data.error
+      });
+    }
+  }
 
   return (
     <GlobalContext.Provider
@@ -89,7 +92,8 @@ export const GlobalProvider = ({ children }) => {
         error: state.error,
         loading: state.loading,
         fetchEvents,
-        addEvent
+        addEvent,
+        deleteEvent
       }}
     >
       {children}
