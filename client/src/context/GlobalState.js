@@ -49,7 +49,7 @@ export const GlobalProvider = ({ children }) => {
   //res.data is confirmed. why? otherwise the fetch list which uses the exact key.values with id and name etc wouldn't work.
   async function fetchEvents() {
     try {
-      const res = await axios.get("/api/events");
+      const res = await axios.get("/api/events4context");
       dispatch({
         type: "FETCH_EVENTS",
         payload: res.data
@@ -72,7 +72,7 @@ export const GlobalProvider = ({ children }) => {
 
     try {
       //const res = await axios.post("/api/events", event);
-      const res = await axios.post("/api/events", event, config);
+      const res = await axios.post("/api/events4context", event, config);
       console.log(res.data);
       //because it's never receiving a response from the server, it doesn't end up passing a dispatch.
       //in prior versions i had res.data ---
@@ -92,7 +92,7 @@ export const GlobalProvider = ({ children }) => {
   async function deleteEvent(id) {
     console.log(id);
     try {
-      await axios.delete(`/api/events/${id}`);
+      await axios.delete(`/api/events4context/${id}`);
 
       dispatch({
         type: "DELETE_EVENT",

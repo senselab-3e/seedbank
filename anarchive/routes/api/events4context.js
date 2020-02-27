@@ -6,23 +6,36 @@ const knex = require("../../db/knex.js");
 router.get("/", (req, res) => {
 	knex("events")
 		.then(events => {
-			res.send(events);
+			res.send(events)
+
 		})
 		.catch(err => {
 			console.log(err);
 		});
 });
 
-// POST api/events
+//CREATE EVENTs
+
 router.post("/", (req, res) => {
+
+	const {
+		sponges,
+		name
+	} = req.body;
 	knex("events")
 		.insert({
 			name: req.body.name,
 			data: "{sponges: " + req.body.sponges.toString() + "}"
 		})
+		.then(res.send({
+			success: true,
+			name: name,
+			data: "{sponges: " + sponges.toString() + "}"
+		}))
 		.catch(err => {
 			console.log(err);
 		});
+
 });
 
 //DELETE api/events

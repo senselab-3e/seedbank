@@ -2,25 +2,22 @@ import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 // import { v4 as uuidv4 } from "uuid";
 export const AddEvent = () => {
+  //this is a bit like setState
   const [name, setName] = useState("");
   const [sponges, setSponges] = useState("");
 
   const { addEvent } = useContext(GlobalContext);
-  //function prop from gloablstate component
 
   const onSubmit = e => {
     e.preventDefault();
-    //refactor later to use uuid to generate id:
+
     const newEvent = {
-      //id: Math.floor(Math.random() * 100000000),
       name,
       sponges
       //   location,
       //   event_type
     };
-    //callback funtion to global state and reducer that will post
     addEvent(newEvent);
-    //fetchEvents();
   };
   return (
     <div>

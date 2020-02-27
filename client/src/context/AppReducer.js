@@ -1,5 +1,5 @@
 export default (state, action) => {
-  console.log("helllo?");
+  console.log("hellloReducer");
   switch (action.type) {
     case "FETCH_EVENTS":
       console.log("fetching event", action.payload);
