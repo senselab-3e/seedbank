@@ -1,24 +1,11 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 // import { v4 as uuidv4 } from "uuid";
-
-/* <div className="form-control">
-            <label htmlFor="location">Location</label>
-            <input
-              type="text"
-              value={location}
-              onChange={e => setLocation(e.target.value)}
-              placeholder="Enter Location..."
-            />
-          </div> */
-
-export default function AddEvent() {
+export const AddEvent = () => {
   const [name, setName] = useState("");
   const [sponges, setSponges] = useState("");
-  //   const [location, setLocation] = useState("");
-  //   const [event_type, setEvent_type] = useState("");
 
-  const { addEvent, fetchEvents } = useContext(GlobalContext);
+  const { addEvent } = useContext(GlobalContext);
   //function prop from gloablstate component
 
   const onSubmit = e => {
@@ -61,4 +48,4 @@ export default function AddEvent() {
       </form>
     </div>
   );
-}
+};

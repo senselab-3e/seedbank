@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
 export const Event = ({ event }) => {
-  const { deleteEvent, fetchEvents } = useContext(GlobalContext);
+  const { deleteEvent } = useContext(GlobalContext);
   //const altBars = event.id % 2 === 0 ? "even" : "odd";
   function eventHandler(id) {
     deleteEvent(id);
-    fetchEvents();
+    //fetchEvents();
   }
   //function () { deleteEvent(event.id) onClick}
   //below i use Math.abs to make any number a positive number so we don't get a double printing of a -$-400 etc etc // and allow the sign variable alone to return the neg/positiv indicator

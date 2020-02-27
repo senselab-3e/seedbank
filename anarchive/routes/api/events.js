@@ -6,7 +6,8 @@ const knex = require("../../db/knex.js");
 router.get("/", (req, res) => {
 	knex("events")
 		.then(events => {
-			res.send(events);
+			res.send(events)
+
 		})
 		.catch(err => {
 			console.log(err);
@@ -15,10 +16,15 @@ router.get("/", (req, res) => {
 
 // POST api/events
 router.post("/", (req, res) => {
+
 	knex("events")
 		.insert({
 			name: req.body.name,
 			data: "{sponges: " + req.body.sponges.toString() + "}"
+		})
+		.then(events => {
+			res.send(events)
+
 		})
 		.catch(err => {
 			console.log(err);
@@ -30,14 +36,15 @@ router.post("/", (req, res) => {
 router.delete("/:id", (req, res) => {
 
 	let select = parseInt(req.params.id);
-	console.log(select)
+	console.log('Deleting Id: ' + select)
 	knex("events")
 		.where({
 			id: select
 		})
 		.del()
+
 		.catch(err => {
-			res.status(500).json({
+			res.sendStatus(500).json({
 				status: 'Error :(',
 				error: err
 			})

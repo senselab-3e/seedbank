@@ -5,8 +5,11 @@ import { GlobalContext } from "../context/GlobalState";
 
 export const EventListlings = () => {
   const { events, fetchEvents } = useContext(GlobalContext);
-
+  console.log(events);
   //useEffect is a hook, for function components, that works like component did mount. so it fetches the db values at component initialization
+  //in any kind of asynchronous component you want to use useEffect
+  ////the empty array below keeps it from going through an infinite loop
+
   useEffect(() => {
     fetchEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps

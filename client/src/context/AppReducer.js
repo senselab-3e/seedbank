@@ -1,23 +1,21 @@
 export default (state, action) => {
+  console.log("helllo?");
   switch (action.type) {
-    //this was written for local add event testing ---
-    // case "ADD_EVENT":
-    //   return {
-    //     ...state,
-    //     events: [action.payload, ...state.events]
-    //   };
     case "FETCH_EVENTS":
+      console.log("fetching event", action.payload);
       return {
         ...state,
         loading: false,
         events: action.payload
       };
     case "ADD_EVENT":
+      console.log("adding event", action.payload);
       return {
         ...state,
         events: [...state.events, action.payload]
       };
     case "DELETE_EVENT":
+      console.log("deleting event");
       return {
         ...state,
         events: state.events.filter(event => event.id !== action.payload)
@@ -28,6 +26,7 @@ export default (state, action) => {
         error: action.payload
       };
     default:
+      console.log("passing to default");
       return state;
   }
 };
