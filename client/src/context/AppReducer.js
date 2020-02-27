@@ -10,6 +10,7 @@ export default (state, action) => {
       };
     case "ADD_EVENT":
       console.log("adding event", action.payload);
+      //the value of action payload is printing "Created" -- but this is based on what the events api is sending back
       return {
         ...state,
         events: [...state.events, action.payload]
