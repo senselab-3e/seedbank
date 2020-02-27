@@ -15,6 +15,12 @@ router.get("/", (req, res) => {
 });
 
 // POST api/events
+
+/// the .then(events => {
+// 	res.send(events)
+
+// })
+//is just a test. it was done to see what was going wrong with my lack of updates in the reducer/globalcontext front end. this was because no data was being sent back // and therefore the axios await was left hanging, before the reducer was triggered re-setting the state of the events. nothing was happening though, with the await axios causing teh error console to delay reporting any error in the first place. but now i know it's that the api has to be rewritten and not a probelm with my front-end script
 router.post("/", (req, res) => {
 
 	knex("events")
