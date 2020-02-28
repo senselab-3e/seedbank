@@ -11,16 +11,17 @@ function Thingies() {
     fetchEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   //   <ArrayOptions array="testArray" />;
-  let choosenArray = ArrayOptions("thingies");
-  console.log(choosenArray);
+  //   let choosenArray = ArrayOptions("thingies");
+  //   console.log(choosenArray); ---> this is all i need now to retreive the array of images pathway values now
 
   return (
     <div>
       <EventPopulate array={events} className={"threshold"} randomPos={true} />
       <EventPopulate array={[1, 2, 3, 4, 5, 6]} randomPos={false} />
       <EventPopulate
-        array={[1, 2, 3, 4, 5, 6]}
+        array={ArrayOptions("thingies")}
         className={"line"}
         randomPos={true}
       />
