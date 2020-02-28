@@ -25,10 +25,13 @@ export default class Header extends Component {
               <Link to="/about3e">3E About</Link>
             </li>
             <li>
-              <Link to="/play">Play</Link>
+              <Link to="/play">
+                Play -- refactoring spot for random element components and
+                retrieving arrays
+              </Link>
             </li>
             <li>
-              <Link to="/oOoOs">404 oOoO Portal</Link>
+              <Link to="/oOoOs">Event List retrieved by Context/Hooks</Link>
             </li>
             <li>
               <Link to="/patches">Patches</Link>

@@ -14,7 +14,7 @@ function EventPopulate(props) {
   //if no classname was specified a generic one is passed to the child
   props.className
     ? (localclassName = props.className)
-    : console.log("default className being used");
+    : (localclassName = "defaultThingy");
 
   //   props.imgSrc
   //     ? (localImgSrc = props.imgSrc)
