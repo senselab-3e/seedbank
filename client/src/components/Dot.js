@@ -20,27 +20,31 @@ const uniquePositions = () => {
   return [newheight, newwidth];
 };
 
-// // const populate = array => {
-// //   array.forEach(element => {});
-// // };
-
-// let elType = document.createElement("div");
-
 function Dot({ event, className }) {
   let newCoor = uniquePositions();
+  let coloring = "";
+  className !== "defaultThingy"
+    ? (coloring = randomColor())
+    : (coloring = null);
+
+  //this is just creating a quick condition so that if the default class is
+  //invoked the background color for randomcolor won't override the css for the background color of deeppink
+  //which is applied in index.css i want to see during development if something is missing as special class
 
   return (
-    <div
-      className={className}
-      id={event.name ? event.name : ""}
-      style={{
-        top: newCoor[0] + "px",
-        left: newCoor[1] + "px",
-        backgroundColor: randomColor()
-      }}
-    >
-      <p>{event.name}</p>
-    </div>
+    <React.Fragment>
+      <div
+        className={className}
+        id={event.name ? event.name : ""}
+        style={{
+          top: newCoor[0] + "px",
+          left: newCoor[1] + "px",
+          backgroundColor: coloring
+        }}
+      >
+        <p>{event.name}</p>
+      </div>
+    </React.Fragment>
   );
 }
 
