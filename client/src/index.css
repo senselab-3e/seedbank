@@ -17,11 +17,45 @@ body img {
 }
 
 .threshold {
+    opacity: 0.9;
     height: 100px;
     width: 100px;
     border-radius: 50%;
     position: absolute;
     z-index: 100;
+    -webkit-transition: width 2s ease-in-out;
+    -moz-transition: width 2s ease-in-out;
+    -ms-transition: width 2s ease-in-out;
+    -o-transition: width 2s ease-in-out;
+    transition: height 1s ease-in-out 1s, width 1s ease-in;
+
+}
+
+.threshold:hover {
+    opacity: 1;
+    width: 60%;
+    height: 100%;
+}
+
+
+.line {
+    height: 10px;
+    width: 10px;
+    z-index: 100;
+    /* border: 20px solid rgb(34, 202, 160); */
+    -webkit-transition: width 2s ease-in-out;
+    -moz-transition: width 2s ease-in-out;
+    -ms-transition: width 2s ease-in-out;
+    -o-transition: width 2s ease-in-out;
+
+    transition: width 2s ease-in-out 1s, height 1s ease-in;
+    position: absolute;
+}
+
+.line:hover {
+    width: 60%;
+    height: 100%;
+
 }
 
 .defaultThingy {
