@@ -63,7 +63,6 @@ body img {
     width: 5px;
     background-color: var(--main-highlight-color);
     color: var(--main-selection-color);
-    position: absolute;
+    /* position: absolute; */
     z-index: 100;
-
 }

@@ -20,19 +20,18 @@ const uniquePositions = () => {
   return [newheight, newwidth];
 };
 
+//this is just creating a quick condition so that if the default class is
+//invoked the background color for randomcolor won't override the css for the background color of deeppink
+//which is applied in index.css i want to see during development if something is missing as special class
+
 function Pop({ event, className, randomPos }) {
   let newCoor = "10px";
-  console.log(randomPos, "position status");
   randomPos ? (newCoor = uniquePositions()) : (newCoor = "10px");
 
   let coloring = "";
   className !== "defaultThingy"
     ? (coloring = randomColor())
     : (coloring = null);
-
-  //this is just creating a quick condition so that if the default class is
-  //invoked the background color for randomcolor won't override the css for the background color of deeppink
-  //which is applied in index.css i want to see during development if something is missing as special class
 
   return (
     <React.Fragment>
