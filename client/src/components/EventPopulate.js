@@ -1,5 +1,5 @@
 import React from "react";
-import Dot from "./Dot";
+import Pop from "./Pop";
 import { v4 as uuidv4 } from "uuid";
 
 function EventPopulate(props) {
@@ -19,7 +19,7 @@ function EventPopulate(props) {
   return (
     <div>
       {localarray.map(event => (
-        <Dot
+        <Pop
           key={uuidv4()}
           event={event}
           className={localclassName}

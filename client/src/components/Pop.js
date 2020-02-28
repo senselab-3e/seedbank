@@ -20,7 +20,7 @@ const uniquePositions = () => {
   return [newheight, newwidth];
 };
 
-function Dot({ event, className, randomPos }) {
+function Pop({ event, className, randomPos }) {
   let newCoor = "10px";
   console.log(randomPos, "position status");
   randomPos ? (newCoor = uniquePositions()) : (newCoor = "10px");
@@ -51,4 +51,4 @@ function Dot({ event, className, randomPos }) {
   );
 }
 
-export default Dot;
+export default Pop;

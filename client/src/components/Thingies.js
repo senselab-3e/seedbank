@@ -17,7 +17,7 @@ function Thingies() {
       <EventPopulate
         array={[1, 2, 3, 4, 5, 6]}
         className={"line"}
-        randomPos={true}
+        randomPos={false}
       />
     </div>
   );
