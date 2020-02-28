@@ -13,6 +13,7 @@ function Thingies() {
   return (
     <div>
       <EventPopulate array={events} className={"threshold"} />
+      <EventPopulate array={[1, 2, 3, 4, 5, 6]} />
     </div>
   );
 }
