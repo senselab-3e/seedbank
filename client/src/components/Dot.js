@@ -24,10 +24,10 @@ const uniquePositions = () => {
 // //   array.forEach(element => {});
 // // };
 
-let newCoor = uniquePositions();
 // let elType = document.createElement("div");
 
 function Dot({ event }) {
+  let newCoor = uniquePositions();
   return (
     <div
       className="threshold"
@@ -38,7 +38,7 @@ function Dot({ event }) {
         backgroundColor: randomColor()
       }}
     >
-      aa
+      <p>{event.name}</p>
     </div>
   );
 }
