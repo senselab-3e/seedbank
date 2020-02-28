@@ -20,8 +20,11 @@ const uniquePositions = () => {
   return [newheight, newwidth];
 };
 
-function Dot({ event, className }) {
-  let newCoor = uniquePositions();
+function Dot({ event, className, randomPos }) {
+  let newCoor = "10px";
+  console.log(randomPos, "position status");
+  randomPos ? (newCoor = uniquePositions()) : (newCoor = "10px");
+
   let coloring = "";
   className !== "defaultThingy"
     ? (coloring = randomColor())

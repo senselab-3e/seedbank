@@ -19,7 +19,12 @@ function EventPopulate(props) {
   return (
     <div>
       {localarray.map(event => (
-        <Dot key={uuidv4()} event={event} className={localclassName} />
+        <Dot
+          key={uuidv4()}
+          event={event}
+          className={localclassName}
+          randomPos={props.randomPos}
+        />
       ))}
     </div>
   );
