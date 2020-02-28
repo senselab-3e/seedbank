@@ -2,7 +2,7 @@ export default (state, action) => {
   console.log("hellloReducer");
   switch (action.type) {
     case "FETCH_EVENTS":
-      console.log("fetching event", action.payload);
+      console.log("fetching event");
       return {
         ...state,
         loading: false,
