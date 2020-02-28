@@ -1,31 +1,22 @@
 import React from "react";
 import Dot from "./Dot";
 
-//let h, w, newheight, newwidth;
-
-// const uniquePositions = () => {
-//   h = window.innerHeight - 100;
-//   w = window.innerWidth - 100;
-//   newheight = Math.floor(Math.random() * h);
-//   newwidth = Math.floor(Math.random() * w);
-
-//   return [newheight, newwidth];
-// };
-
-// const populate = array => {
-//   array.forEach(element => {});
-// };
-
+//NOTE: the classname needs to be specified from the parent component so the shape of whatever is rendered happens okay
 function EventPopulate(props) {
   let localarray = [];
+  let localclassName = "defaultThingy";
 
   props.array ? (localarray = props.array) : console.log("no array");
   console.log(localarray);
 
+  props.className
+    ? (localclassName = props.className)
+    : console.log("defaul className being used");
+
   return (
     <div>
       {localarray.map(event => (
-        <Dot key={event.id} event={event} className={props.className} />
+        <Dot key={event.id} event={event} className={localclassName} />
       ))}
     </div>
   );

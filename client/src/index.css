@@ -9,3 +9,13 @@ body img {
     position: absolute;
     z-index: 100;
 }
+
+.defaultThingy {
+
+    height: 5px;
+    width: 5px;
+    color: deeppink;
+    position: absolute;
+    z-index: 100;
+
+}

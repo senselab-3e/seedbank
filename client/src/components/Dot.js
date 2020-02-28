@@ -28,6 +28,7 @@ const uniquePositions = () => {
 
 function Dot({ event, className }) {
   let newCoor = uniquePositions();
+
   return (
     <div
       className={className}
