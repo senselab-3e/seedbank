@@ -25,7 +25,7 @@ function EventPopulate(props) {
   return (
     <div>
       {localarray.map(event => (
-        <Dot key={event.id} event={event} />
+        <Dot key={event.id} event={event} className={props.className} />
       ))}
     </div>
   );

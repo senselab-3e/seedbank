@@ -26,11 +26,11 @@ const uniquePositions = () => {
 
 // let elType = document.createElement("div");
 
-function Dot({ event }) {
+function Dot({ event, className }) {
   let newCoor = uniquePositions();
   return (
     <div
-      className="threshold"
+      className={className}
       id={event.name ? event.name : ""}
       style={{
         top: newCoor[0] + "px",
