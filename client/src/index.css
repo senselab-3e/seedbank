@@ -67,6 +67,8 @@ body img {
     z-index: 100;
 }
 
-.images {
+.Images {
     position: absolute;
+    width: 200px;
+    height: 200px;
 }

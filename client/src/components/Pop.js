@@ -47,7 +47,8 @@ function Pop({ event, className, randomPos }) {
         style={{
           top: newCoor[0] + "px",
           left: newCoor[1] + "px",
-          backgroundColor: coloring
+          backgroundColor: coloring,
+          backgroundImage: imgSrc
         }}
       >
         <p>{event.name}</p>
