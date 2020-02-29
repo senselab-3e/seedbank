@@ -33,6 +33,12 @@ function Pop({ event, className, randomPos }) {
     ? (coloring = randomColor())
     : (coloring = null);
 
+  let imgSrc = "";
+  className === "Images" ? (imgSrc = `url(${event})`) : (imgSrc = "");
+
+  //src={imgSrc}
+
+  console.log(imgSrc);
   return (
     <React.Fragment>
       <div

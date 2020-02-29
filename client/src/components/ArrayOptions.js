@@ -52,6 +52,8 @@ const testArray = [1, 2, 3, 4, 5, 6]
 //but anyways it works. so again, not export default - -> because that's a react default. i want to reach into this component and grab a single return value from a specific function run by this component
 //based on the prop value i pass to it. 
 
+//you can use it by doing import { ArrayOptions } from "./ArrayOptions";
+
 export const ArrayOptions = (props) => {
   //console.log(props, 'arrayoption prop')
   let chosenArray = []

@@ -25,6 +25,11 @@ function Thingies() {
         className={"line"}
         randomPos={true}
       />
+      <EventPopulate
+        array={ArrayOptions("thingies")}
+        className={"Images"}
+        randomPos={true}
+      />
     </div>
   );
 }
