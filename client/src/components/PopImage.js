@@ -13,7 +13,7 @@ function PopImage({ event, className, randomPos }) {
       <img
         alt={event}
         src={event}
-        className={(className, "easeImage")}
+        className={className}
         style={{
           top: newCoor[0] + "px",
           left: newCoor[1] + "px"

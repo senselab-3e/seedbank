@@ -112,7 +112,7 @@ body img {
     position: absolute;
 }
 
-.easeImage {
+.easeLarger {
     position: absolute;
     transform: scale(0.2, 0.2);
     -ms-transform: scale(0.2, 0.2);
@@ -121,7 +121,7 @@ body img {
     transition: transform 1s;
 }
 
-.easeImage:hover {
+.easeLarger:hover {
     position: absolute;
     transform: scale(0.9, 0.9);
     -ms-transform: scale(0.9, 0.9);

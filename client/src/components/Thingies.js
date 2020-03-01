@@ -27,13 +27,13 @@ function Thingies() {
       />
       <EventPopulate
         array={ArrayOptions("thingies")}
-        className={"easeImages"}
+        className={"easeLarger"}
         randomPos={true}
         image={true}
       />
       <EventPopulate
         array={ArrayOptions("boundthingies")}
-        className={"easeImages"}
+        className={"easeLarger"}
         randomPos={true}
         image={true}
       />
