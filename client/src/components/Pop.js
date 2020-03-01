@@ -1,4 +1,5 @@
 import React from "react";
+import EventCreate from "./EventCreate";
 
 const randomColor = () => {
   var letters = "0123456789ABCDEF";
@@ -33,14 +34,48 @@ function Pop({ event, className, randomPos }) {
     ? (coloring = randomColor())
     : (coloring = null);
 
-  let imgSrc = "";
-  className === "Images" ? (imgSrc = `url(${event})`) : (imgSrc = "");
+  // let imgSrc = "";
+  // className === "Images" ? (imgSrc = `url(${event})`) : (imgSrc = "");
 
   //src={imgSrc}
+  // console.log(imgSrc);
 
-  console.log(imgSrc);
-  return (
-    <React.Fragment>
+  if (className !== "Images") {
+    return (
+      <React.Fragment>
+        <div
+          className={className}
+          id={event.name ? event.name : ""}
+          style={{
+            top: newCoor[0] + "px",
+            left: newCoor[1] + "px",
+            backgroundColor: coloring
+          }}
+        ></div>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <div id={event.name ? event.name : ""}>
+          <img
+            alt={EventCreate.id}
+            src={event}
+            className={className}
+            style={{
+              top: newCoor[0] + "px",
+              left: newCoor[1] + "px"
+            }}
+          ></img>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
+export default Pop;
+
+/* <React.Fragment>
       <div
         className={className}
         id={event.name ? event.name : ""}
@@ -53,8 +88,4 @@ function Pop({ event, className, randomPos }) {
       >
         <p>{event.name}</p>
       </div>
-    </React.Fragment>
-  );
-}
-
-export default Pop;
+    </React.Fragment> */
