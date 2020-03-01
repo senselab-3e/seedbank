@@ -48,14 +48,14 @@ body img {
 /*POP COMPONENT*/
 
 .threshold {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     opacity: 0.3;
     border-radius: 50%;
     position: absolute;
-    transform: scale(0.2, 0.2);
-    -ms-transform: scale(0.2, 0.2);
-    -webkit-transform: scale(0.2, 0.2);
+    transform: scale(0.9, 0.9);
+    -ms-transform: scale(0.9, 0.9);
+    -webkit-transform: scale(0.9, 0.9);
     transition-timing-function: ease;
     transition: transform 1s;
     /* transition: scale 2s; */
@@ -65,9 +65,9 @@ body img {
 
 .threshold:hover {
     opacity: 0.9;
-    transform: scale(0.9, 0.9);
-    -ms-transform: scale(0.9, 0.9);
-    -webkit-transform: scale(0.9, 0.9);
+    transform: scale(0.1, 0.1);
+    -ms-transform: scale(0.1, 0.1);
+    -webkit-transform: scale(0.1, 0.1);
 
 }
 
