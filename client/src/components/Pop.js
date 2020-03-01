@@ -57,17 +57,15 @@ function Pop({ event, className, randomPos }) {
   } else {
     return (
       <React.Fragment>
-        <div id={event.name ? event.name : ""}>
-          <img
-            alt={EventCreate.id}
-            src={event}
-            className={className}
-            style={{
-              top: newCoor[0] + "px",
-              left: newCoor[1] + "px"
-            }}
-          ></img>
-        </div>
+        <img
+          alt={EventCreate.id}
+          src={event}
+          className={className}
+          style={{
+            top: newCoor[0] + "px",
+            left: newCoor[1] + "px"
+          }}
+        ></img>
       </React.Fragment>
     );
   }
