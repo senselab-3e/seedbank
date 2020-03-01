@@ -38,11 +38,17 @@ function Thingies() {
         image={true}
       />
       <EventPopulate
+        array={events}
+        className={"defaultTxt"}
+        randomPos={true}
+        text={true}
+      />
+      <EventPopulate
         array={ArrayOptions("testArray")}
         className={"defaultTxt"}
         randomPos={true}
         text={true}
-      />{" "}
+      />
     </div>
   );
 }
