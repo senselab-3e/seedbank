@@ -16,6 +16,8 @@ body img {
     text-align: center;
 }
 
+/*POP COMPONENT*/
+
 .threshold {
     opacity: 0.9;
     height: 100px;
@@ -69,6 +71,23 @@ body img {
 
 .Images {
     position: absolute;
-    width: 25%;
+    transform: scale(0.5, 0.5);
+    -ms-transform: scale(0.5, 0.5);
+    -webkit-transform: scale(0.5, 0.5);
+
+    -webkit-transition: transform 1s ease-in-out;
+    -moz-transition: transform 1s ease-in-out;
+    -ms-transition: transform 1s ease-in-out;
+    -o-transition: transform 1s ease-in-out;
+
+    transition: transform 1s ease-in-out;
+    position: absolute;
+}
+
+.Images:hover {
+    transform: scale(0.9, 0.9);
+    -ms-transform: scale(0.9, 0.9);
+    -webkit-transform: scale(0.9, 0.9);
+
 
 }
