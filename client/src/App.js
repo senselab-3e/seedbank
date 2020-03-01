@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { GlobalProvider } from "./context/GlobalState";
+
 import withAuth from "./helpers/withAuth";
+
 import EventsPage from "./pages/events";
 import AuthPage from "./pages/auth";
 import About from "./pages/About";
@@ -8,7 +11,7 @@ import Header from "./partials/Header";
 import Glitch from "./pages/Glitch";
 import Play from "./pages/Play";
 import ImagesPage from "./pages/Images";
-import { GlobalProvider } from "./context/GlobalState";
+import EEE from "./pages/EEE";
 import teapot from "./pot.jpg";
 
 function Home() {
@@ -33,7 +36,7 @@ class App extends Component {
             <Route path="/about3e" component={About} />
             <Route path="/oOoOs" component={Glitch} />
             <Route path="/play" component={Play} />
-            <Route path="/patches" render={() => <div>Patches</div>} />
+            <Route path="/patches" component={EEE} />
             <Route path="/entryway" render={() => <div>Entry</div>} />
             <Route exact path="/auth" component={AuthPage} />
             <Route

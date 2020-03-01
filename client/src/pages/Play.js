@@ -1,6 +1,5 @@
 import React from "react";
 import Thingies from "../components/Thingies";
-//import { GlobalContext } from "../context/GlobalState";
 
 function Play() {
   return (

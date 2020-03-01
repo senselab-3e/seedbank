@@ -73,6 +73,7 @@ export const ArrayOptions = (props) => {
       break;
     case "glitchLinks":
       chosenArray = glitchLinks;
+      break;
     default:
       chosenArray = blankArray;
       break;
