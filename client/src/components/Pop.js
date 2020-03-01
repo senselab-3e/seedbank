@@ -1,12 +1,12 @@
 import React from "react";
-import EventCreate from "./EventCreate";
+// import EventCreate from "./EventCreate";
 import { randomColors, uniquePositions } from "../helpers/popCalculators";
 
 //this is just creating a quick condition so that if the default class is
 //invoked the background color for randomcolor won't override the css for the background color of deeppink
 //which is applied in index.css i want to see during development if something is missing as special class
 
-function Pop({ event, className, randomPos, image }) {
+function Pop({ event, className, randomPos, image, text }) {
   let newCoor = "10px";
   randomPos ? (newCoor = uniquePositions()) : (newCoor = "10px");
 
@@ -20,7 +20,7 @@ function Pop({ event, className, randomPos, image }) {
     return (
       <React.Fragment>
         <img
-          alt={EventCreate.id}
+          alt={event.id}
           src={event}
           className={(className, "easeImage")}
           style={{
@@ -30,6 +30,9 @@ function Pop({ event, className, randomPos, image }) {
         ></img>
       </React.Fragment>
     );
+  } else if (text) {
+    console.log("placeholder for text element");
+    return <div>text</div>;
   } else {
     return (
       <React.Fragment>
