@@ -4,12 +4,13 @@ import PopDiv from "./PopDiv";
 import PopText from "./PopText";
 import { v4 as uuidv4 } from "uuid";
 
-// to use this component currently,
+//NOTES: to use this component currently :: look at Thingies component for examples
 // array={ArrayOptions("thingies")}
 // className={"line"}
 // randomPos={true}
 // link={true}
 //image={true}
+
 function EventPopulate(props) {
   let localarray = [];
   let localclassName = "defaultThingy";

@@ -27,7 +27,7 @@ const imgThingies = [
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fplob-1.gif?v=1576452116034"
 ];
 
-const boundImages = [
+const boundthingies = [
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fbound-1.gif?v=1576614642137",
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fbound-2.gif?v=1576614644341",
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fbound-3.gif?v=1576614647485",
@@ -44,6 +44,10 @@ const boundImages = [
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fbound-14.gif?v=1576614690245"
 ];
 
+const glitchLinks = [
+  "https://convalizards.glitch.me/ecologyofvidz.html", "https://convalizards.glitch.me/oz-glob.html", "https://convalizards.glitch.me/pink.html", "https://convalizards.glitch.me/spincycle.html", "https://convalizards.glitch.me/swerve.html"
+]
+
 const blankArray = ["FAILED TO LOAD AN ARRAY"];
 
 const testArray = ['1', '2', '3', '4', '5', '6']
@@ -55,16 +59,24 @@ const testArray = ['1', '2', '3', '4', '5', '6']
 //you can use it by doing import { ArrayOptions } from "./ArrayOptions";
 
 export const ArrayOptions = (props) => {
-  //console.log(props, 'arrayoption prop')
+
   let chosenArray = []
-  if (props === "thingies") {
-    chosenArray = imgThingies;
-  } else if (props === "boundthingies") {
-    chosenArray = boundImages;
-  } else if (props === "testArray") {
-    chosenArray = testArray;
-  } else {
-    chosenArray = blankArray;
+  switch (props) {
+    case "thingies":
+      chosenArray = imgThingies;
+      break;
+    case "boundthingies":
+      chosenArray = boundthingies;
+      break;
+    case "testArray":
+      chosenArray = testArray;
+      break;
+    case "glitchLinks":
+      chosenArray = glitchLinks;
+    default:
+      chosenArray = blankArray;
+      break;
+
   }
   return (
     chosenArray
