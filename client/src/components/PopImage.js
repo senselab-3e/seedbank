@@ -3,8 +3,8 @@ import React from "react";
 import { uniquePositions } from "../helpers/popCalculators";
 
 function PopImage({ event, className, randomPos }) {
-  let newCoor = "10px";
-  randomPos ? (newCoor = uniquePositions()) : (newCoor = "10px");
+  let newCoor = "";
+  randomPos ? (newCoor = uniquePositions()) : (newCoor = [0, 0]);
 
   //by checking for truthy of image, i cover both 'false' and undefined - as in no prop for image was passed down at all
 

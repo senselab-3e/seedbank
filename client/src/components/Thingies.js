@@ -31,13 +31,18 @@ function Thingies() {
         randomPos={true}
         image={true}
       />
-
       <EventPopulate
         array={ArrayOptions("boundthingies")}
         className={"easeImages"}
-        randomPos={false}
+        randomPos={true}
         image={true}
       />
+      <EventPopulate
+        array={ArrayOptions("testArray")}
+        className={"defaultTxt"}
+        randomPos={true}
+        text={true}
+      />{" "}
     </div>
   );
 }

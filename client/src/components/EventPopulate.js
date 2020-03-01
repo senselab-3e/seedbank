@@ -1,6 +1,7 @@
 import React from "react";
 import PopImage from "./PopImage";
 import PopDiv from "./PopDiv";
+import PopText from "./PopText";
 import { v4 as uuidv4 } from "uuid";
 
 function EventPopulate(props) {
@@ -26,6 +27,20 @@ function EventPopulate(props) {
       <React.Fragment>
         {localarray.map(event => (
           <PopImage
+            key={uuidv4()}
+            event={event}
+            className={localclassName}
+            randomPos={props.randomPos}
+          />
+        ))}
+      </React.Fragment>
+    );
+  } else if (props.text) {
+    console.log("text positive");
+    return (
+      <React.Fragment>
+        {localarray.map(event => (
+          <PopText
             key={uuidv4()}
             event={event}
             className={localclassName}

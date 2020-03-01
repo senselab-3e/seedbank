@@ -5,10 +5,10 @@ import { randomColors, uniquePositions } from "../helpers/popCalculators";
 //invoked the background color for randomcolor won't override the css for the background color of deeppink
 //which is applied in index.css i want to see during development if something is missing as special class
 
-function PopDiv({ event, className, randomPos, image }) {
+function PopText({ event, className, randomPos }) {
   let newCoor = "";
+  console.log(event, "check if these texts need any scrubbing or cleaning up");
   randomPos ? (newCoor = uniquePositions()) : (newCoor = [0, 0]);
-
   let coloring = "";
   className !== "defaultThingy"
     ? (coloring = randomColors())
@@ -24,9 +24,11 @@ function PopDiv({ event, className, randomPos, image }) {
           left: newCoor[1] + "px",
           backgroundColor: coloring
         }}
-      ></div>{" "}
+      >
+        <h3>{event}</h3>
+      </div>
     </React.Fragment>
   );
 }
 
-export default PopDiv;
+export default PopText;

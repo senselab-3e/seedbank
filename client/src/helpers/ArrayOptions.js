@@ -44,9 +44,9 @@ const boundImages = [
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fbound-14.gif?v=1576614690245"
 ];
 
-const blankArray = ["nothing here"];
+const blankArray = ["FAILED TO LOAD AN ARRAY"];
 
-const testArray = [1, 2, 3, 4, 5, 6]
+const testArray = ['apple', 'bee', 'carrot', 'dessert', 'eggs', 'flour']
 
 //// the export const is KEEYYYYYY because of course then you exporting a specific function within this component. i should probably rename it so the function name and the component are different
 //but anyways it works. so again, not export default - -> because that's a react default. i want to reach into this component and grab a single return value from a specific function run by this component
