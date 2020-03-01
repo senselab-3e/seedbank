@@ -1,25 +1,6 @@
 import React from "react";
 import EventCreate from "./EventCreate";
-
-const randomColor = () => {
-  var letters = "0123456789ABCDEF";
-  var color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
-
-let h, w, newheight, newwidth;
-
-const uniquePositions = () => {
-  h = window.innerHeight - 100;
-  w = window.innerWidth - 100;
-  newheight = Math.floor(Math.random() * h);
-  newwidth = Math.floor(Math.random() * w);
-
-  return [newheight, newwidth];
-};
+import { randomColors, uniquePositions } from "../helpers/popCalculators";
 
 //this is just creating a quick condition so that if the default class is
 //invoked the background color for randomcolor won't override the css for the background color of deeppink
@@ -31,14 +12,8 @@ function Pop({ event, className, randomPos, image }) {
 
   let coloring = "";
   className !== "defaultThingy"
-    ? (coloring = randomColor())
+    ? (coloring = randomColors())
     : (coloring = null);
-
-  // let imgSrc = "";
-  // className === "Images" ? (imgSrc = `url(${event})`) : (imgSrc = "");
-
-  //src={imgSrc}
-  // console.log(imgSrc);
 
   //by checking for truthy of image, i cover both 'false' and undefined - as in no prop for image was passed down at all
   if (image) {
