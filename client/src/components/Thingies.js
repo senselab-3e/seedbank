@@ -27,8 +27,16 @@ function Thingies() {
       />
       <EventPopulate
         array={ArrayOptions("thingies")}
-        className={"Images"}
+        className={"easeImages"}
         randomPos={true}
+        image={true}
+      />
+
+      <EventPopulate
+        array={ArrayOptions("boundthingies")}
+        className={"easeImages"}
+        randomPos={false}
+        image={true}
       />
     </div>
   );

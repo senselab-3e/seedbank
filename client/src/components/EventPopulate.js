@@ -9,13 +9,13 @@ function EventPopulate(props) {
 
   //if array prop is undefined this local array is provided to ensures something valid is still passed down to the child
   props.array ? (localarray = props.array) : console.log("no array");
-  //   console.log(localarray);
 
   //if no classname was specified a generic one is passed to the child
   props.className
     ? (localclassName = props.className)
     : (localclassName = "defaultThingy");
 
+  //introduce this if you need a background image applied to a div, instead of an image
   //   props.imgSrc
   //     ? (localImgSrc = props.imgSrc)
   //     : console.log("default className being used");
@@ -29,6 +29,7 @@ function EventPopulate(props) {
           event={event}
           className={localclassName}
           randomPos={props.randomPos}
+          image={props.image}
         />
       ))}
     </div>

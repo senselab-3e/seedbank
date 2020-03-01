@@ -25,7 +25,7 @@ const uniquePositions = () => {
 //invoked the background color for randomcolor won't override the css for the background color of deeppink
 //which is applied in index.css i want to see during development if something is missing as special class
 
-function Pop({ event, className, randomPos }) {
+function Pop({ event, className, randomPos, image }) {
   let newCoor = "10px";
   randomPos ? (newCoor = uniquePositions()) : (newCoor = "10px");
 
@@ -40,7 +40,22 @@ function Pop({ event, className, randomPos }) {
   //src={imgSrc}
   // console.log(imgSrc);
 
-  if (className !== "Images") {
+  //by checking for truthy of image, i cover both 'false' and undefined - as in no prop for image was passed down at all
+  if (image) {
+    return (
+      <React.Fragment>
+        <img
+          alt={EventCreate.id}
+          src={event}
+          className={(className, "easeImage")}
+          style={{
+            top: newCoor[0] + "px",
+            left: newCoor[1] + "px"
+          }}
+        ></img>
+      </React.Fragment>
+    );
+  } else {
     return (
       <React.Fragment>
         <div
@@ -52,20 +67,6 @@ function Pop({ event, className, randomPos }) {
             backgroundColor: coloring
           }}
         ></div>
-      </React.Fragment>
-    );
-  } else {
-    return (
-      <React.Fragment>
-        <img
-          alt={EventCreate.id}
-          src={event}
-          className={className}
-          style={{
-            top: newCoor[0] + "px",
-            left: newCoor[1] + "px"
-          }}
-        ></img>
       </React.Fragment>
     );
   }
