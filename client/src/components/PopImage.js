@@ -22,5 +22,4 @@ function PopImage({ event, className, randomPos }) {
     </React.Fragment>
   );
 }
-
 export default PopImage;

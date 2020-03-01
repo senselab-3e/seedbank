@@ -1,3 +1,6 @@
+//this was how things were written when i tried to pass everything through one pop component. but it meant it was doing condition checks
+//for every instance in an array, which was not efficient. it was better to check  img text div needs before passing things to pop components so changed it to split popimage popdiv and poptext component.
+
 import React from "react";
 // import EventCreate from "./EventCreate";
 import { randomColors, uniquePositions } from "../helpers/popCalculators";
@@ -27,12 +30,12 @@ function Pop({ event, className, randomPos, image, text }) {
             top: newCoor[0] + "px",
             left: newCoor[1] + "px"
           }}
-        ></img>
+        ></img>{" "}
       </React.Fragment>
     );
   } else if (text) {
     console.log("placeholder for text element");
-    return <div>text</div>;
+    return <div> text </div>;
   } else {
     return (
       <React.Fragment>
@@ -44,25 +47,10 @@ function Pop({ event, className, randomPos, image, text }) {
             left: newCoor[1] + "px",
             backgroundColor: coloring
           }}
-        ></div>
+        ></div>{" "}
       </React.Fragment>
     );
   }
 }
 
 export default Pop;
-
-/* <React.Fragment>
-      <div
-        className={className}
-        id={event.name ? event.name : ""}
-        style={{
-          top: newCoor[0] + "px",
-          left: newCoor[1] + "px",
-          backgroundColor: coloring,
-          backgroundImage: imgSrc
-        }}
-      >
-        <p>{event.name}</p>
-      </div>
-    </React.Fragment> */

@@ -7,7 +7,10 @@ import { randomColors, uniquePositions } from "../helpers/popCalculators";
 
 function PopDiv({ event, className, randomPos, image }) {
   let newCoor = "";
+  let backgroundImg = ""; // in case i ever want an image to be applied to the background tiling of a div
   randomPos ? (newCoor = uniquePositions()) : (newCoor = [0, 0]);
+
+  image ? (backgroundImg = `url(${image})`) : (backgroundImg = "");
 
   let coloring = "";
   className !== "defaultThingy"
@@ -19,6 +22,7 @@ function PopDiv({ event, className, randomPos, image }) {
       <div
         className={className}
         id={event.name ? event.name : ""}
+        backgroundimg={image ? backgroundImg : undefined}
         style={{
           top: newCoor[0] + "px",
           left: newCoor[1] + "px",
