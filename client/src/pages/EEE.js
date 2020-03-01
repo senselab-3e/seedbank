@@ -1,10 +1,10 @@
 import React from "react";
-import Eee_00 from "../404s/eee_00";
+import Eee00 from "../404s/Eee00";
 
-export default function EEE() {
+export default function EeE() {
   return (
     <div>
-      <Eee_00 />
+      <Eee00 />
       apples
     </div>
   );

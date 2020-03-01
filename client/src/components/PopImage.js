@@ -6,11 +6,13 @@ function PopImage({ event, className, randomPos, link }) {
   let newCoor = "";
   randomPos ? (newCoor = uniquePositions()) : (newCoor = [0, 0]);
   let href = "";
+  // eslint-disable-next-line
 
   //this is not a catch all -- there will likely be a case where the link list will be different then the 'event' list which is currently the list of image sources
   // I need to think about a reusable scalable way to pass both a list of image sources and link sources.
 
   link ? (href = event) : (href = "");
+  // eslint-disable-next-line
 
   //by checking for truthy of image, i cover both 'false' and undefined - as in no prop for image was passed down at all
 

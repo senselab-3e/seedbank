@@ -48,6 +48,8 @@ const glitchLinks = [
   "https://convalizards.glitch.me/ecologyofvidz.html", "https://convalizards.glitch.me/oz-glob.html", "https://convalizards.glitch.me/pink.html", "https://convalizards.glitch.me/spincycle.html", "https://convalizards.glitch.me/swerve.html"
 ]
 
+
+
 const blankArray = ["FAILED TO LOAD AN ARRAY"];
 
 const testArray = ['1', '2', '3', '4', '5', '6']
