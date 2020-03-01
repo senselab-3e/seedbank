@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import { ArrayOptions } from "./ArrayOptions";
+import { ArrayOptions } from "../helpers/ArrayOptions";
 
 import EventPopulate from "./EventPopulate";
 

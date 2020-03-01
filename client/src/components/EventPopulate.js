@@ -2,7 +2,13 @@ import React from "react";
 import Pop from "./Pop";
 import { v4 as uuidv4 } from "uuid";
 
+import { randcomColors, uniquePositions } from "../helpers/popCalculators";
+
 function EventPopulate(props) {
+  randcomColors();
+  //console.log(uniquePositions());
+  const coors = uniquePositions();
+  console.log(coors[0], coors[1]);
   let localarray = [];
   let localclassName = "defaultThingy";
   //   let localImgSrc = "";
