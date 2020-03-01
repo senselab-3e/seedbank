@@ -1,5 +1,6 @@
 import React from "react";
-import Pop from "./Pop";
+import PopImage from "./PopImage";
+import PopDiv from "./PopDiv";
 import { v4 as uuidv4 } from "uuid";
 
 function EventPopulate(props) {
@@ -20,20 +21,33 @@ function EventPopulate(props) {
   //     : console.log("default className being used");
 
   //NOTE: previously i'd been using event.id for the key value, but not all arrays will have an id paramenter--- particularly if passing client side array lists of links or img sources, so for now i'm just going to use uuid to generate them so that they're always unique and don't throw any warnings
-
-  return (
-    <div>
-      {localarray.map(event => (
-        <Pop
-          key={uuidv4()}
-          event={event}
-          className={localclassName}
-          randomPos={props.randomPos}
-          image={props.image}
-        />
-      ))}
-    </div>
-  );
+  if (props.image) {
+    return (
+      <React.Fragment>
+        {localarray.map(event => (
+          <PopImage
+            key={uuidv4()}
+            event={event}
+            className={localclassName}
+            randomPos={props.randomPos}
+          />
+        ))}
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        {localarray.map(event => (
+          <PopDiv
+            key={uuidv4()}
+            event={event}
+            className={localclassName}
+            randomPos={props.randomPos}
+          />
+        ))}
+      </React.Fragment>
+    );
+  }
 }
 
 export default EventPopulate;
