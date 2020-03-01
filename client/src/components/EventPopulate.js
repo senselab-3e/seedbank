@@ -4,6 +4,12 @@ import PopDiv from "./PopDiv";
 import PopText from "./PopText";
 import { v4 as uuidv4 } from "uuid";
 
+// to use this component currently,
+// array={ArrayOptions("thingies")}
+// className={"line"}
+// randomPos={true}
+// link={true}
+//image={true}
 function EventPopulate(props) {
   let localarray = [];
   let localclassName = "defaultThingy";
@@ -22,7 +28,9 @@ function EventPopulate(props) {
   //     : console.log("default className being used");
 
   //NOTE: previously i'd been using event.id for the key value, but not all arrays will have an id paramenter--- particularly if passing client side array lists of links or img sources, so for now i'm just going to use uuid to generate them so that they're always unique and don't throw any warnings
-  if (props.image) {
+
+  //i'm in including a 'not props.text' in case an image prop is added to what is intended as only a popText - if an image prop is present and a text prop, it will ignore it and only observe the image prop
+  if (props.image && !props.text) {
     return (
       <React.Fragment>
         {localarray.map(event => (
@@ -37,7 +45,6 @@ function EventPopulate(props) {
       </React.Fragment>
     );
   } else if (props.text) {
-    console.log("text positive");
     return (
       <React.Fragment>
         {localarray.map(event => (
