@@ -13,28 +13,47 @@ function PopDiv({ event, className, randomPos, image, link }) {
 
   image ? (backgroundImg = `url(${image})`) : (backgroundImg = "");
 
-  link ? (href = event) : (href = undefined);
+  link ? (href = event) : (href = "");
 
   let coloring = "";
   className !== "defaultThingy"
     ? (coloring = randomColors())
     : (coloring = null);
 
-  return (
-    <React.Fragment>
-      <div
-        href={href}
-        className={className}
-        id={event.name ? event.name : ""}
-        backgroundimg={image ? backgroundImg : undefined}
-        style={{
-          top: newCoor[0] + "px",
-          left: newCoor[1] + "px",
-          backgroundColor: coloring
-        }}
-      ></div>{" "}
-    </React.Fragment>
-  );
+  if (link === true) {
+    return (
+      <React.Fragment>
+        <a
+          href={href}
+          className={className}
+          id={event.name ? event.name : ""}
+          backgroundimg={image ? backgroundImg : undefined}
+          style={{
+            top: newCoor[0] + "px",
+            left: newCoor[1] + "px",
+            backgroundColor: coloring
+          }}
+        >
+          <></>
+        </a>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <div
+          className={className}
+          id={event.name ? event.name : ""}
+          backgroundimg={image ? backgroundImg : undefined}
+          style={{
+            top: newCoor[0] + "px",
+            left: newCoor[1] + "px",
+            backgroundColor: coloring
+          }}
+        ></div>
+      </React.Fragment>
+    );
+  }
 }
 
 export default PopDiv;

@@ -16,6 +16,7 @@ function Thingies() {
   //   let choosenArray = ArrayOptions("thingies");
   //   console.log(choosenArray); ---> this is all i need now to retreive the array of images pathway values now
 
+  //NOTE: investigate why prop link is always testing positive. truthy tests in the pop components might also all be returning true because i'm no longer doing props.name --
   return (
     <div>
       <EventPopulate array={events} className={"threshold"} randomPos={true} />
@@ -24,6 +25,7 @@ function Thingies() {
         array={ArrayOptions("thingies")}
         className={"line"}
         randomPos={true}
+        link={true}
       />
       <EventPopulate
         array={ArrayOptions("thingies")}
