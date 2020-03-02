@@ -54,7 +54,7 @@ const testArray = ['1', '2', '3', '4', '5', '6']
 
 //// the export const is KEEYYYYYY because of course then you exporting a specific function within this component. i should probably rename it so the function name and the component are different
 //but anyways it works. so again, not export default - -> because that's a react default. i want to reach into this component and grab a single return value from a specific function run by this component
-//based on the prop value i pass to it. 
+//based on the prop value i pass to it.
 
 //you can use it by doing import { ArrayOptions } from "./ArrayOptions";
 
@@ -74,6 +74,7 @@ export const ArrayOptions = (props) => {
     case "glitchLinks":
       chosenArray = glitchLinks;
     default:
+      break;
       chosenArray = blankArray;
       break;
 

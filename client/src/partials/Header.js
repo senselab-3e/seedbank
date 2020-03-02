@@ -25,6 +25,9 @@ export default class Header extends Component {
               <Link to="/about3e">3E About</Link>
             </li>
             <li>
+              <Link to="/frog">🐸p5~</Link>
+            </li>
+            <li>
               <Link to="/play">
                 Play -- refactoring spot for random element components and
                 retrieving arrays
