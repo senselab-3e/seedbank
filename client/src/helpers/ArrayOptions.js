@@ -44,9 +44,13 @@ const boundthingies = [
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fbound-14.gif?v=1576614690245"
 ];
 
+const gifVerse = ["https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F4a81a730-df75-4524-9ba2-e483c4930018%20(1).gif?v=1576098062094", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Farchitecture.gif?v=1583107441322", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fleftovers.gif?v=1583107479944", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fwhissssp.gif?v=1583107431805", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Ffold.gif?v=1576263090670"];
+
 const glitchLinks = [
   "https://convalizards.glitch.me/ecologyofvidz.html", "https://convalizards.glitch.me/oz-glob.html", "https://convalizards.glitch.me/pink.html", "https://convalizards.glitch.me/spincycle.html", "https://convalizards.glitch.me/swerve.html"
 ]
+
+const localLinks = ["/events", "/entryway", "/about3e", "/play", "/oOoOs", "/patches"]
 
 
 
@@ -75,6 +79,12 @@ export const ArrayOptions = (props) => {
       break;
     case "glitchLinks":
       chosenArray = glitchLinks;
+      break;
+    case "localLinks":
+      chosenArray = localLinks;
+      break;
+    case "gifVerse":
+      chosenArray = gifVerse;
       break;
     default:
       chosenArray = blankArray;

@@ -21,7 +21,7 @@ export const chooseElement = props => {
   //let element = 'nothing to return'
   let index = "no array";
   if (props) {
-    index = Math.ceil(Math.random() * props.length);
+    index = Math.floor(Math.random() * props.length);
     return props[index];
   } else {
     return index;

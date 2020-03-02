@@ -20,6 +20,11 @@ NOTES: handy-dandy reference to the defaults and their matching cubic-bezier
 }
 
 
+vh (viewport height)
+vw (viewport width)
+vmin (viewport minimum length)
+vmax (viewport maximum length)
+
 To preserve the image’s aspect ratio whilst also filling in the space, we can use object-fit:
 
 .cover {
@@ -43,6 +48,14 @@ To preserve the image’s aspect ratio whilst also filling in the space, we can 
 
 body img {
     text-align: center;
+}
+
+.huge {
+    width: 100vw;
+    height: 100vh;
+    /* margin-top: -300; */
+    position: relative;
+    z-index: -4;
 }
 
 /*POP COMPONENT*/
