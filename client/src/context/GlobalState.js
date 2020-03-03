@@ -139,7 +139,7 @@ export const GlobalProvider = ({ children }) => {
         fetchEvents,
         addEvent,
         deleteEvent,
-        themeName: state.themeName,
+        themeName,
         toggleTheme
       }}
     >
