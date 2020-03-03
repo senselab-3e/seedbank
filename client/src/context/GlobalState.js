@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState, useEffect } from "react";
+import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 import axios from "axios";
 // import { v4 as uuidv4 } from "uuid";
@@ -21,59 +21,20 @@ const initialState = {
   themeName: "dark"
 };
 
-// const themes = {
-//   dark: {
-//     primary: "#1ca086",
-//     separatorColor: "rgba(255,255,255,0.20)",
-//     textColor: "white",
-//     backgroundColor: "#121212",
-//     headerBackgroundColor: "rgba(255,255,255,0.05)",
-//     blockquoteColor: "rgba(255,255,255,0.20)",
-//     icon: "white"
-//   },
-//   light: {
-//     primary: "#1ca086",
-//     separatorColor: "rgba(0,0,0,0.08)",
-//     textColor: "black",
-//     backgroundColor: "white",
-//     headerBackgroundColor: "#f6f6f6",
-//     blockquoteColor: "rgba(0,0,0,0.80)",
-//     icon: "#121212"
-//   }
-// };
-
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  // const [themeName, setThemeName] = useState("dark");
-  // const [theme, setTheme] = useState(themes[themeName]);
+  const [themeState, setThemeState] = React.useState({
+    mode: "light"
+  });
   //console.log(themes.dark, "hello");
 
-  // const toggleTheme = () => {
-  //   console.log(theme === themes.dark);
-  //   if (theme === themes.dark) {
-  //     console.log("light switching");
-  //     setTheme(themes.light);
-  //     setThemeName("light");
-  //   } else {
-  //     console.log("dark switching");
-  //     setTheme(themes.dark);
-  //     setThemeName("dark");
-  //   }
-  // };
-
-  // const setCSSVariables = theme => {
-  //   for (const value in theme) {
-  //     console.log(value);
-  //     document.documentElement.style.setProperty(`--${value}`, theme[value]);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   setCSSVariables(theme);
-  // });
+  const toggle = () => {
+    const mode = themeState.mode === "light" ? `dark` : `light`;
+    setThemeState({ mode: mode });
+  };
 
   //actions
 
