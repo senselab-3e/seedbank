@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState } from "react";
+import React, { createContext, useReducer, useState, useEffect } from "react";
 import AppReducer from "./AppReducer";
 import axios from "axios";
 // import { v4 as uuidv4 } from "uuid";
@@ -63,6 +63,17 @@ export const GlobalProvider = ({ children }) => {
   };
 
   console.log(themeName, "after function");
+
+  const setCSSVariables = theme => {
+    for (const value in theme) {
+      console.log(value);
+      document.documentElement.style.setProperty(`--${value}`, theme[value]);
+    }
+  };
+
+  useEffect(() => {
+    setCSSVariables(theme);
+  });
 
   //actions
 
