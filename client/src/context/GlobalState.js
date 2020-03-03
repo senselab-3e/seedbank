@@ -47,20 +47,22 @@ export const GlobalProvider = ({ children }) => {
 
   const [themeName, setThemeName] = useState("dark");
   const [theme, setTheme] = useState(themes[themeName]);
-  console.log(themes.dark, "hello");
+  //console.log(themes.dark, "hello");
 
   const toggleTheme = () => {
     console.log(theme === themes.dark);
     if (theme === themes.dark) {
-      console.log("dark switching");
+      console.log("light switching");
       setTheme(themes.light);
       setThemeName("light");
     } else {
-      console.log("light switching");
+      console.log("dark switching");
       setTheme(themes.dark);
       setThemeName("dark");
     }
   };
+
+  console.log(themeName, "after function");
 
   //actions
 
