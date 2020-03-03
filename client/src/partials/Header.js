@@ -1,12 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
 import "../style/Header.css";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { buttonBackgroundColor, buttonTextColor } from "../context/theme";
+import { withTheme } from "styled-components";
 
-export default class Header extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <div className="Header"></div>
+const Button = styled.button`
+  background: ${buttonBackgroundColor};
+  border: none;
+  border-radius: 0.3em;
+  box-shadow: none;
+  color: ${buttonTextColor};
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0.5em 1em;
+`;
+
+function Header(props) {
+  return (
+    <React.Fragment>
+      <header className="App-header">
+        <Button onClick={() => props.themeToggle.toggle()}>
+          {props.theme.mode === "dark"
+            ? "Switch to Light Mode"
+            : "Switch to Dark Mode"}
+        </Button>
         <nav>
           <ul>
             <li>
@@ -41,7 +59,9 @@ export default class Header extends Component {
             </li>
           </ul>
         </nav>
-      </React.Fragment>
-    );
-  }
+      </header>
+    </React.Fragment>
+  );
 }
+
+export default withTheme(Header);

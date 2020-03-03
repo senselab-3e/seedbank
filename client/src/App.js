@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useTheme } from "./context/GlobalState";
-import styled, { withTheme } from "styled-components";
-import { buttonBackgroundColor, buttonTextColor } from "./context/theme";
+//import { withTheme } from "styled-components";
 
 import withAuth from "./helpers/withAuth";
 
@@ -26,16 +25,6 @@ function Home() {
   );
 }
 
-const Button = styled.button`
-  background: ${buttonBackgroundColor};
-  border: none;
-  border-radius: 0.3em;
-  box-shadow: none;
-  color: ${buttonTextColor};
-  cursor: pointer;
-  font-size: 1em;
-  padding: 0.5em 1em;
-`;
 //NOTE for routepaths if they are 'withAuth: if their path has more then one word should have a hyphenbetween them - because that path will be grabbed for the message displayed back to the user for login details
 //NOTE for withAuth, there is now a second paramter - which is passed down as a pathway that the user is redirected to, after they login or register. will potentially be refactored so that it is passed down as prop via location: state {} instead
 function App(props) {
@@ -43,19 +32,7 @@ function App(props) {
 
   return (
     <Router>
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <Button onClick={() => themeToggle.toggle()}>
-            {props.theme.mode === "dark"
-              ? "Switch to Light Mode"
-              : "Switch to Dark Mode"}
-          </Button>
-        </p>
-      </header>
-      <Header />
+      <Header themeToggle={themeToggle} />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about3e" component={About} />
@@ -79,4 +56,4 @@ function App(props) {
   );
 }
 
-export default withTheme(App);
+export default App;
