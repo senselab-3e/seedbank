@@ -11,7 +11,7 @@ export const Event = ({ event }) => {
   //function () { deleteEvent(event.id) onClick}
   //below i use Math.abs to make any number a positive number so we don't get a double printing of a -$-400 etc etc // and allow the sign variable alone to return the neg/positiv indicator
   return (
-    <li className={""}>
+    <li className="primary">
       {event.name}
       <span>{event.location}</span>
       <span>{event.event_type}</span>

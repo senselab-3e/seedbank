@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useState } from "react";
 import AppReducer from "./AppReducer";
 import axios from "axios";
 // import { v4 as uuidv4 } from "uuid";
@@ -14,13 +14,50 @@ import axios from "axios";
 const initialState = {
   events: [],
   error: null,
-  loading: true
+  loading: true,
+  themeName: "dark"
 };
 
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
+
+  const themes = {
+    dark: {
+      primary: "#1ca086",
+      separatorColor: "rgba(255,255,255,0.20)",
+      textColor: "white",
+      backgroundColor: "#121212",
+      headerBackgroundColor: "rgba(255,255,255,0.05)",
+      blockquoteColor: "rgba(255,255,255,0.20)",
+      icon: "white"
+    },
+    light: {
+      primary: "#1ca086",
+      separatorColor: "rgba(0,0,0,0.08)",
+      textColor: "black",
+      backgroundColor: "white",
+      headerBackgroundColor: "#f6f6f6",
+      blockquoteColor: "rgba(0,0,0,0.80)",
+      icon: "#121212"
+    }
+  };
+
+  const [themeName, setThemeName] = useState("dark");
+  const [theme, setTheme] = useState(themes[themeName]);
+
+  const toggleTheme = () => {
+    if (theme === themes.dark) {
+      console.log("dark switching");
+      setTheme(themes.light);
+      setThemeName("light");
+    } else {
+      console.log("light switching");
+      setTheme(themes.dark);
+      setThemeName("dark");
+    }
+  };
 
   //actions
 
@@ -96,7 +133,9 @@ export const GlobalProvider = ({ children }) => {
         loading: state.loading,
         fetchEvents,
         addEvent,
-        deleteEvent
+        deleteEvent,
+        themeName: state.themeName,
+        toggleTheme
       }}
     >
       {children}
