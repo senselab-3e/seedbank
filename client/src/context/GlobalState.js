@@ -23,7 +23,15 @@ const initialState = {
   loading: true
 };
 
+const Wrapper = styled.div`
+  background-color: ${backgroundColor};
+  color: ${textColor};
+`;
+
 export const GlobalContext = createContext(initialState);
+//const ThemeToggleContext = React.createContext();
+
+export const useTheme = () => React.useContext(GlobalContext);
 
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
@@ -31,7 +39,6 @@ export const GlobalProvider = ({ children }) => {
   const [themeState, setThemeState] = React.useState({
     mode: "light"
   });
-  //console.log(themes.dark, "hello");
 
   const toggle = () => {
     const mode = themeState.mode === "light" ? `dark` : `light`;
@@ -113,10 +120,16 @@ export const GlobalProvider = ({ children }) => {
         fetchEvents,
         addEvent,
         deleteEvent,
-        themeName: state.themeName
+        toggle: toggle
       }}
     >
-      {children}
+      <ThemeProvider
+        theme={{
+          mode: themeState.mode
+        }}
+      >
+        <Wrapper>{children}</Wrapper>
+      </ThemeProvider>
     </GlobalContext.Provider>
   );
 };

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { GlobalProvider } from "./context/GlobalState";
 
 import withAuth from "./helpers/withAuth";
 
@@ -11,7 +10,7 @@ import Header from "./partials/Header";
 import Glitch from "./pages/Glitch";
 import Play from "./pages/Play";
 import ImagesPage from "./pages/Images";
-import EeE from "./pages/EeE";
+import EeE from "./pages/EEE";
 import teapot from "./pot.jpg";
 
 function Home() {
@@ -28,30 +27,28 @@ function Home() {
 class App extends Component {
   render() {
     return (
-      <GlobalProvider>
-        <Router>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about3e" component={About} />
-            <Route path="/oOoOs" component={Glitch} />
-            <Route path="/play" component={Play} />
-            <Route path="/patches" component={EeE} />
-            <Route path="/entryway" render={() => <div>Entry</div>} />
-            <Route exact path="/auth" component={AuthPage} />
-            <Route
-              exact
-              path="/events"
-              component={withAuth(EventsPage, "/events")}
-            />
-            <Route
-              exact
-              path="/traces"
-              component={withAuth(ImagesPage, "/traces")}
-            />
-          </Switch>
-        </Router>
-      </GlobalProvider>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about3e" component={About} />
+          <Route path="/oOoOs" component={Glitch} />
+          <Route path="/play" component={Play} />
+          <Route path="/patches" component={EeE} />
+          <Route path="/entryway" render={() => <div>Entry</div>} />
+          <Route exact path="/auth" component={AuthPage} />
+          <Route
+            exact
+            path="/events"
+            component={withAuth(EventsPage, "/events")}
+          />
+          <Route
+            exact
+            path="/traces"
+            component={withAuth(ImagesPage, "/traces")}
+          />
+        </Switch>
+      </Router>
     );
   }
 }
