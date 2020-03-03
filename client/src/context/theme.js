@@ -107,3 +107,8 @@ export const palettes = theme("colors", {
 // Theme Variants
 // Along with theme(), styled-theming also gives us another utility: theme.variants(). Wouldn’t it be nice if we could have a concise way to define a range of styles for a component based on props? I could then tailor my button styles by simply passing props, like <Button small /> or <Button medium /> — that will also be fully compatible with my themes.
 // This is the problem theme.variants() aim to solve.
+
+
+//https://medium.com/styled-components/announcing-v2-f01ef3766ac2
+//Contextual Overrides
+//one of the deliberate design goals of styled-components has been to make it easy to keep the styles for each component totally isolated, something that we’ve found makes the resulting CSS more for large applications. There are, however, definite instances where you need to break this rule, and have one component affect the appearance of another:

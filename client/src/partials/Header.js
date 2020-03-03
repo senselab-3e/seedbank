@@ -25,6 +25,26 @@ const HeaderLinks = styled.li`
   font-family: ${fontStyle};
 `;
 
+//investigat tomorrow
+// font-family: ${fontStyle};
+// &:hover,
+// &:visited {
+//   color: ${buttonTextColor};
+// }
+
+// //const Link = styled.a`
+// color: inherit;
+// text-decoration: none;
+// &:hover, &:active {
+//   text-decoration: underline;
+// }
+// `
+// const P = styled.p`
+// ${ Link } {
+//   text-decoration: underline;
+// }
+// `
+
 function Header(props) {
   useEffect(() => {});
   return (
