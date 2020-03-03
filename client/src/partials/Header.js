@@ -10,7 +10,8 @@ import {
 import { withTheme } from "styled-components";
 
 const Button = styled.button`
-  background: ${buttonBackgroundColor};
+  background-color: ${buttonBackgroundColor};
+  float: left;
   border: none;
   border-radius: 0.3em;
   box-shadow: none;
@@ -21,13 +22,18 @@ const Button = styled.button`
 `;
 
 const NavItem = styled(Link)`
- 
+padding: 0.5em 1em;
+position: relative;
+font-size: 1em;
+background-color: ${buttonTextColor};
+display:inline-block;
 color: ${buttonBackgroundColor};
   font-family: ${fontStyle};
- 
   &:visited {
    color: ${buttonBackgroundColor};
 `;
+
+//float: left; --- removing that made the header elements not wrap the succeeding component titles (such as glitch, home etc)..
 
 // NavItem.defaultProps = {
 //   activeClassName: "active"
@@ -57,58 +63,28 @@ function Header(props) {
   useEffect(() => {});
   return (
     <React.Fragment>
-      <header className="App-header">
-        <Button onClick={() => props.themeToggle.toggle()}>
-          {props.theme.mode === "dark"
-            ? "Switch to Light Mode"
-            : "Switch to Dark Mode"}
-        </Button>
-      </header>
       <nav>
-        <ul>
-          <li>
-            <NavItem to="/events">hello?</NavItem>
-          </li>
-          <li>
-            <NavItem to="/">Home</NavItem>
-          </li>
+        <header className="App-header">
+          <Button onClick={() => props.themeToggle.toggle()}>
+            {props.theme.mode === "dark"
+              ? "Switch to Light Mode"
+              : "Switch to Dark Mode"}
+          </Button>
 
-          <li>
-            {" "}
-            <NavItem to="/events">Go to events</NavItem>
-          </li>
-
-          <li>
-            <NavItem to="/auth">Login or signup</NavItem>
-          </li>
-
-          <li>
-            <NavItem to="/entryway">EntryWay</NavItem>
-          </li>
-
-          <li>
-            <NavItem to="/about3e">3E About</NavItem>
-          </li>
-
-          <li>
-            <NavItem to="/play">
-              Play -- refactoring spot for random element components and
-              retrieving arrays
-            </NavItem>
-          </li>
-
-          <li>
-            <NavItem to="/oOoOs">Event List retrieved by Context/Hooks</NavItem>
-          </li>
-
-          <li>
-            <NavItem to="/patches">Patches</NavItem>
-          </li>
-
-          <li>
-            <NavItem to="/traces">Register a trace</NavItem>
-          </li>
-        </ul>
+          <NavItem to="/events">hello?</NavItem>
+          <NavItem to="/">Home</NavItem>
+          <NavItem to="/events">Go to events</NavItem>
+          <NavItem to="/auth">Login or signup</NavItem>
+          <NavItem to="/entryway">EntryWay</NavItem>
+          <NavItem to="/about3e">3E About</NavItem>
+          <NavItem to="/play">
+            Play -- refactoring spot for random element components and
+            retrieving arrays
+          </NavItem>
+          <NavItem to="/oOoOs">Event List retrieved by Context/Hooks</NavItem>
+          <NavItem to="/patches">Patches</NavItem>
+          <NavItem to="/traces">Register a trace</NavItem>
+        </header>
       </nav>
     </React.Fragment>
   );

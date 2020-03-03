@@ -3,8 +3,8 @@
 import theme from "styled-theming";
 
 export const fontStyle = theme("mode", {
-    light: "clear sans",
-    dark: "arial"
+    light: "arial",
+    dark: "clear sans"
 })
 
 export const backgroundColor = theme("mode", {
