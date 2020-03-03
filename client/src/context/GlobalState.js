@@ -15,7 +15,29 @@ const initialState = {
   events: [],
   error: null,
   loading: true,
-  themeName: "dark"
+  themeName: "dark",
+  toggleTheme: () => {}
+};
+
+const themes = {
+  dark: {
+    primary: "#1ca086",
+    separatorColor: "rgba(255,255,255,0.20)",
+    textColor: "white",
+    backgroundColor: "#121212",
+    headerBackgroundColor: "rgba(255,255,255,0.05)",
+    blockquoteColor: "rgba(255,255,255,0.20)",
+    icon: "white"
+  },
+  light: {
+    primary: "#1ca086",
+    separatorColor: "rgba(0,0,0,0.08)",
+    textColor: "black",
+    backgroundColor: "white",
+    headerBackgroundColor: "#f6f6f6",
+    blockquoteColor: "rgba(0,0,0,0.80)",
+    icon: "#121212"
+  }
 };
 
 export const GlobalContext = createContext(initialState);
@@ -23,31 +45,12 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  const themes = {
-    dark: {
-      primary: "#1ca086",
-      separatorColor: "rgba(255,255,255,0.20)",
-      textColor: "white",
-      backgroundColor: "#121212",
-      headerBackgroundColor: "rgba(255,255,255,0.05)",
-      blockquoteColor: "rgba(255,255,255,0.20)",
-      icon: "white"
-    },
-    light: {
-      primary: "#1ca086",
-      separatorColor: "rgba(0,0,0,0.08)",
-      textColor: "black",
-      backgroundColor: "white",
-      headerBackgroundColor: "#f6f6f6",
-      blockquoteColor: "rgba(0,0,0,0.80)",
-      icon: "#121212"
-    }
-  };
-
   const [themeName, setThemeName] = useState("dark");
   const [theme, setTheme] = useState(themes[themeName]);
+  console.log(themes.dark, "hello");
 
   const toggleTheme = () => {
+    console.log(theme === themes.dark);
     if (theme === themes.dark) {
       console.log("dark switching");
       setTheme(themes.light);
