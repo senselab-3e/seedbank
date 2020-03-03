@@ -20,10 +20,17 @@ const Button = styled.button`
   padding: 0.5em 1em;
 `;
 
-const HeaderLinks = styled.li`
-  color: ${buttonBackgroundColor};
+const NavItem = styled(Link)`
+ 
+  color: red;
   font-family: ${fontStyle};
+  &:hover {
+   color: ${buttonTextColor};
 `;
+
+// NavItem.defaultProps = {
+//   activeClassName: "active"
+// };
 
 //investigat tomorrow
 // font-family: ${fontStyle};
@@ -55,43 +62,32 @@ function Header(props) {
             ? "Switch to Light Mode"
             : "Switch to Dark Mode"}
         </Button>
-        <nav>
-          <HeaderLinks>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/events">Go to events</Link>
-              </li>
-              <li>
-                <Link to="/auth">Login or signup</Link>
-              </li>
-              <li>
-                <Link to="/entryway">EntryWay</Link>
-              </li>
-              <li>
-                <Link to="/about3e">3E About</Link>
-              </li>
-              <li>
-                <Link to="/play">
-                  Play -- refactoring spot for random element components and
-                  retrieving arrays
-                </Link>
-              </li>
-              <li>
-                <Link to="/oOoOs">Event List retrieved by Context/Hooks</Link>
-              </li>
-              <li>
-                <Link to="/patches">Patches</Link>
-              </li>
-              <li>
-                <Link to="/traces">Register a trace</Link>
-              </li>
-            </ul>
-          </HeaderLinks>
-        </nav>
       </header>
+      <nav>
+        <ul>
+          <NavItem to="/events">hello?</NavItem>
+          <NavItem to="/">Home</NavItem>
+
+          <NavItem to="/events">Go to events</NavItem>
+
+          <NavItem to="/auth">Login or signup</NavItem>
+
+          <NavItem to="/entryway">EntryWay</NavItem>
+
+          <NavItem to="/about3e">3E About</NavItem>
+
+          <NavItem to="/play">
+            Play -- refactoring spot for random element components and
+            retrieving arrays
+          </NavItem>
+
+          <NavItem to="/oOoOs">Event List retrieved by Context/Hooks</NavItem>
+
+          <NavItem to="/patches">Patches</NavItem>
+
+          <NavItem to="/traces">Register a trace</NavItem>
+        </ul>
+      </nav>
     </React.Fragment>
   );
 }
