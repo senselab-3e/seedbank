@@ -1,6 +1,9 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 import axios from "axios";
+
+import styled, { ThemeProvider } from "styled-components";
+import { backgroundColor, textColor } from "./theme";
 // import { v4 as uuidv4 } from "uuid";
 //eventually replace id numbering with uuid generator
 
@@ -17,8 +20,7 @@ import axios from "axios";
 const initialState = {
   events: [],
   error: null,
-  loading: true,
-  themeName: "dark"
+  loading: true
 };
 
 export const GlobalContext = createContext(initialState);

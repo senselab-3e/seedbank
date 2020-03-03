@@ -13,6 +13,7 @@
     "react-scripts": "^3.3.0",
     "reactstrap": "^8.0.1",
     "styled-components": "^5.0.1",
+    "styled-theming": "^2.2.0",
     "uuid": "^7.0.0"
   },
   "scripts": {
