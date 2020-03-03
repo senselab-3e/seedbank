@@ -11,6 +11,9 @@ import axios from "axios";
 //the state of ContextProvider because that will trigger a re-render of all components
 //that are within the ContextProvider
 
+// NOTES: when adding themeprovider i was read that: "You may be wondering at this point why we do not embed a toggle() function inside our theme prop of <ThemeProvider />, after all, it would provide all child components access to the function.
+//Doing so would break the conventions of styled-theming, that expects strings to be passed into the theme() utility function. It would also be confusing for other developers to embed functions around our theme configuration. For this reason, I have opted to keep the functions and theme configuration in separate contexts."
+//It would also be confusing for other developers to embed functions around our theme configuration. For this reason, I have opted to keep the functions and theme configuration in separate contexts.
 const initialState = {
   events: [],
   error: null,

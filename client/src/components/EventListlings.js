@@ -4,12 +4,10 @@ import { Event } from "./Event";
 import { GlobalContext } from "../context/GlobalState";
 
 export const EventListlings = () => {
-  const { events, fetchEvents, themeName, toggleTheme } = useContext(
-    GlobalContext
-  );
+  const { events, fetchEvents } = useContext(GlobalContext);
 
   //using this toggleTheme function breaks the conventions of styled-theming, that expects strings to be passed into the theme() utility function.
-
+  //<button onClick={toggleTheme}>Change Theme!</button> {themeName}
   //useEffect is a hook, for function components, that works like component did mount. so it fetches the db values at component initialization
   //in any kind of asynchronous component you want to use useEffect
   ////the empty array below keeps it from going through an infinite loop
@@ -20,7 +18,6 @@ export const EventListlings = () => {
   }, []);
   return (
     <React.Fragment>
-      <button onClick={toggleTheme}>Change Theme!</button> {themeName}
       <ul className="list">
         {events.map(event => (
           <Event key={event.id} event={event} />
