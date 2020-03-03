@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../style/Header.css";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { buttonBackgroundColor, buttonTextColor } from "../context/theme";
+import {
+  buttonBackgroundColor,
+  buttonTextColor,
+  fontStyle
+} from "../context/theme";
 import { withTheme } from "styled-components";
 
 const Button = styled.button`
@@ -16,7 +20,13 @@ const Button = styled.button`
   padding: 0.5em 1em;
 `;
 
+const HeaderLinks = styled.li`
+  color: ${buttonBackgroundColor};
+  font-family: ${fontStyle};
+`;
+
 function Header(props) {
+  useEffect(() => {});
   return (
     <React.Fragment>
       <header className="App-header">
@@ -26,38 +36,40 @@ function Header(props) {
             : "Switch to Dark Mode"}
         </Button>
         <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/events">Go to events</Link>
-            </li>
-            <li>
-              <Link to="/auth">Login or signup</Link>
-            </li>
-            <li>
-              <Link to="/entryway">EntryWay</Link>
-            </li>
-            <li>
-              <Link to="/about3e">3E About</Link>
-            </li>
-            <li>
-              <Link to="/play">
-                Play -- refactoring spot for random element components and
-                retrieving arrays
-              </Link>
-            </li>
-            <li>
-              <Link to="/oOoOs">Event List retrieved by Context/Hooks</Link>
-            </li>
-            <li>
-              <Link to="/patches">Patches</Link>
-            </li>
-            <li>
-              <Link to="/traces">Register a trace</Link>
-            </li>
-          </ul>
+          <HeaderLinks>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/events">Go to events</Link>
+              </li>
+              <li>
+                <Link to="/auth">Login or signup</Link>
+              </li>
+              <li>
+                <Link to="/entryway">EntryWay</Link>
+              </li>
+              <li>
+                <Link to="/about3e">3E About</Link>
+              </li>
+              <li>
+                <Link to="/play">
+                  Play -- refactoring spot for random element components and
+                  retrieving arrays
+                </Link>
+              </li>
+              <li>
+                <Link to="/oOoOs">Event List retrieved by Context/Hooks</Link>
+              </li>
+              <li>
+                <Link to="/patches">Patches</Link>
+              </li>
+              <li>
+                <Link to="/traces">Register a trace</Link>
+              </li>
+            </ul>
+          </HeaderLinks>
         </nav>
       </header>
     </React.Fragment>

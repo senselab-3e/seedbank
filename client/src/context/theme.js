@@ -2,24 +2,84 @@
 //https://medium.com/@rossbulat/creating-themes-in-react-with-styled-components-6fce744b4e54
 import theme from "styled-theming";
 
+export const fontStyle = theme("mode", {
+    light: "clear sans",
+    dark: "arial"
+})
+
 export const backgroundColor = theme("mode", {
-  light: "#fafafa",
-  dark: "#222"
+    light: "#fafafa",
+    dark: "#222"
 });
 
 export const textColor = theme("mode", {
-  light: "#000",
-  dark: "#fff"
+    light: "#000",
+    dark: "#fff"
 });
 
 export const buttonBackgroundColor = theme("mode", {
-  light: "#222",
-  dark: "#eee"
+    light: "#222",
+    dark: "#eee"
 });
 
 export const buttonTextColor = theme("mode", {
-  light: "#eee",
-  dark: "#222"
+    light: "#eee",
+    dark: "#222"
+});
+
+
+export const palettes = theme("colors", {
+    palettes: {
+        g1: {
+            c1: "#443035",
+            c2: "#535C7B",
+            c3: "#70A4A2",
+            c4: "#96C3B9",
+            c5: "#F0E1D7"
+        },
+        g2: {
+            c1: "#42C4AF",
+            c2: "#496666",
+            c3: "#5B85C7",
+            c4: "#C4A460",
+            c5: "#9D7950"
+        },
+        g3: {
+            c1: "#7FF6D0",
+            c2: "#2384C9",
+            c3: "#524E4F",
+            c4: "#98B627",
+            c5: "#DBCAA5"
+        },
+        g4: {
+            c1: "#5B5455",
+            c2: "#586F8F",
+            c3: "#F4BF83",
+            c4: "#909A94",
+            c5: "#F4F6F4"
+        },
+        g5: {
+            c1: "#273943",
+            c2: "#b96221",
+            c3: "#F4BE12",
+            c4: "#A6B2A8",
+            c5: "#F6F8F6"
+        },
+        g6: {
+            c1: "#273943",
+            c2: "#b96221",
+            c3: "#F4BE12",
+            c4: "#A6B2A8",
+            c5: "#F6F8F6"
+        },
+        g7: {
+            c1: "#4111B3",
+            c2: "#351082",
+            c3: "#73A69D",
+            c4: "#D4D4B4",
+            c5: "#0D0915"
+        }
+    }
 });
 
 //EXAMPLE:
