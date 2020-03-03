@@ -22,10 +22,11 @@ const Button = styled.button`
 
 const NavItem = styled(Link)`
  
-  color: red;
+color: ${buttonBackgroundColor};
   font-family: ${fontStyle};
-  &:hover {
-   color: ${buttonTextColor};
+ 
+  &:visited {
+   color: ${buttonBackgroundColor};
 `;
 
 // NavItem.defaultProps = {
@@ -65,27 +66,48 @@ function Header(props) {
       </header>
       <nav>
         <ul>
-          <NavItem to="/events">hello?</NavItem>
-          <NavItem to="/">Home</NavItem>
+          <li>
+            <NavItem to="/events">hello?</NavItem>
+          </li>
+          <li>
+            <NavItem to="/">Home</NavItem>
+          </li>
 
-          <NavItem to="/events">Go to events</NavItem>
+          <li>
+            {" "}
+            <NavItem to="/events">Go to events</NavItem>
+          </li>
 
-          <NavItem to="/auth">Login or signup</NavItem>
+          <li>
+            <NavItem to="/auth">Login or signup</NavItem>
+          </li>
 
-          <NavItem to="/entryway">EntryWay</NavItem>
+          <li>
+            <NavItem to="/entryway">EntryWay</NavItem>
+          </li>
 
-          <NavItem to="/about3e">3E About</NavItem>
+          <li>
+            <NavItem to="/about3e">3E About</NavItem>
+          </li>
 
-          <NavItem to="/play">
-            Play -- refactoring spot for random element components and
-            retrieving arrays
-          </NavItem>
+          <li>
+            <NavItem to="/play">
+              Play -- refactoring spot for random element components and
+              retrieving arrays
+            </NavItem>
+          </li>
 
-          <NavItem to="/oOoOs">Event List retrieved by Context/Hooks</NavItem>
+          <li>
+            <NavItem to="/oOoOs">Event List retrieved by Context/Hooks</NavItem>
+          </li>
 
-          <NavItem to="/patches">Patches</NavItem>
+          <li>
+            <NavItem to="/patches">Patches</NavItem>
+          </li>
 
-          <NavItem to="/traces">Register a trace</NavItem>
+          <li>
+            <NavItem to="/traces">Register a trace</NavItem>
+          </li>
         </ul>
       </nav>
     </React.Fragment>
