@@ -32,25 +32,27 @@ function App() {
     <React.Fragment>
       <Router>
         <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about3e" component={About} />
-          <Route path="/oOoOs" component={Glitch} />
-          <Route path="/play" component={Play} />
-          <Route path="/patches" component={EeE} />
-          <Route path="/entryway" render={() => <div>Entry</div>} />
-          <Route exact path="/auth" component={AuthPage} />
-          <Route
-            exact
-            path="/events"
-            component={withAuth(EventsPage, "/events")}
-          />
-          <Route
-            exact
-            path="/traces"
-            component={withAuth(ImagesPage, "/traces")}
-          />
-        </Switch>
+        <div className="wrapper">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about3e" component={About} />
+            <Route path="/oOoOs" component={Glitch} />
+            <Route path="/play" component={Play} />
+            <Route path="/patches" component={EeE} />
+            <Route path="/entryway" render={() => <div>Entry</div>} />
+            <Route exact path="/auth" component={AuthPage} />
+            <Route
+              exact
+              path="/events"
+              component={withAuth(EventsPage, "/events")}
+            />
+            <Route
+              exact
+              path="/traces"
+              component={withAuth(ImagesPage, "/traces")}
+            />
+          </Switch>
+        </div>
       </Router>
     </React.Fragment>
   );

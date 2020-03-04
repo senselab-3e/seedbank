@@ -23,7 +23,7 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
   //by checking for truthy of image, i cover both 'false' and undefined - as in no prop for image was passed down at all
 
   let mode = "display";
-  console.log(name);
+  //console.log(name);
   theme.mode === "light" && name === "bound"
     ? (mode = "block")
     : (mode = "none");
