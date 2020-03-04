@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useTheme } from "./context/GlobalState";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 import withAuth from "./helpers/withAuth";
 

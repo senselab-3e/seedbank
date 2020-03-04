@@ -2,11 +2,7 @@ import React, { useEffect } from "react";
 import "../style/Header.css";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {
-  buttonBackgroundColor,
-  buttonTextColor,
-  fontStyle
-} from "../context/theme";
+import { buttonBackgroundColor, buttonTextColor } from "../context/theme";
 import { withTheme } from "styled-components";
 
 const Button = styled.button`
@@ -49,11 +45,23 @@ export const Row = styled.div`
   display: flex;
 `;
 
+const media = {
+  xs: styles => `
+  @media only screen and (max-width: 480px) {
+    ${styles}
+  }`
+};
+
 export const Col = styled.div`
-  flex: ${props => props.size};
   border-color: red;
   border-width: 1px;
   border-style: solid;
+  flex: ${props => props.size};
+  ${props =>
+    props.collapse &&
+    media[props.collapse](`
+    display:none;
+`)};
 `;
 
 function Header(props) {
@@ -62,8 +70,7 @@ function Header(props) {
     <React.Fragment>
       <StickyGrid>
         <Row>
-          <Col size={1}>
-            {" "}
+          <Col size={1} collapse="xs">
             <Button onClick={() => props.themeToggle.toggle()}>
               {props.theme.mode === "dark"
                 ? "Switch to Light Mode"
