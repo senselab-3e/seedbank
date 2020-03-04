@@ -41,6 +41,7 @@ function EventPopulate(props) {
             className={localclassName}
             randomPos={props.randomPos}
             link={props.link}
+            name={props.name}
           />
         ))}
       </React.Fragment>

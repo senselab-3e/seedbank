@@ -4,7 +4,7 @@ import { uniquePositions } from "../helpers/popCalculators";
 import { withTheme } from "styled-components";
 // import styled from "styled-components";
 
-function PopImage({ event, className, randomPos, link }) {
+function PopImage({ event, className, randomPos, link, theme, name }) {
   // if (className === "threshold"){
 
   // }
@@ -21,6 +21,16 @@ function PopImage({ event, className, randomPos, link }) {
   // eslint-disable-next-line
 
   //by checking for truthy of image, i cover both 'false' and undefined - as in no prop for image was passed down at all
+
+  let mode = "display";
+  console.log(name);
+  theme.mode === "light" && name === "bound"
+    ? (mode = "block")
+    : (mode = "none");
+
+  theme.mode === "dark" && name === "thingies"
+    ? (mode = "block")
+    : (mode = "none");
 
   //NOTES: ADD DIFFERENT RETURNS BASED ON IF LINK INFO IS NEEDED. see construction in POPDIV
 
@@ -49,7 +59,8 @@ function PopImage({ event, className, randomPos, link }) {
           className={className}
           style={{
             top: newCoor[0] + "px",
-            left: newCoor[1] + "px"
+            left: newCoor[1] + "px",
+            display: mode
           }}
         ></img>
       </React.Fragment>

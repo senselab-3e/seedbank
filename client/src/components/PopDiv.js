@@ -20,8 +20,7 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
     ? (coloring = randomColors())
     : (coloring = null);
 
-  // console.log(theme.mode === "light");
-
+  //display mode is managed here, for threshold divs if theme mode is light or dark
   let mode = "";
   theme.mode === "light" ? (mode = "none") : (mode = "block");
 
