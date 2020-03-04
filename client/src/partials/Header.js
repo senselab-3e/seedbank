@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../style/Header.css";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -19,9 +19,10 @@ const Button = styled.button`
 `;
 
 const NavItem = styled(Link)`
+display: flex;
+justify-content: space-between;
 padding: 0.5em 1em;
 position: relative;
-
 font-size: 1em;
 background-color: ${buttonTextColor};
 display:inline-block;
@@ -35,6 +36,7 @@ export const StickyGrid = styled.div`
   border-color: blue;
   border-width: 1px;
   border-style: solid;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -57,6 +59,8 @@ export const Col = styled.div`
   border-color: red;
   border-width: 1px;
   border-style: solid;
+  display: flex;
+  justify-content: space-around;
   flex: ${props => props.size};
   ${props =>
     props.collapse &&
@@ -65,8 +69,9 @@ export const Col = styled.div`
 `)};
 `;
 
+//NOTE: stashing syntax for flexbox: justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly
+
 function Header(props) {
-  useEffect(() => {});
   const themeToggle = useTheme();
   return (
     <React.Fragment>
@@ -80,19 +85,34 @@ function Header(props) {
             </Button>
           </Col>
 
-          <Col size={5}>
+          <Col size={1}>
             <NavItem to="/events">hello?</NavItem>
+          </Col>
+          <Col size={1}>
             <NavItem to="/">Home</NavItem>
-            <NavItem to="/events">Go to events</NavItem>
+          </Col>
+          <Col size={1}>
+            <NavItem to="/events">EventList-oldway</NavItem>
+          </Col>
+          <Col size={1}>
             <NavItem to="/auth">Login or signup</NavItem>
+          </Col>
+          <Col size={1}>
             <NavItem to="/entryway">EntryWay</NavItem>
+          </Col>
+          <Col size={1}>
             <NavItem to="/about3e">3E About</NavItem>
-            <NavItem to="/play">
-              Play -- refactoring spot for random element components and
-              retrieving arrays
-            </NavItem>
-            <NavItem to="/oOoOs">Event List retrieved by Context/Hooks</NavItem>
+          </Col>
+          <Col size={1}>
+            <NavItem to="/play">Play -- spot for random</NavItem>
+          </Col>
+          <Col size={1}>
+            <NavItem to="/oOoOs">EventList w/Context/Hooks</NavItem>
+          </Col>
+          <Col size={1}>
             <NavItem to="/patches">Patches</NavItem>
+          </Col>
+          <Col size={1}>
             <NavItem to="/traces">Register a trace</NavItem>
           </Col>
         </Row>

@@ -1,11 +1,11 @@
 import React from "react";
 import { randomColors, uniquePositions } from "../helpers/popCalculators";
-
+import { withTheme } from "styled-components";
 //this is just creating a quick condition so that if the default class is
 //invoked the background color for randomcolor won't override the css for the background color of deeppink
 //which is applied in index.css i want to see during development if something is missing as special class
 
-function PopDiv({ event, className, randomPos, image, link }) {
+function PopDiv({ event, className, randomPos, image, link, theme }) {
   let newCoor = "";
   let backgroundImg = ""; // in case i ever want an image to be applied to the background tiling of a div
   let href = "";
@@ -19,6 +19,11 @@ function PopDiv({ event, className, randomPos, image, link }) {
   className !== "defaultThingy"
     ? (coloring = randomColors())
     : (coloring = null);
+
+  // console.log(theme.mode === "light");
+
+  let mode = "";
+  theme.mode === "light" ? (mode = "none") : (mode = "block");
 
   if (link === true) {
     return (
@@ -48,7 +53,8 @@ function PopDiv({ event, className, randomPos, image, link }) {
           style={{
             top: newCoor[0] + "px",
             left: newCoor[1] + "px",
-            backgroundColor: coloring
+            backgroundColor: coloring,
+            display: mode
           }}
         ></div>
       </React.Fragment>
@@ -56,4 +62,4 @@ function PopDiv({ event, className, randomPos, image, link }) {
   }
 }
 
-export default PopDiv;
+export default withTheme(PopDiv);

@@ -1,8 +1,14 @@
 import React from "react";
 
 import { uniquePositions } from "../helpers/popCalculators";
+import { withTheme } from "styled-components";
+// import styled from "styled-components";
 
 function PopImage({ event, className, randomPos, link }) {
+  // if (className === "threshold"){
+
+  // }
+
   let newCoor = "";
   randomPos ? (newCoor = uniquePositions()) : (newCoor = [0, 0]);
   let href = "";
@@ -50,4 +56,4 @@ function PopImage({ event, className, randomPos, link }) {
     );
   }
 }
-export default PopImage;
+export default withTheme(PopImage);

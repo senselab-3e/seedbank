@@ -27,6 +27,13 @@ export const buttonTextColor = theme("mode", {
     dark: "#222"
 });
 
+//for displaying circle links in play or hiding them
+
+export const bubbles = theme("mode", {
+    light: "none",
+    dark: "block"
+});
+
 
 export const palettes = theme("colors", {
     palettes: {

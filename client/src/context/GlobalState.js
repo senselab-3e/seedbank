@@ -23,7 +23,7 @@ const initialState = {
   loading: true
 };
 
-//this is where it started being applied to everythingggg
+//this is where it started being applied to everythingggg all child components in app
 
 const Wrapper = styled.div`
   background-color: ${backgroundColor};
@@ -43,7 +43,7 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   const [themeState, setThemeState] = React.useState({
-    mode: "dark"
+    mode: "light"
   });
 
   //NOTE: So, this is great for memory usage, but insanely confusing when you attempt to leverage the standard event APIs. In fact, React events are actually Synthetic Events, not Native Events.

@@ -25,7 +25,7 @@ function Home() {
 
 //NOTE for routepaths if they are 'withAuth: if their path has more then one word should have a hyphenbetween them - because that path will be grabbed for the message displayed back to the user for login details
 //NOTE for withAuth, there is now a second paramter - which is passed down as a pathway that the user is redirected to, after they login or register. will potentially be refactored so that it is passed down as prop via location: state {} instead
-function App(props) {
+function App() {
   // const themeToggle = useTheme();
 
   return (
