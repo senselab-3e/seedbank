@@ -21,6 +21,13 @@ export const ColorSquares = styled.div`
   width: 20px;
   height: 20px;
   float: left;
+  cursor: pointer;
+  border: solid;
+  border-width: 1px;
+  border-color: white;
+  &:hover {
+    border-color: deeppink;
+  }
 `;
 
 //body color is in case i want a background color to this component that isn't the overall 'light mode dark mode switch' happening in the theme
