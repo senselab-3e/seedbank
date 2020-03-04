@@ -10,6 +10,8 @@ const BodyColor = styled.div`
   // height: 100vh;
 `;
 
+//body color is in case i want a background color to this component that isn't the overall 'light mode dark mode switch' happening in the theme
+
 function Play() {
   return (
     <BodyColor>

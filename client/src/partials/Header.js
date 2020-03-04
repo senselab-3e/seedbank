@@ -71,6 +71,11 @@ export const Col = styled.div`
 
 //NOTE: stashing syntax for flexbox: justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly
 
+//Pure components defined as function will always re-render" this is correct. The moment new props get passed down it re-renders
+//A functional component will rerender every time the parent renders it, no matter if the props have changed or not.
+//---> because my withTheme is wrapping everything... it's rerendering alll the child components.
+//https://stackoverflow.com/questions/40909902/shouldcomponentupdate-in-function-components
+
 function Header(props) {
   const themeToggle = useTheme();
   return (

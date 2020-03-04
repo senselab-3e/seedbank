@@ -37,7 +37,9 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/about3e" component={About} />
             <Route path="/oOoOs" component={Glitch} />
-            <Route path="/play" component={Play} />
+            <Route path="/play">
+              <Play />
+            </Route>
             <Route path="/patches" component={EeE} />
             <Route path="/entryway" render={() => <div>Entry</div>} />
             <Route exact path="/auth" component={AuthPage} />
