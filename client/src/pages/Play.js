@@ -28,12 +28,18 @@ export const ColorSquares = styled.div`
 const paletteSquares = ArrayOptions("paletteColors");
 console.log(paletteSquares);
 
+const backgroundToggle = color => console.log("current color: " + color);
+
 function Play() {
   return (
     <BodyColor>
       <ColorBar>
         {paletteSquares.map((color, i) => (
-          <ColorSquares color={color} key={i} />
+          <ColorSquares
+            color={color}
+            key={i}
+            onClick={() => backgroundToggle(color)}
+          />
         ))}
         <ColorSquares color="red" />
       </ColorBar>
