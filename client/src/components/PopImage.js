@@ -28,9 +28,9 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
     ? (mode = "block")
     : (mode = "none");
 
-  theme.mode === "dark" && name === "thingies"
-    ? (mode = "block")
-    : (mode = "none");
+  // theme.mode === "dark" && name === "thingies"
+  //   ? (mode = "block")
+  //   : (mode = "none");
 
   //NOTES: ADD DIFFERENT RETURNS BASED ON IF LINK INFO IS NEEDED. see construction in POPDIV
 
