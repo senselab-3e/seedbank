@@ -23,9 +23,15 @@ const initialState = {
   loading: true
 };
 
+//this is where it started being applied to everythingggg
+
 const Wrapper = styled.div`
   background-color: ${backgroundColor};
   color: ${textColor};
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
 `;
 
 export const GlobalContext = createContext(initialState);

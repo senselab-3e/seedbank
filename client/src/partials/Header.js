@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { buttonBackgroundColor, buttonTextColor } from "../context/theme";
 import { withTheme } from "styled-components";
+import { useTheme } from "../context/GlobalState";
 
 const Button = styled.button`
   background-color: ${buttonBackgroundColor};
@@ -66,12 +67,13 @@ export const Col = styled.div`
 
 function Header(props) {
   useEffect(() => {});
+  const themeToggle = useTheme();
   return (
     <React.Fragment>
       <StickyGrid>
         <Row>
           <Col size={1} collapse="xs">
-            <Button onClick={() => props.themeToggle.toggle()}>
+            <Button onClick={() => themeToggle.toggle()}>
               {props.theme.mode === "dark"
                 ? "Switch to Light Mode"
                 : "Switch to Dark Mode"}
