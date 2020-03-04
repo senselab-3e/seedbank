@@ -43,6 +43,12 @@ To preserve the image’s aspect ratio whilst also filling in the space, we can 
   --warning: "#e29c31";
   --danger: "#f44336";
 }
+/* #root isn't working */
+body {
+  top: 0;
+  left: 0;
+  background-color: deeppink;
+}
 
 .primary {
   color: var(--main-bg-color);

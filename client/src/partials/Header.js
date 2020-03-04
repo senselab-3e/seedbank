@@ -39,7 +39,7 @@ export const StickyGrid = styled.div`
   top: 0;
   left: 0;
   z-index: 1000;
-  width: 100%;
+  width: vw;
 `;
 
 export const Row = styled.div`

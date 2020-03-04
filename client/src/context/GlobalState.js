@@ -43,8 +43,11 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   const [themeState, setThemeState] = React.useState({
-    mode: "light"
+    mode: "dark"
   });
+
+  //NOTE: So, this is great for memory usage, but insanely confusing when you attempt to leverage the standard event APIs. In fact, React events are actually Synthetic Events, not Native Events.
+  //With React, events are to be observed, not mutated or intercepted.
 
   const toggle = () => {
     const mode = themeState.mode === "light" ? `dark` : `light`;

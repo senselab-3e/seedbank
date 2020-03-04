@@ -18,9 +18,7 @@ import teapot from "./pot.jpg";
 function Home() {
   return (
     <div>
-      <h2>
-        <img className="Cup" src={teapot} alt="teapot"></img>
-      </h2>
+      <img className="Cup" src={teapot} alt="teapot"></img>
     </div>
   );
 }
@@ -31,9 +29,9 @@ function App(props) {
   // const themeToggle = useTheme();
 
   return (
-    <Router>
-      <Header />
-      <div className="wrapper">
+    <React.Fragment>
+      <Router>
+        <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about3e" component={About} />
@@ -53,8 +51,8 @@ function App(props) {
             component={withAuth(ImagesPage, "/traces")}
           />
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </React.Fragment>
   );
 }
 
