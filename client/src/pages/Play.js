@@ -28,7 +28,7 @@ export const ColorSquares = styled.div`
 const paletteSquares = ArrayOptions("paletteColors");
 
 function Play() {
-  const [bcolor, setColor] = useState("ffffff");
+  const [bcolor, setColor] = useState("");
   return (
     <BodyColor color={bcolor}>
       <ColorBar>

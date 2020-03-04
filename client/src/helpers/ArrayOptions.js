@@ -77,7 +77,7 @@ const paletteColors = ["#42C4AF",
   "#0D0915"
 ]
 
-const gifVerse = ["https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F4a81a730-df75-4524-9ba2-e483c4930018%20(1).gif?v=1576098062094", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Farchitecture.gif?v=1583107441322", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fleftovers.gif?v=1583107479944", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fwhissssp.gif?v=1583107431805", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Ffold.gif?v=1576263090670"];
+const gifVerse = ["https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F4a81a730-df75-4524-9ba2-e483c4930018%20(1).gif?v=1576098062094", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Farchitecture.gif?v=1583107441322", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fleftovers.gif?v=1583107479944", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fwhissssp.gif?v=1583107431805", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Ffold.gif?v=1576263090670", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fa7c114ad3b33938e.gif?v=1583360075182"];
 
 const glitchLinks = [
   "https://convalizards.glitch.me/ecologyofvidz.html", "https://convalizards.glitch.me/oz-glob.html", "https://convalizards.glitch.me/pink.html", "https://convalizards.glitch.me/spincycle.html", "https://convalizards.glitch.me/swerve.html"
