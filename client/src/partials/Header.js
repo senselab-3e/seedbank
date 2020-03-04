@@ -33,6 +33,14 @@ color: ${buttonBackgroundColor};
    color: ${buttonBackgroundColor};
 `;
 
+const StickyHeader = styled.div`
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+`;
+
 //float: left; --- removing that made the header elements not wrap the succeeding component titles (such as glitch, home etc)..
 
 // NavItem.defaultProps = {
@@ -63,7 +71,7 @@ function Header(props) {
   useEffect(() => {});
   return (
     <React.Fragment>
-      <nav>
+      <StickyHeader>
         <header className="App-header">
           <Button onClick={() => props.themeToggle.toggle()}>
             {props.theme.mode === "dark"
@@ -85,7 +93,7 @@ function Header(props) {
           <NavItem to="/patches">Patches</NavItem>
           <NavItem to="/traces">Register a trace</NavItem>
         </header>
-      </nav>
+      </StickyHeader>
     </React.Fragment>
   );
 }
