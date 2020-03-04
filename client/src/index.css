@@ -47,7 +47,7 @@ To preserve the image’s aspect ratio whilst also filling in the space, we can 
 body {
   top: 0;
   left: 0;
-  background-color: var(--main-highlight-color);
+  background-color: var(--main-primary-color);
 }
 
 .primary {
