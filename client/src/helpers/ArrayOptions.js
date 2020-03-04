@@ -44,6 +44,39 @@ const boundthingies = [
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fbound-14.gif?v=1576614690245"
 ];
 
+
+const paletteColors = ["#42C4AF",
+  "#496666",
+  "#5B85C7",
+  "#C4A460",
+  "#9D7950",
+  "#7FF6D0",
+  "#2384C9",
+  "#524E4F",
+  "#98B627",
+  "#DBCAA5",
+  "#5B5455",
+  "#586F8F",
+  "#F4BF83",
+  "#909A94",
+  "#F4F6F4",
+  "#273943",
+  "#b96221",
+  "#F4BE12",
+  "#A6B2A8",
+  "#F6F8F6",
+  "#273943",
+  "#b96221",
+  "#F4BE12",
+  "#A6B2A8",
+  "#F6F8F6",
+  "#4111B3",
+  "#351082",
+  "#73A69D",
+  "#D4D4B4",
+  "#0D0915"
+]
+
 const gifVerse = ["https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F4a81a730-df75-4524-9ba2-e483c4930018%20(1).gif?v=1576098062094", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Farchitecture.gif?v=1583107441322", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fleftovers.gif?v=1583107479944", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fwhissssp.gif?v=1583107431805", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Ffold.gif?v=1576263090670"];
 
 const glitchLinks = [
@@ -85,6 +118,9 @@ export const ArrayOptions = (props) => {
       break;
     case "gifVerse":
       chosenArray = gifVerse;
+      break;
+    case "paletteColors":
+      chosenArray = paletteColors;
       break;
     default:
       chosenArray = blankArray;
