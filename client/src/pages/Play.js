@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Thingies from "../components/Thingies";
 import styled from "styled-components";
 import { ArrayOptions } from "../helpers/ArrayOptions";
 
 const BodyColor = styled.div`
-  // background-color: blue;
-  // top: -10px;
-  // left: 0;
-  // width: 100vw;
-  // height: 100vh;
+  background-color: ${props => props.color};
+  top: -10px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 `;
 
 export const ColorBar = styled.div`
@@ -26,20 +26,14 @@ export const ColorSquares = styled.div`
 //body color is in case i want a background color to this component that isn't the overall 'light mode dark mode switch' happening in the theme
 
 const paletteSquares = ArrayOptions("paletteColors");
-console.log(paletteSquares);
-
-const backgroundToggle = color => console.log("current color: " + color);
 
 function Play() {
+  const [bcolor, setColor] = useState("ffffff");
   return (
-    <BodyColor>
+    <BodyColor color={bcolor}>
       <ColorBar>
         {paletteSquares.map((color, i) => (
-          <ColorSquares
-            color={color}
-            key={i}
-            onClick={() => backgroundToggle(color)}
-          />
+          <ColorSquares color={color} key={i} onClick={() => setColor(color)} />
         ))}
         <ColorSquares color="red" />
       </ColorBar>
