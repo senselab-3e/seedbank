@@ -103,9 +103,11 @@ body img {
   position: absolute;
 }
 
+/*something weird happened with the height calculations on line -- where the percentage is no longer working right for height only - probably has to do with the parent div - troubleshoot later
+*/
 .line:hover {
-  width: 60%;
-  height: 100%;
+  width: 40%;
+  height: 900px;
 }
 
 .defaultThingy {

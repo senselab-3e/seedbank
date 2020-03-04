@@ -16,6 +16,7 @@ function Thingies() {
   //   let choosenArray = ArrayOptions("thingies");
   //   console.log(choosenArray); ---> this is all i need now to retreive the array of images pathway values now
 
+  //name was a quick prop add last night to track the type of array it is handling/retreiving
   //NOTE: investigate why prop link is always testing positive. truthy tests in the pop components might also all be returning true because i'm no longer doing props.name --
   return (
     <div>
