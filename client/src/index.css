@@ -57,7 +57,7 @@ body img {
   height: 100vh;
   /* margin-top: -300; */
   position: relative;
-  z-index: -4;
+  z-index: 5;
 }
 
 /*POP COMPONENT*/
@@ -152,4 +152,10 @@ body img {
     28 / 28px / 0 round;
   border-width: 28px;
   border-style: solid;
+}
+
+.wrapper {
+  margin-top: 4em;
+  position: relative;
+  display: block;
 }
