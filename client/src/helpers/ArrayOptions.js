@@ -75,7 +75,9 @@ const paletteColors = ["#42C4AF",
   "#73A69D",
   "#D4D4B4",
   "#0D0915"
-]
+];
+
+export const fontChoiceArray = ["B612", "Muli", "Vollkorn", "IBM Plex Serif", "Crimson Text", "Archivo", "Concert One", "Poppins"]
 
 const gifVerse = ["https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F4a81a730-df75-4524-9ba2-e483c4930018%20(1).gif?v=1576098062094", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Farchitecture.gif?v=1583107441322", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fleftovers.gif?v=1583107479944", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fwhissssp.gif?v=1583107431805", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Ffold.gif?v=1576263090670", "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fa7c114ad3b33938e.gif?v=1583360075182"];
 
@@ -121,6 +123,9 @@ export const ArrayOptions = (props) => {
       break;
     case "paletteColors":
       chosenArray = paletteColors;
+      break;
+    case "fontsFamilies":
+      chosenArray = fontChoiceArray;
       break;
     default:
       chosenArray = blankArray;
