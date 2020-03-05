@@ -1,4 +1,4 @@
-const imgThingies = [
+export const imgThingies = [
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F404_glitch2.gif?v=1575674309400",
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fcompost.gif?v=1575674555450",
   "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fcube-6.gif?v=1576263083138",

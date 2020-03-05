@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import { ArrayOptions } from "../helpers/ArrayOptions";
+import { ArrayOptions, imgThingies } from "../helpers/ArrayOptions";
 
 import EventPopulate from "./EventPopulate";
 
@@ -23,7 +23,7 @@ function Thingies() {
       <EventPopulate array={events} className={"threshold"} randomPos={true} />
       <EventPopulate array={[1, 2, 3, 4, 5, 6]} randomPos={false} />
       <EventPopulate
-        array={ArrayOptions("thingies")}
+        array={imgThingies}
         className={"line"}
         randomPos={true}
         link={true}

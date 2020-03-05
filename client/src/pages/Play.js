@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import Thingies from "../components/Thingies";
 import styled from "styled-components";
 import { ArrayOptions } from "../helpers/ArrayOptions";
@@ -11,12 +11,12 @@ const BodyColor = styled.div`
   height: 100vh;
 `;
 
-export const ColorBar = styled.div`
+const ColorBar = styled.div`
   height: 40px;
   z-index: 30;
 `;
 
-export const ColorSquares = styled.div`
+const ColorSquares = styled.div`
   background-color: ${props => props.color};
   width: 20px;
   height: 20px;
@@ -34,19 +34,47 @@ export const ColorSquares = styled.div`
 
 const paletteSquares = ArrayOptions("paletteColors");
 
-function Play() {
-  const [bcolor, setColor] = useState("");
-  return (
-    <BodyColor color={bcolor}>
-      <ColorBar>
-        {paletteSquares.map((color, i) => (
-          <ColorSquares color={color} key={i} onClick={() => setColor(color)} />
-        ))}
-        <ColorSquares color="red" />
-      </ColorBar>
-      <Thingies />
-    </BodyColor>
-  );
+export default class Play extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bcolor: ""
+    };
+  }
+
+  render() {
+    //const [bcolor, setColor] = useState("");
+    return (
+      <BodyColor color={this.state.bcolor}>
+        <ColorBar>
+          {paletteSquares.map((color, i) => (
+            <ColorSquares
+              color={color}
+              key={i}
+              onClick={() => this.setState({ bcolor: color })}
+            />
+          ))}
+          <ColorSquares color="red" />
+        </ColorBar>
+        <Thingies />
+      </BodyColor>
+    );
+  }
 }
 
-export default Play;
+// function Play() {
+
+//   return (
+//     <BodyColor color={bcolor}>
+//       <ColorBar>
+//         {paletteSquares.map((color, i) => (
+//           <ColorSquares color={color} key={i} onClick={() => setColor(color)} />
+//         ))}
+//         <ColorSquares color="red" />
+//       </ColorBar>
+//       <Thingies />
+//     </BodyColor>
+//   );
+// }
+
+// export default Play;
