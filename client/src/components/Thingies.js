@@ -21,7 +21,7 @@ function Thingies() {
   return (
     <div>
       <EventPopulate array={events} className={"threshold"} randomPos={true} />
-      <EventPopulate array={[1, 2, 3, 4, 5, 6]} randomPos={false} />
+      <EventPopulate array={[81, 72, 31, 664, 4445, 46]} randomPos={false} />
       <EventPopulate
         array={imgThingies}
         className={"line"}
