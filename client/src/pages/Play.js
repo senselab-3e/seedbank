@@ -32,49 +32,47 @@ const ColorSquares = styled.div`
 
 //body color is in case i want a background color to this component that isn't the overall 'light mode dark mode switch' happening in the theme
 
-const paletteSquares = ArrayOptions("paletteColors");
-
-export default class Play extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bcolor: ""
-    };
-  }
-
-  render() {
-    //const [bcolor, setColor] = useState("");
-    return (
-      <BodyColor color={this.state.bcolor}>
-        <ColorBar>
-          {paletteSquares.map((color, i) => (
-            <ColorSquares
-              color={color}
-              key={i}
-              onClick={() => this.setState({ bcolor: color })}
-            />
-          ))}
-          <ColorSquares color="red" />
-        </ColorBar>
-        <Thingies />
-      </BodyColor>
-    );
-  }
+function Play() {
+  const paletteSquares = ArrayOptions("paletteColors");
+  const [bcolor, setColor] = useState("");
+  return (
+    <BodyColor color={bcolor}>
+      <ColorBar>
+        {paletteSquares.map((color, i) => (
+          <ColorSquares color={color} key={i} onClick={() => setColor(color)} />
+        ))}
+        <ColorSquares color="red" />
+      </ColorBar>
+      <Thingies />
+    </BodyColor>
+  );
 }
 
-// function Play() {
+export default Play;
 
-//   return (
-//     <BodyColor color={bcolor}>
-//       <ColorBar>
-//         {paletteSquares.map((color, i) => (
-//           <ColorSquares color={color} key={i} onClick={() => setColor(color)} />
-//         ))}
-//         <ColorSquares color="red" />
-//       </ColorBar>
-//       <Thingies />
-//     </BodyColor>
-//   );
+// export default class Play extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       bcolor: ""
+//     };
+//   }
+//   render() {
+//     //const [bcolor, setColor] = useState("");
+//     return (
+//       <BodyColor color={this.state.bcolor}>
+//         <ColorBar>
+//           {paletteSquares.map((color, i) => (
+//             <ColorSquares
+//               color={color}
+//               key={i}
+//               onClick={() => this.setState({ bcolor: color })}
+//             />
+//           ))}
+//           <ColorSquares color="red" />
+//         </ColorBar>
+//         <Thingies />
+//       </BodyColor>
+//     );
+//   }
 // }
-
-// export default Play;
