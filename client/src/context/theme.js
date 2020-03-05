@@ -1,4 +1,4 @@
-//Why use styled-theming on top of styled-components beyond just taking my word for it? It gives us a means to effectively scale themes as they grow in complexity by defining names instead of styles. Consider the following example, defining a couple of properties for a dark and light mode:
+//Why use styled-theming on top of styled-components beyond - It gives us a means to effectively scale themes as they grow in complexity by defining names instead of styles. Consider the following example, defining a couple of properties for a dark and light mode:
 //https://medium.com/@rossbulat/creating-themes-in-react-with-styled-components-6fce744b4e54
 import theme from "styled-theming";
 

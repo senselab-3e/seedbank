@@ -138,6 +138,7 @@ body img {
   -webkit-transform: scale(0.2, 0.2);
   transition-timing-function: ease;
   transition: transform 1s;
+  z-index: 11;
 }
 
 .easeLarger:hover {
