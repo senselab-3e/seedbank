@@ -1,10 +1,25 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import Thingies from "../components/Thingies";
 
 // import styled from "styled-components";
 // import { ArrayOptions } from "../helpers/ArrayOptions";
 
 import ColorPicker from "./ColorPicker";
+
+function Play() {
+  return (
+    <React.Fragment>
+      <ColorPicker />
+      <Thingies />
+    </React.Fragment>
+  );
+}
+
+export default Play;
+
+///BELOW is how things were written when the repositioning and coloring was being called on every pixel click of the color picker
+//to keep it from rerendering i broke it up into discrete components /// buuttt.... however inefficient i still prefer the effect of them changing position
+//so i'm stashing the code below in case i ever want it back.
 
 // const BodyColor = styled.div`
 //   background-color: ${props => props.color};
@@ -80,14 +95,3 @@ import ColorPicker from "./ColorPicker";
 //     );
 //   }
 // }
-
-export default class Play extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <ColorPicker />
-        <Thingies />
-      </React.Fragment>
-    );
-  }
-}

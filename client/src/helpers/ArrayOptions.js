@@ -99,6 +99,10 @@ const testArray = ['1', '2', '3', '4', '5', '66666668886']
 
 //you can use it by doing import { ArrayOptions } from "./ArrayOptions";
 
+
+///this fucntion isn't entirely needed --- i can just reach into this component directly, using destructure... { } BUT 
+//there may be instances where it clearer to use this and just pass in the prop of the array i want so i'm keeping both options for now
+
 export const ArrayOptions = (props) => {
 
   let chosenArray = []
