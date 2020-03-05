@@ -35,11 +35,11 @@ function ColorPicker() {
   const [bcolor, setColor] = useState("");
   return (
     <BodyColor color={bcolor}>
-      <ColorSquares color="" />
       <ColorBar>
         {paletteSquares.map((color, i) => (
           <ColorSquares color={color} key={i} onClick={() => setColor(color)} />
         ))}
+        <ColorSquares color="" onClick={() => setColor("")} />
       </ColorBar>
     </BodyColor>
   );
