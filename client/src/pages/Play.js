@@ -5,11 +5,13 @@ import Thingies from "../components/Thingies";
 // import { ArrayOptions } from "../helpers/ArrayOptions";
 
 import ColorPicker from "./ColorPicker";
+//import Signature from "./components/Signature";
 
 function Play() {
   return (
     <React.Fragment>
       <ColorPicker />
+
       <Thingies />
     </React.Fragment>
   );

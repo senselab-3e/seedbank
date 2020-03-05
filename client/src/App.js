@@ -16,9 +16,12 @@ import ImagesPage from "./pages/Images";
 import EeE from "./pages/EEE";
 import teapot from "./pot.jpg";
 
+import Signature from "./components/Signature";
+
 function Home() {
   return (
     <div>
+      <Signature />
       <img className="Cup" src={teapot} alt="teapot"></img>
     </div>
   );
