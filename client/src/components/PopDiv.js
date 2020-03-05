@@ -21,6 +21,7 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
   className !== "defaultThingy"
     ? (coloring = randomColors())
     : (coloring = null);
+
   // this <></>  is necessary to keep the anchor tag from being empty and throwing errors. introduce a better solution in the future
 
   //i shouldn't have to pass down the them mode when i can just access the theme values directly - whcih display according to the global state
