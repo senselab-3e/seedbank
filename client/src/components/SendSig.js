@@ -10,20 +10,24 @@ export class SendSig extends Component {
     };
     //     this.handleChange = this.handleChange.bind(this);
     //     this.submit = this.submit.bind(this);
-    console.log(this.props, "send Sig");
+    //console.log(this.props.sigData, "receiving Sig");
+    console.log(this.state.path);
   }
   handleChange(props) {
     console.log(props, "handlechange");
-    if (props.data !== undefined) {
+    if (props !== undefined) {
+      //it's an object so you can't do a simple slice
+      // console.log(props.data.path, "afterslice");
+      // props.data.path = props.data.path.splice(0, 75);
+      // console.log(props.data.path, "checkslice");
       this.setState({
-        color: props.data.color,
-        path: props.data.path,
+        color: props.color,
+        path: props.path,
         logged: true
       });
     } else {
       console.log("nothing to log");
     }
-    console.log(this.state.path);
   }
 
   //   submit(e) {
@@ -44,7 +48,6 @@ export class SendSig extends Component {
   //   }
 
   render() {
-    //console.log(this.props, "send Sig");
     return <div></div>;
   }
 }
