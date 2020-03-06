@@ -146,7 +146,7 @@ export class Doodle extends Component {
   };
 
   /// all these mouse pressed and mouse released actions need to be refactored.... the truthy and falsy statements for tracking if drawing or submitting is happen is causing many limitations on what else the mouse could be doing in the space. no matter what, even when the canvas isn't full sized window, annnyy mouse click anywhere is being considered part of this function tracking and causing all kinds of adverse events.... it can be tracked  to the component. but beyond
-  //that this isn't working. it's getting confused when clicks are happening anywhere else on the page. it's incredibly unreliable. even when the canvas is shrunk to a specific area, it's still
+  //that this isn't working. sometimes the clicking gets stuck and the drawing action doesn't re-initialize. it's getting confused when clicks are happening anywhere else on the page. it's incredibly unreliable. even when the canvas is shrunk to a specific area, it's still
   //firing off setStates everywhere and interfering with the actions of other components elsewhere
   // the this.state.submitting in particular is what is causing problems -- will need to investigate
 
@@ -154,6 +154,7 @@ export class Doodle extends Component {
 
   //Browsers may have different default behaviors attached to various touch events. To prevent any default behavior for this event, add "return false" to the end of the method.
 
+  /// bound limitations need to be places on all the mouse actions too. i really don't know if i have time to do all the modifications that are necessary...
   mousePressed = p5 => {
     if (!this.state.drawing && !this.state.coloring && !this.state.submitting) {
       this.setState({
@@ -184,6 +185,7 @@ export class Doodle extends Component {
     }
   };
 
+  /// this may need to be associated with the button click /// not the stop drawing by part of this.
   mouseReleased = p5 => {
     if (this.state.drawing && !this.state.coloring && !this.state.submitting) {
       this.setState({
@@ -226,7 +228,7 @@ export class Doodle extends Component {
     if (this.state.submitting) {
       this.spin =
         10 * Math.sin(((this.incA + this.incB) * Math.PI) / this.points.length);
-      console.log(this.incB); /// these are all the individual points
+      //console.log(this.incB); /// these are all the individual points
       this.disappear(this.incB);
       this.incB += 0.5;
     }
