@@ -10,11 +10,11 @@ export default function SignIn() {
     setSig(data);
   };
 
-  console.log(sig);
+  //console.log(sig);
   return (
     <div>
       <div>
-        <button onClick={() => console.log("clicking")}>CLICKING</button>
+        <button onClick={() => console.log(sig)}>CLICKING</button>
         <Signature grabSign={grabSignature} />
         <img className="Cup" src={teapot} alt="teapot"></img>
       </div>

@@ -86,19 +86,19 @@ export class Doodle extends Component {
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   };
 
-  submitDrawing = () => {
+  submitDrawing = data => {
+    console.log(data.path.length, "length"); //later introduce edge cases and limits. for now a minimum is ok enough.
+    this.setState({ data: data, logged: true });
+    this.props.grabSign(this.state.data);
     //console.log("submitting", this.state.date);
-    return this.state.data;
+    //return this.state.data;
     // if(42<this.points.length) {
-
     // var hex = this.hsltohex(this.hsl[0], this.hsl[1], this.hsl[2]);
     // var data = {
     //   color: hex,
     //   path: this.points
     // };
     // console.log(data);
-    // if the data.path is greater then zero, only then do i want it to submit.
-    //connecting the submit to any mouse click is not sustainable as there are many edge cases which would need to be eliminated. it needs to go to a specific button
 
     // if(500<this.points.length) {
     // var path_data = this.points.splice(0, this.points.length-500);
@@ -143,6 +143,10 @@ export class Doodle extends Component {
       Math.cos((this.spin * i * Math.PI) / this.points.length);
     return y;
   };
+
+  /// all these mouse pressed and mouse released actions need to be refactored.... state need not be assigned within each function.... i can be global to the component. but beyond
+  //that this isn't working. it's getting confused when clicks are happening anywhere else on the page. it's incredibly unreliable. even when the canvas is shrunk to a specific area, it's still
+  //firing off setStates everywhere and interfering with the actions of other components elsewhere
 
   mousePressed = p5 => {
     if (!this.state.drawing && !this.state.coloring && !this.state.submitting) {
@@ -189,8 +193,7 @@ export class Doodle extends Component {
       };
 
       if (data.path.length > 5) {
-        this.setState({ data: data, logged: true });
-        this.props.grabSign(this.state.data);
+        this.submitDrawing(data);
       } else {
         // ? this.submitDrawing(data)
         console.log("not large enough drawing");
