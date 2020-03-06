@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Sketch from "react-p5";
-import SendSig from "./SendSig";
 
 export class Doodle extends Component {
   constructor(props) {
@@ -9,7 +8,8 @@ export class Doodle extends Component {
       drawing: false,
       coloring: false,
       submitting: false,
-      data: undefined
+      data: undefined,
+      logged: false
     };
   }
   incA = 0;
@@ -188,10 +188,13 @@ export class Doodle extends Component {
         path: this.points
       };
 
-      data.path.length > 5
-        ? this.setState({ data: data })
-        : // ? this.submitDrawing(data)
-          console.log("not large enough drawing");
+      if (data.path.length > 5) {
+        this.setState({ data: data, logged: true });
+        this.props.grabSign(this.state.data);
+      } else {
+        // ? this.submitDrawing(data)
+        console.log("not large enough drawing");
+      }
     }
   };
 
@@ -246,8 +249,6 @@ export class Doodle extends Component {
           mouseDragged={this.mouseDragged}
           mouseReleased={this.mouseReleased}
         />
-
-        <SendSig data={this.state.data ? this.state.data : ""} />
       </React.Fragment>
     );
   }
