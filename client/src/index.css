@@ -104,6 +104,10 @@ body img {
   position: absolute;
 }
 
+.top {
+  z-index: 100;
+}
+
 /*something weird happened with the height calculations on line -- where the percentage is no longer working right for height only - probably has to do with the parent div - troubleshoot later
 */
 .line:hover {
