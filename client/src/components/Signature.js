@@ -9,7 +9,7 @@ export class Signature extends Component {
         <div>
           <Bicho
             jsonData={require("../assets/signatures/bicho_1580267983731.json")}
-            topPos={0}
+            topPos={200}
             leftPos={0}
           />
           <Doodle

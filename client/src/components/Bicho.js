@@ -5,8 +5,8 @@ export class Bicho extends Component {
   state = {
     bichoData: 0
   };
-  canvas_width = window.innerWidth;
-  canvas_height = window.innerHeight;
+  canvas_width = 500; /// trying to use this to impose a limit space on where mouse down and mouse release actions are occuring, doesn't work
+  canvas_height = 500;
 
   x = 0;
   y = 0;
@@ -94,6 +94,10 @@ export class Bicho extends Component {
       this.jitter[i] = p5.random(0.9, 1.1);
     }
   };
+  //NOTES online... Use: context.clearRect(0, 0, canvas.width, canvas.height);
+  //This is the fastest and most descriptive way to clear the entire canvas.
+  // a better way to clear the canvas needs to be introduced... rather then redrawing it at each new drawing initialization
+
   draw = p5 => {
     p5.clear();
     p5.fill(0, 0);

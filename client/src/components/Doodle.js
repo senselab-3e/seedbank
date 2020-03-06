@@ -91,6 +91,7 @@ export class Doodle extends Component {
     this.setState({ data: data, logged: true });
     this.props.grabSign(this.state.data);
     //console.log("submitting", this.state.date);
+    //LEFT OVER CODE FROM ORIGINAL SOURCE - THAT WAS ALSO COMMENTED OUT
     //return this.state.data;
     // if(42<this.points.length) {
     // var hex = this.hsltohex(this.hsl[0], this.hsl[1], this.hsl[2]);
@@ -144,9 +145,14 @@ export class Doodle extends Component {
     return y;
   };
 
-  /// all these mouse pressed and mouse released actions need to be refactored.... state need not be assigned within each function.... i can be global to the component. but beyond
+  /// all these mouse pressed and mouse released actions need to be refactored.... the truthy and falsy statements for tracking if drawing or submitting is happen is causing many limitations on what else the mouse could be doing in the space. no matter what, even when the canvas isn't full sized window, annnyy mouse click anywhere is being considered part of this function tracking and causing all kinds of adverse events.... it can be tracked  to the component. but beyond
   //that this isn't working. it's getting confused when clicks are happening anywhere else on the page. it's incredibly unreliable. even when the canvas is shrunk to a specific area, it's still
   //firing off setStates everywhere and interfering with the actions of other components elsewhere
+  // the this.state.submitting in particular is what is causing problems -- will need to investigate
+
+  //additionally all mouse actions would need to be refactored for Touch Devices. /// from documentation: The touchMoved() function is called every time a touch move is registered. If no touchMoved() function is defined, the mouseDragged() function will be called instead if it is defined.
+
+  //Browsers may have different default behaviors attached to various touch events. To prevent any default behavior for this event, add "return false" to the end of the method.
 
   mousePressed = p5 => {
     if (!this.state.drawing && !this.state.coloring && !this.state.submitting) {
@@ -216,10 +222,11 @@ export class Doodle extends Component {
       this.motion = 1;
       this.incA += 0.1;
     }
-
+    ///this is causing more problems then it's worth /// there are two instances where the condition check for submitting is firing///. clearning the canvas altogether might be necessary as there is state confusion happening on the mouse release and mouse down etc....
     if (this.state.submitting) {
       this.spin =
         10 * Math.sin(((this.incA + this.incB) * Math.PI) / this.points.length);
+      console.log(this.incB); /// these are all the individual points
       this.disappear(this.incB);
       this.incB += 0.5;
     }
