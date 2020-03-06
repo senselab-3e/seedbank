@@ -12,7 +12,11 @@ export class Signature extends Component {
             topPos={0}
             leftPos={0}
           />
-          <Doodle topPos={this.props.offTop} leftPos={0} />
+          <Doodle
+            topPos={this.props.offTop}
+            leftPos={0}
+            grabSign={this.props.grabSign}
+          />
         </div>
       </React.Fragment>
     );

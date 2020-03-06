@@ -45,24 +45,7 @@ export class SendSig extends Component {
 
   render() {
     //console.log(this.props, "send Sig");
-    return (
-      <div>
-        {/* <button
-          className="top"
-          onClick={
-            () =>
-              //this.handleChange(this.props)
-              console.log(this.props, "clicking Sig")
-            // this.setState({
-            //   color: this.props.data.color,
-            //   path: this.props.data.path
-            // })
-          }
-        >
-          Hello Target
-        </button> */}
-      </div>
-    );
+    return <div></div>;
   }
 }
 
