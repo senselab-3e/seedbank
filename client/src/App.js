@@ -14,19 +14,7 @@ import Glitch from "./pages/Glitch";
 import Play from "./pages/Play";
 import ImagesPage from "./pages/Images";
 import EeE from "./pages/EEE";
-import teapot from "./pot.jpg";
-
-import Signature from "./components/Signature";
-
-function Home() {
-  return (
-    <div>
-      <button>adsdsafds</button>
-      <Signature />
-      <img className="Cup" src={teapot} alt="teapot"></img>
-    </div>
-  );
-}
+import SignIn from "./pages/SignIn";
 
 //NOTE for routepaths if they are 'withAuth: if their path has more then one word should have a hyphenbetween them - because that path will be grabbed for the message displayed back to the user for login details
 //NOTE for withAuth, there is now a second paramter - which is passed down as a pathway that the user is redirected to, after they login or register. will potentially be refactored so that it is passed down as prop via location: state {} instead
@@ -42,7 +30,7 @@ function App() {
           <Header />
           <div className="wrapper">
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={SignIn} />
               <Route path="/about3e" component={About} />
               <Route path="/oOoOs" component={Glitch} />
               <Route path="/play">
