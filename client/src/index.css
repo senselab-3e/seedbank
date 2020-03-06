@@ -43,6 +43,7 @@ To preserve the image’s aspect ratio whilst also filling in the space, we can 
   --warning: "#e29c31";
   --danger: "#f44336";
 }
+
 /* #root isn't working */
 body {
   top: 0;
@@ -155,21 +156,20 @@ body img {
 /* https://maxbittker.github.io/broider/*/
 
 .broider {
-  border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAABUCAYAAAAcaxDBAAABa0lEQVR4Xu3cwU7CQBhGUXj/h9awRJtO/swN1vS4xOlFj1+KuPD5+P3x9eOh58GZs4d2rx8+3bWOH2Htguxefy2h4VcDdAi2Og50JTT8/PT+OMzf4vjbLQ7o/s8c6L7hWwEo0FhgM3f6a6F76FwX6Nzs9AqgQGOBT+bcQ2NtoEBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgTj3Wuit/7Va7PkAGosCBRoLxDmv8kBjgThnoUBjgThnoUBjgThnoUBjgTh3tFDv7TeQgW7gHV0KFGgsEOf8tWkNOnpNAQp0LRCfsNC/Bo2f//K50eKm380d33oCna5kcR7ofwL9BirFJFGFv3qiAAAAAElFTkSuQmCC")
-    28 / 28px / 0 round;
+  border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAABUCAYAAAAcaxDBAAABa0lEQVR4Xu3cwU7CQBhGUXj/h9awRJtO/swN1vS4xOlFj1+KuPD5+P3x9eOh58GZs4d2rx8+3bWOH2Htguxefy2h4VcDdAi2Og50JTT8/PT+OMzf4vjbLQ7o/s8c6L7hWwEo0FhgM3f6a6F76FwX6Nzs9AqgQGOBT+bcQ2NtoEBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgThnoUBjgTj3Wuit/7Va7PkAGosCBRoLxDmv8kBjgThnoUBjgThnoUBjgThnoUBjgTh3tFDv7TeQgW7gHV0KFGgsEOf8tWkNOnpNAQp0LRCfsNC/Bo2f//K50eKm380d33oCna5kcR7ofwL9BirFJFGFv3qiAAAAAElFTkSuQmCC") 28 / 28px / 0 round;
   border-width: 28px;
   border-style: solid;
 }
 
 .broider2 {
-  border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAABUCAYAAAAcaxDBAAABlElEQVR4Xu3b0ZKCMBBEUfn/j9bSN2KKZGpuCJC7j+7Q4EkDYu1ur/+fd/HSVpk5eim7fXB31xqvYWVBsttfSyh4NIIGwVrjgraEgr//gi59iga9auM7P0HzooLmDXcJgs4G9Rq7X4FDj55rqKCCwie1oHNBy717iifWY8STUuJw7r+poPAaCnoCqNfUBHLPl8fepALAggawekYF7VEKzPQ8egbiHBUU7oCggsICcNyIm9LSH7MEtaGwABxnQyeAwrt8dlxPQ58tAL87QQWFBeA4GyooLADH2VBBYQE4bkRDfZaHF0lQQTkBT3nO8pc0AhQ+xHvFCQqvl6CCwgJwnA0VFBaA42yooLAAHGdDBYUF4DgbKigsAMfZUEFhATjOhgoKC8BxNlRQWACOs6GCwgJwnP8FIigsAMfZUEFhATjOu7ygsAAcZ0MFhQXgOBsqKCwAx9lQQWEBOK7W0KX/pDvrK2hWsNheUEFhATjOb5vaoKF7iqCCtgXgCRs6GxTe/+XjQo2LvpsVHz0FjbakMS/onUA/aHRIUUDxdk0AAAAASUVORK5CYII=")
-    28 / 28px / 0 round;
+  border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAABUCAYAAAAcaxDBAAABlElEQVR4Xu3b0ZKCMBBEUfn/j9bSN2KKZGpuCJC7j+7Q4EkDYu1ur/+fd/HSVpk5eim7fXB31xqvYWVBsttfSyh4NIIGwVrjgraEgr//gi59iga9auM7P0HzooLmDXcJgs4G9Rq7X4FDj55rqKCCwie1oHNBy717iifWY8STUuJw7r+poPAaCnoCqNfUBHLPl8fepALAggawekYF7VEKzPQ8egbiHBUU7oCggsICcNyIm9LSH7MEtaGwABxnQyeAwrt8dlxPQ58tAL87QQWFBeA4GyooLADH2VBBYQE4bkRDfZaHF0lQQTkBT3nO8pc0AhQ+xHvFCQqvl6CCwgJwnA0VFBaA42yooLAAHGdDBYUF4DgbKigsAMfZUEFhATjOhgoKC8BxNlRQWACOs6GCwgJwnP8FIigsAMfZUEFhATjOu7ygsAAcZ0MFhQXgOBsqKCwAx9lQQWEBOK7W0KX/pDvrK2hWsNheUEFhATjOb5vaoKF7iqCCtgXgCRs6GxTe/+XjQo2LvpsVHz0FjbakMS/onUA/aHRIUUDxdk0AAAAASUVORK5CYII=") 28 / 28px / 0 round;
   border-width: 28px;
   border-style: solid;
 }
 
 .wrapper {
   margin-top: 7em;
+  margin-bottom: 7em;
   position: relative;
   display: block;
 }

@@ -28,6 +28,8 @@ export default function SignIn() {
     }
   };
 
+  console.log(color, path);
+
   //   submit(e) {
   //     console.log("sig being sent", e);
   //     // e.preventDefault();
@@ -49,7 +51,9 @@ export default function SignIn() {
   return (
     <div>
       <div>
-        <button onClick={() => handleChange(sig)}>CLICKING</button>
+        <div className="wrapper">
+          <button onClick={() => handleChange(sig)}>Submit Signature</button>
+        </div>
         <Signature grabSign={grabSignature} />
         <SendSig sigData={sig} />
         <img className="Cup" src={teapot} alt="teapot"></img>
