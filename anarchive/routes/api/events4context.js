@@ -14,14 +14,14 @@ router.get("/", (req, res) => {
 		});
 });
 
-//CREATE EVENTs
+//CREATE EVENTs api/events
 
 router.post("/", (req, res) => {
-
-	const {
-		sponges,
-		name
-	} = req.body;
+	//double check this is not being used
+	// const {
+	// 	sponges,
+	// 	name
+	// } = req.body;
 	knex("events")
 		.insert({
 			name: req.body.name,
