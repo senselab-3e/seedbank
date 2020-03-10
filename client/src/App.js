@@ -9,7 +9,8 @@ import withAuth from "./helpers/withAuth";
 import EventsPage from "./pages/events";
 import AuthPage from "./pages/auth";
 import About from "./pages/About";
-import Header from "./partials/Header";
+//import Header from "./partials/Header";
+import Grid from "./Grid";
 import Glitch from "./pages/Glitch";
 import Play from "./pages/Play";
 import ImagesPage from "./pages/Images";
@@ -27,7 +28,7 @@ function App() {
     <React.Fragment>
       <GlobalProvider theme={{ mode: "light" }}>
         <Router>
-          <Header />
+          <Grid />
           <div className="wrapper">
             <Switch>
               <Route exact path="/" component={SignIn} />
