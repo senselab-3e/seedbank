@@ -20,7 +20,8 @@ function PopText({ event, className, randomPos, theme }) {
     : (coloring = null);
 
   let mode = "";
-  theme.mode === "light" ? (mode = "none") : (mode = "block");
+  theme.mode === "light" ? (mode = "block") : (mode = "block");
+  ////set this first one to mode= "none" to have the conditional viewable
 
   //if i'm dealing with text from the database -- i need to reach inside the array event for event.name etc
   //if i'm dealing with a client side array only -- a simple array -- i can just put 'event' in the p tags below.

@@ -2,6 +2,7 @@ import React from "react";
 import App from "./App";
 import ReactDOM from "react-dom";
 import "./index.css";
+import "./flexboxgrid.css";
 // import { GlobalProvider } from "./context/GlobalState";
 // import { BrowserRouter as Router } from 'react-router-dom';
 // import * as serviceWorker from './serviceWorker';

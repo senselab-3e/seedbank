@@ -4,7 +4,7 @@ import Thingies from "../components/Thingies";
 // import styled from "styled-components";
 // import { ArrayOptions } from "../helpers/ArrayOptions";
 
-import ColorPicker from "./ColorPicker";
+import ColorPicker from "../components/ColorPicker";
 //import Signature from "./components/Signature";
 
 function Play() {

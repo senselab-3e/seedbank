@@ -168,8 +168,56 @@ body img {
 }
 
 .wrapper {
-  margin-top: 7em;
+  /* margin-top: 7em; */
   margin-bottom: 7em;
   position: relative;
   display: block;
+}
+
+.container {
+  margin: auto;
+}
+
+#main-header {
+  border-bottom: 1px solid #56a79a;
+}
+
+#navbar {
+  text-transform: uppercase;
+}
+
+#navbar li {
+  display: inline;
+  padding-right: 20px;
+  list-style: none;
+}
+
+#navbar a {
+  text-decoration: none;
+  color: #888;
+}
+
+#navbar li.current a,
+#navbar a:hover {
+  color: #56a79a;
+  border-bottom: 3px solid #56a79a;
+  padding-bottom: 3px;
+}
+
+.row {
+  box-sizing: border-box;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex: 0 1 auto;
+  -webkit-box-flex: 0;
+  flex: 0 1 auto;
+  -ms-flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -1rem;
+  margin-left: -1rem;
 }

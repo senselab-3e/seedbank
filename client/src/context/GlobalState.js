@@ -28,12 +28,13 @@ const initialState = {
 const Wrapper = styled.div`
   background-color: ${backgroundColor};
   color: ${textColor};
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
+  margin: auto;
+  // width: 100vw;
+  // height: 100vh;
+  // margin: auto;
 `;
 
+console.log(Wrapper);
 export const GlobalContext = createContext(initialState);
 //const ThemeToggleContext = React.createContext();
 
@@ -43,7 +44,7 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   const [themeState, setThemeState] = React.useState({
-    mode: "light"
+    mode: "dark"
   });
 
   //NOTE: So, this is great for memory usage, but insanely confusing when you attempt to leverage the standard event APIs. In fact, React events are actually Synthetic Events, not Native Events.
@@ -51,7 +52,9 @@ export const GlobalProvider = ({ children }) => {
 
   const toggle = () => {
     const mode = themeState.mode === "light" ? `dark` : `light`;
-    setThemeState({ mode: mode });
+    setThemeState({
+      mode: mode
+    });
   };
 
   //actions
@@ -137,8 +140,10 @@ export const GlobalProvider = ({ children }) => {
           mode: themeState.mode
         }}
       >
-        <Wrapper>{children}</Wrapper>
+        {children}
       </ThemeProvider>
     </GlobalContext.Provider>
   );
 };
+
+// <Wrapper> {children} </Wrapper>

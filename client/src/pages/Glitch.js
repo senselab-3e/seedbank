@@ -7,12 +7,12 @@ import { EventListlings } from "../components/EventListlings";
 
 function Glitch() {
   return (
-    <div>
-      <h3>glitch</h3>
+    <React.Fragment>
+      glitch
       <EventListlings />
       <AddEvent />
       <img src={glitch} alt="glitch" />
-    </div>
+    </React.Fragment>
   );
 }
 

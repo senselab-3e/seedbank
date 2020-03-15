@@ -22,11 +22,14 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
 
   //by checking for truthy of image, i cover both 'false' and undefined - as in no prop for image was passed down at all
 
+  //all these create conditional displays based on the current theme mode being provided by the Global Provider. but I'm no longer interested in using it in this way...
   let mode = "display";
   //console.log(name);
   theme.mode === "light" && name === "bound"
     ? (mode = "block")
-    : (mode = "none");
+    : (mode = "block");
+
+  //set this second one to mode= "none" to have the conditional viewable
 
   // theme.mode === "dark" && name === "thingies"
   //   ? (mode = "block")

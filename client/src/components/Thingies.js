@@ -19,7 +19,7 @@ function Thingies() {
   //name was a quick prop add last night to track the type of array it is handling/retreiving
   //NOTE: investigate why prop link is always testing positive. truthy tests in the pop components might also all be returning true because i'm no longer doing props.name --
   return (
-    <div>
+    <React.Fragment>
       <EventPopulate array={events} className={"threshold"} randomPos={true} />
       <EventPopulate array={[81, 72, 31, 664, 4445, 46]} randomPos={false} />
       <EventPopulate
@@ -55,7 +55,7 @@ function Thingies() {
         text={true}
         image={true}
       />
-    </div>
+    </React.Fragment>
   );
 }
 
