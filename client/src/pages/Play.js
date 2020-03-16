@@ -11,7 +11,6 @@ function Play() {
   return (
     <React.Fragment>
       <ColorPicker />
-
       <Thingies />
     </React.Fragment>
   );

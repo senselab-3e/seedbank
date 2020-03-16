@@ -19,7 +19,7 @@ const ColorSquares = styled.div`
   background-color: ${props => props.color};
   width: 20px;
   height: 20px;
-  float: left;
+  // float: left;
   cursor: pointer;
   border: solid;
   border-width: 1px;

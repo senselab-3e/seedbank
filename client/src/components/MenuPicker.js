@@ -13,9 +13,14 @@ const BodyColor = styled.div`
   // height: 100vh;
 `;
 
+const Title = styled.p`
+  margin: 0em;
+`;
+
 const ColorBar = styled.div`
   height: 40px;
-  z-index: 30;
+  width: 100vw;
+  // z-index: 30;
   position: fixed;
   top: 5;
   left: 5;
@@ -69,7 +74,7 @@ function MenuPicker() {
     <BodyColor color={bcolor}>
       <ColorBar>
         {linkLocations.map(i => (
-          <Link to={i}>
+          <Link to={i} key={i}>
             <ColorSquares
               color={chooseElement(paletteSquares)}
               key={i}
@@ -81,7 +86,7 @@ function MenuPicker() {
           </Link>
         ))}
         <ColorSquares color="" onClick={() => setColor("")} />
-        <h3>{loc}</h3>
+        <Title>{loc}</Title>
       </ColorBar>
     </BodyColor>
   );

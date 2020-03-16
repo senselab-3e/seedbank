@@ -7,7 +7,6 @@ export default function EeE() {
     <div>
       hello my name is
       <Eee00 />
-      apples
     </div>
   );
 }

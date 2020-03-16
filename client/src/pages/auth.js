@@ -54,14 +54,15 @@ export class AuthPage extends Component {
     if (auth) {
       return (
         <React.Fragment>
-          <h3>You are Already Logged In</h3>
+          <p>You are Already Logged In</p>
           <AuthLogout />
         </React.Fragment>
       );
     } else {
       return (
-        <div>
-          <h3>{this.state.message}</h3>
+        <React.Fragment>
+          <br />
+          <p>{this.state.message}</p>
           <AuthLogin
             pathway={pathway}
             updateAuth={this.updateAuth}
@@ -79,7 +80,7 @@ export class AuthPage extends Component {
           <Link to="/">Back to entryway</Link>
           <br />
           <br />
-        </div>
+        </React.Fragment>
       );
     }
   }

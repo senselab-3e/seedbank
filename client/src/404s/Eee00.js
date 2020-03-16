@@ -14,11 +14,10 @@ export default function eeE00() {
   //choose random link from array of localLinks
 
   return (
-    <div>
-      HELLO
+    <React.Fragment>
       <Link to={randomGlitchroute}>
         <img alt="spinning fan" src={randomGifs} className="huge"></img>
       </Link>
-    </div>
+    </React.Fragment>
   );
 }
