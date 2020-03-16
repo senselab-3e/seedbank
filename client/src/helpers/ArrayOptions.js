@@ -87,7 +87,17 @@ const glitchLinks = [
 
 const localLinks = ["/events", "/entryway", "/about3e", "/play", "/oOoOs", "/patches"]
 
-
+export const linkLocations = [
+  "/events",
+  "/",
+  "/auth",
+  "/entryway",
+  "/about3e",
+  "/play",
+  "/oOoOs",
+  "/patches",
+  "/traces"
+];
 
 const blankArray = ["FAILED TO LOAD AN ARRAY"];
 

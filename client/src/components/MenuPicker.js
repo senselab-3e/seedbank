@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ArrayOptions } from "../helpers/ArrayOptions";
 import { Link } from "react-router-dom";
 import { chooseElement } from "../helpers/popCalculators";
+import { linkLocations } from "../helpers/ArrayOptions";
 
 const BodyColor = styled.div`
   background-color: ${props => props.color};
@@ -32,32 +33,48 @@ const ColorSquares = styled.div`
 `;
 
 const paletteSquares = ArrayOptions("paletteColors");
-const linkLocations = [
-  "/events",
-  "/",
-  "/auth",
-  "/entryway",
-  "/about3e",
-  "/play",
-  "/oOoOs",
-  "/patches",
-  "/traces"
-];
+// const linkLocations = [
+//   "/events",
+//   "/",
+//   "/auth",
+//   "/entryway",
+//   "/about3e",
+//   "/play",
+//   "/oOoOs",
+//   "/patches",
+//   "/traces"
+// ];
 
 const colorPic = chooseElement(paletteSquares);
 console.log(colorPic, "apples");
 
 function MenuPicker() {
   const [bcolor, setColor] = useState("");
+  const [loc, setLoc] = useState("apple");
+
+  const pageNameClean = rawHttp => {
+    let regEx = /-/i;
+    let word = rawHttp
+      .split("")
+      .splice(1)
+      .join("");
+
+    return word.replace(regEx, " ");
+  };
+
   return (
     <BodyColor color={bcolor}>
+      <h3>{loc}</h3>
       <ColorBar>
         {linkLocations.map(i => (
           <Link to={i}>
             <ColorSquares
               color={chooseElement(paletteSquares)}
               key={i}
-              onClick={() => setColor(chooseElement(paletteSquares))}
+              onClick={function() {
+                setColor(chooseElement(paletteSquares));
+                setLoc(pageNameClean(i));
+              }}
             ></ColorSquares>
           </Link>
         ))}
