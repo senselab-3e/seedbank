@@ -1,10 +1,14 @@
 import React from "react";
-
+import { useState } from "react";
+import { chooseElement } from "../helpers/popCalculators";
 import { uniquePositions } from "../helpers/popCalculators";
 import { withTheme } from "styled-components";
+import { imgThingies } from "../helpers/ArrayOptions";
 // import styled from "styled-components";
 
 function PopImage({ event, className, randomPos, link, theme, name }) {
+  const [PopImage, setPopImage] = useState(event);
+
   // if (className === "threshold"){
 
   // }
@@ -43,7 +47,7 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
         <a href={href}>
           <img
             alt={event}
-            src={event}
+            src={PopImage}
             className={className}
             style={{
               top: newCoor[0] + "px",
@@ -58,12 +62,15 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
       <React.Fragment>
         <img
           alt={event}
-          src={event}
+          src={PopImage}
           className={className}
           style={{
             top: newCoor[0] + "px",
             left: newCoor[1] + "px",
             display: mode
+          }}
+          onClick={function() {
+            setPopImage(chooseElement(imgThingies));
           }}
         ></img>
       </React.Fragment>
