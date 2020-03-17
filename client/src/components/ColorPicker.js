@@ -19,13 +19,13 @@ const ColorSquares = styled.div`
   background-color: ${props => props.color};
   width: 20px;
   height: 20px;
-  // float: left;
+  // g
   cursor: pointer;
   border: solid;
-  border-width: 1px;
-  border-color: white;
+  border-width: 2px;
+  border-color: transparent;
   &:hover {
-    border-color: deeppink;
+    border-color: white;
   }
 `;
 

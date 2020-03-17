@@ -13,16 +13,23 @@ const BodyColor = styled.div`
   // height: 100vh;
 `;
 
-const Title = styled.p`
+const MenuTitles = styled.p`
   margin: 0em;
   margin-left: 1em;
   margin-right: 0.3em;
   display: inline;
-
-  color: #999;
+  color: #d8d8d8;
   &:hover {
     color: ${props => props.color};
   }
+`;
+
+const Titles = styled.p`
+  margin: 0em;
+  margin-left: 1em;
+  margin-right: 0.3em;
+  display: inline;
+  color: #666;
 `;
 
 const ColorBar = styled.div`
@@ -40,9 +47,12 @@ const ColorSquares = styled.div`
   height: 20px;
   float: left;
   cursor: pointer;
+  border: solid;
+  border-width: 2px;
+  border-color: transparent;
   // border: solid;
   // border-width: 1px;
-  margin-right: 5px;
+  //margin-right: 5px;
   opacity: 1;
   &:hover {
     //opacity: 0.3;
@@ -95,12 +105,12 @@ function MenuPicker() {
                 setLoc(pageNameClean(i));
               }}
             >
-              <Title color="black">{pageNameClean(i)}</Title>
+              <MenuTitles color="black">{pageNameClean(i)}</MenuTitles>
             </ColorSquares>
           </Link>
         ))}
         <ColorSquares color="" onClick={() => setColor("")} />
-        <Title color="#333">{loc}</Title>
+        <Titles color="black">{loc}</Titles>
       </ColorBar>
     </BodyColor>
   );

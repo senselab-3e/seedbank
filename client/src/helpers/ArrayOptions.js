@@ -59,17 +59,14 @@ const paletteColors = ["#42C4AF",
   "#586F8F",
   "#F4BF83",
   "#909A94",
-  "#F4F6F4",
   "#273943",
   "#b96221",
   "#F4BE12",
   "#A6B2A8",
-  "#F6F8F6",
   "#273943",
   "#b96221",
   "#F4BE12",
   "#A6B2A8",
-  "#F6F8F6",
   "#4111B3",
   "#351082",
   "#73A69D",
@@ -88,15 +85,16 @@ const glitchLinks = [
 const localLinks = ["/events", "/entryway", "/about3e", "/play", "/oOoOs", "/patches"]
 
 export const linkLocations = [
-  "/events",
   "/",
-  "/auth",
-  "/entryway",
-  "/about3e",
   "/play",
   "/oOoOs",
   "/patches",
-  "/traces"
+  "/traces",
+  "/events",
+  "/auth",
+  "/entryway",
+  "/about3e"
+
 ];
 
 const blankArray = ["FAILED TO LOAD AN ARRAY"];
