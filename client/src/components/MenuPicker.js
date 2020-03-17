@@ -30,6 +30,7 @@ const Titles = styled.p`
   margin-right: 0.3em;
   display: inline;
   color: #666;
+  style: bold;
 `;
 
 const ColorBar = styled.div`

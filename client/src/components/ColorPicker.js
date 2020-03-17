@@ -17,8 +17,8 @@ const ColorBar = styled.div`
 
 const ColorSquares = styled.div`
   background-color: ${props => props.color};
-  width: 20px;
-  height: 20px;
+  width: 21px;
+  height: 21px;
   // g
   cursor: pointer;
   border: solid;
