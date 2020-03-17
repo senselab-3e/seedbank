@@ -1,11 +1,12 @@
-import React, { Component } from "react";
 // import ReactDOM from "react-dom";
 
-class About extends Component {
+import React from "react";
 
-  render() {
-    return <div> ABOUT 3 Ecologgiiiesssss </div>;
-  }
+export default function About() {
+  return (
+    <React.Fragment>
+      <br />
+      helloabout
+    </React.Fragment>
+  );
 }
-
-export default About;

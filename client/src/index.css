@@ -49,7 +49,7 @@ body {
   top: 0;
   left: 0;
   background-color: var(--main-primary-color);
-  font-family: "IBM Plex Serif", serif;
+  font-family: "Muli", sans-serif;
 }
 
 .primary {

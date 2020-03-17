@@ -15,6 +15,14 @@ const BodyColor = styled.div`
 
 const Title = styled.p`
   margin: 0em;
+  margin-left: 1em;
+  margin-right: 0.3em;
+  display: inline;
+
+  color: #999;
+  &:hover {
+    color: ${props => props.color};
+  }
 `;
 
 const ColorBar = styled.div`
@@ -28,15 +36,19 @@ const ColorBar = styled.div`
 
 const ColorSquares = styled.div`
   background-color: ${props => props.color};
-  width: 20px;
+  // width: 20px;
   height: 20px;
   float: left;
   cursor: pointer;
-  border: solid;
-  border-width: 1px;
-  border-color: white;
+  // border: solid;
+  // border-width: 1px;
+  margin-right: 5px;
+  opacity: 1;
   &:hover {
-    border-color: deeppink;
+    //opacity: 0.3;
+    // border: solid;
+    // border-width: 1px;
+    // border-color: white;
   }
 `;
 
@@ -82,11 +94,13 @@ function MenuPicker() {
                 //setColor(chooseElement(paletteSquares));
                 setLoc(pageNameClean(i));
               }}
-            ></ColorSquares>
+            >
+              <Title color="black">{pageNameClean(i)}</Title>
+            </ColorSquares>
           </Link>
         ))}
         <ColorSquares color="" onClick={() => setColor("")} />
-        <Title>{loc}</Title>
+        <Title color="#333">{loc}</Title>
       </ColorBar>
     </BodyColor>
   );
