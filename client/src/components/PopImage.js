@@ -36,6 +36,8 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
 
   const setNewImage = e => {
     e.target.src = chooseElement(imgThingies);
+    console.log(e.target.offsetLeft);
+    console.log(e.target.getBoundingClientRect());
   };
 
   //set this second one to mode= "none" to have the conditional viewable

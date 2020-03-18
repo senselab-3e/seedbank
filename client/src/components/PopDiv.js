@@ -2,7 +2,6 @@ import React from "react";
 
 import { randomColors, uniquePositions } from "../helpers/popCalculators";
 import { withTheme } from "styled-components";
-// import { bubbles } from "../context/theme";
 
 //the passing of the prop 'theme' below, is coming from the withTheme of styled components - (which see the wrapper of the export below) this is just creating a quick condition so that if the default class is
 //invoked the background color for randomcolor won't override the css for the background color of deeppink
@@ -24,23 +23,19 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
     ? (coloring = randomColors())
     : (coloring = null);
 
-  // this <></>  is necessary to keep the anchor tag from being empty and throwing errors. introduce a better solution in the future
+  // NOTE: this <></>  is necessary to keep the anchor tag from being empty and throwing errors. introduce a better solution in the future
 
-  //i shouldn't have to pass down the them mode when i can just access the theme values directly - whcih display according to the global state
   // ALL of this should be refactored with styled components - then it'll be easier to harness the global theme switches.
   //display mode is managed here, for threshold divs if theme mode is light or dark
   let mode = "";
   theme.mode === "light" ? (mode = "none") : (mode = "block");
 
-  //this will need to be re-thought so it can be re-usable but for now i can get away with it.
-  const handleClick = e => {
+  //this will need to be re-thought so it can be re-usable but for now i can get away with it because if no linetext class is there to remove it will just do nothing
+  const addClassName = e => {
     //e.target.classList.value //gets me the current classnames already on the target
     e.target.classList.value === "line"
       ? e.target.classList.add("textline")
       : e.target.classList.remove("textline");
-    // e.target.classList.remove("textline");
-    // e.target.classList.add("textline");
-    //console.log(e.target.classList.value);
   };
 
   if (link === true) {
@@ -74,8 +69,8 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
             backgroundColor: coloring,
             display: mode
           }}
-          onTouchStart={e => handleClick(e)}
-          onClick={e => handleClick(e)}
+          onTouchStart={e => addClassName(e)}
+          onClick={e => addClassName(e)}
         >
           {textFiller}
         </div>
