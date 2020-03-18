@@ -114,16 +114,18 @@ body img {
 .line:hover {
   width: 40%;
   height: 900px;
+  cursor: pointer;
 }
 
 .textline {
   width: 40%;
   height: 900px;
-
+  z-index: 0;
 }
 
-.textline p {
-  color: white;
+.textline:hover {
+  opacity: 0.8;
+
 }
 
 .defaultThingy {

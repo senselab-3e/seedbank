@@ -33,8 +33,13 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
   theme.mode === "light" ? (mode = "none") : (mode = "block");
 
   const handleClick = e => {
-    e.target.classList.remove("lines");
-    e.target.classList.add("textline");
+    //e.target.classList.value //gets me the current classnames already on the target
+    e.target.classList.value === "line"
+      ? e.target.classList.add("textline")
+      : e.target.classList.remove("textline");
+    // e.target.classList.remove("textline");
+    // e.target.classList.add("textline");
+    //console.log(e.target.classList.value);
   };
 
   if (link === true) {
