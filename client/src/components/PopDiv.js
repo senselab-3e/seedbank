@@ -32,8 +32,9 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
   let mode = "";
   theme.mode === "light" ? (mode = "none") : (mode = "block");
 
-  const handleClick = () => {
-    console.log("this is:", this);
+  const handleClick = e => {
+    e.target.classList.remove("lines");
+    e.target.classList.add("textline");
   };
 
   if (link === true) {
@@ -67,7 +68,7 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
             backgroundColor: coloring,
             display: mode
           }}
-          onClick={() => handleClick()}
+          onClick={e => handleClick(e)}
         >
           {textFiller}
         </div>
