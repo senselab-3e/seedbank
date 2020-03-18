@@ -32,6 +32,7 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
   let mode = "";
   theme.mode === "light" ? (mode = "none") : (mode = "block");
 
+  //this will need to be re-thought so it can be re-usable but for now i can get away with it.
   const handleClick = e => {
     //e.target.classList.value //gets me the current classnames already on the target
     e.target.classList.value === "line"
@@ -73,6 +74,7 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
             backgroundColor: coloring,
             display: mode
           }}
+          onTouchStart={e => handleClick(e)}
           onClick={e => handleClick(e)}
         >
           {textFiller}

@@ -105,12 +105,20 @@ function MenuPicker() {
                 //setColor(chooseElement(paletteSquares));
                 setLoc(pageNameClean(i));
               }}
+              onTouchEnd={function() {
+                //setColor(chooseElement(paletteSquares));
+                setLoc(pageNameClean(i));
+              }}
             >
               <MenuTitles color="black">{pageNameClean(i)}</MenuTitles>
             </ColorSquares>
           </Link>
         ))}
-        <ColorSquares color="" onClick={() => setColor("")} />
+        <ColorSquares
+          color=""
+          onClick={() => setColor("")}
+          onTouchStart={() => setColor("")}
+        />
         <Titles color="black">{loc}</Titles>
         <p className="apple">adsfdsfdsfdsaf</p>
       </ColorBar>

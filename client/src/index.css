@@ -117,6 +117,14 @@ body img {
   cursor: pointer;
 }
 
+@media(hover: hover) and (cursor: pointer) {
+  .line:hover {
+    width: 40%;
+    height: 900px;
+    cursor: pointer;
+  }
+}
+
 .textline {
   width: 40%;
   height: 900px;

@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { chooseElement } from "../helpers/popCalculators";
 import { uniquePositions } from "../helpers/popCalculators";
 import { withTheme } from "styled-components";
@@ -8,7 +7,7 @@ import { imgThingies } from "../helpers/ArrayOptions";
 
 function PopImage({ event, className, randomPos, link, theme, name }) {
   //however, by relying on state, it's refreshing the location too.. which isn't ideal
-  const [PopImage, setPopImage] = useState(event);
+  const popImageSrc = event;
 
   // if (className === "threshold"){
 
@@ -17,6 +16,7 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
   let newCoor = "";
   randomPos ? (newCoor = uniquePositions()) : (newCoor = [0, 0]);
   let href = "";
+
   // eslint-disable-next-line
 
   //this is not a catch all -- there will likely be a case where the link list will be different then the 'event' list which is currently the list of image sources
@@ -34,6 +34,10 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
     ? (mode = "block")
     : (mode = "block");
 
+  const setNewImage = e => {
+    e.target.src = chooseElement(imgThingies);
+  };
+
   //set this second one to mode= "none" to have the conditional viewable
 
   // theme.mode === "dark" && name === "thingies"
@@ -48,7 +52,7 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
         <a href={href}>
           <img
             alt={event}
-            src={PopImage}
+            src={popImageSrc}
             className={className}
             style={{
               top: newCoor[0] + "px",
@@ -63,15 +67,19 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
       <React.Fragment>
         <img
           alt={event}
-          src={PopImage}
+          src={popImageSrc}
           className={className}
           style={{
             top: newCoor[0] + "px",
             left: newCoor[1] + "px",
             display: mode
           }}
-          onClick={function() {
-            setPopImage(chooseElement(imgThingies));
+          onClick={e => {
+            setNewImage(e);
+            //setPopImage(chooseElement(imgThingies));
+          }}
+          onTouchEnd={e => {
+            setNewImage(e);
           }}
         ></img>
       </React.Fragment>
