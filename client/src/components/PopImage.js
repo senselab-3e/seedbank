@@ -36,8 +36,11 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
 
   const setNewImage = e => {
     e.target.src = chooseElement(imgThingies);
-    console.log(e.target.offsetLeft);
-    console.log(e.target.getBoundingClientRect());
+    //console.log(.offsetLeft);
+    //console.log(e.target.getBoundingClientRect());
+    e.target.left = e.target.left + e.target.offsetLeft;
+    console.log(e.target.offsetTop);
+    e.target.top = e.target.top + e.target.offsetTop;
   };
 
   //set this second one to mode= "none" to have the conditional viewable
@@ -78,6 +81,7 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
           }}
           onClick={e => {
             setNewImage(e);
+            //e.target.getBoundingClientRect()
             //setPopImage(chooseElement(imgThingies));
           }}
           onTouchEnd={e => {
