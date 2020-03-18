@@ -1,4 +1,5 @@
 import React from "react";
+
 import { randomColors, uniquePositions } from "../helpers/popCalculators";
 import { withTheme } from "styled-components";
 // import { bubbles } from "../context/theme";
@@ -11,6 +12,7 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
   let newCoor = "";
   let backgroundImg = ""; // in case i ever want an image to be applied to the background tiling of a div
   let href = "placeholder";
+  let textFiller = null;
   randomPos ? (newCoor = uniquePositions()) : (newCoor = [0, 0]);
 
   image ? (backgroundImg = `url(${image})`) : (backgroundImg = "");
@@ -29,6 +31,10 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
   //display mode is managed here, for threshold divs if theme mode is light or dark
   let mode = "";
   theme.mode === "light" ? (mode = "none") : (mode = "block");
+
+  const handleClick = () => {
+    console.log("this is:", this);
+  };
 
   if (link === true) {
     return (
@@ -61,7 +67,10 @@ function PopDiv({ event, className, randomPos, image, link, theme }) {
             backgroundColor: coloring,
             display: mode
           }}
-        ></div>
+          onClick={() => handleClick()}
+        >
+          {textFiller}
+        </div>
       </React.Fragment>
     );
   }

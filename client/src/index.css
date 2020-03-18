@@ -116,6 +116,16 @@ body img {
   height: 900px;
 }
 
+.textline {
+  width: 40%;
+  height: 900px;
+
+}
+
+.textline p {
+  color: white;
+}
+
 .defaultThingy {
   height: 5px;
   width: 5px;

@@ -7,6 +7,7 @@ import { imgThingies } from "../helpers/ArrayOptions";
 // import styled from "styled-components";
 
 function PopImage({ event, className, randomPos, link, theme, name }) {
+  //however, by relying on state, it's refreshing the location too.. which isn't ideal
   const [PopImage, setPopImage] = useState(event);
 
   // if (className === "threshold"){

@@ -12,6 +12,24 @@ function Thingies() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  //syntax for adding thingyimage pop
+  //<EventPopulate
+  //   array={imgThingies}
+  //   className={"line"}
+  //   randomPos={true}
+  //   link={true}
+  // />
+
+  // <EventPopulate
+  //       array={ArrayOptions("testArray")}
+  //       className={"defaultTxt"}
+  //       randomPos={true}
+  //       text={true}
+  //       image={true}
+  //     />
+
+  //  <EventPopulate array={[81, 72, 31, 664, 4445, 46]} randomPos={false} />
+
   //   <ArrayOptions array="testArray" />;
   //   let choosenArray = ArrayOptions("thingies");
   //   console.log(choosenArray); ---> this is all i need now to retreive the array of images pathway values now
@@ -21,20 +39,14 @@ function Thingies() {
   return (
     <React.Fragment>
       <EventPopulate array={events} className={"threshold"} randomPos={true} />
-      <EventPopulate array={[81, 72, 31, 664, 4445, 46]} randomPos={false} />
+
       <EventPopulate
         array={imgThingies}
         className={"line"}
         randomPos={true}
-        link={true}
+        link={false}
       />
-      <EventPopulate
-        array={ArrayOptions("thingies")}
-        name="thingies"
-        className={"easeLarger"}
-        randomPos={true}
-        image={true}
-      />
+
       <EventPopulate
         array={ArrayOptions("boundthingies")}
         name="bound"
@@ -47,13 +59,6 @@ function Thingies() {
         className={"defaultTxt"}
         randomPos={true}
         text={true}
-      />
-      <EventPopulate
-        array={ArrayOptions("testArray")}
-        className={"defaultTxt"}
-        randomPos={true}
-        text={true}
-        image={true}
       />
     </React.Fragment>
   );

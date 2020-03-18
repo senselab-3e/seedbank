@@ -76,8 +76,8 @@ const paletteSquares = ArrayOptions("paletteColors");
 //   "/traces"
 // ];
 
-const colorPic = chooseElement(paletteSquares);
-console.log(colorPic, "apples");
+//const colorPic = chooseElement(paletteSquares);
+///console.log(colorPic, "apples");
 
 function MenuPicker() {
   const [bcolor, setColor] = useState("");
@@ -112,6 +112,7 @@ function MenuPicker() {
         ))}
         <ColorSquares color="" onClick={() => setColor("")} />
         <Titles color="black">{loc}</Titles>
+        <p className="apple">adsfdsfdsfdsaf</p>
       </ColorBar>
     </BodyColor>
   );
