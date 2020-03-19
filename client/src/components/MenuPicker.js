@@ -120,7 +120,6 @@ function MenuPicker() {
           onTouchStart={() => setColor("")}
         />
         <Titles color="black">{loc}</Titles>
-        <p className="apple">adsfdsfdsfdsaf</p>
       </ColorBar>
     </BodyColor>
   );

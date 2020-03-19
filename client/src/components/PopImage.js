@@ -41,7 +41,8 @@ function PopImage({ event, className, randomPos, link, theme, name }) {
     console.log(e.target);
     console.log(e.target.style.top);
     console.log(e.target.style.left);
-    e.target.style.left = e.target.style.left + e.target.offsetLeft;
+    e.target.style.left = 100;
+    //e.target.style.left -= e.target.style.left / 2;
     console.log(e.target.style.left);
 
     //e.target.top = e.target.top + e.target.offsetTop;
