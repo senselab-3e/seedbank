@@ -1,29 +1,21 @@
 import React from "react";
-var P5Wrapper = require("react-p5-wrapper");
-// function setup() {
-//     createCanvas(710, 400);
-//     background(102);
-//   }
-
-// function draw() {
-//   stroke(255);
-//   if (mouseIsPressed === true) {
-//     line(mouseX, mouseY, pmouseX, pmouseY);
-//   }
-// }
-
-// var canvas = document.createElement("canvas");
-
-// canvas.id = "CursorLayer";
-// canvas.width = 710;
-// canvas.height = 400;
-// canvas.style.zIndex = 8;
-// canvas.style.position = "absolute";
-// canvas.style.border = "1px solid";
-
-// var body = document.getElementsByTagName("body")[0];
-// body.appendChild(canvas);
+import Sketch from "react-p5";
 
 export default function Drawing() {
-  return <div></div>;
+  var setup = (p5, canvasParentRef) => {
+    p5.createCanvas(500, 500).parent(canvasParentRef); // use parent to render canvas in this ref (without that p5 render this canvas outside your component)
+  };
+
+  var draw = p5 => {
+    p5.background(0);
+
+    // // NOTE: Do not use setState in draw function or in functions that is executed in draw function... pls use normal variables or class properties for this purposes
+
+    p5.stroke(255);
+    if (p5.mouseIsPressed === true) {
+      p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
+    }
+  };
+
+  return <Sketch setup={setup} draw={draw} />;
 }
