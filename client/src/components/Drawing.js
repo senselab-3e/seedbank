@@ -6,6 +6,12 @@ export default function Drawing() {
     p5.createCanvas(500, 500).parent(canvasParentRef); // use parent to render canvas in this ref (without that p5 render this canvas outside your component)
   };
 
+  function variableEllipse(x, y, px, py, p5) {
+    let speed = p5.abs(x - px) + p5.abs(y - py);
+    p5.stroke(speed);
+    p5.ellipse(x, y, speed, speed);
+  }
+
   var draw = p5 => {
     p5.background(0);
     // p5.background(244, 248, 252);
@@ -21,6 +27,7 @@ export default function Drawing() {
       //The system variable pmouseX always contains the horizontal position of the mouse in the frame previous to the current frame.
       //however, for some reason it's not holding this value for very long or at all.....
       p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
+      variableEllipse(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY, p5);
       p5.text("Mouse is Pressed", 120, 100);
       //p5.rect(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
       p5.ellipse(150, 150, 50, 50);
