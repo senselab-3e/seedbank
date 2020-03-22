@@ -43,7 +43,7 @@ export default function sketch4(p) {
             angle[i] = 0;
         }
 
-        for (var i = 0; i < nodes; i++) {
+        for (let i = 0; i < nodes; i++) {
             frequency[i] = p.random(5, 12);
         }
 
@@ -57,18 +57,18 @@ export default function sketch4(p) {
         /* fade background */
         p.fill(0, 0);
         p.rect(0, 0, width, height);
-        for (var i = 0; i < 5; i++) {
+        for (let i = 0; i < 5; i++) {
             drawSpikey(i * 4, i * 4, i * 0.01);
             //drawWavy(i * 4, i * 4, i * 0.01);
-            //drawBuzzy(i * -4, i * -4, i * 0.005);
+            drawBuzzy(i * -4, i * -4, i * 0.005);
         }
         moveShape();
     }
 
     function drawSpikey(offsetX, offsetY, rate) {
-        let spacer = 0
+        //let spacer = 0
         //  calculate node  starting locations
-        for (var i = 0; i < nodes; i++) {
+        for (let i = 0; i < nodes; i++) {
             /* spacer += i*0.002 */
             nodeStartX[i] = centerX + p.cos(p.radians(rotAngle)) * radius;
             nodeStartY[i] = centerY + p.sin(p.radians(rotAngle)) * radius;
@@ -80,7 +80,7 @@ export default function sketch4(p) {
         p.fill(237, 34, 93);
         p.beginShape();
         let spacer2 = 0;
-        for (var i = 0; i < nodes; i++) {
+        for (let i = 0; i < nodes; i++) {
             spacer2 += i;
             p.curveVertex((nodeX[i] + 0.4 * (100 * p.sin(nodeX[i] * (rate + p.PI / nodes))) + offsetX), (nodeY[p.floor(spacer2 /
                 2)] + 0.4 * (100 * p.cos(nodeY[i] * (rate + p.PI / nodes))) + offsetY));
@@ -89,6 +89,27 @@ export default function sketch4(p) {
         }
         p.endShape(p.CLOSE);
 
+    }
+
+
+    function drawBuzzy(offsetX, offsetY, rate) {
+        p.curveTightness(organicConstant);
+        p.fill(283, 54, 197);
+        p.beginShape();
+        var spacer2 = 0;
+        for (let i = 0; i < p.floor(nodes / 2); i++) {
+            spacer2 += i * 2;
+            p.curveVertex((nodeX[i] + offsetX + 0.4 * (15 * p.sin(nodeX[i * 2] * (rate + p.PI / nodes)))) - (400 + 200 * p.abs(
+                accelX * 0.2)) * p.sin(((p.frameCount % 360) * (p.PI / 360) + deltaX)), (nodeY[i * 2] + offsetY + 0.4 * (15 *
+                p.cos(nodeY[i * 2] * (rate + p.PI / nodes))) - (100 + 200 * p.abs(accelY * 0.2)) * p.cos(((p.frameCount % 360) * (
+                p.PI / 360) + deltaY))));
+            p.curveVertex((nodeX[i] + offsetX + 0.2 * (15 * p.sin(nodeX[i * 2] * (rate + p.PI / nodes)))) - (400 + 200 * p.abs(
+                accelX * 0.2)) * p.sin(((p.frameCount % 180) * (p.PI / 360) + deltaX)), (nodeY[i * 2] + offsetY + 0.2 * (15 *
+                p.cos(nodeY[i * 2] * (rate + p.PI / nodes))) - (100 + 200 * p.abs(accelY * 0.2)) * p.cos(((p.frameCount % 180) * (
+                p.PI / 360) + deltaY))));
+
+        }
+        p.endShape(p.CLOSE);
     }
 
     function moveShape() {
