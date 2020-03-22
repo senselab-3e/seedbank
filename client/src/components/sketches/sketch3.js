@@ -16,10 +16,10 @@ export default function sketch3(p) {
     //   return false;
     // }
 
-    function touchMoved() {
-        p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
-        return false;
-    }
+    // function touchMoved() {
+    //     p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+    //     return false;
+    // }
 
     p.draw = function () {
         p.stroke(255);

@@ -47,14 +47,15 @@ export default function sketch4(p) {
             frequency[i] = p.random(5, 12);
         }
 
-        p.noStroke();
-        p.frameRate(30);
+        //p.noStroke();
+        //p.frameRate(20);
 
     };
 
     p.draw = function () {
         p.background(55, 232, 192)
         /* fade background */
+        p.stroke(255);
         p.fill(0, 0);
         p.rect(0, 0, width, height);
         for (let i = 0; i < 5; i++) {
@@ -63,6 +64,10 @@ export default function sketch4(p) {
             drawBuzzy(i * -4, i * -4, i * 0.005);
         }
         moveShape();
+        if (p.mouseIsPressed === true) {
+            p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+
+        }
     }
 
     function drawSpikey(offsetX, offsetY, rate) {
@@ -90,6 +95,7 @@ export default function sketch4(p) {
         p.endShape(p.CLOSE);
 
     }
+
 
 
     function drawBuzzy(offsetX, offsetY, rate) {
