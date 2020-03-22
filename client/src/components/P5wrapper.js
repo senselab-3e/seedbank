@@ -2,6 +2,7 @@ import React from "react";
 import P5Wrapper from "react-p5-wrapper";
 import sketch from "./sketches/sketch";
 import sketch2 from "./sketches/sketch2";
+import sketch3 from "./sketches/sketch3";
 
 class P5wrapper extends React.Component {
   constructor(props) {
@@ -38,6 +39,8 @@ class P5wrapper extends React.Component {
           onInput={this.rotationChange.bind(this)}
         />
         <button onClick={this.pressEvent.bind(this)}>Change Sketch</button>
+
+        <P5Wrapper sketch={sketch3} />
       </div>
     );
   }
