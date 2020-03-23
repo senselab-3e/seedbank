@@ -30,7 +30,7 @@ export default function sketch4(p) {
 
     p.setup = function () {
         p.createCanvas(500, 500);
-        p.background(0);
+        p.background(55, 232, 192)
 
         centerX = width / 2;
         centerY = height / 2;
@@ -48,13 +48,13 @@ export default function sketch4(p) {
         }
 
         //p.noStroke();
-        //p.frameRate(20);
+        p.frameRate(20);
 
     };
 
     p.draw = function () {
-        p.background(55, 232, 192)
-        /* fade background */
+        //p.background(55, 232, 192)
+        /* fade background */ /// if you take this away you're able to keep all the prior position animations and drawings... 
         p.stroke(255);
         p.fill(0, 0);
         p.rect(0, 0, width, height);
