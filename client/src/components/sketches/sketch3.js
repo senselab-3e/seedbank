@@ -6,7 +6,7 @@ export default function sketch3(p) {
 
     function variableEllipse(x, y, px, py, p) {
         let speed = p.abs(x - px) + p.abs(y - py);
-        //p.stroke(speed);
+        p.stroke(speed);
         p.ellipse(x, y, speed, speed);
     }
 
