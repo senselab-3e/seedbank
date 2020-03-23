@@ -53,21 +53,21 @@ export default function sketch4(p) {
     };
 
     p.draw = function () {
-        //p.background(55, 232, 192)
+        //p.background(55, 232, 192) /// subtracting this allows the trace position of all prior things to persist
         /* fade background */ /// if you take this away you're able to keep all the prior position animations and drawings... 
-        p.stroke(255);
+        p.noStroke();
+        //--->>> bring back the on mouse down here /// currently trying to move it to another function
+        //p.stroke(255);
         p.fill(0, 0);
         p.rect(0, 0, width, height);
         for (let i = 0; i < 5; i++) {
             drawSpikey(i * 4, i * 4, i * 0.01);
             //drawWavy(i * 4, i * 4, i * 0.01);
             drawBuzzy(i * -4, i * -4, i * 0.005);
+            drawLines()
         }
         moveShape();
-        if (p.mouseIsPressed === true) {
-            p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
 
-        }
     }
 
     function drawSpikey(offsetX, offsetY, rate) {
@@ -81,6 +81,7 @@ export default function sketch4(p) {
         }
         /* change to 220 */
         // draw polygon
+        p.stroke('#ffffff')
         p.curveTightness(organicConstant);
         p.fill(237, 34, 93);
         p.beginShape();
@@ -98,11 +99,13 @@ export default function sketch4(p) {
 
 
 
+
     function drawBuzzy(offsetX, offsetY, rate) {
         p.curveTightness(organicConstant);
-        p.fill(283, 54, 197);
+        p.fill(183, 54, 197);
         p.beginShape();
-        var spacer2 = 0;
+        p.noStroke();
+        let spacer2 = 0;
         for (let i = 0; i < p.floor(nodes / 2); i++) {
             spacer2 += i * 2;
             p.curveVertex((nodeX[i] + offsetX + 0.4 * (15 * p.sin(nodeX[i * 2] * (rate + p.PI / nodes)))) - (400 + 200 * p.abs(
@@ -117,6 +120,18 @@ export default function sketch4(p) {
         }
         p.endShape(p.CLOSE);
     }
+
+    function drawLines() {
+        p.stroke(155);
+        p.noFill()
+        // if (p.mouseIsPressed === true) {
+        p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+
+        //}
+
+
+    }
+
 
     function moveShape() {
         //move center point

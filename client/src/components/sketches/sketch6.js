@@ -166,18 +166,18 @@ export default function sketch6(p) {
 
     p.setup = function () {
         p.createCanvas(500, 500);
-        u = 200;
+        u = 100; // size of block
         a = ((p.sqrt(3) * u) / 2);
-        bx1 = p.width / 2;
-        by1 = p.height / 2;
+        bx1 = 300 //p.width / 2;
+        by1 = 100 //p.height / 2;
         bx2 = bx1;
         by2 = by1 - u;
         bx3 = bx1 + a;
         by3 = by1 - (u / 2);
         bx4 = bx1 + a;
-        by4 = by1 + (u / 2);
-        bx5 = bx1;
-        by5 = by1 + u;
+        by4 = 330 //by1 + (u / 2);
+        bx5 = 100 //bx1;
+        by5 = 400 //by1 + u;
         bx6 = bx1 - a;
         by6 = by1 + (u / 2);
         bx7 = bx1 - a;
@@ -186,12 +186,12 @@ export default function sketch6(p) {
 
     p.draw = function () {
         p.noStroke();
-        p.background('#FFFDBD');
-        p.fill('#F7BBAD');
+        p.background('#0fa9ab');
+        p.fill('#3cc881');
         p.quad(bx1, by1, bx7, by7, bx2, by2, bx3, by3);
-        p.fill('#CF8576');
+        p.fill('#3c57c8');
         p.quad(bx1, by1, bx3, by3, bx4, by4, bx5, by5);
-        p.fill('#EBA291');
+        p.fill('#f33ce4');
         p.quad(bx1, by1, bx5, by5, bx6, by6, bx7, by7);
 
         p.noFill();
@@ -301,9 +301,7 @@ export default function sketch6(p) {
         }
         p.ellipse(bx7, by7, diameter, diameter);
 
-        // if (p.mouseIsPressed === true) {
-        //     mousePressed()
-        // }
+
 
     }
 
