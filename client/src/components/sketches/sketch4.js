@@ -131,7 +131,9 @@ export default function sketch4(p) {
     }
 
     function drawLines() {
-        p.stroke('#ffffff')
+
+        p.stroke(60, 232, 192)
+        //p.stroke('#ffffff')
         // p.noFill()
 
         if (p.mouseIsPressed === true) {
