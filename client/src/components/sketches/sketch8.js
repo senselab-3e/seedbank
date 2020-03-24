@@ -24,12 +24,12 @@ export default function sketch8(p) {
         //increase the angle value using the most recent jitter value
         angle = angle + jitter;
         //use cosine to get a smooth CW and CCW motion when not jittering
-        let c = p.sin(angle);
+        let c = p.cos(angle);
         //move the shape to the center of the canvas
         p.translate(p.width / 2, p.height / 2);
         //apply the final rotation
         p.rotate(c);
-        p.rect(0, 0, 10, 380);
+        p.rect(0, 0, 2, 480);
     }
 
     // p.draw = function () {
