@@ -32,15 +32,25 @@ export default function sketch3(p) {
         //p.square(width / 9, 0, width - 10, height - 10);
         p.noStroke()
         p.background('#333')
-
+        //p.square(0, 100, width, size / 16);
+        // p.square(0, 150, width, size / 16);
+        // p.square(0, 200, width, size / 16); 
+        p.translate(width / 2, 0);
+        p.rotate(p.PI / 7.0);
         if (p.mouseIsPressed === true) {
-
+            p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
 
             p.square(0, 100, width, size / 16);
-            p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
+            p.square(0, 150, width, size / 16);
+            p.square(0, 200, width, size / 16);
+            p.rotate(p.PI / 7.0);
             // p.background(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255)
         } else {
             p.square(0, 100, width, size / 16);
+            p.square(0, 150, width, size / 16);
+            p.square(0, 200, width, size / 16);
+            p.rotate(p.PI / 7.0);
+            //p.rotate(p.PI / 10.0);
             //p.noStroke()
             //p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
             //variableEllipse(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY, p);
