@@ -208,7 +208,11 @@ export default function sketch6(p) {
             p.noStroke();
             p.noFill(); //change this to noFill later
             overBox1 = false;
+
+
         }
+
+
         p.ellipse(bx1, by1, diameter, diameter);
 
         if (p.mouseX > bx2 - diameter && p.mouseX < bx2 + diameter &&

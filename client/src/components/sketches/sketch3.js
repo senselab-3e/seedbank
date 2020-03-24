@@ -35,20 +35,20 @@ export default function sketch3(p) {
         //p.square(0, 100, width, size / 16);
         // p.square(0, 150, width, size / 16);
         // p.square(0, 200, width, size / 16); 
-        p.translate(width / 2, 0);
+        // p.translate(p.base.x, p.base.y);
         p.rotate(p.PI / 7.0);
         if (p.mouseIsPressed === true) {
             p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
 
-            p.square(0, 100, width, size / 16);
-            p.square(0, 150, width, size / 16);
-            p.square(0, 200, width, size / 16);
+            p.square(10, 100, width + 200, size / 16);
+            p.square(10, 150, width + 200, size / 16);
+            p.square(10, 200, width + 200, size / 16);
             p.rotate(p.PI / 7.0);
             // p.background(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255)
         } else {
-            p.square(0, 100, width, size / 16);
-            p.square(0, 150, width, size / 16);
-            p.square(0, 200, width, size / 16);
+            p.square(10, 100, width + 200, size / 16);
+            p.square(10, 150, width + 200, size / 16);
+            p.square(10, 200, width + 200, size / 16);
             p.rotate(p.PI / 7.0);
             //p.rotate(p.PI / 10.0);
             //p.noStroke()
