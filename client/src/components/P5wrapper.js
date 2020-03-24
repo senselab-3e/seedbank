@@ -1,10 +1,10 @@
 import React from "react";
 import P5Wrapper from "react-p5-wrapper";
-
 import sketch3 from "./sketches/sketch3";
 import sketch4 from "./sketches/sketch4";
 import sketch5 from "./sketches/sketch5";
 import sketch6 from "./sketches/sketch6";
+import sketch7 from "./sketches/sketch7";
 import sketch8 from "./sketches/sketch8";
 class P5wrapper extends React.Component {
   render() {
@@ -14,6 +14,7 @@ class P5wrapper extends React.Component {
         <P5Wrapper sketch={sketch4} />
         <P5Wrapper sketch={sketch5} />
         <P5Wrapper sketch={sketch6} />
+        <P5Wrapper sketch={sketch7} />
         <P5Wrapper sketch={sketch8} />
       </div>
     );
