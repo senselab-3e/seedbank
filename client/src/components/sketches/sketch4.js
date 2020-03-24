@@ -81,18 +81,19 @@ export default function sketch4(p) {
         }
         /* change to 220 */
         // draw polygon
+        //p.noStroke()
         p.stroke('#ffffff')
         p.curveTightness(organicConstant);
         p.fill(237, 34, 93);
-        p.beginShape();
-        let spacer2 = 0;
-        for (let i = 0; i < nodes; i++) {
-            spacer2 += i;
-            p.curveVertex((nodeX[i] + 0.4 * (100 * p.sin(nodeX[i] * (rate + p.PI / nodes))) + offsetX), (nodeY[p.floor(spacer2 /
-                2)] + 0.4 * (100 * p.cos(nodeY[i] * (rate + p.PI / nodes))) + offsetY));
-            p.curveVertex(nodeX[i] + 0.4 * (p.sin(nodeX[i] * (rate + p.PI / nodes))) + offsetX, nodeY[p.floor(spacer2 / 2)] + 0.4 *
-                (p.cos(nodeY[i] * (rate + p.PI / nodes))) + offsetY);
-        }
+        p.beginShape(); //if you subtract this is starts to draw between the shapes. 
+        //let spacer2 = 0;
+        // for (let i = 0; i < nodes; i++) { // comment out this to elinate the visability of spiky, but don't just subtract the whole function from being calledd, elsewhere in the draw, because other bichos are dependent on its movments.
+        //     spacer2 += i;
+        //     p.curveVertex((nodeX[i] + 0.4 * (100 * p.sin(nodeX[i] * (rate + p.PI / nodes))) + offsetX), (nodeY[p.floor(spacer2 /
+        //         2)] + 0.4 * (100 * p.cos(nodeY[i] * (rate + p.PI / nodes))) + offsetY));
+        //     p.curveVertex(nodeX[i] + 0.4 * (p.sin(nodeX[i] * (rate + p.PI / nodes))) + offsetX, nodeY[p.floor(spacer2 / 2)] + 0.4 *
+        //         (p.cos(nodeY[i] * (rate + p.PI / nodes))) + offsetY);
+        // }
         p.endShape(p.CLOSE);
 
     }
@@ -102,7 +103,7 @@ export default function sketch4(p) {
 
     function drawBuzzy(offsetX, offsetY, rate) {
         p.curveTightness(organicConstant);
-        p.fill(183, 54, 197);
+        p.fill('#ffffff') //p.fill(183, 54, 197);
         p.beginShape();
         p.noStroke();
         let spacer2 = 0;
@@ -121,14 +122,24 @@ export default function sketch4(p) {
         p.endShape(p.CLOSE);
     }
 
+    function variableEllipse(x, y, px, py, p) {
+        let speed = p.abs(x - px) + p.abs(y - py);
+        //p.stroke(speed);
+        p.noStroke()
+        p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
+        p.ellipse(x, y, speed, speed);
+    }
+
     function drawLines() {
-        p.stroke(155);
-        p.noFill()
-        // if (p.mouseIsPressed === true) {
-        p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+        p.stroke('#ffffff')
+        // p.noFill()
 
-        //}
-
+        if (p.mouseIsPressed === true) {
+            // p.line(p.mouseX, 55, p.mouseX, p.pmouseY);
+            variableEllipse(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY, p);
+        } else {
+            p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+        }
 
     }
 
