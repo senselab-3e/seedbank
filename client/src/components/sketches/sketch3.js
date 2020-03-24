@@ -7,7 +7,7 @@ export default function sketch3(p) {
 
     p.setup = function () {
         p.createCanvas(width, height);
-        p.background(0);
+        p.background('#333')
     };
 
     // function variableEllipse(x, y, px, py, p) {
@@ -30,8 +30,11 @@ export default function sketch3(p) {
     p.draw = function () {
         //p.stroke(255);
         //p.square(width / 9, 0, width - 10, height - 10);
-        p.noStroke()
-        p.background('#333')
+        //p.noStroke()
+
+        p.fill(0, 0);
+        p.stroke(p.pmouseX % 255 - 100, p.pmouseY % 255, p.mouseY % 255)
+        p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
         //p.square(0, 100, width, size / 16);
         // p.square(0, 150, width, size / 16);
         // p.square(0, 200, width, size / 16); 
@@ -40,16 +43,17 @@ export default function sketch3(p) {
         if (p.mouseIsPressed === true) {
             p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
 
-            p.square(10, 100, width + 200, size / 16);
-            p.square(10, 150, width + 200, size / 16);
-            p.square(10, 200, width + 200, size / 16);
+            p.square(10, 100, width + 200, size / 13);
+            p.square(10, 150, width + 200, size / 13);
+            p.square(10, 200, width + 200, size / 13);
             p.rotate(p.PI / 7.0);
             // p.background(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255)
         } else {
-            p.square(10, 100, width + 200, size / 16);
-            p.square(10, 150, width + 200, size / 16);
-            p.square(10, 200, width + 200, size / 16);
+            p.square(10, 100, width + 200, size / 13);
+            p.square(10, 150, width + 200, size / 13);
+            p.square(10, 200, width + 200, size / 13);
             p.rotate(p.PI / 7.0);
+            p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
             //p.rotate(p.PI / 10.0);
             //p.noStroke()
             //p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);

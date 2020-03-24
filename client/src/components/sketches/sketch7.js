@@ -5,11 +5,27 @@ import p5 from "react-p5-wrapper/node_modules/p5";
 export default function sketch7(p) {
   var v;
   var vertices = [];
-  var num = 200,
-    d = 100,
-    maxDist = 10,
+  var num = 50,
+    d = 50,
+    maxDist = 30,
     minDist = 10;
   var saveImg = false;
+
+
+  function drawLines() {
+
+    p.stroke(60, 232, 192)
+    //p.stroke('#ffffff')
+    // p.noFill()
+    p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+    // if (p.mouseIsPressed === true) {
+    //   // p.line(p.mouseX, 55, p.mouseX, p.pmouseY);
+
+    // } else {
+    //   p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+    // }
+
+  }
 
   p.setup = function () {
     p.createCanvas(500, 500);
@@ -21,12 +37,13 @@ export default function sketch7(p) {
   };
 
   p.draw = function () {
+
     p.background(238);
     var r = 1;
     p.beginShape();
-    p.fill(225, 76, 69);
-    p.stroke(34);
-    p.strokeWeight(8);
+    p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
+    p.stroke('yellow');
+    p.strokeWeight(1);
     for (var i = 0; i < vertices.length; i++) {
       vertices[i].x += p.random(-r, r);
       vertices[i].y += p.random(-r, r);
@@ -42,6 +59,7 @@ export default function sketch7(p) {
       vertices[next] = p5.Vector.add(vertices[i], v);
 
       for (var j = 0; j < vertices.length; j++) {
+        drawLines()
         if (j !== i) {
           var d = p5.Vector.dist(vertices[i], vertices[j]);
           if (d < minDist) {
@@ -61,6 +79,9 @@ export default function sketch7(p) {
       p.counter++;
     }
   };
+
+
+
 }
 
 // function windowResized() {
