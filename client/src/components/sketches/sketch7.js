@@ -39,7 +39,7 @@ export default function sketch7(p) {
   p.draw = function () {
 
     p.background(238);
-    var r = 1;
+    var r = 5;
     p.beginShape();
     p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
     p.stroke('yellow');

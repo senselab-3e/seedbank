@@ -164,10 +164,18 @@ export default function sketch6(p) {
         locked7 = false;
     }
 
+    // for (var i = 0; i < vertices.length; i++) {
+    //     vertices[i].x += p.random(-r, r);
+    //     vertices[i].y += p.random(-r, r);
+    //     var next = (i + 1) % num;
+    //     vertices[next].x += p.random(-r, r);
+    //     vertices[next].y += p.random(-r, r);
+
     p.setup = function () {
         p.createCanvas(500, 500);
         u = 100; // size of block
         a = ((p.sqrt(3) * u) / 2);
+
         bx1 = 300 //p.width / 2;
         by1 = 100 //p.height / 2;
         bx2 = bx1;
@@ -182,9 +190,24 @@ export default function sketch6(p) {
         by6 = by1 + (u / 2);
         bx7 = bx1 - a;
         by7 = by1 - (u / 2);
+        // bx1 = 300 //p.width / 2;
+        // by1 = 100 //p.height / 2;
+        // bx2 = bx1;
+        // by2 = by1 - u;
+        // bx3 = bx1 + a;
+        // by3 = by1 - (u / 2);
+        // bx4 = bx1 + a;
+        // by4 = 330 //by1 + (u / 2);
+        // bx5 = 100 //bx1;
+        // by5 = 400 //by1 + u;
+        // bx6 = bx1 - a;
+        // by6 = by1 + (u / 2);
+        // bx7 = bx1 - a;
+        // by7 = by1 - (u / 2);
     }
 
     p.draw = function () {
+        let r = 3;
         p.noStroke();
         //.stroke('#ffffff')
         p.background('#0fa9ab');
@@ -195,7 +218,7 @@ export default function sketch6(p) {
         ///and --> , by4, bx5, by5 but ellipse only takes 4 params plus an integer for the 5 value
         p.ellipse(bx1, by1, bx3, by3, 0);
         p.fill('#f33ce4');
-        p.quad(bx1, by1, bx5, by5, bx6, by6, bx7, by7);
+        p.quad(bx1, by1 + p.random(-r, r), bx5 + p.random(-r, r), by5, bx6, by6, bx7, by7 + p.random(-r, r));
         //p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
         p.noFill();
         // Test if the cursor is over the box 
