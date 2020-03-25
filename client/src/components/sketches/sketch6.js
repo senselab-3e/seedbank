@@ -186,14 +186,17 @@ export default function sketch6(p) {
 
     p.draw = function () {
         p.noStroke();
+        //.stroke('#ffffff')
         p.background('#0fa9ab');
         p.fill('#3cc881');
         p.quad(bx1, by1, bx7, by7, bx2, by2, bx3, by3);
         p.fill('#3c57c8');
-        p.quad(bx1, by1, bx3, by3, bx4, by4, bx5, by5);
+        //originally a quad
+        ///and --> , by4, bx5, by5 but ellipse only takes 4 params plus an integer for the 5 value
+        p.ellipse(bx1, by1, bx3, by3, 0);
         p.fill('#f33ce4');
         p.quad(bx1, by1, bx5, by5, bx6, by6, bx7, by7);
-
+        //p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
         p.noFill();
         // Test if the cursor is over the box 
         if (p.mouseX > bx1 - diameter && p.mouseX < bx1 + diameter &&
@@ -205,6 +208,7 @@ export default function sketch6(p) {
                 p.noFill();
             }
         } else {
+
             p.noStroke();
             p.noFill(); //change this to noFill later
             overBox1 = false;

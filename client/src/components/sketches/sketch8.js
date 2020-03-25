@@ -31,7 +31,7 @@ export default function sketch8(p) {
         p.rotate(c);
         p.rect(0, 0, 2, 480);
     }
-
+    //Original version of the code
     // p.draw = function () {
     //     p.background(51);
 
