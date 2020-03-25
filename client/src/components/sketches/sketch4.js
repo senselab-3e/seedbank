@@ -106,9 +106,9 @@ export default function sketch4(p) {
         p.fill('#ffffff') //p.fill(183, 54, 197);
         p.beginShape();
         p.noStroke();
-        let spacer2 = 0;
+        //let spacer2 = 0;
         for (let i = 0; i < p.floor(nodes / 2); i++) {
-            spacer2 += i * 2;
+            //spacer2 += i * 2;
             p.curveVertex((nodeX[i] + offsetX + 0.4 * (15 * p.sin(nodeX[i * 2] * (rate + p.PI / nodes)))) - (400 + 200 * p.abs(
                 accelX * 0.2)) * p.sin(((p.frameCount % 360) * (p.PI / 360) + deltaX)), (nodeY[i * 2] + offsetY + 0.4 * (15 *
                 p.cos(nodeY[i * 2] * (rate + p.PI / nodes))) - (100 + 200 * p.abs(accelY * 0.2)) * p.cos(((p.frameCount % 360) * (
