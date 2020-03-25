@@ -1,4 +1,4 @@
-import Vector from "react-p5-wrapper/node_modules/p5";
+//import Vector from "react-p5-wrapper/node_modules/p5";
 //import sub from "react-p5-wrapper/node_modules/p5";
 import p5 from "react-p5-wrapper/node_modules/p5";
 
@@ -50,9 +50,9 @@ export default function sketch7(p) {
       var next = (i + 1) % num;
       vertices[next].x += p.random(-r, r);
       vertices[next].y += p.random(-r, r);
-      console.log(Vector);
+      //console.log(Vector);
       v = p5.Vector.sub(vertices[next], vertices[i]);
-      //supposed to be p5.Vector.sub
+
       v.normalize();
       v.setMag(maxDist);
 
