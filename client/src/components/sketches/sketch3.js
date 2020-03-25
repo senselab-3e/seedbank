@@ -27,8 +27,8 @@ export default function sketch3(p) {
     // }
 
     p.draw = function () {
-        let r = 25;
-        let r2 = 25;
+        let r = 20;
+        let r2 = 10;
         //p.stroke(255);
         //p.square(width / 9, 0, width - 10, height - 10);
         //p.noStroke()
@@ -55,6 +55,8 @@ export default function sketch3(p) {
             p.square(10, 200, width + 200, size / 13);
             p.rotate(p.PI / 9.0);
             p.line(p.mouseX, p.mouseY, p.pmouseX + p.random(-r, r), p.pmouseY + p.random(-r2, r2));
+
+
             //p.rotate(p.PI / 10.0);
             //p.noStroke()
             //p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
