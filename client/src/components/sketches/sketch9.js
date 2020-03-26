@@ -13,7 +13,7 @@ export default function sketch9(p) {
         // const centerX = p.width / 2;
         // const centerY = p.height / 2;
         //p.touchMoved(touchDraw)
-        //p.frameRate(70);
+        p.frameRate(30);
         //console.log(p.fill)
 
     };
@@ -41,45 +41,66 @@ export default function sketch9(p) {
 
     }
 
+    //let trackBlurFilter = ['0']
+
     function variableEllipse(x, y, px, py, p) {
         //let speed = p.abs(x - px) + p.abs(y - py); //use this if i want the distribution of the dots to be based on speed and acceleration but for now... nope : P
 
-        let ran = p.random(-30, 30);
+        let ran = p.random(-50, 50);
+        let extra = p.random(-10, 10)
         let conSize
         x === px && y === py ? conSize = ran : conSize = 0;
 
+        if (x === px && y === py) {
+            conSize = ran
+            // trackBlurFilter.length < 500 ? trackBlurFilter.push('1') : console.log();
+            // //console.log(trackBlurFilter.length)
+            // trackBlurFilter.length > 100 && trackBlurFilter < 200 ? p.filter(p.BLUR, 1) : console.log(trackBlurFilter.length);
+        } else {
+            conSize = 0
+        }
+
         //p.stroke(speed);
         p.noStroke()
-        p.fill(p.pmouseX % 55, p.pmouseY % 255, p.mouseY % 255);
-
-        //p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
-        p.ellipse(x + p.random(-30, 30), y + p.random(-30, 30), conSize + p.random(-2, 2), conSize + p.random(-2, 2));
-        //p.ellipse(x, y, speed, speed);
-
+        //p.fill(p.pmouseX % 95, p.pmouseY % 15, p.mouseY % 255);
+        p.fill('#ffffff');
+        if (p.mouseIsPressed === true) {
+            p.filter(p.BLUR, 1);
+            //p.fill('#ffffff');
+            p.ellipse(x + p.random(-30, 30), y + p.random(-30, 30), conSize + extra, conSize + extra);
+        } else {
+            //p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
+            p.ellipse(x + p.random(-30, 30), y + p.random(-30, 30), conSize, conSize);
+            //p.fill(p.pmouseX % 95, p.pmouseY % 15, p.mouseY % 255);
+            //p.ellipse(x, y, speed, speed);
+        }
 
     }
 
 
     function drawLines(distance) {
-        var d = distance; // 
+        //var d = distance; // 
         //p.stroke(60, 232, 192)
         //p.stroke('#ffffff')
 
+        var lineColor = p.color('#ffffff')
+        lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
+        p.stroke(lineColor)
         // p.noFill()
         //p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
         p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
 
 
-        if (p.mouseIsPressed === true) {
+        // if (p.mouseIsPressed === true) {
 
-            p.filter(p.BLUR, 1);
-            //     // p.line(p.mouseX, 55, p.mouseX, p.pmouseY);
-            //     variableEllipse(p.mouseX + p.random(-d, d), p.mouseY + p.random(-d, d), p.pmouseX, p.pmouseY, p);
-            //     //p.ellipse(p.mouseX + p.random(-r, r), p.mouseY + p.random(-r, r), r3 + p.random(-r, r), r3 + p.random(-r2, r2));
+        //     p.filter(p.BLUR, 1);
+        //     //     // p.line(p.mouseX, 55, p.mouseX, p.pmouseY);
+        //     //     variableEllipse(p.mouseX + p.random(-d, d), p.mouseY + p.random(-d, d), p.pmouseX, p.pmouseY, p);
+        //     //     //p.ellipse(p.mouseX + p.random(-r, r), p.mouseY + p.random(-r, r), r3 + p.random(-r, r), r3 + p.random(-r2, r2));
 
-        } else {
-            //     // p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
-        }
+        // } else {
+        //     //     // p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+        // }
     }
 
 
