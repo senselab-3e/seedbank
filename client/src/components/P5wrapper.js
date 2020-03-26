@@ -9,16 +9,17 @@ import sketch8 from "./sketches/sketch8";
 import sketch9 from "./sketches/sketch9";
 
 class P5wrapper extends React.Component {
+  // <P5Wrapper sketch={sketch4} />
+  // <P5Wrapper sketch={sketch5} />
+  // <P5Wrapper sketch={sketch6} />
+  // <P5Wrapper sketch={sketch7} />
+  // <P5Wrapper sketch={sketch8} />
+  //<P5Wrapper sketch={sketch3} />
+
   render() {
     return (
       <div>
-        <P5Wrapper sketch={sketch3} />
         <P5Wrapper sketch={sketch9} />
-        <P5Wrapper sketch={sketch4} />
-        <P5Wrapper sketch={sketch5} />
-        <P5Wrapper sketch={sketch6} />
-        <P5Wrapper sketch={sketch7} />
-        <P5Wrapper sketch={sketch8} />
       </div>
     );
   }
