@@ -65,9 +65,9 @@ export default function sketch9(p) {
         //p.fill(p.pmouseX % 95, p.pmouseY % 15, p.mouseY % 255);
         p.fill('#ffffff');
         if (p.mouseIsPressed === true) {
-            p.filter(p.BLUR, 1);
-            //p.fill('#ffffff');
-            p.ellipse(x + p.random(-30, 30), y + p.random(-30, 30), conSize + extra, conSize + extra);
+            p.filter(p.BLUR, 1); /// this of course will get applied to everythinggggg so figure out how to apply it more sparingly, like alpha
+            p.fill('deeppink');
+            p.ellipse(x + p.random(-30, 30), y + p.random(-30, 30), conSize - extra, conSize - extra);
         } else {
             //p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
             p.ellipse(x + p.random(-30, 30), y + p.random(-30, 30), conSize, conSize);
