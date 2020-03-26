@@ -43,10 +43,15 @@ export default function sketch9(p) {
 
     //let trackBlurFilter = ['0']
 
+    function vibrationStrings(piccolor) {
+        p.fill(piccolor);
+        p.square(p.mouseX, 0, 1 + p.random(-3, 1), 500);
+    }
+
     function variableEllipse(x, y, px, py, p) {
         //let speed = p.abs(x - px) + p.abs(y - py); //use this if i want the distribution of the dots to be based on speed and acceleration but for now... nope : P
 
-        let ran = p.random(-50, 50);
+        let ran = p.random(-30, 10);
         let extra = p.random(-10, 10)
         let conSize
         x === px && y === py ? conSize = ran : conSize = 0;
@@ -64,11 +69,17 @@ export default function sketch9(p) {
         p.noStroke()
         //p.fill(p.pmouseX % 95, p.pmouseY % 15, p.mouseY % 255);
         p.fill('#ffffff');
+        //variable mode: but i thik it looks too 'pretty'
+        // var circleColor = p.color('#ffffff')
+        // circleColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
+        // p.fill(circleColor)
+
         if (p.mouseIsPressed === true) {
             p.filter(p.BLUR, 1); /// this of course will get applied to everythinggggg so figure out how to apply it more sparingly, like alpha
-            p.fill('deeppink');
-            //p.ellipse(x + p.random(-30, 30), y + p.random(-30, 30), conSize - extra, conSize - extra);
-            p.square(x, 0, 1, 500)
+            // p.fill('orange');
+            // p.ellipse(x + p.random(-30, 30), y + p.random(-30, 30), conSize - extra, conSize - extra);
+            //p.square(x, 0, 1, 500)
+            vibrationStrings('deeppink')
         } else {
             //p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
             p.ellipse(x + p.random(-30, 30), y + p.random(-30, 30), conSize, conSize);
@@ -77,6 +88,8 @@ export default function sketch9(p) {
         }
 
     }
+
+
 
 
     function drawLines(distance) {
