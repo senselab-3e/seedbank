@@ -9,6 +9,7 @@ export default function sketch9(p) {
         p.createCanvas(500, 500);
         p.background(55, 232, 192);
         p.fill(255);
+
         // const centerX = p.width / 2;
         // const centerY = p.height / 2;
         //p.touchMoved(touchDraw)
@@ -46,35 +47,39 @@ export default function sketch9(p) {
         let ran = p.random(-30, 30);
         let conSize
         x === px && y === py ? conSize = ran : conSize = 0;
-        p.filter(p.BLUR, 1);
+
         //p.stroke(speed);
         p.noStroke()
-        p.fill('#ffffff')
+        p.fill(p.pmouseX % 55, p.pmouseY % 255, p.mouseY % 255);
 
         //p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
         p.ellipse(x + p.random(-30, 30), y + p.random(-30, 30), conSize + p.random(-2, 2), conSize + p.random(-2, 2));
         //p.ellipse(x, y, speed, speed);
+
+
     }
 
 
     function drawLines(distance) {
         var d = distance; // 
         //p.stroke(60, 232, 192)
-        p.stroke('#ffffff')
+        //p.stroke('#ffffff')
 
         // p.noFill()
         //p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
         p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
 
 
-        // if (p.mouseIsPressed === true) {
-        //     // p.line(p.mouseX, 55, p.mouseX, p.pmouseY);
-        //     variableEllipse(p.mouseX + p.random(-d, d), p.mouseY + p.random(-d, d), p.pmouseX, p.pmouseY, p);
-        //     //p.ellipse(p.mouseX + p.random(-r, r), p.mouseY + p.random(-r, r), r3 + p.random(-r, r), r3 + p.random(-r2, r2));
+        if (p.mouseIsPressed === true) {
 
-        // } else {
-        //     // p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
-        // }
+            p.filter(p.BLUR, 1);
+            //     // p.line(p.mouseX, 55, p.mouseX, p.pmouseY);
+            //     variableEllipse(p.mouseX + p.random(-d, d), p.mouseY + p.random(-d, d), p.pmouseX, p.pmouseY, p);
+            //     //p.ellipse(p.mouseX + p.random(-r, r), p.mouseY + p.random(-r, r), r3 + p.random(-r, r), r3 + p.random(-r2, r2));
+
+        } else {
+            //     // p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+        }
     }
 
 
