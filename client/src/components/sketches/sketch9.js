@@ -52,7 +52,7 @@ export default function sketch9(p) {
         //let speed = p.abs(x - px) + p.abs(y - py); //use this if i want the distribution of the dots to be based on speed and acceleration but for now... nope : P
 
         let ran = p.random(-30, 10);
-        let extra = p.random(-10, 10)
+        //let extra = p.random(-10, 10)
         let conSize
         x === px && y === py ? conSize = ran : conSize = 0;
 
