@@ -6,12 +6,14 @@ import sketch5 from "./sketches/sketch5";
 import sketch6 from "./sketches/sketch6";
 import sketch7 from "./sketches/sketch7";
 import sketch8 from "./sketches/sketch8";
+import sketch9 from "./sketches/sketch9";
 
 class P5wrapper extends React.Component {
   render() {
     return (
       <div>
         <P5Wrapper sketch={sketch3} />
+        <P5Wrapper sketch={sketch9} />
         <P5Wrapper sketch={sketch4} />
         <P5Wrapper sketch={sketch5} />
         <P5Wrapper sketch={sketch6} />

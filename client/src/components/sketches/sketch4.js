@@ -64,8 +64,9 @@ export default function sketch4(p) {
             drawSpikey(i * 4, i * 4, i * 0.01);
             //drawWavy(i * 4, i * 4, i * 0.01);
             drawBuzzy(i * -4, i * -4, i * 0.005);
-            drawLines()
+
         }
+        drawLines()
         moveShape();
 
     }
