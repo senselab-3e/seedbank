@@ -14,22 +14,45 @@ export default function sketch3(p) {
 
     }
 
+    let xpos = 0; /// this needed to sit outside the draw function. 
+    let ypos = 0;
+
     p.draw = function () {
         p.background("orange"); // when the background isn't drawn you see all the trace movements of the previous drawings
         p.noFill();
         p.stroke(255);
-        p.strokeWeight(8);
+        p.strokeWeight(2);
         //frame count can only grow linearly so it's not super helpful for animations
         //p.ellipse(p.frameCount, 200, 100, 50 + (p.frameCount / 2));
         // p.ellipse(p.frameCount, 200, 100, 50 + (p.frameCount % 30) * 10, 50);
         //p.ellipse(width / 2, height / 2, (p.frameCount % 30) * 5, 160);
         //ellipse(200, 200, 100+(sin(frameCount)*50), 100);
         ///To make the oscillation slower, we need to divide the frameCount value by some other value. Let’s make it ten times slower by dividing by ten:
-        p.ellipse(width / 2, height / 2, 100 + (p.sin(p.frameCount / 10) * 50), 100);
-        for (let i = 0; i < 5; i++) {
-            p.ellipse(width / 2 + p.sin(p.frameCount / 20) * 130,
-                height / 3 + (i * 50), 40, 40);
+        // p.ellipse(width / 2, height / 2, 100 + (p.sin(p.frameCount / 10) * 50), 100);
+        // for (let i = 0; i < 5; i++) {
+        //     p.ellipse(width / 2 + p.sin(p.frameCount / 20) * 130,
+        //         height / 3 + (i * 50), 40, 40);
+        // }
+        // for (let i = 0; i < 5; i++) {
+        //     p.fill(p.mouseX % 255);
+        //     p.ellipse(
+        //         p.mouseX + (p.sin(p.frameCount / (i + 10)) * (i + 70)),
+        //         p.mouseY - 70 + (i * 50),
+        //         40,
+        //         40);
+        // }
+
+        //sin is a better oscillation technique then dividing by frame rate 
+        for (let i = 0; i < 4; i++) {
+            p.fill('purple')
+            p.ellipse(p.mouseX + p.random(15, -15) + p.sin(xpos) * 50,
+                p.mouseY + p.random(15, -15) + p.sin(ypos) * 50,
+                15, 15);
+            //this gives a jitter
+            xpos += 0.05; //p.random(-0.05, 0.05);
+            ypos += 0.04; //p.random(-0.04, 0.04);
         }
+
         //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
         //p.beginShape();
         // let spacing = p.map(p.mouseX, 0, width, 5, 100)
