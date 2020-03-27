@@ -3,11 +3,11 @@ export default function tutorials(p) {
 
     const width = 500;
     const height = 500;
-    var hasClicked = false;
-    var xpos = 0;
-    var ypos = 0;
-    var rectX = [];
-    var rectY = [];
+    //var hasClicked = false;
+    // var xpos = 0;
+    // var ypos = 0;
+    var rectXY = [];
+
     //const size = 40;'
 
     p.setup = function () {
@@ -50,18 +50,18 @@ export default function tutorials(p) {
         //     shape(xpos, ypos)
         //     ypos += 1;
         // }
-        for (var i = 0; i < rectY.length; i++) {
-            shape(rectX[i], rectY[i])
-            //rect(rectX[i], rectY[i], 50, 25);
-            rectY[i] += 1;
+        for (var i = 0; i < rectXY.length; i++) {
+            shape(rectXY[i][0], rectXY[i][1]) /// using a substring reference in a single array will  make it easier to add more then one param detail to the element // otherwise you'd need a new array each time you want to add other vars
+            //ect(rectXY[i][0], rectXY[i][1], 50, 25);
+            rectXY[i][1] += 1;
         }
     }
     p.mousePressed = function () {
         // hasClicked = true;
         // xpos = p.mouseX;
         // ypos = p.mouseY;
-        rectX.push(p.mouseX);
-        rectY.push(p.mouseY);
+        rectXY.push([p.mouseX, p.mouseY]);
+
     }
 
 }
