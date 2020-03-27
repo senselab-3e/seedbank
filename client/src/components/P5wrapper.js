@@ -7,6 +7,7 @@ import sketch3 from "./sketches/sketch3";
 // import sketch7 from "./sketches/sketch7";
 // import sketch8 from "./sketches/sketch8";
 // import sketch9 from "./sketches/sketch9";
+import sketch10 from "./sketches/sketch10";
 
 class P5wrapper extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class P5wrapper extends React.Component {
         <P5Wrapper sketch={sketch4} />
         <P5Wrapper sketch={sketch5} /> */}
         <P5Wrapper sketch={sketch3} />
+        <P5Wrapper sketch={sketch10} />
         {/* <P5Wrapper sketch={sketch6} />
 
         <P5Wrapper sketch={sketch7} />

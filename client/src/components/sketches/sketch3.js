@@ -74,7 +74,7 @@ export default function sketch3(p) {
         lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
         p.fill(lineColor)
         for (let i = 0; i < 5; i++) {
-            p.ellipse(p.mouseX + p.sin(xpos) * p.random(100), p.mouseY + p.sin(ypos) * p.random(100), speed + 5, speed + 5); /// alt with speed, 15,15 - which is the size of the dot
+            p.ellipse(p.mouseX + p.sin(xpos) * p.random(100), p.mouseY + p.sin(ypos) * p.random(100), 15, 15); /// alt with speed, 15,15 - which is the size of the dot
             //this gives a jitter //p.random(-0.05, 0.05);
             xpos += 0.005 // + p.random() * 0.05;
             ypos += 0.004 // + p.random() * 0.05;
