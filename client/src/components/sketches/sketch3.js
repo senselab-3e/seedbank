@@ -12,16 +12,24 @@ export default function sketch3(p) {
         //p.angleMode(p.DEGREES); /// -->  full way round the circle /// using raidans
         //which is different then the default mode
         //p.frameRate(10);
+        p.background("orange");
+        p.ellipse(100, 100, 5, 5);
+        //for (let i = 0; i < 14; i++) {
+        //the number multiplied by random gets me the size of the canvas
+
+        //}
     }
 
     let xpos = 0; /// this needed to sit outside the draw function. 
     let ypos = 0;
 
     p.draw = function () {
-        p.background("orange"); // when the background isn't drawn you see all the trace movements of the previous drawings
+        // when the background isn't drawn you see all the trace movements of the previous drawings
         p.noFill();
-        p.stroke(255);
+        p.noStroke()
+        //p.stroke(255);
         p.strokeWeight(2);
+        p.background("orange");
         //frame count can only grow linearly so it's not super helpful for animations
         //p.ellipse(p.frameCount, 200, 100, 50 + (p.frameCount / 2));
         // p.ellipse(p.frameCount, 200, 100, 50 + (p.frameCount % 30) * 10, 50);
@@ -42,17 +50,40 @@ export default function sketch3(p) {
         //         40);
         // }
 
-        //sin is a better oscillation technique then dividing by frame rate 
-        for (let i = 0; i < 4; i++) {
-            p.fill('purple')
-            p.ellipse(p.mouseX + i + p.sin(xpos) * p.random(70, -70),
-                p.mouseY + p.sin(ypos) * p.random(70, -70),
-                15, 15);
-            //this gives a jitter //p.random(-0.05, 0.05);
 
-            xpos += 0.01;
-            ypos += 0.02; //p.random(-0.04, 0.04);
+        let speed = p.abs(p.mouseX - p.pmouseX) + p.abs(p.mouseY - p.pmouseY);
+        //p.ellipse(x + p.random(-extra, extra), y, speed, speed);
+        //sin is a better oscillation technique then dividing by frame rate 
+        //for (let i = 0; i < 4; i++) {
+
+        /// like a firefly
+
+        // var lineColor = p.color('white')
+        // lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
+        // p.fill(lineColor)
+        // for (let i = 0; i < 5; i++) {
+        //     p.ellipse(p.mouseX + p.sin(xpos) * 100, p.mouseY + p.sin(ypos) * 100, 15, 15); /// alt with speed, 15,15 - which is the size of the dot
+        //     //this gives a jitter //p.random(-0.05, 0.05);
+        //     xpos += 0.05 + p.random() * 0.05;
+        // }
+
+        // ypos += 0.04 + p.random() * 0.05; 
+        //firefly
+
+        var lineColor = p.color('white')
+        lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
+        p.fill(lineColor)
+        for (let i = 0; i < 5; i++) {
+            p.ellipse(p.mouseX + p.sin(xpos) * p.random(100), p.mouseY + p.sin(ypos) * p.random(100), speed + 5, speed + 5); /// alt with speed, 15,15 - which is the size of the dot
+            //this gives a jitter //p.random(-0.05, 0.05);
+            xpos += 0.005 // + p.random() * 0.05;
+            ypos += 0.004 // + p.random() * 0.05;
         }
+
+        //ypos += 0.04 + p.random() * 0.05; //p.random(-0.04, 0.04);
+        //}
+
+
 
         //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
         //p.beginShape();
