@@ -42,12 +42,12 @@ export default function sketch3(p) {
         // p.vertex(25, 50);
 
         //p.curveVertex(100, 200)
-        p.curveVertex(p.mouseX, p.mouseY); ///this changes the entry point into the curve
-        p.curveVertex(100, 200);
-        p.curveVertex(150, 50);
-        p.curveVertex(250, 60);
-        p.curveVertex(300, 200);
-        p.curveVertex(300, 200);
+        // p.curveVertex(p.mouseX, p.mouseY); ///this changes the entry point into the curve
+        // p.curveVertex(100, 200);
+        // p.curveVertex(150, 50);
+        // p.curveVertex(250, 60);
+        // p.curveVertex(300, 200);
+        // p.curveVertex(300, 200);
 
         // p.curveVertex(100, 200); //repeating entry exit points to complete curve. imperfect because of the wrapper. it's making a hard angle 
         // p.curveVertex(100, 200);
@@ -55,7 +55,7 @@ export default function sketch3(p) {
         // p.curveVertex(250, 60);
         // p.curveVertex(300, 200);
         // p.curveVertex(300, 200);
-        p.endShape();
+        p.endShape(p.CLOSE);
     };
 
 
