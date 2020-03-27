@@ -3,29 +3,56 @@ export default function tutorials(p) {
 
     const width = 500;
     const height = 500;
-
+    var hasClicked = false;
+    var xpos = 0;
+    var ypos = 0;
     //const size = 40;'
 
     p.setup = function () {
         p.createCanvas(width, height);
-        p.background('teal');
-        p.rectMode(p.CENTER);
-        p.noStroke();
-        p.fill(255);
+        //p.background('teal');
+
     }
 
-    p.draw = function () {}
+    function shape(xpos2, ypos2) {
+        //console.log(xpos2)
 
-    p.mousePressed = function () {
         p.beginShape();
-        p.vertex(p.mouseX + 100, p.mouseY + 5);
-        p.vertex(p.mouseX + 200, p.mouseY + 20);
-        p.vertex(p.mouseX + 16, p.mouseY + 116);
-        p.vertex(p.mouseX + 50, p.mouseY + 75);
-        p.vertex(p.mouseX + 25, p.mouseY + 50);
-        p.endShape(p.CLOSE)
+        p.vertex(xpos2 + 130, ypos2 + 5);
+        p.vertex(xpos2 + 200, ypos2 + 20);
+        p.vertex(xpos2 + 100, ypos2 + 116);
+        p.vertex(xpos2 + 50, ypos2 + 75);
+        p.vertex(xpos2 + 25, ypos2 + 50);
+        p.vertex(xpos2 + 85, ypos2 + 120);
+        //p.vertex(p.mouseX + 125, p.mouseY + 20);
 
-        //p.ellipse(p.mouseX, p.mouseY, 50, 25);
+        // p.curveVertex(p.mouseX + 30, p.mouseY + 5);
+        // p.curveVertex(p.mouseX + 130, p.mouseY + 5);
+        // p.curveVertex(p.mouseX + 200, p.mouseY + 20);
+        // p.curveVertex(p.mouseX + 100, p.mouseY + 116);
+        // p.curveVertex(p.mouseX + 50, p.mouseY + 75);
+        // p.curveVertex(p.mouseX + 25, p.mouseY + 50);
+        // p.curveVertex(p.mouseX + 85, p.mouseY + 120);
+        p.endShape(p.CLOSE)
+    }
+
+
+
+    p.draw = function () {
+        p.background('teal');
+        p.noStroke();
+        p.rectMode(p.CENTER);
+        p.fill('255');
+        if (hasClicked) {
+            //p.rect(xpos, ypos, 50, 25);
+            shape(xpos, ypos)
+            ypos += 1;
+        }
+    }
+    p.mousePressed = function () {
+        hasClicked = true;
+        xpos = p.mouseX;
+        ypos = p.mouseY;
     }
 
 }
