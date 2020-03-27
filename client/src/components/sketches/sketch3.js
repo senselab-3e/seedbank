@@ -11,7 +11,7 @@ export default function sketch3(p) {
         //p.background("orange");
         //p.angleMode(p.DEGREES); /// -->  full way round the circle /// using raidans
         //which is different then the default mode
-
+        //p.frameRate(10);
     }
 
     let xpos = 0; /// this needed to sit outside the draw function. 
@@ -45,12 +45,13 @@ export default function sketch3(p) {
         //sin is a better oscillation technique then dividing by frame rate 
         for (let i = 0; i < 4; i++) {
             p.fill('purple')
-            p.ellipse(p.mouseX + p.random(15, -15) + p.sin(xpos) * 50,
-                p.mouseY + p.random(15, -15) + p.sin(ypos) * 50,
+            p.ellipse(p.mouseX + i + p.sin(xpos) * p.random(70, -70),
+                p.mouseY + p.sin(ypos) * p.random(70, -70),
                 15, 15);
-            //this gives a jitter
-            xpos += 0.05; //p.random(-0.05, 0.05);
-            ypos += 0.04; //p.random(-0.04, 0.04);
+            //this gives a jitter //p.random(-0.05, 0.05);
+
+            xpos += 0.01;
+            ypos += 0.02; //p.random(-0.04, 0.04);
         }
 
         //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
