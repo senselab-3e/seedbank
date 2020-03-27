@@ -9,7 +9,7 @@ export default function sketch3(p) {
     p.setup = function () {
         p.createCanvas(width, height);
         //p.background("orange");
-        p.angleMode(p.DEGREES); /// -->  full way round the circle /// using raidans
+        //p.angleMode(p.DEGREES); /// -->  full way round the circle /// using raidans
         //which is different then the default mode
 
     }
@@ -22,7 +22,14 @@ export default function sketch3(p) {
         //frame count can only grow linearly so it's not super helpful for animations
         //p.ellipse(p.frameCount, 200, 100, 50 + (p.frameCount / 2));
         // p.ellipse(p.frameCount, 200, 100, 50 + (p.frameCount % 30) * 10, 50);
-        p.ellipse(width / 2, height / 2, (p.frameCount % 30) * 5, 160);
+        //p.ellipse(width / 2, height / 2, (p.frameCount % 30) * 5, 160);
+        //ellipse(200, 200, 100+(sin(frameCount)*50), 100);
+        ///To make the oscillation slower, we need to divide the frameCount value by some other value. Let’s make it ten times slower by dividing by ten:
+        p.ellipse(width / 2, height / 2, 100 + (p.sin(p.frameCount / 10) * 50), 100);
+        for (let i = 0; i < 5; i++) {
+            p.ellipse(width / 2 + p.sin(p.frameCount / 20) * 130,
+                height / 3 + (i * 50), 40, 40);
+        }
         //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
         //p.beginShape();
         // let spacing = p.map(p.mouseX, 0, width, 5, 100)
