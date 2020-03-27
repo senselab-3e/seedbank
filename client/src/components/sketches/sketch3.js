@@ -16,20 +16,46 @@ export default function sketch3(p) {
         p.stroke(255);
         p.noFill();
         p.background("orange");
+        p.strokeWeight(4); //withought the stroke weight of 4 you can't see the points ( at say weight 1 )
+        p.point(100, 200)
+
+        p.point(p.mouseX, p.mouseY);
+        p.point(150, 50);
+        p.point(250, 60);
+        p.point(300, 200);
+        //points are controlling the entry of the curve
         p.beginShape();
 
-        let spacing = p.map(p.mouseX, 0, width, 5, 100)
-        for (let a = 0; a < 360; a += spacing) {
-            let x = 100 * p.sin(a) + 200;
-            let y = 100 * p.cos(a) + 200;
-            p.vertex(x, y);
-        }
+        //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
+
+        // let spacing = p.map(p.mouseX, 0, width, 5, 100)
+        // for (let a = 0; a < 360; a += spacing) {
+        //     let x = 100 * p.sin(a) + 200;
+        //     let y = 100 * p.cos(a) + 200;
+        //     p.vertex(x, y);
+        // }
+
         // p.vertex(100, 5);
         // p.vertex(200, 20);
         // p.vertex(200, 100);
         // p.vertex(50, 75);
         // p.vertex(25, 50);
-        p.endShape(p.CLOSE);
+
+        p.curveVertex(100, 200)
+        p.curveVertex(p.mouseX, p.mouseY); ///this changes the entry point into the curve
+        p.curveVertex(100, 200);
+        p.curveVertex(150, 50);
+        p.curveVertex(250, 60);
+        p.curveVertex(300, 200);
+        p.curveVertex(300, 200);
+
+        // p.curveVertex(100, 200); //repeating entry exit points to complete curve. imperfect because of the wrapper. it's making a hard angle 
+        // p.curveVertex(100, 200);
+        // p.curveVertex(150, 50);
+        // p.curveVertex(250, 60);
+        // p.curveVertex(300, 200);
+        // p.curveVertex(300, 200);
+        p.endShape();
     };
 
 
