@@ -15,12 +15,14 @@ export default function sketch3(p) {
     }
 
     p.draw = function () {
-        //p.background(50); // when the background isn't drawn you see all the trace movements of the previous drawings
+        p.background("orange"); // when the background isn't drawn you see all the trace movements of the previous drawings
         p.noFill();
         p.stroke(255);
         p.strokeWeight(8);
         //frame count can only grow linearly so it's not super helpful for animations
-        p.ellipse(p.frameCount, 200, 100, 50 + (p.frameCount / 2));
+        //p.ellipse(p.frameCount, 200, 100, 50 + (p.frameCount / 2));
+        // p.ellipse(p.frameCount, 200, 100, 50 + (p.frameCount % 30) * 10, 50);
+        p.ellipse(width / 2, height / 2, (p.frameCount % 30) * 5, 160);
         //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
         //p.beginShape();
         // let spacing = p.map(p.mouseX, 0, width, 5, 100)
