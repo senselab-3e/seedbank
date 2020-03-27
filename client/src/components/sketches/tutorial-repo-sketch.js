@@ -6,6 +6,8 @@ export default function tutorials(p) {
     var hasClicked = false;
     var xpos = 0;
     var ypos = 0;
+    var rectX = [];
+    var rectY = [];
     //const size = 40;'
 
     p.setup = function () {
@@ -43,16 +45,23 @@ export default function tutorials(p) {
         p.noStroke();
         p.rectMode(p.CENTER);
         p.fill('255');
-        if (hasClicked) {
-            //p.rect(xpos, ypos, 50, 25);
-            shape(xpos, ypos)
-            ypos += 1;
+        // if (hasClicked) {
+        //     //p.rect(xpos, ypos, 50, 25);
+        //     shape(xpos, ypos)
+        //     ypos += 1;
+        // }
+        for (var i = 0; i < rectY.length; i++) {
+            shape(rectX[i], rectY[i])
+            //rect(rectX[i], rectY[i], 50, 25);
+            rectY[i] += 1;
         }
     }
     p.mousePressed = function () {
-        hasClicked = true;
-        xpos = p.mouseX;
-        ypos = p.mouseY;
+        // hasClicked = true;
+        // xpos = p.mouseX;
+        // ypos = p.mouseY;
+        rectX.push(p.mouseX);
+        rectY.push(p.mouseY);
     }
 
 }
