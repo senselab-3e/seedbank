@@ -26,13 +26,13 @@ export default function tutorials(p) {
         p.vertex(xpos2 + 85, ypos2 + 120);
         //p.vertex(p.mouseX + 125, p.mouseY + 20);
 
-        // p.curveVertex(p.mouseX + 30, p.mouseY + 5);
-        // p.curveVertex(p.mouseX + 130, p.mouseY + 5);
-        // p.curveVertex(p.mouseX + 200, p.mouseY + 20);
-        // p.curveVertex(p.mouseX + 100, p.mouseY + 116);
-        // p.curveVertex(p.mouseX + 50, p.mouseY + 75);
-        // p.curveVertex(p.mouseX + 25, p.mouseY + 50);
-        // p.curveVertex(p.mouseX + 85, p.mouseY + 120);
+        //p.curveVertex(xpos2 + 30, ypos2 + 5);
+        p.curveVertex(xpos2 + 130, ypos2 + 5);
+        p.curveVertex(xpos2 + 200, ypos2 + 20);
+        p.curveVertex(xpos2 + 100, ypos2 + 116);
+        p.curveVertex(xpos2 + 50, ypos2 + 75);
+        p.curveVertex(xpos2 + 25, ypos2 + 50);
+        p.curveVertex(xpos2 + 85, ypos2 + 120);
         p.endShape(p.CLOSE)
     }
 
