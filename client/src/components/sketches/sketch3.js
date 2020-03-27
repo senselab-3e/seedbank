@@ -28,12 +28,12 @@ export default function sketch3(p) {
 
         //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
 
-        // let spacing = p.map(p.mouseX, 0, width, 5, 100)
-        // for (let a = 0; a < 360; a += spacing) {
-        //     let x = 100 * p.sin(a) + 200;
-        //     let y = 100 * p.cos(a) + 200;
-        //     p.vertex(x, y);
-        // }
+        let spacing = p.map(p.mouseX, 0, width, 5, 100)
+        for (let a = 0; a < 360; a += spacing) {
+            let x = 100 * p.sin(a) + 200;
+            let y = 100 * p.cos(a) + 200;
+            p.vertex(x, y);
+        }
 
         // p.vertex(100, 5);
         // p.vertex(200, 20);
@@ -41,7 +41,7 @@ export default function sketch3(p) {
         // p.vertex(50, 75);
         // p.vertex(25, 50);
 
-        p.curveVertex(100, 200)
+        //p.curveVertex(100, 200)
         p.curveVertex(p.mouseX, p.mouseY); ///this changes the entry point into the curve
         p.curveVertex(100, 200);
         p.curveVertex(150, 50);
