@@ -3,41 +3,32 @@ export default function tutorials(p) {
 
     const width = 500;
     const height = 500;
-    //var hasClicked = false;
-    // var xpos = 0;
-    // var ypos = 0;
-    //var rectXY = [];
+    const elementSize = 15;
     var rectObjs = [];
-    //const size = 40;'
-
 
     p.setup = function () {
         p.createCanvas(width, height);
-        //p.background('teal');
-
     }
 
-    function shape(xpos2, ypos2, coloring) {
-        //console.log(coloring)
+    function shape(xpos2, ypos2, coloring, size) {
         p.fill(coloring)
+        p.ellipse(xpos2, ypos2, size, size)
+        //CUSTOM SHAPE
+        // p.beginShape();
+        // p.vertex(xpos2 + 130, ypos2 + 5);
+        // p.vertex(xpos2 + 200, ypos2 + 20);
+        // p.vertex(xpos2 + 100, ypos2 + 116);
+        // p.vertex(xpos2 + 50, ypos2 + 75);
+        // p.vertex(xpos2 + 25, ypos2 + 50);
+        // p.vertex(xpos2 + 85, ypos2 + 120);
 
-        p.beginShape();
-        p.vertex(xpos2 + 130, ypos2 + 5);
-        p.vertex(xpos2 + 200, ypos2 + 20);
-        p.vertex(xpos2 + 100, ypos2 + 116);
-        p.vertex(xpos2 + 50, ypos2 + 75);
-        p.vertex(xpos2 + 25, ypos2 + 50);
-        p.vertex(xpos2 + 85, ypos2 + 120);
-        //p.vertex(p.mouseX + 125, p.mouseY + 20);
-
-        //p.curveVertex(xpos2 + 30, ypos2 + 5);
-        p.curveVertex(xpos2 + 130, ypos2 + 5);
-        p.curveVertex(xpos2 + 200, ypos2 + 20);
-        p.curveVertex(xpos2 + 100, ypos2 + 116);
-        p.curveVertex(xpos2 + 50, ypos2 + 75);
-        p.curveVertex(xpos2 + 25, ypos2 + 50);
-        p.curveVertex(xpos2 + 85, ypos2 + 120);
-        p.endShape(p.CLOSE)
+        // // p.curveVertex(xpos2 + 130, ypos2 + 5);
+        // // p.curveVertex(xpos2 + 200, ypos2 + 20);
+        // // p.curveVertex(xpos2 + 100, ypos2 + 116);
+        // // p.curveVertex(xpos2 + 50, ypos2 + 75);
+        // // p.curveVertex(xpos2 + 25, ypos2 + 50);
+        // // p.curveVertex(xpos2 + 85, ypos2 + 120);
+        // p.endShape(p.CLOSE)
     }
 
 
@@ -45,7 +36,7 @@ export default function tutorials(p) {
     p.draw = function () {
         p.background('teal');
         p.noStroke();
-        p.rectMode(p.CENTER);
+        p.ellipseMode(p.CENTER);
         //p.fill('255');
         // if (hasClicked) {
         //     //p.rect(xpos, ypos, 50, 25);
@@ -55,55 +46,39 @@ export default function tutorials(p) {
         let xdirection = 1;
         for (var i = 0; i < rectObjs.length; i++) {
             //let speed = p.abs(p.mouseX - p.pmouseX) + p.abs(p.mouseY - p.pmousey);
-            shape(rectObjs[i].xpos, rectObjs[i].ypos, rectObjs[i].fillColor) /// using a substring reference in a single array will  make it easier to add more then one param detail to the element // otherwise you'd need a new array each time you want to add other vars
+            shape(rectObjs[i].xpos, rectObjs[i].ypos, rectObjs[i].fillColor, rectObjs[i].size) /// using a substring reference in a single array will  make it easier to add more then one param detail to the element // otherwise you'd need a new array each time you want to add other vars
             //ect(rectXY[i][0], rectXY[i][1], 50, 25 //// The beauty of this is that we can easily add a third attribute to each rectangle simply by adding a third element to the array that we add to the rectXY array on each click. I
             //rectObjs[i].ypos -= rectObjs[i].speed;
             //console.log(rectObjs[i].ypos > height || rectObjs[i].ypos < 0)
 
-
-
             if (rectObjs[i].ypos > height) {
                 rectObjs[i].direction = -1;
+                rectObjs[i].size > 0 ? rectObjs[i].size -= 1 : rectObjs.splice(i, 1)
                 //rectObjs[i].ypos = rectObjs[i].speed * -1; // this makes it look back up to the top....
             }
-            if (rectObjs[i].ypos < 0) {
-                rectObjs.splice(i, 1);
-                //rectObjs[i].direction = 1;
-            }
+            if (rectObjs[i].ypos < 0) { // i would add the element's height to the 0 to account for its diameter, if desired
+                //rectObjs.splice(i, 1); // do this to remove that specific instance once it hits the ceiling 
+                rectObjs[i].direction = 1; // do this to get it to bounce back down
 
+            }
+            //this ensures the instance is still valid, bc the splice above removes certain instances once they hit the ceiling of the canvas
+            //once splice/removed that instance turns undefined - so I'm doing a truthy test below
             if (rectObjs[i]) {
                 rectObjs[i].ypos += rectObjs[i].speed * rectObjs[i].direction;
             }
-            // if(rectObjs[i].ypos > height || rectObjs[i].ypos < ballRadius) {
-            //     dy = -dy;
-            // }
-
         }
-        // for (var m = 0; m < rectObjs.length; m++) {
-        //     if (rectObjs[m].ypos > height) {
-        //         //rectObjs.splice(i, 1);
-        //         rectObjs[m].ypos -= rectObjs[m].speed;
-        //     } else if (rectObjs[i].ypos < 0) {
-        //         rectObjs[m].ypos += rectObjs[m].speed;
-        //     }
-        // }
-
     }
     p.mousePressed = function () {
-        // hasClicked = true;
-        // xpos = p.mouseX;
-        // ypos = p.mouseY;
-
 
         var lineColor = p.color(p.mouseX % 255, p.mouseY % 255, p.mouseX % 255, )
-        //lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
-
+        // adding direction information at this scale is very necessary - so that it can be tracked for each instance /// rather then thinking you can do a direction switch based on the instance's location, in the draw function, alone. this doesn't work because it will get stuck between true/false once it steps one back from the canvas height, 
         rectObjs.push({
             xpos: p.mouseX,
             ypos: p.mouseY,
             fillColor: lineColor,
             speed: p.random(1, 5),
-            direction: 1
+            direction: 1,
+            size: elementSize
         });
 
     }
