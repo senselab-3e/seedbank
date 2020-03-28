@@ -44,11 +44,12 @@ export default function tutorials(p) {
 
 
     //need to figure out how to make this reusable /// best embedded as a method 
-    const validElement = (i) => {
-        if (elementObjs[i]) {
-            checkPosition(i)
-        }
-    }
+    ///this doesn't work very efficiently. 
+    // const validElement = (i) => {
+    //     if (elementObjs[i]) {
+    //         checkPosition(i)
+    //     }
+    // }
 
     // function checkEl(i) {
     //     if (elementObjs[i] !== undefined) {
@@ -67,12 +68,12 @@ export default function tutorials(p) {
 
     const checkPosition = (i) => {
 
-        if (elementObjs[i].ypos > height) {
+        if (elementObjs[i] !== undefined && elementObjs[i].ypos > height) {
             elementObjs[i].direction = -1;
             checkSize(i)
             modifySpeed(i)
         }
-        if (elementObjs[i].ypos < 0) {
+        if (elementObjs[i] !== undefined && elementObjs[i].ypos < 0) {
             elementObjs[i].direction = 1; // do this to get it to bounce back down
             checkSize(i)
             modifySpeed(i)
@@ -80,6 +81,7 @@ export default function tutorials(p) {
         if (elementObjs[i]) {
             elementObjs[i].ypos += elementObjs[i].speed * elementObjs[i].direction;
         }
+
     }
 
     p.draw = function () {
@@ -91,7 +93,7 @@ export default function tutorials(p) {
 
         for (var i = 0; i < elementObjs.length; i++) {
             shape(elementObjs[i].xpos, elementObjs[i].ypos, elementObjs[i].fillColor, elementObjs[i].size) /// using a substring reference in a single array will  make it easier to add more then one param detail to the element // otherwise you'd need a new array each time you want to add other vars
-            validElement(i)
+            checkPosition(i)
         }
     }
     p.mousePressed = function () {
