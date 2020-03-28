@@ -4,7 +4,7 @@ export default function tutorials(p) {
     const width = 500;
     const height = 500;
     const elementSize = 15;
-    var rectObjs = [];
+    var elementObjs = [];
 
     p.setup = function () {
         p.createCanvas(width, height);
@@ -31,10 +31,17 @@ export default function tutorials(p) {
         // p.endShape(p.CLOSE)
     }
 
+    function checkSize(i) {
+        //console.log(element)
+        elementObjs[i].size > 0 ? elementObjs[i].size -= 1 : removeElement(i);
+    }
 
+    function removeElement(i) {
+        elementObjs.splice(i, 1)
+    }
 
     p.draw = function () {
-        p.background('teal');
+        p.background('cornflowerblue');
         p.noStroke();
         p.ellipseMode(p.CENTER);
         //p.fill('255');
@@ -43,36 +50,37 @@ export default function tutorials(p) {
         //     shape(xpos, ypos)
         //     ypos += 1;
         // }
-        let xdirection = 1;
-        for (var i = 0; i < rectObjs.length; i++) {
+
+        for (var i = 0; i < elementObjs.length; i++) {
             //let speed = p.abs(p.mouseX - p.pmouseX) + p.abs(p.mouseY - p.pmousey);
-            shape(rectObjs[i].xpos, rectObjs[i].ypos, rectObjs[i].fillColor, rectObjs[i].size) /// using a substring reference in a single array will  make it easier to add more then one param detail to the element // otherwise you'd need a new array each time you want to add other vars
+            shape(elementObjs[i].xpos, elementObjs[i].ypos, elementObjs[i].fillColor, elementObjs[i].size) /// using a substring reference in a single array will  make it easier to add more then one param detail to the element // otherwise you'd need a new array each time you want to add other vars
             //ect(rectXY[i][0], rectXY[i][1], 50, 25 //// The beauty of this is that we can easily add a third attribute to each rectangle simply by adding a third element to the array that we add to the rectXY array on each click. I
-            //rectObjs[i].ypos -= rectObjs[i].speed;
-            //console.log(rectObjs[i].ypos > height || rectObjs[i].ypos < 0)
+            //elementObjs[i].ypos -= elementObjs[i].speed;
+            //console.log(elementObjs[i].ypos > height || elementObjs[i].ypos < 0)
 
-            if (rectObjs[i].ypos > height) {
-                rectObjs[i].direction = -1;
-                rectObjs[i].size > 0 ? rectObjs[i].size -= 1 : rectObjs.splice(i, 1)
-                //rectObjs[i].ypos = rectObjs[i].speed * -1; // this makes it look back up to the top....
+            if (elementObjs[i].ypos > height) {
+                elementObjs[i].direction = -1;
+                //elementObjs[i].size > 0 ? elementObjs[i].size -= 1 : elementObjs.splice(i, 1) //this decreases the size of the ellipse on each bounce // this will need to be refactored for custom objects
+                //elementObjs[i].ypos = elementObjs[i].speed * -1; // this makes it look back up to the top....
+                checkSize(i)
             }
-            if (rectObjs[i].ypos < 0) { // i would add the element's height to the 0 to account for its diameter, if desired
-                //rectObjs.splice(i, 1); // do this to remove that specific instance once it hits the ceiling 
-                rectObjs[i].direction = 1; // do this to get it to bounce back down
-
+            if (elementObjs[i].ypos < 0) { // i would add the element's height to the 0 to account for its diameter, if desired
+                //elementObjs.splice(i, 1); // do this to remove that specific instance once it hits the ceiling 
+                elementObjs[i].direction = 1; // do this to get it to bounce back down
+                checkSize(i)
             }
             //this ensures the instance is still valid, bc the splice above removes certain instances once they hit the ceiling of the canvas
             //once splice/removed that instance turns undefined - so I'm doing a truthy test below
-            if (rectObjs[i]) {
-                rectObjs[i].ypos += rectObjs[i].speed * rectObjs[i].direction;
+            if (elementObjs[i]) {
+                elementObjs[i].ypos += elementObjs[i].speed * elementObjs[i].direction;
             }
         }
     }
     p.mousePressed = function () {
 
-        var lineColor = p.color(p.mouseX % 255, p.mouseY % 255, p.mouseX % 255, )
+        var lineColor = p.color(p.mouseX % 255, p.mouseX % 255, p.mouseX % 255, )
         // adding direction information at this scale is very necessary - so that it can be tracked for each instance /// rather then thinking you can do a direction switch based on the instance's location, in the draw function, alone. this doesn't work because it will get stuck between true/false once it steps one back from the canvas height, 
-        rectObjs.push({
+        elementObjs.push({
             xpos: p.mouseX,
             ypos: p.mouseY,
             fillColor: lineColor,
