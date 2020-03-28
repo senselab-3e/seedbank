@@ -17,7 +17,7 @@ export default function tutorials(p) {
     }
 
     function shape(xpos2, ypos2, coloring) {
-        console.log(coloring)
+        //console.log(coloring)
         p.fill(coloring)
 
         p.beginShape();
@@ -52,23 +52,26 @@ export default function tutorials(p) {
         //     ypos += 1;
         // }
         for (var i = 0; i < rectObjs.length; i++) {
-
+            //let speed = p.abs(p.mouseX - p.pmouseX) + p.abs(p.mouseY - p.pmousey);
             shape(rectObjs[i].xpos, rectObjs[i].ypos, rectObjs[i].fillColor) /// using a substring reference in a single array will  make it easier to add more then one param detail to the element // otherwise you'd need a new array each time you want to add other vars
             //ect(rectXY[i][0], rectXY[i][1], 50, 25 //// The beauty of this is that we can easily add a third attribute to each rectangle simply by adding a third element to the array that we add to the rectXY array on each click. I
-            rectObjs[i].ypos += 1;
+            rectObjs[i].ypos += rectObjs[i].speed;
         }
     }
     p.mousePressed = function () {
         // hasClicked = true;
         // xpos = p.mouseX;
         // ypos = p.mouseY;
+
+
         var lineColor = p.color(p.mouseX % 255, p.mouseY % 255, p.mouseX % 255, )
-        lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
+        //lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
 
         rectObjs.push({
             xpos: p.mouseX,
             ypos: p.mouseY,
-            fillColor: lineColor
+            fillColor: lineColor,
+            speed: p.random(1, 5)
         });
 
     }
