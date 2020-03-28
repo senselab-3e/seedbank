@@ -67,10 +67,13 @@ export default function tutorials(p) {
                 //rectObjs[i].ypos = rectObjs[i].speed * -1; // this makes it look back up to the top....
             }
             if (rectObjs[i].ypos < 0) {
-                rectObjs[i].direction = 1;
+                rectObjs.splice(i, 1);
+                //rectObjs[i].direction = 1;
             }
-            rectObjs[i].ypos += rectObjs[i].speed * rectObjs[i].direction;
 
+            if (rectObjs[i]) {
+                rectObjs[i].ypos += rectObjs[i].speed * rectObjs[i].direction;
+            }
             // if(rectObjs[i].ypos > height || rectObjs[i].ypos < ballRadius) {
             //     dy = -dy;
             // }
