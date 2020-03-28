@@ -1,3 +1,5 @@
+///This is an oldschool JS function approach ---> but using object methods and object factories with NEW is a better approach. this is just to refamialiarize
+
 export default function tutorials(p) {
     //changed this sketch to just be a repo for working through processing tutorials
 
@@ -44,12 +46,8 @@ export default function tutorials(p) {
         p.background('cornflowerblue');
         p.noStroke();
         p.ellipseMode(p.CENTER);
-        //p.fill('255');
-        // if (hasClicked) {
-        //     //p.rect(xpos, ypos, 50, 25);
-        //     shape(xpos, ypos)
-        //     ypos += 1;
-        // }
+
+        ///NOTE: A method is just a function that is the value for a key in an object. For example, try running this code in an empty p5.js sketch:
 
         for (var i = 0; i < elementObjs.length; i++) {
             //let speed = p.abs(p.mouseX - p.pmouseX) + p.abs(p.mouseY - p.pmousey);
@@ -57,19 +55,25 @@ export default function tutorials(p) {
             //ect(rectXY[i][0], rectXY[i][1], 50, 25 //// The beauty of this is that we can easily add a third attribute to each rectangle simply by adding a third element to the array that we add to the rectXY array on each click. I
             //elementObjs[i].ypos -= elementObjs[i].speed;
             //console.log(elementObjs[i].ypos > height || elementObjs[i].ypos < 0)
+            //checkDirection()
 
-            if (elementObjs[i].ypos > height) {
+
+            if (elementObjs[i] !== undefined && elementObjs[i].ypos > height) {
                 elementObjs[i].direction = -1;
                 //elementObjs[i].size > 0 ? elementObjs[i].size -= 1 : elementObjs.splice(i, 1) //this decreases the size of the ellipse on each bounce // this will need to be refactored for custom objects
                 //elementObjs[i].ypos = elementObjs[i].speed * -1; // this makes it look back up to the top....
                 checkSize(i)
-                elementObjs[i] ? elementObjs[i].speed *= 1.2 : elementObjs[i].speed = 1;
+                if (elementObjs[i]) {
+                    elementObjs[i].speed *= 1.2
+                }
             }
-            if (elementObjs[i].ypos < 0) { // i would add the element's height to the 0 to account for its diameter, if desired
+            if (elementObjs[i] !== undefined && elementObjs[i].ypos < 0) { // i would add the element's height to the 0 to account for its diameter, if desired
                 //elementObjs.splice(i, 1); // do this to remove that specific instance once it hits the ceiling 
                 elementObjs[i].direction = 1; // do this to get it to bounce back down
                 checkSize(i)
-                elementObjs[i] ? elementObjs[i].speed *= 1.2 : elementObjs[i].speed = 1;
+                if (elementObjs[i]) {
+                    elementObjs[i].speed *= 1.2
+                }
             }
             //this ensures the instance is still valid, bc the splice above removes certain instances once they hit the ceiling of the canvas
             //once splice/removed that instance turns undefined - so I'm doing a truthy test below
