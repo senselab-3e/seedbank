@@ -63,11 +63,13 @@ export default function tutorials(p) {
                 //elementObjs[i].size > 0 ? elementObjs[i].size -= 1 : elementObjs.splice(i, 1) //this decreases the size of the ellipse on each bounce // this will need to be refactored for custom objects
                 //elementObjs[i].ypos = elementObjs[i].speed * -1; // this makes it look back up to the top....
                 checkSize(i)
+                elementObjs[i] ? elementObjs[i].speed *= 1.2 : elementObjs[i].speed = 1;
             }
             if (elementObjs[i].ypos < 0) { // i would add the element's height to the 0 to account for its diameter, if desired
                 //elementObjs.splice(i, 1); // do this to remove that specific instance once it hits the ceiling 
                 elementObjs[i].direction = 1; // do this to get it to bounce back down
                 checkSize(i)
+                elementObjs[i] ? elementObjs[i].speed *= 1.2 : elementObjs[i].speed = 1;
             }
             //this ensures the instance is still valid, bc the splice above removes certain instances once they hit the ceiling of the canvas
             //once splice/removed that instance turns undefined - so I'm doing a truthy test below
