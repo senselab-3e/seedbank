@@ -9,6 +9,7 @@ export default function tutorials(p) {
     //var rectXY = [];
     var rectObjs = [];
     //const size = 40;'
+    let xdirection = 1;
 
     p.setup = function () {
         p.createCanvas(width, height);
@@ -55,8 +56,33 @@ export default function tutorials(p) {
             //let speed = p.abs(p.mouseX - p.pmouseX) + p.abs(p.mouseY - p.pmousey);
             shape(rectObjs[i].xpos, rectObjs[i].ypos, rectObjs[i].fillColor) /// using a substring reference in a single array will  make it easier to add more then one param detail to the element // otherwise you'd need a new array each time you want to add other vars
             //ect(rectXY[i][0], rectXY[i][1], 50, 25 //// The beauty of this is that we can easily add a third attribute to each rectangle simply by adding a third element to the array that we add to the rectXY array on each click. I
-            rectObjs[i].ypos += rectObjs[i].speed;
+            //rectObjs[i].ypos -= rectObjs[i].speed;
+            //console.log(rectObjs[i].ypos > height || rectObjs[i].ypos < 0)
+
+            rectObjs[i].ypos += rectObjs[i].speed * xdirection;
+
+            if (rectObjs[i].ypos > height) {
+                xdirection *= -1;
+                //rectObjs[i].ypos = rectObjs[i].speed * -1; // this makes it look back up to the top....
+            }
+            if (rectObjs[i].ypos < 0) {
+                xdirection = 1;
+            }
+
+            // if(rectObjs[i].ypos > height || rectObjs[i].ypos < ballRadius) {
+            //     dy = -dy;
+            // }
+
         }
+        // for (var m = 0; m < rectObjs.length; m++) {
+        //     if (rectObjs[m].ypos > height) {
+        //         //rectObjs.splice(i, 1);
+        //         rectObjs[m].ypos -= rectObjs[m].speed;
+        //     } else if (rectObjs[i].ypos < 0) {
+        //         rectObjs[m].ypos += rectObjs[m].speed;
+        //     }
+        // }
+
     }
     p.mousePressed = function () {
         // hasClicked = true;
