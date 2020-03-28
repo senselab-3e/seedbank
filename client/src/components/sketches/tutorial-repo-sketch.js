@@ -51,13 +51,6 @@ export default function tutorials(p) {
     //     }
     // }
 
-    // function checkEl(i) {
-    //     if (elementObjs[i] !== undefined) {
-    //         return true
-    //     } else {
-    //         return false
-    //     };
-    // }
 
     const modifySpeed = (i) => {
         //console.log(checkEl(i))
