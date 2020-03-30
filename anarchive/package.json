@@ -9,7 +9,11 @@
     "dev-server": "nodemon server.js",
     "client": "cd ../client && npm start",
     "dev": "NODE_ENV=development HTTP_PORT=3001 concurrently \"npm run dev-server\" \"npm run client\"",
-    "local-bundled": "NODE_ENV=local-bundled HTTP_PORT=3001 nodemon server.js"
+    "local-bundled": "NODE_ENV=local-bundled HTTP_PORT=3001 nodemon server.js",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "minimist": "1.2.5"
   },
   "author": "",
   "license": "MIT",
@@ -33,10 +37,10 @@
     "mysql": "^2.17.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pm2": "^4.2.1",
+    "pm2": "^4.2.3",
     "rsyncwrapper": "^3.0.1"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "nodemon": "^2.0.2"
   }
 }
