@@ -1,6 +1,6 @@
 ///This is an oldschool JS function approach ---> but using object methods and object factories with NEW is a better approach. this is just to refamialiarize
 
-export default function tutorials(p) {
+export default function sketch11(p) {
     //changed this sketch to just be a repo for working through processing tutorials
 
     const width = 500;
@@ -8,54 +8,30 @@ export default function tutorials(p) {
     const elementSize = 15;
     var elementObjs = [];
 
-    function createCircleObj(x, y, diam) {
-        let circ = {
-            x: x,
-            y: y,
-            diam: diam
-        };
-        return circ;
+    p.setup = function () {
+        p.createCanvas(width, height);
     }
 
     function shape(xpos2, ypos2, coloring, size) {
         p.fill(coloring)
         p.ellipse(xpos2, ypos2, size, size)
+        //CUSTOM SHAPE
+        // p.beginShape();
+        // p.vertex(xpos2 + 130, ypos2 + 5);
+        // p.vertex(xpos2 + 200, ypos2 + 20);
+        // p.vertex(xpos2 + 100, ypos2 + 116);
+        // p.vertex(xpos2 + 50, ypos2 + 75);
+        // p.vertex(xpos2 + 25, ypos2 + 50);
+        // p.vertex(xpos2 + 85, ypos2 + 120);
 
-
+        // // p.curveVertex(xpos2 + 130, ypos2 + 5);
+        // // p.curveVertex(xpos2 + 200, ypos2 + 20);
+        // // p.curveVertex(xpos2 + 100, ypos2 + 116);
+        // // p.curveVertex(xpos2 + 50, ypos2 + 75);
+        // // p.curveVertex(xpos2 + 25, ypos2 + 50);
+        // // p.curveVertex(xpos2 + 85, ypos2 + 120);
+        // p.endShape(p.CLOSE)
     }
-    //CUSTOM SHAPE
-    // p.beginShape();
-    // p.vertex(xpos2 + 130, ypos2 + 5);
-    // p.vertex(xpos2 + 200, ypos2 + 20);
-    // p.vertex(xpos2 + 100, ypos2 + 116);
-    // p.vertex(xpos2 + 50, ypos2 + 75);
-    // p.vertex(xpos2 + 25, ypos2 + 50);
-    // p.vertex(xpos2 + 85, ypos2 + 120);
-
-    // // p.curveVertex(xpos2 + 130, ypos2 + 5);
-    // // p.curveVertex(xpos2 + 200, ypos2 + 20);
-    // // p.curveVertex(xpos2 + 100, ypos2 + 116);
-    // // p.curveVertex(xpos2 + 50, ypos2 + 75);
-    // // p.curveVertex(xpos2 + 25, ypos2 + 50);
-    // // p.curveVertex(xpos2 + 85, ypos2 + 120);
-    // p.endShape(p.CLOSE)
-
-
-    let circles = [];
-
-    p.setup = function () {
-        p.createCanvas(width, height);
-
-        for (let i = 0; i < 10; i++) {
-            let newCirc = createCircleObj(
-                p.random(width),
-                p.random(height),
-                300);
-            circles.push(newCirc);
-        }
-    }
-
-
 
     function checkSize(i) {
         //console.log(element)
@@ -103,20 +79,10 @@ export default function tutorials(p) {
 
     p.draw = function () {
         p.background('cornflowerblue');
-        p.stroke('255')
+        p.noStroke();
         p.ellipseMode(p.CENTER);
-        p.noFill()
 
         ///NOTE: A method is just a function that is the value for a key in an object. For example, try running this code in an empty p5.js sketch:
-
-        for (let i = 0; i < circles.length; i++) {
-            p.ellipse(circles[i].x, circles[i].y,
-                circles[i].diam, circles[i].diam);
-            if (circles[i].diam > 0) {
-                circles[i].diam -= 1;
-            }
-        }
-
 
         for (var i = 0; i < elementObjs.length; i++) {
             shape(elementObjs[i].xpos, elementObjs[i].ypos, elementObjs[i].fillColor, elementObjs[i].size) /// using a substring reference in a single array will  make it easier to add more then one param detail to the element // otherwise you'd need a new array each time you want to add other vars
@@ -135,10 +101,6 @@ export default function tutorials(p) {
             direction: 1,
             size: elementSize
         });
-
-        let newCirc = createCircleObj(p.mouseX, p.mouseY,
-            300);
-        circles.push(newCirc);
 
     }
 

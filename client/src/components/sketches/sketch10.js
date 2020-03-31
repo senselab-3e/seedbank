@@ -28,7 +28,7 @@ export default function sketch10(p) {
 
             // Grab mouse position      
             current.x = p.random(width) //p.random(p.mouseX, width / 2) //p.random() * p.mouseX// p.mouseX;
-            current.y = p.pmouseY //p.random(height) //p.random(p.mouseY, height / 2) //p.random()  * p.mouseY//p.mouseY;
+            current.y = p.random(height) //p.pmouseY //p.random(height) //p.random(p.mouseY, height / 2) //p.random()  * p.mouseY//p.mouseY;
 
             // New particle's force is based on mouse movement
             var force = p5.Vector.sub(current, previous);
