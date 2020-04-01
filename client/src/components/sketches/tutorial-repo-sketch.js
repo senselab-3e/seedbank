@@ -141,11 +141,10 @@ export default function tutorials(p) {
             size: elementSize
         });
 
-        // let newCirc = new Circle(p.mouseX, p.mouseY, 15, 1);
-        // circles.push(newCirc);
+        let newCirc = new Circle(p.mouseX, p.mouseY, 300, 1);
+        circles.push(newCirc);
 
-        let newBounce = new Bounce(p.mouseX, p.mouseY,
-            15);
+        let newBounce = new Bounce(p.mouseX, p.mouseY, 15);
         bounces.push(newBounce);
     }
 }
