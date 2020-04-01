@@ -11,7 +11,4 @@ export default function imageprinting(p) {
         p.background(255);
         p.image(orange, p.mouseX, p.mouseY);
     }
-
-
-
 }

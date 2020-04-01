@@ -25,32 +25,37 @@ export default function tutorials(p) {
         }
     }
 
+    class Bounce {
+        constructor(x, y, diam) {
+            this.x = x;
+            this.y = y;
+            this.speed = p.random(1, 5);
+            this.diam = diam
+            this.direc = 1;
+        }
+        display() {
+            this.y += this.speed * this.direc
+            p.ellipse(this.x, this.y, this.diam, this.diam);
+        }
+        update() {
+            if (this.y > height) {
+                this.direc = -1
+            }
+            if (this.y < 0) {
+                this.direc = 1
+            }
+        }
+    }
+
     function shape(xpos2, ypos2, coloring, size) {
         p.fill(coloring)
         p.ellipse(xpos2, ypos2, size, size)
-
-
     }
-    //CUSTOM SHAPE
-    // p.beginShape();
-    // p.vertex(xpos2 + 130, ypos2 + 5);
-    // p.vertex(xpos2 + 200, ypos2 + 20);
-    // p.vertex(xpos2 + 100, ypos2 + 116);
-    // p.vertex(xpos2 + 50, ypos2 + 75);
-    // p.vertex(xpos2 + 25, ypos2 + 50);
-    // p.vertex(xpos2 + 85, ypos2 + 120);
 
-    // // p.curveVertex(xpos2 + 130, ypos2 + 5);
-    // // p.curveVertex(xpos2 + 200, ypos2 + 20);
-    // // p.curveVertex(xpos2 + 100, ypos2 + 116);
-    // // p.curveVertex(xpos2 + 50, ypos2 + 75);
-    // // p.curveVertex(xpos2 + 25, ypos2 + 50);
-    // // p.curveVertex(xpos2 + 85, ypos2 + 120);
-    // p.endShape(p.CLOSE)
 
 
     let circles = [];
-
+    let bounces = []
     //let ducks = []
 
     p.setup = function () {
@@ -118,9 +123,13 @@ export default function tutorials(p) {
             shape(elementObjs[i].xpos, elementObjs[i].ypos, elementObjs[i].fillColor, elementObjs[i].size) /// using a substring reference in a single array will  make it easier to add more then one param detail to the element // otherwise you'd need a new array each time you want to add other vars
             checkPosition(i)
         }
+        for (let n = 0; n < bounces.length; n++) {
+            bounces[n].display();
+            bounces[n].update();
+        }
     }
-    p.mousePressed = function () {
 
+    p.mousePressed = function () {
         var lineColor = p.color(p.mouseX % 255, p.mouseX % 255, p.mouseX % 255, )
         // adding direction information at this scale is very necessary - so that it can be tracked for each instance /// rather then thinking you can do a direction switch based on the instance's location, in the draw function, alone. this doesn't work because it will get stuck between true/false once it steps one back from the canvas height, 
         elementObjs.push({
@@ -132,10 +141,11 @@ export default function tutorials(p) {
             size: elementSize
         });
 
-        let newCirc = new Circle(p.mouseX, p.mouseY,
-            300);
-        circles.push(newCirc);
+        // let newCirc = new Circle(p.mouseX, p.mouseY, 15, 1);
+        // circles.push(newCirc);
 
+        let newBounce = new Bounce(p.mouseX, p.mouseY,
+            15);
+        bounces.push(newBounce);
     }
-
 }
