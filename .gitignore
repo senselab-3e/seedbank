@@ -7,3 +7,4 @@ devNotes.md
 /client/src/components/RandomColor.js
 /client/build/
 /client/src/components/FetchEvents.js
+/client/src/components/sketches/classconstructorvsfunctions.js

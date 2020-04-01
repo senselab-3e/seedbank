@@ -35,7 +35,7 @@ export default function tutorials(p) {
             this.x = x;
             this.y = y;
             this.speed = p.random(1, 5);
-            this.diam = diam
+            this.diam = diam;
             this.direc = 1;
             this.setColor = coloring
         }
@@ -44,7 +44,7 @@ export default function tutorials(p) {
             this.y += this.speed * this.direc
             p.ellipse(this.x, this.y, this.diam, this.diam);
             p.fill(this.setColor, this.setColor, this.setColor);
-            console.log(this.setColor)
+            //console.log(this.setColor)
             // need to figure out how to give a random color assignment to each bounce but when the instance is being continually drawn in the function draw, its calling the random function over and over. 
         }
         update() {

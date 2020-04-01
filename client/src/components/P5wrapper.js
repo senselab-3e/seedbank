@@ -1,7 +1,7 @@
 import React from "react";
 import P5Wrapper from "react-p5-wrapper";
 // import sketch3 from "./sketches/sketch3";
-import tutorial from "./sketches/tutorial-repo-sketch";
+//import tutorial from "./sketches/tutorial-repo-sketch";
 // import sketch4 from "./sketches/sketch4";
 // import sketch5 from "./sketches/sketch5";
 // import sketch6 from "./sketches/sketch6";
@@ -9,14 +9,14 @@ import tutorial from "./sketches/tutorial-repo-sketch";
 // import sketch8 from "./sketches/sketch8";
 // import sketch9 from "./sketches/sketch9";
 // import sketch10 from "./sketches/sketch10";
-// import sketch11 from "./sketches/sketch11";
+import sketch11 from "./sketches/sketch11";
 //import imageprinting from "./sketches/image";
 
 class P5wrapper extends React.Component {
   render() {
     return (
       <div>
-        <P5Wrapper sketch={tutorial} />
+        <P5Wrapper sketch={sketch11} />
         {/* <P5Wrapper sketch={imageprinting} /> */}
         {/* <P5Wrapper sketch={sketch9} />
         <P5Wrapper sketch={sketch4} />
