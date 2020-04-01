@@ -7,7 +7,6 @@ export default function tutorials(p) {
     const height = 500;
     const elementSize = 15;
     var elementObjs = [];
-
     //class definition for Circle - that acts as a constructor with var xy and diam...
     //It’s called a “class” definition because we’re defining a new “class” of object—a type of object that’s different from other types, in the same way that we might talk about the mammal “class” of animals.
     class Circle {
@@ -24,15 +23,6 @@ export default function tutorials(p) {
                 this.diam -= 1;
             }
         }
-    }
-
-    class Duck {
-        constructor(x, y, diam) {
-            this.x = x;
-            this.y = y;
-            this.diam = diam;
-        }
-
     }
 
     function shape(xpos2, ypos2, coloring, size) {
@@ -61,16 +51,11 @@ export default function tutorials(p) {
 
     let circles = [];
 
-    let ducks = []
-
-    // let img;
-    // p.preload = function () {
-    //     img = p.loadImage('..../assets/orange.png');
-    // }
+    //let ducks = []
 
     p.setup = function () {
         p.createCanvas(width, height);
-
+        // preload()
         for (let i = 0; i < 10; i++) {
             // instantiating an object from the class.
             let newCirc = new Circle(
@@ -79,17 +64,7 @@ export default function tutorials(p) {
                 300);
             circles.push(newCirc);
         }
-        for (let i = 0; i < 3; i++) {
-            // instantiating an object from the class.
-            let newDuck = new Duck(
-                p.random(width),
-                p.random(height),
-                300);
-            ducks.push(Duck);
-        }
     }
-
-
 
     function checkSize(i) {
         //console.log(element)
@@ -99,16 +74,6 @@ export default function tutorials(p) {
     function removeElement(i) {
         elementObjs.splice(i, 1)
     }
-
-
-    //need to figure out how to make this reusable /// best embedded as a method 
-    ///this doesn't work very efficiently. 
-    // const validElement = (i) => {
-    //     if (elementObjs[i]) {
-    //         checkPosition(i)
-    //     }
-    // }
-
 
     const modifySpeed = (i) => {
         //console.log(checkEl(i))
@@ -174,40 +139,3 @@ export default function tutorials(p) {
     }
 
 }
-
-
-
-// const width = 500;
-//const height = 500;
-// p.setup = function () {
-//     p.createCanvas(width, height);
-//     //p.background("orange");
-//     p.angleMode(p.DEGREES); /// -->  full way round the circle /// using raidans
-//     //which is different then the default mode
-// }
-// p.draw = function () {
-//     p.stroke(255);
-//     p.noFill();
-//     p.background("orange");
-//     p.strokeWeight(4); //withought the stroke weight of 4 you can't see the points ( at say weight 1 )
-//     p.point(100, 200)
-
-//     p.point(p.mouseX, p.mouseY);
-//     p.point(150, 50);
-//     p.point(250, 60);
-//     p.point(300, 200);
-//     //points are controlling the entry of the curve
-//     p.beginShape();
-
-//     //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
-
-//     let spacing = p.map(p.mouseX, 0, width, 5, 100)
-//     for (let a = 0; a < 360; a += spacing) {
-//         let x = 100 * p.sin(a) + 200;
-//         let y = 100 * p.cos(a) + 200;
-//         p.vertex(x, y);
-//     }
-
-
-//     p.endShape(p.CLOSE);
-// };

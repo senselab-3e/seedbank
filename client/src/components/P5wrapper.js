@@ -10,12 +10,14 @@ import tutorial from "./sketches/tutorial-repo-sketch";
 // import sketch9 from "./sketches/sketch9";
 // import sketch10 from "./sketches/sketch10";
 // import sketch11 from "./sketches/sketch11";
+//import imageprinting from "./sketches/image";
 
 class P5wrapper extends React.Component {
   render() {
     return (
       <div>
         <P5Wrapper sketch={tutorial} />
+        {/* <P5Wrapper sketch={imageprinting} /> */}
         {/* <P5Wrapper sketch={sketch9} />
         <P5Wrapper sketch={sketch4} />
         <P5Wrapper sketch={sketch5} />
