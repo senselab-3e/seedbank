@@ -16,6 +16,14 @@ export default function tutorials(p) {
             this.y = y;
             this.diam = diam;
         }
+        display() {
+            p.ellipse(this.x, this.y, this.diam, this.diam);
+        }
+        update() {
+            if (this.diam > 0) {
+                this.diam -= 1;
+            }
+        }
     }
 
     class Duck {
@@ -134,13 +142,10 @@ export default function tutorials(p) {
         p.noFill()
 
         ///NOTE: A method is just a function that is the value for a key in an object. For example, try running this code in an empty p5.js sketch:
-
-        for (let i = 0; i < circles.length; i++) {
-            p.ellipse(circles[i].x, circles[i].y,
-                circles[i].diam, circles[i].diam);
-            if (circles[i].diam > 0) {
-                circles[i].diam -= 1;
-            }
+        for (let m = 0; m < circles.length; m++) {
+            // much cleaner!
+            circles[m].display();
+            circles[m].update();
         }
 
 
