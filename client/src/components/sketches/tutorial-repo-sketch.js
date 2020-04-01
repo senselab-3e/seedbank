@@ -31,30 +31,44 @@ export default function tutorials(p) {
     }
 
     class Bounce {
-        constructor(x, y, diam) {
+        constructor(x, y, diam, coloring) {
             this.x = x;
             this.y = y;
             this.speed = p.random(1, 5);
             this.diam = diam
             this.direc = 1;
+            this.setColor = coloring
         }
+
         display() {
             this.y += this.speed * this.direc
             p.ellipse(this.x, this.y, this.diam, this.diam);
+            p.fill(this.setColor, this.setColor, this.setColor);
+            console.log(this.setColor)
+            // need to figure out how to give a random color assignment to each bounce but when the instance is being continually drawn in the function draw, its calling the random function over and over. 
         }
         update() {
             if (this.y > height) {
                 this.direc = -1
+                this.diam -= 1
             }
             if (this.y < 0) {
                 this.direc = 1
+                this.diam -= 1
             }
         }
+        check4removal(i) {
+            if (this.diam === 0) {
+                bounces.splice(i, 1)
+            }
+        }
+
+
     }
 
     function shape(xpos2, ypos2, coloring, size) {
-        p.fill(coloring)
-        p.ellipse(xpos2, ypos2, size, size)
+        // p.fill(coloring)
+        // p.ellipse(xpos2, ypos2, size, size)
     }
 
 
@@ -76,6 +90,8 @@ export default function tutorials(p) {
         }
     }
 
+    ///A VERY AWKWARD function way
+
     function checkSize(i) {
         //console.log(element)
         elementObjs[i].size > 0 ? elementObjs[i].size -= 1 : removeElement(i);
@@ -93,7 +109,7 @@ export default function tutorials(p) {
     }
 
     const checkPosition = (i) => {
-
+        //the class based method is much better because it removes the object from the array and therefore it won't be present from the loop it cycles through
         if (elementObjs[i] !== undefined && elementObjs[i].ypos > height) {
             elementObjs[i].direction = -1;
             checkSize(i)
@@ -132,13 +148,16 @@ export default function tutorials(p) {
         for (let n = 0; n < bounces.length; n++) {
             bounces[n].display();
             bounces[n].update();
+            bounces[n].check4removal(n);
 
         }
     }
 
     p.mousePressed = function () {
-        var lineColor = p.color(p.mouseX % 255, p.mouseX % 255, p.mouseX % 255, )
+        var lineColor = p.color(p.mouseX % 255, p.mouseX % 255, p.mouseX % 255)
         // adding direction information at this scale is very necessary - so that it can be tracked for each instance /// rather then thinking you can do a direction switch based on the instance's location, in the draw function, alone. this doesn't work because it will get stuck between true/false once it steps one back from the canvas height, 
+
+        //NOTES: this is an awkward but still funcitonal way in which an object was pushed was pushed into an array, rather then using a class constructor. 
         elementObjs.push({
             xpos: p.mouseX,
             ypos: p.mouseY,
@@ -148,10 +167,13 @@ export default function tutorials(p) {
             size: elementSize
         });
 
+        let coloring = p.floor(p.random(1, 255));
+        // console.log(coloring)
+
         let newCirc = new Circle(p.mouseX, p.mouseY, 300, 1);
         circles.push(newCirc);
 
-        let newBounce = new Bounce(p.mouseX, p.mouseY, 15);
+        let newBounce = new Bounce(p.mouseX, p.mouseY, 25, coloring);
         bounces.push(newBounce);
     }
 }
