@@ -8,13 +8,23 @@ export default function tutorials(p) {
     const elementSize = 15;
     var elementObjs = [];
 
-    function createCircleObj(x, y, diam) {
-        let circ = {
-            x: x,
-            y: y,
-            diam: diam
-        };
-        return circ;
+    //class definition for Circle - that acts as a constructor with var xy and diam...
+    //It’s called a “class” definition because we’re defining a new “class” of object—a type of object that’s different from other types, in the same way that we might talk about the mammal “class” of animals.
+    class Circle {
+        constructor(x, y, diam) {
+            this.x = x;
+            this.y = y;
+            this.diam = diam;
+        }
+    }
+
+    class Duck {
+        constructor(x, y, diam) {
+            this.x = x;
+            this.y = y;
+            this.diam = diam;
+        }
+
     }
 
     function shape(xpos2, ypos2, coloring, size) {
@@ -43,15 +53,31 @@ export default function tutorials(p) {
 
     let circles = [];
 
+    let ducks = []
+
+    // let img;
+    // p.preload = function () {
+    //     img = p.loadImage('..../assets/orange.png');
+    // }
+
     p.setup = function () {
         p.createCanvas(width, height);
 
         for (let i = 0; i < 10; i++) {
-            let newCirc = createCircleObj(
+            // instantiating an object from the class.
+            let newCirc = new Circle(
                 p.random(width),
                 p.random(height),
                 300);
             circles.push(newCirc);
+        }
+        for (let i = 0; i < 3; i++) {
+            // instantiating an object from the class.
+            let newDuck = new Duck(
+                p.random(width),
+                p.random(height),
+                300);
+            ducks.push(Duck);
         }
     }
 
@@ -136,7 +162,7 @@ export default function tutorials(p) {
             size: elementSize
         });
 
-        let newCirc = createCircleObj(p.mouseX, p.mouseY,
+        let newCirc = new Circle(p.mouseX, p.mouseY,
             300);
         circles.push(newCirc);
 
