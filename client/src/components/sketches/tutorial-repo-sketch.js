@@ -23,6 +23,11 @@ export default function tutorials(p) {
                 this.diam -= 1;
             }
         }
+        check4removal(i) {
+            if (this.diam === 1) {
+                circles.splice(i, 1)
+            }
+        }
     }
 
     class Bounce {
@@ -116,6 +121,7 @@ export default function tutorials(p) {
             // much cleaner!
             circles[m].display();
             circles[m].update();
+            circles[m].check4removal(m);
         }
 
 
@@ -126,6 +132,7 @@ export default function tutorials(p) {
         for (let n = 0; n < bounces.length; n++) {
             bounces[n].display();
             bounces[n].update();
+
         }
     }
 
