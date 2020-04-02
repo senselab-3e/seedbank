@@ -49,7 +49,7 @@ export default function sketch12(p) {
             p.fill(fillColor);
             p.strokeWeight(3);
             //p.noStroke()
-            var lineColor = p.color(128 + 128 * p.cos(p.millis() / 2000), 128 + 128 * p.sin(p.millis() / 1000), 128 + 128 * p.cos(p.millis() / 1000));
+            var lineColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 2000)), 128 + 128 * p.sin(p.millis() / 1000), 128 + 128 * p.cos(p.millis() / 1000));
             //lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
             //lineColor.setAlpha(this.alpha) //The range depends on your color mode, in the default RGB mode it's between 0 and 255.
             p.stroke(lineColor);
