@@ -2,7 +2,8 @@ export default function sketch12(p) {
 
     const width = 500;
     const height = 500;
-    const elementSize = 25;
+    //Bring this back when you bring back the bounce class
+    //const elementSize = 25;
 
 
     let sourceText = "To imagine existence excluded from sociality is to have a sense of how limited whiteness is—an existence so narrow as to be a mirage. And yet a mirage that blows itself out of proportion at every turn. This is the power of neurotypicality: that it can structure whole existences without itself existing as such. Whiteness is that very paradox—a mirage policed to retain that which it ultimately never had, that which it never is.";
@@ -50,26 +51,25 @@ export default function sketch12(p) {
             p.stroke(lineColor)
             p.textSize(this.fontSize)
             p.text(this.word, this.x, this.y);
-
-
-
         }
         update() {
 
-            // if (this.y > height) {
-            //     this.direc = -5
+            if (this.y > height) {
+                this.direc = -5
 
-            //     this.speed *= 1.2
-            // }
+                this.speed *= 1.2
+                this.fontSize -= 2;
+            }
             if (this.y < 0) {
                 //console.log(this.direc, 'before')
                 this.direc = 5 //* p.sin(p.millis() / 100)
                 //console.log(this.direc, 'after')
-                //this.speed *= 1.2
+                this.speed *= 1.2;
+                this.fontSize -= 2;
             }
         }
         check4removal(i) {
-            if (this.y > height) {
+            if (this.fontSize < 0) {
                 words.splice(i, 1)
             }
         }
