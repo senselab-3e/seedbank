@@ -37,12 +37,13 @@ export default function sketch12(p) {
             this.fontSize = fontSize;
             this.word = word;
             this.speed = 1;
-            this.direc = 5;
+            this.direc = p.cos(35);
 
         }
         display() {
             //remove this below to have the text just appear where mouse clicks
-            this.y += this.speed * this.direc;
+            //this.y += this.speed * this.direc;
+            this.y += this.speed * this.direc
             p.fill('water')
             p.strokeWeight(3);
             //p.noStroke()
@@ -55,14 +56,14 @@ export default function sketch12(p) {
         update() {
 
             if (this.y > height) {
-                this.direc = -5
+                this.direc = p.cos(-5)
 
                 this.speed *= 1.2
                 this.fontSize -= 2;
             }
             if (this.y < 0) {
                 //console.log(this.direc, 'before')
-                this.direc = 5 //* p.sin(p.millis() / 100)
+                this.direc = p.cos(45) //* p.sin(p.millis() / 100)
                 //console.log(this.direc, 'after')
                 this.speed *= 1.2;
                 this.fontSize -= 2;
@@ -162,7 +163,6 @@ export default function sketch12(p) {
         for (let o = 0; o < words.length; o++) {
             words[o].display();
             words[o].update();
-
             words[o].check4removal(o);
         }
     }
