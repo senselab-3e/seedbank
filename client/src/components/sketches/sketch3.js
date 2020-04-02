@@ -51,7 +51,7 @@ export default function sketch3(p) {
         // }
 
 
-        let speed = p.abs(p.mouseX - p.pmouseX) + p.abs(p.mouseY - p.pmouseY);
+        //let speed = p.abs(p.mouseX - p.pmouseX) + p.abs(p.mouseY - p.pmouseY);
         //p.ellipse(x + p.random(-extra, extra), y, speed, speed);
         //sin is a better oscillation technique then dividing by frame rate 
         //for (let i = 0; i < 4; i++) {
