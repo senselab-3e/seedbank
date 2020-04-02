@@ -1,12 +1,11 @@
 export default function sketch12(p) {
-
     const width = 500;
     const height = 500;
     //Bring this back when you bring back the bounce class
     //const elementSize = 25;
 
-
-    let sourceText = "To imagine existence excluded from sociality is to have a sense of how limited whiteness is—an existence so narrow as to be a mirage. And yet a mirage that blows itself out of proportion at every turn. This is the power of neurotypicality: that it can structure whole existences without itself existing as such. Whiteness is that very paradox—a mirage policed to retain that which it ultimately never had, that which it never is.";
+    let sourceText =
+        "To imagine existence excluded from sociality is to have a sense of how limited whiteness is—an existence so narrow as to be a mirage. And yet a mirage that blows itself out of proportion at every turn. This is the power of neurotypicality: that it can structure whole existences without itself existing as such. Whiteness is that very paradox—a mirage policed to retain that which it ultimately never had, that which it never is.";
     //class definition for Circle - that acts as a constructor with var xy and diam...
     //It’s called a “class” definition because we’re defining a new “class” of object—a type of object that’s different from other types, in the same way that we might talk about the mammal “class” of animals.
     // class Circle {
@@ -37,46 +36,49 @@ export default function sketch12(p) {
             this.fontSize = fontSize;
             this.word = word;
             this.speed = 1;
-            this.direc = p.cos(35);
-
+            this.direc = 5; //p.cos(35);
+            this.alpha = 1;
+            this.color = 'white'
         }
         display() {
             //remove this below to have the text just appear where mouse clicks
             //this.y += this.speed * this.direc;
-            this.y += this.speed * this.direc
-            p.fill('water')
+            this.y += this.speed * this.direc;
+            var fillColor = p.color("white");
+            //fillColor.setAlpha(this.alpha)
+            p.fill(fillColor);
             p.strokeWeight(3);
             //p.noStroke()
-            var lineColor = p.color('black')
+            var lineColor = p.color(128 + 128 * p.cos(p.millis() / 2000), 128 + 128 * p.sin(p.millis() / 1000), 128 + 128 * p.cos(p.millis() / 1000));
             //lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
-            p.stroke(lineColor)
-            p.textSize(this.fontSize)
+            //lineColor.setAlpha(this.alpha) //The range depends on your color mode, in the default RGB mode it's between 0 and 255.
+            p.stroke(lineColor);
+            p.textSize(this.fontSize);
             p.text(this.word, this.x, this.y);
+
         }
         update() {
-
             if (this.y > height) {
-                this.direc = p.cos(-5)
-
-                this.speed *= 1.2
+                this.direc = -5; //p.cos(-5)
+                this.speed *= 1.2;
                 this.fontSize -= 2;
+                //this.alpha *= 10
             }
             if (this.y < 0) {
                 //console.log(this.direc, 'before')
-                this.direc = p.cos(45) //* p.sin(p.millis() / 100)
+                this.direc = 5; //p.cos(45) //* p.sin(p.millis() / 100)
                 //console.log(this.direc, 'after')
                 this.speed *= 1.2;
                 this.fontSize -= 2;
+                //this.alpha *= 10
             }
         }
         check4removal(i) {
             if (this.fontSize < 0) {
-                words.splice(i, 1)
+                words.splice(i, 1);
             }
         }
     }
-
-
 
     // class Bounce {
     //     constructor(x, y, diam, coloring) {
@@ -94,7 +96,7 @@ export default function sketch12(p) {
     //         p.ellipse(this.x, this.y, this.diam, this.diam);
     //         p.stroke(this.setColor, 60, 200);
     //         //console.log(this.setColor)
-    //         // need to figure out how to give a random color assignment to each bounce but when the instance is being continually drawn in the function draw, its calling the random function over and over. 
+    //         // need to figure out how to give a random color assignment to each bounce but when the instance is being continually drawn in the function draw, its calling the random function over and over.
     //     }
     //     update() {
     //         if (this.y > height) {
@@ -115,16 +117,15 @@ export default function sketch12(p) {
     //     }
     // }
 
-
     let circles = [];
     let bounces = [];
-    let sentenceParts = sourceText.split(' ');
+    let sentenceParts = sourceText.split(" ");
     let words = [];
     //let ducks = []
 
     p.setup = function () {
         p.createCanvas(width, height);
-        p.background('lightgreen');
+        p.background("lightgreen");
         //p.frameRate(13) //this value needs to be an integer, not a string number
         // preload()
         // for (let i = 0; i < 10; i++) {
@@ -135,14 +136,13 @@ export default function sketch12(p) {
         //         300);
         //     circles.push(newCirc);
         // }
-
-    }
+    };
 
     p.draw = function () {
         //p.background('lightgreen');
-        p.stroke('255')
+        p.stroke("255");
         p.ellipseMode(p.CENTER);
-        p.noFill()
+        p.noFill();
         // p.text(sourceText, width / 2, height / 2)
 
         ///NOTE: A method is just a function that is the value for a key in an object. For example, try running this code in an empty p5.js sketch:
@@ -165,11 +165,10 @@ export default function sketch12(p) {
             words[o].update();
             words[o].check4removal(o);
         }
-    }
+    };
 
     p.mousePressed = function () {
-
-        let coloring = p.floor(p.random(1, 255));
+        //let coloring = p.floor(p.random(1, 255));
         // console.log(coloring)
 
         // let newCirc = new Circle(p.mouseX, p.mouseY, 300, 1);
@@ -180,13 +179,10 @@ export default function sketch12(p) {
         // bounces.push(newBounce);
 
         if (sentenceParts.length > 0) {
-            let newWord = new Word(p.mouseX, p.mouseY, 52, sentenceParts[0])
+            let newWord = new Word(p.mouseX, p.mouseY, 52, sentenceParts[0]);
             sentenceParts.splice(0, 1);
-            words.push(newWord)
+            words.push(newWord);
             //console.log(words)
         }
-    }
-
-
-
+    };
 }
