@@ -38,21 +38,35 @@ export default function sketch12(p) {
             this.speed = 1;
             this.direc = 5; //p.cos(35);
             this.alpha = 1;
-            this.color = 'white'
+            this.stroke = 'white'
+            this.color = p.color(p.random(1, 155), p.random(50, 255), p.random(1, 255)); //deploying this means one unique color will be assigned to each time the constructor is called // rather then it being called continually within any of the functions below
+            this.firstColor = 'black'
+            this.fill = this.firstColor
         }
         display() {
             //remove this below to have the text just appear where mouse clicks
             //this.y += this.speed * this.direc;
             this.y += this.speed * this.direc;
-            var fillColor = p.color("white");
+            //var fillColor = p.color("white");
+            //var fillColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 2000)), 128 + 128 * p.sin(p.millis() / 1000), 128 + 128 * p.cos(p.millis() / 1000));
+            //var fillColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 1500)), 128 + 128 * p.sin(p.millis() / p.random(1000, 1500)), 128 + 128 * p.cos(p.millis() / p.random(1000, 1500)));
+            this.fill = this.color;
+            var fillColor = this.fill; //this.color;
+            //the above with the p.random has a bit of a flicker a few steps back in the color choices /// 
+            //below does the gradient shift thing
+            //var fillColor = p.color(128 + 128 * p.cos(p.millis() / 2000), 128 + 128 * p.sin(p.millis() / 500), 128 + 128 * p.cos(p.millis() / 1000));
+
             //fillColor.setAlpha(this.alpha)
             p.fill(fillColor);
             p.strokeWeight(3);
             //p.noStroke()
-            var lineColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 2000)), 128 + 128 * p.sin(p.millis() / 1000), 128 + 128 * p.cos(p.millis() / 1000));
+            //var lineColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 2000)), 128 + 128 * p.sin(p.millis() / 1000), 128 + 128 * p.cos(p.millis() / 1000));
+            //var lineColor = this.color;
             //lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
             //lineColor.setAlpha(this.alpha) //The range depends on your color mode, in the default RGB mode it's between 0 and 255.
-            p.stroke(lineColor);
+            //p.stroke(lineColor);
+            //p.noStroke()
+            p.stroke(this.stroke)
             p.textSize(this.fontSize);
             p.text(this.word, this.x, this.y);
 
@@ -63,6 +77,10 @@ export default function sketch12(p) {
                 this.speed *= 1.2;
                 this.fontSize -= 2;
                 //this.alpha *= 10
+                //this.stroke = 'black'
+                this.fill = 'black'
+
+
             }
             if (this.y < 0) {
                 //console.log(this.direc, 'before')
@@ -71,6 +89,12 @@ export default function sketch12(p) {
                 this.speed *= 1.2;
                 this.fontSize -= 2;
                 //this.alpha *= 10
+
+            }
+            if (this.y < height) {
+                this.fill = this.color
+                //this.stroke = 'white'
+
             }
         }
         check4removal(i) {
