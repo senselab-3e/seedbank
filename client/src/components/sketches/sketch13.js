@@ -1,4 +1,4 @@
-export default function sketch12(p) {
+export default function sketch13(p) {
     const width = 500;
     const height = 500;
     //Bring this back when you bring back the bounce class
@@ -39,7 +39,7 @@ export default function sketch12(p) {
             this.direc = 5; //p.cos(35);
             this.alpha = 1;
             this.stroke = 'white'
-            this.color = p.color(p.random(1, 200), p.random(1, 255), p.random(1, 255)); //deploying this means one unique color will be assigned to each time the constructor is called // rather then it being called continually within any of the functions below
+            this.color = p.color(p.random(1, 255), p.random(1, 255), p.random(1, 255)); //deploying this means one unique color will be assigned to each time the constructor is called // rather then it being called continually within any of the functions below
             this.firstColor = 'black'
             //if i equate this.fill to this.firstColor the first element drawn will be black - but every next instance is still being stacked on top if it with the color version so it isn't seen
             this.fill = this.color
@@ -47,7 +47,7 @@ export default function sketch12(p) {
         display() {
             //remove this below to have the text just appear where mouse clicks
             //this.y += this.speed * this.direc;
-            this.y += this.speed * this.direc;
+            this.y += this.speed * this.direc * p.cos(30);
             //var fillColor = p.color("white");
             //var fillColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 2000)), 128 + 128 * p.sin(p.millis() / 1000), 128 + 128 * p.cos(p.millis() / 1000));
             //var fillColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 1500)), 128 + 128 * p.sin(p.millis() / p.random(1000, 1500)), 128 + 128 * p.cos(p.millis() / p.random(1000, 1500)));
@@ -73,16 +73,14 @@ export default function sketch12(p) {
         }
         update() {
             if (this.y > height) {
-                this.direc = -5; //p.cos(-5)
+                this.direc = -5 //* p.cos(30)
                 this.speed *= 1.2;
                 this.fontSize -= 2;
                 //this.alpha *= 10
                 //this.stroke = 'black'
-                this.fill = 'black'
-
-
+                //this.fill = 'black'
             }
-            if (this.y < 0) {
+            if (this.y < 5) {
                 //console.log(this.direc, 'before')
                 this.direc = 5; //p.cos(45) //* p.sin(p.millis() / 100)
                 //console.log(this.direc, 'after')
@@ -91,11 +89,11 @@ export default function sketch12(p) {
                 //this.alpha *= 10
 
             }
-            if (this.y < height) {
-                this.fill = this.color
-                //this.stroke = 'white'
+            // if (this.y < height) {
+            //     this.fill = this.color
+            //     //this.stroke = 'white'
 
-            }
+            // }
         }
         check4removal(i) {
             if (this.fontSize < 0) {
@@ -149,7 +147,7 @@ export default function sketch12(p) {
 
     p.setup = function () {
         p.createCanvas(width, height);
-        p.background("lightgreen");
+        p.background("teal");
         //p.frameRate(13) //this value needs to be an integer, not a string number
         // preload()
         // for (let i = 0; i < 10; i++) {
