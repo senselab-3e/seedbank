@@ -123,13 +123,19 @@ export default function sketch14(p) {
       this.pct = 0.0;
     }
     display() {
-      p.fill(0, 2);
-      p.rect(0, 0, width, height);
-      p.fill(255);
-      p.ellipse(this.x, this.y, 20, 20);
+      //p.fill(0, 2);
+      //p.rect(0, 0, width, height);
+      p.fill(255, 2);
+
       this.pct += this.step;
       this.distX = this.endX - this.beginX;
       this.distY = this.endY - this.beginY;
+      //p.ellipse(this.x, this.y, 20, 20);
+      p.beginShape();
+      p.vertex(this.x, 20); ///p.vertex(this.x, p.random(5, width / 2));
+      p.vertex(this.y, this.x);
+      p.vertex(this.x, this.y);
+      p.endShape(p.CLOSE);
     }
     update() {
       if (this.pct < 1.0) {
