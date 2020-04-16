@@ -1,6 +1,7 @@
 export default function sketch16(p) {
 
     var t;
+    var j;
     var width = 500;
     var height = 500;
 
@@ -9,6 +10,7 @@ export default function sketch16(p) {
         p.stroke(0, 18);
         p.noFill();
         t = 0;
+        j = 0;
     }
 
     p.draw = function () {
@@ -26,7 +28,21 @@ export default function sketch16(p) {
         t += 0.005;
 
         // clear the background every 500 frames using mod (%) operator
-        if (p.frameCount % 500 == 0) {
+
+
+        p.translate(width / 2, height / 2);
+        p.beginShape();
+        for (var i = 0; i < 200; i++) {
+            var ang = p.map(i, 0, 200, 0, p.TWO_PI);
+            var rad = 200 * p.noise(i * 0.01, j * 0.005);
+            var x = rad * p.cos(ang);
+            var y = rad * p.sin(ang);
+            p.curveVertex(x, y);
+        }
+        p.endShape(p.CLOSE);
+        j += 1;
+
+        if (p.frameCount % 600 == 0) {
             p.background(255);
         }
     }
