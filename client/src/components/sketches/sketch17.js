@@ -45,13 +45,13 @@ export default function sketch17(p) {
         let x = p.random(width);
         let y = p.random(height);
         let r = p.random(10, 50);
-        // for (let index = 0; index < 10; index++) {
-        //     let b = new Bubble(x, y, r);
-        //     bubbles.push(b)
-        // }
-        let b = new Bubble(x, y, r);
-        bubbles.push(b)
-        t = 0
+        for (let index = 0; index < 10; index++) {
+            let b = new Bubble(x, y, r);
+            bubbles.push(b)
+        }
+        // let b = new Bubble(x, y, r);
+        // bubbles.push(b)
+        // t = 0
     }
 
     p.draw = function () {
