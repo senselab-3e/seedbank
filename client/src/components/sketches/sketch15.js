@@ -25,8 +25,8 @@ export default function sketch15(p) {
         update() {
 
 
-            if (this.diam < 150) {
-                this.diam += 0.5 //this.steps;
+            if (this.diam < 250) {
+                this.diam += 1 //this.steps;
                 //p.filter(p.BLUR, 1);  
             }
             if (this.opacity >= 0) {
@@ -304,7 +304,7 @@ export default function sketch15(p) {
     };
 
     p.draw = function () {
-        p.background(0, 5);
+        p.background(255, 5); // fade the background by giving it a low opacity
         //p.stroke("255");
         p.noStroke()
         p.ellipseMode(p.CENTER);
@@ -354,10 +354,10 @@ export default function sketch15(p) {
 
         //is someone is moving, draw circles
         if (p.mouseX !== p.pmouseX && p.mouseY !== p.pmouseY) {
-            let newCirc = new Circle(p.mouseX, p.mouseY, 10, 1);
-            let newCirc2 = new Circle(p.mouseX, p.mouseY, 20, 30);
+            let newCirc = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 5, 1);
+            //let newCirc2 = new Circle(p.mouseX, p.mouseY, 20, 30);
             circles.push(newCirc);
-            circles.push(newCirc2);
+            //circles.push(newCirc2);
         }
     };
 
