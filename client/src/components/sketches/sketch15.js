@@ -14,21 +14,31 @@ export default function sketch15(p) {
             this.y = y;
             this.diam = diam;
             this.steps = steps;
+            this.opacity = 102;
         }
         display() {
-            p.stroke("orange");
+            let c = p.color(15, 26, 102, this.opacity);
+            //the fourth value is the alpha /// it can be extracted by passing c in to p.alph(c)
+            p.fill(c)
             p.ellipse(this.x, this.y, this.diam, this.diam);
         }
         update() {
 
-            if (this.diam > 0) {
-                //this.diam -= 1 //this.steps;
-                //p.filter(p.BLUR, 1);
+
+            // if (this.diam > 0) {
+            //     this.diam -= 0.1 //this.steps;
+            //     //p.filter(p.BLUR, 1);  
+            // }
+            if (this.opacity >= 0) {
+                this.opacity -= 1;
             }
         }
         check4removal(i) {
-            console.log(circles.length)
+            //console.log(circles.length)
             if (this.diam === 1) {
+                circles.splice(i, 1)
+            }
+            if (this.opacity === 0) {
                 circles.splice(i, 1)
             }
         }
@@ -48,30 +58,34 @@ export default function sketch15(p) {
             this.fontSize = fontSize;
             this.word = word;
             this.speed = 1;
-            this.direc = 5; //p.cos(35);
+            //this.direc = 0; //p.cos(35);
             this.alpha = 1;
             //this.stroke = "white";
-            this.color = p.color(
-                p.random(1, 255),
-                p.random(1, 255),
-                p.random(1, 255)
-            );
+            this.opacity = 255;
+            this.random = p.random(255)
+            this.random2 = p.random(255)
+            this.random3 = p.random(255)
             //deploying this means one unique color will be assigned to each time the constructor is called // rather then it being called continually within any of the functions below
             this.firstColor = "black";
             //if i equate this.fill to this.firstColor the first element drawn will be black - but every next instance is still being stacked on top if it with the color version so it isn't seen
-            this.fill = this.color;
+
         }
         display() {
             //remove this below to have the text just appear where mouse clicks
             //this.y += this.speed * this.direc;
-            this.y += p.cos(30);
-            this.x += p.cos(50);
+            // this.y += p.cos(30);
+            // this.x += p.cos(50);
             //this.y += this.speed * this.direc * p.cos(30);
 
             //var fillColor = p.color("white");
             //var fillColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 2000)), 128 + 128 * p.sin(p.millis() / 1000), 128 + 128 * p.cos(p.millis() / 1000));
             //var fillColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 1500)), 128 + 128 * p.sin(p.millis() / p.random(1000, 1500)), 128 + 128 * p.cos(p.millis() / p.random(1000, 1500)));
-            var fillColor = this.fill; //this.color;
+            var fillColor = p.color(
+                this.random,
+                this.random2,
+                this.random3,
+                this.opacity
+            ); //this.color;
             //the above with the p.random has a bit of a flicker a few steps back in the color choices ///
             //below does the gradient shift thing
             //var fillColor = p.color(128 + 128 * p.cos(p.millis() / 2000), 128 + 128 * p.sin(p.millis() / 500), 128 + 128 * p.cos(p.millis() / 1000));
@@ -99,8 +113,12 @@ export default function sketch15(p) {
             //     //this.stroke = 'black'
             //     //this.fill = 'black'
             //   }
+            if (this.opacity >= 0) {
+                this.opacity -= 1;
+            }
+
             if (this.y < 5) {
-                this.direc += 3;
+                //this.direc += 3;
                 //   //console.log(this.direc, 'before')
                 //   this.direc = 5; //p.cos(45) //* p.sin(p.millis() / 100)
                 //   //console.log(this.direc, 'after')
@@ -234,9 +252,13 @@ export default function sketch15(p) {
     let vectors = [];
     //let ducks = []
 
+
+    // this function can be used to remove items if they exceed a certain number//
     p.checkNumItems = function (arrayName) {
         if (arrayName.length > 50) {
             arrayName.splice(0, 1)
+            //console.log(arrayName[0].diam)
+            //circles[0].diam -= 1
         }
     }
 
@@ -271,7 +293,7 @@ export default function sketch15(p) {
             // much cleaner!
             circles[m].display();
             circles[m].update();
-            //circles[m].check4removal(m);
+            circles[m].check4removal(m);
             //checkNumItems();
         }
 
@@ -316,8 +338,8 @@ export default function sketch15(p) {
         //let coloring = p.floor(p.random(1, 255));
         // console.log(coloring)
 
-        let newCirc = new Circle(p.mouseX, p.mouseY, 300, 1);
-        circles.push(newCirc);
+        // let newCirc = new Circle(p.mouseX, p.mouseY, 150, 1);
+        // circles.push(newCirc);
 
         //temporarily removing bounces
         // let newBounce = new Bounce(p.mouseX, p.mouseY, elementSize, coloring);
@@ -335,11 +357,11 @@ export default function sketch15(p) {
         //   previousPos.splice(0, 1);
         //   previousPos.push({ x: p.mouseX, y: p.mouseY });
 
-        // if (sentenceParts.length > 0) {
-        //   let newWord = new Word(p.mouseX, p.mouseY, 52, sentenceParts[0]);
-        //   sentenceParts.splice(0, 1);
-        //   words.push(newWord);
-        //   //console.log(words)
-        // }
+        if (sentenceParts.length > 0) {
+            let newWord = new Word(p.mouseX, p.mouseY, 52, sentenceParts[0]);
+            sentenceParts.splice(0, 1);
+            words.push(newWord);
+            //console.log(words)
+        }
     };
 }
