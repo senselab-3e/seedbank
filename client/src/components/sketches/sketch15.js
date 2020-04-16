@@ -25,19 +25,19 @@ export default function sketch15(p) {
         update() {
 
 
-            // if (this.diam > 0) {
-            //     this.diam -= 0.1 //this.steps;
-            //     //p.filter(p.BLUR, 1);  
-            // }
+            if (this.diam < 150) {
+                this.diam += 0.5 //this.steps;
+                //p.filter(p.BLUR, 1);  
+            }
             if (this.opacity >= 0) {
                 this.opacity -= 1;
             }
         }
         check4removal(i) {
             //console.log(circles.length)
-            if (this.diam === 1) {
-                circles.splice(i, 1)
-            }
+            // if (this.diam === 1) {
+            //     circles.splice(i, 1)
+            // }
             if (this.opacity === 0) {
                 circles.splice(i, 1)
             }
@@ -51,6 +51,30 @@ export default function sketch15(p) {
         // }
     }
 
+    class Perlin {
+        constructor(x, y, diam, steps) {
+            this.x = x;
+            this.y = y;
+            this.diam = diam;
+            this.steps = steps;
+            this.opacity = 102;
+        }
+        display() {
+            var x = width * p.noise(this.steps);
+            var y = height * p.noise(this.steps + 5);
+            var r = 255 * p.noise(this.steps + 10);
+            var g = 255 * p.noise(this.steps + 15);
+            var b = 255 * p.noise(this.steps + 20);
+
+            p.noStroke();
+            p.fill(r, g, b);
+            p.ellipse(x, y, this.diam, this.diam);
+        }
+        update() {
+            this.steps += 0.01;
+
+        }
+    }
     class Word {
         constructor(x, y, fontSize, word) {
             this.x = x;
@@ -250,6 +274,7 @@ export default function sketch15(p) {
     let sentenceParts = sourceText.split(" ");
     let words = [];
     let vectors = [];
+    let perlins = [];
     //let ducks = []
 
 
@@ -279,7 +304,7 @@ export default function sketch15(p) {
     };
 
     p.draw = function () {
-        p.background('lightgreen');
+        p.background(0, 5);
         //p.stroke("255");
         p.noStroke()
         p.ellipseMode(p.CENTER);
@@ -316,6 +341,11 @@ export default function sketch15(p) {
             vectors[k].update();
         }
 
+        for (let m = 0; m < perlins.length; m++) {
+            perlins[m].display();
+            perlins[m].update();
+        }
+
         //if someone is resting their movement, draw circles
         // if (p.mouseX === p.pmouseX && p.mouseY === p.pmouseY) {
         //     let newCirc = new Circle(p.mouseX, p.mouseY, 30, 1);
@@ -325,7 +355,9 @@ export default function sketch15(p) {
         //is someone is moving, draw circles
         if (p.mouseX !== p.pmouseX && p.mouseY !== p.pmouseY) {
             let newCirc = new Circle(p.mouseX, p.mouseY, 10, 1);
+            let newCirc2 = new Circle(p.mouseX, p.mouseY, 20, 30);
             circles.push(newCirc);
+            circles.push(newCirc2);
         }
     };
 
@@ -335,6 +367,9 @@ export default function sketch15(p) {
     }];
 
     p.mousePressed = function () {
+
+        let newPerlin = new Perlin(p.mouseX, p.mouseY, 5, 0);
+        perlins.push(newPerlin)
         //let coloring = p.floor(p.random(1, 255));
         // console.log(coloring)
 
@@ -357,11 +392,11 @@ export default function sketch15(p) {
         //   previousPos.splice(0, 1);
         //   previousPos.push({ x: p.mouseX, y: p.mouseY });
 
-        if (sentenceParts.length > 0) {
-            let newWord = new Word(p.mouseX, p.mouseY, 52, sentenceParts[0]);
-            sentenceParts.splice(0, 1);
-            words.push(newWord);
-            //console.log(words)
-        }
+        // if (sentenceParts.length > 0) {
+        //     let newWord = new Word(p.mouseX, p.mouseY, 52, sentenceParts[0]);
+        //     sentenceParts.splice(0, 1);
+        //     words.push(newWord);
+        //     //console.log(words)
+        // }
     };
 }
