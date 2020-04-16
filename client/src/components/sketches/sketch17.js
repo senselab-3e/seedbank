@@ -12,12 +12,17 @@ export default function sketch17(p) {
             this.x = x;
             this.y = y;
             this.diam = diam;
-            this.opacity = 102;
+            this.opacity = 50;
+            this.brightness = 0
+            this.color = p.color(15, 26, 102, this.opacity);
+            this.fillColor = 'blue'
+
         }
         display() {
-            let c = p.color(15, 26, 102, this.opacity);
+            //let c = p.color(15, 26, 102, this.opacity);
             //the fourth value is the alpha /// it can be extracted by passing c in to p.alph(c)
-            p.stroke(c)
+            p.stroke(this.color)
+            p.fill(this.fillColor)
             p.ellipse(this.x, this.y, this.diam, this.diam);
         }
         update() {
@@ -32,6 +37,9 @@ export default function sketch17(p) {
             let d = p.dist(p.mouseX, p.mouseY, this.x, this.y)
             if (d < this.diam) {
                 console.log("Clicked on Bubble");
+                this.opacity = 122
+                this.fillColor === 'blue' ? this.fillColor = 'yellow' : this.fillColor = 'blue'
+
             }
 
         }
