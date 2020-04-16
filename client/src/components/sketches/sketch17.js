@@ -4,7 +4,7 @@ export default function sketch17(p) {
     // var j;
     var width = 500;
     var height = 500;
-
+    var t
     let bubbles = [];
 
     class Bubble {
@@ -23,6 +23,17 @@ export default function sketch17(p) {
         update() {
             this.x += p.random(-5, 5);
             this.y += p.random(-5, 5);
+            // this.x = width * p.noise(t + 15);
+            // this.y = width * p.noise(t + 10);
+            t += 0.005
+        }
+
+        clicking() {
+            let d = p.dist(p.mouseX, p.mouseY, this.x, this.y)
+            if (d < this.diam) {
+                console.log("Clicked on Bubble");
+            }
+
         }
     }
 
@@ -34,8 +45,13 @@ export default function sketch17(p) {
         let x = p.random(width);
         let y = p.random(height);
         let r = p.random(10, 50);
+        // for (let index = 0; index < 10; index++) {
+        //     let b = new Bubble(x, y, r);
+        //     bubbles.push(b)
+        // }
         let b = new Bubble(x, y, r);
         bubbles.push(b)
+        t = 0
     }
 
     p.draw = function () {
@@ -45,6 +61,7 @@ export default function sketch17(p) {
             p.noFill()
             bubbles[m].display();
             bubbles[m].update();
+            //bubbles[m].clicking();
             // bubbles[m].check4removal(m);
             //checkNumItems();
         }
@@ -55,8 +72,13 @@ export default function sketch17(p) {
     }
 
     p.mousePressed = function () {
-        let r = p.random(10, 50)
-        let b = new Bubble(p.mouseX, p.mouseY, r)
-        bubbles.push(b)
+        //let r = p.random(10, 50)
+        // let b = new Bubble(p.mouseX, p.mouseY, r)
+        // bubbles.push(b)
+
+        for (let m = 0; m < bubbles.length; m++) {
+            bubbles[m].clicking();
+        }
+
     }
 }
