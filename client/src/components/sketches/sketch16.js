@@ -14,14 +14,23 @@ export default function sketch16(p) {
     }
 
     p.draw = function () {
+        // var x1 = width * p.noise(t + 15);
+        // var x2 = width * p.noise(t + 25);
+        // var x3 = width * p.noise(t + 35);
+        // var x4 = p.mouseX //width * p.noise(t + 45);
+        // var y1 = height * p.noise(t + 55);
+        // var y2 = height * p.noise(t + 65);
+        // var y3 = height * p.noise(t + 75);
+        // var y4 = p.mouseY //* p.noise(t + 85);
+
         var x1 = width * p.noise(t + 15);
-        var x2 = width * p.noise(t + 25);
+        var x2 = p.mouseX //width * p.noise(t + 25);
         var x3 = width * p.noise(t + 35);
         var x4 = width * p.noise(t + 45);
         var y1 = height * p.noise(t + 55);
-        var y2 = height * p.noise(t + 65);
+        var y2 = p.mouseY //height * p.noise(t + 65);
         var y3 = height * p.noise(t + 75);
-        var y4 = p.mouseY //* p.noise(t + 85);
+        var y4 = height * p.noise(t + 85);
 
         p.bezier(x1, y1, x2, y2, x3, y3, x4, y4);
 
