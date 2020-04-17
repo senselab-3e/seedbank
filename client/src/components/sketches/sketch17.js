@@ -4,8 +4,16 @@ export default function sketch17(p) {
     // var j;
     var width = 500;
     var height = 500;
-    var t
+    let t = 0
     let bubbles = [];
+
+    p.button = function () {
+
+        p.rect(width / 2, height - 100, 50, 25)
+        //p.fill('yellow');
+        p.fill(97, 155)
+        p.stroke('yellow')
+    }
 
     class Bubble {
         constructor(x, y, diam) {
@@ -47,6 +55,8 @@ export default function sketch17(p) {
 
 
 
+
+
     p.setup = function () {
         p.createCanvas(500, 500);
         p.background('white')
@@ -57,6 +67,7 @@ export default function sketch17(p) {
             let b = new Bubble(x, y, r);
             bubbles.push(b)
         }
+        p.noFill()
         // let b = new Bubble(x, y, r);
         // bubbles.push(b)
         // t = 0
@@ -64,18 +75,21 @@ export default function sketch17(p) {
 
     p.draw = function () {
         p.background('white')
+
         for (let m = 0; m < bubbles.length; m++) {
             // much cleaner!
-            p.noFill()
+
             bubbles[m].display();
             bubbles[m].update();
             //bubbles[m].clicking();
             // bubbles[m].check4removal(m);
             //checkNumItems();
         }
-        if (p.frameCount % 200 == 0) {
+        if (p.frameCount % 200 === 0) {
             p.background(255);
         }
+
+        p.button()
 
     }
 

@@ -21,7 +21,7 @@ export default function sketch16(p) {
         var y1 = height * p.noise(t + 55);
         var y2 = height * p.noise(t + 65);
         var y3 = height * p.noise(t + 75);
-        var y4 = height * p.noise(t + 85);
+        var y4 = p.mouseY //* p.noise(t + 85);
 
         p.bezier(x1, y1, x2, y2, x3, y3, x4, y4);
 
@@ -43,7 +43,7 @@ export default function sketch16(p) {
         // p.endShape(p.CLOSE);
         // j += 1;
 
-        if (p.frameCount % 1000 == 0) {
+        if (p.frameCount % 1000 === 0) {
             p.background(255);
         }
     }
