@@ -40,6 +40,12 @@ export default function sketch7(p) {
 
     p.background(238);
     var r = 5;
+    // var scaleAmount = p.mouseX / 200;
+    // p.scale(scaleAmount);
+
+    p.translate(p.width / 2, p.height / 2);
+    p.scale(p.mouseX / 500, p.mouseY / 500);
+
     p.beginShape();
     p.fill(p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255);
     p.stroke('yellow');

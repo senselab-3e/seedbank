@@ -7,13 +7,18 @@ export default function sketch16(p) {
 
     p.setup = function () {
         p.createCanvas(500, 500);
-        p.stroke(70, 122, 190, 18);
+        //p.stroke(70, 122, 190, 18);
+        p.stroke(p.random(255), p.random(255), p.random(255));
         p.noFill();
         t = 0;
         j = 0;
     }
 
     p.draw = function () {
+
+
+        //p.background(255, 10);
+        p.stroke(p.random(255), p.random(255), p.random(255), 85);
         // var x1 = width * p.noise(t + 15);
         // var x2 = width * p.noise(t + 25);
         // var x3 = width * p.noise(t + 35);
@@ -24,17 +29,19 @@ export default function sketch16(p) {
         // var y4 = p.mouseY //* p.noise(t + 85);
 
         var x1 = width * p.noise(t + 15);
-        var x2 = p.mouseX //width * p.noise(t + 25);
+        var x2 = p.mouseX + p.random(15) //width * p.noise(t + 25);
         var x3 = width * p.noise(t + 35);
         var x4 = width * p.noise(t + 45);
+
         var y1 = height * p.noise(t + 55);
         var y2 = p.mouseY //height * p.noise(t + 65);
         var y3 = height * p.noise(t + 75);
         var y4 = height * p.noise(t + 85);
 
+        //bezier accepts no more then 8 arguments.
         p.bezier(x1, y1, x2, y2, x3, y3, x4, y4);
 
-        t += 0.005;
+        t += 0.002;
         //t += 0.5; // this makes the stepping more jaggedly placed, but with the opacity set low it's a nice kind of effect
 
         // clear the background every 500 frames using mod (%) operator
