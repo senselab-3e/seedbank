@@ -50,7 +50,7 @@ export default function sketch18(p) {
         }
         display() {
             var x = p.width * p.noise(this.steps);
-            var y = p.height * p.noise(this.steps + 5);
+            var y = p.height * p.noise(this.steps + 3);
             // var r = 255 * p.noise(this.steps + 10);
             // var g = 255 * p.noise(this.steps + 15);
             // var b = 255 * p.noise(this.steps + 20);
@@ -59,7 +59,7 @@ export default function sketch18(p) {
             p.fill('white')
             //p.fill(this.r, this.g, this.b);
             //p.ellipse(x, y, this.diam, this.diam);
-            p.ellipse(x, y, 1, 1);
+            p.ellipse(x, y, this.diam, this.diam);
         }
         update() {
             this.steps += 0.01;
@@ -78,6 +78,9 @@ export default function sketch18(p) {
             let newPerlin = new Perlin(p.mouseX, p.mouseY, 15, p.random(0, 5));
             perlins.push(newPerlin)
         }
+
+        let roguePerlin = new RoguePerlin(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 3, 0.5)
+        roguePerlins.push(roguePerlin)
 
     }
 
@@ -108,8 +111,8 @@ export default function sketch18(p) {
         let numIns = p.checkInstanceNum()
         let newPerlin = new Perlin(p.mouseX, p.mouseY, 15, numIns + 1);
         perlins.push(newPerlin)
-        let roguePerlin = new RoguePerlin(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 5, 1)
-        roguePerlins.push(roguePerlin)
+        // let roguePerlin = new RoguePerlin(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 5, 1)
+        // roguePerlins.push(roguePerlin)
     }
 
 }
