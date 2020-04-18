@@ -36,6 +36,35 @@ export default function sketch18(p) {
     }
 
 
+    class RoguePerlin {
+        constructor(x, y, diam, steps) {
+            this.x = x;
+            this.y = y;
+            this.diam = diam;
+            this.steps = steps;
+            this.r = p.random(255)
+            this.g = p.random(255)
+            this.b = p.random(255)
+            //this.opacity = 102;
+        }
+        display() {
+            var x = p.width * p.noise(this.steps);
+            var y = p.height * p.noise(this.steps + 5);
+            // var r = 255 * p.noise(this.steps + 10);
+            // var g = 255 * p.noise(this.steps + 15);
+            // var b = 255 * p.noise(this.steps + 20);
+
+            p.noStroke();
+            p.fill(this.r, this.g, this.b);
+            p.ellipse(x, y, this.diam, this.diam);
+        }
+        update() {
+            this.steps += 0.01;
+
+        }
+    }
+
+
     p.setup = function () {
         p.createCanvas(500, 500);
         p.noFill()
@@ -50,6 +79,7 @@ export default function sketch18(p) {
     }
 
     let perlins = []
+    let roguePerlins = []
 
     p.draw = function () {
         p.background(255, 15);
@@ -58,18 +88,25 @@ export default function sketch18(p) {
             perlins[m].update();
         }
 
+        for (let n = 0; n < roguePerlins.length; n++) {
+            roguePerlins[n].display();
+            roguePerlins[n].update();
+        }
+
     }
 
+    //this lets me know how many perlins are already active and being drawn
+    //i am using the return number to then send the Perlin constructor a step value that has not be used before - thereby preventing one of the perlin instances from havine the same pathway as others// i may want them to share pathways in the future, but not for now
     p.checkInstanceNum = function () {
         return perlins.length
-
     }
 
     p.mousePressed = function () {
         let numIns = p.checkInstanceNum()
-        let newPerlin = new Perlin(p.mouseX, p.mouseY, 15, p.random(0, numIns + 1));
+        let newPerlin = new Perlin(p.mouseX, p.mouseY, 15, numIns + 1);
         perlins.push(newPerlin)
-
+        let roguePerlin = new RoguePerlin(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 5, 1)
+        roguePerlins.push(roguePerlin)
     }
 
 }
