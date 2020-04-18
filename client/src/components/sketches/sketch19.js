@@ -50,19 +50,33 @@ export default function sketch18(p) {
         }
         display() {
             var x = p.width * p.noise(this.steps);
-            var y = p.height * p.noise(this.steps + 3);
+            var y = p.height * p.noise(this.steps + 2);
+            var x2 = p.width * p.noise(this.steps + 3);
+            var y2 = p.height * p.noise(this.steps + 4);
+            var x3 = p.width * p.noise(this.steps + 1);
+            var y3 = p.height * p.noise(this.steps + 5);
             // var r = 255 * p.noise(this.steps + 10);
             // var g = 255 * p.noise(this.steps + 15);
             // var b = 255 * p.noise(this.steps + 20);
 
-            p.noStroke();
-            p.fill('white')
+            p.stroke('orange');
+            //p.strokeWeight(5);
+            //p.fill('orange')
             //p.fill(this.r, this.g, this.b);
             //p.ellipse(x, y, this.diam, this.diam);
-            p.ellipse(x, y, this.diam, this.diam);
+            // p.line(x, y, x2, y2);
+            //p.point(x, y)
+            //p.point(x2, y2)
+            p.beginShape();
+            p.vertex(x, y, x3, y3);
+            p.bezierVertex(x, y, x2, y2, x3, y3)
+            p.endShape();
         }
         update() {
             this.steps += 0.01;
+            // if (p.frameCount % 300 === 0) {
+            //     p.fill(0, 0)
+            // }
 
         }
     }
@@ -79,7 +93,7 @@ export default function sketch18(p) {
             perlins.push(newPerlin)
         }
 
-        let roguePerlin = new RoguePerlin(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 3, 0.5)
+        let roguePerlin = new RoguePerlin(p.mouseX + p.random(1, 2), p.mouseY + p.random(1, 2), 2, 1)
         roguePerlins.push(roguePerlin)
 
     }
