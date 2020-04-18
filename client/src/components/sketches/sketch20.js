@@ -1,4 +1,4 @@
-export default function sketch19(p) {
+export default function sketch20(p) {
 
     class Perlin {
         constructor(x, y, diam, steps) {
@@ -60,6 +60,7 @@ export default function sketch19(p) {
             // var b = 255 * p.noise(this.steps + 20);
 
             p.stroke('orange');
+            p.fill(this.r, this.g, this.b)
             //p.strokeWeight(5);
             //p.fill('orange')
             //p.fill(this.r, this.g, this.b);
@@ -74,11 +75,21 @@ export default function sketch19(p) {
         }
         update() {
             this.steps += 0.01;
+
             // if (p.frameCount % 300 === 0) {
             //     p.fill(0, 0)
             // }
 
         }
+        updateColor() {
+            this.r = p.random(255)
+            this.g = p.random(255)
+            this.b = p.random(255)
+        }
+    }
+
+    p.colorSwitcher = function () {
+        p.fill(p.random(255), p.random(255), p.random(255))
     }
 
 
@@ -86,12 +97,12 @@ export default function sketch19(p) {
         p.createCanvas(500, 500);
         p.noFill()
         p.background(255);
-        for (var i = 0; i < 5; i++) {
-            //if the values going into the constructor are always the same, it's drawing 5 instances of the ellipse on top of each other, while spinning around. //that's why i have a p.random value going in for the steps
-            // for however many iterations i'm moving through, i need to have that many instances in the p.random - unlleesss i want some of the particles to share the same pathways as others. 
-            let newPerlin = new Perlin(p.mouseX, p.mouseY, 15, p.random(0, 5));
-            perlins.push(newPerlin)
-        }
+        // for (var i = 0; i < 5; i++) {
+        //     //if the values going into the constructor are always the same, it's drawing 5 instances of the ellipse on top of each other, while spinning around. //that's why i have a p.random value going in for the steps
+        //     // for however many iterations i'm moving through, i need to have that many instances in the p.random - unlleesss i want some of the particles to share the same pathways as others. 
+        //     let newPerlin = new Perlin(p.mouseX, p.mouseY, 15, p.random(0, 5));
+        //     perlins.push(newPerlin)
+        // }
 
         let roguePerlin = new RoguePerlin(p.mouseX + p.random(1, 2), p.mouseY + p.random(1, 2), 2, 1)
         roguePerlins.push(roguePerlin)
@@ -122,9 +133,15 @@ export default function sketch19(p) {
     }
 
     p.mousePressed = function () {
-        let numIns = p.checkInstanceNum()
-        let newPerlin = new Perlin(p.mouseX, p.mouseY, 15, numIns + 1);
-        perlins.push(newPerlin)
+        p.colorSwitcher()
+
+        for (let n = 0; n < roguePerlins.length; n++) {
+            //roguePerlins[n].display();
+            roguePerlins[n].updateColor();
+        }
+        // let numIns = p.checkInstanceNum()
+        // let newPerlin = new Perlin(p.mouseX, p.mouseY, 15, numIns + 1);
+        // perlins.push(newPerlin)
         // let roguePerlin = new RoguePerlin(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 5, 1)
         // roguePerlins.push(roguePerlin)
     }
