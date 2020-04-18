@@ -7,24 +7,30 @@ export default function sketch18(p) {
             this.diam = diam;
             this.steps = steps;
             this.opacity = 102;
+            this.r = p.random(255)
+            this.g = p.random(255)
+            this.b = p.random(255)
         }
         display() {
             console.log(p.mouseX, 'origin')
-            console.log(p.mouseX * p.noise(this.steps + p.random(1, 15)), 'noise');
+            //console.log(p.mouseX * p.noise(this.steps + p.random(1, 15)), 'noise');
             // var x = p.mouseX + p.mouseX * p.noise(this.steps + p.random(0, 10));
             // var y = p.mouseY + p.mouseY * p.noise(this.steps + p.random(0, 10));
-            var x = p.mouseX * p.noise(this.steps + p.random(1, 5)) * 2;
-            var y = p.mouseY * p.noise(this.steps + p.random(1, 5)) * 2;
-            var r = 255 * p.noise(this.steps);
-            var g = 255 * p.noise(this.steps);
-            var b = 255 * p.noise(this.steps);
+            // var x = p.mouseX * p.noise(this.steps + p.random(1, 5)) * 2;
+            // var y = p.mouseY * p.noise(this.steps + p.random(1, 5)) * 2;
+            var x = p.mouseX * p.noise(this.steps + 1) * 2; /// multiplied it by 2 to get it back to closer to the 
+            var y = p.mouseY * p.noise(this.steps + 3) * 2;
+            // var r = p.random(255) //255 * p.noise(this.steps);
+            // var g = p.random(255) //255 * p.noise(this.steps);
+            // var b = p.random(255) //255 * p.noise(this.steps);
+            console.log(x, 'noise')
 
             p.noStroke();
-            p.fill(r, g, b);
+            p.fill(this.r, this.g, this.b);
             p.ellipse(x, y, this.diam, this.diam);
         }
         update() {
-            this.steps += 0.1;
+            this.steps += 0.01;
 
         }
     }
@@ -32,9 +38,11 @@ export default function sketch18(p) {
 
     p.setup = function () {
         p.createCanvas(500, 500);
-        p.background(240);
+        p.noFill()
+        //p.background(240);
         for (var i = 0; i < 5; i++) {
-            let newPerlin = new Perlin(p.mouseX, p.mouseY, 5, 1);
+            //if the values going into the constructor are always the same, it's drawing 5 instances of the ellipse on top of each other, while spinning around. //that's why i have a p.random value going in for the steps
+            let newPerlin = new Perlin(p.mouseX, p.mouseY, 5, p.random(0, 3));
             perlins.push(newPerlin)
         }
 
@@ -43,7 +51,7 @@ export default function sketch18(p) {
     let perlins = []
 
     p.draw = function () {
-        p.background(255, 10);
+        //p.background(255);
         for (let m = 0; m < perlins.length; m++) {
             perlins[m].display();
             perlins[m].update();
