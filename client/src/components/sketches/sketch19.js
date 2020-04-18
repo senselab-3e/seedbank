@@ -42,7 +42,8 @@ export default function sketch18(p) {
         //p.background(240);
         for (var i = 0; i < 5; i++) {
             //if the values going into the constructor are always the same, it's drawing 5 instances of the ellipse on top of each other, while spinning around. //that's why i have a p.random value going in for the steps
-            let newPerlin = new Perlin(p.mouseX, p.mouseY, 5, p.random(0, 3));
+            // for however many iterations i'm moving through, i need to have that many instances in the p.random - unlleesss i want some of the particles to share the same pathways as others. 
+            let newPerlin = new Perlin(p.mouseX, p.mouseY, 15, p.random(0, 5));
             perlins.push(newPerlin)
         }
 
@@ -51,12 +52,23 @@ export default function sketch18(p) {
     let perlins = []
 
     p.draw = function () {
-        //p.background(255);
+        p.background(255, 15);
         for (let m = 0; m < perlins.length; m++) {
             perlins[m].display();
             perlins[m].update();
         }
 
+    }
+
+    p.checkInstanceNum = function () {
+        return perlins.length
+
+    }
+
+    p.mousePressed = function () {
+        let numIns = p.checkInstanceNum()
+        let newPerlin = new Perlin(p.mouseX, p.mouseY, 15, p.random(0, numIns + 1));
+        perlins.push(newPerlin)
 
     }
 
