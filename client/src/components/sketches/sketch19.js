@@ -27,10 +27,11 @@ export default function sketch18(p) {
 
             p.noStroke();
             p.fill(this.r, this.g, this.b);
-            p.ellipse(x, y, this.diam, this.diam);
+            //p.ellipse(x, y, this.diam, this.diam);
+            p.rect(x, y, 3, 500);
         }
         update() {
-            this.steps += 0.01;
+            this.steps += 0.001;
 
         }
     }
@@ -55,8 +56,10 @@ export default function sketch18(p) {
             // var b = 255 * p.noise(this.steps + 20);
 
             p.noStroke();
-            p.fill(this.r, this.g, this.b);
-            p.ellipse(x, y, this.diam, this.diam);
+            p.fill('white')
+            //p.fill(this.r, this.g, this.b);
+            //p.ellipse(x, y, this.diam, this.diam);
+            p.ellipse(x, y, 1, 1);
         }
         update() {
             this.steps += 0.01;
@@ -68,7 +71,7 @@ export default function sketch18(p) {
     p.setup = function () {
         p.createCanvas(500, 500);
         p.noFill()
-        //p.background(240);
+        p.background(255);
         for (var i = 0; i < 5; i++) {
             //if the values going into the constructor are always the same, it's drawing 5 instances of the ellipse on top of each other, while spinning around. //that's why i have a p.random value going in for the steps
             // for however many iterations i'm moving through, i need to have that many instances in the p.random - unlleesss i want some of the particles to share the same pathways as others. 
@@ -82,7 +85,7 @@ export default function sketch18(p) {
     let roguePerlins = []
 
     p.draw = function () {
-        p.background(255, 15);
+        //p.background(255, 15);
         for (let m = 0; m < perlins.length; m++) {
             perlins[m].display();
             perlins[m].update();
