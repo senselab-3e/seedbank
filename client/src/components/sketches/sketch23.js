@@ -25,8 +25,12 @@ export default function sketch23(p) {
             let c = p.color(this.r, this.g, this.b, this.opacity);
             //the fourth value is the alpha /// it can be extracted by passing c in to p.alph(c)
             p.fill(c)
+            p.rectMode(p.CENTER)
+            p.noStroke()
+            //by writing this.daim * 0.4, rather then supplying a single num value, i'm allowing for the increasing diam size to proportionally change the radius size. 
+            p.rect(this.x, this.y + this.steps, this.diam, this.diam, this.diam * 0.4, this.diam * 0.4);
 
-            p.ellipse(this.x, this.y + this.steps, this.diam, this.diam);
+            this.steps -= 0.01
         }
         update() {
 
@@ -63,6 +67,63 @@ export default function sketch23(p) {
             // console.log(circles.length)
         }
     }
+
+
+    class CircleCustom {
+        constructor(x, y, diam, steps, r, g, b) {
+            this.x = x - x / 4;
+            this.y = y - y / 4;
+            this.diam = diam;
+            this.steps = steps;
+            this.opacity = 102;
+            this.r = r
+            this.g = g
+            this.b = g
+        }
+        display() {
+            //let c = p.color(15, 26, 102, this.opacity);
+            let c = p.color(this.r, this.g, this.b, this.opacity);
+            p.stroke(c)
+            p.strokeWeight(13)
+            p.line(this.x, this.y + this.diam / 2, this.x + this.diam, this.y + this.diam / 2)
+            this.steps -= 0.01
+        }
+        update() {
+
+            // if (p.mouseX - p.pmouseX > 10 && this.diam > 10) {
+            //     this.diam -= 10;
+            // } //shrinks all of them
+
+            if (this.diam < 250) {
+                this.diam += 1 //* p.noise(t) //this.steps;
+                //p.filter(p.BLUR, 1);  
+                //this.steps += 1
+            }
+            if (this.opacity >= 0) {
+                this.opacity -= 1;
+            }
+            // t += 0.001
+        }
+        check4removal(i) {
+            //console.log(circles.length)
+            // if (this.diam === 1) {
+            //     circles.splice(i, 1)
+            // }
+            if (this.opacity === 0) {
+
+                circles.splice(i, 1)
+            }
+        }
+
+        checkNumItems() {
+            if (circles.length > 100) {
+                circles.splice(0, 1);
+
+            }
+            // console.log(circles.length)
+        }
+    }
+
 
     class Perlin {
         constructor(x, y, diam, steps) {
@@ -325,9 +386,9 @@ export default function sketch23(p) {
     let r = p.floor(p.random(0, 200))
     let g = p.floor(p.random(0, 255))
     let b = p.floor(p.random(0, 255))
-    let r2 = p.random(255)
-    let g2 = p.random(255)
-    let b2 = p.random(255)
+    // let r2 = p.random(255)
+    // let g2 = p.random(255)
+    // let b2 = p.random(255)
     let r3 = p.floor(p.random(0, 255))
     let g3 = p.floor(p.random(0, 255))
     let b3 = p.floor(p.random(0, 255))
@@ -389,17 +450,19 @@ export default function sketch23(p) {
 
         //is someone is moving, draw circles
         if (p.mouseX !== p.pmouseX && p.mouseY !== p.pmouseY) {
-
-            let newCirc = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 25, 1, r, g, b);
-            let newCirc2 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 20, 1, r, g, b);
-            let newCirc3 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 18, 1, r3, g3, b3);
-            let newCirc4 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 13, 1, r3, g3, b3);
+            let newLine = new CircleCustom(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 125, 1, r, g, b);
+            let newCirc = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 125, 1, r, g, b);
+            let newCirc2 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 120, 1, r, g, b);
+            let newCirc3 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 118, 1, r3, g3, b3);
+            let newCirc4 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 113, 1, r3, g3, b3);
             //let newCirc2 = new Circle(p.mouseX, p.mouseY, 20, 30);
-            circles.push(newCirc);
-            circles.push(newCirc2);
+
+            // circles.push(newCirc);
+            // circles.push(newCirc2);
             circles.push(newCirc3);
             circles.push(newCirc4);
-            //circles.push(newCirc2);
+            circles.push(newLine);
+
         }
 
 
