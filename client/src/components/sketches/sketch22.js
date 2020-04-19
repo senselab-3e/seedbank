@@ -24,7 +24,7 @@ export default function sketch22(p) {
             //let c = p.color(15, 26, 102, this.opacity);
             //let c = this.color;
             //this keeps on assigning a new color to each circle. not ideal. 
-            let c = p.color(this.r, this.g, this.b, this.opacity);
+            let c = p.color(this.r, this.g, this.b); // I removed the opacity value from here...
             //the fourth value is the alpha /// it can be extracted by passing c in to p.alph(c)
             p.fill(c)
             p.ellipse(this.x, this.y + this.steps, this.diam, this.diam);
@@ -37,18 +37,18 @@ export default function sketch22(p) {
                 //p.filter(p.BLUR, 1);  
                 //this.steps += 1
             }
-            if (this.opacity >= 0) {
-                this.opacity -= 1;
-            }
+            // if (this.opacity >= 0) {
+            //     this.opacity -= 1;
+            // }
         }
         check4removal(i) {
             //console.log(circles.length)
             // if (this.diam === 1) {
             //     circles.splice(i, 1)
             // }
-            if (this.opacity === 0) {
-                circles.splice(i, 1)
-            }
+            // if (this.opacity === 0) {
+            //     circles.splice(i, 1)
+            // }
         }
         // checkNumItems() {
         //     // if (circles.length > 50) {
@@ -261,6 +261,8 @@ export default function sketch22(p) {
                 this.random2,
                 this.random3)
             p.noStroke()
+
+            // the very last element in the array is for some reason, getting its fill color redrawn with whatever the fill color switching is, of circle. 
             //p.stroke(this.setColor, 60, 200);
             //console.log(this.setColor)
             // need to figure out how to give a random color assignment to each bounce but when the instance is being continually drawn in the function draw, its calling the random function over and over.
@@ -323,6 +325,7 @@ export default function sketch22(p) {
         //p.stroke("255");
         p.noStroke()
         p.ellipseMode(p.CENTER);
+        p.noFill()
 
 
         //p.noFill();
@@ -338,8 +341,8 @@ export default function sketch22(p) {
         }
 
         p.checkNumItems(circles);
-
-        for (let n = 0; n < bounces.length; n++) {
+        //even when i'm trying to be sneaky, and not display the last bounce in, it still flickers through the fill color
+        for (let n = 1; n < bounces.length; n++) {
             bounces[n].display();
             bounces[n].update();
             bounces[n].check4removal(n);
