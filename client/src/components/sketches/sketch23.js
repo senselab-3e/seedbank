@@ -25,6 +25,7 @@ export default function sketch23(p) {
             let c = p.color(this.r, this.g, this.b, this.opacity);
             //the fourth value is the alpha /// it can be extracted by passing c in to p.alph(c)
             p.fill(c)
+
             p.ellipse(this.x, this.y + this.steps, this.diam, this.diam);
         }
         update() {
@@ -301,7 +302,7 @@ export default function sketch23(p) {
 
     p.setup = function () {
         p.createCanvas(width, height);
-        p.background("white");
+        p.background(p.color(255, 0, 244));
         p.noFill()
         //t = 0;
         //p.frameRate(13) //this value needs to be an integer, not a string number
@@ -318,18 +319,23 @@ export default function sketch23(p) {
 
     //this is a really hacky way of attaching random but from then on static values for the coloring. but so far every other method redraws the random value - which is not what i want
 
-    let r = p.random(255)
-    let g = p.random(255)
-    let b = p.random(255)
+
+    //not a fan of these randomly generated colors yet. 
+    //i'm trying to get it to print a deep pink but even the photoshop derived numbering just renders as red. pooooo this may be because the opacities are being drawn on top of each other? but still....
+    let r = p.floor(p.random(0, 200))
+    let g = p.floor(p.random(0, 255))
+    let b = p.floor(p.random(0, 255))
     let r2 = p.random(255)
     let g2 = p.random(255)
     let b2 = p.random(255)
-    let r3 = p.random(255)
-    let g3 = p.random(255)
-    let b3 = p.random(255)
+    let r3 = p.floor(p.random(0, 255))
+    let g3 = p.floor(p.random(0, 255))
+    let b3 = p.floor(p.random(0, 255))
+
+    console.log(r, g, b)
 
     p.draw = function () {
-        p.background(255, 50); // fade the background by giving it a low opacity
+        p.background(p.color(255, 0, 244, 50)); // fade the background by giving it a low opacity
         //p.background(255);
         //p.stroke("255");
         p.noStroke()
@@ -383,6 +389,7 @@ export default function sketch23(p) {
 
         //is someone is moving, draw circles
         if (p.mouseX !== p.pmouseX && p.mouseY !== p.pmouseY) {
+
             let newCirc = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 25, 1, r, g, b);
             let newCirc2 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 20, 1, r, g, b);
             let newCirc3 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 18, 1, r3, g3, b3);
@@ -395,9 +402,7 @@ export default function sketch23(p) {
             //circles.push(newCirc2);
         }
 
-        if (p.frameCount % 200 === 0) {
-            p.background(255);
-        }
+
     };
 
     let previousPos = [{
@@ -409,9 +414,9 @@ export default function sketch23(p) {
 
 
 
-        r3 = p.random(255)
-        g3 = p.random(155)
-        b3 = p.random(100)
+        // r = p.random(255)
+        // g = p.random(255)
+        // b = p.random(255)
 
         // let newCirc = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 100, 1, r, g, b);
         // let newCirc2 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 10, 1, r, g, b);
