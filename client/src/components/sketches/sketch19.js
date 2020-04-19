@@ -12,7 +12,7 @@ export default function sketch19(p) {
             this.b = p.random(255)
         }
         display() {
-            console.log(p.mouseX, 'origin')
+            //console.log(p.mouseX, 'origin')
             //console.log(p.mouseX * p.noise(this.steps + p.random(1, 15)), 'noise');
             // var x = p.mouseX + p.mouseX * p.noise(this.steps + p.random(0, 10));
             // var y = p.mouseY + p.mouseY * p.noise(this.steps + p.random(0, 10));
@@ -23,7 +23,7 @@ export default function sketch19(p) {
             // var r = p.random(255) //255 * p.noise(this.steps);
             // var g = p.random(255) //255 * p.noise(this.steps);
             // var b = p.random(255) //255 * p.noise(this.steps);
-            console.log(x, 'noise')
+            //console.log(x, 'noise')
 
             p.noStroke();
             p.fill(this.r, this.g, this.b);
