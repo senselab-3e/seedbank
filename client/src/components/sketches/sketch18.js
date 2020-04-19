@@ -35,7 +35,7 @@ export default function sketch18(p) {
         // the modulo operator % calculates the remainder.
         // example: 24 % 25 = 24, 25 % 25 = 0, 26 % 25 = 1, etc.
         // thus this if statement will evaluate True every 25 frames.
-        if (p.frameCount % 10 == 0) {
+        if (p.frameCount % 10 === 0) { //this was modified to === from === < -----------
             //p.stroke(p.random(255), p.random(255), p.random(255));
             p.stroke('purple')
             p.push();

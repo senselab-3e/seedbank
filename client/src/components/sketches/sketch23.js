@@ -1,62 +1,66 @@
-export default function sketch22(p) {
+export default function sketch23(p) {
     const width = 500;
     const height = 500;
     //Bring this back when you bring back the bounce class
-    const elementSize = 25;
+    //const elementSize = 25;
+    //var t
 
     let sourceText =
         "To imagine existence excluded from sociality is to have a sense of how limited whiteness is—an existence so narrow as to be a mirage. And yet a mirage that blows itself out of proportion at every turn. This is the power of neurotypicality: that it can structure whole existences without itself existing as such. Whiteness is that very paradox—a mirage policed to retain that which it ultimately never had, that which it never is.";
     //class definition for Circle - that acts as a constructor with var xy and diam...
     //It’s called a “class” definition because we’re defining a new “class” of object—a type of object that’s different from other types, in the same way that we might talk about the mammal “class” of animals.
     class Circle {
-        constructor(x, y, diam, steps) {
+        constructor(x, y, diam, steps, r, g, b) {
             this.x = x;
             this.y = y;
             this.diam = diam;
             this.steps = steps;
             this.opacity = 102;
-            this.r = p.random(255)
-            this.g = p.random(255)
-            this.b = p.random(255)
-            //this.color = p.color(this.r, this.g, this.b, this.opacity);
+            this.r = r
+            this.g = g
+            this.b = g
         }
         display() {
             //let c = p.color(15, 26, 102, this.opacity);
-            //let c = this.color;
-            //this keeps on assigning a new color to each circle. not ideal. 
-            let c = p.color(this.r, this.g, this.b); // I removed the opacity value from here...
+            let c = p.color(this.r, this.g, this.b, this.opacity);
             //the fourth value is the alpha /// it can be extracted by passing c in to p.alph(c)
             p.fill(c)
             p.ellipse(this.x, this.y + this.steps, this.diam, this.diam);
         }
         update() {
 
+            // if (p.mouseX - p.pmouseX > 10 && this.diam > 10) {
+            //     this.diam -= 10;
+            // } //shrinks all of them
 
             if (this.diam < 250) {
-                this.diam += 1 //this.steps;
+                this.diam += 1 //* p.noise(t) //this.steps;
                 //p.filter(p.BLUR, 1);  
                 //this.steps += 1
             }
-            // if (this.opacity >= 0) {
-            //     this.opacity -= 1;
-            // }
+            if (this.opacity >= 0) {
+                this.opacity -= 1;
+            }
+            // t += 0.001
         }
         check4removal(i) {
             //console.log(circles.length)
             // if (this.diam === 1) {
             //     circles.splice(i, 1)
             // }
-            // if (this.opacity === 0) {
-            //     circles.splice(i, 1)
-            // }
-        }
-        // checkNumItems() {
-        //     // if (circles.length > 50) {
-        //     //     circles.splice(0, 1);
+            if (this.opacity === 0) {
 
-        //     // }
-        //     // console.log(circles.length)
-        // }
+                circles.splice(i, 1)
+            }
+        }
+
+        checkNumItems() {
+            if (circles.length > 100) {
+                circles.splice(0, 1);
+
+            }
+            // console.log(circles.length)
+        }
     }
 
     class Perlin {
@@ -240,51 +244,42 @@ export default function sketch22(p) {
         }
     }
 
-    class Bounce {
-        constructor(x, y, diam, coloring) {
-            this.x = x;
-            this.y = y;
-            this.speed = p.random(1, 5);
-            this.diam = diam;
-            this.direc = 1;
-            this.setColor = coloring;
-            this.random = p.random(255)
-            this.random2 = p.random(255)
-            this.random3 = p.random(255)
+    // class Bounce {
+    //     constructor(x, y, diam, coloring) {
+    //         this.x = x;
+    //         this.y = y;
+    //         this.speed = p.random(1, 5);
+    //         this.diam = diam;
+    //         this.direc = 1;
+    //         this.setColor = coloring;
 
-        }
+    //     }
 
-        display() {
-            this.y += this.speed * this.direc
-            p.ellipse(this.x, this.y, this.diam, this.diam);
-            p.fill(this.random,
-                this.random2,
-                this.random3)
-            p.noStroke()
-
-            // the very last element in the array is for some reason, getting its fill color redrawn with whatever the fill color switching is, of circle. 
-            //p.stroke(this.setColor, 60, 200);
-            //console.log(this.setColor)
-            // need to figure out how to give a random color assignment to each bounce but when the instance is being continually drawn in the function draw, its calling the random function over and over.
-        }
-        update() {
-            if (this.y > height) {
-                this.direc = -1
-                this.diam -= 1
-                this.speed *= 1.2
-            }
-            if (this.y < 0) {
-                this.direc = 1
-                this.diam -= 1
-                this.speed *= 1.2
-            }
-        }
-        check4removal(i) {
-            if (this.diam === 0) {
-                bounces.splice(i, 1)
-            }
-        }
-    }
+    //     display() {
+    //         this.y += this.speed * this.direc
+    //         p.ellipse(this.x, this.y, this.diam, this.diam);
+    //         p.stroke(this.setColor, 60, 200);
+    //         //console.log(this.setColor)
+    //         // need to figure out how to give a random color assignment to each bounce but when the instance is being continually drawn in the function draw, its calling the random function over and over.
+    //     }
+    //     update() {
+    //         if (this.y > height) {
+    //             this.direc = -1
+    //             this.diam -= 1
+    //             this.speed *= 1.2
+    //         }
+    //         if (this.y < 0) {
+    //             this.direc = 1
+    //             this.diam -= 1
+    //             this.speed *= 1.2
+    //         }
+    //     }
+    //     check4removal(i) {
+    //         if (this.diam === 0) {
+    //             bounces.splice(i, 1)
+    //         }
+    //     }
+    // }
 
     let circles = [];
     let bounces = [];
@@ -293,7 +288,6 @@ export default function sketch22(p) {
     let vectors = [];
     let perlins = [];
     //let ducks = []
-
 
 
     // this function can be used to remove items if they exceed a certain number//
@@ -307,8 +301,9 @@ export default function sketch22(p) {
 
     p.setup = function () {
         p.createCanvas(width, height);
-        p.background("teal");
+        p.background("white");
         p.noFill()
+        //t = 0;
         //p.frameRate(13) //this value needs to be an integer, not a string number
         // preload()
         // for (let i = 0; i < 10; i++) {
@@ -321,28 +316,43 @@ export default function sketch22(p) {
         // }
     };
 
+    //this is a really hacky way of attaching random but from then on static values for the coloring. but so far every other method redraws the random value - which is not what i want
+
+    let r = p.random(255)
+    let g = p.random(255)
+    let b = p.random(255)
+    let r2 = p.random(255)
+    let g2 = p.random(255)
+    let b2 = p.random(255)
+    let r3 = p.random(255)
+    let g3 = p.random(255)
+    let b3 = p.random(255)
+
     p.draw = function () {
-        p.background(255); // fade the background by giving it a low opacity
+        p.background(255, 50); // fade the background by giving it a low opacity
+        //p.background(255);
         //p.stroke("255");
         p.noStroke()
         p.ellipseMode(p.CENTER);
-        p.noFill()
 
 
         //p.noFill();
         // p.text(sourceText, width / 2, height / 2)
 
         ///NOTE: A method is just a function that is the value for a key in an object. For example, try running this code in an empty p5.js sketch:
+
         for (let m = 0; m < circles.length; m++) {
             // much cleaner!
             circles[m].display();
             circles[m].update();
             circles[m].check4removal(m);
+
             //checkNumItems();
         }
 
+
         p.checkNumItems(circles);
-        //even when i'm trying to be sneaky, and not display the last bounce in, it still flickers through the fill color
+
         for (let n = 0; n < bounces.length; n++) {
             bounces[n].display();
             bounces[n].update();
@@ -366,17 +376,27 @@ export default function sketch22(p) {
         }
 
         //if someone is resting their movement, draw circles
-        if (p.mouseX === p.pmouseX && p.mouseY === p.pmouseY) {
-            let newCirc = new Circle(p.mouseX, p.mouseY, 30, 1);
-            circles.push(newCirc);
-        }
+        // if (p.mouseX === p.pmouseX && p.mouseY === p.pmouseY) {
+        //     let newCirc = new Circle(p.mouseX, p.mouseY, 30, 1);
+        //     circles.push(newCirc);
+        // }
 
         //is someone is moving, draw circles
         if (p.mouseX !== p.pmouseX && p.mouseY !== p.pmouseY) {
-            // let newCirc = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 5, 1);
-            //      --//let newCirc2 = new Circle(p.mouseX, p.mouseY, 20, 30);
-            //circles.push(newCirc);
+            let newCirc = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 25, 1, r, g, b);
+            let newCirc2 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 20, 1, r, g, b);
+            let newCirc3 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 18, 1, r3, g3, b3);
+            let newCirc4 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 13, 1, r3, g3, b3);
+            //let newCirc2 = new Circle(p.mouseX, p.mouseY, 20, 30);
+            circles.push(newCirc);
+            circles.push(newCirc2);
+            circles.push(newCirc3);
+            circles.push(newCirc4);
             //circles.push(newCirc2);
+        }
+
+        if (p.frameCount % 200 === 0) {
+            p.background(255);
         }
     };
 
@@ -387,18 +407,31 @@ export default function sketch22(p) {
 
     p.mousePressed = function () {
 
+
+
+        r3 = p.random(255)
+        g3 = p.random(155)
+        b3 = p.random(100)
+
+        // let newCirc = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 100, 1, r, g, b);
+        // let newCirc2 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 10, 1, r, g, b);
+        // let newCirc3 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 5, 1, r, g, b);
+        // //let newCirc2 = new Circle(p.mouseX, p.mouseY, 20, 30);
+        // circles.push(newCirc);
+        // circles.push(newCirc2);
+        // circles.push(newCirc3);
+
         // let newPerlin = new Perlin(p.mouseX, p.mouseY, 5, 0);
         // perlins.push(newPerlin)
-        let coloring = p.floor(p.random(1, 255)); /// not actually being used right now. i want the color to be static
+        //let coloring = p.floor(p.random(1, 255));
         // console.log(coloring)
 
         // let newCirc = new Circle(p.mouseX, p.mouseY, 150, 1);
         // circles.push(newCirc);
 
         //temporarily removing bounces
-        let newBounce = new Bounce(p.mouseX, p.mouseY, elementSize, coloring);
-        bounces.push(newBounce);
-        console.log(bounces.length)
+        // let newBounce = new Bounce(p.mouseX, p.mouseY, elementSize, coloring);
+        // bounces.push(newBounce);
         // console.log(previousPos[0].x, "apples");
 
         //   let newVector = new Vector(
