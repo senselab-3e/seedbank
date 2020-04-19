@@ -1,4 +1,4 @@
-export default function sketch15(p) {
+export default function sketch21(p) {
     const width = 500;
     const height = 500;
     //Bring this back when you bring back the bounce class
@@ -14,25 +14,25 @@ export default function sketch15(p) {
             this.y = y;
             this.diam = diam;
             this.steps = steps;
-            this.opacity = 102;
+            this.opacity = 255;
         }
         display() {
             let c = p.color(15, 26, 102, this.opacity);
             //the fourth value is the alpha /// it can be extracted by passing c in to p.alph(c)
             p.fill(c)
-            p.ellipse(this.x, this.y + this.steps, this.diam, this.diam);
+            p.ellipse(this.x + p.random(-14, 14), this.y - this.steps, this.diam, this.diam);
         }
         update() {
 
-
-            if (this.diam < 250) {
-                this.diam += 1 //this.steps;
-                //p.filter(p.BLUR, 1);  
-                //this.steps += 1
-            }
-            if (this.opacity >= 0) {
-                this.opacity -= 1;
-            }
+            this.steps *= 1 + p.noise(2)
+            // if (this.diam < 250) {
+            //     this.diam += 1 //this.steps;
+            //     //p.filter(p.BLUR, 1);  
+            //     //this.steps += 1
+            // }
+            // if (this.opacity >= 0) {
+            //     this.opacity -= 1;
+            // }
         }
         check4removal(i) {
             //console.log(circles.length)
@@ -305,7 +305,7 @@ export default function sketch15(p) {
     };
 
     p.draw = function () {
-        p.background(255, 5); // fade the background by giving it a low opacity
+        p.background("255"); // fade the background by giving it a low opacity
         //p.stroke("255");
         p.noStroke()
         p.ellipseMode(p.CENTER);
