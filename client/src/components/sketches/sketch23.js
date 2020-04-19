@@ -79,13 +79,14 @@ export default function sketch23(p) {
             this.r = r
             this.g = g
             this.b = g
+            this.radius = this.diam * 0.4
         }
         display() {
             //let c = p.color(15, 26, 102, this.opacity);
             let c = p.color(this.r, this.g, this.b, this.opacity);
             p.stroke(c)
-            p.strokeWeight(13)
-            p.line(this.x, this.y + this.diam / 2, this.x + this.diam, this.y + this.diam / 2)
+            p.strokeWeight(33)
+            p.line(this.x, this.y + this.diam, this.x + this.diam - this.radius, this.y + this.diam)
             this.steps -= 0.01
         }
         update() {
@@ -363,7 +364,9 @@ export default function sketch23(p) {
 
     p.setup = function () {
         p.createCanvas(width, height);
-        p.background(p.color(255, 0, 244));
+        p.background(255)
+        //TEMPORARILY TURNED OFF BACKGROUND
+        //p.background(p.color(255, 0, 244));
         p.noFill()
         //t = 0;
         //p.frameRate(13) //this value needs to be an integer, not a string number
@@ -396,8 +399,10 @@ export default function sketch23(p) {
     console.log(r, g, b)
 
     p.draw = function () {
-        p.background(p.color(255, 0, 244, 50)); // fade the background by giving it a low opacity
-        //p.background(255);
+        // -------->>>
+        //I TURNED OFF THE BACKGroud - but put me back TOMORROW 
+        //p.background(p.color(255, 0, 244, 50)); // fade the background by giving it a low opacity
+        p.background(255, 40);
         //p.stroke("255");
         p.noStroke()
         p.ellipseMode(p.CENTER);
@@ -450,18 +455,18 @@ export default function sketch23(p) {
 
         //is someone is moving, draw circles
         if (p.mouseX !== p.pmouseX && p.mouseY !== p.pmouseY) {
-            let newLine = new CircleCustom(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 125, 1, r, g, b);
-            let newCirc = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 125, 1, r, g, b);
-            let newCirc2 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 120, 1, r, g, b);
-            let newCirc3 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 118, 1, r3, g3, b3);
-            let newCirc4 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 113, 1, r3, g3, b3);
+            let newLine = new CircleCustom(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 25, 1, r, g, b);
+            let newCirc = new Circle(p.mouseX + p.random(1, 5), p.mouseY + 10, 25, 1, r, g, b);
+            let newCirc2 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + 10, 20, 1, r, g, b);
+            let newCirc3 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 18, 1, r3, g3, b3);
+            let newCirc4 = new Circle(p.mouseX + p.random(1, 5), p.mouseY + p.random(1, 5), 13, 1, r3, g3, b3);
             //let newCirc2 = new Circle(p.mouseX, p.mouseY, 20, 30);
 
-            // circles.push(newCirc);
-            // circles.push(newCirc2);
+            circles.push(newCirc);
+            circles.push(newCirc2);
             circles.push(newCirc3);
             circles.push(newCirc4);
-            circles.push(newLine);
+            //circles.push(newLine);
 
         }
 
