@@ -93,8 +93,8 @@ export default function sketch19(p) {
             perlins.push(newPerlin)
         }
 
-        let roguePerlin = new RoguePerlin(p.mouseX + p.random(1, 2), p.mouseY + p.random(1, 2), 2, 1)
-        roguePerlins.push(roguePerlin)
+        // let roguePerlin = new RoguePerlin(p.mouseX + p.random(1, 2), p.mouseY + p.random(1, 2), 2, 1)
+        // roguePerlins.push(roguePerlin)
 
     }
 
