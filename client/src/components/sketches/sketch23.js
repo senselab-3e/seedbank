@@ -5,6 +5,12 @@ export default function sketch23(p) {
     //const elementSize = 25;
     //var t
 
+    let direction = 1
+
+    let r8 = 50
+    let g8 = 122
+    let b8 = 240
+
     let sourceText =
         "To imagine existence excluded from sociality is to have a sense of how limited whiteness is—an existence so narrow as to be a mirage. And yet a mirage that blows itself out of proportion at every turn. This is the power of neurotypicality: that it can structure whole existences without itself existing as such. Whiteness is that very paradox—a mirage policed to retain that which it ultimately never had, that which it never is.";
     //class definition for Circle - that acts as a constructor with var xy and diam...
@@ -131,14 +137,14 @@ export default function sketch23(p) {
             this.x = x;
             this.y = y;
             this.diam = diam;
-            this.steps = 1;
+            this.steps = steps;
             this.opacity = 102;
             // this.r = 255 * p.random(0.1, 1) //p.noise(this.steps + 10);
             // this.g = 255 * p.random(0.1, 1) //p.noise(this.steps + 15);
             // this.b = 255 * p.random(0.1, 1) //p.noise(this.steps + 20);
             this.r = 50 + this.steps
             this.g = 122 + this.steps
-            this.b = 240 + this.steps
+            this.b = 1 + this.steps
         }
         display() {
             // var x = width * p.noise(this.steps);
@@ -146,17 +152,20 @@ export default function sketch23(p) {
 
 
             p.noStroke();
-            p.fill(this.r, this.g, this.b);
-            p.rect(0, 0, this.diam, this.diam);
+            // p.fill(this.r, this.g, this.b);
+            // p.rect(0, 0, this.diam, this.diam);
 
-            p.background(this.r, this.g, this.b);
+
         }
         update() {
-            // if (this.r < 255) {
-            //     this.r += this.steps
-            //     this.steps += 1
-            // }
-            console.log(this.r)
+            if (this.r < 255) {
+                this.r += 1
+                // this.steps += 1
+            }
+            console.log(this.r, 'hello?')
+            //p.background(this.r, this.g, this.b);
+            p.fill(this.r, this.g, this.b);
+            p.rect(0, 0, this.diam, this.diam);
             // if (this.g < 255) {
             //     this.g += this.steps
             // }
@@ -432,7 +441,7 @@ export default function sketch23(p) {
     p.draw = function () {
         // -------->>>
         //I TURNED OFF THE BACKGroud - but put me back TOMORROW 
-        //p.background(p.color(255, 0, 244, 50)); // fade the background by giving it a low opacity
+        //p.background(p.color(255, 50)); // fade the background by giving it a low opacity
 
         // var r2 = 255 * p.noise(10);
         // var g2 = 255 * p.noise(15);
@@ -509,9 +518,28 @@ export default function sketch23(p) {
             //circles.push(newLine);
 
         }
-        let newBackground = new Background(0, 0, width, 1);
-        backgrounds.push(newBackground)
+        // let newBackground = new Background(0, 0, width, 1);
+        // backgrounds.push(newBackground)
 
+        // let millisecond = millis();
+        // p.background()
+
+
+
+        if (r8 < 255) {
+            r8 += 1
+        }
+
+        if (g8 < 255) {
+            g8 += 1
+        }
+        if (b8 < 255 && b8 > 0) {
+            b8 -= 1
+        }
+
+
+        p.fill(r8, g8, b8)
+        p.rect(0, 0, 100, 100)
 
 
 
