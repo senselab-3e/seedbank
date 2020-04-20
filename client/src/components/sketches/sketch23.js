@@ -18,7 +18,7 @@ export default function sketch23(p) {
             this.opacity = 102;
             this.r = r
             this.g = g
-            this.b = g
+            this.b = b
         }
         display() {
             //let c = p.color(15, 26, 102, this.opacity);
@@ -78,7 +78,7 @@ export default function sketch23(p) {
             this.opacity = 102;
             this.r = r
             this.g = g
-            this.b = g
+            this.b = b
             this.radius = this.diam * 0.4
         }
         display() {
@@ -126,27 +126,44 @@ export default function sketch23(p) {
     }
 
 
-    class Perlin {
+    class Background {
         constructor(x, y, diam, steps) {
             this.x = x;
             this.y = y;
             this.diam = diam;
-            this.steps = steps;
+            this.steps = 1;
             this.opacity = 102;
+            // this.r = 255 * p.random(0.1, 1) //p.noise(this.steps + 10);
+            // this.g = 255 * p.random(0.1, 1) //p.noise(this.steps + 15);
+            // this.b = 255 * p.random(0.1, 1) //p.noise(this.steps + 20);
+            this.r = 50 + this.steps
+            this.g = 122 + this.steps
+            this.b = 240 + this.steps
         }
         display() {
-            var x = width * p.noise(this.steps);
-            var y = height * p.noise(this.steps + 5);
-            var r = 255 * p.noise(this.steps + 10);
-            var g = 255 * p.noise(this.steps + 15);
-            var b = 255 * p.noise(this.steps + 20);
+            // var x = width * p.noise(this.steps);
+            // var y = height * p.noise(this.steps + 5);
+
 
             p.noStroke();
-            p.fill(r, g, b);
-            p.ellipse(x, y, this.diam, this.diam);
+            p.fill(this.r, this.g, this.b);
+            p.rect(0, 0, this.diam, this.diam);
+
+            p.background(this.r, this.g, this.b);
         }
         update() {
-            this.steps += 0.01;
+            // if (this.r < 255) {
+            //     this.r += this.steps
+            //     this.steps += 1
+            // }
+            console.log(this.r)
+            // if (this.g < 255) {
+            //     this.g += this.steps
+            // }
+            // if (this.b < 255) {
+            //     this.b += this.steps
+            // }
+
 
         }
     }
@@ -349,7 +366,7 @@ export default function sketch23(p) {
     let sentenceParts = sourceText.split(" ");
     let words = [];
     let vectors = [];
-    let perlins = [];
+    let backgrounds = [];
     //let ducks = []
 
 
@@ -368,6 +385,8 @@ export default function sketch23(p) {
         //TEMPORARILY TURNED OFF BACKGROUND
         //p.background(p.color(255, 0, 244));
         p.noFill()
+
+
         //t = 0;
         //p.frameRate(13) //this value needs to be an integer, not a string number
         // preload()
@@ -396,16 +415,34 @@ export default function sketch23(p) {
     let g3 = p.floor(p.random(0, 255))
     let b3 = p.floor(p.random(0, 255))
 
+
+
     console.log(r, g, b)
+
+
+    // p.setBackgroundColor = function () {
+
+    //     var r2 = 255 * p.noise(10);
+    //     var g2 = 255 * p.noise(15);
+    //     var b2 = 255 * p.noise(20);
+    //     console.log(r2, g2, b2)
+    //     p.background(r2, g2, b2);
+    // }
 
     p.draw = function () {
         // -------->>>
         //I TURNED OFF THE BACKGroud - but put me back TOMORROW 
         //p.background(p.color(255, 0, 244, 50)); // fade the background by giving it a low opacity
-        p.background(255, 40);
+
+        // var r2 = 255 * p.noise(10);
+        // var g2 = 255 * p.noise(15);
+        // var b2 = 255 * p.noise(20);
+        // console.log(r2, g2, b2)
+        // p.background(r2, g2, b2);
         //p.stroke("255");
         p.noStroke()
         p.ellipseMode(p.CENTER);
+
 
 
         //p.noFill();
@@ -413,11 +450,17 @@ export default function sketch23(p) {
 
         ///NOTE: A method is just a function that is the value for a key in an object. For example, try running this code in an empty p5.js sketch:
 
+        for (let m = 0; m < backgrounds.length; m++) {
+            backgrounds[m].display();
+            backgrounds[m].update();
+        }
+
         for (let m = 0; m < circles.length; m++) {
             // much cleaner!
             circles[m].display();
             circles[m].update();
             circles[m].check4removal(m);
+
 
             //checkNumItems();
         }
@@ -442,10 +485,7 @@ export default function sketch23(p) {
             vectors[k].update();
         }
 
-        for (let m = 0; m < perlins.length; m++) {
-            perlins[m].display();
-            perlins[m].update();
-        }
+
 
         //if someone is resting their movement, draw circles
         // if (p.mouseX === p.pmouseX && p.mouseY === p.pmouseY) {
@@ -469,6 +509,10 @@ export default function sketch23(p) {
             //circles.push(newLine);
 
         }
+        let newBackground = new Background(0, 0, width, 1);
+        backgrounds.push(newBackground)
+
+
 
 
     };

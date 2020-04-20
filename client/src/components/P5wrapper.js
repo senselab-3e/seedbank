@@ -21,7 +21,7 @@ import sketch19 from "./sketches/sketch19";
 import sketch20 from "./sketches/sketch20";
 //import sketch21 from "./sketches/sketch21";
 import sketch22 from "./sketches/sketch22";
-//import sketch23 from "./sketches/sketch23";
+import sketch23 from "./sketches/sketch23";
 // import sketch24 from "./sketches/sketch24";
 //import imageprinting from "./sketches/image";
 
@@ -31,7 +31,7 @@ class P5wrapper extends React.Component {
       <div>
         {/* <P5Wrapper sketch={imageprinting} /> */}
         {/* <P5Wrapper sketch={sketch24} /> */}
-        {/* <P5Wrapper sketch={sketch23} /> */}
+        <P5Wrapper sketch={sketch23} />
         <P5Wrapper sketch={sketch22} />
         {/* <P5Wrapper sketch={sketch21} /> */}
         <P5Wrapper sketch={sketch20} />
