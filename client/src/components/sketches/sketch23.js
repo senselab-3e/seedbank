@@ -10,6 +10,7 @@ export default function sketch23(p) {
     let r8 = 50
     let g8 = 122
     let b8 = 240
+    let direc = 1
 
     let sourceText =
         "To imagine existence excluded from sociality is to have a sense of how limited whiteness is—an existence so narrow as to be a mirage. And yet a mirage that blows itself out of proportion at every turn. This is the power of neurotypicality: that it can structure whole existences without itself existing as such. Whiteness is that very paradox—a mirage policed to retain that which it ultimately never had, that which it never is.";
@@ -526,12 +527,30 @@ export default function sketch23(p) {
 
 
 
+
+
         if (r8 < 255) {
-            r8 += 1
+            r8 += 1 * direc
+        }
+
+        if (r8 === 255) {
+            direc = -1
+        }
+
+        if (r8 === 1) {
+            direc = 1
         }
 
         if (g8 < 255) {
             g8 += 1
+        }
+
+        if (g8 === 255) {
+            direc = -1
+        }
+
+        if (g8 === 1) {
+            direc = 1
         }
         if (b8 < 255 && b8 > 0) {
             b8 -= 1
