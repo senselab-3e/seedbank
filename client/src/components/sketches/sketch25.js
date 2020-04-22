@@ -37,9 +37,9 @@ export default function sketch25(p) {
         p.beginShape();
         p.vertex(width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
         p.vertex(width / 4 * p.noise(t + 15), height / 4 * 3 * p.noise(t + 15));
-        p.bezierVertex(width / 4 * p.noise(t + 15), height / 4 * 3 * p.noise(t + 15), width / 2, height / 2, p.mouseX, p.mouseY); //width / 4 * 3, height / 4 * 3);
-        //bottom left
-        p.vertex(p.mouseX, p.mouseY) //p.vertex(width / 4 * 3, height / 4 * 3);
+        p.bezierVertex(width / 4 * p.noise(t + 15), height / 4 * 3 * p.noise(t + 15), width / 2, height / 2, width / 4 * 3, height / 4 * 3);
+        //bottom right
+        p.vertex(width / 4 * 3, height / 4 * 3);
         p.vertex(width / 4 * 3 * p.noise(t + 33), height / 4 * p.noise(t + 13)); // when i don't include the vertexs in the noise function positioning, that bezier will then cross overthat point for more of the twist. if you won't want that, add it back int. 
         p.bezierVertex(width / 4 * 3 * p.noise(t + 33), height / 4 * p.noise(t + 13), width / 2, height / 2, width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
         //top//
