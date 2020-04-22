@@ -16,21 +16,35 @@ export default function sketch25(p) {
         t = 0;
         j = 0;
 
-        p.beginShape();
-        p.vertex(width / 4, height / 4);
-        p.vertex(width / 4, height / 4 * 3);
-        p.bezierVertex(width / 4, height / 4 * 3, width / 2, height / 2, width / 4 * 3, height / 4 * 3);
-        p.vertex(width / 4 * 3, height / 4 * 3);
-        p.vertex(width / 4 * 3, height / 4);
-        p.bezierVertex(width / 4 * 3, height / 4, width / 2, height / 2, width / 4, height / 4);
-        p.vertex(width / 4, height / 4);
-        p.endShape();
+        // p.beginShape();
+        // p.vertex(width / 4, height / 4);
+        // p.vertex(width / 4, height / 4 * 3);
+        // p.bezierVertex(width / 4, height / 4 * 3, width / 2, height / 2, width / 4 * 3, height / 4 * 3);
+        // p.vertex(width / 4 * 3, height / 4 * 3);
+        // p.vertex(width / 4 * 3, height / 4);
+        // p.bezierVertex(width / 4 * 3, height / 4, width / 2, height / 2, width / 4, height / 4);
+        // p.vertex(width / 4, height / 4);
+        // p.endShape();
     }
 
     p.draw = function () {
         //p.background(0, 40)
         p.background(0, 40)
-        p.stroke('white')
+        //p.stroke('white')
+
+
+
+        p.beginShape();
+        p.vertex(width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
+        p.vertex(width / 4 * p.noise(t + 15), height / 4 * 3 * p.noise(t + 15));
+        p.bezierVertex(width / 4 * p.noise(t + 15), height / 4 * 3 * p.noise(t + 15), width / 2, height / 2, p.mouseX, p.mouseY); //width / 4 * 3, height / 4 * 3);
+        //bottom left
+        p.vertex(p.mouseX, p.mouseY) //p.vertex(width / 4 * 3, height / 4 * 3);
+        p.vertex(width / 4 * 3 * p.noise(t + 33), height / 4 * p.noise(t + 13)); // when i don't include the vertexs in the noise function positioning, that bezier will then cross overthat point for more of the twist. if you won't want that, add it back int. 
+        p.bezierVertex(width / 4 * 3 * p.noise(t + 33), height / 4 * p.noise(t + 13), width / 2, height / 2, width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
+        //top//
+        p.vertex(width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
+        p.endShape();
 
         // p.beginShape();
         // p.vertex(width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
@@ -42,16 +56,16 @@ export default function sketch25(p) {
         // p.vertex(width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
         // p.endShape();
 
-
-        p.beginShape();
-        p.vertex(width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
-        p.vertex(width / 4 * p.noise(t + 15), height / 4 * 3 * p.noise(t - 15));
-        p.bezierVertex(width / 4 * p.noise(t + 15), height / 4 * 3 * p.noise(t - 15), width / 2, height / 2, width / 4 * 3, height / 4 * 3);
-        p.vertex(width / 4 * 3, height / 4 * 3);
-        p.vertex(width / 4 * 3 * p.noise(t + 13), height / 4 * p.noise(t + 13));
-        p.bezierVertex(width / 4 * 3 * p.noise(t + 13), height / 4 * p.noise(t + 13), width / 2, height / 2, width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
-        p.vertex(width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
-        p.endShape();
+        //---->preferred one
+        // p.beginShape();
+        // p.vertex(width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
+        // p.vertex(width / 4 * p.noise(t + 15), height / 4 * 3 * p.noise(t - 15));
+        // p.bezierVertex(width / 4 * p.noise(t + 15), height / 4 * 3 * p.noise(t - 15), width / 2, height / 2, width / 4 * 3, height / 4 * 3);
+        // p.vertex(width / 4 * 3, height / 4 * 3);
+        // p.vertex(width / 4 * 3 * p.noise(t + 33), height / 4 * p.noise(t + 13)); // when i don't include the vertexs in the noise function positioning, that bezier will then cross overthat point for more of the twist. if you won't want that, add it back int. 
+        // p.bezierVertex(width / 4 * 3 * p.noise(t + 33), height / 4 * p.noise(t + 13), width / 2, height / 2, width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
+        // p.vertex(width / 4 * p.noise(t + 6), height / 4 * p.noise(t + 15));
+        // p.endShape();
 
 
         // p.beginShape();
@@ -127,5 +141,10 @@ export default function sketch25(p) {
         t += 0.0102;
 
 
+    }
+
+    p.mousePressed = function () {
+
+        p.fill(p.random(255), p.random(255), p.random(255), 85);
     }
 }
