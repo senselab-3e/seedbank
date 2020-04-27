@@ -68,7 +68,7 @@ export default function sketch27(p) {
         for (var n = 0; n < amount2; n++) {
             p.push();
             p.rotate(n * spacing2);
-            var letter = new Letter('word', 0 + radius2, 0, 90);
+            var letter = new Letter('word', 0 + radius2, 0, 90, randomNumbers[n]);
             letter.render();
             letter.display()
             p.pop();
@@ -111,7 +111,7 @@ export default function sketch27(p) {
 
         render() {
             p.push();
-            //p.fill(this.clr);
+            p.fill(this.clr.r, this.clr.b, this.clr.g);
             p.translate(this.x, this.y);
             p.rotate(this.rot);
             p.text(this.msg, 0, 0);
