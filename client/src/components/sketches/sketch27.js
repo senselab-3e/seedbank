@@ -4,6 +4,8 @@ export default function sketch27(p) {
     var width = 600;
     var height = 500;
 
+    var sentencePrts = 'progress doesnt happen on a straight line'
+
     p.setup = function () {
         p.createCanvas(width, height);
         p.background('teal')
@@ -46,11 +48,13 @@ export default function sketch27(p) {
         var amount2 = 5;
 
         createWordRing(radius2, amount2, 1);
+
+        createSentenceRing(100, sentencePrts, 1)
     }
 
     function createWordRing(radius2, amount2, seed) {
         p.randomSeed(seed)
-        var randomNumbers = [];
+        let randomNumbers = [];
         for (let i = 0; i <= amount2; i++) {
             randomNumbers.push({
                 r: parseInt(p.random(255)),
@@ -64,18 +68,44 @@ export default function sketch27(p) {
 
         p.push();
         p.translate(width / 2, height / 2);
-
         for (var n = 0; n < amount2; n++) {
             p.push();
             p.rotate(n * spacing2);
-            var letter = new Letter('word', 0 + radius2, 0, 90, randomNumbers[n]);
+            let letter = new Letter('word', 0 + radius2, 0, 0, randomNumbers[n]);
+            //var letter = new Letter('word', 0 + radius2, 0, 90, randomNumbers[n]); // this gets the words to print along the circle. i bet if you split the string of each word into each letter, that's how you could get the letters of a word to follow along the line. 
             letter.render();
             letter.display()
             p.pop();
         }
         p.pop();
 
+    }
 
+    function createSentenceRing(radius3, sentence, seed) {
+        p.randomSeed(seed)
+        let letters = sentence.split('')
+        let randomNumbers = [];
+        for (let i = 0; i <= letters.length; i++) {
+            randomNumbers.push({
+                r: parseInt(p.random(255)),
+                b: parseInt(p.random(255)),
+                g: parseInt(p.random(255))
+            })
+        }
+
+
+        const spacing3 = 360 / letters.length;
+        var radius3 = 150;
+        p.push();
+        p.translate(width / 2, height / 2);
+        for (let m = 0; m < letters.length; m++) {
+            p.push();
+            p.rotate(m * spacing3);
+            let letter = new Letter(letters[m], m + radius3, 0, 90, randomNumbers[m]);
+            letter.render();
+            letter.display()
+        }
+        p.pop();
     }
 
     class Num {
