@@ -47,14 +47,16 @@ export default function sketch27(p) {
         // --->
 
         var radius2 = 200;
-        var amount2 = 35;
+
         let spacing2 = 20;
+
+        var radius4 = p.mouseX
 
         //this method.. the space between gets smaller as you move outside, rather then getting larger....
 
-        // for (let b = 0; b < 5; b++) {
-        //     createWordRing(radius2 + spacing2 * b, 30 + 10 * b, b);
-        // }
+        for (let b = 0; b < 5; b++) {
+            createWordRing(radius4 + spacing2 * b, 30 + 10 * b, b);
+        }
         //createWordRing(radius2, amount2, 1);
 
         //createSentenceRing(50, sentencePrts, 1) // original weird spiral
@@ -249,8 +251,8 @@ export default function sketch27(p) {
 
         render() {
             p.push();
-            //p.fill(this.clr.r, this.clr.b, this.clr.g);
-            p.fill(255)
+            p.fill(this.clr.r, this.clr.b, this.clr.g);
+            //p.fill(255)
             p.translate(this.x, this.y);
             p.rotate(this.rot);
             p.text(this.msg, 0, 0);
