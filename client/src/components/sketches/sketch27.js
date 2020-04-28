@@ -86,7 +86,7 @@ export default function sketch27(p) {
 
         p.push();
         p.translate(width / 2, height / 2);
-        var rotSpeed = 1.05;
+        const rotSpeed = 1.05;
         p.rotate(p.frameCount * p.random(-rotSpeed, rotSpeed));
         for (var n = 0; n < amount2; n++) {
             p.push();
@@ -182,11 +182,13 @@ export default function sketch27(p) {
 
     function createSentenceRing(radius2, amount2, seed) {
 
-        let words2 = sentencePrts.split('')
+        let words2 = sentencePrts.split(' ') //let words2 = sentencePrts.split('') <--- will distribute each letter around the circle, coloring each letter individuallyy, rather then by each word
         //console.log(words2.length)
 
         p.randomSeed(seed)
         let randomNumbers2 = [];
+        // var rotSpeed2 = 1.05;
+        // p.rotate(p.frameCount * p.random(-rotSpeed2, rotSpeed2));
         for (let i = 0; i < words2.length; i++) {
             //console.log(i)
             randomNumbers2.push({
@@ -204,6 +206,11 @@ export default function sketch27(p) {
 
         //the problem is that it's at the level of the function calculation for amount, that the below loop value derives its spacing. the words need to be brought in, earlier (?)
         p.translate(width / 2, height / 2);
+
+        const rotSpeed3 = 1.05;
+        p.rotate(p.frameCount * p.random(-1, 1));
+        // var rotSpeed2 = 1.05; // not sure why this is always only rotation clockwise = which indicates and always positive value on the rotSpeed passing to the rotation function, even though there is a random being used....
+        // p.rotate(p.frameCount * p.random(-rotSpeed2, rotSpeed2));
         for (var n = 0; n < words2.length; n++) {
             p.push();
             p.rotate(n * spacing2);
