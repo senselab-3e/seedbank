@@ -92,7 +92,7 @@ export default function sketch27(p) {
             p.push();
             p.rotate(n * spacing2);
 
-            let letter = new Letter(randomNumbers[n].num, 0 + radius2, 0, 90, randomNumbers[n]);
+            let letter = new Letter(randomNumbers[n].num, 0 + radius2, 0, 90, randomNumbers[n], 10);
             //let letter = new Letter('1', 0 + radius2, 0, 90, randomNumbers[n]);
             //var letter = new Letter('word', 0 + radius2, 0, 90, randomNumbers[n]); // this gets the words to print along the circle. i bet if you split the string of each word into each letter, that's how you could get the letters of a word to follow along the line. 
             letter.render();
@@ -180,23 +180,48 @@ export default function sketch27(p) {
 
     // This one spirals the sentence, one per right, but the letters will start to overlap once it exceeds 360 degress. 
 
+    let unqVal = 0
+    let unqVal2 = 0
+    let unqVal3 = 0
+
+    function genNum() {
+        return parseInt(p.random(255))
+    }
+
     function createSentenceRing(radius2, amount2, seed) {
 
-        let words2 = sentencePrts.split(' ') //let words2 = sentencePrts.split('') <--- will distribute each letter around the circle, coloring each letter individuallyy, rather then by each word
+        let words2 = sentencePrts.split('') //let words2 = sentencePrts.split('') <--- will distribute each letter around the circle, coloring each letter individuallyy, rather then by each word
         //console.log(words2.length)
 
         p.randomSeed(seed)
         let randomNumbers2 = [];
+
+
         // var rotSpeed2 = 1.05;
         // p.rotate(p.frameCount * p.random(-rotSpeed2, rotSpeed2));
         for (let i = 0; i < words2.length; i++) {
+
+            //what this is doing is every time it encounters a space, that means essentially, a new word is beginning
+            //when a new word is beginning then the unqVals each being passed on to the Word constructor all stay the same - aka are given the same color value - ensuring i can continue to place letters at unique equally spaced positions and rotations, rathern then each word instance, which caused problems with spacing became variable under the mouseX movements. 
+            if (words2[i] === ' ') {
+                unqVal = genNum()
+                unqVal2 = genNum()
+                unqVal3 = genNum()
+
+            }
             //console.log(i)
             randomNumbers2.push({
-                r: parseInt(p.random(255)),
-                b: parseInt(p.random(255)),
-                g: parseInt(p.random(255))
-                //num: words2[i] //parseInt(p.random(2))
+                r: unqVal, //parseInt(p.random(255)),
+                b: unqVal2, //parseInt(p.random(255)),
+                g: unqVal3 //parseInt(p.random(255))
             })
+
+            // randomNumbers2.push({
+            //     r: parseInt(p.random(255)),
+            //     b: parseInt(p.random(255)),
+            //     g: parseInt(p.random(255))
+            //     //num: words2[i] //parseInt(p.random(2))
+            // })
         }
 
         const spacing2 = 360 / amount2;
@@ -208,13 +233,23 @@ export default function sketch27(p) {
         p.translate(width / 2, height / 2);
 
         const rotSpeed3 = 1.05;
-        p.rotate(p.frameCount * p.random(-1, 1));
+        p.rotate(p.frameCount * p.random(-rotSpeed3, rotSpeed3));
         // var rotSpeed2 = 1.05; // not sure why this is always only rotation clockwise = which indicates and always positive value on the rotSpeed passing to the rotation function, even though there is a random being used....
         // p.rotate(p.frameCount * p.random(-rotSpeed2, rotSpeed2));
+
+        var fontNum
+        let ceiling = 1
+        console.log(p.mouseX)
+        p.mouseX > 300 ? ceiling = 20 : ceiling = 1
+
+        p.mouseX > 10 && p.mouseX < 200 ? fontNum = p.mouseX * ceiling : fontNum = 10 * ceiling
+
         for (var n = 0; n < words2.length; n++) {
             p.push();
             p.rotate(n * spacing2);
-            let letter = new Letter(words2[n], 0 + radius2, 0, 90, randomNumbers2[n]);
+            console.log(fontNum)
+            let letter = new Letter(words2[n], 0 + radius2, 0, 90, randomNumbers2[n], fontNum);
+            //let letter = new Letter(words2[n], 0 + radius2, 0, 90, randomNumbers2[n], fontNum);
             //let letter = new Letter('1', 0 + radius2, 0, 90, randomNumbers[n]);
             //var letter = new Letter('word', 0 + radius2, 0, 90, randomNumbers[n]); // this gets the words to print along the circle. i bet if you split the string of each word into each letter, that's how you could get the letters of a word to follow along the line. 
             letter.render();
@@ -247,7 +282,7 @@ export default function sketch27(p) {
     }
 
     class Letter {
-        constructor(msg, x, y, rot, clr) {
+        constructor(msg, x, y, rot, clr, fontSize) {
             this.x = x;
             this.y = y;
             this.rot = rot;
@@ -256,6 +291,7 @@ export default function sketch27(p) {
             // this.g = p.random(255)
             // this.b = p.random(255)
             this.clr = clr
+            this.fntsize = 10 //fontSize - use this if you are passing on variable values such as mouseX
         }
 
         render() {
@@ -264,7 +300,12 @@ export default function sketch27(p) {
             //p.fill(255)
             p.translate(this.x, this.y);
             p.rotate(this.rot);
-            p.text(this.msg, 0, 0);
+
+            p.textSize(this.fntsize)
+            //p.text(this.msg, 0, 0)
+            //p.text(this.msg, p.mouseX, 0); // first value changes the rotation on each instance. can turn a word/sentence out like spikes
+            p.text(this.msg, 0, p.mouseX); // changing the second value to mouse X effects the radius and spaceing on the render
+            //this above mouseX value - it appears to have a kind of reverse flip image effect on the content of the rings when passing over the center of the canvas point. 
             p.pop();
         }
 
