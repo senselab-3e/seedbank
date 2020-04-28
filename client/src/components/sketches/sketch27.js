@@ -237,12 +237,12 @@ export default function sketch27(p) {
         // var rotSpeed2 = 1.05; // not sure why this is always only rotation clockwise = which indicates and always positive value on the rotSpeed passing to the rotation function, even though there is a random being used....
         // p.rotate(p.frameCount * p.random(-rotSpeed2, rotSpeed2));
 
-        var fontNum
+        var fontNum = 22
         let ceiling = 1
         console.log(p.mouseX)
-        p.mouseX > 300 ? ceiling = 20 : ceiling = 1
+        // p.mouseX > 300 ? ceiling = 20 : ceiling = 1
 
-        p.mouseX > 10 && p.mouseX < 200 ? fontNum = p.mouseX * ceiling : fontNum = 10 * ceiling
+        // p.mouseX > 10 && p.mouseX < 200 ? fontNum = p.mouseX * ceiling : fontNum = 10 * ceiling
 
         for (var n = 0; n < words2.length; n++) {
             p.push();
@@ -291,7 +291,7 @@ export default function sketch27(p) {
             // this.g = p.random(255)
             // this.b = p.random(255)
             this.clr = clr
-            this.fntsize = 10 //fontSize - use this if you are passing on variable values such as mouseX
+            this.fntsize = fontSize // - use this if you are passing on variable values such as mouseX
         }
 
         render() {
@@ -302,8 +302,11 @@ export default function sketch27(p) {
             p.rotate(this.rot);
 
             p.textSize(this.fntsize)
-            //p.text(this.msg, 0, 0)
+            p.text(this.msg, 0, 0)
             //p.text(this.msg, p.mouseX, 0); // first value changes the rotation on each instance. can turn a word/sentence out like spikes
+
+            //--- > turn off the mouseX dependence to get rid of growing text/ring sizes
+            //this draws the text twice
             p.text(this.msg, 0, p.mouseX); // changing the second value to mouse X effects the radius and spaceing on the render
             //this above mouseX value - it appears to have a kind of reverse flip image effect on the content of the rings when passing over the center of the canvas point. 
             p.pop();
