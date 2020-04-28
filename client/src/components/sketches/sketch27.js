@@ -50,7 +50,7 @@ export default function sketch27(p) {
 
         let spacing2 = 20;
 
-        var radius4 = p.mouseX
+        var radius4 = 100 //p.mouseX
 
         //this method.. the space between gets smaller as you move outside, rather then getting larger....
 
@@ -86,6 +86,8 @@ export default function sketch27(p) {
 
         p.push();
         p.translate(width / 2, height / 2);
+        var rotSpeed = 1.05;
+        p.rotate(p.frameCount * p.random(-rotSpeed, rotSpeed));
         for (var n = 0; n < amount2; n++) {
             p.push();
             p.rotate(n * spacing2);
@@ -182,7 +184,7 @@ export default function sketch27(p) {
 
         let words2 = sentencePrts.split('')
         //console.log(words2.length)
-        console.log(words2[0])
+
         p.randomSeed(seed)
         let randomNumbers2 = [];
         for (let i = 0; i < words2.length; i++) {
@@ -196,7 +198,7 @@ export default function sketch27(p) {
         }
 
         const spacing2 = 360 / amount2;
-        console.log(randomNumbers2[1].num)
+        //console.log(randomNumbers2[1].num)
 
         p.push();
 
