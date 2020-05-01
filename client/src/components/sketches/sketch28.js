@@ -1,4 +1,4 @@
-export default function sketch27(p) {
+export default function sketch28(p) {
 
 
     var width = 900;
@@ -55,9 +55,9 @@ export default function sketch27(p) {
         //this method.. the space between gets smaller as you move outside, rather then getting larger....
 
         //this is the 0s and 1s one
-        // for (let b = 0; b < 5; b++) {
-        //     createWordRing(radius4 + spacing2 * b, 30 + 10 * b, b);
-        // }
+        for (let b = 0; b < 5; b++) {
+            createWordRing(radius4 + spacing2 * b, 30 + 10 * b, b);
+        }
         //createWordRing(radius2, amount2, 1);
 
         //createSentenceRing(50, sentencePrts, 1) // original weird spiral
@@ -66,6 +66,13 @@ export default function sketch27(p) {
 
         for (let c = 0; c < words.length; c++) {
             createSentenceRing(radius2 + spacing2 * c, 30 + words.length * c, c)
+        }
+
+        const amount4 = 5;
+        const spacing4 = 360 / amount4;
+
+        for (let d = 0; d < amount4; d++) {
+            dotDraw(radius4 + spacing4 * d, 10 + 30 * d, spacing4)
         }
 
     }
@@ -183,12 +190,28 @@ export default function sketch27(p) {
 
     // This one spirals the sentence, one per right, but the letters will start to overlap once it exceeds 360 degress. 
 
-    let unqVal = 'white'
+    let unqVal = 'white' //
     let unqVal2 = 'white'
     let unqVal3 = 'white'
 
     function genNum() {
         return parseInt(p.random(255))
+    }
+
+    function dotDraw(radius, amount, spacing) {
+
+        p.push();
+        p.translate(width / 2, height / 2);
+
+        for (var n = 0; n < amount; n++) {
+            p.push();
+            p.rotate(n * spacing);
+            let dot = new Dot('hello', 0 + radius, 0, 0);
+            dot.render();
+            p.pop();
+
+        }
+        p.pop()
     }
 
     function createSentenceRing(radius2, amount2, seed) {
@@ -262,27 +285,51 @@ export default function sketch27(p) {
         p.pop();
 
 
+
+
+
     }
 
 
-    class Num {
-        constructor(msg, x, y, rot, clr) {
+    class Dot {
+        constructor(msg, x, y, rot) {
             this.x = x;
             this.y = y;
             this.rot = rot;
             this.msg = msg;
-            this.color = clr;
+            this.color = 'white';
         }
 
         render() {
             p.push();
             p.fill(this.color);
+            p.stroke(this.color);
             p.translate(this.x, this.y);
             p.rotate(this.rot);
-            p.text(this.msg, 0, 0);
+            //p.text(this.msg, 0, 0);
+
+
+            p.rect(0, 0, 10, 10);
+            //p.star(0, 0, 80, 100, 40);
             p.pop();
         }
     }
+
+    p.star = function (x, y, radius1, radius2, npoints) {
+        let angle = p.TWO_PI / npoints;
+        let halfAngle = angle / 2.0;
+        p.beginShape();
+        for (let a = 0; a < p.TWO_PI; a += angle) {
+            let sx = x + p.cos(a) * radius2;
+            let sy = y + p.sin(a) * radius2;
+            p.vertex(sx, sy);
+            sx = x + p.cos(a + halfAngle) * radius1;
+            sy = y + p.sin(a + halfAngle) * radius1;
+            p.vertex(sx, sy);
+        }
+        p.endShape(p.CLOSE);
+    }
+
 
     class Letter {
         constructor(msg, x, y, rot, clr, fontSize) {
