@@ -26,15 +26,21 @@ import P5Wrapper from "react-p5-wrapper";
 // import sketch25 from "./sketches/sketch25";
 // import sketch26 from "./sketches/sketch26";
 // import sketch27 from "./sketches/sketch27";
-// import sketch28 from "./sketches/sketch28";
-import sketch29 from "./sketches/sketch29";
+//import sketch28 from "./sketches/sketch28";
+// import sketch29 from "./sketches/sketch29";
+// import sketch30 from "./sketches/sketch30";
+// import sketch31 from "./sketches/sketch31";
+import sketch32 from "./sketches/sketch32";
 //import imageprinting from "./sketches/image";
 
 class P5wrapper extends React.Component {
   render() {
     return (
       <div>
-        <P5Wrapper sketch={sketch29} />
+        <P5Wrapper sketch={sketch32} />
+        {/* <P5Wrapper sketch={sketch29} />
+        <P5Wrapper sketch={sketch31} />
+        <P5Wrapper sketch={sketch30} /> */}
         {/* <P5Wrapper sketch={imageprinting} /> */}
         {/* <P5Wrapper sketch={sketch24} /> */}
         {/* <P5Wrapper sketch={sketch23} />
