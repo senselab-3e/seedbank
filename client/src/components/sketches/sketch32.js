@@ -26,6 +26,7 @@ export default function sketch32(p) {
 
 
     p.draw = function () {
+        p.background('#eee');
         // NOTES: 1.0-1.4 tutorial
         // p.translate(width / 2, height / 2) /// this moved the center 0,0 to the middle of the canvas
         // //translate Specifies an amount to displace objects within the display window. The x parameter specifies left/right translation, the y parameter specifies up/down translation.
