@@ -10,6 +10,7 @@ export default function sketch32(p) {
 
     let drawing
     let drawing2
+    let drawing3
     p.setup = function () {
 
         p.createCanvas(width, height);
@@ -18,7 +19,9 @@ export default function sketch32(p) {
         // drawing = new DotDrawing(0, 0, 2, 'orange')
         // drawing2 = new VectorDrawing(0, 0, 15, 'teal')
         // ---->
+        //--->NOTES: 1.5 Tutorial
         p.background('#eee');
+        drawing3 = new Mover(0, 0, 15, 'purple')
     }
 
 
@@ -46,22 +49,35 @@ export default function sketch32(p) {
         // here i need a static function
         let v = p5.Vector.sub(mouse, pos);
         // 
-        let m = v.mag()
-        v.div(m);
-        v.mult(50) /// calling this normalize meant that rather then it drawing the vectors to the exact position of the mousex /// it first normalized that vector down to 1, then was scaled back up by 5, and then resulted in a line vector from center being drawn that follows the mouse around but maintains the same length 
+        //this just shows how normalize works // which uses the value of mag, the figures out how many times you need to divide it to get to 1, which is what the normalize function wants. 
+        // let m = v.mag()
+        // v.div(m);
+        /// calling this normalize meant that rather then it drawing the vectors to the exact position of the mousex /// it first normalized that vector down to 1, then was scaled back up by 5, and then resulted in a line vector from center being drawn that follows the mouse around but maintains the same length 
         //mag is used to normalize.... the mag is like in the pythagorean theorum... the c value in the triangle.  it takes the square root of the x sqaured and ysquared to get the mag.  // if i want to normalize the 5 to 1 --- /// then you divide its vectors by it's magnitude. // yikes. 
+
+        // v.normalize()
+        // v.mult(50)
+        //you can also chain them into v.normalize().mult(50)
+        //---the above is the same v.setMag. it such a common function step that it has been combined into v.setMag()
         // p.background(m) /// interesting trick
+        v.setMag(50)
+
         //Subtract the given number from the value currently stored at the given key. /// it's taking the mouse.x - pos.x to get current x
         //mag returns the scalar length of any vector 
         //Calculates the magnitude (or length) of a vector. A vector is a direction in space commonly used in computer graphics and linear algebra. Because it has no "start" position, the magnitude of a vector can be thought of as the distance from the coordinate 0,0 to its x,y value. Therefore, mag() is a shortcut for writing dist(0, 0, x, y).
-        p.translate(width / 2, height / 2)
-        p.strokeWeight(4)
-        p.stroke(83, 51, 212);
-        p.line(0, 0, v.x, v.y)
+        // p.translate(width / 2, height / 2)
+        // p.strokeWeight(4)
+        // p.stroke(83, 51, 212);
+        // p.line(0, 0, v.x, v.y)
         //normalize  takes any vector and and makes it into a unit vector // of a length 1  /// this may be a bit like calling mathfloor...
 
+        // 1.6 --
+        //NOTES: velocity is how the position changes over time
+        //accleration is the change in velocity over time. 
 
 
+        drawing3.update()
+        drawing3.show()
 
     }
 
@@ -130,6 +146,51 @@ export default function sketch32(p) {
             p.ellipse(this.pos.x, this.pos.y, this.size)
             p.pop()
         }
+
+    }
+
+    class Mover {
+        constructor(x, y, size, color) {
+
+            this.pos = p.createVector(x, y)
+
+            this.size = size;
+            this.color = color
+
+            this.vel = p5.Vector.random2D() // random direction /// static function
+            this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
+
+
+            //this.acc.setMag(0.01)
+        }
+
+        //limit will cap the vector at a certain amount. // the acceleration accumulates over time // so you can use the limit so that it will accelerate up until a certain limit
+
+        update() {
+            //random walk with acceleration
+            // this.acc = p5.Vector.random2D()
+            // this.vel.add(this.acc) // adding x,y
+            // this.vel.limit(2)
+            // this.pos.add(this.vel)
+
+            //
+            let mouse = p.createVector(p.mouseX, p.mouseY);
+            this.acc = p5.Vector.sub(mouse, this.pos);
+            this.acc.setMag(1);
+
+            this.vel.add(this.acc);
+            this.vel.limit(7);
+
+            this.pos.add(this.vel);
+
+        }
+
+        show() {
+            p.stroke(255)
+            p.fill(this.color)
+            p.ellipse(this.pos.x, this.pos.y, this.size)
+        }
+
 
     }
 
