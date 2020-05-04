@@ -77,8 +77,13 @@ export default function sketch32(p) {
             //velocity
             this.size = size;
             this.color = color
-            this.vel = p5.Vector.random2D() // random direction
-            this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier
+            //instead of new p5 vector = create vector is just a unique syntax to p5
+            this.vel = p5.Vector.random2D() // random direction /// static function
+            //instance method mult
+            //understanding the static function is useful if you want to equate the result of adding two values together, and not have the value it is being used with, called upon that value --in such a way that would have that value continually updating.  /// so if i don't want let newPos = pos.add(something) // because it's not a static function, the valeu of newPos would always be updating
+            //so let newPos = p5.Vector.add(pos,vel) --- call static version of add stored under the name space of p5 vectorClass
+            //see examples in add() in p5 documentation
+            this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
         }
 
         update() {
