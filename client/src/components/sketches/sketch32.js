@@ -14,29 +14,54 @@ export default function sketch32(p) {
 
         p.createCanvas(width, height);
         //i adjusted the position to 0,0 because the translate funciton below moved it to the center of the screen. 
-        drawing = new DotDrawing(0, 0, 2, 'orange')
-        drawing2 = new VectorDrawing(0, 0, 15, 'teal')
+        // --->NOTES: 1.0-1.4 tutorial
+        // drawing = new DotDrawing(0, 0, 2, 'orange')
+        // drawing2 = new VectorDrawing(0, 0, 15, 'teal')
+        // ---->
         p.background('#eee');
     }
 
 
     p.draw = function () {
+        // NOTES: 1.0-1.4 tutorial
+        // p.translate(width / 2, height / 2) /// this moved the center 0,0 to the middle of the canvas
+        // //translate Specifies an amount to displace objects within the display window. The x parameter specifies left/right translation, the y parameter specifies up/down translation.
+        // drawing.update()
+        // drawing.show()
 
-        p.translate(width / 2, height / 2) /// this moved the center 0,0 to the middle of the canvas
-        //translate Specifies an amount to displace objects within the display window. The x parameter specifies left/right translation, the y parameter specifies up/down translation.
-        drawing.update()
-        drawing.show()
-
-        drawing2.update()
-        drawing2.show()
+        // drawing2.update()
+        // drawing2.show()
 
 
-        p.push()
-        let v = p5.Vector.random2D()
-        v.mult(p.random(50, 100))
-        p.stroke(122, 222, 238, 50)
+        // p.push()
+        // let v = p5.Vector.random2D()
+        // v.mult(p.random(50, 100))
+        // p.stroke(122, 222, 238, 50)
+        // p.line(0, 0, v.x, v.y)
+        // p.pop()
+
+        //--1.5 tutorial
+        let pos = p.createVector(200, 200);
+        let mouse = p.createVector(p.mouseX, p.mouseY)
+        // here i need a static function
+        let v = p5.Vector.sub(mouse, pos);
+        // 
+        let m = v.mag()
+        v.div(m);
+        v.mult(50) /// calling this normalize meant that rather then it drawing the vectors to the exact position of the mousex /// it first normalized that vector down to 1, then was scaled back up by 5, and then resulted in a line vector from center being drawn that follows the mouse around but maintains the same length 
+        //mag is used to normalize.... the mag is like in the pythagorean theorum... the c value in the triangle.  it takes the square root of the x sqaured and ysquared to get the mag.  // if i want to normalize the 5 to 1 --- /// then you divide its vectors by it's magnitude. // yikes. 
+        // p.background(m) /// interesting trick
+        //Subtract the given number from the value currently stored at the given key. /// it's taking the mouse.x - pos.x to get current x
+        //mag returns the scalar length of any vector 
+        //Calculates the magnitude (or length) of a vector. A vector is a direction in space commonly used in computer graphics and linear algebra. Because it has no "start" position, the magnitude of a vector can be thought of as the distance from the coordinate 0,0 to its x,y value. Therefore, mag() is a shortcut for writing dist(0, 0, x, y).
+        p.translate(width / 2, height / 2)
+        p.strokeWeight(4)
+        p.stroke(83, 51, 212);
         p.line(0, 0, v.x, v.y)
-        p.pop()
+        //normalize  takes any vector and and makes it into a unit vector // of a length 1  /// this may be a bit like calling mathfloor...
+
+
+
 
     }
 
