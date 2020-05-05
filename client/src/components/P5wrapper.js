@@ -30,14 +30,14 @@ import P5Wrapper from "react-p5-wrapper";
 // import sketch29 from "./sketches/sketch29";
 // import sketch30 from "./sketches/sketch30";
 // import sketch31 from "./sketches/sketch31";
-import sketch32 from "./sketches/sketch32";
+import sketch33 from "./sketches/sketch33";
 //import imageprinting from "./sketches/image";
 
 class P5wrapper extends React.Component {
   render() {
     return (
       <div>
-        <P5Wrapper sketch={sketch32} />
+        <P5Wrapper sketch={sketch33} />
         {/* <P5Wrapper sketch={sketch29} />
         <P5Wrapper sketch={sketch31} />
         <P5Wrapper sketch={sketch30} /> */}

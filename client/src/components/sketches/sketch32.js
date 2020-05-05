@@ -21,7 +21,7 @@ export default function sketch32(p) {
         // ---->
         //--->NOTES: 1.5 Tutorial
         p.background('#eee');
-        drawing3 = new Mover(0, 0, 15, 'purple')
+        drawing3 = new Mover(0, 0, 15, 'purple', 12)
     }
 
 
@@ -151,15 +151,15 @@ export default function sketch32(p) {
     }
 
     class Mover {
-        constructor(x, y, size, color) {
+        constructor(x, y, size, color, limit) {
 
             this.pos = p.createVector(x, y)
 
             this.size = size;
             this.color = color
-
+            this.limitNum = limit
             this.vel = p5.Vector.random2D() // random direction /// static function
-            this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
+            this.vel.mult(5) //this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
 
 
             //this.acc.setMag(0.01)
@@ -180,7 +180,7 @@ export default function sketch32(p) {
             this.acc.setMag(1);
 
             this.vel.add(this.acc);
-            this.vel.limit(7);
+            this.vel.limit(this.limitNum); // max radius from mouse
 
             this.pos.add(this.vel);
 
