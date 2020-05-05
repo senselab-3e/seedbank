@@ -180,7 +180,7 @@ export default function sketch32(p) {
             this.acc.setMag(1);
 
             this.vel.add(this.acc);
-            this.vel.limit(this.limitNum); // max radius from mouse
+            this.vel.limit(this.limitNum); // max radius from origin point ? mouse
 
             this.pos.add(this.vel);
 
