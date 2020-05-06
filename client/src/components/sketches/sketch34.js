@@ -38,6 +38,14 @@ export default function sketch34(p) {
     let direc = 1
     let colorAmount = 0 * incr
 
+    //depending on where i set these initial amounts, i can kind of scope
+
+    let colorParam = {
+        r: 130,
+        g: 50,
+        b: 200
+    }
+
 
     p.draw = function () {
         p.background('grey'); // bring back the background to see Orbit3 drawings. 
@@ -65,21 +73,42 @@ export default function sketch34(p) {
         p.push()
         p.noStroke()
 
-        if (colorAmount > 255) {
-            direc = -1
+        // if (colorAmount > 255) {
+        //     direc = -1
 
+        // }
+
+        // if (colorAmount < 0) {
+        //     direc = 1
+        // }
+
+        function checkNum(num) {
+            if (num > 255) {
+                direc = -1
+
+            }
+
+            if (num < 0) {
+                direc = 1
+            }
         }
 
-        if (colorAmount < 0) {
-            direc = 1
-        }
+        checkNum(colorParam.r)
+        checkNum(colorParam.g)
+        checkNum(colorParam.b)
 
-        colorAmount += incr * direc
+        //colorAmount += incr * direc
+        colorParam.r += incr * direc
+        colorParam.g += incr * direc
+        colorParam.b += incr * direc
+
+        console.log(colorParam)
 
         // if (p.frameCount % 15 === 0 && colorAmount < 255) {
         //     colorAmount += 1 * incr
         // }
-        p.fill(colorAmount, 255, 255)
+        //p.fill(colorAmount, 255, 255)
+        p.fill(colorParam.r, colorParam.g, colorParam.b)
         p.ellipse(width / 2, height / 2, width / 4, height / 4)
         p.pop()
         // p.pop()
