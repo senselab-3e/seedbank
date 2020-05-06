@@ -55,6 +55,10 @@ export default function sketch33(p) {
             drawings[index].show()
         }
 
+        if (p.frameCount % 500 === 0) {
+            p.clear()
+            p.background('black');
+        }
 
     }
 
