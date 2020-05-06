@@ -12,21 +12,52 @@ export default function sketch33(p) {
     let pos2
     let prev
     let secondVect
+    let drawOne
 
     p.setup = function () {
 
         p.createCanvas(width, height);
         p.background('black');
-        planet = new Orbit(0, 0, p.random(1, 15), 'deeppink', 12)
+        planet = new Orbit(0, 0, p.random(1, 5), 'deeppink', 12)
         drawings.push(planet)
         pos2 = p.createVector(width / 2, height / 2);
         let vel = p5.Vector.random2D() // this gives a unit vector and it is 1. i then scale it up from one. random direction /// static function
         vel.mult(5)
         prev = pos2.copy(); // copy creates a new vector
-        secondVect = new Orbit2(width / 2, height / 2, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(3, 32)))
+        //secondVect = new Orbit2(width / 2, height / 2, 3, p.random(colorOptions), p.floor(p.random(3, 32)))
+        //secondVect was an inital fill object orbit i'm disabling for th moment 
 
+        drawOne = new StraightDrawing(width / 2, height / 2, 3, p.random(colorOptions), p.floor(p.random(3, 32)))
     }
 
+
+    class StraightDrawing {
+        constructor(x, y, size, color, limit) {
+            this.pos = p.createVector(x, y)
+            this.size = size;
+            this.color = color
+            this.limitNum = limit
+            this.vel = p5.Vector.random2D() // this gives a unit vector and it is 1. i then scale it up from one. random direction /// static function
+            this.vel.mult(5) //this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
+            this.prev = this.pos.copy()
+        }
+
+        update() {
+
+            this.prev.set(this.pos)
+            this.vel = p5.Vector.random2D();
+            this.vel.mult(p.random(5, 15))
+            this.pos.add(this.vel)
+        }
+        show() {
+
+            p.push()
+            p.stroke('purple')
+            p.strokeWeight(1)
+            p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y);
+
+        }
+    }
 
 
 
@@ -35,8 +66,11 @@ export default function sketch33(p) {
         // drawing3.update()
         // drawing3.show()
 
-        secondVect.show()
-        secondVect.update()
+        drawOne.show()
+        drawOne.update()
+
+        // secondVect.show() /// this would be the initial fill object orbit -- disabling for the moment
+        // secondVect.update()
 
         //this is the more basic mess to figure out the logic of how to draw the vector lines between prev and current position. it is then cleaned up and extracted into the Orbit constructor
         p.push()
@@ -58,6 +92,8 @@ export default function sketch33(p) {
         if (p.frameCount % 500 === 0) {
             p.clear()
             p.background('black');
+            planet = new Orbit(p.random(width), p.random(height), p.random(1, 15), p.random(255), p.random(30))
+            drawings.push(planet)
         }
 
     }
@@ -66,7 +102,7 @@ export default function sketch33(p) {
 
         if (drawings.length < 5) {
             ///temporarily changed this from Orbit, to Orbit 2, just to test interactions/appearance
-            planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(10, 30))) //this last number is the limitpoint
+            planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(30))) //this last number is the limitpoint
             drawings.push(planet)
         } else {
             drawings.splice(0, 1);
@@ -312,6 +348,7 @@ export default function sketch33(p) {
             // p.pop()
 
             //experiment
+            p.push()
             p.beginShape()
             p.fill(this.color)
             p.noStroke()
