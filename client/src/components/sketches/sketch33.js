@@ -27,7 +27,8 @@ export default function sketch33(p) {
         //secondVect = new Orbit2(width / 2, height / 2, 3, p.random(colorOptions), p.floor(p.random(3, 32)))
         //secondVect was an inital fill object orbit i'm disabling for th moment 
 
-        drawOne = new StraightDrawing(width / 2, height / 2, 3, p.random(colorOptions), p.floor(p.random(3, 32)))
+        drawOne = new StraightDrawing(width / 2, height / 2, 3, 'white', p.floor(p.random(3, 32)))
+        drawings.push(drawOne)
     }
 
 
@@ -52,7 +53,7 @@ export default function sketch33(p) {
         show() {
 
             p.push()
-            p.stroke('purple')
+            p.stroke(this.color)
             p.strokeWeight(1)
             p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y);
 
@@ -66,8 +67,8 @@ export default function sketch33(p) {
         // drawing3.update()
         // drawing3.show()
 
-        drawOne.show()
-        drawOne.update()
+        // drawOne.show()
+        // drawOne.update()
 
         // secondVect.show() /// this would be the initial fill object orbit -- disabling for the moment
         // secondVect.update()
@@ -100,9 +101,11 @@ export default function sketch33(p) {
 
     p.mousePressed = function () {
 
-        if (drawings.length < 5) {
+        if (drawings.length < 10) {
             ///temporarily changed this from Orbit, to Orbit 2, just to test interactions/appearance
             planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(30))) //this last number is the limitpoint
+            drawOne = new StraightDrawing(width / 2, height / 2, 3, p.random(colorOptions), p.floor(p.random(3, 32)))
+            drawings.push(drawOne)
             drawings.push(planet)
         } else {
             drawings.splice(0, 1);
