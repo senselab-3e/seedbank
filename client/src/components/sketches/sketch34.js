@@ -1,6 +1,8 @@
 import p5 from "react-p5-wrapper/node_modules/p5";
 
-export default function sketch33(p) {
+//This is based on much of the code in sketch 33.
+
+export default function sketch34(p) {
 
     var width = 900
     var height = 900
@@ -17,7 +19,7 @@ export default function sketch33(p) {
     p.setup = function () {
 
         p.createCanvas(width, height);
-        p.background('black');
+        p.background('grey');
         planet = new Orbit(0, 0, p.random(1, 5), 'deeppink', 12)
         drawings.push(planet)
         pos2 = p.createVector(width / 2, height / 2);
@@ -32,12 +34,13 @@ export default function sketch33(p) {
     }
 
 
-
-
+    let incr = 1
+    let direc = 1
+    let colorAmount = 0 * incr
 
 
     p.draw = function () {
-        //p.background('grey'); // bring back the background to see Orbit3 drawings. 
+        p.background('grey'); // bring back the background to see Orbit3 drawings. 
         // drawing3.update()
         // drawing3.show()
 
@@ -57,21 +60,57 @@ export default function sketch33(p) {
         // let vel2 = p5.Vector.random2D();
         // vel2.mult(5)
         // pos2.add(vel2)
+        p.noFill()
 
+        p.push()
+        p.noStroke()
 
+        if (colorAmount > 255) {
+            direc = -1
+
+        }
+
+        if (colorAmount < 0) {
+            direc = 1
+        }
+
+        colorAmount += incr * direc
+
+        // if (p.frameCount % 15 === 0 && colorAmount < 255) {
+        //     colorAmount += 1 * incr
+        // }
+        p.fill(colorAmount, 255, 255)
+        p.ellipse(width / 2, height / 2, width / 4, height / 4)
+        p.pop()
         // p.pop()
+
+        // display() {
+        //     colorAmount += incr * this.direc
+        //     
+        //     p.fill(colorAmount, 255, 255);
+        //   }
+        // update() {
+        //     if (colorAmount > 255) {
+        //         this.direc = -1
+        //     
+        //     }
+        //     if (colorAmount < 0) {
+        //         this.direc = 1
+        //     }
+        // }
 
         for (let index = 0; index < drawings.length; index++) {
             drawings[index].update()
             drawings[index].show()
         }
 
-        if (p.frameCount % 500 === 0) {
-            p.clear()
-            p.background('black');
-            // planet = new Orbit(p.random(width), p.random(height), p.random(1, 15), p.random(255), p.random(30))
-            // drawings.push(planet)
-        }
+        //this is to clear the field when the fill ellipses are being run. 
+        // if (p.frameCount % 500 === 0) {
+        //     p.clear()
+        //     p.background('grey');
+        //     // planet = new Orbit(p.random(width), p.random(height), p.random(1, 15), p.random(255), p.random(30))
+        //     // drawings.push(planet)
+        // }
 
     }
 
@@ -80,7 +119,7 @@ export default function sketch33(p) {
         if (drawings.length < 10) {
             ///temporarily changed this from Orbit, to Orbit 2, just to test interactions/appearance
             planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(30))) //this last number is the limitpoint
-            drawOne = new StraightDrawing(width / 2, height / 2, 3, p.random(colorOptions), p.floor(p.random(3, 32)))
+            drawOne = new StraightDrawing(width / 2, height / 2, 3, p.color(p.random(255, p.random(255), p.random(255))), p.floor(p.random(3, 32)))
 
             drawings.push(planet)
             drawings.push(drawOne) //having the drawing added last means it will still be visible over the larger fill objects of the Orbit elements
