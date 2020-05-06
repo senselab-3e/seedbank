@@ -31,7 +31,7 @@ export default function sketch33(p) {
 
 
     p.draw = function () {
-        p.background('grey');
+        //p.background('grey'); // bring back the background to see Orbit3 drawings. 
         // drawing3.update()
         // drawing3.show()
 
@@ -62,7 +62,7 @@ export default function sketch33(p) {
 
         if (drawings.length < 5) {
             ///temporarily changed this from Orbit, to Orbit 2, just to test interactions/appearance
-            planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(3, 32)))
+            planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(10, 30))) //this last number is the limitpoint
             drawings.push(planet)
         } else {
             drawings.splice(0, 1);
@@ -233,8 +233,9 @@ export default function sketch33(p) {
             this.color = color
             this.limitNum = limit
             this.vel = p5.Vector.random2D() // this gives a unit vector and it is 1. i then scale it up from one. random direction /// static function
-            this.vel.mult(5) //this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
+            this.vel.mult(p.random(10)) //// I changed this from a steady value of 5 //this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
             this.prev = this.pos.copy()
+
             //this.acc.setMag(0.01)
         }
 
@@ -243,22 +244,22 @@ export default function sketch33(p) {
         update() {
             //random walk with acceleration
             // this.acc = p5.Vector.random2D()
-            // this.vel.add(this.acc) // adding x,y
-            // this.vel.limit(2)
-            // this.pos.add(this.vel)
+            // this.vel.add(this.acc) // adding x,y0000000000
 
             //
 
-            let mouse = p.createVector(p.mouseX, p.mouseY);
+            let mouse = p.createVector(p.mouseX, p.mouseY); // at 
             this.prev.set(mouse) /// this value is continually being retreived so i can use it to update the 'previous position before acceleration and velocity or applied.... 
             //this.prev = mouse.set()
             this.acc = p5.Vector.sub(mouse, this.pos);
             this.acc.setMag(1);
 
             this.vel.add(this.acc);
-            this.vel.limit(this.limitNum); // max radius from mouse
+            this.vel.limit(this.limitNum); // max radius from mouse /// this is working
             this.pos.add(this.vel);
+            //this.pos.limit(this.limitNum);
             //new
+
 
         }
 
@@ -275,22 +276,41 @@ export default function sketch33(p) {
             // p.ellipse(this.pos.x, this.pos.y, 20)
             p.pop()
 
-            p.push()
 
-            //p.fill(this.color)
+            //the below works // you just have to takeaway the background color being redrawn
+            // p.push()
             // p.strokeWeight(1)
             // p.stroke(this.color)
 
-            //the below works
-            //p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y)
+            // p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y)
+            // p.pop()
 
+
+            //experiment based on above single line movements - but with a 'center' for the rotation that is shifted and offset
+            p.push()
+
+            //doubling shadowing
+            p.strokeWeight(this.size)
+            p.stroke(this.color)
+            p.translate(this.pos.x, this.pos.y); ///take this away if you don't want to disorient the center of where the lines are drawn.
+            p.rotate(p.PI / 30.0);
+            p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y)
+            p.pop()
+
+            //slightly interesting mirroring
+            // p.push()
+            // p.angleMode(p.DEGREES)
+            // p.strokeWeight(this.size)
+            // p.stroke(this.color)
+            // p.translate(width / 2, height / 2); ///take this away if you don't want to disorient the center of where the lines are drawn.
+            // p.rotate(180);
+            // p.line(this.prev.x, this.prev.y, this.pos.x, this.pos.y)
+            // p.pop()
 
             //experiment
             p.beginShape()
             p.fill(this.color)
             p.noStroke()
-
-
             //accidental inverse
             // p.bezierVertex(this.prev.x, this.pos.y, width / 4, height / 4, this.prev.y, this.pos.x)
             // p.vertex(this.prev.x, this.prev.y)
@@ -304,13 +324,20 @@ export default function sketch33(p) {
             //something pretty-ish. declaring vertex twice makes it a bit bigger. that's why i tried multiplying the xy pos in a single line, to see if i could get the same effect. the movemetns are much smaller when only declared once.
             //p.vertex(this.pos.x, this.pos.y)
             ////p.vertex(this.pos.x, this.pos.y)
-            p.vertex(this.pos.x * 1.5, this.pos.y * 1.5)
-            p.bezierVertex(this.pos.x, this.prev.y, this.pos.y, this.pos.x, this.prev.x, this.prev.y)
+            // p.vertex(this.pos.x, this.pos.y)
+            // p.bezierVertex(this.pos.x, this.prev.y, this.pos.y, this.pos.x, this.prev.x, this.prev.y)
+            // p.endShape();
+
+
+            //
+            p.vertex(this.pos.x, this.pos.y)
+            p.bezierVertex(this.pos.x, this.prev.y, this.prev.y, this.pos.x, this.prev.x, this.prev.y)
+
+            p.endShape();
+
             // p.bezierVertex(this.prev.y, this.prev.y, this.pos.y, this.prev.x, this.prev.x, this.pos.x)
             // p.bezierVertex(this.prev.x, this.pos.y, this.pos.y, this.pos.x, this.pos.x, this.prev.y)
             // p.bezierVertex(this.prev.y, this.pos.y, this.pos.x, this.prev.y, this.prev.y, this.prev.x)
-            p.endShape();
-            // this.prev.set(this.pos)
             p.pop()
             // p.beginShape()
             // p.vertex(this.prev.x, this.prev.y);
