@@ -34,16 +34,30 @@ export default function sketch34(p) {
     }
 
 
-    let incr = 1
+    let incr = 0.5 /// increment that the color values increase or decrease by, when they hit their limit
     let direc = 1
-    let colorAmount = 0 * incr
 
-    //depending on where i set these initial amounts, i can kind of scope
+    //depending on where i set these initial amounts, i can kind of scope the color spectrums in the later incremental shifts of these values, will work through
 
     let colorParam = {
-        r: 130,
-        g: 50,
-        b: 200
+        r: p.random(255),
+        g: p.random(255),
+        b: p.random(255)
+    }
+
+    let colorParam2 = {
+        r: {
+            color: p.random(255),
+            direc: 1
+        },
+        g: {
+            color: p.random(255),
+            direc: 1
+        },
+        b: {
+            color: p.random(255),
+            direc: 1
+        }
     }
 
 
@@ -58,75 +72,61 @@ export default function sketch34(p) {
         // secondVect.show() /// this would be the initial fill object orbit -- disabling for the moment
         // secondVect.update()
 
-        //this is the more basic mess to figure out the logic of how to draw the vector lines between prev and current position. it is then cleaned up and extracted into the Orbit constructor
-        // p.push()
-        // p.stroke('yellow')
-        // p.strokeWeight(1)
-        // p.line(pos2.x, pos2.y, prev.x, prev.y);
-        // //before i add step to pause
-        // prev.set(pos2) // and set copies on top of an existing vector
-        // let vel2 = p5.Vector.random2D();
-        // vel2.mult(5)
-        // pos2.add(vel2)
+
         p.noFill()
 
-        p.push()
-        p.noStroke()
+        //if i want it to scan through just  one particular color spectrum, this version works (aka without having to have 3 separate increment values tied to each individual color value)
 
-        // if (colorAmount > 255) {
-        //     direc = -1
+        // function checkNum(num) {
 
+        //     if (num > 255) {
+        //         direc = -1
+        //     }
+
+        //     if (num < 0) {
+        //         direc = 1
+        //     }
         // }
 
-        // if (colorAmount < 0) {
-        //     direc = 1
-        // }
+        ///if i want it to move through alll the colors - then this way of working, is best. 
 
-        function checkNum(num) {
-            if (num > 255) {
-                direc = -1
-
+        function checkNum2(num) {
+            console.log(num.color, num.direc)
+            if (num.color > 255) {
+                num.direc = -1
             }
 
-            if (num < 0) {
-                direc = 1
+            if (num.color < 0) {
+                num.direc = 1
             }
         }
 
-        checkNum(colorParam.r)
-        checkNum(colorParam.g)
-        checkNum(colorParam.b)
+        checkNum2(colorParam2.r)
+        checkNum2(colorParam2.g)
+        checkNum2(colorParam2.b)
+        // checkNum(colorParam.r)
+        // checkNum(colorParam.g)
+        // checkNum(colorParam.b)
 
         //colorAmount += incr * direc
-        colorParam.r += incr * direc
-        colorParam.g += incr * direc
-        colorParam.b += incr * direc
 
-        console.log(colorParam)
+        // colorParam.r += incr * direc
+        // colorParam.g += incr * direc
+        // colorParam.b += incr * direc
 
-        // if (p.frameCount % 15 === 0 && colorAmount < 255) {
-        //     colorAmount += 1 * incr
-        // }
-        //p.fill(colorAmount, 255, 255)
-        p.fill(colorParam.r, colorParam.g, colorParam.b)
+        colorParam2.r.color += incr * colorParam2.r.direc
+        colorParam2.g.color += incr * colorParam2.g.direc
+        colorParam2.b.color += incr * colorParam2.b.direc
+
+        //console.log(colorParam2.r.direc)
+
+        p.push()
+        p.noStroke()
+        //p.fill(colorParam.r, colorParam.g, colorParam.b)
+        p.fill(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color)
         p.ellipse(width / 2, height / 2, width / 4, height / 4)
         p.pop()
-        // p.pop()
 
-        // display() {
-        //     colorAmount += incr * this.direc
-        //     
-        //     p.fill(colorAmount, 255, 255);
-        //   }
-        // update() {
-        //     if (colorAmount > 255) {
-        //         this.direc = -1
-        //     
-        //     }
-        //     if (colorAmount < 0) {
-        //         this.direc = 1
-        //     }
-        // }
 
         for (let index = 0; index < drawings.length; index++) {
             drawings[index].update()
