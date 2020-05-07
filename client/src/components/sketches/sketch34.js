@@ -29,8 +29,8 @@ export default function sketch34(p) {
         //secondVect = new Orbit2(width / 2, height / 2, 3, p.random(colorOptions), p.floor(p.random(3, 32)))
         //secondVect was an inital fill object orbit i'm disabling for th moment 
 
-        drawOne = new StraightDrawing(width / 2, height / 2, 3, 'white', p.floor(p.random(3, 32)))
-        drawings.push(drawOne)
+        //triangle = new TriangleDrawing(width / 2, height / 2, 3, 'white', p.floor(p.random(3, 32)))
+        //drawings.push(triangle)
     }
 
 
@@ -152,7 +152,7 @@ export default function sketch34(p) {
 
     }
     let slowDraw
-    let drawOne
+    let triangle
     let lineOrbit
     let planet
     let cube
@@ -163,15 +163,15 @@ export default function sketch34(p) {
         ///temporarily changed this from Orbit, to Orbit 2, just to test interactions/appearance
         //this is cool. now when you click, the element created is in phase with whichever color was currently showing on the central ellipse that is always cycling through various colors. 
         planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), p.floor(p.random(30))) //this last number is the limitpoint
-        drawOne = new StraightDrawing(p.random(100, width), p.random(100, height), 3, p.color(p.random(255, p.random(255), p.random(255))), p.floor(p.random(3, 32)))
+        triangle = new TriangleDrawing(p.random(100, width), p.random(100, height), 3, p.color(p.random(255, p.random(255), p.random(255))), p.floor(p.random(3, 32)))
         lineOrbit = new Orbit(p.mouseX, p.mouseY, p.floor(p.random(2, 7)), p.color(colorParam2.g.color, colorParam2.r.color, colorParam2.b.color), 30) //this last number is the limitpoint // and it makes a big difference on how far out the oscillations go
         slowDraw = new SlowLine(p.random(100, width), p.random(100, height), 3, p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), p.floor(p.random(3, 32)))
-        cube = new CubeDrawing(p.mouseX, p.mouseY, p.random(1, 5), p.random(255), width);
+        cube = new CubeDrawing(p.mouseX, p.mouseY, p.random(1, 5), p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), width);
         drawings.push(cube)
         drawings.push(slowDraw)
         drawings.push(planet)
         drawings.push(lineOrbit)
-        drawings.push(drawOne) //having the drawing added last means it will still be visible over the larger fill objects of the Orbit elements
+        drawings.push(triangle) //having the drawing added last means it will still be visible over the larger fill objects of the Orbit elements
         //} else {
         //drawings.splice(0, 1);
         // planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(3, 32)))
@@ -406,7 +406,7 @@ export default function sketch34(p) {
 
     }
 
-    class StraightDrawing {
+    class TriangleDrawing {
         constructor(x, y, size, color, limit) {
             this.pos = p.createVector(x, y)
             this.size = size;
@@ -551,6 +551,7 @@ export default function sketch34(p) {
             this.pos = p.createVector(x, y)
             this.size = size;
             this.color = color
+            this.fill = p.random(255)
             this.limitNum = limit
             this.vel = p5.Vector.random2D() // this gives a unit vector and it is 1. i then scale it up from one. random direction /// static function
             this.vel.mult(5) //this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
@@ -560,9 +561,9 @@ export default function sketch34(p) {
         }
 
         update() {
-            let ran = 1000 //p.floor(p.random(10, 50))
+            let ran = 50 //p.floor(p.random(10, 50))
 
-            if (p.frameCount % 50 === 0) {
+            if (p.frameCount % ran === 0) {
                 this.prevprev.set(this.prev)
                 this.prev.set(this.pos)
                 this.vel = p5.Vector.random2D();
@@ -575,15 +576,38 @@ export default function sketch34(p) {
         }
         show() {
 
+            let squareSpace = 200
+            /// this value, in relation to the num used in the mult above, can help you maintain more of a equadistant square appearance in the drawing
+
+
+            //NOTE: below is a line based way... that has the same coordinates of the vertex cube drawn below. but if i ever want to deconstruct the squares being drawn, these line based ways will be useful. 
+
+            // p.push()
+            // p.stroke(p.color(this.color))
+
+            // p.strokeWeight(this.size)
+            // //p.line(this.prev.x + 100, this.pos.y, this.prev.x + 100, this.prev.y + 100);
+            // p.line(this.pos.x + squareSpace, this.pos.y + squareSpace, this.prev.x + squareSpace, this.prev.y + squareSpace);
+            // p.line(this.prev.x + squareSpace, this.prev.y + squareSpace, this.prev.x, this.prev.y);
+            // p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y);
+            // p.line(this.pos.x + squareSpace, this.pos.y + squareSpace, this.pos.x, this.pos.y)
+            // p.pop()
+
             p.push()
-            let squareSpace = 200 /// this value, in relation to the num used in the mult above, can help you maintain more of a equadistant square appearance in the drawing
-            p.stroke(this.color)
-            p.strokeWeight(this.size)
-            //p.line(this.prev.x + 100, this.pos.y, this.prev.x + 100, this.prev.y + 100);
-            p.line(this.pos.x + squareSpace, this.pos.y + squareSpace, this.prev.x + squareSpace, this.prev.y + squareSpace);
-            p.line(this.prev.x + squareSpace, this.prev.y + squareSpace, this.prev.x, this.prev.y);
-            p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y);
-            p.line(this.pos.x + squareSpace, this.pos.y + squareSpace, this.pos.x, this.pos.y)
+            p.noStroke()
+            //p.stroke(this.color)  //this will be colorization relative to the ellipse color at the moment the canvas was clicked
+            p.fill(p.color(this.fill, 80))
+            p.beginShape()
+
+
+            p.vertex(this.pos.x + squareSpace, this.pos.y + squareSpace);
+            //this.prev.x + squareSpace, this.prev.y + squareSpace
+            p.vertex(this.prev.x + squareSpace, this.prev.y + squareSpace);
+            p.vertex(this.prev.x, this.prev.y)
+            p.vertex(this.pos.x, this.pos.y);
+            //p.vertex(this.prev.x, this.prev.y)
+            p.vertex(this.pos.x + squareSpace, this.pos.y + squareSpace);
+            p.endShape()
             p.pop()
 
 
