@@ -6,7 +6,7 @@ export default function sketch34(p) {
 
     var width = 900
     var height = 900
-    let planet
+
 
     let colorOptions = ['yellow', 'orange', 'cornflowerblue', 'lightgreen', 'magenta', 'navy', 'purple']
 
@@ -14,8 +14,7 @@ export default function sketch34(p) {
     let pos2
     let prev
     let secondVect
-    let drawOne
-    let lineOrbit
+
 
     p.setup = function () {
 
@@ -152,6 +151,10 @@ export default function sketch34(p) {
         // }
 
     }
+    let slowDraw
+    let drawOne
+    let lineOrbit
+    let planet
 
     p.mousePressed = function () {
         // if i want to create a limit on how many objects are being added, I can comment back in this bit
@@ -161,6 +164,9 @@ export default function sketch34(p) {
         planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), p.floor(p.random(30))) //this last number is the limitpoint
         drawOne = new StraightDrawing(p.random(100, width), p.random(100, height), 3, p.color(p.random(255, p.random(255), p.random(255))), p.floor(p.random(3, 32)))
         lineOrbit = new Orbit(p.mouseX, p.mouseY, p.floor(p.random(2, 7)), p.color(colorParam2.g.color, colorParam2.r.color, colorParam2.b.color), 30) //this last number is the limitpoint // and it makes a big difference on how far out the oscillations go
+        slowDraw = new SlowLine(p.random(100, width), p.random(100, height), 3, p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), p.floor(p.random(3, 32)))
+
+        drawings.push(slowDraw)
         drawings.push(planet)
         drawings.push(lineOrbit)
         drawings.push(drawOne) //having the drawing added last means it will still be visible over the larger fill objects of the Orbit elements
@@ -412,8 +418,8 @@ export default function sketch34(p) {
         }
 
         update() {
+            let ran = p.floor(p.random(10, 50))
 
-            let ran = p.floor(p.random(10, 150))
             if (p.frameCount % ran === 0) {
                 this.prevprev.set(this.prev)
                 this.prev.set(this.pos)
@@ -438,7 +444,6 @@ export default function sketch34(p) {
 
             p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y); /// this.pos is vector info------ so i can't just add a number to it
 
-
             p.pop()
 
             p.push()
@@ -446,10 +451,64 @@ export default function sketch34(p) {
             p.strokeWeight(1)
 
             p.line(this.prev.x, this.prev.y, this.prevprev.x, this.prevprev.y); /// this.pos is vector info------ so i can't just add a number to it
+            p.line(this.prevprev.x, this.prevprev.y, this.pos.x, this.pos.y)
+            p.pop()
+
+            //this.prevprev.x += this.incr;
+
+        }
+    }
+
+
+    //need to trouble shoot all this weirdness tomorrow.
+    class SlowLine {
+        constructor(x, y, size, color, limit) {
+            this.pos = p.createVector(x, y)
+            this.size = size;
+            this.color = color
+            this.limitNum = limit
+            this.vel = p5.Vector.random2D() // this gives a unit vector and it is 1. i then scale it up from one. random direction /// static function
+            this.vel.mult(p.random(3)) //this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
+            //this.prev = this.pos.copy()
+            this.incr = 0.01
+        }
+
+        update() {
+
+
+
+            // this.prevprev.set(this.prev)
+            // this.prev.set(this.pos)
+            this.vel = p5.Vector.random2D();
+            this.vel.mult(5) // before this was a random number so i was jumping all over the place much much more. now it's more of a soft vibrate.
+            //console.log(p.noise(this.incr) * p.random(width))
+            this.vel.limit(10);
+            this.pos.add(this.vel)
+
+
+
+            // this.steps += 0.01;
+        }
+        show() {
+
+            p.push()
+            // p.stroke(this.color)
+            p.stroke(this.color)
+            p.strokeWeight(1)
+
+            p.line(this.pos.x, this.pos.y, this.pos.y, this.pos.x); /// this.pos is vector info------ so i can't just add a number to it
 
             p.pop()
 
-            this.prevprev.x += this.incr;
+            // p.push()
+            // p.stroke(100)
+            // p.strokeWeight(1)
+
+            // p.line(this.prev.x, this.prev.y, this.prevprev.x, this.prevprev.y); /// this.pos is vector info------ so i can't just add a number to it
+            // p.line(this.prevprev.x, this.prevprev.y, this.pos.x, this.pos.y)
+            // p.pop()
+
+            //this.prevprev.x += this.incr;
 
             // p.beginShape()
             // p.vertex(this.pos.x, this.pos.y)
