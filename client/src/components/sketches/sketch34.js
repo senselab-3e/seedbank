@@ -454,6 +454,29 @@ export default function sketch34(p) {
             p.line(this.prevprev.x, this.prevprev.y, this.pos.x, this.pos.y)
             p.pop()
 
+
+            ///square attempt
+
+            p.push()
+            // p.stroke(this.color)
+            p.stroke(255)
+            p.strokeWeight(1)
+
+            p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y); /// this.pos is vector info------ so i can't just add a number to it
+
+            p.pop()
+
+            // //working towards making a square but will return to tomorrow morning
+            // p.push()
+            // p.stroke('orange')
+            // p.strokeWeight(1)
+            // p.line(this.pos.x, this.pos.y, this.prev.x + 100, this.prev.y + 100);
+            // p.line(this.pos.x + 100, this.pos.y + 100, this.prev.x + 100, this.prev.y + 100);
+            // //p.line(this.pos.x, this.pos.y + 100, this.prev.x + 100, this.prev.y + 100);
+            // // p.line(this.prev.x, this.prev.y, this.prevprev.x, this.prevprev.y); /// this.pos is vector info------ so i can't just add a number to it
+            // // p.line(this.prevprev.x, this.prevprev.y, this.pos.x, this.pos.y)
+            // p.pop()
+
             //this.prevprev.x += this.incr;
 
         }
