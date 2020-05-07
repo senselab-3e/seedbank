@@ -15,6 +15,7 @@ export default function sketch34(p) {
     let prev
     let secondVect
     let drawOne
+    let lineOrbit
 
     p.setup = function () {
 
@@ -122,11 +123,11 @@ export default function sketch34(p) {
         // colorParam.b += incr * direc
 
         //if i want to slow down how quickly the color changes- i can do it by only calling it on certain divisibles of the framecount.
-        //if (p.frameCount % 100 === 0) {
-        colorParam2.r.color += incr * colorParam2.r.direc
-        colorParam2.g.color += incr * colorParam2.g.direc
-        colorParam2.b.color += incr * colorParam2.b.direc
-        //}
+        if (p.frameCount % 100 === 0) {
+            colorParam2.r.color += incr * colorParam2.r.direc
+            colorParam2.g.color += incr * colorParam2.g.direc
+            colorParam2.b.color += incr * colorParam2.b.direc
+        }
         //console.log(colorParam2.r.direc)
 
         p.push()
@@ -157,9 +158,10 @@ export default function sketch34(p) {
         if (drawings.length < 10) {
             ///temporarily changed this from Orbit, to Orbit 2, just to test interactions/appearance
             planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(30))) //this last number is the limitpoint
-            drawOne = new StraightDrawing(width / 2, height / 2, 3, p.color(p.random(255, p.random(255), p.random(255))), p.floor(p.random(3, 32)))
-
+            drawOne = new StraightDrawing(p.random(100, width), p.random(100, height), 3, p.color(p.random(255, p.random(255), p.random(255))), p.floor(p.random(3, 32)))
+            lineOrbit = new Orbit(p.mouseX, p.mouseY, p.floor(p.random(2, 7)), p.random(colorOptions), 30) //this last number is the limitpoint // and it makes a big difference on how far out the oscillations go
             drawings.push(planet)
+            drawings.push(lineOrbit)
             drawings.push(drawOne) //having the drawing added last means it will still be visible over the larger fill objects of the Orbit elements
         } else {
             drawings.splice(0, 1);
@@ -197,17 +199,28 @@ export default function sketch34(p) {
 
             //
 
-            let mouse = p.createVector(p.mouseX, p.mouseY);
-            // this.prev.set(mouse) /// this value is continually being retreived so i can use it to update the 'previous position before acceleration and velocity or applied.... 
-            //this.prev = mouse.set()   /// this will create this kind of swinging pendulum line drawing from current mouse position and the inertia position calulated later for the pos value
-            this.prev.set(this.pos)
+
+            let mouse = p.createVector(p.mouseX, p.mouseY); // at 
+            this.prev.set(mouse) /// this value is continually being retreived so i can use it to update the 'previous position before acceleration and velocity or applied.... 
+            //this.prev = mouse.set()
             this.acc = p5.Vector.sub(mouse, this.pos);
             this.acc.setMag(1);
 
             this.vel.add(this.acc);
-            this.vel.limit(this.limitNum); // max radius from mouse
+            this.vel.limit(this.limitNum); // max radius from mouse /// this is working
             this.pos.add(this.vel);
-            // console.log(this.pos.x, this.prev.x, this.prev.x, this.prev.y)
+
+            // let mouse = p.createVector(p.mouseX, p.mouseY);
+            // // this.prev.set(mouse) /// this value is continually being retreived so i can use it to update the 'previous position before acceleration and velocity or applied.... 
+            // //this.prev = mouse.set()   /// this will create this kind of swinging pendulum line drawing from current mouse position and the inertia position calulated later for the pos value
+            // this.prev.set(this.pos)
+            // this.acc = p5.Vector.sub(mouse, this.pos);
+            // this.acc.setMag(1);
+
+            // this.vel.add(this.acc);
+            // this.vel.limit(this.limitNum); // max radius from mouse
+            // this.pos.add(this.vel);
+            // // console.log(this.pos.x, this.prev.x, this.prev.x, this.prev.y)
 
             // console.log(this.pos.x, this.prev.x, this.prev.x, this.prev.y)
             //new
@@ -229,12 +242,22 @@ export default function sketch34(p) {
 
             p.push()
 
-            //p.fill(this.color)
+            //doubling shadowing
             p.strokeWeight(this.size)
             p.stroke(this.color)
+            p.translate(this.pos.x, this.pos.y); ///take this away if you don't want to disorient the center of where the lines are drawn.
+            p.rotate(p.PI / 90.0);
             p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y)
-            // this.prev.set(this.pos)
             p.pop()
+
+            // p.push()
+
+            // //p.fill(this.color)
+            // p.strokeWeight(this.size)
+            // p.stroke(this.color)
+            // p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y)
+            // // this.prev.set(this.pos)
+            // p.pop()
             // p.beginShape()
             // p.vertex(this.prev.x, this.prev.y);
             // p.vertex(this.pos.x, this.pos.y);
@@ -247,76 +270,6 @@ export default function sketch34(p) {
 
 
     //p5 mult is scalar multiplier - rather then multiplying 2 vectores. so it's p.x * 2 
-
-    class DotDrawing {
-        constructor(x, y, size, color) {
-            // this.x = x;
-            // this.y = y;
-            this.pos = p.createVector(x, y)
-            //velocity
-            this.size = size;
-            this.color = color
-            this.vel = p.createVector(1, 0)
-
-        }
-
-        update() {
-            // this.pos.x += this.vel.x //p.random(-1, 1) 
-            // this.pos.y += this.vel.y //p.random(-1, 1)
-            // i can't add two vectors together --- or JS doesn't know how. but the add() does
-            this.pos.add(this.vel) // this does the same as the 2 scripts += this.vel.x, etc
-            // this.vel.x += 0.001
-            // this.vel.y -= 0.001
-        }
-        show() {
-            p.strokeWeight(this.size)
-            p.stroke(this.color)
-            p.point(this.pos.x, this.pos.y)
-        }
-    }
-
-    class VectorDrawing {
-        constructor(x, y, size, color) {
-            // this.x = x;
-            // this.y = y;
-            this.pos = p.createVector(x, y)
-            //velocity
-            this.size = size;
-            this.color = color
-            //instead of new p5 vector = create vector is just a unique syntax to p5
-            this.vel = p5.Vector.random2D() // random direction /// static function
-            //instance method mult
-            //understanding the static function is useful if you want to equate the result of adding two values together, and not have the value it is being used with, called upon that value --in such a way that would have that value continually updating.  /// so if i don't want let newPos = pos.add(something) // because it's not a static function, the valeu of newPos would always be updating
-            //so let newPos = p5.Vector.add(pos,vel) --- call static version of add stored under the name space of p5 vectorClass
-            //see examples in add() in p5 documentation
-            this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
-        }
-
-        update() {
-            // this.pos.x += this.vel.x //p.random(-1, 1)
-            // this.pos.y += this.vel.y //p.random(-1, 1)
-            // i can't add two vectors together --- or JS doesn't know how. but the add() does
-
-            this.pos.add(this.vel)
-
-
-            // this.vel.x += 0.001
-            // this.vel.y -= 0.001
-        }
-        show() {
-            // p.strokeWeight(this.size)
-            p.push()
-            p.noStroke()
-            p.fill(this.color)
-            p.ellipse(this.pos.x, this.pos.y, this.size)
-            p.pop()
-        }
-
-    }
-
-
-
-
 
 
     //>> STASHING THIS VERSION
@@ -332,6 +285,7 @@ export default function sketch34(p) {
             this.vel = p5.Vector.random2D() // this gives a unit vector and it is 1. i then scale it up from one. random direction /// static function
             this.vel.mult(p.random(10)) //// I changed this from a steady value of 5 //this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
             this.prev = this.pos.copy()
+
 
             //this.acc.setMag(0.01)
         }
@@ -361,17 +315,17 @@ export default function sketch34(p) {
         }
 
         show() {
-            //p.stroke(255)
+            // p.stroke(255)
             // p.strokeWeight(5)
             // p.stroke(this.color)
             // p.point(this.pos.x, this.pos.y, this.size)
-            //p.strokeWeight(5)
+            // p.strokeWeight(5)
 
-            p.push()
-            p.noStroke()
-            p.fill(p.random(255))
+            // p.push()
+            // p.noStroke()
+            // p.fill(this.color)
             // p.ellipse(this.pos.x, this.pos.y, 20)
-            p.pop()
+            // p.pop()
 
 
             //the below works // you just have to takeaway the background color being redrawn
@@ -384,15 +338,15 @@ export default function sketch34(p) {
 
 
             //experiment based on above single line movements - but with a 'center' for the rotation that is shifted and offset
-            p.push()
+            // p.push()
 
-            //doubling shadowing
-            p.strokeWeight(this.size)
-            p.stroke(this.color)
-            p.translate(this.pos.x, this.pos.y); ///take this away if you don't want to disorient the center of where the lines are drawn.
-            p.rotate(p.PI / 30.0);
-            p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y)
-            p.pop()
+            // //doubling shadowing
+            // p.strokeWeight(this.size)
+            // p.stroke(this.color)
+            // p.translate(this.pos.x, this.pos.y); ///take this away if you don't want to disorient the center of where the lines are drawn.
+            // p.rotate(p.PI / 90.0);
+            // p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y)
+            // p.pop()
 
             //slightly interesting mirroring
             // p.push()
@@ -436,11 +390,7 @@ export default function sketch34(p) {
             // p.bezierVertex(this.prev.y, this.prev.y, this.pos.y, this.prev.x, this.prev.x, this.pos.x)
             // p.bezierVertex(this.prev.x, this.pos.y, this.pos.y, this.pos.x, this.pos.x, this.prev.y)
             // p.bezierVertex(this.prev.y, this.pos.y, this.pos.x, this.prev.y, this.prev.y, this.prev.x)
-            p.pop()
-            // p.beginShape()
-            // p.vertex(this.prev.x, this.prev.y);
-            // p.vertex(this.pos.x, this.pos.y);-
-            // p.endShape()
+
             // this.prev.set(this.pos)
         }
 
@@ -460,16 +410,19 @@ export default function sketch34(p) {
         }
 
         update() {
-            this.prev.set(this.pos)
-            this.vel = p5.Vector.random2D();
-            this.vel.mult(p.random(5, 35))
-            //console.log(p.noise(this.incr) * p.random(width))
-            //this.vel.mult(p.noise(this.incr) * p.random(width / 2)) // this is kind of doing abrupt jagged drawings. not ideal for this sketch, but maybe useful for others
 
-            //this.vel.limit(50); /// NOTE : investigate if this limit is spilling over into the other elements
-            this.pos.add(this.vel)
+            let ran = p.floor(p.random(10, 100))
+            if (p.frameCount % ran === 0) {
+                this.prev.set(this.pos)
+                this.vel = p5.Vector.random2D();
+                this.vel.mult(p.random(5, 35))
+                //console.log(p.noise(this.incr) * p.random(width))
+                //this.vel.mult(p.noise(this.incr) * p.random(width / 2)) // this is kind of doing abrupt jagged drawings. not ideal for this sketch, but maybe useful for others
 
+                //this.vel.limit(50); /// NOTE : investigate if this limit is spilling over into the other elements
+                this.pos.add(this.vel)
 
+            }
 
             // this.steps += 0.01;
         }
