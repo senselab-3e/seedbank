@@ -151,7 +151,7 @@ export default function sketch34(p) {
         // }
 
     }
-    let slowDraw
+    let vibrateDiag
     let triangle
     let lineOrbit
     let planet
@@ -165,10 +165,10 @@ export default function sketch34(p) {
         planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), p.floor(p.random(30))) //this last number is the limitpoint
         triangle = new TriangleDrawing(p.random(100, width), p.random(100, height), 3, p.color(p.random(255, p.random(255), p.random(255))), p.floor(p.random(3, 32)))
         lineOrbit = new Orbit(p.mouseX, p.mouseY, p.floor(p.random(2, 7)), p.color(colorParam2.g.color, colorParam2.r.color, colorParam2.b.color), 30) //this last number is the limitpoint // and it makes a big difference on how far out the oscillations go
-        slowDraw = new SlowLine(p.random(100, width), p.random(100, height), 3, p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), p.floor(p.random(3, 32)))
+        vibrateDiag = new VibrateLine(p.random(100, width), p.random(100, height), 3, p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), p.floor(p.random(3, 32)))
         cube = new CubeDrawing(p.mouseX, p.mouseY, p.random(1, 5), p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), width);
         drawings.push(cube)
-        drawings.push(slowDraw)
+        drawings.push(vibrateDiag)
         drawings.push(planet)
         drawings.push(lineOrbit)
         drawings.push(triangle) //having the drawing added last means it will still be visible over the larger fill objects of the Orbit elements
@@ -490,7 +490,7 @@ export default function sketch34(p) {
 
 
     //need to trouble shoot all this weirdness tomorrow.
-    class SlowLine {
+    class VibrateLine {
         constructor(x, y, size, color, limit) {
             this.pos = p.createVector(x, y)
             this.size = size;
