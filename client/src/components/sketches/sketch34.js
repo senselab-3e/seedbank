@@ -421,6 +421,7 @@ export default function sketch34(p) {
                 //console.log(p.noise(this.incr) * p.random(width))
                 //this.vel.mult(p.noise(this.incr) * p.random(width / 2)) // this is kind of doing abrupt jagged drawings. not ideal for this sketch, but maybe useful for others
                 //this.vel.limit(50); /// NOTE : investigate if this limit is spilling over into the other elements
+                this.vel.limit(width);
                 this.pos.add(this.vel)
 
             }
