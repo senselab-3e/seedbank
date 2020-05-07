@@ -406,19 +406,20 @@ export default function sketch34(p) {
             this.vel = p5.Vector.random2D() // this gives a unit vector and it is 1. i then scale it up from one. random direction /// static function
             this.vel.mult(5) //this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
             this.prev = this.pos.copy()
-            this.incr = 0.001
+            this.prevprev = this.prev.copy()
+            this.incr = 1
         }
 
         update() {
 
-            let ran = p.floor(p.random(10, 100))
+            let ran = p.floor(p.random(10, 150))
             if (p.frameCount % ran === 0) {
+                this.prevprev.set(this.prev)
                 this.prev.set(this.pos)
                 this.vel = p5.Vector.random2D();
-                this.vel.mult(p.random(5, 35))
+                this.vel.mult(p.random(5, 135))
                 //console.log(p.noise(this.incr) * p.random(width))
                 //this.vel.mult(p.noise(this.incr) * p.random(width / 2)) // this is kind of doing abrupt jagged drawings. not ideal for this sketch, but maybe useful for others
-
                 //this.vel.limit(50); /// NOTE : investigate if this limit is spilling over into the other elements
                 this.pos.add(this.vel)
 
@@ -430,11 +431,24 @@ export default function sketch34(p) {
 
             p.push()
             // p.stroke(this.color)
-            p.stroke('white')
+            p.stroke(255)
             p.strokeWeight(1)
 
-            p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y);
+            p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y); /// this.pos is vector info------ so i can't just add a number to it
+
+
             p.pop()
+
+            p.push()
+            p.stroke(100)
+            p.strokeWeight(1)
+
+            p.line(this.prev.x, this.prev.y, this.prevprev.x, this.prevprev.y); /// this.pos is vector info------ so i can't just add a number to it
+
+            p.pop()
+
+            this.prevprev.x += this.incr;
+
             // p.beginShape()
             // p.vertex(this.pos.x, this.pos.y)
             // p.bezierVertex(200, 200, this.pos.x, this.pos.y, this.prev.x, this.prev.y)
