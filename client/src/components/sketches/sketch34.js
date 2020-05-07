@@ -123,11 +123,11 @@ export default function sketch34(p) {
         // colorParam.b += incr * direc
 
         //if i want to slow down how quickly the color changes- i can do it by only calling it on certain divisibles of the framecount.
-        if (p.frameCount % 100 === 0) {
-            colorParam2.r.color += incr * colorParam2.r.direc
-            colorParam2.g.color += incr * colorParam2.g.direc
-            colorParam2.b.color += incr * colorParam2.b.direc
-        }
+        // if (p.frameCount % 100 === 0) {
+        colorParam2.r.color += incr * colorParam2.r.direc
+        colorParam2.g.color += incr * colorParam2.g.direc
+        colorParam2.b.color += incr * colorParam2.b.direc
+        // }
         //console.log(colorParam2.r.direc)
 
         p.push()
@@ -154,21 +154,22 @@ export default function sketch34(p) {
     }
 
     p.mousePressed = function () {
+        // if i want to create a limit on how many objects are being added, I can comment back in this bit
+        //if (drawings.length < 20) {
+        ///temporarily changed this from Orbit, to Orbit 2, just to test interactions/appearance
+        //this is cool. now when you click, the element created is in phase with whichever color was currently showing on the central ellipse that is always cycling through various colors. 
+        planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), p.floor(p.random(30))) //this last number is the limitpoint
+        drawOne = new StraightDrawing(p.random(100, width), p.random(100, height), 3, p.color(p.random(255, p.random(255), p.random(255))), p.floor(p.random(3, 32)))
+        lineOrbit = new Orbit(p.mouseX, p.mouseY, p.floor(p.random(2, 7)), p.color(colorParam2.g.color, colorParam2.r.color, colorParam2.b.color), 30) //this last number is the limitpoint // and it makes a big difference on how far out the oscillations go
+        drawings.push(planet)
+        drawings.push(lineOrbit)
+        drawings.push(drawOne) //having the drawing added last means it will still be visible over the larger fill objects of the Orbit elements
+        //} else {
+        //drawings.splice(0, 1);
+        // planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(3, 32)))
+        // drawings.push(planet)
 
-        if (drawings.length < 10) {
-            ///temporarily changed this from Orbit, to Orbit 2, just to test interactions/appearance
-            planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(30))) //this last number is the limitpoint
-            drawOne = new StraightDrawing(p.random(100, width), p.random(100, height), 3, p.color(p.random(255, p.random(255), p.random(255))), p.floor(p.random(3, 32)))
-            lineOrbit = new Orbit(p.mouseX, p.mouseY, p.floor(p.random(2, 7)), p.random(colorOptions), 30) //this last number is the limitpoint // and it makes a big difference on how far out the oscillations go
-            drawings.push(planet)
-            drawings.push(lineOrbit)
-            drawings.push(drawOne) //having the drawing added last means it will still be visible over the larger fill objects of the Orbit elements
-        } else {
-            drawings.splice(0, 1);
-            // planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.random(colorOptions), p.floor(p.random(3, 32)))
-            // drawings.push(planet)
-
-        }
+        //}
 
     }
 
