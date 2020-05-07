@@ -65,6 +65,33 @@ export default function sketch34(p) {
         }
     }
 
+    //i'm making this a universal value because i want to be able to pass it to another function to check if the location of the ellipse has been clicked. 
+
+    let ellipseSize = width / 4
+
+    p.drawEllipse = function (colorParam2) {
+
+        //console.log(colorParam2.r.direc)
+
+        p.push()
+        p.noStroke()
+        //p.fill(colorParam.r, colorParam.g, colorParam.b)
+        p.fill(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color)
+        p.ellipse(width / 2, height / 2, ellipseSize, ellipseSize)
+        p.pop()
+    }
+
+
+    p.checkNum4Colors = function (num) {
+        if (num.color > 255) {
+            num.direc = -1
+        }
+
+        if (num.color < 0) {
+            num.direc = 1
+        }
+    }
+
 
     p.draw = function () {
         p.background('grey'); // bring back the background to see Orbit3 drawings. 
@@ -95,20 +122,11 @@ export default function sketch34(p) {
 
         ///if i want it to move through alll the colors - then this way of working, is best. 
 
-        function checkNum2(num) {
-            if (num.color > 255) {
-                num.direc = -1
-            }
+        p.checkNum4Colors(colorParam2.r)
+        p.checkNum4Colors(colorParam2.g)
+        p.checkNum4Colors(colorParam2.b)
 
-            if (num.color < 0) {
-                num.direc = 1
-            }
-        }
-
-
-        checkNum2(colorParam2.r)
-        checkNum2(colorParam2.g)
-        checkNum2(colorParam2.b)
+        ///below is the old method
 
         // checkNum(colorParam.r)
         // checkNum(colorParam.g)
@@ -126,15 +144,8 @@ export default function sketch34(p) {
         colorParam2.g.color += incr * colorParam2.g.direc
         colorParam2.b.color += incr * colorParam2.b.direc
         // }
-        //console.log(colorParam2.r.direc)
 
-        p.push()
-        p.noStroke()
-        //p.fill(colorParam.r, colorParam.g, colorParam.b)
-        p.fill(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color)
-        p.ellipse(width / 2, height / 2, width / 4, height / 4)
-        p.pop()
-
+        p.drawEllipse(colorParam2)
 
         for (let index = 0; index < drawings.length; index++) {
             drawings[index].update()
@@ -165,7 +176,7 @@ export default function sketch34(p) {
 
         posClicked.x = p.mouseX
         posClicked.y = p.mouseY
-        console.log(posClicked)
+        p.ellipseClick(posClicked)
 
 
         // if i want to create a limit on how many objects are being added, I can comment back in this bit
