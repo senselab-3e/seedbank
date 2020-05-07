@@ -96,7 +96,6 @@ export default function sketch34(p) {
         ///if i want it to move through alll the colors - then this way of working, is best. 
 
         function checkNum2(num) {
-            console.log(num.color, num.direc)
             if (num.color > 255) {
                 num.direc = -1
             }
@@ -157,13 +156,24 @@ export default function sketch34(p) {
     let planet
     let cube
 
+    let posClicked = {
+        x: 0,
+        y: 0
+    }
+
     p.mousePressed = function () {
+
+        posClicked.x = p.mouseX
+        posClicked.y = p.mouseY
+        console.log(posClicked)
+
+
         // if i want to create a limit on how many objects are being added, I can comment back in this bit
         //if (drawings.length < 20) {
         ///temporarily changed this from Orbit, to Orbit 2, just to test interactions/appearance
         //this is cool. now when you click, the element created is in phase with whichever color was currently showing on the central ellipse that is always cycling through various colors. 
         planet = new Orbit2(p.mouseX, p.mouseY, p.floor(p.random(1, 5)), p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), p.floor(p.random(30))) //this last number is the limitpoint
-        triangle = new TriangleDrawing(p.random(100, width), p.random(100, height), 3, p.color(p.random(255, p.random(255), p.random(255))), p.floor(p.random(3, 32)))
+        triangle = new TriangleDrawing(p.random(100, width), p.random(100, height), 3, 255, p.floor(p.random(3, 32)))
         lineOrbit = new Orbit(p.mouseX, p.mouseY, p.floor(p.random(2, 7)), p.color(colorParam2.g.color, colorParam2.r.color, colorParam2.b.color), 30) //this last number is the limitpoint // and it makes a big difference on how far out the oscillations go
         vibrateDiag = new VibrateLine(p.random(100, width), p.random(100, height), 3, p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), p.floor(p.random(3, 32)))
         cube = new CubeDrawing(p.mouseX, p.mouseY, p.random(1, 5), p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), width);
@@ -460,8 +470,8 @@ export default function sketch34(p) {
             ///square attempt
 
             p.push()
-            // p.stroke(this.color)
-            p.stroke(255)
+            p.stroke(this.color)
+            //p.stroke(255)
             p.strokeWeight(1)
 
             p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y); /// this.pos is vector info------ so i can't just add a number to it
@@ -546,6 +556,8 @@ export default function sketch34(p) {
         }
     }
 
+    //this one will kind of walk it's progressions, because i'm saving 2 stages of it's past positions. I'll save this, version, even though i want a more slow appearing cube in the long run.
+
     class CubeDrawing {
         constructor(x, y, size, color, limit) {
             this.pos = p.createVector(x, y)
@@ -610,9 +622,10 @@ export default function sketch34(p) {
             p.endShape()
             p.pop()
 
-
-
-
         }
+    }
+
+    p.ellipseClick = function (posClicked) {
+        console.log(posClicked.x)
     }
 }
