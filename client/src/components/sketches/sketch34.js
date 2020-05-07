@@ -34,28 +34,33 @@ export default function sketch34(p) {
     }
 
 
-    let incr = 0.5 /// increment that the color values increase or decrease by, when they hit their limit
-    let direc = 1
+    let incr = 1 /// increment that the color values increase or decrease by, when they hit their limit
+    // let direc = 1 // only needed if using the non object based functions
 
     //depending on where i set these initial amounts, i can kind of scope the color spectrums in the later incremental shifts of these values, will work through
 
-    let colorParam = {
-        r: p.random(255),
-        g: p.random(255),
-        b: p.random(255)
-    }
+    // this is for when i don't actually want to move through the entire color spectrum, but more stay within a particular shade range. i can control that by starting at set amounts. 
+
+    // so if i don't set it to random, but instead have rbg at 50, 200, 70, for example, it will always move through tonalities of a green or a purple.
+    // let colorParam = {
+    //     r: p.random(255),
+    //     g: p.random(255),
+    //     b: p.random(255)
+    // }
+
+    //full spectrum
 
     let colorParam2 = {
         r: {
-            color: p.random(255),
+            color: p.floor(p.random(255)),
             direc: 1
         },
         g: {
-            color: p.random(255),
+            color: p.floor(p.random(255)),
             direc: 1
         },
         b: {
-            color: p.random(255),
+            color: p.floor(p.random(255)),
             direc: 1
         }
     }
@@ -101,9 +106,11 @@ export default function sketch34(p) {
             }
         }
 
+
         checkNum2(colorParam2.r)
         checkNum2(colorParam2.g)
         checkNum2(colorParam2.b)
+
         // checkNum(colorParam.r)
         // checkNum(colorParam.g)
         // checkNum(colorParam.b)
@@ -114,10 +121,12 @@ export default function sketch34(p) {
         // colorParam.g += incr * direc
         // colorParam.b += incr * direc
 
+        //if i want to slow down how quickly the color changes- i can do it by only calling it on certain divisibles of the framecount.
+        //if (p.frameCount % 100 === 0) {
         colorParam2.r.color += incr * colorParam2.r.direc
         colorParam2.g.color += incr * colorParam2.g.direc
         colorParam2.b.color += incr * colorParam2.b.direc
-
+        //}
         //console.log(colorParam2.r.direc)
 
         p.push()
