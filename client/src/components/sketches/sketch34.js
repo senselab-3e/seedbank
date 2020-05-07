@@ -155,6 +155,7 @@ export default function sketch34(p) {
     let drawOne
     let lineOrbit
     let planet
+    let cube
 
     p.mousePressed = function () {
         // if i want to create a limit on how many objects are being added, I can comment back in this bit
@@ -165,7 +166,8 @@ export default function sketch34(p) {
         drawOne = new StraightDrawing(p.random(100, width), p.random(100, height), 3, p.color(p.random(255, p.random(255), p.random(255))), p.floor(p.random(3, 32)))
         lineOrbit = new Orbit(p.mouseX, p.mouseY, p.floor(p.random(2, 7)), p.color(colorParam2.g.color, colorParam2.r.color, colorParam2.b.color), 30) //this last number is the limitpoint // and it makes a big difference on how far out the oscillations go
         slowDraw = new SlowLine(p.random(100, width), p.random(100, height), 3, p.color(colorParam2.r.color, colorParam2.g.color, colorParam2.b.color), p.floor(p.random(3, 32)))
-
+        cube = new CubeDrawing(p.mouseX, p.mouseY, p.random(1, 5), p.random(255), width);
+        drawings.push(cube)
         drawings.push(slowDraw)
         drawings.push(planet)
         drawings.push(lineOrbit)
@@ -442,7 +444,7 @@ export default function sketch34(p) {
             p.stroke(255)
             p.strokeWeight(1)
 
-            p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y); /// this.pos is vector info------ so i can't just add a number to it
+            //p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y); /// this.pos is vector info------ so i can't just add a number to it
 
             p.pop()
 
@@ -468,11 +470,15 @@ export default function sketch34(p) {
 
             // //working towards making a square but will return to tomorrow morning
             // p.push()
+            // let squareSpace = 50
             // p.stroke('orange')
             // p.strokeWeight(1)
-            // p.line(this.pos.x, this.pos.y, this.prev.x + 100, this.prev.y + 100);
-            // p.line(this.pos.x + 100, this.pos.y + 100, this.prev.x + 100, this.prev.y + 100);
-            // //p.line(this.pos.x, this.pos.y + 100, this.prev.x + 100, this.prev.y + 100);
+            // //p.line(this.prev.x + 100, this.pos.y, this.prev.x + 100, this.prev.y + 100);
+            // p.line(this.pos.x + squareSpace, this.pos.y + squareSpace, this.prev.x + squareSpace, this.prev.y + squareSpace);
+            // p.line(this.prev.x + squareSpace, this.prev.y + squareSpace, this.prev.x, this.prev.y);
+            // p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y);
+            // p.line(this.pos.x + squareSpace, this.pos.y + squareSpace, this.pos.x, this.pos.y)
+            // // p.line(this.prev.x, this.prev.y, this.prev.x + 100, this.prev.y + 100)
             // // p.line(this.prev.x, this.prev.y, this.prevprev.x, this.prevprev.y); /// this.pos is vector info------ so i can't just add a number to it
             // // p.line(this.prevprev.x, this.prevprev.y, this.pos.x, this.pos.y)
             // p.pop()
@@ -537,6 +543,52 @@ export default function sketch34(p) {
             // p.vertex(this.pos.x, this.pos.y)
             // p.bezierVertex(200, 200, this.pos.x, this.pos.y, this.prev.x, this.prev.y)
             // p.endShape()
+        }
+    }
+
+    class CubeDrawing {
+        constructor(x, y, size, color, limit) {
+            this.pos = p.createVector(x, y)
+            this.size = size;
+            this.color = color
+            this.limitNum = limit
+            this.vel = p5.Vector.random2D() // this gives a unit vector and it is 1. i then scale it up from one. random direction /// static function
+            this.vel.mult(5) //this.vel.mult(p.random(3)) //random velocity between 0 and 3 // this is a scalar multiplier  /// mult function is called on v
+            this.prev = this.pos.copy()
+            this.prevprev = this.prev.copy()
+            this.incr = 1
+        }
+
+        update() {
+            let ran = 1000 //p.floor(p.random(10, 50))
+
+            if (p.frameCount % 50 === 0) {
+                this.prevprev.set(this.prev)
+                this.prev.set(this.pos)
+                this.vel = p5.Vector.random2D();
+                this.vel.mult(250)
+                this.vel.limit(this.limit);
+                this.pos.add(this.vel)
+            }
+
+            // this.steps += 0.01;
+        }
+        show() {
+
+            p.push()
+            let squareSpace = 200 /// this value, in relation to the num used in the mult above, can help you maintain more of a equadistant square appearance in the drawing
+            p.stroke(this.color)
+            p.strokeWeight(this.size)
+            //p.line(this.prev.x + 100, this.pos.y, this.prev.x + 100, this.prev.y + 100);
+            p.line(this.pos.x + squareSpace, this.pos.y + squareSpace, this.prev.x + squareSpace, this.prev.y + squareSpace);
+            p.line(this.prev.x + squareSpace, this.prev.y + squareSpace, this.prev.x, this.prev.y);
+            p.line(this.pos.x, this.pos.y, this.prev.x, this.prev.y);
+            p.line(this.pos.x + squareSpace, this.pos.y + squareSpace, this.pos.x, this.pos.y)
+            p.pop()
+
+
+
+
         }
     }
 }
