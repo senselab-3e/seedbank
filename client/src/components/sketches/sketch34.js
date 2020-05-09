@@ -81,6 +81,29 @@ export default function sketch34(p) {
         p.pop()
     }
 
+    p.ellipseClick = function (posClicked) {
+        // console.log(posClicked.x)
+        //console.log(width / 2 - ellipseSize / 2)
+        //origin point for the ellipse is width/2 --> 0. so then i have to take have the diameter of the ellipse and plus and minus out from that 0 origin at the center of the canvas (width/2)
+        const ellipseStartX = width / 2 - ellipseSize / 2
+        const ellipseEndX = width / 2 + ellipseSize / 2
+
+        console.log(ellipseStartX, ellipseEndX, posClicked.x)
+        //this goes through a process of testing if the click is in the bounds 
+        if (posClicked.x >= ellipseStartX && posClicked.x <= ellipseEndX) {
+            if (posClicked.y >= ellipseStartX && posClicked.y <= ellipseEndX) {
+                //console.log(true, posClicked.x)
+                console.log(colorParam2.r.color, 'before')
+                colorParam2.r.color = p.floor(p.random(255))
+                console.log(colorParam2.r.color, 'after')
+            } else {
+                console.log(false, 'outside y', posClicked.y)
+            }
+        } else {
+            console.log(false, 'outide x')
+        }
+    }
+
 
     p.checkNum4Colors = function (num) {
         if (num.color > 255) {
@@ -173,6 +196,8 @@ export default function sketch34(p) {
     }
 
     p.mousePressed = function () {
+
+
 
         posClicked.x = p.mouseX
         posClicked.y = p.mouseY
@@ -636,7 +661,5 @@ export default function sketch34(p) {
         }
     }
 
-    p.ellipseClick = function (posClicked) {
-        console.log(posClicked.x)
-    }
+
 }
