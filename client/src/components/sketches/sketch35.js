@@ -48,8 +48,8 @@ export default function sketch35(p) {
     p.setup = function () {
         p.createCanvas(width, height);
         p.background('grey');
-        moverA = new Mover(200, 200);
-        moverB = new Mover(200, 200);
+        moverA = new Mover(200, 200, 2, 'orange');
+        moverB = new Mover(200, 200, 4, 'purple');
         movers.push(moverA)
         movers.push(moverB)
 
@@ -67,6 +67,9 @@ export default function sketch35(p) {
         }
 
         let gravity = p.createVector(0, 0.2);
+
+        let weightA = p5.Vector.mult(gravity, moverA.mass)
+        let weightB = p5.Vector.mult(gravity, moverA.mass)
         // moverA.applyForce(gravity);
         // moverB.applyForce(gravity);
 
@@ -79,7 +82,8 @@ export default function sketch35(p) {
         // moverB.show();
 
         for (let i = 0; i < movers.length; i++) {
-            movers[i].applyForce(gravity)
+            let weight = p5.Vector.mult(gravity, movers[i].mass)
+            movers[i].applyForce(weight)
             movers[i].update();
             movers[i].edges();
             movers[i].show()
@@ -88,21 +92,26 @@ export default function sketch35(p) {
     }
 
     class Mover {
-        constructor(x, y) {
+        constructor(x, y, mass, color) {
             this.pos = p.createVector(x, y);
             //this.vel = p.createVector(0, 0);
             this.vel = p5.Vector.random2D();
             this.vel.mult(p.random(3))
-
+            this.color = color
             this.acc = p.createVector(0, 0);
-            this.radius = 16;
-            this.mass = 1;
+            //this.radius = 16;
+            this.mass = mass;
+            this.radius = p.sqrt(this.mass) * 10 // this is the math for calculating the area oa circle -- rather then just equating the radius to th emass size more arbitraliarily
 
         }
         //all the forces being applied to mass are being accumulated, within this method
 
         applyForce(force) {
-            this.acc.add(force);
+            ///force.div(this.mass) //i want to divide  force by mass, bbut not the actual force vector itself. i want to take a copy of that force vector and divide it by mass /// (rather then applying directly to the vector) // so i need a static function
+            //this.acc.add(force);
+            let f = p5.Vector.div(force, this.mass); /// now this f isn't being applied to the force value
+            //that vector f is what gets applied to the acceleration itself.  
+            this.acc.add(f)
 
         }
 
@@ -134,7 +143,7 @@ export default function sketch35(p) {
         show() {
             p.stroke(255);
             p.strokeWeight(2);
-            p.fill(255, 100);
+            p.fill(this.color);
             p.ellipse(this.pos.x, this.pos.y, this.radius * 2);
         }
 
