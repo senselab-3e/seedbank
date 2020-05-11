@@ -42,6 +42,11 @@ import p5 from "react-p5-wrapper/node_modules/p5";
 //Normal force - the 'N' - is the force perpendicular to the two surfaces in contact
 //it's mag is tied force and material
 //in code land the normal force points up. a constant -- it's not dependent on the weight/dependent on the mass --- but in the case of one particular object i can treat it as constant. 
+
+//Friction force was not proportional to the speed (the magnitude) -- where as drag, is proportional. If you hold something still, there is no drag force on it.
+
+//Drag force = -1 * Constantofdrag * velocitysquared * ˆv -- velocity unit vector
+
 export default function sketch35(p) {
 
 
@@ -52,6 +57,9 @@ export default function sketch35(p) {
     // let moverB;
     let mu = 0.1
     let movers = []
+    let dragC = 0.2
+
+
 
     p.setup = function () {
         p.createCanvas(width, height);
@@ -62,7 +70,7 @@ export default function sketch35(p) {
         // movers.push(moverB)
 
         for (let a = 0; a < 10; a++) {
-            movers[a] = new Mover(p.random(width), 200, p.random(1, 8), p.color(p.random(255), p.random(255), p.random(255)))
+            movers[a] = new Mover(p.random(width), 0, p.random(1, 8), p.color(p.random(255), p.random(255), p.random(255)))
         }
 
     }
@@ -71,38 +79,31 @@ export default function sketch35(p) {
 
         p.background(0);
 
-        if (p.mouseIsPressed) {
-            let wind = p.createVector(0.1, 0);
-            for (let m = 0; m < movers.length; m++) {
-                movers[m].applyForce(wind);
+        for (let mover of movers) {
+
+            if (p.mouseIsPressed) {
+                let wind = p.createVector(0.1, 0);
+
+                mover.applyForce(wind);
+
             }
-        }
 
-        let gravity = p.createVector(0, 0.2);
+            let gravity = p.createVector(0, 0.2);
+            let weight = p5.Vector.mult(gravity, mover.mass)
 
-        // let weightA = p5.Vector.mult(gravity, moverA.mass)
-        // let weightB = p5.Vector.mult(gravity, moverA.mass)
-        // moverA.applyForce(gravity);
-        // moverB.applyForce(gravity);
+            if (mover.pos.y > height / 2) {
+                mover.drag(dragC)
+            }
+            mover.applyForce(weight)
+            mover.update();
+            mover.edges();
+            mover.show()
+            mover.friction()
 
-        // moverA.update();
-        // moverA.edges();
-        // moverA.show();
-
-        // moverB.update();
-        // moverB.edges();
-        // moverB.show();
-
-        for (let i = 0; i < movers.length; i++) {
-            let weight = p5.Vector.mult(gravity, movers[i].mass)
-            movers[i].applyForce(weight)
-            movers[i].update();
-            movers[i].edges();
-            movers[i].show()
-            movers[i].friction()
         }
 
     }
+
 
 
 
@@ -181,7 +182,7 @@ export default function sketch35(p) {
                 friction.normalize();
                 friction.mult(-1)
                 //now need the magnitude // and normal force which is scale by the weight, which is scaled by the mass of the object
-                console.log('friction')
+                //console.log('friction')
 
                 //Magnitude of Friction
                 //mu has been defined up top so it can be grabbed by other functions.
@@ -189,6 +190,23 @@ export default function sketch35(p) {
                 friction.setMag(mu * normal);
                 this.applyForce(friction);
             }
+        }
+
+        drag(c) {
+            let drag = this.vel.copy()
+            //i need the magnitude of the drag force -- speed squared times the coefficient of drag
+            drag.normalize();
+            drag.mult(-1)
+
+            // let c = 0.1; // coefficient of drag /// so if the drag force is too strong, aka if the momentum required to overcome it is too small, then the object can end up moving in the opposite direction
+            //i'm not passing this coefficient value - which determins the strength of the drag, from within the draw funciton, allowing greater flexibility in how much is applied to certain instance objects
+            //how you'd normally write it out, BUT p5 has a function specifically for magnitude squared, so you don't have to write out speed * speed
+            // let speed = this.vel.mag();
+            // drag.setMag(c * speed * speed);
+            let speedSq = this.vel.magSq();
+            drag.setMag(c * speedSq)
+            this.applyForce(drag)
+
         }
 
     }
