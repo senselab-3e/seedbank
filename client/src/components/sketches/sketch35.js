@@ -173,6 +173,8 @@ export default function sketch35(p) {
             let diff = height - (this.pos.y + this.radius);
             //console.log(diff) 
             if (diff < 1) {
+                // a quick and dirty approach to this however, is just to shrink the velocity every time it runs
+                //this.vel.mult(0.95) // but it doesn't take into account an object's mass, so the vector way below is more precise
                 //-1 * u * N * ˆv     so force --- that is a copy of the velocity vectory, normalized to 1, and then multiplied by -1 (reverse)
                 //Direction of Friction
                 let friction = this.vel.copy();
