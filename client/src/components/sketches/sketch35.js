@@ -33,25 +33,37 @@ import p5 from "react-p5-wrapper/node_modules/p5";
 // vel.add(acc)
 //pos.add(vel) /// velocity is the change in position over time. 
 
-
+// Friction  = -1 * u * N * ˆv -- velocity unit vector
+//-1 is the direction of velocity - tied to the ˆv  unit vector pointing in the direction of unit negative one
+// i need to figure out direction and magnitude
+//what is the magnitude of the friction force -- which is the the opposite direction of the velocity. 
+// the co-efficient of friction = u  
+// the strenght of the friction force, based on the material it is. 
+//Normal force - the 'N' - is the force perpendicular to the two surfaces in contact
+//it's mag is tied force and material
+//in code land the normal force points up. a constant -- it's not dependent on the weight/dependent on the mass --- but in the case of one particular object i can treat it as constant. 
 export default function sketch35(p) {
 
 
     var width = 500
     var height = 500
 
-    let moverA;
-    let moverB;
-
+    // let moverA;
+    // let moverB;
+    let mu = 0.1
     let movers = []
 
     p.setup = function () {
         p.createCanvas(width, height);
         p.background('grey');
-        moverA = new Mover(200, 200, 2, 'orange');
-        moverB = new Mover(200, 200, 4, 'purple');
-        movers.push(moverA)
-        movers.push(moverB)
+        // moverA = new Mover(200, 200, 2, 'orange');
+        // moverB = new Mover(200, 300, 4, 'purple');
+        // movers.push(moverA)
+        // movers.push(moverB)
+
+        for (let a = 0; a < 10; a++) {
+            movers[a] = new Mover(p.random(width), 200, p.random(1, 8), p.color(p.random(255), p.random(255), p.random(255)))
+        }
 
     }
 
@@ -68,8 +80,8 @@ export default function sketch35(p) {
 
         let gravity = p.createVector(0, 0.2);
 
-        let weightA = p5.Vector.mult(gravity, moverA.mass)
-        let weightB = p5.Vector.mult(gravity, moverA.mass)
+        // let weightA = p5.Vector.mult(gravity, moverA.mass)
+        // let weightB = p5.Vector.mult(gravity, moverA.mass)
         // moverA.applyForce(gravity);
         // moverB.applyForce(gravity);
 
@@ -87,9 +99,13 @@ export default function sketch35(p) {
             movers[i].update();
             movers[i].edges();
             movers[i].show()
+            movers[i].friction()
         }
 
     }
+
+
+
 
     class Mover {
         constructor(x, y, mass, color) {
@@ -104,7 +120,12 @@ export default function sketch35(p) {
             this.radius = p.sqrt(this.mass) * 10 // this is the math for calculating the area oa circle -- rather then just equating the radius to th emass size more arbitraliarily
 
         }
+
+
         //all the forces being applied to mass are being accumulated, within this method
+
+
+
 
         applyForce(force) {
             ///force.div(this.mass) //i want to divide  force by mass, bbut not the actual force vector itself. i want to take a copy of that force vector and divide it by mass /// (rather then applying directly to the vector) // so i need a static function
@@ -145,6 +166,27 @@ export default function sketch35(p) {
             p.strokeWeight(2);
             p.fill(this.color);
             p.ellipse(this.pos.x, this.pos.y, this.radius * 2);
+        }
+
+        friction() {
+
+            let diff = height - (this.pos.y + this.radius);
+            //console.log(diff) 
+            if (diff < 1) {
+                //-1 * u * N * ˆv     so force --- that is a copy of the velocity vectory, normalized to 1, and then multiplied by -1 (reverse)
+                //Direction of Friction
+                let friction = this.vel.copy();
+                friction.normalize();
+                friction.mult(-1)
+                //now need the magnitude // and normal force which is scale by the weight, which is scaled by the mass of the object
+                console.log('friction')
+
+                //Magnitude of Friction
+                //mu has been defined up top so it can be grabbed by other functions.
+                let normal = this.mass;
+                friction.setMag(mu * normal);
+                this.applyForce(friction);
+            }
         }
 
     }
