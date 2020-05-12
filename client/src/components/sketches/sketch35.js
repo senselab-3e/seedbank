@@ -165,6 +165,15 @@ export default function sketch35(p) {
         }
 
         edges() {
+            // if i don't want it to bounce off the top, get rid of the first condition check related to 0
+            if (this.pos.y <= 0 + this.radius) {
+                this.pos.y = 0 + this.radius;
+                this.vel.y *= 1;
+            }
+            if (this.pos.x <= 0 + this.radius) {
+                this.pos.x = 0 + this.radius;
+                this.vel.x *= 1;
+            }
             if (this.pos.y >= height - this.radius) {
                 this.pos.y = height - this.radius;
                 this.vel.y *= -1;
@@ -249,8 +258,9 @@ export default function sketch35(p) {
 
         attract(mover) {
             let force = p5.Vector.sub(this.pos, mover.pos);
+            // keep in mind this.pos and mover.pos both contain x,y --- so it is subtracting this.pos.x from mover.pos.x and this.pos.y and mover.pos.y 
             let distanceSq = p.constrain(force.magSq(), 100, 1000);
-            let G = 5;
+            let G = 5; //-0.005;
             let strength = (G * (this.mass * mover.mass)) / distanceSq;
             force.setMag(strength);
             mover.applyForce(force);
