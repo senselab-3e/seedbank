@@ -47,6 +47,12 @@ import p5 from "react-p5-wrapper/node_modules/p5";
 
 //Drag force = -1 * Constantofdrag * velocitysquared * ˆv -- velocity unit vector
 
+
+// when calculating a force i need direction , and magnitude. 
+//so the direction is just an arrow point from the object to the attractor 
+// i can get the attractor position using sub()
+//position of the attractor minus the position of the object
+
 export default function sketch35(p) {
 
 
@@ -58,6 +64,7 @@ export default function sketch35(p) {
     let mu = 0.1
     let movers = []
     let dragC = 0.2
+    let attractor;
 
 
 
@@ -70,8 +77,18 @@ export default function sketch35(p) {
         // movers.push(moverB)
 
         for (let a = 0; a < 10; a++) {
-            movers[a] = new Mover(p.random(width), 0, p.random(1, 8), p.color(p.random(255), p.random(255), p.random(255)))
+            //movers[a] = new Mover(p.random(width), 0, p.random(1, 8), p.color(p.random(255), p.random(255), p.random(255)))
+            let x = p.random(width);
+            let y = p.random(height);
+            let m = p.random(5, 30);
+            let color = p.color(p.random(255), p.random(255), p.random(255))
+            movers[a] = new Mover(x, y, m, color);
+
         }
+
+        attractor = new Attractor(width / 2, height / 2, 100);
+        //
+        p.background(0);
 
     }
 
@@ -82,23 +99,33 @@ export default function sketch35(p) {
         for (let mover of movers) {
 
             if (p.mouseIsPressed) {
-                let wind = p.createVector(0.1, 0);
 
-                mover.applyForce(wind);
+                //temporarily disabing wind function
+                // let wind = p.createVector(0.1, 0);
+                // mover.applyForce(wind);
+                attractor.pos.x = p.mouseX;
+                attractor.pos.y = p.mouseY;
+
+
 
             }
+            attractor.attract(mover);
+            attractor.show();
 
             let gravity = p.createVector(0, 0.2);
             let weight = p5.Vector.mult(gravity, mover.mass)
 
-            if (mover.pos.y > height / 2) {
-                mover.drag(dragC)
-            }
-            mover.applyForce(weight)
+            //temporarily disabling this drag funciton because i'm now testing the attractor. 
+            // if (mover.pos.y > height / 2) {
+            //     mover.drag(dragC)
+            // }
+
+            //temporarily disabling. this was the wind effect
+            //mover.applyForce(weight) 
             mover.update();
             mover.edges();
             mover.show()
-            mover.friction()
+            //mover.friction()
 
         }
 
@@ -209,6 +236,31 @@ export default function sketch35(p) {
 
         }
 
+
+
+    }
+
+    class Attractor {
+        constructor(x, y, m) {
+            this.pos = p.createVector(x, y);
+            this.mass = m;
+            this.r = p.sqrt(this.mass) * 2;
+        }
+
+        attract(mover) {
+            let force = p5.Vector.sub(this.pos, mover.pos);
+            let distanceSq = p.constrain(force.magSq(), 100, 1000);
+            let G = 5;
+            let strength = (G * (this.mass * mover.mass)) / distanceSq;
+            force.setMag(strength);
+            mover.applyForce(force);
+        }
+
+        show() {
+            p.noStroke();
+            p.fill(255, 0, 100);
+            p.ellipse(this.pos.x, this.pos.y, this.r * 2);
+        }
     }
 
 
