@@ -11,25 +11,26 @@ import P5Wrapper from "react-p5-wrapper";
 // import sketch10 from "./sketches/sketch10";
 //import sketch11 from "./sketches/sketch11";
 //import sketch12 from "./sketches/sketch12";
-// import sketch13 from "./sketches/sketch13";
-// import sketch14 from "./sketches/sketch14";
+//import sketch13 from "./sketches/sketch13";
+//import sketch14 from "./sketches/sketch14";
 //import sketch15 from "./sketches/sketch15";
 // import sketch16 from "./sketches/sketch16";
-// import sketch17 from "./sketches/sketch17";
-// import sketch18 from "./sketches/sketch18";
-// import sketch19 from "./sketches/sketch19";
+//import sketch17 from "./sketches/sketch17";
+//import sketch18 from "./sketches/sketch18";
+//import sketch19 from "./sketches/sketch19";
 // import sketch20 from "./sketches/sketch20";
-//import sketch21 from "./sketches/sketch21";
+// import sketch21 from "./sketches/sketch21";
 // import sketch22 from "./sketches/sketch22";
 // import sketch23 from "./sketches/sketch23";
 // import sketch24 from "./sketches/sketch24";
 // import sketch25 from "./sketches/sketch25";
 // import sketch26 from "./sketches/sketch26";
 // import sketch27 from "./sketches/sketch27";
-//import sketch28 from "./sketches/sketch28";
-// import sketch29 from "./sketches/sketch29";
-// import sketch30 from "./sketches/sketch30";
-// import sketch31 from "./sketches/sketch31";
+// import sketch28 from "./sketches/sketch28";
+import sketch29 from "./sketches/sketch29";
+//import sketch30 from "./sketches/sketch30";
+import sketch30 from "./sketches/sketch30-perlinnoisefield";
+import sketch31 from "./sketches/sketch31";
 // import sketch33 from "./sketches/sketch33";
 import sketch34 from "./sketches/sketch34";
 //import sketch35 from "./sketches/sketch35";
@@ -40,19 +41,20 @@ class P5wrapper extends React.Component {
   render() {
     return (
       <div>
-        <P5Wrapper sketch={sketch36} />
-        <P5Wrapper sketch={sketch34} />
+        {/* <P5Wrapper sketch={sketch22} /> */}
+        {/* <P5Wrapper sketch={sketch36} />
+        <P5Wrapper sketch={sketch34} /> */}
         {/* <P5Wrapper sketch={sketch35} /> */}
         {/* <P5Wrapper sketch={sketch29} />
-        <P5Wrapper sketch={sketch31} />
-        <P5Wrapper sketch={sketch30} /> */}
+        <P5Wrapper sketch={sketch31} /> */}
+        <P5Wrapper sketch={sketch30} />
         {/* <P5Wrapper sketch={imageprinting} /> */}
-        {/* <P5Wrapper sketch={sketch24} /> */}
-        {/* <P5Wrapper sketch={sketch23} />
-        <P5Wrapper sketch={sketch22} /> */}
-        {/* <P5Wrapper sketch={sketch21} /> */}
-        {/* <P5Wrapper sketch={sketch25} /> */}
-        {/* <P5Wrapper sketch={sketch26} />
+        {/* <P5Wrapper sketch={sketch24} />
+        <P5Wrapper sketch={sketch23} />
+        <P5Wrapper sketch={sketch22} />
+        <P5Wrapper sketch={sketch21} />
+        <P5Wrapper sketch={sketch25} />
+        <P5Wrapper sketch={sketch26} />
         <P5Wrapper sketch={sketch27} />
         <P5Wrapper sketch={sketch28} /> */}
         {/* <P5Wrapper sketch={sketch20} />
