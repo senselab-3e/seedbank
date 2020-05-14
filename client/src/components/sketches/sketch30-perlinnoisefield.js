@@ -145,8 +145,8 @@ export default function sketch30(p) {
 
         show() {
 
-            console.log(this.color)
-            p.stroke(this.color.r, this.color.g, this.color.b);
+            //console.log(this.color)
+            p.stroke(p.color(this.color.r, this.color.g, this.color.b, 50));
             //p.strokeWeight(5)
             //p.point(this.pos.x, this.pos.y)
             p.line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y)
