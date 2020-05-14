@@ -2,8 +2,8 @@ import p5 from "react-p5-wrapper/node_modules/p5";
 
 export default function sketch30(p) {
 
-    var width = 500
-    var height = 500
+    var width = 900
+    var height = 900
 
     // var xoff1 = 0;
     // var xoff2 = 10000
@@ -22,6 +22,30 @@ export default function sketch30(p) {
 
     //NOTES: Sets the pixel scaling for high pixel density displays. By default pixel density is set to match display density, call pixelDensity(1) to turn this off.
 
+    let colorPicks = {
+        r: 0,
+        b: 0,
+        g: 0
+    }
+
+    p.getColors = function () {
+        //p.randomSeed(10) // when i did this it limited the seeds to 10 items.
+        colorPicks = {
+            r: p.floor(p.random(255)),
+            g: p.floor(p.random(255)),
+            b: p.floor(p.random(255))
+        }
+        console.log(colorPicks)
+
+    }
+
+    // let colorParam = {
+    //         r: p.noise(inc) * 255,
+    //         g: p.random(255),
+    //         b: p.random(255)
+    //     }
+
+
     p.setup = function () {
         p.createCanvas(width, height);
         p.pixelDensity(1)
@@ -32,7 +56,10 @@ export default function sketch30(p) {
         flowfield = new Array(cols * rows);
 
         for (let m = 0; m < 200; m++) {
-            particles[m] = new Particle(0, m * 100);
+            //calls the function each time for generating a random color value
+            p.getColors()
+            //passes the object with random color value into each Particle at the instance of its creation
+            particles[m] = new Particle(colorPicks);
 
         }
     }
@@ -48,7 +75,8 @@ export default function sketch30(p) {
                 //// below is a formula for how you take a 2D value into a one dimensional array
                 var index = (x + y * cols); /// yikes. ok. so this is the math -- x position plus y position ... times the number of colums. 
                 // so in multiplication rules, y* number of columns goes first. 
-                var angle = p.noise(xoff, yoff, zoff) * p.TWO_PI * 4; //if i want the greyscale then i *255 
+                //TWO_PI It is twice the ratio of the circumference of a circle to its diameter
+                var angle = p.noise(xoff, yoff, zoff) * p.HALF_PI * 8 //p.TWO_PI * 4 //p.TWO_PI; // * 4; //if i want the greyscale then i *255 
                 //instead of fill, create a vector
                 var v = p5.Vector.fromAngle(angle)
                 //messing with both the mag setting and the variety of angles being created in var angle (such as p.TWO_PI moving to p.TWO_PI * 4 ) will cause more shifting variance in theparticle movements
@@ -82,6 +110,7 @@ export default function sketch30(p) {
             particles[n].update()
             particles[n].edges() /// it's important that edges run before show, so that the updatePrevpos has run before drawing the show
             particles[n].show()
+
         }
         //p.pop()
         // p.updatePixels() //key
@@ -89,13 +118,15 @@ export default function sketch30(p) {
     }
 
     class Particle {
-        constructor(x, y, color) {
+        constructor(color) {
             this.pos = p.createVector(p.random(width), p.random(height));
             //this.vel = p5.Vector.random2D()
             this.vel = p.createVector(0, 0)
             this.acc = p.createVector(0, 0);
             this.maxspeed = 4;
             this.prevPos = this.pos.copy()
+            this.color = color
+
         }
 
         update() {
@@ -114,8 +145,8 @@ export default function sketch30(p) {
 
         show() {
 
-
-            p.stroke(0, 50);
+            console.log(this.color)
+            p.stroke(this.color.r, this.color.g, this.color.b);
             //p.strokeWeight(5)
             //p.point(this.pos.x, this.pos.y)
             p.line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y)
