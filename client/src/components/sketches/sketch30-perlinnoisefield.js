@@ -8,8 +8,8 @@ export default function sketch30(p) {
     // var xoff1 = 0;
     // var xoff2 = 10000
 
-    var inc = 0.1; // the smaller the inc the softer the transitions
-    var scl = 20;
+    var inc = 0.02 //0.1; // the smaller the inc the softer the transitions
+    var scl = 20; //originally i had this number at 20 //then 10
     var cols, rows;
 
     var fr;
@@ -47,6 +47,8 @@ export default function sketch30(p) {
 
 
     p.setup = function () {
+
+        const numParticles = 2000
         p.createCanvas(width, height);
         p.pixelDensity(1)
         cols = p.floor(width / scl);
@@ -55,13 +57,14 @@ export default function sketch30(p) {
 
         flowfield = new Array(cols * rows);
 
-        for (let m = 0; m < 200; m++) {
+        for (let m = 0; m < numParticles; m++) {
             //calls the function each time for generating a random color value
             p.getColors()
             //passes the object with random color value into each Particle at the instance of its creation
             particles[m] = new Particle(colorPicks);
 
         }
+        p.background(0)
     }
     p.draw = function () {
         var yoff = 0;
@@ -76,7 +79,7 @@ export default function sketch30(p) {
                 var index = (x + y * cols); /// yikes. ok. so this is the math -- x position plus y position ... times the number of colums. 
                 // so in multiplication rules, y* number of columns goes first. 
                 //TWO_PI It is twice the ratio of the circumference of a circle to its diameter
-                var angle = p.noise(xoff, yoff, zoff) * p.HALF_PI * 8 //p.TWO_PI * 4 //p.TWO_PI; // * 4; //if i want the greyscale then i *255 
+                var angle = p.noise(xoff, yoff, zoff) * p.TWO_PI * 4 //p.HALF_PI * 8 //p.TWO_PI * 4 //p.TWO_PI; // * 4; //if i want the greyscale then i *255 
                 //instead of fill, create a vector
                 var v = p5.Vector.fromAngle(angle)
                 //messing with both the mag setting and the variety of angles being created in var angle (such as p.TWO_PI moving to p.TWO_PI * 4 ) will cause more shifting variance in theparticle movements
@@ -96,7 +99,7 @@ export default function sketch30(p) {
                 // p.pop()
             }
             yoff += inc;
-            zoff += 0.0004;
+            zoff += 0.0001; /// softer the smaller the number
         }
 
         fr.html(p.floor(p.frameRate()))
@@ -119,11 +122,11 @@ export default function sketch30(p) {
 
     class Particle {
         constructor(color) {
-            this.pos = p.createVector(p.random(width), p.random(height));
+            this.pos = p.createVector(p.floor(p.random(width)), p.floor(p.random(height)));
             //this.vel = p5.Vector.random2D()
             this.vel = p.createVector(0, 0)
             this.acc = p.createVector(0, 0);
-            this.maxspeed = 4;
+            this.maxspeed = 2;
             this.prevPos = this.pos.copy()
             this.color = color
 
@@ -131,7 +134,8 @@ export default function sketch30(p) {
 
         update() {
             //this.prevPos.set(this.pos) // this won't work in this case
-            this.vel.add(this.acc)
+            //NOTE::: :CHANGED this.vel.add(this.acc) to this.acc.mult(0.2)
+            this.vel.add(this.acc.mult(0.2))
             //set the limit of the velocity that can be added to whichever following position
             this.vel.limit(this.maxspeed)
             this.pos.add(this.vel)
@@ -146,7 +150,11 @@ export default function sketch30(p) {
         show() {
 
             //console.log(this.color)
-            p.stroke(p.color(this.color.r, this.color.g, this.color.b, 50));
+            //p.stroke(p.color(this.color.r, this.color.g, this.color.b, 50));
+            //adding this colorMode seems to helped make this smoother a bit? 
+            //p.colorMode(p.RGB, 255, 255, 255, 100);
+            //p.stroke(255, 255, 255, 1);
+            p.stroke(p.color(this.color.r, this.color.g, this.color.b, 5));
             //p.strokeWeight(5)
             //p.point(this.pos.x, this.pos.y)
             p.line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y)
@@ -250,6 +258,81 @@ export default function sketch30(p) {
 
 //         // p.updatePixels() //key
 //         //p.noLoop()
+//     }
+
+// }
+
+
+///ORIGINAL FORM OF CODE BEFORE I STARTED MESSING AROUND MORE WITH IT
+// class Particle {
+//     constructor(color) {
+//         this.pos = p.createVector(p.random(width), p.random(height));
+//         //this.vel = p5.Vector.random2D()
+//         this.vel = p.createVector(0, 0)
+//         this.acc = p.createVector(0, 0);
+//         this.maxspeed = 4;
+//         this.prevPos = this.pos.copy()
+//         this.color = color
+
+//     }
+
+//     update() {
+//         //this.prevPos.set(this.pos) // this won't work in this case
+//         this.vel.add(this.acc)
+//         //set the limit of the velocity that can be added to whichever following position
+//         this.vel.limit(this.maxspeed)
+//         this.pos.add(this.vel)
+//         this.acc.mult(0)
+
+//     }
+
+//     applyForce(force) {
+//         this.acc.add(force);
+//     }
+
+//     show() {
+
+//         //console.log(this.color)
+//         p.stroke(p.color(this.color.r, this.color.g, this.color.b, 50));
+//         //p.strokeWeight(5)
+//         //p.point(this.pos.x, this.pos.y)
+//         p.line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y)
+//         //this is important. after it draws the movement, if i don't update it with the the prev continuously at this stage, it will continue to draw a line from it's origin beginning position
+//         this.updatePrev()
+//     }
+
+//     updatePrev() {
+//         this.prevPos.x = this.pos.x;
+//         this.prevPos.y = this.pos.y;
+//     };
+
+//     edges() {
+//         if (this.pos.x > width) {
+//             this.pos.x = 0;
+//             this.updatePrev(); // i need it to do this so that it wraps the prevPos values as well
+//         }
+//         if (this.pos.x < 0) {
+//             this.pos.x = width;
+//             this.updatePrev();
+//         }
+//         if (this.pos.y > height) {
+//             this.pos.y = 0;
+//             this.updatePrev();
+//         }
+//         if (this.pos.y < 0) {
+//             this.pos.y = height;
+//             this.updatePrev();
+//         }
+//     };
+
+//     follow(vectors) {
+//         let x = p.floor(this.pos.x / scl); // first, based on my xy position, scale myself to a position of collumns and rows
+//         let y = p.floor(this.pos.y / scl);
+//         // this is a formula for how you take a 2D value into a one dimensional array
+//         var index = x + y * cols;
+//         var force = vectors[index] // look up the particular vector, in an array of vectors, at that index /// and then apply that particular vector to the force calculating the particular movement
+//         this.applyForce(force);
+//         // 
 //     }
 
 // }
