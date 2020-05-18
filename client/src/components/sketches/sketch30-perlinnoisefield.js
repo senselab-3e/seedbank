@@ -4,6 +4,7 @@ export default function sketch30(p) {
 
     var width = 900
     var height = 900
+    const numParticles = 500
 
     // var xoff1 = 0;
     // var xoff2 = 10000
@@ -30,12 +31,18 @@ export default function sketch30(p) {
 
     p.getColors = function () {
         //p.randomSeed(10) // when i did this it limited the seeds to 10 items.
+        //this is usefull when i want to pass unique colors to 'each' line that is drawn
+        //however, having a gradual shift in the colors is best tied to the acceleration in the Particle Generator, then in here, because they you can play with time and accumlation, rather then roving thorugh a random choosing of colors narrowed to a particular spectrum
         colorPicks = {
+            // r: p.floor(p.random(255)),
+            // g: p.floor(p.random(255)),
+            // b: p.floor(p.random(255))
+            //this is when i want it to stay in the area of purples
             r: p.floor(p.random(255)),
             g: p.floor(p.random(255)),
             b: p.floor(p.random(255))
         }
-        console.log(colorPicks)
+        //console.log(colorPicks)
 
     }
 
@@ -48,7 +55,7 @@ export default function sketch30(p) {
 
     p.setup = function () {
 
-        const numParticles = 2000
+
         p.createCanvas(width, height);
         p.pixelDensity(1)
         cols = p.floor(width / scl);
@@ -69,7 +76,7 @@ export default function sketch30(p) {
     p.draw = function () {
         var yoff = 0;
         //p.randomSeed(10)  /// this was for the vector line angle tiling
-        //p.background(255)
+        //p.background(0, 7)
         for (var y = 0; y < rows; y++) {
             var xoff = 0;
             for (var x = 0; x < cols; x++) {
@@ -120,6 +127,9 @@ export default function sketch30(p) {
         //p.noLoop()
     }
 
+    let colorShift = 0
+
+    let colorInc = 0.02
     class Particle {
         constructor(color) {
             this.pos = p.createVector(p.floor(p.random(width)), p.floor(p.random(height)));
@@ -139,7 +149,7 @@ export default function sketch30(p) {
             //set the limit of the velocity that can be added to whichever following position
             this.vel.limit(this.maxspeed)
             this.pos.add(this.vel)
-            this.acc.mult(0)
+            this.acc.mult(0) // i changed this from 0 to 2. 
 
         }
 
@@ -152,14 +162,37 @@ export default function sketch30(p) {
             //console.log(this.color)
             //p.stroke(p.color(this.color.r, this.color.g, this.color.b, 50));
             //adding this colorMode seems to helped make this smoother a bit? 
+
             //p.colorMode(p.RGB, 255, 255, 255, 100);
+
             //p.stroke(255, 255, 255, 1);
-            p.stroke(p.color(this.color.r, this.color.g, this.color.b, 5));
+            // p.stroke(60, 36, 154, 1);
+            // map in p5js is DIFFERENT then general javascript. Re-maps a number from one range to another.
+
+            //In the first example above, the number 25 is converted from a value in the range of 0 to 100 into a value that ranges from the left edge of the window (0) to the right edge (width).
+            //let colorR = p.map(this.vel.x + this.vel.y, 0, this.maxspeed * 2, 255, 0);
+            //console.log(this.vel.x, 'velocity x')
+
+            //so sometimes the velocities are less then one. still, they should be remapped to values over zero, but they aren't... hmmm
+            // if (colorB < 0) {
+            //     console.log(colorB, this.vel.x, 'negative values')
+            //     colorB *= -1;
+            // }
+
+            //but it is confusing why i'm getting negative value numbers, at all, when the floor limit value is set at zero....
+            //console.log(colorB, 'colorB')
+            //i'm not convinved of these two funcitons, as they are returning values that exceed 255 or is negative. rather then just going to a zero... it's not constructed well. 
+            console.log(this.color.r)
+
+            //this.color.r < 255 ? this.color.r += colorInc : this.color.r -= 255;
+            p.stroke(p.color(this.color.r, 255, 255));
+            //p.stroke(this.color.r, this.color.g, this.color.b);
             //p.strokeWeight(5)
             //p.point(this.pos.x, this.pos.y)
             p.line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y)
             //this is important. after it draws the movement, if i don't update it with the the prev continuously at this stage, it will continue to draw a line from it's origin beginning position
             this.updatePrev()
+            //colorInc += colorInc
         }
 
         updatePrev() {
