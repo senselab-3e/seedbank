@@ -101,9 +101,9 @@ export default function sketch38(p) {
             console.log(this.testColor)
             p.fill(this.color)
             //original origina translation to the center of the canvas
-            //p.translate(width / 2, height / 2)
+            p.translate(width / 2, height / 2)
             //very different effect if i shift around where tehe origin point is.
-            p.translate(width / p.random(1, 6), height / p.random(1, 6));
+            //p.translate(width / p.random(1, 6), height / p.random(1, 6));
             //p.line(0, 0, this.v.x, this.v.y)
             p.beginShape()
             p.noStroke()
@@ -114,6 +114,16 @@ export default function sketch38(p) {
             // i accidentally wrote prevV.x twice, in the above, and it gave me what i wanted. once 'corrected' to prevV.y, it's more staggered...
             p.vertex(0, 0)
             p.endShape();
+
+            //BEZIER CURVE XPERIment
+            // p.beginShape()
+            // p.noStroke()
+            // p.vertex(this.v.x, this.v.y)
+            // p.bezierVertex(this.v.x, this.v.y, p.mouseX, p.mouseY, this.prevV.x, this.prevV.x)
+            // p.bezierVertex(this.prevV.x, this.prevV.x, p.mouseX, p.mouseY, 0, 0)
+            // //p.vertex(this.prevV.x, this.prevV.x) 
+            // p.vertex(0, 0)
+            // p.endShape();
             p.pop()
 
         }
