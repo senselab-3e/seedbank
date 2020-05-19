@@ -60,10 +60,10 @@ export default function sketch38(p) {
 
 
 
-        if (p.frameCount % 50 === 0) {
-            let pin2 = new Pinwheel()
-            pins.push(pin2)
-        }
+        // if (p.frameCount % 50 === 0) {
+        //     let pin2 = new Pinwheel(p.mouseX)
+        //     pins.push(pin2)
+        // }
 
     }
 
@@ -74,12 +74,13 @@ export default function sketch38(p) {
 
 
     class Pinwheel {
-        constructor() {
+        constructor(mousePos) {
             this.v = p5.Vector.random2D()
             this.prevV = this.v.copy()
             this.color = p.random(colorArrays);
             // this.blurAmt = incr
             this.prevV = this.v.copy()
+            this.mouseX = mousePos
 
         }
 
@@ -94,18 +95,21 @@ export default function sketch38(p) {
             //this.prevV.mult(p.floor(p.random(500)));
 
         }
-        show(incr) {
+        show() {
             p.push()
             //p.filter(p.BLUR, 3)
             console.log(this.testColor)
             p.fill(this.color)
-            p.translate(width / 2, height / 2);
+            //original origina translation to the center of the canvas
+            //p.translate(width / 2, height / 2)
+            //very different effect if i shift around where tehe origin point is.
+            p.translate(width / p.random(1, 6), height / p.random(1, 6));
             //p.line(0, 0, this.v.x, this.v.y)
             p.beginShape()
             p.noStroke()
             p.vertex(0, 0)
             p.vertex(this.v.x, this.v.y)
-            p.vertex(this.prevV.x, this.prevV.x)
+            p.vertex(this.prevV.x, this.prevV.x) /// SPECIAL NOTE ABOUT SECOND PREVV VERTex
             // all i know is that is more interesting when the x value is passed for both, rather then the intended y value
             // i accidentally wrote prevV.x twice, in the above, and it gave me what i wanted. once 'corrected' to prevV.y, it's more staggered...
             p.vertex(0, 0)
