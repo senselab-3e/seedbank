@@ -104,17 +104,18 @@ export default function sketch38(p) {
 
         update() {
 
-            this.v.mult(700);
+            this.v.mult(width + 100);
             this.prevV.set(this.v)
-            this.prevV.mult(700);
+            this.prevV.mult(width + 100);
 
+            // if i don't want thing to be over the edge all the time, then set either don't apply a mult to the prevV and or apply a p.random(500) to each of the mult()
+            //EXAMPLE
             //this.prevV.mult(p.floor(p.random(500)));
-
-            //this.prev.set(
 
         }
         show() {
             p.push()
+            //p.filter(p.BLUR, 3)
             console.log(this.testColor)
             p.fill(this.color)
             p.translate(width / 2, height / 2);
