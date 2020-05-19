@@ -58,6 +58,18 @@ export default function sketch38(p) {
         // //p.rect(0, 0 - height / 2, width / 2, height)
         // p.pop()
 
+
+
+        if (p.frameCount % 50 === 0) {
+            let pin2 = new Pinwheel()
+            pins.push(pin2)
+        }
+
+    }
+
+    p.mousePressed = function () {
+        let pin2 = new Pinwheel()
+        pins.push(pin2)
     }
 
 
