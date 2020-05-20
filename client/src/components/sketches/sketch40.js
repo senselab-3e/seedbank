@@ -1,17 +1,19 @@
 //import p5 from "react-p5-wrapper/node_modules/p5";
 
+// based on this tutorial https://www.youtube.com/watch?v=nYI5TOWXJEM&list=PLbLdd1fdNg5zPBMYYZLO2JVqMrBkK5Lux&index=4&t=0s
+
 export default function sketch40(p) {
 
     let x = 0
     let y = 0;
-    let xStep = 50;
-    let yStep = 50;
-    let a = 0
+    let xStep = 45; // this will change the appearance of the size of the lines/squares
+    let yStep = 30;
+    let a = 0;
     let aA = 0;
     let num = 0;
     p.setup = function () {
         p.createCanvas(800, 800)
-        //p.frameRate(12)
+        p.frameRate(12)
         num = p.int((p.width / xStep) * (p.height / yStep))
     }
     p.draw = function () {
