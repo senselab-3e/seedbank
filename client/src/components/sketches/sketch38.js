@@ -86,13 +86,16 @@ export default function sketch38(p) {
 
         update() {
 
-            this.v.mult(width + 100);
-            this.prevV.set(this.v)
-            this.prevV.mult(width + 100);
+            // this.v.mult(width + 100);
+            // this.prevV.set(this.v)
+            // this.prevV.mult(width + 100);
 
             // if i don't want thing to be over the edge all the time, then set either don't apply a mult to the prevV and or apply a p.random(500) to each of the mult()
             //EXAMPLE
             //this.prevV.mult(p.floor(p.random(500)));
+            this.v.mult(width / 2);
+            this.prevV.set(this.v)
+            //this.prevV.mult(100);
 
         }
         show() {
@@ -101,19 +104,21 @@ export default function sketch38(p) {
             console.log(this.testColor)
             p.fill(this.color)
             //original origina translation to the center of the canvas
+            //bringit back beginning here
             p.translate(width / 2, height / 2)
-            //very different effect if i shift around where tehe origin point is.
-            //p.translate(width / p.random(1, 6), height / p.random(1, 6));
-            //p.line(0, 0, this.v.x, this.v.y)
-            p.beginShape()
-            p.noStroke()
-            p.vertex(0, 0)
-            p.vertex(this.v.x, this.v.y)
-            p.vertex(this.prevV.x, this.prevV.x) /// SPECIAL NOTE ABOUT SECOND PREVV VERTex
-            // all i know is that is more interesting when the x value is passed for both, rather then the intended y value
-            // i accidentally wrote prevV.x twice, in the above, and it gave me what i wanted. once 'corrected' to prevV.y, it's more staggered...
-            p.vertex(0, 0)
-            p.endShape();
+            // //very different effect if i shift around where tehe origin point is.
+            // //p.translate(width / p.random(1, 6), height / p.random(1, 6));
+            // //p.line(0, 0, this.v.x, this.v.y)
+            // p.beginShape()
+            // p.noStroke()
+            // p.vertex(0, 0)
+            // p.vertex(this.v.x, this.v.y)
+            // p.vertex(this.prevV.x, this.prevV.x) /// SPECIAL NOTE ABOUT SECOND PREVV VERTex
+            // // all i know is that is more interesting when the x value is passed for both, rather then the intended y value
+            // // i accidentally wrote prevV.x twice, in the above, and it gave me what i wanted. once 'corrected' to prevV.y, it's more staggered...
+            // p.vertex(0, 0)
+            // p.endShape();
+            ///bring it back, ending here
 
             //BEZIER CURVE XPERIment
             // p.beginShape()
@@ -124,6 +129,8 @@ export default function sketch38(p) {
             // //p.vertex(this.prevV.x, this.prevV.x) 
             // p.vertex(0, 0)
             // p.endShape();
+            p.noStroke()
+            p.rect(this.v.x, this.v.y, this.prevV.x, this.prevV.y)
             p.pop()
 
         }
