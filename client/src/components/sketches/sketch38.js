@@ -6,12 +6,19 @@ export default function sketch38(p) {
     let width = 500;
     let height = 500;
 
+    let dots = []
+
     p.setup = function () {
         p.createCanvas(width, height)
         p.background(255);
 
         let pin = new Pinwheel()
         pins.push(pin)
+
+        let dot = new Dotting(width / 2, height / 2, 10, 'black')
+        dots.push(dot)
+
+        dot.show()
 
         //p.frameRate(5)
 
@@ -51,10 +58,11 @@ export default function sketch38(p) {
 
 
         pins.forEach((pin) => {
-
             pin.update()
             pin.show();
         })
+
+
 
 
     }
@@ -95,6 +103,7 @@ export default function sketch38(p) {
             //p.filter(p.BLUR, 3)
             console.log(this.testColor)
             p.fill(this.color)
+
             //original origina translation to the center of the canvas
             //bringit back beginning here
             //p.translate(width / 2, height / 2)
@@ -133,6 +142,28 @@ export default function sketch38(p) {
 
 
 
+
+    }
+
+    class Dotting {
+        constructor(x, y, size, color) {
+            this.x = x;
+            this.y = y;
+            this.size = size;
+            this.color = color;
+
+        }
+        update() {
+
+        }
+
+        show() {
+            p.push()
+            p.noStroke()
+            p.fill(this.color)
+            p.ellipse(this.x, this.y, this.size, this.size)
+            p.pop()
+        }
 
     }
 }
