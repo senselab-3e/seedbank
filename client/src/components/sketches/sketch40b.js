@@ -6,26 +6,31 @@ export default function sketch40b(p) {
 
     let x = 0
     let y = 0;
-    let xStep = 800; // this will change the appearance of the size of the lines/squares
-    let yStep = 55;
+    // let xStep = 800; // this will change the appearance of the size of the lines/squares
+    let xStep = 50;
+    // let yStep = 5;
+    let yStep = 200;
     let a = 0;
     let aA = 0;
-    let num = 0;
+    let num = 320;
+
     p.setup = function () {
         p.createCanvas(800, 800)
         p.frameRate(8)
         num = p.int((p.width / xStep) * (p.height / yStep))
     }
     p.draw = function () {
-        p.background(15, 20, 30);
+        //p.background('orange');
         // p.stroke(255, 255-255*p.sin(p.radians(a)))
         //p.strokeWeight(3)
         p.strokeCap(p.SQUARE)
         p.strokeWeight(xStep);
 
-        let n = -1; // ha! such a hack. // it's not perfect but if the xStep doesn't get split across more then one line in a disequalizing way, then that annoying strobing bar goes away. 
+        let n = 0; // -1// ha! such a hack. // it's not perfect but if the xStep doesn't get split across more then one line in a disequalizing way, then that annoying strobing bar goes away. 
         while (n < num) {
-            p.stroke(255 - 155 * p.cos(p.radians(a)), 255 * p.cos(p.radians(a)), 255 - 255 * p.sin(p.radians(a)), 255 - 255 * p.sin(p.radians(a)))
+            //ok... if i change thse number so that there isn't a fourth one - which is the alpha level - then none of the values get to 0, which was causing only the background to show..... the colors are then always a bit overly-primary.... but... there is not strobe... 
+            p.stroke(155 - 255 * p.sin(p.radians(a)), 155 * p.cos(p.radians(a)), 255 - 255 * p.sin(p.radians(a)))
+            //console.log(p.floor(255 - 255 * p.sin(p.radians(a))))
             //p.stroke(255, 255 - 255 * p.sin(p.radians(a)))
             p.line(x, y, x, y + yStep);
             x += xStep;
