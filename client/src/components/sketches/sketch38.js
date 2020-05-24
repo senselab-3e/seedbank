@@ -15,11 +15,13 @@ export default function sketch38(p) {
         let pin = new Pinwheel()
         pins.push(pin)
 
-        let dot = new Dotting(width / 2, height / 2, 10, 'black')
-        dots.push(dot)
+        // let dot = new Dotting(width / 2, height / 2, 10, 'black')
+        // dots.push(dot)
 
-        dot.show()
+        // dot.show()
 
+        num = p.int((p.width / xStep) * (p.height / yStep))
+        console.log(num)
         //p.frameRate(5)
 
         // for (let i = 0; i < 10; i++) {
@@ -46,6 +48,17 @@ export default function sketch38(p) {
     let pins = []
     let incr = 1
 
+    let a = 0;
+    let aA = 0;
+    let xStep = 60
+    let yStep = 40
+    //let step = i / height;
+    let x = 0
+    let y = 0
+
+    let n = 0;
+    let num = 0;
+
     p.draw = function () {
 
         //p.translate(width / 2, height / 2);
@@ -61,6 +74,16 @@ export default function sketch38(p) {
             pin.update()
             pin.show();
         })
+        ///let n = 0;
+
+        //p.stroke(0)
+        p.strokeWeight(3)
+        p.strokeCap(p.SQUARE)
+        p.strokeWeight(xStep);
+
+
+
+
 
 
 
@@ -101,7 +124,7 @@ export default function sketch38(p) {
         show() {
             p.push()
             //p.filter(p.BLUR, 3)
-            console.log(this.testColor)
+            //console.log(this.testColor)
             p.fill(this.color)
 
             //original origina translation to the center of the canvas
