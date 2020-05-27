@@ -33,17 +33,18 @@ export default function sketch3(p) {
         p.strokeWeight(2);
         p.background("orange");
 
-        p.stroke('white')
-        for (let i = 0; i < 10; i++) {
-            p.ellipse(p.mouseX + p.sin(xpos) * p.random(100), p.mouseY + p.sin(ypos) * p.random(100), 15, 15); /// alt with speed, 15,15 - which is the size of the dot
-            //this gives a jitter //p.random(-0.05, 0.05);
-            xpos += 0.005 // + p.random() * 0.05;
-            ypos += 0.004 // + p.random() * 0.05;
-        }
+        p.stroke(255, 200)
+        //circles that follow the mouse around. bring back in another sketch
+        // for (let i = 0; i < 10; i++) {
+        //     p.ellipse(p.mouseX + p.sin(xpos) * p.random(100), p.mouseY + p.sin(ypos) * p.random(100), 15, 15); /// alt with speed, 15,15 - which is the size of the dot
+        //     //this gives a jitter //p.random(-0.05, 0.05);
+        //     xpos += 0.005 // + p.random() * 0.05;
+        //     ypos += 0.004 // + p.random() * 0.05;
+        // }
 
 
 
-        p.translate(p.width / 2, p.height / 2) // added this so it would draw vertexes from the center of the canvas
+        p.translate(p.width / 2 - 10, p.height / 2 - 20) // added this so it would draw vertexes from the center of the canvas
         //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
         p.beginShape();
         let spacing = p.map(p.mouseX, 0, width / 2, 5, 10)
@@ -55,20 +56,39 @@ export default function sketch3(p) {
             spacing = 12.84
         }
         //this is to keep the circle drawing form disappearing. but if you DO want to show it being drawn out and not closed, just take this second condition check away. 
-        if (spacing < 6.4) {
-            spacing = 6.4
-        }
+        // if (spacing < 6.4) {
+        //     spacing = 6.4
+        // }
 
         for (let a = 0; a < 360; a += spacing) {
-            let x = 200 * p.sin(a);
-            let y = 200 * p.cos(a);
-            p.vertex(x + p.noise(x * noiseScale) * 10, y + p.noise(y * noiseScale) * 10);
+            let x = 180 * p.sin(a);
+            let y = 180 * p.cos(a) + 20; //this is a bit of a hack to get the two circles to line up. investigate this later for a better solution. the translate function should be working globally but isn't quite working....
+            p.vertex(x + p.noise(x * noiseScale) * 30, y + p.noise(y * noiseScale) * 10);
         }
-        console.log(p.noise(spacing * noiseScale) * 10)
 
         p.endShape();
-
         noiseScale += 0.0001
+
+        p.beginShape();
+        //p.push()
+
+        p.stroke(255, 180)
+
+        let spacing2 = p.map(p.mouseY / 2, 0, width, 1, 7)
+
+        // if (spacing2 > 12.34) {
+        //     spacing2 = 12.84
+        // }
+
+        for (let a = 0; a < 360; a += spacing2) {
+            let x = 200 * p.sin(a);
+            let y = 200 * p.cos(a);
+            p.vertex(x + p.noise(x * noiseScale) * 30, y + p.noise(y * noiseScale) * 50);
+        }
+        //p.pop()
+        p.endShape();
+
+
     };
 
 
