@@ -71,8 +71,9 @@ export default function sketch3(p) {
         //firefly
 
         var lineColor = p.color('white')
-        lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
-        p.fill(lineColor)
+        //lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
+        //p.fill(lineColor)
+        p.stroke('white')
         for (let i = 0; i < 5; i++) {
             p.ellipse(p.mouseX + p.sin(xpos) * p.random(100), p.mouseY + p.sin(ypos) * p.random(100), 15, 15); /// alt with speed, 15,15 - which is the size of the dot
             //this gives a jitter //p.random(-0.05, 0.05);
@@ -84,15 +85,17 @@ export default function sketch3(p) {
         //}
 
 
-
+        p.translate(p.width / 2, p.height / 2)
         //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
-        //p.beginShape();
-        // let spacing = p.map(p.mouseX, 0, width, 5, 100)
-        // for (let a = 0; a < 360; a += spacing) {
-        //     let x = 100 * p.sin(a) + 200;
-        //     let y = 100 * p.cos(a) + 200;
-        //     p.vertex(x, y);
-        // }
+        p.beginShape();
+        let spacing = p.map(p.mouseX, 0, width / 2, 5, 10)
+        //let spacing = p.map(p.mouseX, 0, width, 5, 100) //originally this was this
+        console.log(spacing)
+        for (let a = 0; a < 360; a += spacing) {
+            let x = 100 * p.sin(a); //+ 200;
+            let y = 100 * p.cos(a); //+ 200;
+            p.vertex(x, y);
+        }
 
         // p.vertex(100, 5);
         // p.vertex(200, 20);
@@ -114,7 +117,7 @@ export default function sketch3(p) {
         // p.curveVertex(250, 60);
         // p.curveVertex(300, 200);
         // p.curveVertex(300, 200);
-        //p.endShape(p.CLOSE);
+        p.endShape(); /// removed p.CLOSE
     };
 
 

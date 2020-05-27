@@ -11,6 +11,7 @@
 
 // @jamesrweb jamesrweb mentioned this issue 2 days ago
 // Loading images with require #14
+///>>>MY NOTES. however. the above person on github is wrong. i looked further and the sound files are added via the global.d.ts --- and then rely on the sound file being referenced directly in the html via <script src="path/to/p5.sound.js"></script> /// so. hmmm....... 
 
 import p5 from "react-p5-wrapper/node_modules/p5";
 

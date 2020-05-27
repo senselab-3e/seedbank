@@ -1,6 +1,6 @@
 import p5 from "react-p5-wrapper/node_modules/p5";
 
-export default function sketch30(p) {
+export default function sketch30perlin(p) {
 
     var width = 900
     var height = 900
