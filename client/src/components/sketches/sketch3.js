@@ -34,7 +34,7 @@ export default function sketch3(p) {
         p.strokeWeight(2);
         p.background("orange");
 
-        p.stroke(255)
+        p.stroke(255, 180)
         //circles that follow the mouse around. bring back in another sketch
         // for (let i = 0; i < 10; i++) {
         //     p.ellipse(p.mouseX + p.sin(xpos) * p.random(100), p.mouseY + p.sin(ypos) * p.random(100), 15, 15); /// alt with speed, 15,15 - which is the size of the dot
@@ -51,12 +51,12 @@ export default function sketch3(p) {
         let spacing = p.map(p.mouseX, 0, width / 2, 5, 10)
         //let spacing = p.map(p.mouseX, 0, width, 5, 100) //originally this was this
         //console.log(spacing)
-        let circleWidth2 = p.map(p.mouseY, 0, p.width, 50, 180)
+        let circleWidth2 = p.map(p.mouseY, 0, p.width, 100, 180)
 
         //setting up a bit of a condition so a line maintains a circle -- but only on the left side of the x 0 axis...
-        if (spacing > 12.34) {
-            spacing = 12.84
-        }
+        // if (spacing > 12.34) {
+        //     spacing = 12.84
+        // }
         //this is to keep the circle drawing form disappearing. but if you DO want to show it being drawn out and not closed, just take this second condition check away. 
         // if (spacing < 6.4) {
         //     spacing = 6.4
@@ -98,7 +98,7 @@ export default function sketch3(p) {
         //var lineColor = p.color(p.noise(noiseScale2) + p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255)
         //lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
         //p.stroke(lineColor)
-        p.stroke(255)
+        p.stroke(255, 200)
         // p.noStroke()
         let spacing3 = p.map(p.mouseX, 0, p.width, 1, 10)
         let circleWidth = p.map(p.mouseX, 0, p.width, 50, 150)
