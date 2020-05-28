@@ -2,7 +2,7 @@ export default function sketch3(p) {
     //changed this sketch to just be a repo for working through processing tutorials
 
     const width = 500;
-    const height = 500;
+    const height = 1000;
 
     //const size = 40;
 
@@ -24,6 +24,7 @@ export default function sketch3(p) {
     let ypos = 0;
 
     let noiseScale = 0.002
+    let noiseScale2 = 0.002
 
     p.draw = function () {
         // when the background isn't drawn you see all the trace movements of the previous drawings
@@ -44,12 +45,12 @@ export default function sketch3(p) {
 
 
 
-        p.translate(p.width / 2 - 10, p.height / 2 - 20) // added this so it would draw vertexes from the center of the canvas
+        p.translate(p.width / 2 - 10, p.height / 4 - 20) // added this so it would draw vertexes from the center of the canvas
         //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
         p.beginShape();
         let spacing = p.map(p.mouseX, 0, width / 2, 5, 10)
         //let spacing = p.map(p.mouseX, 0, width, 5, 100) //originally this was this
-        console.log(spacing)
+        //console.log(spacing)
 
         //setting up a bit of a condition so a line maintains a circle -- but only on the left side of the x 0 axis...
         if (spacing > 12.34) {
@@ -79,6 +80,7 @@ export default function sketch3(p) {
         // if (spacing2 > 12.34) {
         //     spacing2 = 12.84
         // }
+        console.log(spacing2)
 
         for (let a = 0; a < 360; a += spacing2) {
             let x = 200 * p.sin(a);
@@ -87,6 +89,40 @@ export default function sketch3(p) {
         }
         //p.pop()
         p.endShape();
+
+
+        p.beginShape();
+        //p.push()
+        p.translate(0, height / 2)
+        //var lineColor = p.color(p.noise(noiseScale2) + p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255)
+        //lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
+        //p.stroke(lineColor)
+        p.stroke(50, 50)
+        // p.noStroke()
+        let spacing3 = p.map(p.mouseX / 2, 0, width, 1, 20)
+
+
+
+        if (spacing3 > 5.0) {
+            spacing3 = 5.0
+        }
+        if (spacing3 < 3.3) {
+            spacing3 = 3.3
+        }
+
+
+        console.log(spacing3)
+        //p.vertex(p.mouseY * p.sin(0), 200)
+        for (let a = 0; a < 360; a += spacing3) {
+            //p.rotate(p.PI / p.mouseX)
+            let x = 100 * p.sin(a);
+            let y = 100 * p.cos(a); //* p.cos(a);
+            p.vertex(x + p.noise(x * noiseScale2) * 10, y + p.noise(y * noiseScale2) * 10);
+        }
+        //p.vertex(p.mouseY * p.sin(100), 200 * p.cos(100))
+        //p.pop()
+        noiseScale2 += 0.0003
+        p.endShape(p.ClOSE);
 
 
     };
