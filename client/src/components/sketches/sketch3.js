@@ -51,6 +51,7 @@ export default function sketch3(p) {
         let spacing = p.map(p.mouseX, 0, width / 2, 5, 10)
         //let spacing = p.map(p.mouseX, 0, width, 5, 100) //originally this was this
         //console.log(spacing)
+        let circleWidth2 = p.map(p.mouseY, 0, p.width, 50, 180)
 
         //setting up a bit of a condition so a line maintains a circle -- but only on the left side of the x 0 axis...
         if (spacing > 12.34) {
@@ -62,8 +63,8 @@ export default function sketch3(p) {
         // }
 
         for (let a = 0; a < 360; a += spacing) {
-            let x = 180 * p.sin(a);
-            let y = 180 * p.cos(a); //this is a bit of a hack to get the two circles to line up. investigate this later for a better solution. the translate function should be working globally but isn't quite working....
+            let x = circleWidth2 * p.sin(a);
+            let y = circleWidth2 * p.cos(a); //this is a bit of a hack to get the two circles to line up. investigate this later for a better solution. the translate function should be working globally but isn't quite working....
             p.vertex(x + p.noise(x * noiseScale) * 10, y + p.noise(y * noiseScale) * 10);
         }
 
