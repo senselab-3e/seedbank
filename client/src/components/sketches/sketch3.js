@@ -34,7 +34,7 @@ export default function sketch3(p) {
         p.strokeWeight(2);
         p.background("orange");
 
-        p.stroke(255, 200)
+        p.stroke(255)
         //circles that follow the mouse around. bring back in another sketch
         // for (let i = 0; i < 10; i++) {
         //     p.ellipse(p.mouseX + p.sin(xpos) * p.random(100), p.mouseY + p.sin(ypos) * p.random(100), 15, 15); /// alt with speed, 15,15 - which is the size of the dot
@@ -45,7 +45,7 @@ export default function sketch3(p) {
 
 
 
-        p.translate(p.width / 2 - 10, p.height / 4 - 20) // added this so it would draw vertexes from the center of the canvas
+        p.translate(p.width / 2, p.height / 4) // added this so it would draw vertexes from the center of the canvas
         //kaliedescope vertice drawing /// change out p.angleMode(p.DEGREES) and take away background color for a different effect 
         p.beginShape();
         let spacing = p.map(p.mouseX, 0, width / 2, 5, 10)
@@ -63,8 +63,8 @@ export default function sketch3(p) {
 
         for (let a = 0; a < 360; a += spacing) {
             let x = 180 * p.sin(a);
-            let y = 180 * p.cos(a) + 20; //this is a bit of a hack to get the two circles to line up. investigate this later for a better solution. the translate function should be working globally but isn't quite working....
-            p.vertex(x + p.noise(x * noiseScale) * 30, y + p.noise(y * noiseScale) * 10);
+            let y = 180 * p.cos(a); //this is a bit of a hack to get the two circles to line up. investigate this later for a better solution. the translate function should be working globally but isn't quite working....
+            p.vertex(x + p.noise(x * noiseScale) * 10, y + p.noise(y * noiseScale) * 10);
         }
 
         p.endShape();
@@ -73,7 +73,7 @@ export default function sketch3(p) {
         p.beginShape();
         //p.push()
 
-        p.stroke(255, 180)
+        p.stroke(255, 100)
 
         let spacing2 = p.map(p.mouseY / 2, 0, width, 1, 7)
 
@@ -85,7 +85,7 @@ export default function sketch3(p) {
         for (let a = 0; a < 360; a += spacing2) {
             let x = 200 * p.sin(a);
             let y = 200 * p.cos(a);
-            p.vertex(x + p.noise(x * noiseScale) * 30, y + p.noise(y * noiseScale) * 50);
+            p.vertex(x + p.noise(x * noiseScale) * 10, y + p.noise(y * noiseScale) * 10);
         }
         //p.pop()
         p.endShape();
@@ -93,36 +93,43 @@ export default function sketch3(p) {
 
         p.beginShape();
         //p.push()
-        p.translate(0, height / 2)
+        //p.translate(15, 20) // i shouldn't need to do this but....
         //var lineColor = p.color(p.noise(noiseScale2) + p.pmouseX % 255, p.pmouseY % 255, p.mouseY % 255)
         //lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
         //p.stroke(lineColor)
-        p.stroke(50, 50)
+        p.stroke(255)
         // p.noStroke()
-        let spacing3 = p.map(p.mouseX / 2, 0, width, 1, 20)
+        let spacing3 = p.map(p.mouseX, 0, p.width, 1, 10)
+        let circleWidth = p.map(p.mouseX, 0, p.width, 50, 150)
+        // if (spacing3 > 5.0) {
+        //     spacing3 = 5.0
+        // }
+        // if (spacing3 < 3.3) {
+        //     spacing3 = 3.3
+        // }
+        console.log(circleWidth)
+        // if (circleWidth > 190) {
+        //     circleWidth = 190;
+        // }
 
-
-
-        if (spacing3 > 5.0) {
-            spacing3 = 5.0
-        }
-        if (spacing3 < 3.3) {
-            spacing3 = 3.3
-        }
-
-
-        console.log(spacing3)
+        //console.log(spacing3)
         //p.vertex(p.mouseY * p.sin(0), 200)
         for (let a = 0; a < 360; a += spacing3) {
             //p.rotate(p.PI / p.mouseX)
-            let x = 100 * p.sin(a);
-            let y = 100 * p.cos(a); //* p.cos(a);
-            p.vertex(x + p.noise(x * noiseScale2) * 10, y + p.noise(y * noiseScale2) * 10);
+            let x = circleWidth * p.sin(a);
+            let y = circleWidth * p.cos(a);
+
+            // let y = 200 * p.cos(a); //* p.cos(a);
+            // p.vertex(x + p.noise(x * noiseScale2) * 10, y + p.noise(y * noiseScale2) * 10);
+            //p.bezierVertex(0, 0, x, y, 10 + x, 10 + y)
+            //this noise numbering actually takes away the symmetry of the smaller graphics so..... maybe not so useful. 
+            p.vertex(x + p.noise(x * noiseScale2) * 10, y + p.noise(y * noiseScale2) * 10)
+
         }
         //p.vertex(p.mouseY * p.sin(100), 200 * p.cos(100))
-        //p.pop()
-        noiseScale2 += 0.0003
-        p.endShape(p.ClOSE);
+
+        noiseScale2 += 0.0001
+        p.endShape();
 
 
     };
