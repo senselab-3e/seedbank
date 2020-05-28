@@ -104,7 +104,8 @@ export default function sketch4(p) {
 
     function drawBuzzy(offsetX, offsetY, rate) {
         p.curveTightness(organicConstant);
-        p.fill('#ffffff') //p.fill(183, 54, 197);
+        //p.fill('#ffffff') //p.fill(183, 54, 197);
+        p.fill('orange')
         p.beginShape();
         p.noStroke();
         //let spacer2 = 0;
