@@ -50,7 +50,7 @@ class P5wrapper extends React.Component {
       <div>
         <h1>ddd</h1>
         {/* <P5Wrapper sketch={sketch22} /> */}
-        <P5Wrapper sketch={sketch5} />
+        <P5Wrapper sketch={sketch10} />
         {/* <P5Wrapper sketch={imageprinting} /> */}
         {/* <P5Wrapper sketch={sketch3} /> */}
         {/* <P5Wrapper sketch={sketch4} />

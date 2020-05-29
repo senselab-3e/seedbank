@@ -26,12 +26,9 @@ export default function sketch5(p) {
             //p.fill(val, val2, 200)
             // simliar spectrum, but the random applied in the blues gets it to skip a little bit behind or below, on each drawn square
             //p.fill(val, val2, p.floor(p.random(100, 255)))
-
-            // variableEllipse(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY, p);
-            //p.ellipse(150, 150, 50, 50);
         } else {
             p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
-            //p.fill('#ffffff')
+            //p.fill('#ffffff') /// currently this draws in the last 'fill' value that was calculated on the mouse Press downs
             p.square(450, 0, p.pmouseX, p.pmouseY)
         }
     };
