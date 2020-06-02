@@ -5,6 +5,12 @@ export default function sketch16(p) {
     var width = 500;
     var height = 500;
 
+    let color = {
+        r: p.floor(p.random(255)),
+        g: p.floor(p.random(255)),
+        b: p.floor(p.random(255))
+    }
+
     p.setup = function () {
         p.createCanvas(500, 500);
         //p.stroke(70, 122, 190, 18);
@@ -12,11 +18,6 @@ export default function sketch16(p) {
         p.noFill();
         t = 0;
         j = 0;
-    }
-    let color = {
-        r: p.floor(p.random(255)),
-        g: p.floor(p.random(255)),
-        b: p.floor(p.random(255))
     }
 
     p.getColor = function () {
@@ -28,11 +29,42 @@ export default function sketch16(p) {
 
     }
 
+    let dirR = 1 // direction the color aka it is being decrease or increased
+    let dirG = 1
+    let dirB = 1
+    let speed = 0.5 // number of increments the color will change by
+
     p.draw = function () {
 
-
+        //this.y += this.speed * this.direc;
+        color.b += speed * dirB
+        color.r += speed * dirR
+        color.g += speed * dirG
+        //let blue = color.b
         //p.background(255, 10);
         //p.stroke(p.random(255), p.random(255), p.random(255), 85);
+        //p.colorCheck()
+
+
+        if (color.b >= 255) {
+            dirB = -1
+        }
+        if (color.b <= 0) {
+            dirB = 1
+        }
+        if (color.r >= 255) {
+            dirR = -1
+        }
+        if (color.r <= 0) {
+            dirR = 1
+        }
+        if (color.g >= 255) {
+            dirG = -1
+        }
+        if (color.g <= 0) {
+            dirG = 1
+        }
+
         p.stroke(color.r, color.g, color.b, 85)
         // var x1 = width * p.noise(t + 15);
         // var x2 = width * p.noise(t + 25);
@@ -74,9 +106,9 @@ export default function sketch16(p) {
         // p.endShape(p.CLOSE);
         // j += 1;
 
-        if (p.frameCount % 1000 === 0) {
-            p.background(255);
-        }
+        // if (p.frameCount % 1000 === 0) {
+        //     p.background(255);
+        // }
     }
 
     p.mousePressed = function () {
