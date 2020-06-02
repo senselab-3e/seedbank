@@ -6,7 +6,7 @@ export default function sketch16(p) {
     var height = 500;
 
     let color = {
-        r: p.floor(p.random(255)),
+        r: p.floor(p.random(100, 255)),
         g: p.floor(p.random(255)),
         b: p.floor(p.random(255))
     }
@@ -36,15 +36,9 @@ export default function sketch16(p) {
 
     p.draw = function () {
 
-        //this.y += this.speed * this.direc;
         color.b += speed * dirB
         color.r += speed * dirR
         color.g += speed * dirG
-        //let blue = color.b
-        //p.background(255, 10);
-        //p.stroke(p.random(255), p.random(255), p.random(255), 85);
-        //p.colorCheck()
-
 
         if (color.b >= 255) {
             dirB = -1
@@ -64,8 +58,9 @@ export default function sketch16(p) {
         if (color.g <= 0) {
             dirG = 1
         }
-
-        p.stroke(color.r, color.g, color.b, 85)
+        p.noStroke()
+        //this can just as easily be changed to a stroke value.
+        p.fill(color.r, color.g, color.b, 85)
         // var x1 = width * p.noise(t + 15);
         // var x2 = width * p.noise(t + 25);
         // var x3 = width * p.noise(t + 35);
@@ -76,13 +71,13 @@ export default function sketch16(p) {
         // var y4 = p.mouseY //* p.noise(t + 85);
 
         var x1 = width * p.noise(t + 15);
-        var x2 = p.mouseX + p.random(15) //width * p.noise(t + 25);
+        var x2 = p.mouseX + p.random(55) //width * p.noise(t + 25);
         var x3 = width * p.noise(t + 35);
         var x4 = width * p.noise(t + 45);
 
         var y1 = height * p.noise(t + 55);
         var y2 = p.mouseY //height * p.noise(t + 65);
-        var y3 = height * p.noise(t + 75);
+        var y3 = height * p.noise(t + 175);
         var y4 = height * p.noise(t + 85);
 
         //bezier accepts no more then 8 arguments.
