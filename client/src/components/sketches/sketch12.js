@@ -30,48 +30,28 @@ export default function sketch12(p) {
     // }
 
     class Word {
-        constructor(x, y, fontSize, word) {
+        constructor(x, y, fontSize, word, color) {
             this.x = x;
             this.y = y;
             this.fontSize = fontSize;
             this.word = word;
-            this.speed = 1;
+            this.speed = 0.5;
             this.direc = 5; //p.cos(35);
             this.alpha = 1;
             this.stroke = 'white'
-            this.color = p.color(p.random(1, 200), p.random(1, 255), p.random(1, 255)); //deploying this means one unique color will be assigned to each time the constructor is called // rather then it being called continually within any of the functions below
+            this.lifespan = 255
+            this.color = p.color(p.random(1, 200), p.random(1, 255), p.random(1, 255))
+            //color //p.color(p.random(1, 200), p.random(1, 255), p.random(1, 255)); //deploying this means one unique color will be assigned to each time the constructor is called // rather then it being called continually within any of the functions below
             this.firstColor = 'black'
             //if i equate this.fill to this.firstColor the first element drawn will be black - but every next instance is still being stacked on top if it with the color version so it isn't seen
-            this.fill = this.color
-        }
-        display() {
-            //remove this below to have the text just appear where mouse clicks
-            //this.y += this.speed * this.direc;
-            this.y += this.speed * this.direc;
-            //var fillColor = p.color("white");
-            //var fillColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 2000)), 128 + 128 * p.sin(p.millis() / 1000), 128 + 128 * p.cos(p.millis() / 1000));
-            //var fillColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 1500)), 128 + 128 * p.sin(p.millis() / p.random(1000, 1500)), 128 + 128 * p.cos(p.millis() / p.random(1000, 1500)));
-            var fillColor = this.fill; //this.color;
-            //the above with the p.random has a bit of a flicker a few steps back in the color choices /// 
-            //below does the gradient shift thing
-            //var fillColor = p.color(128 + 128 * p.cos(p.millis() / 2000), 128 + 128 * p.sin(p.millis() / 500), 128 + 128 * p.cos(p.millis() / 1000));
-
-            //fillColor.setAlpha(this.alpha)
-            p.fill(fillColor);
-            p.strokeWeight(3);
-            //p.noStroke()
-            //var lineColor = p.color(128 + 128 * p.cos(p.millis() / p.random(1000, 2000)), 128 + 128 * p.sin(p.millis() / 1000), 128 + 128 * p.cos(p.millis() / 1000));
-            //var lineColor = this.color;
-            //lineColor.setAlpha(128 + 128 * p.sin(p.millis() / 1000));
-            //lineColor.setAlpha(this.alpha) //The range depends on your color mode, in the default RGB mode it's between 0 and 255.
-            //p.stroke(lineColor);
-            //p.noStroke()
-            p.stroke(this.stroke)
-            p.textSize(this.fontSize);
-            p.text(this.word, this.x, this.y);
+            //this.fill = this.color
 
         }
+
         update() {
+            //alpha coloring on fill/stroke of letter
+            this.lifespan -= this.lifespan * 0.05;
+
             if (this.y > height) {
                 this.direc = -5; //p.cos(-5)
                 this.speed *= 1.2;
@@ -101,6 +81,20 @@ export default function sketch12(p) {
             if (this.fontSize < 0) {
                 words.splice(i, 1);
             }
+        }
+        display() {
+            //remove this below to have the text just appear where mouse clicks
+            this.y += this.speed * this.direc;
+            //this.y += this.speed * this.direc;
+            //console.log(this.color.levels[0])
+            //this.lifespan is not currently being activated - it effects the alpha levels. i commented out the code that causes it to diminish over time, in the update() function
+            p.fill(this.color.levels[0], this.color.levels[1], this.color.levels[2]);
+            p.strokeWeight(3);
+
+            p.stroke(255)
+            p.textSize(this.fontSize);
+            p.text(this.word, this.x, this.y);
+
         }
     }
 
@@ -194,6 +188,8 @@ export default function sketch12(p) {
     p.mousePressed = function () {
         //let coloring = p.floor(p.random(1, 255));
         // console.log(coloring)
+
+        //let color = p.color(p.random(1, 200), p.random(1, 255), p.random(1, 255))
 
         // let newCirc = new Circle(p.mouseX, p.mouseY, 300, 1);
         // circles.push(newCirc);

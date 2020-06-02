@@ -13,12 +13,27 @@ export default function sketch16(p) {
         t = 0;
         j = 0;
     }
+    let color = {
+        r: p.floor(p.random(255)),
+        g: p.floor(p.random(255)),
+        b: p.floor(p.random(255))
+    }
+
+    p.getColor = function () {
+        color = {
+            r: p.floor(p.random(255)),
+            g: p.floor(p.random(255)),
+            b: p.floor(p.random(255))
+        }
+
+    }
 
     p.draw = function () {
 
 
         //p.background(255, 10);
-        p.stroke(p.random(255), p.random(255), p.random(255), 85);
+        //p.stroke(p.random(255), p.random(255), p.random(255), 85);
+        p.stroke(color.r, color.g, color.b, 85)
         // var x1 = width * p.noise(t + 15);
         // var x2 = width * p.noise(t + 25);
         // var x3 = width * p.noise(t + 35);
@@ -62,5 +77,9 @@ export default function sketch16(p) {
         if (p.frameCount % 1000 === 0) {
             p.background(255);
         }
+    }
+
+    p.mousePressed = function () {
+        p.getColor()
     }
 }
