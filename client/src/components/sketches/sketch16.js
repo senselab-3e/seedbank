@@ -23,7 +23,7 @@ export default function sketch16(p) {
     p.getColor = function () {
         color = {
             r: p.floor(p.random(255)),
-            g: p.floor(p.random(255)),
+            g: p.floor(p.random(0, 150)),
             b: p.floor(p.random(255))
         }
 
@@ -70,14 +70,14 @@ export default function sketch16(p) {
         // var y3 = height * p.noise(t + 75);
         // var y4 = p.mouseY //* p.noise(t + 85);
 
-        var x1 = width * p.noise(t + 15);
-        var x2 = p.mouseX + p.random(55) //width * p.noise(t + 25);
+        var x1 = width * p.noise(t + p.width / 2);
+        var x2 = p.mouseX + p.random(15) //width * p.noise(t + 25);
         var x3 = width * p.noise(t + 35);
         var x4 = width * p.noise(t + 45);
 
         var y1 = height * p.noise(t + 55);
         var y2 = p.mouseY //height * p.noise(t + 65);
-        var y3 = height * p.noise(t + 175);
+        var y3 = height * p.noise(t + 75);
         var y4 = height * p.noise(t + 85);
 
         //bezier accepts no more then 8 arguments.
