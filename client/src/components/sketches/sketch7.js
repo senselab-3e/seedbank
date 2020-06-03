@@ -169,7 +169,8 @@ export default function sketch7(p) {
     }
     p.endShape(p.CLOSE)
 
-    t += 0.002;
+    t += 0.001
+    //p.frameRate % 100 === 0 ? t += 0.001 : t += 0.0001
     //t += incr; //see note above for how incr is being experimented with 
 
     //OLD CODE
