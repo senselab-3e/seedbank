@@ -31,9 +31,10 @@ export default function sketch7(p) {
   //   // }
 
   // }
+  var cnv
 
   p.setup = function () {
-    p.createCanvas(500, 500);
+    cnv = p.createCanvas(500, 500);
     t = 0;
     p.frameRate = 10
     // let nums = p.map(p.mouseX, 0, p.width, 20, 60)
@@ -45,11 +46,11 @@ export default function sketch7(p) {
     // }
   };
 
-  let incrNoise = 0.001;
+
 
   let color = {
     h: 18,
-    s: 80,
+    s: 50,
     b: 100 // 0 goes to dark values
   }
 
@@ -58,44 +59,65 @@ export default function sketch7(p) {
   let dirS = 1
   let dirB = 1
 
+  p.updateColor = function () {
+    //yellow spectrum
+    // if (color.h >= 15) {
+    //   dirH = -1
+    // }
+    // if (color.h <= 9) {
+    //   dirH = 1
+    // }
+    //fullspectrum
+    console.log(p.mouseX, p.pmouseX) // the previous mouse value is always printing the same as mouseX.. so always comes to a null
+
+    //if (p.mouseX > p.pmouseX) {
+    if (color.h >= 100) {
+      dirH = -1
+    }
+    // } else if (p.mouseX < p.pmouseX) {
+    if (color.h <= 0) {
+      dirH = 1
+    }
+    //}
+
+    color.h += colorInr * dirH
+    color.s += colorInr * dirS
+    color.b += colorInr * dirB
+  }
+
   p.draw = function () {
 
+    if (color.s >= 100) {
+      dirS = -1
+    }
+    if (color.s <= 30) {
+      dirS = 1
+    }
+
+
+
+    //if (p.mouseY !== p.pmouseY) {
+    // if (color.b >= 100) {
+    //   dirB = -1
+    // }
+    // if (color.b <= 80) {
+    //   dirB = 1
+    // }
+    //}
 
     //var r = 1;
     // var scaleAmount = p.mouseX / 200;
     // p.scale(scaleAmount);
 
 
+    cnv.mouseMoved(p.updateColor)
 
-    if (color.h >= 15) {
-      dirH = -1
-    }
-    if (color.h <= 9) {
-      dirH = 1
-    }
-    // if (color.s <= 50) {
-    //   dirS = 1
-    // }
-    // if (color.s >= 255) {
-    //   dirS = -1
-    // }
-
-
-    if (color.b >= 80) {
-      dirS = -1
-    }
-    if (color.b <= 25) {
-      dirS = 1
-    }
-
-    color.h += colorInr * dirH
-    //color.s += colorInr * dirS
-    color.b += colorInr * dirB
 
     p.colorMode(p.HSB, 100);
-    p.background(54, 100, 100);
+    //p.background(54, 100, 100);
+    p.background(75)
 
-    console.log(color.s)
+    console.log(p.floor(color.h), dirH)
     p.translate(p.width / 2, p.height / 2);
     //when i introduced translate i no longer needed to have width/2 + p.sin((p.TWOPI)) etc etc
     //p.scale(p.mouseX / 500, p.mouseY / 500);
@@ -107,15 +129,15 @@ export default function sketch7(p) {
     // nums < 3 ? nums = 3 : nums = nums; // this was so the minimum shape that would be drawn was a triangle
     //console.log(nums)
 
-    //if i want to mouse the circle's diamter according to mouse movements:
-    diam = p.mouseX
+    //NOTE--->if i want to mouse the circle's diamter according to mouse movements:
+    // diam = p.mouseX
 
-    if (p.mouseX > 400) {
-      diam = 400
-    }
-    if (p.mouseX < 50) {
-      diam = 50
-    }
+    // if (p.mouseX > 400) {
+    //   diam = 400
+    // }
+    // if (p.mouseX < 50) {
+    //   diam = 50
+    // }
 
     //playing with different ways of injecting a mouse dependent data into how the noise function incrementally changes over time
     //let incr = p.map(p.mouseX, 0, p.width, 0, 0.01)
