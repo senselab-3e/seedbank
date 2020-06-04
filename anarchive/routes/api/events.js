@@ -14,6 +14,7 @@ router.post('/', (req, res) => {
 	knex('events')
 		.insert({ name: req.body.name,
 				  data: '{sponges: ' + req.body.sponges.toString() + '}' })
+		.then(id => { res.send('Created event') })
 		.catch(err => { console.log(err); })
 });
 
