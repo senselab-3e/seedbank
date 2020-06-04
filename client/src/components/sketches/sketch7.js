@@ -154,7 +154,7 @@ export default function sketch7(p) {
     p.stroke('purple')
     //p.stroke(color.h, color.s, color.b)
     p.strokeWeight(5)
-    p.fill(color.h, color.s, color.b)
+    p.fill(color.h, color.s, color.b, 50)
     //p.noFill()
     for (var i = 0; i < vertices.length; i++) {
       let x = vertices[i].x
@@ -166,7 +166,7 @@ export default function sketch7(p) {
       //this allows me to draw a circle, but then manipulate particular vertex points along its path. so i can get the wiggles and the shakes. 
       p.curveVertex(x * p.noise(t + p.random(0.01, 0.05)), y * p.noise(t + p.random(0.01, 0.05)))
       //p.curveVertex(x * p.noise(t), y * p.noise(t))
-      p.point(x, y)
+      //p.point(x, y)
 
     }
     p.endShape(p.CLOSE)
@@ -222,13 +222,17 @@ export default function sketch7(p) {
 
     let width = 500
     //let height = 500
-    let cols = 11;
+    let cols = 6;
+    let elSize = 70
+    let elVertex = 25
     let grids = []
 
     let mult = width / cols
 
     let vectors = []
 
+    //this calculates my grid --- specifically the centripical center points out of which my vectors for the elements will be drawn
+    //it's a way to generate the translate offset values. 
     //p.translate(-p.width / 2, -p.height / 2)
     for (var i = 1; i < cols; i++) {
 
@@ -236,14 +240,14 @@ export default function sketch7(p) {
         grids.push(p.createVector(i * mult, m * mult))
       }
     }
-    p.stroke('white')
-    p.noFill()
+    // p.stroke('white')
+    // p.noFill()
     for (var a = 0; a < grids.length; a++) {
       let x = grids[a].x
       let y = grids[a].y
-      p.point(x, y)
+      //p.point(x, y)
       //p.ellipse(x, y, 50, 50)
-      let el = new Vector(x, y, 10, 10)
+      let el = new Vector(x, y, elSize, elVertex, t, color)
       vectors.push(el)
     }
 
@@ -274,12 +278,14 @@ export default function sketch7(p) {
 
 
   class Vector {
-    constructor(x, y, diam, vertex) {
+    constructor(x, y, diam, vertex, t, color) {
       this.x = x;
       this.y = y;
       this.cirVertices = vertex
       this.diam = diam;
       this.elements = []
+      this.incr = t
+      this.color = color // this isn't currently being used --- as the univeral faill color and its shifts is going to the elements// but i could pull this out later. 
 
     }
 
@@ -294,6 +300,7 @@ export default function sketch7(p) {
       // p.pop()
       p.push()
       p.translate(this.x, this.y)
+      p.noStroke()
       for (let g = 0; g < this.cirVertices; g++) {
         var xC = p.sin((p.TWO_PI / this.cirVertices) * g) * this.diam;
         var yC = p.cos((p.TWO_PI / this.cirVertices) * g) * this.diam;
@@ -310,7 +317,7 @@ export default function sketch7(p) {
         //p.point(x * p.noise(t + p.random(0.01, 0.05)), y * p.noise(t + p.random(0.01, 0.05)))
         //this allows me to draw a circle, but then manipulate particular vertex points along its path. so i can get the wiggles and the shakes. 
 
-        p.curveVertex(xV, yV)
+        p.curveVertex(xV * p.noise(this.incr + p.random(0.01, 0.09)), yV * p.noise(this.incr + p.random(0.01, 0.09)))
 
         //p.curveVertex(x * p.noise(t), y * p.noise(t))
         //p.point(xV, yV)
@@ -318,6 +325,10 @@ export default function sketch7(p) {
       }
       p.endShape(p.CLOSE)
       p.pop()
+
+    }
+
+    colors() {
 
     }
 
