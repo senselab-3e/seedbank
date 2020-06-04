@@ -80,6 +80,13 @@ export default function sketch7(p) {
     }
     //}
 
+    if (color.s >= 100) {
+      dirS = -1
+    }
+    if (color.s <= 30) {
+      dirS = 1
+    }
+
     color.h += colorInr * dirH
     color.s += colorInr * dirS
     color.b += colorInr * dirB
@@ -87,12 +94,7 @@ export default function sketch7(p) {
 
   p.draw = function () {
 
-    if (color.s >= 100) {
-      dirS = -1
-    }
-    if (color.s <= 30) {
-      dirS = 1
-    }
+
 
 
 
@@ -110,7 +112,7 @@ export default function sketch7(p) {
     // p.scale(scaleAmount);
 
 
-    cnv.mouseMoved(p.updateColor)
+    cnv.mouseMoved(p.updateColor) // only on mouse move, trigger shifts in color values
 
 
     p.colorMode(p.HSB, 100);
@@ -213,8 +215,8 @@ export default function sketch7(p) {
     }
 
     for (let n = 0; n < vectors.length; n++) {
-      //vectors[n].show()
-      vectors[n].squares()
+      vectors[n].show() // this draws out the circles as intended. 
+      vectors[n].squares() // this is a quick test of a constructor squares instead of circles
     }
   };
 
