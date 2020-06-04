@@ -157,13 +157,14 @@ export default function sketch7(p) {
     p.translate(p.width / 2, p.height / 2);
     p.beginShape()
     //p.noFill()
+    p.strokeWeight(2)
     for (var i = 0; i < vertices.length; i++) {
       let x = vertices[i].x
       let y = vertices[i].y
       //this allows me to draw a circle, but then manipulate particular vertex points along its path. so i can get the wiggles and the shakes. 
       p.curveVertex(x * p.noise(t + p.random(0.01, 0.05)), y * p.noise(t + p.random(0.01, 0.05)))
 
-      //p.point(x, y)
+      p.point(x, y)
 
     }
     p.endShape(p.CLOSE)
@@ -175,7 +176,7 @@ export default function sketch7(p) {
     ///NOTES: values being passed into Vector object constructor
 
     let cols = 6;
-    let elSize = 50
+    let elSize = 30
     let elVertex = 25
 
     p.fill(color.h, color.s, color.b, 50)
@@ -212,7 +213,8 @@ export default function sketch7(p) {
     }
 
     for (let n = 0; n < vectors.length; n++) {
-      vectors[n].show()
+      //vectors[n].show()
+      vectors[n].squares()
     }
   };
 
@@ -288,6 +290,17 @@ export default function sketch7(p) {
 
     colors() {
 
+    }
+
+    squares() {
+      p.noStroke()
+      p.beginShape()
+      p.vertex(this.x - this.diam * p.noise(this.incr + p.random(1.01, 1.09)), this.y - this.diam * p.noise(this.incr + p.random(1.01, 1.05)))
+      p.vertex(this.x + this.diam * p.noise(this.incr + p.random(1.01, 1.09)), this.y - this.diam * p.noise(this.incr + p.random(1.01, 1.05)))
+
+      p.vertex(this.x + this.diam * p.noise(this.incr + p.random(1.01, 1.09)), this.y + this.diam * p.noise(this.incr + p.random(1.01, 1.05)))
+      p.vertex(this.x - this.diam * p.noise(this.incr + p.random(1.01, 1.09)), this.y + this.diam * p.noise(this.incr + p.random(1.01, 1.05)))
+      p.endShape(p.CLOSE)
     }
 
   }
