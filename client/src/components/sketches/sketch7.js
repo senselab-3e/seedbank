@@ -235,11 +235,12 @@ export default function sketch7(p) {
       }
     }
     p.stroke('white')
+    p.noFill()
     for (var a = 0; a < grids.length; a++) {
       let x = grids[a].x
       let y = grids[a].y
-      //p.point(x, y)
-      p.ellipse(x, y, 50, 50)
+      p.point(x, y)
+      //p.ellipse(x, y, 50, 50)
     }
   };
 
