@@ -118,7 +118,7 @@ export default function sketch7(p) {
     p.background(75)
 
     //console.log(p.floor(color.h), dirH)
-    p.translate(p.width / 2, p.height / 2);
+    //p.translate(p.width / 2, p.height / 2);
     //when i introduced translate i no longer needed to have width/2 + p.sin((p.TWOPI)) etc etc
     //p.scale(p.mouseX / 500, p.mouseY / 500);
 
@@ -227,7 +227,9 @@ export default function sketch7(p) {
 
     let mult = width / cols
 
-    p.translate(-p.width / 2, -p.height / 2)
+    let vectors = []
+
+    //p.translate(-p.width / 2, -p.height / 2)
     for (var i = 1; i < cols; i++) {
 
       for (var m = 1; m < cols; m++) {
@@ -241,15 +243,83 @@ export default function sketch7(p) {
       let y = grids[a].y
       p.point(x, y)
       //p.ellipse(x, y, 50, 50)
+      let el = new Vector(x, y, 10, 10)
+      vectors.push(el)
+    }
+
+    for (let n = 0; n < vectors.length; n++) {
+      vectors[n].show()
     }
   };
 
 
+  // for (var a = 0; a < grids.length; a++) {
+
+  //   for (var m = 0; m < num; m++) {
+  //   var xC = p.sin((p.TWO_PI / num) * a) * 100;
+  //   var yC = p.cos((p.TWO_PI / num) * a) * 100;
+  //   circles[m] = p.createVector(xC, yC);
+  //   }
+
+  //   let x1 = grids[a].x
+  //   let y1 = grids[a].y
+  //   // p.point(x, y)
+  //   // //p.ellipse(x, y, 50, 50)
+  //   p.translate(x1, y1)
+
+
+  //   p.point(xC, yC)
+  // }
+
 
 
   class Vector {
-    constructor(x, y, num) {}
+    constructor(x, y, diam, vertex) {
+      this.x = x;
+      this.y = y;
+      this.cirVertices = vertex
+      this.diam = diam;
+      this.elements = []
 
+    }
+
+    show() {
+      //let xAround = p.sin((p.TWO_PI / num) * i) * this.diam;
+      //p.ellipse(this.x, this.y, this.diam, this.diam)
+
+      // p.push()
+      // p.translate(this.x, this.y)
+
+      // p.ellipse(0, 0, this.diam, this.diam)
+      // p.pop()
+      p.push()
+      p.translate(this.x, this.y)
+      for (let g = 0; g < this.cirVertices; g++) {
+        var xC = p.sin((p.TWO_PI / this.cirVertices) * g) * this.diam;
+        var yC = p.cos((p.TWO_PI / this.cirVertices) * g) * this.diam;
+        this.elements[g] = p.createVector(xC, yC);
+      }
+      p.beginShape()
+
+      for (let v = 0; v < this.elements.length; v++) {
+        let xV = this.elements[v].x
+        let yV = this.elements[v].y
+
+
+        //console.log(p.noise(t))
+        //p.point(x * p.noise(t + p.random(0.01, 0.05)), y * p.noise(t + p.random(0.01, 0.05)))
+        //this allows me to draw a circle, but then manipulate particular vertex points along its path. so i can get the wiggles and the shakes. 
+
+        p.curveVertex(xV, yV)
+
+        //p.curveVertex(x * p.noise(t), y * p.noise(t))
+        //p.point(xV, yV)
+
+      }
+      p.endShape(p.CLOSE)
+      p.pop()
+
+    }
 
   }
 }
