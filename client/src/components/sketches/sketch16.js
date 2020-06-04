@@ -57,7 +57,7 @@ export default function sketch16(p) {
 
 
 
-
+        p.background('white')
         // color.b += speed * dirB
         color.r += speed * dirR
         color.g += speed * dirG

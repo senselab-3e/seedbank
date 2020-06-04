@@ -5,7 +5,7 @@ import p5 from "react-p5-wrapper/node_modules/p5";
 export default function sketch7(p) {
   var v;
   var vertices = [];
-  var num = 10; // not currently in use // this is the number of points that you could pass as a value into the calculation for vertex locations, along the path of a circle
+  var num = 22; // not currently in use // this is the number of points that you could pass as a value into the calculation for vertex locations, along the path of a circle
   //i changed d to diam ---> which may need to be updated in the 'OLD CODE' section
 
   //   maxDist = 15,
@@ -117,7 +117,7 @@ export default function sketch7(p) {
     //p.background(54, 100, 100);
     p.background(75)
 
-    console.log(p.floor(color.h), dirH)
+    //console.log(p.floor(color.h), dirH)
     p.translate(p.width / 2, p.height / 2);
     //when i introduced translate i no longer needed to have width/2 + p.sin((p.TWOPI)) etc etc
     //p.scale(p.mouseX / 500, p.mouseY / 500);
@@ -143,16 +143,17 @@ export default function sketch7(p) {
     //let incr = p.map(p.mouseX, 0, p.width, 0, 0.01)
 
     //12 was originally the value nums
-    for (var i = 0; i < 22; i++) {
-      var x = p.sin((p.TWO_PI / 22) * i) * diam;
-      var y = p.cos((p.TWO_PI / 22) * i) * diam;
+    for (var i = 0; i < num; i++) {
+      var x = p.sin((p.TWO_PI / num) * i) * diam;
+      var y = p.cos((p.TWO_PI / num) * i) * diam;
       vertices[i] = p.createVector(x, y);
     }
 
 
     p.beginShape()
-    p.stroke(color.h, color.s, color.b)
-    //p.strokeWeight(5)
+    p.stroke('purple')
+    //p.stroke(color.h, color.s, color.b)
+    p.strokeWeight(5)
     p.fill(color.h, color.s, color.b)
     //p.noFill()
     for (var i = 0; i < vertices.length; i++) {
@@ -165,6 +166,7 @@ export default function sketch7(p) {
       //this allows me to draw a circle, but then manipulate particular vertex points along its path. so i can get the wiggles and the shakes. 
       p.curveVertex(x * p.noise(t + p.random(0.01, 0.05)), y * p.noise(t + p.random(0.01, 0.05)))
       //p.curveVertex(x * p.noise(t), y * p.noise(t))
+      p.point(x, y)
 
     }
     p.endShape(p.CLOSE)
@@ -172,6 +174,8 @@ export default function sketch7(p) {
     t += 0.001
     //p.frameRate % 100 === 0 ? t += 0.001 : t += 0.0001
     //t += incr; //see note above for how incr is being experimented with 
+
+
 
     //OLD CODE
 
@@ -215,10 +219,38 @@ export default function sketch7(p) {
     //   p.save("image-" + p.counter + ".png");
     //   p.counter++;
     // }
+
+    let width = 500
+    //let height = 500
+    let cols = 11;
+    let grids = []
+
+    let mult = width / cols
+
+    p.translate(-p.width / 2, -p.height / 2)
+    for (var i = 1; i < cols; i++) {
+
+      for (var m = 1; m < cols; m++) {
+        grids.push(p.createVector(i * mult, m * mult))
+      }
+    }
+    p.stroke('white')
+    for (var a = 0; a < grids.length; a++) {
+      let x = grids[a].x
+      let y = grids[a].y
+      //p.point(x, y)
+      p.ellipse(x, y, 50, 50)
+    }
   };
 
 
 
+
+  class Vector {
+    constructor(x, y, num) {}
+
+
+  }
 }
 
 // function windowResized() {
