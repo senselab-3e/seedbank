@@ -1,9 +1,9 @@
 //import Vector from "react-p5-wrapper/node_modules/p5";
 //import sub from "react-p5-wrapper/node_modules/p5";
-import p5 from "react-p5-wrapper/node_modules/p5";
+//import p5 from "react-p5-wrapper/node_modules/p5";
 
 export default function sketch7(p) {
-  var v;
+  //var v;
   var vertices = [];
   var num = 22; // not currently in use // this is the number of points that you could pass as a value into the calculation for vertex locations, along the path of a circle
   //i changed d to diam ---> which may need to be updated in the 'OLD CODE' section
@@ -68,7 +68,7 @@ export default function sketch7(p) {
     //   dirH = 1
     // }
     //fullspectrum
-    console.log(p.mouseX, p.pmouseX) // the previous mouse value is always printing the same as mouseX.. so always comes to a null
+    //console.log(p.mouseX, p.pmouseX) // the previous mouse value is always printing the same as mouseX.. so always comes to a null
 
     //if (p.mouseX > p.pmouseX) {
     if (color.h >= 100) {
@@ -117,7 +117,7 @@ export default function sketch7(p) {
 
     p.colorMode(p.HSB, 100);
     //p.background(54, 100, 100);
-    p.background(75)
+    p.background(67)
 
     //console.log(p.floor(color.h), dirH)
     //p.translate(p.width / 2, p.height / 2);
@@ -145,7 +145,7 @@ export default function sketch7(p) {
     //let incr = p.map(p.mouseX, 0, p.width, 0, 0.01)
 
 
-    for (var i = 0; i < num; i++) {
+    for (let i = 0; i < num; i++) {
       var x = p.sin((p.TWO_PI / num) * i) * diam;
       var y = p.cos((p.TWO_PI / num) * i) * diam;
       vertices[i] = p.createVector(x, y);
@@ -153,32 +153,34 @@ export default function sketch7(p) {
 
     //p.stroke(color.h, color.s, color.b)
 
-    p.push()
-    p.stroke('white')
-    p.noFill()
-    p.translate(p.width / 2, p.height / 2);
-    p.beginShape()
-    //p.noFill()
-    p.strokeWeight(2)
-    for (var i = 0; i < vertices.length; i++) {
-      let x = vertices[i].x
-      let y = vertices[i].y
-      //this allows me to draw a circle, but then manipulate particular vertex points along its path. so i can get the wiggles and the shakes. 
-      p.curveVertex(x * p.noise(t + p.random(0.01, 0.05)), y * p.noise(t + p.random(0.01, 0.05)))
+    //central vibrating circle
 
-      p.point(x, y)
+    // p.push()
+    // p.stroke('white')
+    // p.noFill()
+    // p.translate(p.width / 2, p.height / 2);
+    // p.beginShape()
+    // //p.noFill()
+    // p.strokeWeight(2)
+    // for (let i = 0; i < vertices.length; i++) {
+    //   let x = vertices[i].x
+    //   let y = vertices[i].y
+    //   //this allows me to draw a circle, but then manipulate particular vertex points along its path. so i can get the wiggles and the shakes. 
+    //   p.curveVertex(x * p.noise(t + p.random(0.01, 0.05)), y * p.noise(t + p.random(0.01, 0.05)))
 
-    }
-    p.endShape(p.CLOSE)
+    //   //p.point(x, y)
 
-    t += 0.001
+    // }
+    // p.endShape(p.CLOSE)
 
-    p.pop()
+    // t += 0.001
+
+    // p.pop()
 
     ///NOTES: values being passed into Vector object constructor
 
     let cols = 6;
-    let elSize = 30
+    let elSize = 90
     let elVertex = 25
 
     p.fill(color.h, color.s, color.b, 50)
@@ -197,7 +199,7 @@ export default function sketch7(p) {
 
     //p.translate(-p.width / 2, -p.height / 2)
     // i've set the var to start at 1, instead of 0, because i don't want the elements at the far edges of the canvas
-    for (var i = 1; i < cols; i++) {
+    for (let i = 1; i < cols; i++) {
 
       for (var m = 1; m < cols; m++) {
         grids.push(p.createVector(i * mult, m * mult))
@@ -208,14 +210,16 @@ export default function sketch7(p) {
     for (var a = 0; a < grids.length; a++) {
       let x = grids[a].x
       let y = grids[a].y
+      let incrOrg = 0.001
+      let incr = p.random(0.002, 0.009) // amount to be passed to noise values in the constructor - in an attempt to not have every instance be moving in exactly the same way. 
       //p.point(x, y)
       //p.ellipse(x, y, 50, 50)
-      let el = new Vector(x, y, elSize, elVertex, t, color)
+      let el = new Vector(x, y, elSize, elVertex, incrOrg, incr, color)
       vectors.push(el)
     }
 
     for (let n = 0; n < vectors.length; n++) {
-      vectors[n].show() // this draws out the circles as intended. 
+      //vectors[n].show() // this draws out the circles as intended. 
       vectors[n].squares() // this is a quick test of a constructor squares instead of circles
     }
   };
@@ -242,13 +246,14 @@ export default function sketch7(p) {
 
 
   class Vector {
-    constructor(x, y, diam, vertex, t, color) {
+    constructor(x, y, diam, vertex, incrOrg, incr, color) {
       this.x = x;
       this.y = y;
       this.cirVertices = vertex
       this.diam = diam;
       this.elements = []
-      this.incr = t
+      this.incrOrg = incrOrg
+      this.incr = incr //p.random(0.002, 0.006) //incr //p.random(0.002, 0.006)
       this.color = color // this isn't currently being used --- as the univeral faill color and its shifts is going to the elements// but i could pull this out later. 
 
     }
@@ -256,7 +261,8 @@ export default function sketch7(p) {
     show() {
       //let xAround = p.sin((p.TWO_PI / num) * i) * this.diam;
       //p.ellipse(this.x, this.y, this.diam, this.diam)
-
+      console.log(this.incr, 'apples')
+      this.incrOrg += this.incr
       // p.push()
       // p.translate(this.x, this.y)
 
@@ -280,13 +286,15 @@ export default function sketch7(p) {
         //console.log(p.noise(t))
         //p.point(x * p.noise(t + p.random(0.01, 0.05)), y * p.noise(t + p.random(0.01, 0.05)))
         //this allows me to draw a circle, but then manipulate particular vertex points along its path. so i can get the wiggles and the shakes. 
-        p.curveVertex(xV * p.noise(this.incr + p.random(0.01, 0.09)), yV * p.noise(this.incr + p.random(0.01, 0.09)))
+        p.curveVertex(xV * p.noise(this.incrOrg + p.random(0.01, 0.09)), yV * p.noise(this.incrOrg + p.random(0.01, 0.09)))
         //p.curveVertex(x * p.noise(t), y * p.noise(t))
         //p.point(xV, yV)
 
       }
       p.endShape(p.CLOSE)
       p.pop()
+
+      //this.incr += this.incr
 
     }
 
@@ -295,14 +303,16 @@ export default function sketch7(p) {
     }
 
     squares() {
+      this.incrOrg += this.incr
       p.noStroke()
       p.beginShape()
-      p.vertex(this.x - this.diam * p.noise(this.incr + p.random(1.01, 1.09)), this.y - this.diam * p.noise(this.incr + p.random(1.01, 1.05)))
-      p.vertex(this.x + this.diam * p.noise(this.incr + p.random(1.01, 1.09)), this.y - this.diam * p.noise(this.incr + p.random(1.01, 1.05)))
+      p.vertex(this.x - this.diam * p.noise(this.incrOrg + p.random(1.01, 1.09)), this.y - this.diam * p.noise(this.incrOrg + p.random(1.01, 1.05)))
+      p.vertex(this.x + this.diam * p.noise(this.incrOrg + p.random(1.01, 1.09)), this.y - this.diam * p.noise(this.incrOrg + p.random(1.01, 1.05)))
 
-      p.vertex(this.x + this.diam * p.noise(this.incr + p.random(1.01, 1.09)), this.y + this.diam * p.noise(this.incr + p.random(1.01, 1.05)))
-      p.vertex(this.x - this.diam * p.noise(this.incr + p.random(1.01, 1.09)), this.y + this.diam * p.noise(this.incr + p.random(1.01, 1.05)))
+      p.vertex(this.x + this.diam * p.noise(this.incrOrg + p.random(1.01, 1.09)), this.y + this.diam * p.noise(this.incrOrg + p.random(1.01, 1.05)))
+      p.vertex(this.x - this.diam * p.noise(this.incrOrg + p.random(1.01, 1.09)), this.y + this.diam * p.noise(this.incrOrg + p.random(1.01, 1.05)))
       p.endShape(p.CLOSE)
+
     }
 
   }
