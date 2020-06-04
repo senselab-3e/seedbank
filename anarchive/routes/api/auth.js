@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const saltRounds = 8; //change to 12 for production
 const jwt = require('jsonwebtoken');
 
-const Auth = require('../../services/auth-helpers');
+const Auth = require('../../services/auth_helpers');
 
 // GET /api/auth/verify
 router.get('/verify', (req, res) => {
