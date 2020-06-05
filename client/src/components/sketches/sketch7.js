@@ -20,8 +20,8 @@ export default function sketch7(p) {
 
   //var cnv //this was for when i needed to assign canvas a value, so that i could pass a function to it.
 
-  let colorInr = 0.05
-  let dirH = 1
+  let colorInr = 0.5 // increments by which the color hue values are increased in the strobing...
+  let dirH = 1 //direction of the color hue shifts
   let dirS = 1
   let dirB = 1
 
@@ -32,8 +32,8 @@ export default function sketch7(p) {
     p.frameRate = 10
 
     ///NOTES: values being passed into Vector object constructor
-    let cols = 16;
-    let elSize = 10
+    let cols = 5; // remember that on the loop you created, you ommited the first instance so it wouldn't be drawn a the 0 coordinate edge. so when i write 5, only 4 will occure because it skipped over the first instance [0]
+    let elSize = 80
     let elVertex = 25
 
     //NOTES: values being passed into the grid position calculations, which allows a translate function to be applied to each of those vector locations, in the Vector Object constructor, later
@@ -72,9 +72,10 @@ export default function sketch7(p) {
     p.colorMode(p.HSB, 100);
 
     for (let n = 0; n < vectors.length; n++) {
-      vectors[n].show() // this draws out the circles as intended. 
-      //svectors[n].squares() // this is a quick test of a constructor squares instead of circles
+      // this draws out the circles as intended. 
+      //vectors[n].squares() // this is a quick test of a constructor squares instead of circles
       vectors[n].colors()
+      vectors[n].show()
     }
     //central vibrating circle
     // for (let i = 0; i < num; i++) {
@@ -119,9 +120,9 @@ export default function sketch7(p) {
       this.incr = incr //p.random(0.002, 0.006) //incr //p.random(0.002, 0.006)
       this.colorObj = {
         h: colRan, //p.random(255), // random from here, also runs continuously
-        s: colRan,
-        b: 100,
-        a: 100 //colRan
+        s: 100, //colRan,
+        b: 90,
+        a: 90 //colRan
 
       }
     }
@@ -129,6 +130,7 @@ export default function sketch7(p) {
     show() {
       this.incrOrg += this.incr
       p.push() ///this push is super important
+      p.colorMode(p.HSB, 100);
       p.fill(this.colorObj.h, this.colorObj.s, this.colorObj.b, this.colorObj.a)
       p.translate(this.x, this.y)
       p.noStroke()
@@ -151,6 +153,8 @@ export default function sketch7(p) {
 
     colors() {
 
+      //investigate later how much this colors are strobing.... it seem like there's more of a saturation or lightness being shifted through? or still within a few shades of the original coloring? not the full rainbow.... 
+
       p.push()
       if (this.colorObj.h >= 100) {
         dirH = -1
@@ -159,23 +163,24 @@ export default function sketch7(p) {
         dirH = 1
       }
 
-      if (this.colorObj.s >= 100) {
-        dirS = -1
-      }
-      if (this.colorObj.s <= 50) {
-        dirS = 1
-      }
+      // if (this.colorObj.s >= 90) {
+      //   dirS = -1
+      // }
+      // if (this.colorObj.s <= 50) {
+      //   dirS = 1
+      // }
 
-      if (this.colorObj.b >= 100) {
-        dirB = -1
-      }
-      if (this.colorObj.b <= 80) {
-        dirB = 1
-      }
+      // if (this.colorObj.b >= 100) {
+      //   dirB = -1
+      // }
+      // if (this.colorObj.b <= 80) {
+      //   dirB = 1
+      // }
 
       this.colorObj.h += colorInr * dirH
-      this.colorObj.s += colorInr * dirS
-      this.colorObj.b += colorInr * dirB
+      // this.colorObj.s += colorInr * dirS
+      //this.colorObj.b += colorInr * dirB
+      //write now it looks like black is being applied slightly universally, but maybe not. hard to tell. investigate later
 
       // console.log(this.colorObj.h)
       p.pop()
