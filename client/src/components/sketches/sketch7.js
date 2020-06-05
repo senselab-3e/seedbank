@@ -4,7 +4,7 @@
 
 export default function sketch7(p) {
   //var v;
-  var vertices = [];
+  var vertices = []; // old array used for push 'each' element's vertics in a loop - and passing those values into another loop that created an element. this has been replaced by an object constructor 
   var num = 22; // not currently in use // this is the number of points that you could pass as a value into the calculation for vertex locations, along the path of a circle
   //i changed d to diam ---> which may need to be updated in the 'OLD CODE' section
 
@@ -14,7 +14,7 @@ export default function sketch7(p) {
 
   var t; //this is a time increment being passed inthe the noise function and progressively being increased over time
 
-  let diam = 250
+  let diam = 250 //this is when i wasn't using a constructor for calculating the element width
 
   let vectors = []
 
@@ -35,8 +35,6 @@ export default function sketch7(p) {
     let cols = 16;
     let elSize = 10
     let elVertex = 25
-
-    p.fill(color.h, color.s, color.b, 50)
 
     //NOTES: values being passed into the grid position calculations, which allows a translate function to be applied to each of those vector locations, in the Vector Object constructor, later
     let width = p.width // canvas size across which the grid should be calculated and distributed
@@ -61,31 +59,17 @@ export default function sketch7(p) {
       let x = grids[a].x
       let y = grids[a].y
       let incrOrg = 0.001
-      let incr = p.random(0.002, 0.009) // amount to be passed to noise values in the constructor - in an attempt to not have every instance be moving in exactly the same way. 
+      let noiseIncr = p.random(0.002, 0.02) // amount to be passed to noise values in the constructor - in an attempt to not have every instance be moving in exactly the same way. 
       let ranHueVal = p.floor(p.random(100)) // doesn't work. runs continuously
 
       colorArray.push(ranHueVal) // doesn't work. runs continuously
-      let el = new Vector(x, y, elSize, elVertex, incrOrg, incr, colorArray[a])
+      let el = new Vector(x, y, elSize, elVertex, incrOrg, noiseIncr, colorArray[a])
       vectors.push(el)
     }
   };
-
-
-
-  let color = {
-    h: 18,
-    s: 50,
-    b: 100 // 0 goes to dark values
-  }
-
-
-
-
-
-
   p.draw = function () {
+    p.background(255)
     p.colorMode(p.HSB, 100);
-    p.background(67)
 
     for (let n = 0; n < vectors.length; n++) {
       vectors[n].show() // this draws out the circles as intended. 
@@ -124,26 +108,6 @@ export default function sketch7(p) {
   };
 
 
-  // for (var a = 0; a < grids.length; a++) {
-
-  //   for (var m = 0; m < num; m++) {
-  //   var xC = p.sin((p.TWO_PI / num) * a) * 100;
-  //   var yC = p.cos((p.TWO_PI / num) * a) * 100;
-  //   circles[m] = p.createVector(xC, yC);
-  //   }
-
-  //   let x1 = grids[a].x
-  //   let y1 = grids[a].y
-  //   // p.point(x, y)
-  //   // //p.ellipse(x, y, 50, 50)
-  //   p.translate(x1, y1)
-
-
-  //   p.point(xC, yC)
-  // }
-
-
-
   class Vector {
     constructor(x, y, diam, vertex, incrOrg, incr, colRan) {
       this.x = x;
@@ -157,7 +121,7 @@ export default function sketch7(p) {
         h: colRan, //p.random(255), // random from here, also runs continuously
         s: colRan,
         b: 100,
-        a: colRan
+        a: 100 //colRan
 
       }
     }
@@ -183,20 +147,14 @@ export default function sketch7(p) {
       }
       p.endShape(p.CLOSE)
       p.pop()
-      //this.incr += this.incr
-
     }
 
     colors() {
 
-      //this keeps the above random for color values from running repeatedly...BUT it's being applied to all the randoms, whehn i only want it to run on the color object
-      //p.colorPhase(this.colorObj)
-      // console.log(this.colorObj.h)
       p.push()
       if (this.colorObj.h >= 100) {
         dirH = -1
       }
-      // } else if (p.mouseX < p.pmouseX) {
       if (this.colorObj.h <= 0) {
         dirH = 1
       }
@@ -204,14 +162,20 @@ export default function sketch7(p) {
       if (this.colorObj.s >= 100) {
         dirS = -1
       }
-      // } else if (p.mouseX < p.pmouseX) {
       if (this.colorObj.s <= 50) {
         dirS = 1
       }
 
+      if (this.colorObj.b >= 100) {
+        dirB = -1
+      }
+      if (this.colorObj.b <= 80) {
+        dirB = 1
+      }
+
       this.colorObj.h += colorInr * dirH
       this.colorObj.s += colorInr * dirS
-      //this.colorObj.b += colorInr * dirB
+      this.colorObj.b += colorInr * dirB
 
       // console.log(this.colorObj.h)
       p.pop()
