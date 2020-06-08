@@ -9,13 +9,13 @@ export class Imag extends Component {
   constructor() {
     super();
     this.state = {
-      image: []
+      image: ''
     };
   }
 
   checkForUpdates = () => {
     axios
-      .get("/api/assets/images/:200")
+      .get('/api/assets/images/190')
       .then(image => {
         this.setState({
           image: image.data
@@ -27,10 +27,12 @@ export class Imag extends Component {
   componentDidMount() {
     this.checkForUpdates();
   }
-
   render() {
+    console.log(this.state.image);
+
     return (
       <div>
+      olA:
       {this.state.image}
         <br />
         <br />
