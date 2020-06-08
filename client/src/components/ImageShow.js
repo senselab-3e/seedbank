@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import Images from "./Images"
+
 
 class ImageShow extends Component {
   constructor() {
@@ -10,11 +10,11 @@ class ImageShow extends Component {
     };
   }
 
-
   checkForUpdates = () => {
       axios
-        .get('/api/assets/images/190')
+        .get('/api/assets/images/:190')
         .then(image => {
+          // console.log(response);
           this.setState({
             image: image.data
           });
@@ -45,8 +45,8 @@ class ImageShow extends Component {
   render() {
     return (
       <div>
-      hi:
-      <Images images={this.state.image}/>
+      hey
+      <img src={this.state.image} alt="ola"/>
       </div>
     )
   }
