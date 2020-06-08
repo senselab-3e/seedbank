@@ -1,0 +1,51 @@
+.tiny {
+
+    /*width: 5%;
+height: 5%;   OR decreases the <div> element to be half of its original width and height: */
+
+    -ms-transform: scale(0.5, 0.5);
+    /* IE 9 */
+    -webkit-transform: scale(0.5, 0.5);
+    /* Safari */
+    transform: scale(0.5, 0.5);
+
+}
+
+.huge {
+
+
+
+    /* height: 300%;  OR */
+
+    -ms-transform: scale(2, 3);
+    /* IE 9 */
+    -webkit-transform: scale(2, 3);
+    /* Safari */
+    transform: scale(2, 3);
+
+    /* increases the <div> element to be two times of its original width, and three times of its original height: */
+
+}
+
+#skew {
+
+    -ms-transform: skew(20deg, 10deg);
+    /* IE 9 */
+    -webkit-transform: skew(20deg, 10deg);
+    /* Safari */
+    transform: skew(20deg, 10deg);
+    /* Standard syntax */
+
+    /*This div element is skewed 20 degrees along the X-axis, and 10 degrees along the Y-axis.  you can also exclusively specify skewX or skewY*/
+
+}
+
+#rotate {
+
+    -ms-transform: rotate(20deg);
+    /* IE 9 */
+    -webkit-transform: rotate(20deg);
+    /* Safari */
+    transform: rotate(20deg);
+
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <script src="./scripts/01.js"></script>
+
+    <!-- style sheets are wayZ --- a way, not 'the' way -->
+
+    <style>
+        *,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fff;
+            /* -webkit-animation: random 100s infinite;
+            animation: random 100s infinite; */
+            --varColor1: #4842bd;
+            --varColor2: #B7BD42;
+            /* --h1: 63; */
+            /* --h2: 243; */
+            --h2b: 195;
+            --h1b: 15;
+            /* --hsl1: hsl(63, 48%, 50%); */
+            /* --h1: 63;
+            --hsl1: hsl(63, 48%, 50%); */
+            /* --hsl2: hsl(var(--h2), 48%, 50%); */
+            --hsl1b: hsl(var(--h1), 48%, 50%);
+            --hsl2b: hsl(var(--h2), 48%, 50%);
+        }
+
+        @keyframes sample1 {
+            0% {
+                background-color: var(--hsl1);
+            }
+
+            50% {
+                background-color: var(--hsl2);
+            }
+
+            100% {
+                background-color: var(--hsl1);
+            }
+        }
+
+        @keyframes sample2 {
+            0% {
+                background-color: var(--hsl2);
+            }
+
+            50% {
+                background-color: var(--hsl1);
+            }
+
+            100% {
+                background-color: var(--hsl2);
+            }
+        }
+
+        .cube {
+            width: 100vw;
+            height: 50vh;
+            z-index: 10;
+            position: relative;
+            padding: 0;
+            margin: 0;
+            /* top: 300px;
+            top: 10%;
+            left: 10%; */
+
+        }
+
+        #sample1 {
+            --h1: 63;
+            --hsl1: hsl(63, 48%, 50%);
+            background-color: var(--hsl1);
+            /* -webkit-animation: sample1 100s infinite;
+            animation: sample1 100s infinite; */
+        }
+
+        #sample2 {
+            --h2: 243;
+            --hsl2: hsl(var(--h2), 48%, 50%);
+            background-color: var(--hsl2);
+            /* -webkit-animation: sample2 100s infinite;
+            animation: sample2 100s infinite; */
+        }
+
+
+        @keyframes random {
+            15% {
+                background-color: deeppink;
+            }
+
+            30% {
+                background-color: palegoldenrod;
+            }
+
+            45% {
+                background-color: limegreen;
+            }
+
+            60% {
+                background-color: royalblue;
+            }
+
+            75% {
+                background-color: blueviolet;
+            }
+
+            95% {
+                background-color: sandybrown;
+            }
+        }
+
+        #prePicnicPatch {
+            width: 5px;
+            height: 5px;
+            cursor: pointer;
+            background: deeppink;
+        }
+
+        #prePicnicPatch:hover {
+
+            width: 600px;
+            height: 600px;
+
+        }
+
+
+        .pixel {
+            display: none;
+            /*window.innerHeight;*/
+            /* float: left; */
+            margin: 25%;
+            /*for some reason when i assign a fixed/absolute position, the transitions stop being smooth. 
+/*attempted at skew but continually adjusts to center of current length*/
+            -webkit-transition: width 15s, height 15s;
+            /* Safari */
+            -webkit-transition-timing-function: ease;
+            /* Safari */
+            transition: width 15s, height 15s;
+            transition-timing-function: ease;
+
+
+        }
+
+
+
+        .pseudoCode {
+
+            font-family: 'Quicksand', sans-serif;
+            font-size: 12px;
+            color: #333;
+            position: fixed;
+            top: 60%;
+            left: 5%;
+            margin: 0em 5em 0em 5em;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block
+        }
+
+        /* div:hover {
+
+            width: 600px;
+            height: 600px;
+
+        } */
+
+        #demo {
+            display: block;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+    <div class="pixel" id="prePicnicPatch" alt="link to another page"></div>
+    <div class="cube" id="sample1"></div>
+    <div class="cube" id="sample2"></div>
+    <div class="pseudoCode hide"> /* <--initial threshold: exactly that. color thresholds. the code is the first
+            threshold but how it actualizes in the UI what is the most minimal, difference that makes all the
+            difference. how to establish a different tonality. texture. words word. words words every day online, too
+            much, sometimes. how to bring it back. but also, not have it be for entertainment. not interaction as
+            a 'performance' . what if you try to introduce a different quality of duration in the difference made simply
+            from colorality, and actually show, oh, its ok to just sit with this. i can go to a next via tiny pixel. but
+            i can also just enjoy the colors as they shit. that can already be enough. that can be the difference done
+            and made--> */
+
+            <div id="demo">Click the button to change the color of this paragraph.</div>
+
+
+</body>
+
+</html>

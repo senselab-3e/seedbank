@@ -32,9 +32,9 @@ export default function sketch7(p) {
     p.frameRate = 10
 
     ///NOTES: values being passed into Vector object constructor
-    let cols = 5; // remember that on the loop you created, you ommited the first instance so it wouldn't be drawn a the 0 coordinate edge. so when i write 5, only 4 will occure because it skipped over the first instance [0]
-    let elSize = 80
-    let elVertex = 25
+    let cols = 2; // remember that on the loop you created, you ommited the first instance so it wouldn't be drawn a the 0 coordinate edge. so when i write 5, only 4 will occure because it skipped over the first instance [0]
+    let elSize = 235
+    let elVertex = 15
 
     //NOTES: values being passed into the grid position calculations, which allows a translate function to be applied to each of those vector locations, in the Vector Object constructor, later
     let width = p.width // canvas size across which the grid should be calculated and distributed
@@ -59,7 +59,7 @@ export default function sketch7(p) {
       let x = grids[a].x
       let y = grids[a].y
       let incrOrg = 0.001
-      let noiseIncr = p.random(0.002, 0.02) // amount to be passed to noise values in the constructor - in an attempt to not have every instance be moving in exactly the same way. 
+      let noiseIncr = p.random(0.002, 0.009) // amount to be passed to noise values in the constructor - in an attempt to not have every instance be moving in exactly the same way. 
       let ranHueVal = p.floor(p.random(100)) // doesn't work. runs continuously
 
       colorArray.push(ranHueVal) // doesn't work. runs continuously

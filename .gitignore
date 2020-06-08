@@ -8,3 +8,5 @@ devNotes.md
 /client/build/
 /client/src/components/FetchEvents.js
 /client/src/components/sketches/classconstructorvsfunctions.js
+
+/client/public/sketches/404-1.js
