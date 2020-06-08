@@ -1,3 +1,5 @@
+//not working
+
 import React, { Component } from 'react'
 import axios from 'axios';
 
@@ -12,7 +14,7 @@ class ImageShow extends Component {
 
   checkForUpdates = () => {
       axios
-        .get('/api/assets/images/:190')
+        .get('/api/assets/images/190')
         .then(image => {
           // console.log(response);
           this.setState({
