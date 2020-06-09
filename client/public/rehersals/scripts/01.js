@@ -5,18 +5,18 @@ var x2, x3, notes, sampleBlock;
 
 
 window.onload = () => {
-    x2 = document.getElementById('prePicnicPatch');
+    //x2 = document.getElementById('prePicnicPatch');
     notes = document.querySelector('.pseudoCode');
     sampleBlock = document.querySelector('#sample1');
     sampleBlock2 = document.querySelector('#sample2');
-    console.log(x2, notes, sampleBlock)
-    x2.addEventListener('click', function (event) {
-        entryClick()
-        replaceClassName()
-        updateColors()
-    });
+    //console.log(x2, notes, sampleBlock)
+    // x2.addEventListener('click', function (event) {
+    //     //entryClick()
+    //     replaceClassName()
+    //     updateColors()
+    // });
 }
-const entryClick = () => console.log('clicking pixel') //sanity check
+//onst entryClick = () => console.log('clicking pixel') //sanity check
 
 const replaceClassName = () => {
     notes.classList.contains('hide') ? notes.classList.remove('hide') : notes.classList.add('hide');
