@@ -180,11 +180,12 @@
     //     //so for some reason the second instance gets me all the css... 
     //     console.log(document.styleSheets[1].ownerNode)
     // }
-    //     const input = document.querySelector('input');
-    // input.addEventListener('change', function () {
-    //         firstPatch.style.setProperty('--entrypatch-color', input.value)
-    //         //firstPatch.style.setProperty('background', input.value)
-    //     })
+    const input = document.querySelector('input');
+    const body = document.querySelector('body')
+    input.addEventListener('change', function () {
+        body.style.setProperty('--entrypatch-color', input.value)
+        //firstPatch.style.setProperty('background', input.value)
+    })
 </script>
 
 </html>
