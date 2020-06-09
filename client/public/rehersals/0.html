@@ -13,8 +13,8 @@
     <style>
         body {
             background-color: #fff;
-            -webkit-animation: random 100s infinite;
-            animation: random 100s infinite;
+            -webkit-animation: backgroundColor 100s infinite;
+            animation: backgroundColor 100s infinite;
             --entrypatch-color: #ff1493;
             color: #999;
 
@@ -35,88 +35,31 @@
             text-decoration: underline;
         }
 
-        @keyframes sample1 {
-            0% {
-                background-color: var(--hsl1);
-            }
-
-            50% {
-                background-color: var(--hsl2);
-            }
-
-            100% {
-                background-color: var(--hsl1);
-            }
-        }
-
-        @keyframes sample2 {
-            0% {
-                background-color: var(--hsl2);
-            }
-
-            50% {
-                background-color: var(--hsl1);
-            }
-
-            100% {
-                background-color: var(--hsl2);
-            }
-        }
 
 
-
-        .cube {
-            width: 900px;
-            height: 500px;
-            z-index: 10;
-            position: relative;
-
-            /* top: 300px;
-            top: 10%;
-            left: 10%; */
-
-        }
-
-        #sample1 {
-            --h1: 63;
-            --hsl1: hsl(63, 48%, 50%);
-            background-color: var(--hsl1);
-            /* -webkit-animation: sample1 100s infinite;
-            animation: sample1 100s infinite; */
-        }
-
-        #sample2 {
-            --h2: 243;
-            --hsl2: hsl(var(--h2), 48%, 50%);
-            background-color: var(--hsl2);
-            /* -webkit-animation: sample2 100s infinite;
-            animation: sample2 100s infinite; */
-        }
-
-
-        @keyframes random {
+        @keyframes backgroundColor {
             15% {
-                background-color: deeppink;
+                background-color: var(--entrypatch-color);
             }
 
             30% {
-                background-color: palegoldenrod;
+                background-color: white;
             }
 
             45% {
-                background-color: limegreen;
+                background-color: var(--entrypatch-color);
             }
 
             60% {
-                background-color: royalblue;
+                background-color: black;
             }
 
             75% {
-                background-color: blueviolet;
+                background-color: var(--entrypatch-color);
             }
 
             95% {
-                background-color: sandybrown;
+                background-color: white;
             }
         }
 
@@ -224,5 +167,24 @@
     <label>Choose patch color:
         <input type="color" value="#ff1493">
 </body>
+
+<script>
+    //tomorrow: https://stackoverflow.com/questions/5105530/programmatically-changing-webkit-transformation-values-in-animation-rules
+    const stylesheet = document.styleSheets[1] //so for some reason the second instance gets me all the css... 
+    //const rules = stylesheet.rules
+    console.log(stylesheet.ownerNode)
+
+    //another method
+    // for (let i = 0; i < document.styleSheets.length; i++) {
+    //     let styleSheet = document.styleSheets[i];
+    //     //so for some reason the second instance gets me all the css... 
+    //     console.log(document.styleSheets[1].ownerNode)
+    // }
+    //     const input = document.querySelector('input');
+    // input.addEventListener('change', function () {
+    //         firstPatch.style.setProperty('--entrypatch-color', input.value)
+    //         //firstPatch.style.setProperty('background', input.value)
+    //     })
+</script>
 
 </html>
