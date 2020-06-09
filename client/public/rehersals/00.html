@@ -125,6 +125,43 @@
         }
 
 
+        .picnicPatch {
+
+            width: 5px;
+            height: 5px;
+            cursor: pointer;
+            background: deeppink;
+            /* height: 10px;
+  width: 10px;
+  z-index: 10; */
+            /* border: 20px solid rgb(34, 202, 160); */
+            -webkit-transition: width 14s ease-in-out;
+            -moz-transition: width 14s ease-in-out;
+            -ms-transition: width 14s ease-in-out;
+            -o-transition: width 14s ease-in-out;
+
+            transition: width 14s ease-in-out 1s, height 1s ease-in;
+            /* position: absolute; */
+        }
+
+
+
+        /*something weird happened with the height calculations on line -- where the percentage is no longer working right for height only - probably has to do with the parent div - troubleshoot later
+*/
+        .picnicPatch:hover {
+            width: 40%;
+            height: 900px;
+            cursor: pointer;
+        }
+
+        @media (hover: hover) and (cursor: pointer) {
+            .picnicPatch:hover {
+                width: 40%;
+                height: 900px;
+                cursor: pointer;
+            }
+        }
+
         .pixel {
             position: absolute;
             z-index: 10;
@@ -134,11 +171,7 @@
             /* Safari */
             transition: width 15s, height 15s;
             transition-timing-function: ease;
-
-
         }
-
-
 
         .pseudoCode {
 

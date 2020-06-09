@@ -1,27 +1,22 @@
 var notes;
 
-const gatherPatches = () => {
-    let allPatches = document.querySelectorAll(".prePicnicPatch");
-    console.log(allPatches)
-    for (let i = 0; i < allPatches.length; i++) {
-        console.log('clicking others')
-        allPatches[i].addEventListener('click', function (event) {
-            createPixel()
-        });
-    }
+const addListener = (patch) => {
+    patch.addEventListener('click', function (event) {
+        createPatch()
+    });
 }
 
 window.onload = () => {
-    createPixel()
+    entryPatch()
     const firstPatch = document.querySelector('.prePicnicPatch');
     notes = document.querySelector('.pseudoCode');
     firstPatch.addEventListener('click', function (event) {
-        replaceClassName()
+        entryNotes()
     });
 }
-const EntryPatch = () => createPixel() //console.log('clicking pixel') //sanity check
+const entryPatch = () => createPixel()
 
-const replaceClassName = () => {
+const entryNotes = () => { // hides and shows div that has text message in it. message can be edited. 
     notes.classList.contains('hide') ? notes.classList.remove('hide') : notes.classList.add('hide');
 }
 
@@ -32,5 +27,17 @@ const createPixel = () => {
     pixel.style.marginLeft = Math.random(window.innerWidth) * window.innerWidth + 'px';
     pixel.style.marginTop = Math.random(window.innerHeight) * window.innerHeight + 'px';
     document.body.appendChild(pixel)
-    gatherPatches() // this ensures that each time a pixel is added, that it will re-run the query select and apply listeners to all the current pixels on the page. running this within onload doesn't work because onload only is called once. so the listeners only gets attatched to the first instance craeted at the start. 
+    addListener(pixel)
+}
+
+const createPatch = () => {
+    var patch = document.createElement('div');
+    patch.className = 'pixel'
+    patch.classList.add('picnicPatch');
+    patch.style.marginLeft = Math.random(window.innerWidth) * window.innerWidth + 'px';
+    patch.style.marginTop = Math.random(window.innerHeight) * window.innerHeight + 'px';
+    document.body.appendChild(patch)
+    addListener(patch)
+    let allPatches = document.querySelectorAll(".picnicPatch"); //sanity check that only one patch is being added at a time, and not expodentially
+    console.log(allPatches)
 }
