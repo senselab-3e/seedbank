@@ -24,8 +24,8 @@ const createPixel = () => {
     var pixel = document.createElement('div');
     pixel.className = 'pixel'
     pixel.classList.add('prePicnicPatch');
-    pixel.style.marginLeft = Math.random(window.innerWidth) * window.innerWidth + 'px';
-    pixel.style.marginTop = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
+    pixel.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
+    pixel.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
     document.body.appendChild(pixel)
     addListener(pixel)
 }

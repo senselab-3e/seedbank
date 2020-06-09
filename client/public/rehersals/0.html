@@ -70,6 +70,15 @@
 
         }
 
+        .entry {
+            position: absolute;
+        }
+
+        .entry:link {
+            outline: solid;
+            color: limegreen;
+        }
+
         .prePicnicPatch {
             width: 5px;
             height: 5px;
@@ -170,16 +179,10 @@
 
 <script>
     //tomorrow: https://stackoverflow.com/questions/5105530/programmatically-changing-webkit-transformation-values-in-animation-rules
-    const stylesheet = document.styleSheets[1] //so for some reason the second instance gets me all the css... 
+    // const stylesheet = document.styleSheets[1] //so for some reason the second instance gets me all the css... 
     //const rules = stylesheet.rules
-    console.log(stylesheet.ownerNode)
+    // console.log(stylesheet.ownerNode)
 
-    //another method
-    // for (let i = 0; i < document.styleSheets.length; i++) {
-    //     let styleSheet = document.styleSheets[i];
-    //     //so for some reason the second instance gets me all the css... 
-    //     console.log(document.styleSheets[1].ownerNode)
-    // }
     const input = document.querySelector('input');
     const body = document.querySelector('body')
     input.addEventListener('change', function () {
