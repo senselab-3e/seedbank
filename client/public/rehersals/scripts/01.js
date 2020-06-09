@@ -1,22 +1,49 @@
 var updateHue = 0;
 let updateColor = 'hsl(100,54%,66%)';
 var currentColor = 0;
-var x2, x3, notes, sampleBlock;
+var notes;
+
+
+
+const resetCubeWidth = (newWidth) => {
+    sampleBlock = document.querySelector('#sample1');
+    sampleBlock2 = document.querySelector('#sample2');
+    let currentWidth = window.getComputedStyle(sampleBlock, null).getPropertyValue(
+        "width");
+    let currentWidth2 = window.getComputedStyle(sampleBlock2, null).getPropertyValue(
+        "width");
+    console.log(currentWidth, currentWidth2)
+    sampleBlock.style.setProperty('width', newWidth + 'vw');
+    sampleBlock2.style.setProperty('width', 100 - newWidth + 'vw');
+
+}
+
+
+const getClickPosition = (e) => {
+    //var parentPosition = getPosition(e.currentTarget);
+    const xPosition = e.clientX;
+    // const yPosition = e.clientY;
+    let intViewportWidth = window.innerWidth;
+    //calculate position as 100 - value so i can use it like a percentage val but with vw css
+    let percentageWidth = Math.floor(xPosition / intViewportWidth * 100)
+
+    resetCubeWidth(percentageWidth)
+}
+
 
 
 window.onload = () => {
-    //x2 = document.getElementById('prePicnicPatch');
     notes = document.querySelector('.pseudoCode');
-    sampleBlock = document.querySelector('#sample1');
-    sampleBlock2 = document.querySelector('#sample2');
-    //console.log(x2, notes, sampleBlock)
-    // x2.addEventListener('click', function (event) {
-    //     //entryClick()
-    //     replaceClassName()
-    //     updateColors()
-    // });
+    const cubes = document.querySelectorAll('.cube')
+
+    cubes.forEach(cube => {
+        cube.addEventListener('click', getClickPosition, false)
+
+    });
+
 }
-//onst entryClick = () => console.log('clicking pixel') //sanity check
+
+//const entryClick = () => console.log('clicking pixel') //sanity check
 
 const replaceClassName = () => {
     notes.classList.contains('hide') ? notes.classList.remove('hide') : notes.classList.add('hide');
@@ -35,6 +62,8 @@ const setNewColorVal = (val, hueVal, colorVal, target) => {
 
 }
 const updateColors = () => {
+    const sampleBlock = document.querySelector('#sample1'); //need to keep these here
+    const sampleBlock2 = document.querySelector('#sample2');
     let currentHue = window.getComputedStyle(sampleBlock, null).getPropertyValue(
         "--h1");
     let currentHue2 = window.getComputedStyle(sampleBlock2, null).getPropertyValue(
