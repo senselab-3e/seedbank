@@ -1,163 +1,23 @@
-body {
-    background-color: #fff;
-    -webkit-animation: random 100s infinite;
-    animation: random 100s infinite;
-    --varColor1: #4842bd;
-    --varColor2: #B7BD42;
-    /* --h1: 63; */
-    /* --h2: 243; */
-    --h2b: 195;
-    --h1b: 15;
-    /* --hsl1: hsl(63, 48%, 50%); */
-    /* --h1: 63;
-    --hsl1: hsl(63, 48%, 50%); */
-    /* --hsl2: hsl(var(--h2), 48%, 50%); */
-    --hsl1b: hsl(var(--h1), 48%, 50%);
-    --hsl2b: hsl(var(--h2), 48%, 50%);
-}
+body {}
 
-@keyframes sample1 {
-    0% {
-        background-color: var(--hsl1);
-    }
-
-    50% {
-        background-color: var(--hsl2);
-    }
-
-    100% {
-        background-color: var(--hsl1);
-    }
-}
-
-@keyframes sample2 {
-    0% {
-        background-color: var(--hsl2);
-    }
-
-    50% {
-        background-color: var(--hsl1);
-    }
-
-    100% {
-        background-color: var(--hsl2);
-    }
-}
-
-.cube {
-    width: 900px;
-    height: 500px;
+.pixel {
+    position: absolute;
     z-index: 10;
-    position: relative;
-
-    /* top: 300px;
-    top: 10%;
-    left: 10%; */
 
 }
 
-#sample1 {
-    --h1: 63;
-    --hsl1: hsl(63, 48%, 50%);
-    background-color: var(--hsl1);
-    /* -webkit-animation: sample1 100s infinite;
-    animation: sample1 100s infinite; */
-}
-
-#sample2 {
-    --h2: 243;
-    --hsl2: hsl(var(--h2), 48%, 50%);
-    background-color: var(--hsl2);
-    /* -webkit-animation: sample2 100s infinite;
-    animation: sample2 100s infinite; */
-}
-
-
-@keyframes random {
-    15% {
-        background-color: deeppink;
-    }
-
-    30% {
-        background-color: palegoldenrod;
-    }
-
-    45% {
-        background-color: limegreen;
-    }
-
-    60% {
-        background-color: royalblue;
-    }
-
-    75% {
-        background-color: blueviolet;
-    }
-
-    95% {
-        background-color: sandybrown;
-    }
-}
-
-#prePicnicPatch {
+.prePicnicPatch {
     width: 5px;
     height: 5px;
     cursor: pointer;
     background: deeppink;
-}
-
-#prePicnicPatch:hover {
-
-    width: 600px;
-    height: 600px;
-
-}
-
-
-.pixel {
-    /*window.innerHeight;*/
-    /* float: left; */
-    margin: 25%;
-    /*for some reason when i assign a fixed/absolute position, the transitions stop being smooth. 
-/*attempted at skew but continually adjusts to center of current length*/
     -webkit-transition: width 15s, height 15s;
-    /* Safari */
     -webkit-transition-timing-function: ease;
-    /* Safari */
     transition: width 15s, height 15s;
     transition-timing-function: ease;
-
-
 }
 
-
-
-.pseudoCode {
-
-    font-family: 'Quicksand', sans-serif;
-    font-size: 12px;
-    color: #333;
-    position: fixed;
-    top: 60%;
-    left: 5%;
-    margin: 0em 5em 0em 5em;
-}
-
-.hide {
-    display: none;
-}
-
-.show {
-    display: block
-}
-
-/* div:hover {
-
+.prePicnicPatch:hover {
     width: 600px;
     height: 600px;
-
-} */
-
-#demo {
-    display: block;
 }

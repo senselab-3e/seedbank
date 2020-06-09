@@ -30,20 +30,32 @@ const getClickPosition = (e) => {
     resetCubeWidth(percentageWidth)
 }
 
-
+const addListener = (patch) => {
+    patch.addEventListener('click', getClickPosition, false)
+}
 
 window.onload = () => {
+    entryPatch()
     notes = document.querySelector('.pseudoCode');
     const cubes = document.querySelectorAll('.cube')
 
     cubes.forEach(cube => {
         cube.addEventListener('click', getClickPosition, false)
-
     });
 
 }
 
-//const entryClick = () => console.log('clicking pixel') //sanity check
+const entryPatch = () => createPixel();
+
+const createPixel = () => {
+    var pixel = document.createElement('div');
+    pixel.className = 'pixel'
+    pixel.classList.add('prePicnicPatch');
+    pixel.style.marginLeft = Math.random(window.innerWidth) * window.innerWidth + 'px';
+    pixel.style.marginTop = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
+    document.body.appendChild(pixel)
+    addListener(pixel)
+}
 
 const replaceClassName = () => {
     notes.classList.contains('hide') ? notes.classList.remove('hide') : notes.classList.add('hide');
