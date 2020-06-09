@@ -4,20 +4,20 @@ var currentColor = 0;
 var notes;
 
 
-
 const resetCubeWidth = (newWidth) => {
     sampleBlock = document.querySelector('#sample1');
     sampleBlock2 = document.querySelector('#sample2');
-    let currentWidth = window.getComputedStyle(sampleBlock, null).getPropertyValue(
-        "width");
-    let currentWidth2 = window.getComputedStyle(sampleBlock2, null).getPropertyValue(
-        "width");
-    console.log(currentWidth, currentWidth2)
-    sampleBlock.style.setProperty('width', newWidth + 'vw');
-    sampleBlock2.style.setProperty('width', 100 - newWidth + 'vw');
+    // let currentWidth = window.getComputedStyle(sampleBlock, null).getPropertyValue(
+    //     "width");
+    // let currentWidth2 = window.getComputedStyle(sampleBlock2, null).getPropertyValue(
+    //     "width");
+    const newWidthCube1 = newWidth + 'vw';
+    const newWidthCube2 = 100 - newWidth + 'vw';
+
+    sampleBlock.style.setProperty('width', newWidthCube1);
+    sampleBlock2.style.setProperty('width', newWidthCube2);
 
 }
-
 
 const getClickPosition = (e) => {
     //var parentPosition = getPosition(e.currentTarget);
