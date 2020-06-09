@@ -13,10 +13,24 @@ const resetCubeWidth = (newWidth) => {
     //     "width");
     const newWidthCube1 = newWidth + 'vw';
     const newWidthCube2 = 100 - newWidth + 'vw';
-
     sampleBlock.style.setProperty('width', newWidthCube1);
     sampleBlock2.style.setProperty('width', newWidthCube2);
 
+}
+
+const retreiveColor = (el) => {
+    //console.log(el)
+    let currentColorVal = window.getComputedStyle(el, null).getPropertyValue(
+        "--hsl1");
+    console.log(currentColorVal, 'retrieve color')
+    return currentColorVal
+}
+
+const resetColorPixel = (el, target) => {
+    let updateColor = retreiveColor(el)
+    console.log(target, 'target')
+    //const pixel1 = document.querySelector(target)
+    target.style.setProperty('background', updateColor);
 }
 
 const getClickPosition = (e) => {
@@ -26,7 +40,6 @@ const getClickPosition = (e) => {
     let intViewportWidth = window.innerWidth;
     //calculate position as 100 - value so i can use it like a percentage val but with vw css
     let percentageWidth = Math.floor(xPosition / intViewportWidth * 100)
-
     resetCubeWidth(percentageWidth)
 }
 
@@ -48,14 +61,23 @@ window.onload = () => {
 const entryPatch = () => createPixel();
 
 const createPixel = () => {
-    var pixel = document.createElement('div');
-    pixel.className = 'pixel'
-    pixel.classList.add('prePicnicPatch');
-    pixel.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
-    pixel.style.top = Math.random(window.innerHeight) * window.innerHeight - 100 + 'px';
-    console.log(pixel.style.marginLeft)
-    document.body.appendChild(pixel)
-    addListener(pixel)
+    const sampleBlock = document.querySelector('#sample1');
+    // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
+    var pixelContainer = document.createElement('div');
+    pixelContainer.className = 'pixel'
+    var patch1 = document.createElement('div');
+    patch1.className = 'prePicnicPatch';
+    var patch2 = document.createElement('div');
+    patch2.className = 'prePicnicPatch';
+    patch2.style.backgroundColor = retreiveColor(sampleBlock)
+    pixelContainer.appendChild(patch1)
+    pixelContainer.appendChild(patch2)
+    //pixel.classList.add('prePicnicPatch');
+    pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
+    pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
+    document.body.appendChild(pixelContainer)
+    addListener(pixelContainer)
+    // resetColorCube(patch2)
 }
 
 const replaceClassName = () => {

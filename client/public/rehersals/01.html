@@ -103,12 +103,14 @@
 
         .pixel {
             position: absolute;
-            z-index: 11;
+            z-index: 10;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
 
         }
 
         .prePicnicPatch {
-
             width: 5px;
             height: 5px;
             cursor: pointer;
@@ -167,7 +169,7 @@
 
         <div class="pixel" id="prePicnicPatch" alt="link to another page"></div>
     </div>
-    <div class="pseudoCode show">aidosf iaidofi oaiudfouo</div>
+    <div class="pseudoCode hide">relational shifts</div>
     <div class="colorBox">
         <label>Shift color Relation:
             <input type="color" value="#4842bd">
@@ -182,11 +184,16 @@
     // console.log(stylesheet.ownerNode)
 
     const input = document.querySelector('input');
-    const sample = document.querySelector('#sample1')
+    //const sample = document.querySelector('#sample1')
+    //const sample2 = document.querySelector('#sample2')
+
+    //ixel = pixel[1]
     // const orgColorVal = window.getComputedStyle(sample, null).getPropertyValue(
     //     "--h1"); // grab this information here, if i want to always calculate from the original color
     input.addEventListener('change', function () {
         //console.log(input.value)
+        const sample = document.querySelector('#sample1')
+        let pixel = document.querySelectorAll('.prePicnicPatch')
         const orgColorVal = window.getComputedStyle(sample, null).getPropertyValue(
             "--h1");
         let convertedVal = HEXtoHSL(input.value)
@@ -195,6 +202,8 @@
         sample.style.setProperty('--h1', convertedVal)
         //firstPatch.style.setProperty('background', input.value)
         colorShiftVal(orgColorVal, convertedVal)
+        console.log(sample)
+        resetColorPixel(sample, pixel[1])
     })
 
     //this function was found here : https://www.html-code-generator.com/javascript/color-converter-script.php

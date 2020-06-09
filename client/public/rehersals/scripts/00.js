@@ -21,19 +21,24 @@ const entryNotes = () => { // hides and shows div that has text message in it. m
 }
 
 const createPixel = () => {
-    var pixel = document.createElement('div');
-    pixel.className = 'pixel'
-    pixel.classList.add('prePicnicPatch');
-    pixel.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
-    pixel.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
-    document.body.appendChild(pixel)
-    addListener(pixel)
+    var pixelContainer = document.createElement('div');
+    pixelContainer.className = 'pixel'
+    var patch1 = document.createElement('div');
+    patch1.className = 'prePicnicPatch';
+    pixelContainer.appendChild(patch1)
+    pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
+    pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
+    document.body.appendChild(pixelContainer)
+    addListener(pixelContainer)
 }
 
 const createPatch = () => {
     var patch = document.createElement('div');
     patch.className = 'pixel'
     patch.classList.add('picnicPatch');
+    // let currentHue = window.getComputedStyle(body, null).getPropertyValue(
+    //     "--orgColor"); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
+    // patch.style.backgroundColor = currentHue; //currently this hue, as it's being queried from the body tag, always returns a deeppink value. the color yielded from the @animation is harder to target.....
     patch.style.marginLeft = Math.random(window.innerWidth) * window.innerWidth + 'px';
     patch.style.marginTop = Math.random(window.innerHeight) * window.innerHeight + 'px';
     document.body.appendChild(patch)
