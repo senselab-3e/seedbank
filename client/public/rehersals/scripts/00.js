@@ -37,8 +37,8 @@ const createPatch = () => {
     var patch = document.createElement('div');
     patch.className = 'pixel'
     patch.classList.add('picnicPatch');
-    patch.style.marginLeft = Math.random(window.innerWidth) * window.innerWidth + 'px';
-    patch.style.marginTop = Math.random(window.innerHeight) * window.innerHeight + 'px';
+    patch.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
+    patch.style.top = Math.random(window.innerHeight) * window.innerHeight + 'px';
     document.body.appendChild(patch)
     addListener(patch)
     // let allPatches = document.querySelectorAll(".picnicPatch"); //sanity check that only one patch is being added at a time, and not expodentially
