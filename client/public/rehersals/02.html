@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <!-- <script src="./scripts/02.js"></script> -->
+    <script src="./scripts/02.js"></script>
 
     <!-- style sheets are wayZ --- a way, not 'the' way -->
 
@@ -67,8 +67,18 @@
             margin: 0;
         }
 
+        .palette {
+            width: 20vw;
+            height: 100vh;
+            -webkit-transition: width 3s;
+            -moz-transition: width 3s;
+            -ms-transition: width 3s;
+            -o-transition: width 3s;
+            transition: width 3s;
+        }
+
         #palette1 {
-            width: 50vw;
+            width: 40vw;
             height: 100vh;
             --h1: 63;
             --hsl1: hsl(var(--h1), 48%, 50%);
@@ -82,7 +92,7 @@
         }
 
         #palette2 {
-            width: 50vw;
+            width: 40vw;
             height: 100vh;
             --h2: 243;
             --hsl2: hsl(var(--h2), 48%, 50%);
