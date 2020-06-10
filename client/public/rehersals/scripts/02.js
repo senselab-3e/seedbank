@@ -88,8 +88,6 @@ window.onload = () => {
             var newPalletes = new Palette('palette');
             newPalletes.createDiv()
         })
-        // var newPalletes = new Palette('palette');
-        // newPalletes.createDiv()
     });
 }
 
