@@ -14,7 +14,7 @@ function Palette(className, textStatus) {
     this.currentHue = function () {
         let sample = document.body.querySelector('#palette1') // just for testing purposes.
         let hsl = window.getComputedStyle(sample, null).getPropertyValue(
-            "--hsl1");
+            "--hsl");
         //console.log(hsl)
         return hsl
     }
@@ -64,14 +64,14 @@ const resetCubeWidth = (newWidth) => {
 const retreiveColor = (el) => {
     //console.log(el)
     let currentColorVal = window.getComputedStyle(el, null).getPropertyValue(
-        "--hsl1");
+        "--hsl");
     console.log(currentColorVal, 'retrieve color')
     return currentColorVal
 }
 
 const resetColorPixel = (el, target) => {
     let updateColor = retreiveColor(el)
-    console.log(target, 'target')
+    //console.log(target, 'target')
     //const pixel1 = document.querySelector(target)
     target.style.setProperty('background', updateColor);
 }
@@ -132,28 +132,75 @@ const replaceClassName = () => {
     notes.classList.contains('hide') ? notes.classList.remove('hide') : notes.classList.add('hide');
 }
 
-const setNewColorVal = (val, hueVal, colorVal, target) => {
-    val = parseInt(val)
-    val < 360 ? val += 1 : val = 1; // this needs a conditional ceiling so that it cycles through
-    updatedHue = val
-    updatedColor = 'hsl(' + updatedHue + ', 48%, 50%)'
+// const setNewColorVal = (val, hueVal, colorVal, target) => {
+
+
+//     val = parseInt(val)
+//     val < 360 ? val += 1 : val = 1; // this needs a conditional ceiling so that it cycles through
+//     updatedHue = val
+//     //updatedColor = 'hsl(' + updatedHue + ', 48%, 50%)'  //original way
+//     // i need to set both the hue value and the overall hsl value in the css. i thought by updating just the hue val it would autimatically pass update the hsl in the css, but no. so i need these two css values passed to the function
+//     target.style.setProperty(hueVal, updatedHue);
+
+//     let currentHSL = window.getComputedStyle(target, null).getPropertyValue(
+//         colorVal);
+//     console.log(currentHSL)
+//     // let currentHue = window.getComputedStyle(target, null).getPropertyValue(
+//     //colorVal);  /// this, didn't seem to incorporate the newly set hue value, above. so unfortunately it's not being the the hsl in the css, automatically.  
+
+//     //target.style.setProperty(colorVal, updatedColor) //original way
+
+//     //target.style.setProperty(colorVal, currentHue);
+// }
+
+
+const setNewColorVal = (target) => {
+    let currentH = window.getComputedStyle(target, null).getPropertyValue(
+        "--h");
+    let currentS = window.getComputedStyle(target, null).getPropertyValue(
+        "--s");
+    let currentL = window.getComputedStyle(target, null).getPropertyValue(
+        "--l");
+
+    //console.log(currentH, currentS, currentL)
+
+    currentH = parseInt(currentH)
+    currentH < 360 ? currentH += 1 : currentH = 1; // this needs a conditional ceiling so that it cycles through
+    updatedHue = currentH
+    const updatedHSL = 'hsl(' + updatedHue + ', ' + currentS + ', ' + currentL + ')'
+
+
+    //console.log(updatedHSL)
+    //updatedColor = 'hsl(' + updatedHue + ', 48%, 50%)'  //original way
     // i need to set both the hue value and the overall hsl value in the css. i thought by updating just the hue val it would autimatically pass update the hsl in the css, but no. so i need these two css values passed to the function
-    target.style.setProperty(hueVal, updatedHue);
-    target.style.setProperty(colorVal, updatedColor)
+    target.style.setProperty('--h', updatedHue);
+    target.style.setProperty('--hsl', updatedHSL);
+    // let currentHSL = window.getComputedStyle(target, null).getPropertyValue(
+    //     '--hsl');
+    // console.log(currentHSL)
+    // let currentHue = window.getComputedStyle(target, null).getPropertyValue(
+    //colorVal);  /// this, didn't seem to incorporate the newly set hue value, above. so unfortunately it's not being the the hsl in the css, automatically.  
+
+    //target.style.setProperty(colorVal, updatedColor) //original way
+
+    //target.style.setProperty(colorVal, currentHue);
 }
 
 const updateColors = () => {
-    const sampleBlock = document.querySelector('#palette1'); //need to keep these here
-    const sampleBlock2 = document.querySelector('#palette2');
-    let currentHue = window.getComputedStyle(sampleBlock, null).getPropertyValue(
-        "--h1");
-    let currentHue2 = window.getComputedStyle(sampleBlock2, null).getPropertyValue(
-        "--h2");
-    setNewColorVal(currentHue, '--h1', "--hsl1", sampleBlock)
-    setNewColorVal(currentHue2, '--h2', "--hsl2", sampleBlock2)
+    const palette1 = document.querySelector('#palette1'); //need to keep these here
+    const palette2 = document.querySelector('#palette2');
+    // let currentHue = window.getComputedStyle(sampleBlock, null).getPropertyValue(
+    //     "--h");
+    // let currentHue2 = window.getComputedStyle(sampleBlock2, null).getPropertyValue(
+    //     "--h");
+    //setNewColorVal(currentHue, '--h', "--hsl", sampleBlock)
+    setNewColorVal(palette1)
+    setNewColorVal(palette2)
+    //setNewColorVal(currentHue2, '--h', "--hsl", sampleBlock2)
 
 }
 
+//because of the way setInterval requires a callback function, i can't pass variables into updateColors the way i'd like... so that i don't have to query sample1 and sample2 seperately. 
 var intervalChng = window.setInterval(updateColors, 100); //continually changes color of palette2 element, using callback function 
 
 //work on making the color Picker more reusable for object constructors. 
@@ -161,17 +208,24 @@ const colorPicker = () => {
     const input = document.querySelector('input');
     input.addEventListener('change', function () {
         //console.log(input.value)
-        const sample = document.querySelector('#palette1')
+        const palette1 = document.querySelector('#palette1')
         let pixel = document.querySelectorAll('.prePicnicPatch')
-        const orgColorVal = window.getComputedStyle(sample, null).getPropertyValue(
-            "--h1");
-        let convertedVal = HEXtoHSL(input.value)
+        const orgColorVal = window.getComputedStyle(palette1, null).getPropertyValue(
+            "--h");
+        let convertedVal = HEXtoHSL(input.value) //this now returning a fullll hsl object and not just the hue value...
         //unfortunately, in this instance, the input value is only working in #numbers, rather then hsb values - and i'm using hsb values in my scrolling colors function elsewhere. so that means a value IS being passed to it, it's just grabbing numbers within a certain range which produce only reds.
         //sample.style.setProperty('--h1', convertedVal) // this is only returning the H value. not the full hsl. but it could. 
-        sample.style.setProperty('--h1', convertedVal.h)
-        colorShiftVal(orgColorVal, convertedVal.h)
-        //console.log(sample)
-        resetColorPixel(sample, pixel[1])
+        //sample.style.setProperty('--h1', convertedVal.h)
+        palette1.style.setProperty('--h', convertedVal.h)
+        palette1.style.setProperty('--s', convertedVal.s)
+        palette1.style.setProperty('--l', convertedVal.l)
+        const hslString = 'hsl(' + convertedVal.h + ', ' + convertedVal.s + ', ' + convertedVal.l + ')';
+        palette1.style.setProperty('--hsl', hslString);
+
+
+        colorShiftDif(orgColorVal, convertedVal.h)
+        //console.log(palette1)
+        resetColorPixel(palette1, pixel[1])
     })
 }
 
@@ -211,8 +265,8 @@ function HEXtoHSL(hex) {
 
     let colorHSL = {
         h: h,
-        s: s,
-        l: l
+        s: s + '%',
+        l: l + '%'
     }
     console.log(colorHSL)
     //return h; //'hsl(' + h + ', ' + s + '%, ' + l + '%)'; // normally this would give you the full hsl value, but i only need the hue value since that is the value i want to update (alone) so that the scrolling through of the color changes continues to happen
@@ -223,7 +277,7 @@ function HEXtoHSL(hex) {
 
 //if i ever what to compare and contrast the former color value and new chosen color value and use that difference for something:
 
-const colorShiftVal = (orgVal, newVal) => {
+const colorShiftDif = (orgVal, newVal) => {
     //console.log(orgVal, newVal)
     console.log(Math.abs(orgVal - newVal))
 }
