@@ -10,12 +10,12 @@ const textOptions = ['adfodsifsadoifjiadosfjo', 'oiajdsfojasdofoasdfo', 'oaisdfo
 
 function Palette(className, textStatus) {
     this.className = className;
-    this.txtRq = textStatus
+    this.txtRq = textStatus; // checks for true of false for adding text within palette
     this.currentHue = function () {
-        let sample = document.body.querySelector('#palette2') // just for testing purposes.
+        let sample = document.body.querySelector('#palette1') // just for testing purposes.
         let hsl = window.getComputedStyle(sample, null).getPropertyValue(
-            "--hsl2");
-        console.log(hsl)
+            "--hsl1");
+        //console.log(hsl)
         return hsl
     }
     this.color = this.currentHue()
@@ -26,7 +26,7 @@ function Palette(className, textStatus) {
         palette.style.left = 0;
         palette.style.top = 0;
         palette.style.background = this.color; //"orange";
-        console.log(this.txtRq);
+        //console.log(this.txtRq);
         this.txtRq === true ? this.textContent(palette) : console.log('no text requested')
         //this.text = this.textContent(palette)
         paletteContainer.appendChild(palette);
@@ -35,7 +35,7 @@ function Palette(className, textStatus) {
     }
     this.textContent = function (target) {
         const text = textOptions[Math.floor(Math.random() * textOptions.length)]
-        console.log(text)
+        //console.log(text)
         var textBox = document.createElement('div');
         textBox.classList = 'textBox';
         //textBox.classList.add('hide');
@@ -167,8 +167,9 @@ const colorPicker = () => {
             "--h1");
         let convertedVal = HEXtoHSL(input.value)
         //unfortunately, in this instance, the input value is only working in #numbers, rather then hsb values - and i'm using hsb values in my scrolling colors function elsewhere. so that means a value IS being passed to it, it's just grabbing numbers within a certain range which produce only reds.
-        sample.style.setProperty('--h1', convertedVal)
-        colorShiftVal(orgColorVal, convertedVal)
+        //sample.style.setProperty('--h1', convertedVal) // this is only returning the H value. not the full hsl. but it could. 
+        sample.style.setProperty('--h1', convertedVal.h)
+        colorShiftVal(orgColorVal, convertedVal.h)
         //console.log(sample)
         resetColorPixel(sample, pixel[1])
     })
@@ -207,7 +208,17 @@ function HEXtoHSL(hex) {
     l = l * 100;
     l = Math.round(l);
     h = Math.round(360 * h);
-    return h; //'hsl(' + h + ', ' + s + '%, ' + l + '%)'; // normally this would give you the full hsl value, but i only need the hue value since that is the value i want to update (alone) so that the scrolling through of the color changes continues to happen
+
+    let colorHSL = {
+        h: h,
+        s: s,
+        l: l
+    }
+    console.log(colorHSL)
+    //return h; //'hsl(' + h + ', ' + s + '%, ' + l + '%)'; // normally this would give you the full hsl value, but i only need the hue value since that is the value i want to update (alone) so that the scrolling through of the color changes continues to happen
+    //return 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
+
+    return colorHSL
 }
 
 //if i ever what to compare and contrast the former color value and new chosen color value and use that difference for something:
