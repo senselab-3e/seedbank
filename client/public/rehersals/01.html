@@ -25,7 +25,7 @@
 
         }
 
-        @keyframes sample1 {
+        @keyframes palette1 {
             0% {
                 background-color: var(--hsl1);
             }
@@ -39,7 +39,7 @@
             }
         }
 
-        @keyframes sample2 {
+        @keyframes palette2 {
             0% {
                 background-color: var(--hsl2);
             }
@@ -53,8 +53,7 @@
             }
         }
 
-        .cube {
-
+        .paletteContainer {
             z-index: 10;
             /* float: left; */
             display: flex;
@@ -66,13 +65,9 @@
             /* position: relative; use this if going with horizontal stripes*/
             padding: 0;
             margin: 0;
-            /* top: 300px;
-            top: 10%;
-            left: 10%; */
-
         }
 
-        #sample1 {
+        #palette1 {
             width: 50vw;
             height: 100vh;
             --h1: 63;
@@ -86,7 +81,7 @@
 
         }
 
-        #sample2 {
+        #palette2 {
             width: 50vw;
             height: 100vh;
             --h2: 243;
@@ -163,10 +158,9 @@
 
 
 
-    <div class="cube">
-        <div id="sample1"></div>
-        <div id="sample2"></div>
-
+    <div class="paletteContainer">
+        <div id="palette1"></div>
+        <div id="palette2"></div>
         <div class="pixel" id="prePicnicPatch" alt="link to another page"></div>
     </div>
     <div class="pseudoCode hide">relational shifts</div>
@@ -184,15 +178,15 @@
     // console.log(stylesheet.ownerNode)
 
     const input = document.querySelector('input');
-    //const sample = document.querySelector('#sample1')
-    //const sample2 = document.querySelector('#sample2')
+    //const sample = document.querySelector('#palette1')
+    //const palette2 = document.querySelector('#palette2')
 
     //ixel = pixel[1]
     // const orgColorVal = window.getComputedStyle(sample, null).getPropertyValue(
     //     "--h1"); // grab this information here, if i want to always calculate from the original color
     input.addEventListener('change', function () {
         //console.log(input.value)
-        const sample = document.querySelector('#sample1')
+        const sample = document.querySelector('#palette1')
         let pixel = document.querySelectorAll('.prePicnicPatch')
         const orgColorVal = window.getComputedStyle(sample, null).getPropertyValue(
             "--h1");

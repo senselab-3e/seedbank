@@ -5,8 +5,8 @@ var notes;
 
 
 const resetCubeWidth = (newWidth) => {
-    sampleBlock = document.querySelector('#sample1');
-    sampleBlock2 = document.querySelector('#sample2');
+    sampleBlock = document.querySelector('#palette1');
+    sampleBlock2 = document.querySelector('#palette2');
     // let currentWidth = window.getComputedStyle(sampleBlock, null).getPropertyValue(
     //     "width");
     // let currentWidth2 = window.getComputedStyle(sampleBlock2, null).getPropertyValue(
@@ -48,31 +48,27 @@ const addListener = (patch) => {
 }
 
 window.onload = () => {
-    entryPatch()
+    createPixelPatch()
+    createPixel()
+    createPixel() // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
     notes = document.querySelector('.pseudoCode');
-    const cubes = document.querySelectorAll('.cube')
-
-    cubes.forEach(cube => {
-        cube.addEventListener('click', getClickPosition, false)
+    const palettes = document.querySelectorAll('.paletteContainer')
+    palettes.forEach(palette => {
+        palette.addEventListener('click', getClickPosition, false)
     });
-
 }
 
-const entryPatch = () => createPixel();
+const createPixelPatch = () => {
+    var pixelContainer = document.createElement('div');
+    pixelContainer.className = 'pixel';
+}
 
 const createPixel = () => {
-    const sampleBlock = document.querySelector('#sample1');
+    const pixelContainer = document.querySelector('.pixel')
     // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
-    var pixelContainer = document.createElement('div');
-    pixelContainer.className = 'pixel'
-    var patch1 = document.createElement('div');
-    patch1.className = 'prePicnicPatch';
-    var patch2 = document.createElement('div');
-    patch2.className = 'prePicnicPatch';
-    patch2.style.backgroundColor = retreiveColor(sampleBlock)
-    pixelContainer.appendChild(patch1)
-    pixelContainer.appendChild(patch2)
-    //pixel.classList.add('prePicnicPatch');
+    var patch = document.createElement('div');
+    patch.className = 'prePicnicPatch';
+    pixelContainer.appendChild(patch)
     pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
     document.body.appendChild(pixelContainer)
@@ -89,16 +85,14 @@ const setNewColorVal = (val, hueVal, colorVal, target) => {
     val < 360 ? val += 1 : val = 1; // this needs a conditional ceiling so that it cycles through
     updatedHue = val
     updatedColor = 'hsl(' + updatedHue + ', 48%, 50%)'
-    // console.log(val, updateColor, 'BEFORE')
     // i need to set both the hue value and the overall hsl value in the css. i thought by updating just the hue val it would autimatically pass update the hsl in the css, but no. so i need these two css values passed to the function
     target.style.setProperty(hueVal, updatedHue);
     target.style.setProperty(colorVal, updatedColor)
-    // console.log(val, updateColor, 'AFTER')
-
 }
+
 const updateColors = () => {
-    const sampleBlock = document.querySelector('#sample1'); //need to keep these here
-    const sampleBlock2 = document.querySelector('#sample2');
+    const sampleBlock = document.querySelector('#palette1'); //need to keep these here
+    const sampleBlock2 = document.querySelector('#palette2');
     let currentHue = window.getComputedStyle(sampleBlock, null).getPropertyValue(
         "--h1");
     let currentHue2 = window.getComputedStyle(sampleBlock2, null).getPropertyValue(
@@ -108,4 +102,4 @@ const updateColors = () => {
 
 }
 
-var intervalChng = window.setInterval(updateColors, 100); //continually changes color of sample2 element, using callback function 
+var intervalChng = window.setInterval(updateColors, 100); //continually changes color of palette2 element, using callback function 

@@ -15,8 +15,8 @@
             --orgColor: #ff1493;
             --orgColor2: hsl(328, 100%, 54%);
             background-color: #fff;
-            -webkit-animation: random 100s infinite;
-            animation: random 100s infinite;
+            -webkit-animation: colorScroll 100s infinite;
+            animation: colorScroll 100s infinite;
 
         }
 
@@ -36,11 +36,7 @@
         }
 
 
-
-
-
-
-        @keyframes random {
+        @keyframes colorScroll {
             15% {
                 background-color: var(--orgColor);
             }
@@ -80,7 +76,7 @@
             width: 5px;
             height: 5px;
             cursor: pointer;
-            background: deeppink;
+            background: var(--orgColor);
             -webkit-transition: width 15s, height 15s;
             -webkit-transition-timing-function: ease;
             transition: width 15s, height 15s;
