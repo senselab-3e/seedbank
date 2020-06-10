@@ -5,6 +5,9 @@ var notes;
 
 const textOptions = ['adfodsifsadoifjiadosfjo', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
 
+// NOtES FOR LATER. it may be worth revisitng the color picker later, to see about updating not just the h value but also the saturation and lightness. 
+
+
 function Palette(className, textStatus) {
     this.className = className;
     this.txtRq = textStatus
