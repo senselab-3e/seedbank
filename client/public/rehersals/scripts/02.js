@@ -6,7 +6,7 @@ var notes;
 function Palette(className) {
     this.className = className;
     this.currentHue = function () {
-        let sample = document.body.querySelector('#palette2')
+        let sample = document.body.querySelector('#palette2') // just for testing purposes.
         let hsl = window.getComputedStyle(sample, null).getPropertyValue(
             "--hsl2");
         console.log(hsl)
@@ -22,11 +22,10 @@ function Palette(className) {
         palette.style.background = this.color; //"orange";
         paletteContainer.appendChild(palette);
         //document.body.appendChild(paletteContainer); // i don't seem to need to append it to the body
-
+    }
+    this.inputColor = function () {
 
     }
-
-    // this.name = function() {return this.firstName + " " + this.lastName;};
 }
 
 
@@ -79,13 +78,18 @@ window.onload = () => {
     createPixel() // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     var newPallete = new Palette('palette');
-
-    newPallete.currentHue()
     newPallete.createDiv()
     notes = document.querySelector('.pseudoCode');
     const palettes = document.querySelectorAll('.paletteContainer')
     palettes.forEach(palette => {
-        palette.addEventListener('click', getClickPosition, false)
+        // palette.addEventListener('click', getClickPosition, false)
+        palette.addEventListener('click', function (e) {
+            getClickPosition(e);
+            var newPalletes = new Palette('palette');
+            newPalletes.createDiv()
+        })
+        // var newPalletes = new Palette('palette');
+        // newPalletes.createDiv()
     });
 }
 
@@ -136,6 +140,7 @@ const updateColors = () => {
 
 var intervalChng = window.setInterval(updateColors, 100); //continually changes color of palette2 element, using callback function 
 
+//work on making the color Picker more reusable for object constructors. 
 const colorPicker = () => {
     const input = document.querySelector('input');
     input.addEventListener('change', function () {
@@ -148,7 +153,7 @@ const colorPicker = () => {
         //unfortunately, in this instance, the input value is only working in #numbers, rather then hsb values - and i'm using hsb values in my scrolling colors function elsewhere. so that means a value IS being passed to it, it's just grabbing numbers within a certain range which produce only reds.
         sample.style.setProperty('--h1', convertedVal)
         colorShiftVal(orgColorVal, convertedVal)
-        console.log(sample)
+        //console.log(sample)
         resetColorPixel(sample, pixel[1])
     })
 }
