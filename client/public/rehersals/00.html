@@ -87,9 +87,31 @@
         .prePicnicPatch:hover {
             width: 600px;
             height: 600px;
+            -webkit-animation: outlineScroll 10s;
+            animation: outlineScroll 10s;
             /* outline-style: solid;
             outline-width: thin;
             outline-color: #ffffff; */
+        }
+
+
+        @keyframes outlineScroll {
+            1% {
+                outline-style: solid;
+                outline-width: thin;
+                outline-color: #ffffff;
+
+            }
+
+            15% {
+                outline-style: none;
+
+            }
+
+            100% {
+                outline-style: none;
+
+            }
         }
 
 
