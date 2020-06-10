@@ -46,13 +46,13 @@ const createPixel = () => {
     // link.href = '00.html';
     var xpos = Math.random(window.innerWidth) * window.innerWidth + 'px'; // i need this because if the a link is  parent of pixel, it needs to share the coors of pixel;
     var ypos = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
-    // link.style.marginLeft = xpos;
-    // link.style.marginTop = ypos;
+    // link.style.left = xpos;
+    // link.style.top = ypos;
     var pixel = document.createElement('div');
     pixel.className = 'pixel'
     pixel.classList.add('prePicnicPatch');
-    pixel.style.marginLeft = xpos;
-    pixel.style.marginTop = ypos;
+    pixel.style.left = xpos;
+    pixel.style.top = ypos;
     // link.appendChild(pixel);
     // document.body.appendChild(link)
     document.body.appendChild(pixel)

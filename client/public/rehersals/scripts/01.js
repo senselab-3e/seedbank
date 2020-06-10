@@ -60,8 +60,9 @@ window.onload = () => {
 }
 
 const createPixelPatch = () => {
-    var pixelContainer = document.createElement('div');
-    pixelContainer.className = 'pixelContainer';
+    var pxlContainer = document.createElement('div');
+    pxlContainer.className = 'pixelContainer';
+    document.body.appendChild(pxlContainer);
 }
 
 const createPixel = () => {
@@ -73,10 +74,8 @@ const createPixel = () => {
     pixelContainer.appendChild(patch)
     pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
-
-    document.body.appendChild(pixelContainer)
     addListener(pixelContainer)
-    // resetColorCube(patch2)
+
 }
 
 const replaceClassName = () => {
