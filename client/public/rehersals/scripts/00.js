@@ -23,7 +23,7 @@ const entryNotes = () => { // hides and shows div that has text message in it. m
 
 const createPixel = () => {
     var pixelContainer = document.createElement('div');
-    pixelContainer.className = 'pixel'
+    pixelContainer.className = 'pixelContainer'
     var patch1 = document.createElement('div');
     patch1.className = 'prePicnicPatch';
     pixelContainer.appendChild(patch1)
@@ -35,7 +35,7 @@ const createPixel = () => {
 
 const createPatch = () => {
     var patch = document.createElement('div');
-    patch.className = 'pixel'
+    patch.className = 'pixelContainer'
     patch.classList.add('picnicPatch');
     patch.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     patch.style.top = Math.random(window.innerHeight) * window.innerHeight + 'px';
