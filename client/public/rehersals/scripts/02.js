@@ -229,7 +229,8 @@ const colorPicker = () => {
     })
 }
 
-//this function was found here : https://www.html-code-generator.com/javascript/color-converter-script.php
+//the core logic of this function was found here : https://www.html-code-generator.com/javascript/color-converter-script.php
+//  I modified the end to export an object so i could grab h s l values separtely for my color scrolling purposes.
 function HEXtoHSL(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     var r = parseInt(result[1], 16);
