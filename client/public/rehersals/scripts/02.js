@@ -210,8 +210,7 @@ const colorPicker = () => {
         //console.log(input.value)
         const palette1 = document.querySelector('#palette1')
         let pixel = document.querySelectorAll('.prePicnicPatch')
-        const orgColorVal = window.getComputedStyle(palette1, null).getPropertyValue(
-            "--h");
+
         let convertedVal = HEXtoHSL(input.value) //this now returning a fullll hsl object and not just the hue value...
         //unfortunately, in this instance, the input value is only working in #numbers, rather then hsb values - and i'm using hsb values in my scrolling colors function elsewhere. so that means a value IS being passed to it, it's just grabbing numbers within a certain range which produce only reds.
         //sample.style.setProperty('--h1', convertedVal) // this is only returning the H value. not the full hsl. but it could. 
@@ -223,7 +222,7 @@ const colorPicker = () => {
         palette1.style.setProperty('--hsl', hslString);
 
 
-        colorShiftDif(orgColorVal, convertedVal.h)
+        colorShiftDif(convertedVal.h)
         //console.log(palette1)
         resetColorPixel(palette1, pixel[1])
     })
@@ -277,8 +276,11 @@ function HEXtoHSL(hex) {
 }
 
 //if i ever what to compare and contrast the former color value and new chosen color value and use that difference for something:
-
-const colorShiftDif = (orgVal, newVal) => {
+//I changed this so it's calculated the color relation between palette 1 and 2, in terms of their hue numerical value. 
+const colorShiftDif = (newVal) => {
+    const palette2 = document.querySelector('#palette2')
+    const contrastVal = window.getComputedStyle(palette2, null).getPropertyValue(
+        "--h");
     //console.log(orgVal, newVal)
-    console.log(Math.abs(orgVal - newVal))
+    console.log(Math.abs(contrastVal - newVal))
 }
