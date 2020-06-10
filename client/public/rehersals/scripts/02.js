@@ -3,6 +3,8 @@ let updateColor = 'hsl(100,54%,66%)';
 var currentColor = 0;
 var notes;
 
+const textOptions = ['adfodsifsadoifjiadosfjo', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
+
 function Palette(className) {
     this.className = className;
     this.currentHue = function () {
@@ -20,12 +22,22 @@ function Palette(className) {
         palette.style.left = 0;
         palette.style.top = 0;
         palette.style.background = this.color; //"orange";
+        this.text = this.textContent(palette)
         paletteContainer.appendChild(palette);
+
         //document.body.appendChild(paletteContainer); // i don't seem to need to append it to the body
     }
-    this.inputColor = function () {
-
+    this.textContent = function (target) {
+        const text = textOptions[Math.floor(Math.random() * textOptions.length)]
+        console.log(text)
+        var textBox = document.createElement('div');
+        textBox.classList = 'textBox';
+        //textBox.classList.add('hide');
+        textBox.textContent = text
+        target.appendChild(textBox)
     }
+
+
 }
 
 
