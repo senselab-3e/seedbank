@@ -69,7 +69,7 @@ const createPixel = () => {
     // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
     var patch = document.createElement('div');
     patch.className = 'prePicnicPatch';
-    patch.alt = 'single deep pink pixel'
+
     pixelContainer.appendChild(patch)
     pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';

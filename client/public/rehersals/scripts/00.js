@@ -26,7 +26,7 @@ const createPixel = () => {
     pixelContainer.className = 'pixelContainer'
     var patch1 = document.createElement('div');
     patch1.className = 'prePicnicPatch';
-    patch1.alt = 'first pixel created on page at window load: a deep pink pixel, that on a rollover expands to a larger square-sized color patch. clicking this creates other pixels on the page.'
+    patch1.title = 'first pixel created on page at window load: a deep pink pixel, that on a rollover expands to a larger square-sized color patch. clicking this creates other pixels on the page.'
     pixelContainer.appendChild(patch1)
     pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
@@ -38,7 +38,7 @@ const createPatch = () => {
     var patch = document.createElement('div');
     patch.className = 'pixelContainer'
     patch.classList.add('picnicPatch');
-    patch.alt = 'single deep pink pixel surrounded by shifting color background. clicking this creates other pixels on the page.'
+    patch.title = 'single deep pink pixel surrounded by shifting color background. clicking this creates other pixels on the page.'
     patch.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     patch.style.top = Math.random(window.innerHeight) * window.innerHeight + 'px';
     document.body.appendChild(patch)
