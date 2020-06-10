@@ -5,8 +5,9 @@ var notes;
 
 const textOptions = ['adfodsifsadoifjiadosfjo', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
 
-function Palette(className) {
+function Palette(className, textStatus) {
     this.className = className;
+    this.txtRq = textStatus
     this.currentHue = function () {
         let sample = document.body.querySelector('#palette2') // just for testing purposes.
         let hsl = window.getComputedStyle(sample, null).getPropertyValue(
@@ -22,7 +23,9 @@ function Palette(className) {
         palette.style.left = 0;
         palette.style.top = 0;
         palette.style.background = this.color; //"orange";
-        this.text = this.textContent(palette)
+        console.log(this.txtRq);
+        this.txtRq === true ? this.textContent(palette) : console.log('no text requested')
+        //this.text = this.textContent(palette)
         paletteContainer.appendChild(palette);
 
         //document.body.appendChild(paletteContainer); // i don't seem to need to append it to the body
@@ -97,7 +100,7 @@ window.onload = () => {
         // palette.addEventListener('click', getClickPosition, false)
         palette.addEventListener('click', function (e) {
             getClickPosition(e);
-            var newPalletes = new Palette('palette');
+            var newPalletes = new Palette('palette', true);
             newPalletes.createDiv()
         })
     });
