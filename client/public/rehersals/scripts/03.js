@@ -45,6 +45,11 @@ function Palette(className, textStatus) {
         //     palette.firstElementChild.classList.add('hidden');
         // })
 
+        palette.addEventListener("click", function (event) {
+            palette.classList.contains('paletteClick') ? palette.classList.remove('paletteClick') : palette.classList.add('paletteClick')
+
+        })
+
         sliderSpot.appendChild(palette);
     }
     this.textContent = function (target) {
@@ -155,16 +160,30 @@ window.onload = () => {
     // nudgePixels() // Temporatily disabling to add hover effects to pixels instead
     revealPixelPortal()
     notes = document.querySelector('.pseudoCode');
-    const palettes = document.querySelectorAll('.paletteContainer');
-    palettes.forEach(palette => {
-        // palette.addEventListener('click', getClickPosition, false)
+
+    const palette1 = document.querySelector('#palette1');
+    const palette2 = document.querySelector('#palette2');
+    const mainPalettes = [palette1, palette2];
+
+    mainPalettes.forEach(palette => {
         palette.addEventListener('click', function (e) {
             getClickPosition(e);
             var newPalletes = new Palette('palette', true);
             newPalletes.createDiv();
-
         })
-    });
+    })
+
+    //instead of adding a listening to every palette - which could f-up clicks inside the expanded palettes, i wand to specify clicks only on sample1 and sample2
+    //const palettes = document.querySelectorAll('.paletteContainer');
+    // palettes.forEach(palette => {
+    //     // palette.addEventListener('click', getClickPosition, false)
+    //     palette.addEventListener('click', function (e) {
+    //         getClickPosition(e);
+    //         var newPalletes = new Palette('palette', true);
+    //         newPalletes.createDiv();
+
+    //     })
+    // });
 }
 
 const createPixelPatch = () => {
