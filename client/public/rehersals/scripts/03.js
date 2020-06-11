@@ -19,7 +19,8 @@ function Palette(className, textStatus) {
     }
     this.color = this.currentHue()
     this.createDiv = function () {
-        var paletteContainer = document.querySelector('.paletteContainer')
+        var paletteContainer = document.querySelector('.paletteContainer');
+        var sliderSpot = document.querySelector('.sliderSpot');
         var palette = document.createElement('div');
         palette.className = this.className;
         //this.width ? palette.style.width = this.width : console.log('no width specified'); //NOTE:seeabove
@@ -28,7 +29,8 @@ function Palette(className, textStatus) {
         palette.style.top = 0;
         palette.style.background = this.color;
         this.txtRq === true ? this.textContent(palette) : console.log('no text requested')
-        paletteContainer.appendChild(palette);
+        //paletteContainer.appendChild(palette);
+        sliderSpot.appendChild(palette);
     }
     this.textContent = function (target) {
         const text = paletteTexts[Math.floor(Math.random() * paletteTexts.length)]
