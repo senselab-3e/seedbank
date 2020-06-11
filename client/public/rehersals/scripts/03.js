@@ -32,23 +32,27 @@ function Palette(className, textStatus) {
         palette.style.background = this.color;
         this.txtRq === true ? this.textContent(palette) : console.log('no text requested')
         //paletteContainer.appendChild(palette);
-        palette.addEventListener("mouseover", function (event) {
-            palette.firstElementChild.classList.remove('hidden');
-            palette.firstElementChild.classList.add('visible');
-        })
-        palette.addEventListener("mouseout", function (event) {
-            palette.firstElementChild.classList.remove('visible');
-            palette.firstElementChild.classList.add('hidden');
-        })
+
+        //NOTE: kind of don't need this anymore, since i like the effect of the text scrolling out from the edge
+        //since correcting the z-index issues, the visible edges issue i had before, is no longer an issue
+        // but this logic could be used for patches with images or other things
+        // palette.addEventListener("mouseover", function (event) {
+        //     palette.firstElementChild.classList.remove('hidden');
+        //     palette.firstElementChild.classList.add('visible');
+        // })
+        // palette.addEventListener("mouseout", function (event) {
+        //     palette.firstElementChild.classList.remove('visible');
+        //     palette.firstElementChild.classList.add('hidden');
+        // })
 
         sliderSpot.appendChild(palette);
     }
     this.textContent = function (target) {
-        const text = paletteTexts[Math.floor(Math.random() * paletteTexts.length)]
+        const text = poptechitecture[Math.floor(Math.random() * poptechitecture.length)]
         var textBox = document.createElement('div');
         textBox.classList = 'textBox';
 
-        textBox.classList.add('hidden'); // if i don't want the text immediately visible
+        //textBox.classList.add('hidden'); // if i don't want the text immediately visible
 
         textBox.textContent = text
         target.appendChild(textBox)
