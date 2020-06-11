@@ -1,5 +1,7 @@
 var notes;
 
+
+//NOTE --- i'm citing an array of texts called cosmic digest, that is in another js file called cosmic digest. this is because potentially i want all that file information to be accessible to there sketch spaces. 
 const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze'] // for each of these instances, a single pixel element will be created. 
 
 const paletteTexts = ['When you ask DD, what kind of psychology this can be/come, this seems really key. What is a psychology without interiority? What is a psychology that is curious about the conditions of existence as they morph? What is a psychology that can move at the pace of a world making and remaking itself? For those of us familiar with Guattari, we would say “schizoanalysis” - the practice of activating techniques for the living-out (rather than the living-in) of experience.', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
@@ -10,19 +12,19 @@ function Palette(className, textStatus) {
     //this.width = width;  //NOTE:seeabove
     //this.height = height;
     this.txtRq = textStatus; // checks for true of false for adding text within palette
+
     //NOTE: remember this currentHue thing in the future. right now the color for the palette is being decided by whatever is in palette Id palette1. for re-usability this will need to happen differently
     this.currentHue = function () {
         let sample = document.body.querySelector('#palette1') // just for testing purposes.
         //this is actually not to tricky. query Selector will choose the first instance, so even if i put palette instead of palette1, it will still grab hue information from the first palette, even if i don't reference it by a single id name
         let hsl = window.getComputedStyle(sample, null).getPropertyValue(
             "--hsl");
-        //console.log(hsl)
         return hsl
     }
     this.color = this.currentHue()
     this.createDiv = function () {
         //var paletteContainer = document.querySelector('.paletteContainer');
-        var sliderSpot = document.querySelector('.sliderSpot');
+        var sliderContainer = document.querySelector('.sliderContainer');
         var palette = document.createElement('div');
         palette.className = this.className;
         //this.width ? palette.style.width = this.width : console.log('no width specified'); //NOTE:seeabove
@@ -31,11 +33,16 @@ function Palette(className, textStatus) {
         palette.style.top = 0;
         palette.style.background = this.color;
         this.txtRq === true ? this.textContent(palette) : console.log('no text requested')
-        //paletteContainer.appendChild(palette);
 
-        //NOTE: kind of don't need this anymore, since i like the effect of the text scrolling out from the edge
-        //since correcting the z-index issues, the visible edges issue i had before, is no longer an issue
-        // but this logic could be used for patches with images or other things
+        palette.addEventListener("click", function (event) {
+            palette.classList.contains('paletteClick') ? palette.classList.remove('paletteClick') : palette.classList.add('paletteClick')
+
+        })
+        sliderContainer.appendChild(palette);
+
+        //NOTE: THIS IS YOU WANT THE CONENT OF THE SLIDERS TO SLOWLY FADE IN 
+        //since correcting the z-index issues, the visible edges issue i had before, is no longer an issue but this logic could be used for patches with images or other things
+
         // palette.addEventListener("mouseover", function (event) {
         //     palette.firstElementChild.classList.remove('hidden');
         //     palette.firstElementChild.classList.add('visible');
@@ -45,12 +52,7 @@ function Palette(className, textStatus) {
         //     palette.firstElementChild.classList.add('hidden');
         // })
 
-        palette.addEventListener("click", function (event) {
-            palette.classList.contains('paletteClick') ? palette.classList.remove('paletteClick') : palette.classList.add('paletteClick')
 
-        })
-
-        sliderSpot.appendChild(palette);
     }
     this.textContent = function (target) {
         const text = poptechitecture[Math.floor(Math.random() * poptechitecture.length)]
@@ -189,7 +191,7 @@ window.onload = () => {
 
 const creatSliderPalettes = () => {
 
-    const sliderContainer = document.querySelector('.sliderSpot');
+    const sliderContainer = document.querySelector('.sliderContainer');
     //this checks if the number of palettes being requested exceeds the number needed for text that needs placing within them.
     // if (sliderContainer.childElementCount < poptechitecture.length) {
     //     var newPalletes = new Palette('palette', true);
