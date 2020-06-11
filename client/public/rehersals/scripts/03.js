@@ -109,6 +109,15 @@ const revealPixelPortal = () => {
         //this.classList.add('hidden');
         //this.classList.remove('visible');
     })
+    pixelPatches[1].addEventListener("mouseover", function (event) {
+        //this.classList.add('visible')
+        this.classList.add('meowmix')
+    })
+    pixelPatches[1].addEventListener("mouseout", function (event) {
+        this.classList.remove('meowmix')
+        //this.classList.add('hidden');
+        //this.classList.remove('visible');
+    })
 }
 
 //NOTES - i find this visuall distracting from the color shifts. have to figure out how it's genuinely useful
