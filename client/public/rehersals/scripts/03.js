@@ -137,6 +137,8 @@ const addListener = (patch) => {
     patch.addEventListener('click', getClickPosition, false);
 }
 
+//i can still game the system to allow for the nudging effect by having the first and last pixel be elimated from gifverse loop so that they are just pink and indexable by the length of the element list
+
 window.onload = () => {
     createPixelPatch()
     for (let i = 0; i < gifVerse.length; i++) {
