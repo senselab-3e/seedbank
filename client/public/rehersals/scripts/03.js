@@ -1,5 +1,7 @@
 var notes;
 
+const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze'] // for each of these instances, a single pixel element will be created. 
+
 const paletteTexts = ['When you ask DD, what kind of psychology this can be/come, this seems really key. What is a psychology without interiority? What is a psychology that is curious about the conditions of existence as they morph? What is a psychology that can move at the pace of a world making and remaking itself? For those of us familiar with Guattari, we would say “schizoanalysis” - the practice of activating techniques for the living-out (rather than the living-in) of experience.', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
 //NOTES: proof of concept for later: function Palette(className, textStatus, width, height) {  //NOTE: if i use this the element created will loose any of the animated transitions i may have hoped to apply to it, via the classname:hover. for some reason it overrides it - and there is no way to edit :hover from javascript. this can be handled another way, by using mouseEnter() type listeners, but for now, i'm just going to let it go.
 
@@ -98,26 +100,18 @@ const resetColorPixel = (el, target) => {
 //     })
 // }
 const revealPixelPortal = () => {
-    const pixelContainer = document.querySelector('.pixelContainer');
-    const pixelPatches = document.querySelectorAll('.pixelPatch');
-    pixelPatches[0].addEventListener("mouseover", function (event) {
-        //this.classList.add('visible')
-        this.classList.add('gif404')
-    })
-    pixelPatches[0].addEventListener("mouseout", function (event) {
-        this.classList.remove('gif404')
-        //this.classList.add('hidden');
-        //this.classList.remove('visible');
-    })
-    pixelPatches[1].addEventListener("mouseover", function (event) {
-        //this.classList.add('visible')
-        this.classList.add('meowmix')
-    })
-    pixelPatches[1].addEventListener("mouseout", function (event) {
-        this.classList.remove('meowmix')
-        //this.classList.add('hidden');
-        //this.classList.remove('visible');
-    })
+    //const pixelContainer = document.querySelector('.pixelContainer');
+    const pixelPortal = document.querySelectorAll('.pixelPatch'); // this number should be the same as the number of gifVerse
+    for (let m = 0; m < pixelPortal.length; m++) {
+        pixelPatches[m].addEventListener("mouseover", function (event) {
+            //this.classList.add('visible')
+            this.classList.add(gifVerse[m])
+        });
+        pixelPatches[m].addEventListener("mouseout", function (event) {
+            //this.classList.add('visible')
+            this.classList.remove(gifVerse[m])
+        })
+    }
 }
 
 //NOTES - i find this visuall distracting from the color shifts. have to figure out how it's genuinely useful
@@ -145,8 +139,12 @@ const addListener = (patch) => {
 
 window.onload = () => {
     createPixelPatch()
-    createPixel()
-    createPixel() // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
+    for (let i = 0; i < gifVerse.length; i++) {
+        createPixel()
+    }
+    // createPixel()
+    // createPixel()
+    // createPixel() // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     // nudgePixels() // Temporatily disabling to add hover effects to pixels instead
     revealPixelPortal()
@@ -222,7 +220,7 @@ const colorPicker = () => {
         const hslString = 'hsl(' + convertedVal.h + ', ' + convertedVal.s + ', ' + convertedVal.l + ')';
         palette1.style.setProperty('--hsl', hslString);
         colorShiftDif(convertedVal.h);
-        resetColorPixel(palette1, pixel[1]);
+        //resetColorPixel(palette1, pixel[1]); //temporarily disabled this, because this overrides the class added to the pixels with a background gif image.
     })
 }
 
