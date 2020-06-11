@@ -77,24 +77,37 @@ const resetColorPixel = (el, target) => {
     target.style.setProperty('background', updateColor);
 }
 
-const nudgePixels = () => {
+// const nudgePixels = () => {
+//     const pixelContainer = document.querySelector('.pixelContainer');
+//     const pixelPatches = document.querySelectorAll('.pixelPatch');
+//     pixelPatches[0].addEventListener("mouseover", function (event) {
+//         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+//             "left");
+//         // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+//         //     "top");
+//         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+//         // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
+//         newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 5 + 'px') : pixelContainer.style.setProperty('left', 5 + 'px');
+//         // pixelContainer.style.setProperty('top', currentY + 'px');
+//     })
+//     pixelPatches[1].addEventListener("mouseover", function (event) {
+//         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+//             "left");
+//         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+//         newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
+//     })
+// }
+const revealPixelPortal = () => {
     const pixelContainer = document.querySelector('.pixelContainer');
     const pixelPatches = document.querySelectorAll('.pixelPatch');
     pixelPatches[0].addEventListener("mouseover", function (event) {
-        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
-            "left");
-        // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
-        //     "top");
-        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
-        // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
-        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 5 + 'px') : pixelContainer.style.setProperty('left', 5 + 'px');
-        // pixelContainer.style.setProperty('top', currentY + 'px');
+        //this.classList.add('visible')
+        this.classList.add('gif404')
     })
-    pixelPatches[1].addEventListener("mouseover", function (event) {
-        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
-            "left");
-        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
-        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
+    pixelPatches[0].addEventListener("mouseout", function (event) {
+        this.classList.remove('gif404')
+        //this.classList.add('hidden');
+        //this.classList.remove('visible');
     })
 }
 
@@ -126,7 +139,8 @@ window.onload = () => {
     createPixel()
     createPixel() // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
-    nudgePixels()
+    // nudgePixels() // Temporatily disabling to add hover effects to pixels instead
+    revealPixelPortal()
     notes = document.querySelector('.pseudoCode');
     const palettes = document.querySelectorAll('.paletteContainer');
     palettes.forEach(palette => {
@@ -150,6 +164,7 @@ const createPixel = () => {
     const pixelContainer = document.querySelector('.pixelContainer'); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
     var patch = document.createElement('div');
     patch.className = 'pixelPatch';
+
     pixelContainer.appendChild(patch)
     pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
