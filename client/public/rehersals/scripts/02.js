@@ -1,18 +1,17 @@
-var updateHue = 0;
-let updateColor = 'hsl(100,54%,66%)';
-var currentColor = 0;
 var notes;
 
-const textOptions = ['adfodsifsadoifjiadosfjo', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
-
-// NOtES FOR LATER. it may be worth revisitng the color picker later, to see about updating not just the h value but also the saturation and lightness. 
-
+const paletteTexts = ['When you ask DD, what kind of psychology this can be/come, this seems really key. What is a psychology without interiority? What is a psychology that is curious about the conditions of existence as they morph? What is a psychology that can move at the pace of a world making and remaking itself? For those of us familiar with Guattari, we would say “schizoanalysis” - the practice of activating techniques for the living-out (rather than the living-in) of experience.', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
+//NOTES: proof of concept for later: function Palette(className, textStatus, width, height) {  //NOTE: if i use this the element created will loose any of the animated transitions i may have hoped to apply to it, via the classname:hover. for some reason it overrides it - and there is no way to edit :hover from javascript. this can be handled another way, by using mouseEnter() type listeners, but for now, i'm just going to let it go.
 
 function Palette(className, textStatus) {
     this.className = className;
+    //this.width = width;  //NOTE:seeabove
+    //this.height = height;
     this.txtRq = textStatus; // checks for true of false for adding text within palette
+    //NOTE: remember this currentHue thing in the future. right now the color for the palette is being decided by whatever is in palette Id palette1. for re-usability this will need to happen differently
     this.currentHue = function () {
         let sample = document.body.querySelector('#palette1') // just for testing purposes.
+        //this is actually not to tricky. query Selector will choose the first instance, so even if i put palette instead of palette1, it will still grab hue information from the first palette, even if i don't reference it by a single id name
         let hsl = window.getComputedStyle(sample, null).getPropertyValue(
             "--hsl");
         //console.log(hsl)
@@ -23,22 +22,19 @@ function Palette(className, textStatus) {
         var paletteContainer = document.querySelector('.paletteContainer')
         var palette = document.createElement('div');
         palette.className = this.className;
+        //this.width ? palette.style.width = this.width : console.log('no width specified'); //NOTE:seeabove
+        //this.height ? palette.style.height = this.height : console.log('no height specified');
         palette.style.left = 0;
         palette.style.top = 0;
-        palette.style.background = this.color; //"orange";
-        //console.log(this.txtRq);
+        palette.style.background = this.color;
         this.txtRq === true ? this.textContent(palette) : console.log('no text requested')
-        //this.text = this.textContent(palette)
         paletteContainer.appendChild(palette);
-
-        //document.body.appendChild(paletteContainer); // i don't seem to need to append it to the body
     }
     this.textContent = function (target) {
-        const text = textOptions[Math.floor(Math.random() * textOptions.length)]
-        //console.log(text)
+        const text = paletteTexts[Math.floor(Math.random() * paletteTexts.length)]
         var textBox = document.createElement('div');
         textBox.classList = 'textBox';
-        //textBox.classList.add('hide');
+        //textBox.classList.add('hide'); // if i don't want the text immediately visible
         textBox.textContent = text
         target.appendChild(textBox)
     }
@@ -46,14 +42,10 @@ function Palette(className, textStatus) {
 
 }
 
-
+//NOTE: with flexbox now being used in the css, this might not be entirely necessary....
 const resetCubeWidth = (newWidth) => {
     sampleBlock = document.querySelector('#palette1');
     sampleBlock2 = document.querySelector('#palette2');
-    // let currentWidth = window.getComputedStyle(sampleBlock, null).getPropertyValue(
-    //     "width");
-    // let currentWidth2 = window.getComputedStyle(sampleBlock2, null).getPropertyValue(
-    //     "width");
     const newWidthCube1 = newWidth + 'vw';
     const newWidthCube2 = 100 - newWidth + 'vw';
     sampleBlock.style.setProperty('width', newWidthCube1);
@@ -71,8 +63,6 @@ const retreiveColor = (el) => {
 
 const resetColorPixel = (el, target) => {
     let updateColor = retreiveColor(el)
-    //console.log(target, 'target')
-    //const pixel1 = document.querySelector(target)
     target.style.setProperty('background', updateColor);
 }
 
@@ -95,8 +85,6 @@ window.onload = () => {
     createPixel()
     createPixel() // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
-    var newPallete = new Palette('palette');
-    newPallete.createDiv()
     notes = document.querySelector('.pseudoCode');
     const palettes = document.querySelectorAll('.paletteContainer')
     palettes.forEach(palette => {
@@ -105,6 +93,7 @@ window.onload = () => {
             getClickPosition(e);
             var newPalletes = new Palette('palette', true);
             newPalletes.createDiv()
+
         })
     });
 }
@@ -132,28 +121,6 @@ const replaceClassName = () => {
     notes.classList.contains('hide') ? notes.classList.remove('hide') : notes.classList.add('hide');
 }
 
-// const setNewColorVal = (val, hueVal, colorVal, target) => {
-
-
-//     val = parseInt(val)
-//     val < 360 ? val += 1 : val = 1; // this needs a conditional ceiling so that it cycles through
-//     updatedHue = val
-//     //updatedColor = 'hsl(' + updatedHue + ', 48%, 50%)'  //original way
-//     // i need to set both the hue value and the overall hsl value in the css. i thought by updating just the hue val it would autimatically pass update the hsl in the css, but no. so i need these two css values passed to the function
-//     target.style.setProperty(hueVal, updatedHue);
-
-//     let currentHSL = window.getComputedStyle(target, null).getPropertyValue(
-//         colorVal);
-//     console.log(currentHSL)
-//     // let currentHue = window.getComputedStyle(target, null).getPropertyValue(
-//     //colorVal);  /// this, didn't seem to incorporate the newly set hue value, above. so unfortunately it's not being the the hsl in the css, automatically.  
-
-//     //target.style.setProperty(colorVal, updatedColor) //original way
-
-//     //target.style.setProperty(colorVal, currentHue);
-// }
-
-
 const setNewColorVal = (target) => {
     let currentH = window.getComputedStyle(target, null).getPropertyValue(
         "--h");
@@ -161,69 +128,37 @@ const setNewColorVal = (target) => {
         "--s");
     let currentL = window.getComputedStyle(target, null).getPropertyValue(
         "--l");
-
-    //console.log(currentH, currentS, currentL)
-
     currentH = parseInt(currentH)
     currentH < 360 ? currentH += 1 : currentH = 1; // this needs a conditional ceiling so that it cycles through
     updatedHue = currentH
     const updatedHSL = 'hsl(' + updatedHue + ', ' + currentS + ', ' + currentL + ')'
-
-
-    //console.log(updatedHSL)
-    //updatedColor = 'hsl(' + updatedHue + ', 48%, 50%)'  //original way
-    // i need to set both the hue value and the overall hsl value in the css. i thought by updating just the hue val it would autimatically pass update the hsl in the css, but no. so i need these two css values passed to the function
+    // NOTES: i need to set both the hue value and the overall hsl value in the css. i thought by updating just the hue val it would autimatically pass update the hsl in the css, but no. so i need these two css values passed to the function
     target.style.setProperty('--h', updatedHue);
     target.style.setProperty('--hsl', updatedHSL);
-    // let currentHSL = window.getComputedStyle(target, null).getPropertyValue(
-    //     '--hsl');
-    // console.log(currentHSL)
-    // let currentHue = window.getComputedStyle(target, null).getPropertyValue(
-    //colorVal);  /// this, didn't seem to incorporate the newly set hue value, above. so unfortunately it's not being the the hsl in the css, automatically.  
-
-    //target.style.setProperty(colorVal, updatedColor) //original way
-
-    //target.style.setProperty(colorVal, currentHue);
 }
 
 const updateColors = () => {
-    const palette1 = document.querySelector('#palette1'); //need to keep these here
-    const palette2 = document.querySelector('#palette2');
-    // let currentHue = window.getComputedStyle(sampleBlock, null).getPropertyValue(
-    //     "--h");
-    // let currentHue2 = window.getComputedStyle(sampleBlock2, null).getPropertyValue(
-    //     "--h");
-    //setNewColorVal(currentHue, '--h', "--hsl", sampleBlock)
+    const palette1 = document.querySelector('#palette1'); //NOTES: need to keep these here, rather then passing a variable through the function
+    const palette2 = document.querySelector('#palette2'); // i need to keep this function anonymous so that it can be used in a callback with setInterval, below
     setNewColorVal(palette1)
     setNewColorVal(palette2)
-    //setNewColorVal(currentHue2, '--h', "--hsl", sampleBlock2)
-
 }
 
-//because of the way setInterval requires a callback function, i can't pass variables into updateColors the way i'd like... so that i don't have to query sample1 and sample2 seperately. 
 var intervalChng = window.setInterval(updateColors, 100); //continually changes color of palette2 element, using callback function 
 
-//work on making the color Picker more reusable for object constructors. 
 const colorPicker = () => {
     const input = document.querySelector('input');
     input.addEventListener('change', function () {
         //console.log(input.value)
         const palette1 = document.querySelector('#palette1')
         let pixel = document.querySelectorAll('.prePicnicPatch')
-
-        let convertedVal = HEXtoHSL(input.value) //this now returning a fullll hsl object and not just the hue value...
-        //unfortunately, in this instance, the input value is only working in #numbers, rather then hsb values - and i'm using hsb values in my scrolling colors function elsewhere. so that means a value IS being passed to it, it's just grabbing numbers within a certain range which produce only reds.
-        //sample.style.setProperty('--h1', convertedVal) // this is only returning the H value. not the full hsl. but it could. 
-        //sample.style.setProperty('--h1', convertedVal.h)
+        let convertedVal = HEXtoHSL(input.value) //NOTES: this now returning a  hsl information in an object with key values for each hsl
         palette1.style.setProperty('--h', convertedVal.h)
         palette1.style.setProperty('--s', convertedVal.s)
         palette1.style.setProperty('--l', convertedVal.l)
         const hslString = 'hsl(' + convertedVal.h + ', ' + convertedVal.s + ', ' + convertedVal.l + ')';
         palette1.style.setProperty('--hsl', hslString);
-
-
         colorShiftDif(convertedVal.h)
-        //console.log(palette1)
         resetColorPixel(palette1, pixel[1])
     })
 }
@@ -268,19 +203,14 @@ function HEXtoHSL(hex) {
         s: s + '%',
         l: l + '%'
     }
-    console.log(colorHSL)
-    //return h; //'hsl(' + h + ', ' + s + '%, ' + l + '%)'; // normally this would give you the full hsl value, but i only need the hue value since that is the value i want to update (alone) so that the scrolling through of the color changes continues to happen
-    //return 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
-
     return colorHSL
 }
 
-//if i ever what to compare and contrast the former color value and new chosen color value and use that difference for something:
-//I changed this so it's calculated the color relation between palette 1 and 2, in terms of their hue numerical value. 
+//NOTES: if i ever what to compare and contrast the former color value and new chosen color value and use that difference for something:
+//NOTES: I changed this so it's calculated the color relation between palette 1 and 2, in terms of their hue numerical value. 
 const colorShiftDif = (newVal) => {
     const palette2 = document.querySelector('#palette2')
     const contrastVal = window.getComputedStyle(palette2, null).getPropertyValue(
         "--h");
-    //console.log(orgVal, newVal)
     console.log(Math.abs(contrastVal - newVal))
 }

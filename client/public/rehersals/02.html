@@ -55,7 +55,6 @@
 
         .paletteContainer {
             z-index: 10;
-            /* float: left; */
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
@@ -68,7 +67,8 @@
         }
 
         .palette {
-            width: 0.1vw;
+            z-index: 12;
+            width: 0.2vw;
             height: 100vh;
             -webkit-transition: width 3s;
             -moz-transition: width 3s;
@@ -130,6 +130,7 @@
             height: 5px;
             cursor: pointer;
             background: deeppink;
+            /* later, this color will be tied to the first color the user selected at the beginning*/
             -webkit-transition: width 15s, height 15s;
             -webkit-transition-timing-function: ease;
             transition: width 15s, height 15s;
@@ -140,8 +141,6 @@
             width: 600px;
             height: 600px;
         }
-
-
 
         .pseudoCode {
 
@@ -172,7 +171,7 @@
         }
 
         .textBox {
-            color: white;
+            color: rgb(56, 56, 56);
             font-family: 'Quicksand', sans-serif;
             font-size: 15px;
             padding: 1em;
