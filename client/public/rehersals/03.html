@@ -67,8 +67,9 @@
         }
 
         .palette {
-            z-index: 12;
-            width: 0.2vw;
+            cursor: pointer;
+            z-index: 10;
+            width: 0.5vw;
             height: 100vh;
             -webkit-transition: width 3s;
             -moz-transition: width 3s;
@@ -100,6 +101,7 @@
         #palette2 {
             width: 50vw;
             height: 100vh;
+            z-index: 11;
             /* --h2: 243;
             --hsl2: hsl(var(--h2), 48%, 50%); */
             --h: 243;
@@ -127,7 +129,7 @@
 
         .pixelContainer {
             position: absolute;
-            z-index: 10;
+            z-index: 12;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
