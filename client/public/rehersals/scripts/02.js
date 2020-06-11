@@ -54,7 +54,7 @@ const retreiveColor = (el) => {
     //console.log(el)
     let currentColorVal = window.getComputedStyle(el, null).getPropertyValue(
         "--hsl");
-    console.log(currentColorVal, 'retrieve color');
+    // console.log(currentColorVal, 'retrieve color');
     return currentColorVal;
 }
 
@@ -63,6 +63,26 @@ const resetColorPixel = (el, target) => {
     target.style.setProperty('background', updateColor);
 }
 
+const nudgePixels = () => {
+    const pixelContainer = document.querySelector('.pixelContainer');
+    const pixelPatches = document.querySelectorAll('.pixelPatch');
+    pixelPatches[0].addEventListener("mouseover", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+        //     "top");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
+        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 5 + 'px') : pixelContainer.style.setProperty('left', 10 + 'px');
+        // pixelContainer.style.setProperty('top', currentY + 'px');
+    })
+    pixelPatches[1].addEventListener("mouseover", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
+    })
+}
 //NOTE: bring this back if you want the pixels to change location with the mouse click
 // const resetPixelLoc = (x, y) => {
 //     console.log(x, y)
@@ -91,6 +111,7 @@ window.onload = () => {
     createPixel()
     createPixel() // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
+    nudgePixels()
     notes = document.querySelector('.pseudoCode');
     const palettes = document.querySelectorAll('.paletteContainer');
     palettes.forEach(palette => {
@@ -215,5 +236,5 @@ const colorShiftDif = (newVal) => {
     const palette2 = document.querySelector('#palette2')
     const contrastVal = window.getComputedStyle(palette2, null).getPropertyValue(
         "--h");
-    console.log(Math.abs(contrastVal - newVal))
+    // console.log(Math.abs(contrastVal - newVal))
 }

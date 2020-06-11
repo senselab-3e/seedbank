@@ -63,12 +63,34 @@ const resetColorPixel = (el, target) => {
     target.style.setProperty('background', updateColor);
 }
 
-const resetPixelLoc = (x, y) => {
-    console.log(x, y)
+const nudgePixels = () => {
     const pixelContainer = document.querySelector('.pixelContainer');
-    pixelContainer.style.setProperty('top', y + 'px');
-    pixelContainer.style.setProperty('left', x + 'px');
+    const pixelPatches = document.querySelectorAll('.pixelPatch');
+    pixelPatches[0].addEventListener("mouseover", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+        //     "top");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
+        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 5 + 'px') : pixelContainer.style.setProperty('left', 5 + 'px');
+        // pixelContainer.style.setProperty('top', currentY + 'px');
+    })
+    pixelPatches[1].addEventListener("mouseover", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
+    })
 }
+
+//NOTES - i find this visuall distracting from the color shifts. have to figure out how it's genuinely useful
+// const resetPixelLoc = (x, y) => {
+//     console.log(x, y)
+//     const pixelContainer = document.querySelector('.pixelContainer');
+//     pixelContainer.style.setProperty('top', y + 'px');
+//     pixelContainer.style.setProperty('left', x + 'px');
+// }
 
 const getClickPosition = (e) => {
     //var parentPosition = getPosition(e.currentTarget);
@@ -78,7 +100,7 @@ const getClickPosition = (e) => {
     //calculate position as 100 - value so i can use it like a percentage val but with vw css
     let percentageWidth = Math.floor(xPosition / intViewportWidth * 100)
     resetCubeWidth(percentageWidth);
-    resetPixelLoc(xPosition, yPosition);
+    //resetPixelLoc(xPosition, yPosition);
 }
 
 const addListener = (patch) => {
@@ -90,6 +112,7 @@ window.onload = () => {
     createPixel()
     createPixel() // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
+    nudgePixels()
     notes = document.querySelector('.pseudoCode');
     const palettes = document.querySelectorAll('.paletteContainer');
     palettes.forEach(palette => {
