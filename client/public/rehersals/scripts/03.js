@@ -168,8 +168,9 @@ window.onload = () => {
     mainPalettes.forEach(palette => {
         palette.addEventListener('click', function (e) {
             getClickPosition(e);
-            var newPalletes = new Palette('palette', true);
-            newPalletes.createDiv();
+            creatSliderPalettes()
+            // var newPalletes = new Palette('palette', true);
+            // newPalletes.createDiv();
         })
     })
 
@@ -184,6 +185,18 @@ window.onload = () => {
 
     //     })
     // });
+}
+
+const creatSliderPalettes = () => {
+
+    const sliderContainer = document.querySelector('.sliderSpot');
+    //this checks if the number of palettes being requested exceeds the number needed for text that needs placing within them.
+    // if (sliderContainer.childElementCount < poptechitecture.length) {
+    //     var newPalletes = new Palette('palette', true);
+    //     newPalletes.createDiv();
+    // }
+    var newPalletes = new Palette('palette', true);
+    newPalletes.createDiv();
 }
 
 const createPixelPatch = () => {
