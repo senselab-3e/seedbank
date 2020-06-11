@@ -63,13 +63,12 @@ const resetColorPixel = (el, target) => {
     target.style.setProperty('background', updateColor);
 }
 
-//NOTE: bring this back if you want the pixels to change location with the mouse click
-// const resetPixelLoc = (x, y) => {
-//     console.log(x, y)
-//     const pixelContainer = document.querySelector('.pixelContainer');
-//     pixelContainer.style.setProperty('top', y + 'px');
-//     pixelContainer.style.setProperty('left', x + 'px');
-// }
+const resetPixelLoc = (x, y) => {
+    console.log(x, y)
+    const pixelContainer = document.querySelector('.pixelContainer');
+    pixelContainer.style.setProperty('top', y + 'px');
+    pixelContainer.style.setProperty('left', x + 'px');
+}
 
 const getClickPosition = (e) => {
     //var parentPosition = getPosition(e.currentTarget);
@@ -79,7 +78,7 @@ const getClickPosition = (e) => {
     //calculate position as 100 - value so i can use it like a percentage val but with vw css
     let percentageWidth = Math.floor(xPosition / intViewportWidth * 100)
     resetCubeWidth(percentageWidth);
-    //resetPixelLoc(xPosition, yPosition);
+    resetPixelLoc(xPosition, yPosition);
 }
 
 const addListener = (patch) => {
