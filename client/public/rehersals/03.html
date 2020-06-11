@@ -176,14 +176,18 @@
         .visible {
             visibility: visible;
             opacity: 1;
-            transition: opacity 2s linear;
+            transition: opacity 0s 1s ease-in;
         }
+
+        /*if i put the above at transition: opacity 0s 2s linear, then it reveals the text just at the end;*/
 
         .hidden {
             visibility: hidden;
             opacity: 0;
-            transition: visibility 0s 2s, opacity 2s linear;
+            transition: visibility 0s 2s, opacity 1s ease-in;
         }
+
+        /*opacity was changed to 1s from 2s*/
 
         .colorBox {
             z-index: 12;
