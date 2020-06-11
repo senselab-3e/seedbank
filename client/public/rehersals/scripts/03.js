@@ -103,11 +103,11 @@ const revealPixelPortal = () => {
     //const pixelContainer = document.querySelector('.pixelContainer');
     const pixelPortal = document.querySelectorAll('.pixelPatch'); // this number should be the same as the number of gifVerse
     for (let m = 0; m < pixelPortal.length; m++) {
-        pixelPatches[m].addEventListener("mouseover", function (event) {
+        pixelPortal[m].addEventListener("mouseover", function (event) {
             //this.classList.add('visible')
             this.classList.add(gifVerse[m])
         });
-        pixelPatches[m].addEventListener("mouseout", function (event) {
+        pixelPortal[m].addEventListener("mouseout", function (event) {
             //this.classList.add('visible')
             this.classList.remove(gifVerse[m])
         })
