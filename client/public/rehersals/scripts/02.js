@@ -38,6 +38,8 @@ function Palette(className, textStatus) {
         textBox.textContent = text
         target.appendChild(textBox)
     }
+
+
 }
 
 //NOTE: with flexbox now being used in the css, this might not be entirely necessary....
@@ -48,14 +50,15 @@ const resetCubeWidth = (newWidth) => {
     const newWidthCube2 = 100 - newWidth + 'vw';
     sampleBlock.style.setProperty('width', newWidthCube1);
     sampleBlock2.style.setProperty('width', newWidthCube2);
+
 }
 
 const retreiveColor = (el) => {
     //console.log(el)
     let currentColorVal = window.getComputedStyle(el, null).getPropertyValue(
         "--hsl");
-    // console.log(currentColorVal, 'retrieve color');
-    return currentColorVal;
+    console.log(currentColorVal, 'retrieve color')
+    return currentColorVal
 }
 
 const resetColorPixel = (el, target) => {
@@ -73,7 +76,7 @@ const nudgePixels = () => {
         //     "top");
         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
         // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
-        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 5 + 'px') : pixelContainer.style.setProperty('left', 10 + 'px');
+        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 5 + 'px') : pixelContainer.style.setProperty('left', 5 + 'px');
         // pixelContainer.style.setProperty('top', currentY + 'px');
     })
     pixelPatches[1].addEventListener("mouseover", function (event) {
@@ -83,27 +86,19 @@ const nudgePixels = () => {
         newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
     })
 }
-//NOTE: bring this back if you want the pixels to change location with the mouse click
-// const resetPixelLoc = (x, y) => {
-//     console.log(x, y)
-//     const pixelContainer = document.querySelector('.pixelContainer');
-//     pixelContainer.style.setProperty('top', y + 'px');
-//     pixelContainer.style.setProperty('left', x + 'px');
-// }
 
 const getClickPosition = (e) => {
     //var parentPosition = getPosition(e.currentTarget);
     const xPosition = e.clientX;
-    const yPosition = e.clientY;
+    // const yPosition = e.clientY;
     let intViewportWidth = window.innerWidth;
     //calculate position as 100 - value so i can use it like a percentage val but with vw css
     let percentageWidth = Math.floor(xPosition / intViewportWidth * 100)
-    resetCubeWidth(percentageWidth);
-    //resetPixelLoc(xPosition, yPosition);
+    resetCubeWidth(percentageWidth)
 }
 
 const addListener = (patch) => {
-    patch.addEventListener('click', getClickPosition, false);
+    patch.addEventListener('click', getClickPosition, false)
 }
 
 window.onload = () => {
@@ -113,13 +108,13 @@ window.onload = () => {
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     nudgePixels()
     notes = document.querySelector('.pseudoCode');
-    const palettes = document.querySelectorAll('.paletteContainer');
+    const palettes = document.querySelectorAll('.paletteContainer')
     palettes.forEach(palette => {
         // palette.addEventListener('click', getClickPosition, false)
         palette.addEventListener('click', function (e) {
             getClickPosition(e);
             var newPalletes = new Palette('palette', true);
-            newPalletes.createDiv();
+            newPalletes.createDiv()
 
         })
     });
@@ -132,13 +127,16 @@ const createPixelPatch = () => {
 }
 
 const createPixel = () => {
-    const pixelContainer = document.querySelector('.pixelContainer'); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
+    const pixelContainer = document.querySelector('.pixelContainer')
+    // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
     var patch = document.createElement('div');
     patch.className = 'pixelPatch';
+
     pixelContainer.appendChild(patch)
     pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
     addListener(pixelContainer)
+
 }
 
 const replaceClassName = () => {
@@ -152,9 +150,9 @@ const setNewColorVal = (target) => {
         "--s");
     let currentL = window.getComputedStyle(target, null).getPropertyValue(
         "--l");
-    currentH = parseInt(currentH);
+    currentH = parseInt(currentH)
     currentH < 360 ? currentH += 1 : currentH = 1; // this needs a conditional ceiling so that it cycles through
-    updatedHue = currentH;
+    updatedHue = currentH
     const updatedHSL = 'hsl(' + updatedHue + ', ' + currentS + ', ' + currentL + ')'
     // NOTES: i need to set both the hue value and the overall hsl value in the css. i thought by updating just the hue val it would autimatically pass update the hsl in the css, but no. so i need these two css values passed to the function
     target.style.setProperty('--h', updatedHue);
@@ -164,8 +162,8 @@ const setNewColorVal = (target) => {
 const updateColors = () => {
     const palette1 = document.querySelector('#palette1'); //NOTES: need to keep these here, rather then passing a variable through the function
     const palette2 = document.querySelector('#palette2'); // i need to keep this function anonymous so that it can be used in a callback with setInterval, below
-    setNewColorVal(palette1);
-    setNewColorVal(palette2);
+    setNewColorVal(palette1)
+    setNewColorVal(palette2)
 }
 
 var intervalChng = window.setInterval(updateColors, 100); //continually changes color of palette2 element, using callback function 
@@ -174,16 +172,16 @@ const colorPicker = () => {
     const input = document.querySelector('input');
     input.addEventListener('change', function () {
         //console.log(input.value)
-        const palette1 = document.querySelector('#palette1');
-        let pixel = document.querySelectorAll('.pixelPatch');
+        const palette1 = document.querySelector('#palette1')
+        let pixel = document.querySelectorAll('.pixelPatch')
         let convertedVal = HEXtoHSL(input.value) //NOTES: this now returning a  hsl information in an object with key values for each hsl
-        palette1.style.setProperty('--h', convertedVal.h);
-        palette1.style.setProperty('--s', convertedVal.s);
-        palette1.style.setProperty('--l', convertedVal.l);
+        palette1.style.setProperty('--h', convertedVal.h)
+        palette1.style.setProperty('--s', convertedVal.s)
+        palette1.style.setProperty('--l', convertedVal.l)
         const hslString = 'hsl(' + convertedVal.h + ', ' + convertedVal.s + ', ' + convertedVal.l + ')';
         palette1.style.setProperty('--hsl', hslString);
-        colorShiftDif(convertedVal.h);
-        resetColorPixel(palette1, pixel[1]);
+        colorShiftDif(convertedVal.h)
+        resetColorPixel(palette1, pixel[1])
     })
 }
 
@@ -236,5 +234,5 @@ const colorShiftDif = (newVal) => {
     const palette2 = document.querySelector('#palette2')
     const contrastVal = window.getComputedStyle(palette2, null).getPropertyValue(
         "--h");
-    // console.log(Math.abs(contrastVal - newVal))
+    console.log(Math.abs(contrastVal - newVal))
 }
