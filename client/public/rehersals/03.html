@@ -170,6 +170,21 @@
             display: block
         }
 
+        /*this is for the slide div slow reveal of the text which transitions the opacity/reveal of the text within the sliver palettes*/
+
+        /* transition: transition-property, transition-duration, transition-timing-function, and transition-delay.*/
+        .visible {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 2s linear;
+        }
+
+        .hidden {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s 2s, opacity 2s linear;
+        }
+
         .colorBox {
             z-index: 12;
             position: absolute;

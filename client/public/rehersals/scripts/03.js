@@ -19,7 +19,7 @@ function Palette(className, textStatus) {
     }
     this.color = this.currentHue()
     this.createDiv = function () {
-        var paletteContainer = document.querySelector('.paletteContainer');
+        //var paletteContainer = document.querySelector('.paletteContainer');
         var sliderSpot = document.querySelector('.sliderSpot');
         var palette = document.createElement('div');
         palette.className = this.className;
@@ -30,16 +30,28 @@ function Palette(className, textStatus) {
         palette.style.background = this.color;
         this.txtRq === true ? this.textContent(palette) : console.log('no text requested')
         //paletteContainer.appendChild(palette);
+        palette.addEventListener("mouseover", function (event) {
+            palette.firstElementChild.classList.remove('hidden');
+            palette.firstElementChild.classList.add('visible');
+        })
+        palette.addEventListener("mouseout", function (event) {
+            palette.firstElementChild.classList.remove('visible');
+            palette.firstElementChild.classList.add('hidden');
+        })
+
         sliderSpot.appendChild(palette);
     }
     this.textContent = function (target) {
         const text = paletteTexts[Math.floor(Math.random() * paletteTexts.length)]
         var textBox = document.createElement('div');
         textBox.classList = 'textBox';
-        //textBox.classList.add('hide'); // if i don't want the text immediately visible
+
+        textBox.classList.add('hidden'); // if i don't want the text immediately visible
+
         textBox.textContent = text
         target.appendChild(textBox)
     }
+
 }
 
 //NOTE: with flexbox now being used in the css, this might not be entirely necessary....
