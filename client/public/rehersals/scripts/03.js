@@ -8,6 +8,7 @@ const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbr
 
 const paletteTexts = ['When you ask DD, what kind of psychology this can be/come, this seems really key. What is a psychology without interiority? What is a psychology that is curious about the conditions of existence as they morph? What is a psychology that can move at the pace of a world making and remaking itself? For those of us familiar with Guattari, we would say “schizoanalysis” - the practice of activating techniques for the living-out (rather than the living-in) of experience.', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
 
+//PALETTE OBJ CONSTRuCTOR
 function Palette(className, textStatus) {
     this.className = className;
     //this.width = width;  //NOTE:seeabove. if assigned the css styling heirarchies will cause the :hover transitions in the sizing to not be applied. so it's necesary to leave them blank.
@@ -33,6 +34,7 @@ function Palette(className, textStatus) {
         palette.style.left = 0;
         palette.style.top = 0;
         palette.style.background = this.color;
+        palette.style.cursor = 'pointer';
         this.txtRq === true ? this.textContent(palette) : console.log('no text requested')
 
         palette.addEventListener("click", function (event) {
@@ -66,7 +68,7 @@ function Palette(className, textStatus) {
 }
 
 //NOTE: this is working in combination with flexbox. i can't rely on flexbox entirely for the effect i'm after but if it aint broke, don't fix it.
-const resetCubeWidth = (newWidth) => {
+const resetPaletteWidth = (newWidth) => {
     sampleBlock = document.querySelector('#palette1');
     sampleBlock2 = document.querySelector('#palette2');
     const newWidthCube1 = newWidth + 'vw';
@@ -83,13 +85,14 @@ const retreiveColor = (el) => {
     return currentColorVal;
 }
 
-const resetColorPixel = (el, target) => {
-    let updateColor = retreiveColor(el)
-    target.style.setProperty('background', updateColor);
-    console.log(target.classList)
-    //window.getComputedStyle(target, null).getPropertyValue(
-    //"background-color");
-}
+//I'm no longer using this
+// const resetColorPixel = (el, target) => {
+//     let updateColor = retreiveColor(el)
+//     target.style.setProperty('background', updateColor);
+//     console.log(target.classList)
+//     //window.getComputedStyle(target, null).getPropertyValue(
+//     //"background-color");
+// }
 
 const nudgePixels = () => {
     const pixelContainer = document.querySelector('.pixelContainer');
@@ -162,7 +165,7 @@ const getClickPosition = (e) => {
     let intViewportWidth = window.innerWidth;
     //calculate position as 100 - value so i can use it like a percentage val but with vw css
     let percentageWidth = Math.floor(xPosition / intViewportWidth * 100)
-    resetCubeWidth(percentageWidth);
+    resetPaletteWidth(percentageWidth);
     //resetPixelLoc(xPosition, yPosition);
 }
 
