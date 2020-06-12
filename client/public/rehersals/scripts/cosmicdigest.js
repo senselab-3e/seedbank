@@ -9,26 +9,36 @@ const poptechitecture = ['there is always a little-something-extra over and abov
 const gifVerseObj = {
 
     gif404: {
-        text: '404 404 404 404 404',
-        image: "url('gifverse/gif404.gif')",
+        text: true,
+        textContent: '404 404 404 404 404',
+        imageSrc: "url('gifverse/gif404.gif')",
         backgroundSize: 'background-size: 100px',
         className: 'gif404',
         id: 0
 
     },
 
-    meowmix: {
-        text: 'adifpadsfpoadsfpo asdf poadsfpoadsfpo asdfpoi asdfpoi sdafpoiasdofi adsopfi ',
-        image: "url('gifverse/gifmeowmix.gif')",
+    gifmeowmix: {
+        text: true,
+        textContent: 'adifpadsfpoadsfpo asdf poadsfpoadsfpo asdfpoi asdfpoi sdafpoiasdofi adsopfi ',
+        imageSrc: "url('gifverse/gifmeowmix.gif')",
         backgroundSize: 'background-size: 100px',
         className: 'gifmeowmix',
         id: 1
     },
-    sponge: {
-        text: "there is always a little-something-extra over an there is always a little-something-extra over an always a little-something-extra over an",
-        image: "url('gifverse/gifsponse.gif')",
+    gifsponge: {
+        text: true,
+        textContent: "there is always a little-something-extra over an there is always a little-something-extra over an always a little-something-extra over an",
+        imageSrc: "url('gifverse/gifsponse.gif')",
         backgroundSize: '200px',
         className: 'gifsponge',
         id: 2
+    },
+    gifpipecleaners: {
+        text: false,
+        imageSrc: "url('gifverse/pipecleanerzz.gif')",
+        backgroundSize: '200px',
+        className: 'gifpipecleaners',
+        id: 3
     }
 }

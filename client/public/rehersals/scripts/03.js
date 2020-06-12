@@ -171,11 +171,15 @@ window.onload = () => {
     })
 
 
-    console.log(gifVerseObj)
+    console.log(gifVerseObj.length)
+
+    const numVerses = []
 
     for (const key in gifVerseObj) {
+        numVerses.push(key)
         console.log(gifVerseObj[key].className)
     }
+    console.log(numVerses.length)
     //NOTE: old way. instead of adding a listening to every palette - which could f-up clicks inside the expanded palettes, i wand to specify clicks only on sample1 and sample2
     //const palettes = document.querySelectorAll('.paletteContainer');
     // palettes.forEach(palette => {
