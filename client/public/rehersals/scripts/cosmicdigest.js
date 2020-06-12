@@ -42,3 +42,22 @@ const gifVerseObj = {
         id: 3
     }
 }
+
+//I had everything, already, in 2018. http://www.inflexions.org/cepholopodresearch/p5/pseudocode4.html
+
+///https://senselabcore.slack.com/archives/D40RS4ARY/p1539026380000100
+
+//https://convalizards.glitch.me/mondayfiles.html
+//>>>>> fix this http://inflexions.org/cepholopodresearch/p5/rolodex-1.html
+
+//http://www.inflexions.org/cepholopodresearch/p5/hover-tests-subtract.html#
+
+//REFINE http://www.inflexions.org/cepholopodresearch/p5/flock2.html
+
+//REFINE : color typing http://www.inflexions.org/cepholopodresearch/sketch402663/colortyping.html
+
+///Lots of images here:  http://www.inflexions.org/cepholopodresearch/index3.html
+
+//http://www.inflexions.org/cepholopodresearch/worms/compiling.html
+
+const webLinks = ['http://www.inflexions.org/cepholopodresearch/p5/gifverse/splash/gif-verse-huge.html', 'http://www.inflexions.org/cepholopodresearch/p5/spaze-orangeupdate.html', 'http://inflexions.org/cepholopodresearch/p5/spaze6b.html', 'http://inflexions.org/cepholopodresearch/p5/pinata/text-overlay.html', 'http://inflexions.org/cepholopodresearch/p5/pinata/index-wow.html', 'http://inflexions.org/cepholopodresearch/p5/rolodex-1.html', 'http://inflexions.org/cepholopodresearch/p5/03.html', 'http://www.inflexions.org/cepholopodresearch/squares-spin-2.html', 'http://www.inflexions.org/cepholopodresearch/p5/flock2.html', 'http://www.inflexions.org/cepholopodresearch/ghostwork/waveringlines/index9b.html', 'http://www.inflexions.org/cepholopodresearch/galleria/themes/classic/classic-demo-cdn_2.html']
