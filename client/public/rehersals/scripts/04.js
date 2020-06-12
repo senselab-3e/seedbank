@@ -1,15 +1,16 @@
 var notes;
 
+//on each click i could add a thingy.... 
+
 
 //NOTE --- i'm citing an array of texts called cosmic digest, that is in another js file called cosmic digest. this is because potentially i want all that file information to be accessible to there sketch spaces. 
-const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'staticSponge', 'staticSponge2', 'staticPingPong'] // for each of these instances, a single pixel element will be created. 
+const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifpinkwave', 'gifshadows', 'gifgradient', 'gifsplat', 'gifumbrella', 'staticSponge2', 'staticPingPong', 'staticBlueChair', 'staticPingPong', 'staticCompost', 'staticFishy', 'staticBlueBowl', 'staticSponge'] // for each of these instances, a single pixel element will be created. 
 
 const paletteTexts = ['When you ask DD, what kind of psychology this can be/come, this seems really key. What is a psychology without interiority? What is a psychology that is curious about the conditions of existence as they morph? What is a psychology that can move at the pace of a world making and remaking itself? For those of us familiar with Guattari, we would say “schizoanalysis” - the practice of activating techniques for the living-out (rather than the living-in) of experience.', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
-//NOTES: proof of concept for later: function Palette(className, textStatus, width, height) {  //NOTE: if i use this the element created will loose any of the animated transitions i may have hoped to apply to it, via the classname:hover. for some reason it overrides it - and there is no way to edit :hover from javascript. this can be handled another way, by using mouseEnter() type listeners, but for now, i'm just going to let it go.
 
 function Palette(className, textStatus) {
     this.className = className;
-    //this.width = width;  //NOTE:seeabove
+    //this.width = width;  //NOTE:seeabove. if assigned the css styling heirarchies will cause the :hover transitions in the sizing to not be applied. so it's necesary to leave them blank.
     //this.height = height;
     this.txtRq = textStatus; // checks for true of false for adding text within palette
 
@@ -85,39 +86,61 @@ const retreiveColor = (el) => {
 const resetColorPixel = (el, target) => {
     let updateColor = retreiveColor(el)
     target.style.setProperty('background', updateColor);
+    console.log(target.classList)
+    //window.getComputedStyle(target, null).getPropertyValue(
+    //"background-color");
 }
 
-// const nudgePixels = () => {
-//     const pixelContainer = document.querySelector('.pixelContainer');
-//     const pixelPatches = document.querySelectorAll('.pixelPatch');
-//     pixelPatches[0].addEventListener("mouseover", function (event) {
-//         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
-//             "left");
-//         // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
-//         //     "top");
-//         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
-//         // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
-//         newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 5 + 'px') : pixelContainer.style.setProperty('left', 5 + 'px');
-//         // pixelContainer.style.setProperty('top', currentY + 'px');
-//     })
-//     pixelPatches[1].addEventListener("mouseover", function (event) {
-//         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
-//             "left");
-//         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
-//         newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
-//     })
-// }
+const nudgePixels = () => {
+    const pixelContainer = document.querySelector('.pixelContainer');
+    const pixelPatches = document.querySelectorAll('.pixelPatch');
+    console.log(pixelPatches.length)
+    //have this also be mouseclick for touch devices? 
+    pixelPatches[0].addEventListener("mouseover", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+        //     "top");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
+        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 5 + 'px') : pixelContainer.style.setProperty('left', 5 + 'px');
+        // pixelContainer.style.setProperty('top', currentY + 'px');
+    })
+    pixelPatches[pixelPatches.length - 1].addEventListener("mouseover", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
+    })
+    ///not convinced this is doing what's necessary on mobile devices
+    pixelPatches[0].addEventListener("click", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+        //     "top");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
+        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 15 + 'px') : pixelContainer.style.setProperty('left', 5 + 'px');
+        // pixelContainer.style.setProperty('top', currentY + 'px');
+    })
+    pixelPatches[pixelPatches.length - 1].addEventListener("click", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 15 + 'px');
+    })
+}
 const revealPixelPortal = () => {
     //const pixelContainer = document.querySelector('.pixelContainer');
     const pixelPortal = document.querySelectorAll('.pixelPatch'); // this number should be the same as the number of gifVerse
     for (let m = 0; m < pixelPortal.length; m++) {
         pixelPortal[m].addEventListener("mouseover", function (event) {
-            //this.classList.add('visible')
-            this.classList.add(gifVerse[m])
+            this.classList.add(gifVerse[m]);
+            this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
         });
         pixelPortal[m].addEventListener("mouseout", function (event) {
-            //this.classList.add('visible')
-            this.classList.remove(gifVerse[m])
+            this.classList.remove(gifVerse[m]);
+            this.style.setProperty('background', getRandomColor());
         })
     }
 }
@@ -149,11 +172,14 @@ const addListener = (patch) => {
 
 window.onload = () => {
     createPixelPatch() //container for pixels
+    //this will be a dummy first pixel, purely for the nudgepixel function - which works when the first and last pixel is hit on a rollover
+    createPixel()
     for (let i = 0; i < gifVerse.length; i++) {
         createPixel()
     }
+    createPixel()
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
-    // nudgePixels() // Temporatily disabling to add hover effects to pixels instead
+    nudgePixels() // Temporatily disabling to add hover effects to pixels instead
     revealPixelPortal()
     notes = document.querySelector('.pseudoCode');
 
@@ -195,7 +221,7 @@ window.onload = () => {
 
 const creatSliderPalettes = () => {
 
-    const sliderContainer = document.querySelector('.sliderContainer');
+    //const sliderContainer = document.querySelector('.sliderContainer');
     //this checks if the number of palettes being requested exceeds the number needed for text that needs placing within them.
     // if (sliderContainer.childElementCount < poptechitecture.length) {
     //     var newPalletes = new Palette('palette', true);
@@ -211,11 +237,21 @@ const createPixelPatch = () => {
     document.body.appendChild(pxlContainer);
 }
 
+const getRandomColor = () => {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+
 const createPixel = () => {
     const pixelContainer = document.querySelector('.pixelContainer'); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
     var patch = document.createElement('div');
     patch.className = 'pixelPatch';
-
+    patch.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
     pixelContainer.appendChild(patch)
     pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';

@@ -1,5 +1,7 @@
 var notes;
 
+//on each click i could add a thingy.... 
+
 
 //NOTE --- i'm citing an array of texts called cosmic digest, that is in another js file called cosmic digest. this is because potentially i want all that file information to be accessible to there sketch spaces. 
 const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifpinkwave', 'gifshadows', 'gifgradient', 'gifsplat', 'gifumbrella', 'staticSponge2', 'staticPingPong', 'staticBlueChair', 'staticPingPong', 'staticCompost', 'staticFishy', 'staticBlueBowl', 'staticSponge'] // for each of these instances, a single pixel element will be created. 
