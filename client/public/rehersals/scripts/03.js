@@ -148,13 +148,10 @@ const addListener = (patch) => {
 //i can still game the system to allow for the nudging effect by having the first and last pixel be elimated from gifverse loop so that they are just pink and indexable by the length of the element list
 
 window.onload = () => {
-    createPixelPatch()
+    createPixelPatch() //container for pixels
     for (let i = 0; i < gifVerse.length; i++) {
         createPixel()
     }
-    // createPixel()
-    // createPixel()
-    // createPixel() // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     // nudgePixels() // Temporatily disabling to add hover effects to pixels instead
     revealPixelPortal()
@@ -173,7 +170,13 @@ window.onload = () => {
         })
     })
 
-    //instead of adding a listening to every palette - which could f-up clicks inside the expanded palettes, i wand to specify clicks only on sample1 and sample2
+
+    console.log(gifVerseObj)
+
+    for (const key in gifVerseObj) {
+        console.log(gifVerseObj[key].className)
+    }
+    //NOTE: old way. instead of adding a listening to every palette - which could f-up clicks inside the expanded palettes, i wand to specify clicks only on sample1 and sample2
     //const palettes = document.querySelectorAll('.paletteContainer');
     // palettes.forEach(palette => {
     //     // palette.addEventListener('click', getClickPosition, false)

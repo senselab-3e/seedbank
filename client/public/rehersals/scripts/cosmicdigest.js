@@ -4,11 +4,11 @@ const poptechitecture = ['there is always a little-something-extra over and abov
 // NOTE the exact syntax for the image key , particularly the " '  ' " that is how you need it for the css. 
 
 
-'gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'staticSponge', 'staticSponge2', 'staticPingPong'] // for each of these instances, a single pixel element will be created. 
+//const gifVerse ='gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'staticSponge', 'staticSponge2', 'staticPingPong'] // for each of these instances, a single pixel element will be created. 
 
-const gifVerse = {
+const gifVerseObj = {
 
-    gif404 = {
+    gif404: {
         text: '404 404 404 404 404',
         image: "url('gifverse/gif404.gif')",
         backgroundSize: 'background-size: 100px',
@@ -17,18 +17,18 @@ const gifVerse = {
 
     },
 
-    meowmix = {
+    meowmix: {
         text: 'adifpadsfpoadsfpo asdf poadsfpoadsfpo asdfpoi asdfpoi sdafpoiasdofi adsopfi ',
         image: "url('gifverse/gifmeowmix.gif')",
         backgroundSize: 'background-size: 100px',
         className: 'gifmeowmix',
-        id: 0
+        id: 1
     },
-    sponge = {
+    sponge: {
         text: "there is always a little-something-extra over an there is always a little-something-extra over an always a little-something-extra over an",
         image: "url('gifverse/gifsponse.gif')",
         backgroundSize: '200px',
         className: 'gifsponge',
-        id: 1
+        id: 2
     }
 }
