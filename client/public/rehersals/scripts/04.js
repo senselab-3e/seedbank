@@ -85,9 +85,6 @@ const retreiveColor = (el) => {
 const resetColorPixel = (el, target) => {
     let updateColor = retreiveColor(el)
     target.style.setProperty('background', updateColor);
-    console.log(target.classList)
-    //window.getComputedStyle(target, null).getPropertyValue(
-    //"background-color");
 }
 
 // const nudgePixels = () => {
@@ -115,12 +112,12 @@ const revealPixelPortal = () => {
     const pixelPortal = document.querySelectorAll('.pixelPatch'); // this number should be the same as the number of gifVerse
     for (let m = 0; m < pixelPortal.length; m++) {
         pixelPortal[m].addEventListener("mouseover", function (event) {
-            this.classList.add(gifVerse[m]);
-            this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
+            //this.classList.add('visible')
+            this.classList.add(gifVerse[m])
         });
         pixelPortal[m].addEventListener("mouseout", function (event) {
-            this.classList.remove(gifVerse[m]);
-            this.style.setProperty('background', getRandomColor());
+            //this.classList.add('visible')
+            this.classList.remove(gifVerse[m])
         })
     }
 }
@@ -198,7 +195,7 @@ window.onload = () => {
 
 const creatSliderPalettes = () => {
 
-    //const sliderContainer = document.querySelector('.sliderContainer');
+    const sliderContainer = document.querySelector('.sliderContainer');
     //this checks if the number of palettes being requested exceeds the number needed for text that needs placing within them.
     // if (sliderContainer.childElementCount < poptechitecture.length) {
     //     var newPalletes = new Palette('palette', true);
@@ -214,21 +211,11 @@ const createPixelPatch = () => {
     document.body.appendChild(pxlContainer);
 }
 
-const getRandomColor = () => {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
-
 const createPixel = () => {
     const pixelContainer = document.querySelector('.pixelContainer'); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
     var patch = document.createElement('div');
     patch.className = 'pixelPatch';
-    patch.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
+
     pixelContainer.appendChild(patch)
     pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
