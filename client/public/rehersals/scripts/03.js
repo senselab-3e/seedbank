@@ -133,7 +133,7 @@ const nudgePixels = () => {
 const revealPixelPortal = () => {
     //const pixelContainer = document.querySelector('.pixelContainer');
     const pixelPortal = document.querySelectorAll('.pixelPatch'); // this number should be the same as the number of gifVerse
-    for (let m = 0; m < pixelPortal.length; m++) {
+    for (let m = 0; m < pixelPortal.length - 1; m++) { // the last pixel has no accompanying class on rollover - it's purely there for the nudge
         pixelPortal[m].addEventListener("mouseover", function (event) {
             this.classList.add(gifVerse[m]);
             this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
@@ -144,6 +144,8 @@ const revealPixelPortal = () => {
         })
     }
 }
+
+
 
 //NOTES - i find this visuall distracting from the color shifts. have to figure out how it's genuinely useful
 // const resetPixelLoc = (x, y) => {
@@ -164,8 +166,20 @@ const getClickPosition = (e) => {
     //resetPixelLoc(xPosition, yPosition);
 }
 
-const addListener = (patch) => {
-    patch.addEventListener('click', getClickPosition, false);
+const addPaletteListener = () => {
+
+    const palette1 = document.querySelector('#palette1');
+    const palette2 = document.querySelector('#palette2');
+    const mainPalettes = [palette1, palette2];
+    mainPalettes.forEach(palette => {
+        palette.addEventListener('click', function (e) {
+            getClickPosition(e);
+            creatSliderPalettes()
+            // var newPalletes = new Palette('palette', true);
+            // newPalletes.createDiv();
+        })
+    })
+
 }
 
 //i can still game the system to allow for the nudging effect by having the first and last pixel be elimated from gifverse loop so that they are just pink and indexable by the length of the element list
@@ -181,23 +195,8 @@ window.onload = () => {
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     nudgePixels() // Temporatily disabling to add hover effects to pixels instead
     revealPixelPortal()
-    notes = document.querySelector('.pseudoCode');
-
-    const palette1 = document.querySelector('#palette1');
-    const palette2 = document.querySelector('#palette2');
-    const mainPalettes = [palette1, palette2];
-
-    mainPalettes.forEach(palette => {
-        palette.addEventListener('click', function (e) {
-            getClickPosition(e);
-            creatSliderPalettes()
-            // var newPalletes = new Palette('palette', true);
-            // newPalletes.createDiv();
-        })
-    })
-
-
-    console.log(gifVerseObj.length)
+    addPaletteListener()
+    notes = document.querySelector('.pseudoCode'); // this is a global reference
 
     const numVerses = []
 
@@ -206,17 +205,6 @@ window.onload = () => {
         console.log(gifVerseObj[key].className)
     }
     console.log(numVerses.length)
-    //NOTE: old way. instead of adding a listening to every palette - which could f-up clicks inside the expanded palettes, i wand to specify clicks only on sample1 and sample2
-    //const palettes = document.querySelectorAll('.paletteContainer');
-    // palettes.forEach(palette => {
-    //     // palette.addEventListener('click', getClickPosition, false)
-    //     palette.addEventListener('click', function (e) {
-    //         getClickPosition(e);
-    //         var newPalletes = new Palette('palette', true);
-    //         newPalletes.createDiv();
-
-    //     })
-    // });
 }
 
 const creatSliderPalettes = () => {
@@ -255,7 +243,7 @@ const createPixel = () => {
     pixelContainer.appendChild(patch)
     pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
-    addListener(pixelContainer)
+    //addListener(pixelContainer)
 }
 
 const replaceClassName = () => {

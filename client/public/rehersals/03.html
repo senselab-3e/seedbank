@@ -80,6 +80,11 @@
             transition: width 3s;
         }
 
+        /* annoying. the javascript assigned styling on this element override any of the other settings i try to add to it via hover*/
+        .palette:hover {
+            border: 1px inset white;
+        }
+
         /* .palette:hover,
         .palette:focus {
             cursor: pointer;
@@ -87,6 +92,7 @@
         } */
 
         .paletteClick {
+
             cursor: pointer;
             width: 25vw;
         }
@@ -351,7 +357,7 @@
             width: inherit;
             height: inherit;
             background-image: url('gifverse/fishy.gif');
-            background-size: 90px;
+            background-size: 120px;
             background-repeat: no-repeat;
         }
 
