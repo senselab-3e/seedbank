@@ -93,6 +93,7 @@ const nudgePixels = () => {
     const pixelContainer = document.querySelector('.pixelContainer');
     const pixelPatches = document.querySelectorAll('.pixelPatch');
     console.log(pixelPatches.length)
+    //have this also be mouseclick for touch devices? 
     pixelPatches[0].addEventListener("mouseover", function (event) {
         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
             "left");
@@ -108,6 +109,23 @@ const nudgePixels = () => {
             "left");
         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
         newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
+    })
+    ///not convinced this is doing what's necessary on mobile devices
+    pixelPatches[0].addEventListener("click", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+        //     "top");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
+        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 15 + 'px') : pixelContainer.style.setProperty('left', 5 + 'px');
+        // pixelContainer.style.setProperty('top', currentY + 'px');
+    })
+    pixelPatches[pixelPatches.length - 1].addEventListener("click", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 15 + 'px');
     })
 }
 const revealPixelPortal = () => {
