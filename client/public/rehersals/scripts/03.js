@@ -2,7 +2,7 @@ var notes;
 
 
 //NOTE --- i'm citing an array of texts called cosmic digest, that is in another js file called cosmic digest. this is because potentially i want all that file information to be accessible to there sketch spaces. 
-const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze'] // for each of these instances, a single pixel element will be created. 
+const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'staticSponge', 'staticSponge2', 'staticPingPong'] // for each of these instances, a single pixel element will be created. 
 
 const paletteTexts = ['When you ask DD, what kind of psychology this can be/come, this seems really key. What is a psychology without interiority? What is a psychology that is curious about the conditions of existence as they morph? What is a psychology that can move at the pace of a world making and remaking itself? For those of us familiar with Guattari, we would say “schizoanalysis” - the practice of activating techniques for the living-out (rather than the living-in) of experience.', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
 //NOTES: proof of concept for later: function Palette(className, textStatus, width, height) {  //NOTE: if i use this the element created will loose any of the animated transitions i may have hoped to apply to it, via the classname:hover. for some reason it overrides it - and there is no way to edit :hover from javascript. this can be handled another way, by using mouseEnter() type listeners, but for now, i'm just going to let it go.
@@ -58,16 +58,13 @@ function Palette(className, textStatus) {
         const text = poptechitecture[Math.floor(Math.random() * poptechitecture.length)]
         var textBox = document.createElement('div');
         textBox.classList = 'textBox';
-
-        //textBox.classList.add('hidden'); // if i don't want the text immediately visible
-
         textBox.textContent = text
         target.appendChild(textBox)
     }
 
 }
 
-//NOTE: with flexbox now being used in the css, this might not be entirely necessary....
+//NOTE: this is working in combination with flexbox. i can't rely on flexbox entirely for the effect i'm after but if it aint broke, don't fix it.
 const resetCubeWidth = (newWidth) => {
     sampleBlock = document.querySelector('#palette1');
     sampleBlock2 = document.querySelector('#palette2');
@@ -81,7 +78,7 @@ const retreiveColor = (el) => {
     //console.log(el)
     let currentColorVal = window.getComputedStyle(el, null).getPropertyValue(
         "--hsl");
-    console.log(currentColorVal, 'retrieve color');
+    //console.log(currentColorVal, 'retrieve color');
     return currentColorVal;
 }
 
@@ -313,5 +310,5 @@ const colorShiftDif = (newVal) => {
     const palette2 = document.querySelector('#palette2')
     const contrastVal = window.getComputedStyle(palette2, null).getPropertyValue(
         "--h");
-    console.log(Math.abs(contrastVal - newVal))
+    //console.log(Math.abs(contrastVal - newVal))
 }
