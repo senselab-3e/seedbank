@@ -80,6 +80,11 @@
             transition: width 3s;
         }
 
+        /* annoying. the javascript assigned styling on this element override any of the other settings i try to add to it via hover*/
+        .palette:hover {
+            border: 1px inset white;
+        }
+
         /* .palette:hover,
         .palette:focus {
             cursor: pointer;
@@ -87,15 +92,16 @@
         } */
 
         .paletteClick {
+
             cursor: pointer;
             width: 25vw;
         }
 
         #palette1 {
-            width: 50vw;
+            width: 80vw;
             height: 100vh;
-            --h: 63;
-            --s: 48%;
+            --h: 150;
+            --s: 78%;
             --l: 50%;
             --hsl: hsl(var(--h), var(--s), var(--l));
             background-color: var(--hsl);
@@ -108,14 +114,14 @@
         }
 
         #palette2 {
-            width: 50vw;
+            width: 20vw;
             height: 100vh;
             z-index: 11;
             /* --h2: 243;
             --hsl2: hsl(var(--h2), 48%, 50%); */
-            --h: 243;
-            --s: 48%;
-            --l: 50%;
+            --h: 150;
+            --s: 78%;
+            --l: 40%;
             --hsl: hsl(var(--h), var(--s), var(--l));
             background-color: var(--hsl);
             -webkit-transition: width 3s;
@@ -146,8 +152,9 @@
         }
 
         .pixelPatch {
-            width: 5px;
-            height: 5px;
+            width: 40px;
+            height: 40px;
+            position: absolute;
             cursor: pointer;
             background: deeppink;
             /* later, this color will be tied to the first color the user selected at the beginning*/
@@ -165,11 +172,11 @@
             background-color: hsla(0, 0%, 100%, 0)
         }
 
-        .pixelColor {
+        /* .pixelColor {
             width: 5px;
             height: 5px;
             background: deeppink;
-        }
+        } */
 
         .pseudoCode {
 
@@ -351,7 +358,7 @@
             width: inherit;
             height: inherit;
             background-image: url('gifverse/fishy.gif');
-            background-size: 90px;
+            background-size: 120px;
             background-repeat: no-repeat;
         }
 
@@ -362,6 +369,68 @@
             background-size: 80px;
             background-repeat: no-repeat;
         }
+
+        .orange1 {
+            background-image: url('gifverse/orange1.png');
+            background-size: 40px;
+            background-repeat: no-repeat;
+            -webkit-transition: width 0.5s, height 0.5s;
+            -webkit-transition-timing-function: ease;
+            transition: width 0.5s, height 0.5s;
+            transition-timing-function: ease;
+        }
+
+        .orange1:hover {
+            width: 100px;
+            background-color: deeppink;
+        }
+
+        .orange2 {
+            background-image: url('gifverse/orange2.png');
+            background-size: 40px;
+            background-repeat: no-repeat;
+            -webkit-transition: width 0.5s, height 0.5s;
+            -webkit-transition-timing-function: ease;
+            transition: width 0.5s, height 0.5s;
+            transition-timing-function: ease;
+        }
+
+        .orange2:hover {
+            width: 100px;
+            background-color: deeppink;
+        }
+
+        .orange3 {
+            background-image: url('gifverse/orange3.png');
+            background-size: 40px;
+            background-repeat: no-repeat;
+            -webkit-transition: width 0.5s, height 0.5s;
+            -webkit-transition-timing-function: ease;
+            transition: width 0.5s, height 0.5s;
+            transition-timing-function: ease;
+        }
+
+        .orange3:hover {
+            width: 100px;
+            background-color: deeppink;
+        }
+
+
+        .orange4 {
+            background-image: url('gifverse/orange5.png');
+            background-size: 40px;
+            background-repeat: no-repeat;
+            -webkit-transition: width 0.5s, height 0.5s;
+            -webkit-transition-timing-function: ease;
+            transition: width 0.5s, height 0.5s;
+            transition-timing-function: ease;
+        }
+
+        .orange4:hover {
+            width: 100px;
+            background-color: deeppink;
+        }
+
 
         .colorBox {
             z-index: 12;

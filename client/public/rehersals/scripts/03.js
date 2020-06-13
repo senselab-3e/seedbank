@@ -34,7 +34,7 @@ function Palette(className, textStatus) {
         palette.style.left = 0;
         palette.style.top = 0;
         palette.style.background = this.color;
-        palette.style.cursor = 'pointer';
+        // palette.style.cursor = 'pointer'; // doesn't seem to have made a difference
         this.txtRq === true ? this.textContent(palette) : console.log('no text requested')
 
         palette.addEventListener("click", function (event) {
@@ -60,7 +60,7 @@ function Palette(className, textStatus) {
     this.textContent = function (target) {
         const text = poptechitecture[Math.floor(Math.random() * poptechitecture.length)]
         var textBox = document.createElement('div');
-        textBox.classList = 'textBox';
+        textBox.className = 'textBox';
         textBox.textContent = text
         target.appendChild(textBox)
     }
@@ -97,6 +97,7 @@ const retreiveColor = (el) => {
 const nudgePixels = () => {
     const pixelContainer = document.querySelector('.pixelContainer');
     const pixelPatches = document.querySelectorAll('.pixelPatch');
+    const nudgeAmtCalc = gifVerse.length; // needs to be adjusted according to how long the pixel line is
     console.log(pixelPatches.length)
     //have this also be mouseclick for touch devices? 
     pixelPatches[0].addEventListener("mouseover", function (event) {
@@ -106,14 +107,14 @@ const nudgePixels = () => {
         //     "top");
         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
         // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
-        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 5 + 'px') : pixelContainer.style.setProperty('left', 5 + 'px');
+        newNum + nudgeAmtCalc < window.innerWidth - nudgeAmtCalc * 2 ? pixelContainer.style.setProperty('left', newNum + 5 + 'px') : pixelContainer.style.setProperty('left', 5 + nudgeAmtCalc + 'px');
         // pixelContainer.style.setProperty('top', currentY + 'px');
     })
     pixelPatches[pixelPatches.length - 1].addEventListener("mouseover", function (event) {
         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
             "left");
         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
-        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
+        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - nudgeAmtCalc * 6 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
     })
     ///not convinced this is doing what's necessary on mobile devices
     pixelPatches[0].addEventListener("click", function (event) {
@@ -123,14 +124,14 @@ const nudgePixels = () => {
         //     "top");
         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
         // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
-        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 15 + 'px') : pixelContainer.style.setProperty('left', 5 + 'px');
+        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 15 + 'px') : pixelContainer.style.setProperty('left', nudgeAmtCalc + 'px');
         // pixelContainer.style.setProperty('top', currentY + 'px');
     })
     pixelPatches[pixelPatches.length - 1].addEventListener("click", function (event) {
         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
             "left");
         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
-        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 15 + 'px');
+        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 25 + 'px') : pixelContainer.style.setProperty('left', newNum - 15 + 'px');
     })
 }
 const revealPixelPortal = () => {
