@@ -4,7 +4,8 @@ var notes;
 
 
 //NOTE --- i'm citing an array of texts called cosmic digest, that is in another js file called cosmic digest. this is because potentially i want all that file information to be accessible to there sketch spaces. 
-const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifpinkwave', 'gifshadows', 'gifgradient', 'gifsplat', 'gifumbrella', 'staticSponge2', 'staticPingPong', 'staticBlueChair', 'staticPingPong', 'staticCompost', 'staticFishy', 'staticBlueBowl', 'staticSponge'] // for each of these instances, a single pixel element will be created. 
+const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifpinkwave', 'gifshadows', 'gifgradient', 'staticCompost', 'gifsplat', 'gifumbrella', 'staticSponge2'] // for each of these instances, a single pixel element will be created. 
+const thingyVerse = ['staticSponge2', 'staticPingPong', 'staticBlueChair', 'staticPingPong', 'staticCompost', 'staticFishy', 'staticBlueBowl', 'staticSponge']
 
 const paletteTexts = ['When you ask DD, what kind of psychology this can be/come, this seems really key. What is a psychology without interiority? What is a psychology that is curious about the conditions of existence as they morph? What is a psychology that can move at the pace of a world making and remaking itself? For those of us familiar with Guattari, we would say “schizoanalysis” - the practice of activating techniques for the living-out (rather than the living-in) of experience.', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
 
@@ -195,7 +196,7 @@ window.onload = () => {
     for (let i = 0; i < gifVerse.length; i++) {
         createPixel()
     }
-    createPixel()
+    //createPixel()
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     nudgePixels() // Temporatily disabling to add hover effects to pixels instead
     revealPixelPortal()

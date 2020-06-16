@@ -27,6 +27,10 @@ function Palette(className, textStatus) {
         palette.style.left = 0;
         palette.style.top = 0;
         palette.style.background = this.color;
+        palette.addEventListener("click", function (event) {
+            palette.classList.contains('paletteClick') ? palette.classList.remove('paletteClick') : palette.classList.add('paletteClick')
+
+        })
         this.txtRq === true ? this.textContent(palette) : console.log('no text requested')
         paletteContainer.appendChild(palette);
     }
@@ -97,6 +101,36 @@ const getClickPosition = (e) => {
     resetCubeWidth(percentageWidth)
 }
 
+const addPaletteListener = () => {
+
+    const palette1 = document.querySelector('#palette1');
+    const palette2 = document.querySelector('#palette2');
+    const mainPalettes = [palette1, palette2];
+    mainPalettes.forEach(palette => {
+        palette.addEventListener('click', function (e) {
+            getClickPosition(e);
+            creatSliderPalettes()
+            // var newPalletes = new Palette('palette', true);
+            // newPalletes.createDiv();
+        })
+    })
+
+}
+
+const creatSliderPalettes = () => {
+
+    const sliderContainer = document.querySelector('.sliderContainer');
+    //this checks if the number of palettes being requested exceeds the number needed for text that needs placing within them.
+    // if (sliderContainer.childElementCount < thingyVerse.length) {
+    //     var newPalletes = new Palette('palette', true, true);
+    //     newPalletes.createDiv();
+    // } else {
+    //     console.log('all thingies have a slider')
+    // }
+    var newPalletes = new Palette('palette', true);
+    newPalletes.createDiv();
+}
+
 const addListener = (patch) => {
     patch.addEventListener('click', getClickPosition, false)
 }
@@ -107,17 +141,18 @@ window.onload = () => {
     createPixel() // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     nudgePixels()
+    addPaletteListener()
     notes = document.querySelector('.pseudoCode');
-    const palettes = document.querySelectorAll('.paletteContainer')
-    palettes.forEach(palette => {
-        // palette.addEventListener('click', getClickPosition, false)
-        palette.addEventListener('click', function (e) {
-            getClickPosition(e);
-            var newPalletes = new Palette('palette', true);
-            newPalletes.createDiv()
+    // const palettes = document.querySelectorAll('.paletteContainer')
+    // palettes.forEach(palette => {
+    //     // palette.addEventListener('click', getClickPosition, false)
+    //     palette.addEventListener('click', function (e) {
+    //         getClickPosition(e);
+    //         var newPalletes = new Palette('palette', true);
+    //         newPalletes.createDiv()
 
-        })
-    });
+    //     })
+    // });
 }
 
 const createPixelPatch = () => {

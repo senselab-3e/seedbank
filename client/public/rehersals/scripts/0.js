@@ -1,6 +1,7 @@
 var notes;
 //var input = document.querySelector('input'); // it wouldn't read this unfortunately, as a universal value. this may be because the querySelector is a funciton that must be called and it can't do that outside of a parent function
 
+const vibrationClasses = ["hvr-wobble-horizontal", "hvr-skew-forward", "hvr-float-shadow", ]
 
 const checkPatchNum = () => {
     const numPatches = document.querySelectorAll('.picnicPatch');
@@ -8,11 +9,23 @@ const checkPatchNum = () => {
     numPatches.length > 10 ? window.location.href = '/rehersals/00.html' : console.log('not enough patches');
 }
 
+const createCube = (target) => {
+    var cube = document.createElement('div');
+    cube.className = 'cubeContainer';
+    target.appendChild(cube);
+}
+
 const addListener = (patch) => {
     patch.addEventListener('click', function (event) {
         createPatch()
         checkPatchNum()
     });
+
+    patch.addEventListener('mouseover', function (event) {
+        //document.querySelector('.cubeContainer') ? console.log('cube already there') : createCube(patch)
+
+    });
+
     const input = document.querySelector('input');
     //this is here to update all the patches, with the entrycolor. you might not want this in the future, but it's here as a reference. there is already a listener added to the first entry patch, onload
     input.addEventListener('change', function () {
@@ -71,5 +84,5 @@ const createPatch = () => {
     document.body.appendChild(patch)
     addListener(patch)
     let allPatches = document.querySelectorAll(".picnicPatch"); //sanity check that only one patch is being added at a time, and not expodentially
-    console.log(allPatches)
+    //console.log(allPatches)
 }
