@@ -53,24 +53,11 @@ const sliderVal = (e) => {
     console.log('slider', e.target.value)
     options.tileWidth = inputSize()
     options.tileHeight = inputSize()
-
-    // const tilelist = document.querySelectorAll('.tile');
-    // tilelist.forEach(element => {
-    //     element.remove()
-
-    // });
-    //chooseImg()
-    // init2()
     const c = document.querySelector('.tileHolder');
-
-    console.log(options)
-    tileHolder.remove(); //as soon as i remove this, it throws errors on all the otherfuncitons bc it has no element to act on
-    // init()
-    // createTileHolder();
-    // checkTileNumber();
-    // positionImage();
-    // addListeners();
+    c.remove(); //as soon as i remove this, it throws errors on all the otherfuncitons bc it has no element to act on
     numTiles = 0; /// THIS IS SUPER KEY. 
+    tileWidth = options.tileWidth;
+    tileHeight = options.tileHeight;
     init()
 }
 
