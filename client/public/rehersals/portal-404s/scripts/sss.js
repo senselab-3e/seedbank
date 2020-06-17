@@ -40,17 +40,14 @@ var options = {
     mouseTrail: true
 
 }
-
+//value from slider
 const inputSize = () => {
-    console.log(input.value)
-
     return input.value
 }
 
 
 
 const sliderVal = (e) => {
-    console.log('slider', e.target.value)
     options.tileWidth = inputSize()
     options.tileHeight = inputSize()
     const c = document.querySelector('.tileHolder');
@@ -64,20 +61,7 @@ const sliderVal = (e) => {
 input.addEventListener('change', sliderVal)
 
 
-// const sliderTiles = () => {
 
-
-//     options.tileWidth = input.value;
-
-//     input.addEventListener('change', function () {
-//         console.log(input.value)
-//         options.tileWidth = input.value;
-//     })
-// }
-// options.tileWidth = 15; /// reassigning these values just as a test.
-// options.tileHeight = 400;
-
-// i may need to introduce different tile sizes for different devices....as the disjunction between where the image fill is and the tiles are being drawn may be contributing to the lack of toucheven recognition
 
 // ----------------------------------------------------------
 var tileWidth, tileHeight, numTiles, tileHolder, tileContainer;
@@ -92,19 +76,14 @@ tileHeight = options.tileHeight;
 
 tileContainer = document.getElementsByClassName(options.containerName)[0];
 
-// console.log(tileContainer)
-// var image = new Image();
-// image.src = options.imgSrc;
+
 
 
 function init() {
-    console.log('init1')
-    // console.log(options.tileWidth, 'object')
-    // input.addEventListener('change', sliderVal)
     if (options.grid == false) {
 
         if (tileContainer.classList.contains("noGrid")) {
-            console.log('do nothing') // this was added to keep it from adding more 'no Grid' classnames upon reinitialization
+            // this was added to keep it from adding more 'no Grid' classnames upon reinitialization
         } else {
             tileContainer.classList.add("noGrid")
         }
@@ -125,36 +104,6 @@ function init() {
     };
 }
 
-function init2() {
-    console.log('init2')
-    inputSize()
-    // console.log(options.tileWidth, 'object')
-    // input.addEventListener('change', sliderVal)
-    // if (options.grid == false) {
-
-    //     if (tileContainer.classList.contains("noGrid")) {
-    //         console.log('do nothing') // this was added to keep it from adding more 'no Grid' classnames upon reinitialization
-    //     } else {
-    //         tileContainer.classList.add("noGrid")
-    //     }
-    // }
-
-    //preload image and get original image size, then create tiles
-    //again, this isn't being done iteratively for each tile so its just choosing the whole image again
-    // image.onload = function (e) {
-    //     imageLoaded = true;
-    //     imgOriginalWidth = e.currentTarget.width;
-    //     imgOriginalHeight = e.currentTarget.height;
-    imageLoaded = true;
-    //createTileHolder();
-    checkTileNumber();
-    positionImage();
-    addListeners();
-    // };
-}
-
-
-
 
 function resizeHandler() {
     if (imageLoaded == false) return;
@@ -166,7 +115,6 @@ function resizeHandler() {
 }
 
 function createTileHolder() {
-
 
     tileHolder = document.createElement('div');
     tileHolder.className = "tileHolder";
@@ -184,14 +132,12 @@ function checkTileNumber() {
     console.log(options.tileHeight, tileHeight, 'checktilenumber')
     tileHolder.style.width = Math.ceil(tileContainer.offsetWidth / tileWidth) * tileWidth + "px";
     tileHolder.style.height = Math.ceil(tileContainer.offsetHeight / tileHeight) * tileHeight + "px";
-    console.log(numTiles, 'numtiles')
     var tilesFitInWindow = Math.ceil(tileContainer.offsetWidth / tileWidth) * Math.ceil(tileContainer.offsetHeight / tileHeight);
     if (numTiles < tilesFitInWindow) {
         for (var i = 0, l = tilesFitInWindow - numTiles; i < l; i++) {
             addTiles();
         }
     } else if (numTiles > tilesFitInWindow) {
-        console.log('tile excess event is happening')
         for (var i = 0, l = numTiles - tilesFitInWindow; i < l; i++) {
             removeTiles();
         }
@@ -227,13 +173,12 @@ function removeUrlWrap(s) {
     //investigate if there is a more elegant way to do this all in one replaceregex rather then calling it twice
     s = s.replace(/url\("/, '');
     s = s.replace(/"\)/, '');
-    console.log(s)
+
     return s
 }
 
 
 function addTiles() {
-    console.log(options.tileHeight, 'addTiles - tile height')
     tileWidth = options.tileWidth;
     tileHeight = options.tileHeight;
     var tile = document.createElement('div');
@@ -294,7 +239,6 @@ function addTiles() {
 
 function removeTiles() {
     var tileToRemove = document.querySelectorAll(".tile")[0];
-    console.log(tileToRemove)
     tileToRemove.removeEventListener("mouseover", moveImage);
     tileToRemove.removeEventListener("touchstart", moveImage);
     tileToRemove.removeEventListener("touchmove", moveImage);
@@ -328,7 +272,7 @@ function addListeners() {
 function positionImage() {
     for (var t = 0, l = numTiles; t < l; t++) {
         var nowTile = document.querySelectorAll(".tile")[t];
-        if (nowTile) {
+        if (nowTile) { // this was a sanity check
             var left = (-nowTile.offsetLeft - (tileHolder.offsetLeft - (tileHolder.offsetWidth / 2)));
             var top = (-nowTile.offsetTop - (tileHolder.offsetTop - (tileHolder.offsetHeight / 2)));
 
