@@ -15,20 +15,6 @@ function chooseImg() {
 const input = document.querySelector('input');
 
 
-// const sliderVal = (e) => {
-//     console.log('slider')
-//     tileWidth = e.target.value
-//     tileHeight = e.target.value
-//     console.log(e.target.value)
-// }
-//
-
-
-
-
-
-
-
 
 
 var options = {
@@ -47,18 +33,40 @@ const inputSize = () => {
 
 
 
+const image1 = () => {
+    // options.imgSrc = './ccc.png'; // this won't work because of the hack way in which i got it to load /call a random image from the array above, at each tiling action instance below. 
+    // but for now as proof of concept, i can push into that array, an image that wasn't there before...
+    imgOptions.push('./ccc.png'); /// what's interesting about this, is that if they push the button repeatedly, then it increase the probability of a particular image being called - even in the 'random' pushing more tiles from other images into smaller numbers. 
+    const holder = document.querySelector('.tileHolder');
+    holder.remove();
+    numTiles = 0;
+    init();
+}
+
+const image2 = () => {
+    imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
+    imgOptions.push('./bbb.png')
+    const holder = document.querySelector('.tileHolder');
+    holder.remove();
+    numTiles = 0;
+    init();
+}
+
+
 const sliderVal = (e) => {
     options.tileWidth = inputSize()
     options.tileHeight = inputSize()
-    const c = document.querySelector('.tileHolder');
-    c.remove(); //as soon as i remove this, it throws errors on all the otherfuncitons bc it has no element to act on
-    numTiles = 0; /// THIS IS SUPER KEY. 
+    const holder = document.querySelector('.tileHolder');
+    holder.remove(); //as soon as i remove this, it throws errors on all the otherfuncitons bc it has no element to act on
+    numTiles = 0; /// THIS IS SUPER KEY. This resets the tile number. it wasn't enough to just empty the tile container divs 
     tileWidth = options.tileWidth;
     tileHeight = options.tileHeight;
-    init()
+    init();
 }
 
 input.addEventListener('change', sliderVal)
+
+
 
 
 
