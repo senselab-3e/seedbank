@@ -14,22 +14,68 @@ function chooseImg() {
 
 const input = document.querySelector('input');
 
-input.addEventListener('change', function () {
-    console.log(input.value)
-    options.tileWidth = input.value;
-})
 
-console.log(input.value)
+// const sliderVal = (e) => {
+//     console.log('slider')
+//     tileWidth = e.target.value
+//     tileHeight = e.target.value
+//     console.log(e.target.value)
+// }
+//
+
+
+
+
+
+
+
+
 
 var options = {
     imgSrc: chooseImg(),
     containerName: "tileContainer",
     grid: false,
     tileWidth: input.value, //45, //85, //25
-    tileHeight: input.value, ///45, //85, //225
+    tileHeight: input.value,
     mouseTrail: true
 
 }
+
+const inputSize = () => {
+    console.log(input.value)
+
+    return input.value
+}
+
+
+
+const sliderVal = (e) => {
+    console.log('slider', e.target.value)
+    options.tileWidth = inputSize()
+    options.tileHeight = inputSize()
+
+    // const tilelist = document.querySelectorAll('.tile');
+    // tilelist.forEach(element => {
+    //     element.remove()
+
+    // });
+    //chooseImg()
+    // init2()
+    const c = document.querySelector('.tileHolder');
+
+    console.log(options)
+    tileHolder.remove(); //as soon as i remove this, it throws errors on all the otherfuncitons bc it has no element to act on
+    // init()
+    // createTileHolder();
+    // checkTileNumber();
+    // positionImage();
+    // addListeners();
+    numTiles = 0; /// THIS IS SUPER KEY. 
+    init()
+}
+
+input.addEventListener('change', sliderVal)
+
 
 // const sliderTiles = () => {
 
@@ -59,14 +105,23 @@ tileHeight = options.tileHeight;
 
 tileContainer = document.getElementsByClassName(options.containerName)[0];
 
+// console.log(tileContainer)
+// var image = new Image();
+// image.src = options.imgSrc;
 
 
 function init() {
+    console.log('init1')
+    // console.log(options.tileWidth, 'object')
+    // input.addEventListener('change', sliderVal)
+    if (options.grid == false) {
 
-
-
-
-    if (options.grid == false) tileContainer.className += " noGrid";
+        if (tileContainer.classList.contains("noGrid")) {
+            console.log('do nothing') // this was added to keep it from adding more 'no Grid' classnames upon reinitialization
+        } else {
+            tileContainer.classList.add("noGrid")
+        }
+    }
 
     //preload image and get original image size, then create tiles
     var image = new Image();
@@ -82,6 +137,37 @@ function init() {
         addListeners();
     };
 }
+
+function init2() {
+    console.log('init2')
+    inputSize()
+    // console.log(options.tileWidth, 'object')
+    // input.addEventListener('change', sliderVal)
+    // if (options.grid == false) {
+
+    //     if (tileContainer.classList.contains("noGrid")) {
+    //         console.log('do nothing') // this was added to keep it from adding more 'no Grid' classnames upon reinitialization
+    //     } else {
+    //         tileContainer.classList.add("noGrid")
+    //     }
+    // }
+
+    //preload image and get original image size, then create tiles
+    //again, this isn't being done iteratively for each tile so its just choosing the whole image again
+    // image.onload = function (e) {
+    //     imageLoaded = true;
+    //     imgOriginalWidth = e.currentTarget.width;
+    //     imgOriginalHeight = e.currentTarget.height;
+    imageLoaded = true;
+    //createTileHolder();
+    checkTileNumber();
+    positionImage();
+    addListeners();
+    // };
+}
+
+
+
 
 function resizeHandler() {
     if (imageLoaded == false) return;
@@ -108,9 +194,10 @@ function createTileHolder() {
 //when i applied the rotation transformations to the above, it did it to the entire image, not the individual tiles
 
 function checkTileNumber() {
+    console.log(options.tileHeight, tileHeight, 'checktilenumber')
     tileHolder.style.width = Math.ceil(tileContainer.offsetWidth / tileWidth) * tileWidth + "px";
     tileHolder.style.height = Math.ceil(tileContainer.offsetHeight / tileHeight) * tileHeight + "px";
-
+    console.log(numTiles, 'numtiles')
     var tilesFitInWindow = Math.ceil(tileContainer.offsetWidth / tileWidth) * Math.ceil(tileContainer.offsetHeight / tileHeight);
     if (numTiles < tilesFitInWindow) {
         for (var i = 0, l = tilesFitInWindow - numTiles; i < l; i++) {
@@ -123,7 +210,6 @@ function checkTileNumber() {
         }
     }
 }
-
 
 
 var rotate = false;
@@ -160,6 +246,9 @@ function removeUrlWrap(s) {
 
 
 function addTiles() {
+    console.log(options.tileHeight, 'addTiles - tile height')
+    tileWidth = options.tileWidth;
+    tileHeight = options.tileHeight;
     var tile = document.createElement('div');
     rotate ? deg = createVal() : deg = 0;
 
@@ -218,6 +307,7 @@ function addTiles() {
 
 function removeTiles() {
     var tileToRemove = document.querySelectorAll(".tile")[0];
+    console.log(tileToRemove)
     tileToRemove.removeEventListener("mouseover", moveImage);
     tileToRemove.removeEventListener("touchstart", moveImage);
     tileToRemove.removeEventListener("touchmove", moveImage);
@@ -251,11 +341,14 @@ function addListeners() {
 function positionImage() {
     for (var t = 0, l = numTiles; t < l; t++) {
         var nowTile = document.querySelectorAll(".tile")[t];
+        if (nowTile) {
+            var left = (-nowTile.offsetLeft - (tileHolder.offsetLeft - (tileHolder.offsetWidth / 2)));
+            var top = (-nowTile.offsetTop - (tileHolder.offsetTop - (tileHolder.offsetHeight / 2)));
 
-        var left = (-nowTile.offsetLeft - (tileHolder.offsetLeft - (tileHolder.offsetWidth / 2)));
-        var top = (-nowTile.offsetTop - (tileHolder.offsetTop - (tileHolder.offsetHeight / 2)));
-
-        nowTile.style.backgroundPosition = left + "px " + top + "px";
+            nowTile.style.backgroundPosition = left + "px " + top + "px";
+        } else {
+            console.log('tile still coming')
+        }
     }
 }
 
@@ -363,6 +456,7 @@ function moveImageTouch(e) {
 ///////////////////////////////////////////////////////////////////
 
 init();
+
 // handle event
 //window.addEventListener("optimizedResize", resizeHandler);
 
