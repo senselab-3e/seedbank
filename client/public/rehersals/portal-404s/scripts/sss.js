@@ -37,7 +37,7 @@ const image1 = () => {
     // options.imgSrc = './ccc.png'; // this won't work because of the hack way in which i got it to load /call a random image from the array above, at each tiling action instance below. 
     // but for now as proof of concept, i can push into that array, an image that wasn't there before...
     imgOptions.push('./ccc.png'); /// what's interesting about this, is that if they push the button repeatedly, then it increase the probability of a particular image being called - even in the 'random' pushing more tiles from other images into smaller numbers. 
-    const holder = document.querySelector('.tileHolder');
+    const holder = document.querySelector('.tileHolder'); // i thought i could use a global var for this, but no. i has to be queried uniquely within each function. 
     holder.remove();
     numTiles = 0;
     init();
@@ -51,6 +51,28 @@ const image2 = () => {
     numTiles = 0;
     init();
 }
+
+const image3 = () => {
+    //imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
+    imgOptions.push('./fff.png')
+    imgOptions.push('./ggg.png')
+    const holder = document.querySelector('.tileHolder');
+    holder.remove();
+    numTiles = 0;
+    init();
+}
+
+const image4 = () => {
+    imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
+    imgOptions.push('./hhh.png')
+    imgOptions.push('./iii.png')
+    const holder = document.querySelector('.tileHolder');
+    holder.remove();
+    numTiles = 0;
+    init();
+}
+
+
 
 
 const sliderVal = (e) => {
