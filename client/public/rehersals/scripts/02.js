@@ -2,13 +2,38 @@ var notes;
 const paletteTexts = ['The anarchive is best defined for the purposes of the Immediations project as a repertory of traces of collaborative research-creation events. The traces are not inert, but are carriers of potential. They are reactivatable, and their reactivation helps trigger a new event which continues the creative process from which they came, but in a new iteration.', 'Thus the anarchive is not documentation of a past activity. Rather, it is a feed-forward mechanism for lines of creative process, under continuing variation.', 'The anarchive needs documentation – the archive – from which to depart and through which to pass. It is an excess energy of the archive: a kind of supplement or surplus-value of the archive', 'Its supplemental, excessive nature means that it is never contained in any particular archive or documentation element contained in an archive. It is never contained in an object. The anarchive is made of the formative movements going into and coming out of the archive, for which the objects contained in the archive serve as springboards. The anarchive as such is made of formative tendencies; compositional forces seeking a new taking-form; lures for further process. Archives are their waystations.', 'Since it exceeds the archive and is uncontainable in any single object or collection of objects, the anarchive is by nature a cross-platform phenomenon. It is activated in the relays: between media, between verbal and material expressions, between digital and off-line archivings, and most of all between all of the various archival forms it may take and the live, collaborative interactions that reactivate the anarchival traces, and in turn create new ones.', 'The anarchive pertains to the event. It is a kind of event derivative, or surplus-value of the event. This makes it an essential element of the Immediations project, whose stated aim has been to develop an approach to research-creation as a practice of interdisciplinary event design, or to quote the original application, as the practice of creating innovative “platforms for organizing and orienting live, collaborative encounters.”', 'Approached anarchivally, the product of research-creation is process. The anarchive is a technique for making research-creation a process-making engine. Many products are produced, but they are not the product. They are the visible indexing of the process’s repeated taking-effect: they embody its traces (thus bringing us full circle to point 1).']
 //const paletteTexts = ['When you ask DD, what kind of psychology this can be/come, this seems really key. What is a psychology without interiority? What is a psychology that is curious about the conditions of existence as they morph? What is a psychology that can move at the pace of a world making and remaking itself? For those of us familiar with Guattari, we would say “schizoanalysis” - the practice of activating techniques for the living-out (rather than the living-in) of experience.', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
 //NOTES: proof of concept for later: function Palette(className, textStatus, width, height) {  //NOTE: if i use this the element created will loose any of the animated transitions i may have hoped to apply to it, via the classname:hover. for some reason it overrides it - and there is no way to edit :hover from javascript. this can be handled another way, by using mouseEnter() type listeners, but for now, i'm just going to let it go.
+
 const getRandomColor = () => {
     var letters = '0123456789ABCDEF';
-    var color = '#';
+    let color = '#';
     for (var i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
     }
-    return color;
+    const lightness = checkDarkness(color);
+    console.log(lightness)
+    if (lightness) {
+        return color
+    } else {
+        //alternatively i could also try setting the font color in the palettes to white here, but i'm leaving this for now. 
+        getRandomColor()
+    }
+}
+
+//this isn't full proof. it avoids more 'black' rather then true darkness. to refine that i'd need the random color generator to be HSL rather then RGB, but i just want to quickly put this in place 
+const checkDarkness = (c) => {
+    c = c.substring(1); // strip #
+    var rgb = parseInt(c, 16); // convert rrggbb to decimal
+    var r = (rgb >> 16) & 0xff; // extract red
+    var g = (rgb >> 8) & 0xff; // extract green
+    var b = (rgb >> 0) & 0xff; // extract blue
+
+    var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+    if (luma < 60) {
+        console.log(luma, 'too dark')
+        return false
+    } else {
+        return true
+    }
 }
 
 //colorStatus checks for whether a relational color is provided, or if - as is the case for palettes loaded at the beginning, a sampled color isn't being provided and random is needed. false - means a random color is pulled, true means the current palette strobe color is sampled for the palette dynamically created. 
@@ -103,7 +128,18 @@ const nudgePixels = () => {
             "left");
         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
         newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
-    })
+    });
+    //NOTE: REFACTOR
+    const currentPalNum = document.body.querySelectorAll('.palette').length
+    pixelPatches[0].addEventListener("click", function (event) {
+        if (currentPalNum < anarchiveDef.length - 1) {
+            anarchiveDef.forEach(def => {
+                creatSliderPalettes(true, false) // true is for text content. false indicates a need for colors to be randomly generated. colors are not yet available in relation. 
+            });
+        } else {
+            console.log('text palettes already added')
+        }
+    });
 }
 
 const getClickPosition = (e) => {
@@ -124,7 +160,7 @@ const addPaletteListener = () => {
     mainPalettes.forEach(palette => {
         palette.addEventListener('click', function (e) {
             getClickPosition(e);
-            creatSliderPalettes(false, true)
+            creatSliderPalettes(false, true);
             // var newPalletes = new Palette('palette', true);
             // newPalletes.createDiv();
         })
@@ -158,10 +194,11 @@ window.onload = () => {
     nudgePixels()
     addPaletteListener()
     notes = document.querySelector('.pseudoCode'); // this isn't currently being utalized but if i want to add any hidden notes, i can here. 
+
     //this is to preload a color slice for each anarchive definition quote. i would prefer to palettes being added happened based on user clicks, but for purposes of presentaiton, i'm automating this. 
-    anarchiveDef.forEach(def => {
-        creatSliderPalettes(true, false) // true is for text content. false indicates a need for colors to be randomly generated. colors are not yet available in relation. 
-    });
+    // anarchiveDef.forEach(def => {
+    //     creatSliderPalettes(true, false) // true is for text content. false indicates a need for colors to be randomly generated. colors are not yet available in relation. 
+    // });
 
 }
 
@@ -178,8 +215,8 @@ const createPixel = () => {
     patch.className = 'pixelPatch';
 
     pixelContainer.appendChild(patch)
-    pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
-    pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
+    pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth / 2 + 'px';
+    pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight / 2 + 'px';
     addListener(pixelContainer)
 
 }
