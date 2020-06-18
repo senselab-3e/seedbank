@@ -307,7 +307,7 @@ const updateColors = () => {
     setNewColorVal(palette2);
 }
 
-var intervalChng = window.setInterval(updateColors, 100); //continually changes color of palette2 element, using callback function 
+var intervalChng = window.setInterval(updateColors, 1000); //continually changes color of palette2 element, using callback function 
 
 const colorPicker = () => {
     const input = document.querySelector('input');
