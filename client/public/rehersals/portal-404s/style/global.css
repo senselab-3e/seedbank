@@ -15,6 +15,10 @@ main>h3 {
 }
 
 
+.hidden {
+    display: none;
+}
+
 .imgmenuContainer {
     position: absolute;
     z-index: 12;

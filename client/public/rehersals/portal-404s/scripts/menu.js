@@ -46,25 +46,25 @@ const imageMenu = () => {
 }
 
 const imgReplacement = (index, clearImgs) => {
-    //added a conditional true or false for whether the image array would be emptied to 'just' add the images associated with a particular button, or if they would be added cumulatively to an array with previous values still remaining in it. this gives different results in the user view of how new images are being integrated and returned with what they have already viewed. 
+    //NOTE:added a conditional true or false for whether the image array would be emptied to 'just' add the images associated with a particular button, or if they would be added cumulatively to an array with previous values still remaining in it. this gives different results in the user view of how new images are being integrated and returned with what they have already viewed. 
     clearImgs ? imgOptions.splice(0, imgOptions.length) : console.log('let it ride')
 
 
     // this clears out all existing images in the array
     //imgOptions.splice(0, imgOptions.length); 
 
-    //random image pull 
+    //NOTE:random image pull 
     //const newImgView = imgMenuOptions[Math.floor(Math.random() * imgMenuOptions.length)];
 
-    //specific image combo array pull 
-    // const newImgView = imgMenuOptions[index]
-    // newImgView.forEach(img => {
-    //     imgOptions.push('./' + img)
-    // })
+    //NOTE:specific image combo array pull 
+    const newImgView = imgMenuOptions[index]
+    newImgView.forEach(img => {
+        imgOptions.push('./' + img)
+    })
 
-    //this pulls only a single image each time and 'may' scramble with others based on truthy or falsey value of clearImgs boolean, passed into this function
-    const newImgView = imgMenuSingles[index]
-    imgOptions.push('./' + newImgView);
+    //NOTE: this pulls only a single image each time and 'may' scramble with others based on truthy or falsey value of clearImgs boolean, passed into this function
+    // const newImgView = imgMenuSingles[index]
+    // imgOptions.push('./' + newImgView);
 
     const holder = document.querySelector('.tileHolder'); // i thought i could use a global var for this, but no. i has to be queried uniquely within each function. 
     holder.remove();

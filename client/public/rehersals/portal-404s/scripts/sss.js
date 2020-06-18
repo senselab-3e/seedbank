@@ -11,23 +11,31 @@ function chooseImg() {
     return image
 }
 
-
-const input = document.querySelector('input');
-
+//NOTE: I have set up a contingency if i don't want to have heigh and width values being adjusted independently - in the sliderVal()
+const inputWidth = document.querySelector('#inputWidth');
+const inputHeight = document.querySelector('#inputHeight'); ///NOTE: right now this isn't enabled because i prefer the ease of a single cube slice. 
 
 
 var options = {
     imgSrc: chooseImg(),
     containerName: "tileContainer",
     grid: false,
-    tileWidth: input.value, //45, //85, //25
-    tileHeight: input.value,
+    tileWidth: 25, //inputWidth.value, //45, //85, //25
+    tileHeight: 25, //inputHeight.value,
     mouseTrail: true
 
 }
 //value from slider
-const inputSize = () => {
-    return input.value
+// const inputSize = () => {
+//     return input.value
+// }
+
+const inputWidthSize = () => {
+    return inputWidth.value
+}
+
+const inputHeightSize = () => {
+    return inputHeight.value
 }
 
 //none of these are now being used. the menu.js function takes care of it now. 
@@ -54,41 +62,18 @@ const inputSize = () => {
 //     init();
 // }
 
-// const image2 = () => {
-//     imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
-//     imgOptions.push('./bbb.png')
-//     const holder = document.querySelector('.tileHolder');
-//     holder.remove();
-//     numTiles = 0;
-//     init();
-// }
-
-// const image3 = () => {
-//     imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
-//     imgOptions.push('./fff.png')
-//     imgOptions.push('./ggg.png')
-//     const holder = document.querySelector('.tileHolder');
-//     holder.remove();
-//     numTiles = 0;
-//     init();
-// }
-
-// const image4 = () => {
-//     //imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
-//     imgOptions.push('./hhh.png')
-//     imgOptions.push('./iii.png')
-//     const holder = document.querySelector('.tileHolder');
-//     holder.remove();
-//     numTiles = 0;
-//     init();
-// }
-
-
 
 
 const sliderVal = (e) => {
-    options.tileWidth = inputSize()
-    options.tileHeight = inputSize()
+    // options.tileWidth = inputSize()
+    // options.tileHeight = inputSize()
+
+    //if i want to return to having just one input value scroll, so the squares only have one variable equadistant sizing, then have it return the same value for inputWidth applied to height and width of tile
+    options.tileWidth = inputWidthSize()
+    options.tileHeight = inputWidthSize()
+
+    // options.tileWidth = inputWidthSize()
+    // options.tileHeight = inputHeightSize()
     const holder = document.querySelector('.tileHolder');
     holder.remove(); //as soon as i remove this, it throws errors on all the otherfuncitons bc it has no element to act on
     numTiles = 0; /// THIS IS SUPER KEY. This resets the tile number. it wasn't enough to just empty the tile container divs 
@@ -97,8 +82,9 @@ const sliderVal = (e) => {
     init();
 }
 
-input.addEventListener('change', sliderVal)
 
+inputWidth.addEventListener('change', sliderVal)
+inputHeight.addEventListener('change', sliderVal)
 
 
 
