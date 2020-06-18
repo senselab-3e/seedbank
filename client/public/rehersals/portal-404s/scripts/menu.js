@@ -12,26 +12,41 @@ const imageMenu = () => {
     const container = document.createElement('div');
     container.className = "imgmenuContainer "
 
-    imgClasses.forEach(img => {
+    // imgClasses.forEach(img => {
+    //     console.log(img)
+    //     let imgPixel = document.createElement('div');
+    //     imgPixel.className = "imgmenuPatch";
+    //     imgPixel.classList.add(img)
+    //     imgPixel.style.left = 0;
+    //     imgPixel.style.top = 0;
+    //     imgPixel.addEventListener('click', function (event) {
+    //         imgReplacement()
+    //     })
+    //     container.appendChild(imgPixel)
+    // })
+
+    for (let i = 0; i < imgClasses.length; i++) {
         let imgPixel = document.createElement('div');
         imgPixel.className = "imgmenuPatch";
-        imgPixel.classList.add(img)
+        imgPixel.classList.add(imgClasses[i])
         imgPixel.style.left = 0;
         imgPixel.style.top = 0;
         imgPixel.addEventListener('click', function (event) {
-            imgReplacement()
+            imgReplacement(i)
         })
         container.appendChild(imgPixel)
-    })
+    }
+
     const menuArea = document.querySelector('.menu')
     menuArea.appendChild(container)
 }
 imageMenu()
 
-const imgReplacement = () => {
+const imgReplacement = (index) => {
     imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
     //random image pull 
-    const newImgView = imgMenuOptions[Math.floor(Math.random() * imgMenuOptions.length)];
+    //const newImgView = imgMenuOptions[Math.floor(Math.random() * imgMenuOptions.length)];
+    const newImgView = imgMenuOptions[index]
     newImgView.forEach(img => {
         imgOptions.push('./' + img)
     })
