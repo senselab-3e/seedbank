@@ -28,7 +28,7 @@ const imageMenu = () => {
 
     //i needed the index number to be passed to imgReplacement(i) so switched to a for loop over foreach
     for (let i = 0; i < imgClasses.length; i++) {
-        const clearImgs = trueOrFalse();
+        const clearImgs = true //trueOrFalse();
         console.log(clearImgs)
         let imgPixel = document.createElement('div');
         imgPixel.className = "imgmenuPatch";
@@ -47,8 +47,12 @@ const imageMenu = () => {
 
 const imgReplacement = (index, clearImgs) => {
     //NOTE:added a conditional true or false for whether the image array would be emptied to 'just' add the images associated with a particular button, or if they would be added cumulatively to an array with previous values still remaining in it. this gives different results in the user view of how new images are being integrated and returned with what they have already viewed. 
+    //this is more useful when i'm loading single images. 
     clearImgs ? imgOptions.splice(0, imgOptions.length) : console.log('let it ride')
 
+    //NOTE -- doing this because i'm forgoing the true/false check on claering the images. beacuse i'm now scrambling the tiles by clicking directly on them, rathet then from the menu, i maybe
+    //don't need to have these random mixings happening from the menu clicks as well. 
+    // imgOptions.splice(0, imgOptions.length)
 
     // this clears out all existing images in the array
     //imgOptions.splice(0, imgOptions.length); 

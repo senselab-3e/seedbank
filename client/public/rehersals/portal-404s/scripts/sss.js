@@ -20,8 +20,8 @@ var options = {
     imgSrc: chooseImg(),
     containerName: "tileContainer",
     grid: false,
-    tileWidth: 25, //inputWidth.value, //45, //85, //25
-    tileHeight: 25, //inputHeight.value,
+    tileWidth: inputWidth.value, //45, //85, //25
+    tileHeight: inputWidth.value, //inputHeight.value,
     mouseTrail: true
 
 }
@@ -250,17 +250,27 @@ function addTiles() {
     //tile.addEventListener("touchend", moveImageTouch);
     tile.addEventListener("touchmove", moveImageTouch);
     //maybe this is where i add touch events
-    tile.addEventListener("click", function linkImg() {
-        var path = removeUrlWrap(this.style.backgroundImage)
-        // console.log(path)
-        // console.log(tile.style.backgroundImage)
-        windowObjectReference = window.open(
-            path,
-            "DescriptiveWindowName",
-            "resizable,scrollbars,status"
-        );
-    });
 
+
+    //NOTE: this is where an image will pop up in association with the specific tile that was clicked. 
+    //THIS IS TEMPORARILY DISABLED because conceptually, i'm not sure if i want people to be able to view the image in full. 
+    // tile.addEventListener("click", function linkImg() {
+    //     var path = removeUrlWrap(this.style.backgroundImage)
+    //     // console.log(path)
+    //     // console.log(tile.style.backgroundImage)
+    //     windowObjectReference = window.open(
+    //         path,
+    //         "DescriptiveWindowName",
+    //         "resizable,scrollbars,status"
+    //     );
+    // });
+
+
+    // i could jig this to simply load other images. 
+    //with a setting at 'false' it means it will always accumulatively mix in other images, not clear.
+    tile.addEventListener("click", function () {
+        imgReplacement(Math.floor(Math.random() * imgMenuOptions.length), false) // this false ---> keeps the tile images changing cumulatively
+    })
     numTiles++;
 }
 
