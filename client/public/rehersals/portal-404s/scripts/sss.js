@@ -30,56 +30,58 @@ const inputSize = () => {
     return input.value
 }
 
+//none of these are now being used. the menu.js function takes care of it now. 
+//however. they are good strategies for 'differen't ways of loading an image, either by not clearing the image array, or incrementally adding to it. this is a bit of proof of concept experiments. 
 
-const image0 = () => {
-    imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
-    imgOptions.push('./aaa.jpg');
-    imgOptions.push("./ssss.png");
-    const holder = document.querySelector('.tileHolder');
-    holder.remove();
-    numTiles = 0;
-    init();
+// const image0 = () => {
+//     imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
+//     imgOptions.push('./aaa.jpg');
+//     imgOptions.push("./ssss.png");
+//     const holder = document.querySelector('.tileHolder');
+//     holder.remove();
+//     numTiles = 0;
+//     init();
 
-}
+// }
 
-const image1 = () => {
-    // options.imgSrc = './ccc.png'; // this won't work because of the hack way in which i got it to load /call a random image from the array above, at each tiling action instance below. 
-    // but for now as proof of concept, i can push into that array, an image that wasn't there before...
-    imgOptions.push('./ccc.png'); /// what's interesting about this, is that if they push the button repeatedly, then it increase the probability of a particular image being called - even in the 'random' pushing more tiles from other images into smaller numbers. 
-    const holder = document.querySelector('.tileHolder'); // i thought i could use a global var for this, but no. i has to be queried uniquely within each function. 
-    holder.remove();
-    numTiles = 0;
-    init();
-}
+// const image1 = () => {
+//     // options.imgSrc = './ccc.png'; // this won't work because of the hack way in which i got it to load /call a random image from the array above, at each tiling action instance below. 
+//     // but for now as proof of concept, i can push into that array, an image that wasn't there before...
+//     imgOptions.push('./ccc.png'); /// what's interesting about this, is that if they push the button repeatedly, then it increase the probability of a particular image being called - even in the 'random' pushing more tiles from other images into smaller numbers. 
+//     const holder = document.querySelector('.tileHolder'); // i thought i could use a global var for this, but no. i has to be queried uniquely within each function. 
+//     holder.remove();
+//     numTiles = 0;
+//     init();
+// }
 
-const image2 = () => {
-    imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
-    imgOptions.push('./bbb.png')
-    const holder = document.querySelector('.tileHolder');
-    holder.remove();
-    numTiles = 0;
-    init();
-}
+// const image2 = () => {
+//     imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
+//     imgOptions.push('./bbb.png')
+//     const holder = document.querySelector('.tileHolder');
+//     holder.remove();
+//     numTiles = 0;
+//     init();
+// }
 
-const image3 = () => {
-    imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
-    imgOptions.push('./fff.png')
-    imgOptions.push('./ggg.png')
-    const holder = document.querySelector('.tileHolder');
-    holder.remove();
-    numTiles = 0;
-    init();
-}
+// const image3 = () => {
+//     imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
+//     imgOptions.push('./fff.png')
+//     imgOptions.push('./ggg.png')
+//     const holder = document.querySelector('.tileHolder');
+//     holder.remove();
+//     numTiles = 0;
+//     init();
+// }
 
-const image4 = () => {
-    //imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
-    imgOptions.push('./hhh.png')
-    imgOptions.push('./iii.png')
-    const holder = document.querySelector('.tileHolder');
-    holder.remove();
-    numTiles = 0;
-    init();
-}
+// const image4 = () => {
+//     //imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
+//     imgOptions.push('./hhh.png')
+//     imgOptions.push('./iii.png')
+//     const holder = document.querySelector('.tileHolder');
+//     holder.remove();
+//     numTiles = 0;
+//     init();
+// }
 
 
 
