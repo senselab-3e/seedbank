@@ -16,7 +16,6 @@ const input = document.querySelector('input');
 
 
 
-
 var options = {
     imgSrc: chooseImg(),
     containerName: "tileContainer",
@@ -32,6 +31,16 @@ const inputSize = () => {
 }
 
 
+const image0 = () => {
+    imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
+    imgOptions.push('./aaa.jpg');
+    imgOptions.push("./ssss.png");
+    const holder = document.querySelector('.tileHolder');
+    holder.remove();
+    numTiles = 0;
+    init();
+
+}
 
 const image1 = () => {
     // options.imgSrc = './ccc.png'; // this won't work because of the hack way in which i got it to load /call a random image from the array above, at each tiling action instance below. 
@@ -53,7 +62,7 @@ const image2 = () => {
 }
 
 const image3 = () => {
-    //imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
+    imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
     imgOptions.push('./fff.png')
     imgOptions.push('./ggg.png')
     const holder = document.querySelector('.tileHolder');
@@ -63,7 +72,7 @@ const image3 = () => {
 }
 
 const image4 = () => {
-    imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
+    //imgOptions.splice(0, imgOptions.length); // this clears out all existing images in the array
     imgOptions.push('./hhh.png')
     imgOptions.push('./iii.png')
     const holder = document.querySelector('.tileHolder');

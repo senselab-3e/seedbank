@@ -1,0 +1,51 @@
+body {
+    background-color: lightslategray;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+main>.container {
+    padding: 1em;
+
+}
+
+main>h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+
+.imgmenuContainer {
+    position: absolute;
+    z-index: 12;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+}
+
+.imgmenuPatch {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+
+    /* later, this color will be tied to the first color the user selected at the beginning*/
+    -webkit-transition: width 0.5s, height 0.5s;
+    -webkit-transition-timing-function: ease;
+    transition: width 0.5s, height 0.5s;
+    transition-timing-function: ease;
+}
+
+.imgmenuPatch:hover,
+.imgmenuPatch:focus {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    background-color: hsla(0, 0%, 100%, 0)
+}
+
+.imgmenuColor {
+    width: 5px;
+    height: 5px;
+    background: deeppink;
+}

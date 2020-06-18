@@ -5,9 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:400,400i,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style/global.css">
 
 </head>
 <style>
+    p {
+        font-family: 'Open Sans', sans-serif;
+        /* font-weight: 500; */
+        font-size: 12px;
+    }
+
     .tileContainer {
         /* /border: 10px solid black; */
         display: inline-block;
@@ -53,20 +63,57 @@
     .noGrid .tile:after {
         content: none;
     }
+
+    .img1 {
+        background-image: url('bt1.png');
+        background-size: 25px;
+    }
+
+
+    .img2 {
+        background-image: url('b2.png');
+        background-size: 25px;
+    }
+
+    .img3 {
+        background-image: url('b3.png');
+        background-size: 25px;
+    }
+
+
+    .img4 {
+        background-image: url('b4.png');
+        background-size: 25px;
+    }
+
+
+    .img5 {
+        background-image: url('b5.png');
+        background-size: 25px;
+    }
 </style>
 
 <body>
-    <button onclick='image1()'>image 1</button>
-    <button onclick='image2()'>image 2</button>
-    <button onclick='image3()'>image 3</button>
-    <button onclick='image4()'>image 4</button>
-    <div class="tileSlider">
-        <p>Adjust tile size</p>
-        <input type="range" min="25" max="80" step="5">
-    </div>
-    <div class='tileContainer img-fluid'></div>
+    <main role="main" class="flex-shrink-0">
+
+        <div class="container">
+            <div class="menu"></div>
+            <!-- <button onclick='image0()'>image 0</button>
+            <button onclick='image1()'>image 1</button>
+            <button onclick='image2()'>image 2</button>
+            <button onclick='image3()'>image 3</button>
+            <button onclick='image4()'>image 4</button> -->
+            <br />
+            <div class="tileSlider">
+                <p>Adjust tile size
+                    <input type="range" min="25" max="80" step="5"></p>
+            </div>
+            <div class='tileContainer img-fluid'></div>
+        </div>
+        </div>
 </body>
 <script src='./scripts/TweenMax.min.js'></script>
 <script src="./scripts/sss.js"></script>
+<script src="./scripts/menu.js"></script>
 
 </html>
