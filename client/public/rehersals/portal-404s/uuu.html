@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link rel="stylesheet" href="style/global.css" />
     <style>
         .item {
             flex-shrink: 3;
@@ -22,6 +22,24 @@
 
         }
 
+        .chairNudge {
+            top: 0em;
+            position: relative;
+            /* i need position relative for the hover to be move the thingy */
+            -webkit-transition: top 0.5s;
+            -moz-transition: top 0.5s;
+            -ms-transition: top 0.5s;
+            -o-transition: top 0.5s;
+            transition: top 0.5s;
+            transition-timing-function: ease;
+            transition-timing-function: ease;
+        }
+
+        .chairNudge:hover {
+            top: 0.7em;
+            cursor: pointer;
+        }
+
         .alignleft {
             text-align: right;
         }
@@ -34,12 +52,15 @@
     </div>
     <div class="chairContainer ">
         <p>
-            <img class="gif-container" src="./img/stool.gif">
-            <img class="gif-container" height="300px" src="./img/tinybluechair.gif">
-            <img class="gif-container" src="./img/yellowchair.gif">
-            <img class="gif-container" src="./img/chairpink.gif">
+            <img class="chairNudge" src="./img/stool.gif">
+            <img class="chairNudge" height="300px" src="./img/tinybluechair.gif">
+            <img class="chairNudge" src="./img/yellowchair.gif">
+            <img class="chairNudge" src="./img/chairpink.gif">
         </p>
     </div>
+
 </body>
+
+<script src="scripts/menu.js"></script>
 
 </html>
