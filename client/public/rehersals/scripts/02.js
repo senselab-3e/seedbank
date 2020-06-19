@@ -3,38 +3,45 @@ const paletteTexts = ['The anarchive is best defined for the purposes of the Imm
 //const paletteTexts = ['When you ask DD, what kind of psychology this can be/come, this seems really key. What is a psychology without interiority? What is a psychology that is curious about the conditions of existence as they morph? What is a psychology that can move at the pace of a world making and remaking itself? For those of us familiar with Guattari, we would say “schizoanalysis” - the practice of activating techniques for the living-out (rather than the living-in) of experience.', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
 //NOTES: proof of concept for later: function Palette(className, textStatus, width, height) {  //NOTE: if i use this the element created will loose any of the animated transitions i may have hoped to apply to it, via the classname:hover. for some reason it overrides it - and there is no way to edit :hover from javascript. this can be handled another way, by using mouseEnter() type listeners, but for now, i'm just going to let it go.
 
-const getRandomColor = () => {
-    var letters = '0123456789ABCDEF';
-    let color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    const lightness = checkDarkness(color);
-    console.log(lightness)
-    if (lightness) {
-        return color
-    } else {
-        //alternatively i could also try setting the font color in the palettes to white here, but i'm leaving this for now. 
-        getRandomColor()
-    }
+const getHSLColor = () => {
+    var h = Math.floor(Math.random() * 320);
+    var s = 70; //Math.floor(Math.random() * (90 - 60) + 60); // Math.random() * (max - min) + min; i don't want anything with a saturation less then 50, or it'll be too dark.
+    var l = 60; //Math.floor(Math.random() * (80 - 50) + 80);
+    return 'hsl(' + h + ',' + s + '%' + ',' + l + '%' + ')'
 }
 
-//this isn't full proof. it avoids more 'black' rather then true darkness. to refine that i'd need the random color generator to be HSL rather then RGB, but i just want to quickly put this in place 
-const checkDarkness = (c) => {
-    c = c.substring(1); // strip #
-    var rgb = parseInt(c, 16); // convert rrggbb to decimal
-    var r = (rgb >> 16) & 0xff; // extract red
-    var g = (rgb >> 8) & 0xff; // extract green
-    var b = (rgb >> 0) & 0xff; // extract blue
+// const getRGBColor = () => {
+//     var letters = '0123456789ABCDEF';
+//     let color = '#';
+//     for (var i = 0; i < 6; i++) {
+//         color += letters[Math.floor(Math.random() * 16)];
+//     }
+//     const lightness = checkDarkness(color);
+//     console.log(lightness)
+//     if (lightness) {
+//         return color
+//     } else {
+//         //alternatively i could also try setting the font color in the palettes to white here, but i'm leaving this for now. 
+//         getRGBColor()
+//     }
+// }
 
-    var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
-    if (luma < 60) {
-        console.log(luma, 'too dark')
-        return false
-    } else {
-        return true
-    }
-}
+// //this isn't full proof. it avoids more 'black' rather then true darkness. to refine that i'd need the random color generator to be HSL rather then RGB, but i just want to quickly put this in place 
+// const checkDarkness = (c) => {
+//     c = c.substring(1); // strip #
+//     var rgb = parseInt(c, 16); // convert rrggbb to decimal
+//     var r = (rgb >> 16) & 0xff; // extract red
+//     var g = (rgb >> 8) & 0xff; // extract green
+//     var b = (rgb >> 0) & 0xff; // extract blue
+
+//     var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+//     if (luma < 60) {
+//         console.log(luma, 'too dark')
+//         return false
+//     } else {
+//         return true
+//     }
+// }
 
 //colorStatus checks for whether a relational color is provided, or if - as is the case for palettes loaded at the beginning, a sampled color isn't being provided and random is needed. false - means a random color is pulled, true means the current palette strobe color is sampled for the palette dynamically created. 
 
@@ -52,7 +59,7 @@ function Palette(className, textStatus, colorStatus) {
         //console.log(hsl)
         return hsl
     }
-    this.color = colorStatus ? this.currentHue() : getRandomColor();
+    this.color = colorStatus ? this.currentHue() : getHSLColor() //getRGBColor();
     this.createDiv = function () {
         var paletteContainer = document.querySelector('.paletteContainer')
         var palette = document.createElement('div');
@@ -130,15 +137,18 @@ const nudgePixels = () => {
         newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
     });
     //NOTE: REFACTOR
-    const currentPalNum = document.body.querySelectorAll('.palette').length
+    let textAdded = false
+
     pixelPatches[0].addEventListener("click", function (event) {
-        if (currentPalNum < anarchiveDef.length - 1) {
+        if (textAdded) {
+            console.log('text panels already added')
+        } else {
+            textAdd = true
             anarchiveDef.forEach(def => {
                 creatSliderPalettes(true, false) // true is for text content. false indicates a need for colors to be randomly generated. colors are not yet available in relation. 
             });
-        } else {
-            console.log('text palettes already added')
         }
+
     });
 }
 
