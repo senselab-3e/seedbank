@@ -9,7 +9,9 @@
         html,
         body {
             background-image: linear-gradient(#71c98a, #cca13d);
-            margin: 15em;
+            -webkit-animation: colorScroll 20s infinite;
+            animation: colorScroll 20s infinite;
+            margin: 5em;
         }
 
         .fishie {
@@ -26,8 +28,6 @@
             transition: top 0.5s;
             transition-timing-function: ease;
             transition-timing-function: ease;
-
-
             /* animation-iteration-count: infinite; */
         }
 
@@ -61,6 +61,22 @@
             100% {
                 margin-left: 0%;
                 transform: rotate(30deg);
+            }
+        }
+
+
+        @keyframes colorScroll {
+            0% {
+                margin: 5em;
+            }
+
+
+            50% {
+                margin: 15em;
+            }
+
+            100% {
+                margin: 5em;
             }
         }
     </style>
