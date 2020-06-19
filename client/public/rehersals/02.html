@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:400,400i,700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <script src="./scripts/02.js"></script>
     <script src="./scripts/cosmicdigest.js"></script>
@@ -23,7 +25,15 @@
             /* --varColor1: #4842bd;
             --varColor2: #B7BD42; */
             --varColor1: #4842bd;
+            font-family: 'OpenSans', sans-serif;
+            font-weight: 300;
+            font-size: 14px;
 
+        }
+
+
+        label {
+            color: var(--varColor1)
         }
 
         @keyframes palette1 {
@@ -151,15 +161,15 @@
             cursor: pointer;
             background: deeppink;
             /* later, this color will be tied to the first color the user selected at the beginning*/
-            -webkit-transition: width 15s, height 15s;
+            -webkit-transition: width 7s, height 7s;
             -webkit-transition-timing-function: ease;
-            transition: width 15s, height 15s;
+            transition: width 7s, height 7s;
             transition-timing-function: ease;
         }
 
         .pixelPatch:hover {
-            width: 600px;
-            height: 600px;
+            width: 20em;
+            height: 20em;
         }
 
         .pseudoCode {
@@ -208,10 +218,10 @@
         <div id="palette1"></div>
         <div id="palette2"></div>
     </div>
-    <div class="pseudoCode hide">relational shifts</div>
+    <div class="pseudoCode hide">*---></div>
     <div class="colorBox">
-        <label>Shift color Relation:
-            <input type="color" value="#4842bd">
+        <label>Shift color Relation:</label>
+        <input type="color" value="#4842bd">
     </div>
 
 </body>

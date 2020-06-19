@@ -99,14 +99,19 @@ const nudgePixels = () => {
     pixelPatches[0].addEventListener("click", function (event) {
         if (textAdded) { // textAdded is a Boolean -- to see if AnararchiveDef text content and palettes for them, has already loaded. 
             creatSliderPalettes(false, true)
+
         } else {
             textAdded = true
+
             anarchiveDef.forEach(def => {
                 creatSliderPalettes(true, false) // true is for text content. false indicates a need for colors to be randomly generated. colors are not yet available in relation. 
+
             });
         }
     });
 }
+
+
 
 const getClickPosition = (e) => {
     //var parentPosition = getPosition(e.currentTarget);
