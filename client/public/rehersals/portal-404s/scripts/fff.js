@@ -49,6 +49,8 @@ var array12 = ['img/smooth-card.gif', 'img/splash-card2.gif', 'img/splash-card.g
 
 
 
+
+
 function createthingy(array) {
 
     main = document.createElement('div');
@@ -86,3 +88,9 @@ const insertarry = () => {
 createthingy(arrayoptions[insertarry()])
 
 //this is where we pass the random arry chosen in the arrayoptions function, into the consructorofthe3dthingy function createthingy
+
+const reloadThingy = () => {
+    main = document.querySelector('.main');
+    main.remove()
+    createthingy(arrayoptions[insertarry()])
+}
