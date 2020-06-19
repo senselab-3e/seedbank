@@ -5,11 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:400,400i,700&display=swap"
-        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <script src="./scripts/01.js"></script>
-    <script src="./scripts/cosmicdigest.js"></script>
+    <script src="./scripts/01-nolongerneeded.js.js"></script>
 
     <!-- style sheets are wayZ --- a way, not 'the' way -->
 
@@ -25,32 +22,8 @@
             /* --varColor1: #4842bd;
             --varColor2: #B7BD42; */
             --varColor1: #4842bd;
-            font-family: 'OpenSans', sans-serif;
-            font-weight: 400;
-            font-size: 14px;
 
         }
-
-
-        label {
-            color: var(--varColor1)
-        }
-
-        .link-special:link {
-            color: deeppink;
-            text-decoration: none;
-
-        }
-
-        .link-special:visited {
-            color: white;
-        }
-
-        .link-special:hover {
-            color: greenyellow;
-            text-decoration: underline;
-        }
-
 
         @keyframes palette1 {
             0% {
@@ -81,8 +54,8 @@
         }
 
         .paletteContainer {
-            cursor: crosshair;
             z-index: 10;
+            /* float: left; */
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
@@ -94,45 +67,12 @@
             margin: 0;
         }
 
-        .palette {
-            cursor: pointer;
-            z-index: 11;
-            width: 0.3vw;
-            height: 100vh;
-            -webkit-transition: width 3s;
-            -moz-transition: width 3s;
-            -ms-transition: width 3s;
-            -o-transition: width 3s;
-            transition: width 3s;
-        }
-
-
-        .palette:hover {
-            border: 1px inset white;
-            /* width: 20vw; */
-        }
-
-        /* .palette:hover,
-        .palette:focus {
-            cursor: pointer;
-            width: 25vw;
-        } */
-
-        .paletteClick {
-
-            cursor: pointer;
-            width: 25vw;
-        }
-
         #palette1 {
-            cursor: crosshair;
-            width: 20vw;
+            width: 50vw;
             height: 100vh;
-            --h: 63;
-            --s: 48%;
-            --l: 50%;
-            --hsl: hsl(var(--h), var(--s), var(--l));
-            background-color: var(--hsl);
+            --h1: 63;
+            --hsl1: hsl(var(--h1), 48%, 50%);
+            background-color: var(--hsl1);
             -webkit-transition: width 3s;
             -moz-transition: width 3s;
             -ms-transition: width 3s;
@@ -142,16 +82,11 @@
         }
 
         #palette2 {
-            cursor: crosshair;
-            width: 80vw;
+            width: 50vw;
             height: 100vh;
-            /* --h2: 243;
-            --hsl2: hsl(var(--h2), 48%, 50%); */
-            --h: 243;
-            --s: 48%;
-            --l: 50%;
-            --hsl: hsl(var(--h), var(--s), var(--l));
-            background-color: var(--hsl);
+            --h2: 243;
+            --hsl2: hsl(var(--h2), 48%, 50%);
+            background-color: var(--hsl2);
             -webkit-transition: width 3s;
             -moz-transition: width 3s;
             -ms-transition: width 3s;
@@ -161,36 +96,35 @@
         }
 
 
-
         .pixelContainer {
-            cursor: pointer;
             position: absolute;
-            z-index: 12;
+            z-index: 10;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
 
         }
 
-        .pixelPatch {
-            width: 15px;
-            height: 15px;
+        .prePicnicPatch {
+            width: 5px;
+            height: 5px;
             cursor: pointer;
             background: deeppink;
-
-            /* later, this color will be tied to the first color the user selected at the beginning*/
-            -webkit-transition: width 7s, height 7s;
+            -webkit-transition: width 15s, height 15s;
             -webkit-transition-timing-function: ease;
-            transition: width 7s, height 7s;
+            transition: width 15s, height 15s;
             transition-timing-function: ease;
         }
 
-        .pixelPatch:hover {
-            width: 20em;
-            height: 20em;
+        .prePicnicPatch:hover {
+            width: 600px;
+            height: 600px;
         }
 
+
+
         .pseudoCode {
+
             font-family: 'Quicksand', sans-serif;
             font-size: 12px;
             color: #333;
@@ -208,23 +142,12 @@
             display: block
         }
 
-
-
         .colorBox {
             z-index: 12;
             position: absolute;
             margin: 0;
-            padding: 1em;
+            padding: 0;
             top: 0;
-
-        }
-
-        .textBox {
-            cursor: pointer;
-            color: rgb(56, 56, 56);
-            font-family: 'Quicksand', sans-serif;
-            font-size: 15px;
-            padding: 1em;
         }
     </style>
 
@@ -235,12 +158,11 @@
     <div class="paletteContainer">
         <div id="palette1"></div>
         <div id="palette2"></div>
-    </div>
-    <div class="pseudoCode hide"><a href="02.html" class="link-special">*---></a></div>
-    <div class="colorBox">
-        <label>Shift color Relation:</label>
-        <input type="color" value="#4842bd">
-    </div>
+        <div class="pseudoCode hide">relational shifts</div>
+        <div class="colorBox">
+            <label>Shift color Relation:
+                <input type="color" value="#4842bd">
+        </div>
 
 </body>
 

@@ -7,16 +7,17 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <script src="./scripts/00.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style/hover.css">
 
     <!-- style sheets are wayZ --- a way, not 'the' way -->
 
     <style>
         body {
-            --orgColor: #ff1493;
-            --orgColor2: hsl(328, 100%, 54%);
             background-color: #fff;
             -webkit-animation: colorScroll 100s infinite;
             animation: colorScroll 100s infinite;
+            --entrypatch-color: #ff1493;
+            color: #999;
 
         }
 
@@ -36,82 +37,63 @@
         }
 
 
+
         @keyframes colorScroll {
             15% {
-                background-color: var(--orgColor);
+                background-color: var(--entrypatch-color);
             }
 
             30% {
-                background-color: palegoldenrod;
+                background-color: white;
             }
 
             45% {
-                background-color: limegreen;
+                background-color: var(--entrypatch-color);
             }
 
             60% {
-                background-color: royalblue;
+                background-color: black;
             }
 
             75% {
-                background-color: blueviolet;
+                background-color: var(--entrypatch-color);
             }
 
             95% {
-                background-color: sandybrown;
+                background-color: white;
             }
         }
 
 
-        .pixelContainer {
+        .pixel {
             position: absolute;
             z-index: 10;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
 
         }
 
-        .prePicnicPatch {
-            width: 5px;
-            height: 5px;
-            cursor: pointer;
-            background: var(--orgColor);
+        .entry {
+            position: absolute;
+        }
 
-            -webkit-transition: width 15s, height 15s;
+        .entry:link {
+            outline: solid;
+            color: limegreen;
+        }
+
+        .prePicnicPatch {
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+            background: var(--entrypatch-color);
+            -webkit-transition: width 7s, height 7s;
             -webkit-transition-timing-function: ease;
-            transition: width 15s, height 15s;
+            transition: width 7s, height 7s;
             transition-timing-function: ease;
         }
 
         .prePicnicPatch:hover {
             width: 600px;
             height: 600px;
-            -webkit-animation: outlineScroll 10s;
-            animation: outlineScroll 10s;
-            /* outline-style: solid;
-            outline-width: thin;
-            outline-color: #ffffff; */
-        }
-
-
-        @keyframes outlineScroll {
-            1% {
-                outline-style: solid;
-                outline-width: thin;
-                outline-color: hsl(0, 0%, 100%);
-
-            }
-
-            15% {
-                outline-style: none;
-
-            }
-
-            100% {
-                outline-style: none;
-
-            }
         }
 
 
@@ -121,7 +103,7 @@
             width: 5px;
             height: 5px;
             cursor: pointer;
-            background: deeppink;
+            background: var(--entrypatch-color);
             -webkit-transition: width 3s ease-in-out 0.1ms, height 1s ease-in 3s;
             -moz-transition: width 3s ease-in-out 0.1ms, height 1s ease-in 3s;
             -ms-transition: width 3s ease-in-out 0.1ms, height 1s ease-in 3s;
@@ -129,6 +111,32 @@
             transition: width 3s ease-in-out 0.1ms, height 1s ease-in 3s;
         }
 
+
+
+        /* @keyframes line {
+            0% {
+                height: 5px;
+                width: 5px;
+            }
+
+            55% {
+                height: 40vh;
+                width: 5px;
+            }
+
+            100% {
+                height: 40vh;
+                width: 40vw
+            }
+        } */
+
+        .cubeContainer {
+            width: 30vh;
+            height: 30vh;
+            background-image: url('gifverse/cube-0.gif');
+            background-size: 300px;
+            background-repeat: none;
+        }
 
         .picnicPatch:hover {
             width: 25vw;
@@ -169,11 +177,28 @@
 
 </head>
 
-<body
-    alt="saturated color field that runs to the full length of the browser window. a series of 6 colors are shifted through by gradient degrees - from deep pink to palegoldenrod, lime green, royalblue, blueviolet, sandy brown.">
-    <!-- <div class="pixelContainer prePicnicPatch" alt="link to another page"></div> -->
-    <div class="pseudoCode hide"> /* <--reherasl threshold: warming up with warm up colorality-->
-            <a href="01.html" class="link-special">*/</a></div>
+<body>
+
+
+    <!-- <div class="pixel prePicnicPatch" alt="link to another page"></div> -->
+    <div class="pseudoCode hide"> <a href="01.html" class="link-special">/* --reherasl threshold: warming up with warm
+            up colorality--> */</a></div>
+    <label>Choose patch color:
+        <input type="color" value="#ff1493">
 </body>
+
+<script>
+    //tomorrow: https://stackoverflow.com/questions/5105530/programmatically-changing-webkit-transformation-values-in-animation-rules
+    // const stylesheet = document.styleSheets[1] //so for some reason the second instance gets me all the css... 
+    //const rules = stylesheet.rules
+    // console.log(stylesheet.ownerNode)
+
+    const input = document.querySelector('input');
+    const body = document.querySelector('body')
+    input.addEventListener('change', function () {
+        body.style.setProperty('--entrypatch-color', input.value)
+        //firstPatch.style.setProperty('background', input.value)
+    })
+</script>
 
 </html>

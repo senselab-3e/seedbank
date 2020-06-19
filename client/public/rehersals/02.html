@@ -31,26 +31,9 @@
 
         }
 
-
         label {
             color: var(--varColor1)
         }
-
-        .link-special:link {
-            color: deeppink;
-            text-decoration: none;
-
-        }
-
-        .link-special:visited {
-            color: white;
-        }
-
-        .link-special:hover {
-            color: greenyellow;
-            text-decoration: underline;
-        }
-
 
         @keyframes palette1 {
             0% {
@@ -81,7 +64,6 @@
         }
 
         .paletteContainer {
-            cursor: crosshair;
             z-index: 10;
             display: flex;
             flex-direction: row;
@@ -95,8 +77,9 @@
         }
 
         .palette {
+            overflow: scroll;
             cursor: pointer;
-            z-index: 11;
+            z-index: 10;
             width: 0.3vw;
             height: 100vh;
             -webkit-transition: width 3s;
@@ -106,10 +89,10 @@
             transition: width 3s;
         }
 
-
+        /* annoying. the javascript assigned styling on this element override any of the other settings i try to add to it via hover*/
         .palette:hover {
+            cursor: pointer;
             border: 1px inset white;
-            /* width: 20vw; */
         }
 
         /* .palette:hover,
@@ -126,7 +109,7 @@
 
         #palette1 {
             cursor: crosshair;
-            width: 20vw;
+            width: 50vw;
             height: 100vh;
             --h: 63;
             --s: 48%;
@@ -143,8 +126,9 @@
 
         #palette2 {
             cursor: crosshair;
-            width: 80vw;
+            width: 50vw;
             height: 100vh;
+            z-index: 11;
             /* --h2: 243;
             --hsl2: hsl(var(--h2), 48%, 50%); */
             --h: 243;
@@ -160,10 +144,17 @@
 
         }
 
+        .sliderContainer {
+            /* display: none; */
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+        }
 
 
         .pixelContainer {
-            cursor: pointer;
             position: absolute;
             z-index: 12;
             display: flex;
@@ -173,24 +164,33 @@
         }
 
         .pixelPatch {
-            width: 15px;
-            height: 15px;
+            width: 5px;
+            height: 5px;
             cursor: pointer;
             background: deeppink;
-
             /* later, this color will be tied to the first color the user selected at the beginning*/
-            -webkit-transition: width 7s, height 7s;
+            -webkit-transition: width 0.5s, height 0.5s;
             -webkit-transition-timing-function: ease;
-            transition: width 7s, height 7s;
+            transition: width 0.5s, height 0.5s;
             transition-timing-function: ease;
         }
 
-        .pixelPatch:hover {
-            width: 20em;
-            height: 20em;
+        .pixelPatch:hover,
+        .pixelPatch:focus {
+            cursor: pointer;
+            width: 100px;
+            height: 100px;
+            background-color: hsla(0, 0%, 100%, 0)
+        }
+
+        .pixelColor {
+            width: 5px;
+            height: 5px;
+            background: deeppink;
         }
 
         .pseudoCode {
+
             font-family: 'Quicksand', sans-serif;
             font-size: 12px;
             color: #333;
@@ -208,7 +208,178 @@
             display: block
         }
 
+        /*this is for the slide div slow reveal of the text which transitions the opacity/reveal of the text within the sliver palettes*/
 
+        /* transition: transition-property, transition-duration, transition-timing-function, and transition-delay.*/
+        .visible {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.5s 1s ease-in;
+        }
+
+
+        .hidden {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s 1s, opacity 1s ease-out;
+        }
+
+
+        .gif404 {
+            width: inherit;
+            height: inherit;
+            background-image: url("gifverse/404_glitch2.gif");
+            background-repeat: no-repeat;
+        }
+
+        .gifmeowmix {
+            width: inherit;
+            height: inherit;
+            background-image: url("gifverse/izsafe.gif");
+            background-size: 100px;
+            background-repeat: no-repeat;
+        }
+
+        .gifpipecleaners {
+            width: inherit;
+            height: inherit;
+            background-image: url("gifverse/pipecleanerzz.gif");
+            background-size: 150px;
+            background-repeat: no-repeat;
+        }
+
+        .gifbreeze {
+            width: inherit;
+            height: inherit;
+            background-image: url("gifverse/breeze.gif");
+            background-size: 200px;
+            background-repeat: no-repeat;
+        }
+
+        .gifsponge {
+            width: inherit;
+            height: inherit;
+            background-image: url("gifverse/sponge.gif");
+            background-size: 200px;
+            background-repeat: no-repeat;
+        }
+
+        .gifsponge {
+            width: inherit;
+            height: inherit;
+            background-image: url("gifverse/sponge.gif");
+            background-size: 200px;
+            background-repeat: no-repeat;
+        }
+
+        .gifpinkwave {
+            width: inherit;
+            height: inherit;
+            background-image: url('gifverse/circleswvae.gif');
+            background-size: 200px;
+            background-repeat: no-repeat;
+        }
+
+        .giffold {
+            width: inherit;
+            height: inherit;
+            background-image: url('gifverse/fold.gif');
+            background-size: 100px;
+            background-repeat: no-repeat;
+        }
+
+        .gifshadows {
+            width: inherit;
+            height: inherit;
+            background-image: url('gifverse/shadows.gif');
+            background-size: 200px;
+            background-repeat: no-repeat;
+        }
+
+        /* .gifsplash {
+            background-image: url('splash hd.gif');
+        } */
+
+
+        .gifsplat {
+            background-image: url('gifverse/splat.gif');
+            background-size: 100px;
+            background-repeat: no-repeat;
+        }
+
+        .gifumbrella {
+            background-image: url('gifverse/umbrella.gif');
+            background-size: 100px;
+            background-repeat: no-repeat;
+        }
+
+
+
+        .gifgradient {
+            width: inherit;
+            height: inherit;
+            background-image: url('gifverse/tumblr_pdwnnbjho91uzwgsuo1_400.gif');
+            background-size: 100px;
+            background-repeat: no-repeat;
+        }
+
+        .staticSponge {
+            width: inherit;
+            height: inherit;
+            background-image: url("gifverse/sponge-4.gif");
+            background-size: 100px;
+            background-repeat: no-repeat;
+        }
+
+        .staticSponge2 {
+            width: inherit;
+            height: inherit;
+            background-image: url("gifverse/sponges.png");
+            background-size: 100px;
+            background-repeat: no-repeat;
+        }
+
+        .staticBlueChair {
+            width: inherit;
+            height: inherit;
+            background-image: url('gifverse/tinybluechair.gif');
+            background-size: 60px;
+            background-repeat: no-repeat;
+        }
+
+
+
+        .staticPingPong {
+            width: inherit;
+            height: inherit;
+            background-image: url("gifverse/pingpong.gif");
+            background-size: 100px;
+            background-repeat: no-repeat;
+        }
+
+        .staticCompost {
+            width: inherit;
+            height: inherit;
+            background-image: url('gifverse/compost.gif');
+            background-size: 100px;
+            background-repeat: no-repeat;
+        }
+
+        .staticFishy {
+            width: inherit;
+            height: inherit;
+            background-image: url('gifverse/fishy.gif');
+            background-size: 120px;
+            background-repeat: no-repeat;
+        }
+
+        .staticBlueBowl {
+            width: inherit;
+            height: inherit;
+            background-image: url('gifverse/bluebowlplant.png');
+            background-size: 80px;
+            background-repeat: no-repeat;
+        }
 
         .colorBox {
             z-index: 12;
@@ -221,10 +392,11 @@
 
         .textBox {
             cursor: pointer;
-            color: rgb(56, 56, 56);
+            color: rgb(236, 236, 236);
             font-family: 'Quicksand', sans-serif;
             font-size: 15px;
             padding: 1em;
+
         }
     </style>
 
@@ -234,12 +406,14 @@
 <body>
     <div class="paletteContainer">
         <div id="palette1"></div>
+        <div class="sliderContainer"></div>
         <div id="palette2"></div>
+
     </div>
-    <div class="pseudoCode hide"><a href="03.html" class="link-special">*---></a></div>
+    <div class="pseudoCode hide">relational shifts</div>
     <div class="colorBox">
-        <label>Shift color Relation:</label>
-        <input type="color" value="#4842bd">
+        <label>Shift color Relation:
+            <input type="color" value="#4842bd">
     </div>
 
 </body>
