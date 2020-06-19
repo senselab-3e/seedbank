@@ -163,7 +163,7 @@ const addListener = (patch) => {
 window.onload = () => {
     createPixelPatch()
     createPixel()
-    createPixel('5px') // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
+    createPixel('15px', 'true') // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     nudgePixels()
     addPaletteListener()
@@ -182,13 +182,14 @@ const createPixelPatch = () => {
     document.body.appendChild(pxlContainer);
 }
 
-const createPixel = (size) => {
+const createPixel = (size, hidden) => {
     const pixelContainer = document.querySelector('.pixelContainer')
     // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
     var patch = document.createElement('div');
     patch.className = 'pixelPatch';
     size ? patch.style.width = size : console.log('no resizing requested');
     size ? patch.style.height = size : console.log('no resizing requested');
+    hidden ? patch.style.opacity = 0 : console.log('hide nothing')
     pixelContainer.appendChild(patch)
     pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth / 2 + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight / 2 + 'px';
@@ -239,7 +240,7 @@ const colorPicker = () => {
         const hslString = 'hsl(' + convertedVal.h + ', ' + convertedVal.s + ', ' + convertedVal.l + ')';
         palette1.style.setProperty('--hsl', hslString);
         colorShiftDif(convertedVal.h)
-        resetColorPixel(palette1, pixel[1])
+        resetColorPixel(palette1, pixel[0]) // remember you can isolate which pixel is changed here. i used to apply it to two pixels
     })
 }
 
