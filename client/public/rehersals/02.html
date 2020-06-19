@@ -36,6 +36,22 @@
             color: var(--varColor1)
         }
 
+        .link-special:link {
+            color: deeppink;
+            text-decoration: none;
+
+        }
+
+        .link-special:visited {
+            color: white;
+        }
+
+        .link-special:hover {
+            color: greenyellow;
+            text-decoration: underline;
+        }
+
+
         @keyframes palette1 {
             0% {
                 background-color: var(--hsl1);
@@ -218,7 +234,7 @@
         <div id="palette1"></div>
         <div id="palette2"></div>
     </div>
-    <div class="pseudoCode hide">*---></div>
+    <div class="pseudoCode hide"><a href="03.html" class="link-special">*---></a></div>
     <div class="colorBox">
         <label>Shift color Relation:</label>
         <input type="color" value="#4842bd">
