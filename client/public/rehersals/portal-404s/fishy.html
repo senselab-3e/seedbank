@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="style/global.css" />
+    <style>
+        html,
+        body {
+            background-image: linear-gradient(#71c98a, #cca13d);
+        }
+
+        .fishie {
+            margin-top: -100px;
+            width: 200px;
+
+            /* animation-iteration-count: infinite; */
+        }
+
+        .fishieswing {
+            animation-name: fishswing;
+            animation-duration: 10s;
+        }
+
+        @keyframes fishswing {
+            0% {
+                margin-left: 0%;
+                transform: rotate(-45deg);
+            }
+
+            25% {
+                transform: rotate(45deg);
+            }
+
+            50% {
+                margin-left: 100%;
+                transform: rotate(-45deg);
+            }
+
+            100% {
+                margin-left: 0%;
+                transform: rotate(45deg);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <img id="fishie" class="fishie" onClick="fishie()"
+        src="https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Ffishy2.gif?v=1583774022221" />
+    <script type="text/javascript">
+        function fishie() {
+            var element = document.getElementById("fishie");
+            element.classList.add("fishieswing");
+        }
+    </script>
+    <script src="scripts/menu.js"></script>
+</body>
+
+</html>

@@ -148,7 +148,7 @@ main>h3 {
 }
 
 .pixelContainer {
-    position: absolute;
+    position: fixed;
     z-index: 12;
     display: flex;
     flex-direction: row;
@@ -323,8 +323,14 @@ main>h3 {
     background-repeat: no-repeat;
 }
 
+.gifplanttrap {
+    background-image: url('../../gifverse/venusflytrap.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
 
-.gifgradient {
+
+.gifthreshold {
     width: inherit;
     height: inherit;
     background-image: url('../../gifverse/tumblr_pdwnnbjho91uzwgsuo1_400.gif');
