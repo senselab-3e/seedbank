@@ -250,8 +250,8 @@ const createPixel = (isFirst) => {
     patch.className = 'pixelPatch';
     isFirst ? console.log('no styling needed') : patch.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
     pixelContainer.appendChild(patch)
-    pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
-    pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
+    pixelContainer.style.left = Math.random(window.innerWidth) * (window.innerWidth / 4 * 3) + 'px';
+    pixelContainer.style.top = Math.random(window.innerHeight) * (window.innerHeight / 4 * 3) + 'px';
     //addListener(pixelContainer)
 }
 

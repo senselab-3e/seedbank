@@ -191,7 +191,7 @@ const createPixel = (size, hidden) => {
     size ? patch.style.height = size : console.log('no resizing requested');
     hidden ? patch.style.opacity = 0 : console.log('hide nothing')
     pixelContainer.appendChild(patch)
-    pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth / 2 + 'px';
+    pixelContainer.style.left = Math.random(window.innerWidth) * (window.innerWidth / 4 * 3) + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight / 2 + 'px';
     addListener(pixelContainer)
 
