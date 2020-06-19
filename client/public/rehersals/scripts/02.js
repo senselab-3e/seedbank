@@ -8,7 +8,7 @@ const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbr
 const thingyVerse = ['staticSponge2', 'staticPingPong', 'staticBlueChair', 'staticPingPong', 'staticCompost', 'staticFishy', 'staticBlueBowl', 'staticSponge']
 
 //NOTES: text content is being pulled from arrays in cosmicdigest.js
-
+const masterPixelColor = 'deeppink'
 
 //PALETTE OBJ CONSTRuCTOR
 function Palette(className, textStatus) {
@@ -141,7 +141,8 @@ const nudgePixels = () => {
 const revealPixelPortal = () => {
     //const pixelContainer = document.querySelector('.pixelContainer');
     const pixelPortal = document.querySelectorAll('.pixelPatch'); // this number should be the same as the number of gifVerse
-    for (let m = 0; m < pixelPortal.length - 1; m++) { // the last pixel has no accompanying class on rollover - it's purely there for the nudge
+    //remember that i changed the iteration to start at 1, instead of 0, to exclude the first pixel from changing color or having a gif on it, because  i want the first pixel to remain consistently a pinkestpink anchor'
+    for (let m = 1; m < pixelPortal.length - 1; m++) { // the last pixel has no accompanying class on rollover - it's purely there for the nudge
         pixelPortal[m].addEventListener("mouseover", function (event) {
             this.classList.add(gifVerse[m]);
             this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
@@ -195,7 +196,7 @@ const addPaletteListener = () => {
 window.onload = () => {
     createPixelPatch() //container for pixels
     //this will be a dummy first pixel, purely for the nudgepixel function - which works when the first and last pixel is hit on a rollover
-    createPixel()
+    createPixel(true)
     for (let i = 0; i < gifVerse.length; i++) {
         createPixel()
     }
@@ -243,11 +244,11 @@ const getRandomColor = () => {
 }
 
 
-const createPixel = () => {
+const createPixel = (isFirst) => {
     const pixelContainer = document.querySelector('.pixelContainer'); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
     var patch = document.createElement('div');
     patch.className = 'pixelPatch';
-    patch.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
+    isFirst ? console.log('no styling needed') : patch.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
     pixelContainer.appendChild(patch)
     pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';

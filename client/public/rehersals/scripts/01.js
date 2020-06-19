@@ -163,7 +163,7 @@ const addListener = (patch) => {
 window.onload = () => {
     createPixelPatch()
     createPixel()
-    createPixel('15px', 'true') // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
+    createPixel('10px', 'true') // creating two pixels // because of the css, unlike in 00.html, each new pixel will be in the same row under flexbox rules
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     nudgePixels()
     addPaletteListener()
