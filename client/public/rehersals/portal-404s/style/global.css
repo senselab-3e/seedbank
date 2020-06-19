@@ -1,5 +1,6 @@
 body {
     background-color: lightslategray;
+    background-image: url('../../gifverse/404_glitch2.gif');
     font-family: 'Open Sans', sans-serif;
     --entrypatch-color: #ff1493;
 }
