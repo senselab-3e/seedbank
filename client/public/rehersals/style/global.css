@@ -21,3 +21,13 @@ body {}
     width: 600px;
     height: 600px;
 }
+
+
+.colorBox {
+    z-index: 12;
+    position: absolute;
+    margin: 0;
+    padding: 1em;
+    top: 0;
+
+}

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:400,400i,700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <script src="./scripts/03.js"></script>
     <script src="./scripts/cosmicdigest.js"></script>
@@ -23,7 +25,14 @@
             /* --varColor1: #4842bd;
             --varColor2: #B7BD42; */
             --varColor1: #4842bd;
+            font-family: 'OpenSans', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
 
+        }
+
+        label {
+            color: var(--varColor1)
         }
 
         @keyframes palette1 {
@@ -82,6 +91,7 @@
 
         /* annoying. the javascript assigned styling on this element override any of the other settings i try to add to it via hover*/
         .palette:hover {
+            cursor: pointer;
             border: 1px inset white;
         }
 
@@ -98,6 +108,7 @@
         }
 
         #palette1 {
+            cursor: crosshair;
             width: 50vw;
             height: 100vh;
             --h: 63;
@@ -114,6 +125,7 @@
         }
 
         #palette2 {
+            cursor: crosshair;
             width: 50vw;
             height: 100vh;
             z-index: 11;
@@ -373,7 +385,7 @@
             z-index: 12;
             position: absolute;
             margin: 0;
-            padding: 0;
+            padding: 1em;
             top: 0;
 
         }
