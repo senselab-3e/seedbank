@@ -101,10 +101,10 @@ const retreiveColor = (el) => {
 const nudgePixels = () => {
     const pixelContainer = document.querySelector('.pixelContainer');
     const pixelPatches = document.querySelectorAll('.pixelPatch');
+    const anchorPixel = document.querySelector('.anchorPixel');
     const nudgeAmtCalc = gifVerse.length; // needs to be adjusted according to how long the pixel line is
-    console.log(pixelPatches.length)
     //have this also be mouseclick for touch devices? 
-    pixelPatches[0].addEventListener("mouseover", function (event) {
+    anchorPixel.addEventListener("mouseover", function (event) {
         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
             "left");
         // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
@@ -121,7 +121,7 @@ const nudgePixels = () => {
         newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - nudgeAmtCalc * 6 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
     })
     ///not convinced this is doing what's necessary on mobile devices
-    pixelPatches[0].addEventListener("click", function (event) {
+    anchorPixel.addEventListener("click", function (event) {
         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
             "left");
         // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
@@ -144,26 +144,14 @@ const revealPixelPortal = () => {
     //remember that i changed the iteration to start at 1, instead of 0, to exclude the first pixel from changing color or having a gif on it, because  i want the first pixel to remain consistently a pinkestpink anchor'
     for (let m = 0; m < pixelPortal.length - 1; m++) { // the last pixel has no accompanying class on rollover - it's purely there for the nudge
 
-        if (m === 0) {
-            pixelPortal[m].addEventListener("mouseover", function (event) {
-                this.style.removeProperty('width');
-                this.style.background = 'deeppink' //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
-            });
-            pixelPortal[m].addEventListener("mouseout", function (event) {
-                this.classList.remove(gifVerse[m]);
-                this.style.width = '20px';
-            })
-        } else {
-
-            pixelPortal[m].addEventListener("mouseover", function (event) {
-                this.classList.add(gifVerse[m]);
-                this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
-            });
-            pixelPortal[m].addEventListener("mouseout", function (event) {
-                this.classList.remove(gifVerse[m]);
-                this.style.setProperty('background', getRandomColor());
-            })
-        }
+        pixelPortal[m].addEventListener("mouseover", function (event) {
+            this.classList.add(gifVerse[m]);
+            this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
+        });
+        pixelPortal[m].addEventListener("mouseout", function (event) {
+            this.classList.remove(gifVerse[m]);
+            this.style.setProperty('background', getRandomColor());
+        })
     }
 }
 
@@ -189,7 +177,6 @@ const getClickPosition = (e) => {
 }
 
 const addPaletteListener = () => {
-
     const palette1 = document.querySelector('#palette1');
     const palette2 = document.querySelector('#palette2');
     const mainPalettes = [palette1, palette2];
@@ -197,8 +184,7 @@ const addPaletteListener = () => {
         palette.addEventListener('click', function (e) {
             getClickPosition(e);
             creatSliderPalettes()
-            // var newPalletes = new Palette('palette', true);
-            // newPalletes.createDiv();
+
         })
     })
 
@@ -208,25 +194,15 @@ const addPaletteListener = () => {
 
 window.onload = () => {
     createPixelPatch() //container for pixels
-    //this will be a dummy first pixel, purely for the nudgepixel function - which works when the first and last pixel is hit on a rollover
-    createPixel(true)
+    createAnchorPixel() //this also nudges
     for (let i = 0; i < gifVerse.length; i++) {
         createPixel()
     }
-    //createPixel()
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     nudgePixels() // Temporatily disabling to add hover effects to pixels instead
-    revealPixelPortal()
+    revealPixelPortal() //roloover gifverse reveals
     addPaletteListener()
     notes = document.querySelector('.pseudoCode'); // this is a global reference
-
-    const numVerses = []
-
-    for (const key in gifVerseObj) {
-        numVerses.push(key)
-        console.log(gifVerseObj[key].className)
-    }
-    console.log(numVerses.length)
 }
 
 const creatSliderPalettes = () => {
@@ -257,11 +233,18 @@ const getRandomColor = () => {
 }
 
 
-const createPixel = (isFirst) => {
+const createAnchorPixel = () => {
+    const pixelContainer = document.querySelector('.pixelContainer');
+    var anchor = document.createElement('div');
+    anchor.className = 'anchorPixel';
+    pixelContainer.appendChild(anchor)
+}
+
+const createPixel = () => {
     const pixelContainer = document.querySelector('.pixelContainer'); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
     var patch = document.createElement('div');
     patch.className = 'pixelPatch';
-    isFirst ? patch.style.width = '20px' : patch.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
+    patch.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
     pixelContainer.appendChild(patch)
     pixelContainer.style.left = Math.random(window.innerWidth) * (window.innerWidth / 4 * 3) + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * (window.innerHeight / 4 * 3) + 'px';

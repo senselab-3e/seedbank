@@ -164,6 +164,25 @@
 
         }
 
+        .anchorPixel {
+            width: 14px;
+            height: 7px;
+            cursor: pointer;
+            background: var(--entrypatch-color);
+            /* later, this color will be tied to the first color the user selected at the beginning*/
+            -webkit-transition: width 0.5s, height 0.5s;
+            -webkit-transition-timing-function: ease;
+            transition: width 0.5s, height 0.5s;
+            transition-timing-function: ease;
+        }
+
+        .anchorPixel:hover,
+        .anchorPixel:focus {
+            cursor: pointer;
+            width: 100px;
+            height: 100px;
+        }
+
         .pixelPatch {
             width: 7px;
             height: 7px;
@@ -253,7 +272,7 @@
             width: inherit;
             height: inherit;
             background-image: url("gifverse/breeze.gif");
-            background-size: 150px;
+            background-size: 180px;
             background-repeat: no-repeat;
         }
 
@@ -293,7 +312,7 @@
 
         .gifsplash {
             background-image: url('gifverse/splashopt.gif');
-            background-size: 100px;
+            background-size: 150px;
             background-repeat: no-repeat;
         }
 
