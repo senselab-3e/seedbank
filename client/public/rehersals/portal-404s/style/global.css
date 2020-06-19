@@ -1,6 +1,7 @@
 body {
     background-color: lightslategray;
     font-family: 'Open Sans', sans-serif;
+    --entrypatch-color: #ff1493;
 }
 
 
@@ -12,6 +13,15 @@ main>.container {
 main>h3 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
+}
+
+.textBox {
+    cursor: pointer;
+    color: rgb(236, 236, 236);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+    padding: 1em;
+
 }
 
 
@@ -33,7 +43,7 @@ main>h3 {
     width: 25px;
     height: 25px;
     cursor: pointer;
-
+    background-color: var(--entrypatch-color);
     /* later, this color will be tied to the first color the user selected at the beginning*/
     -webkit-transition: width 0.5s, height 0.5s;
     -webkit-transition-timing-function: ease;
@@ -46,11 +56,255 @@ main>h3 {
     cursor: pointer;
     width: 100px;
     height: 100px;
-    background-color: hsla(0, 0%, 100%, 0)
+    /* background-color: hsla(0, 0%, 100%, 0) */
 }
 
 .imgmenuColor {
     width: 5px;
     height: 5px;
     background: deeppink;
+}
+
+.pixelContainer {
+    position: absolute;
+    z-index: 12;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+}
+
+.anchorPixel {
+    width: 14px;
+    height: 7px;
+    cursor: pointer;
+    background: var(--entrypatch-color);
+    /* later, this color will be tied to the first color the user selected at the beginning*/
+    -webkit-transition: width 0.5s, height 0.5s;
+    -webkit-transition-timing-function: ease;
+    transition: width 0.5s, height 0.5s;
+    transition-timing-function: ease;
+}
+
+.anchorPixel:hover,
+.anchorPixel:focus {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    background-color: hsla(0, 0%, 100%, 0)
+}
+
+.pixelPatch {
+    width: 7px;
+    height: 7px;
+    cursor: pointer;
+    background: var(--entrypatch-color);
+    /* later, this color will be tied to the first color the user selected at the beginning*/
+    -webkit-transition: width 0.5s, height 0.5s;
+    -webkit-transition-timing-function: ease;
+    transition: width 0.5s, height 0.5s;
+    transition-timing-function: ease;
+}
+
+.pixelPatch:hover,
+.pixelPatch:focus {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    background-color: hsla(0, 0%, 100%, 0)
+}
+
+.pixelColor {
+    width: 5px;
+    height: 5px;
+    background: var(--entrypatch-color);
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s 1s ease-in;
+}
+
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s ease-out;
+}
+
+
+.gif404 {
+    width: inherit;
+    height: inherit;
+    background-image: url("../../gifverse/404_glitch2.gif");
+    background-repeat: no-repeat;
+}
+
+.gifmeowmix {
+    width: inherit;
+    height: inherit;
+    background-image: url("../../gifverse/izsafe.gif");
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.gifpipecleaners {
+    width: inherit;
+    height: inherit;
+    background-image: url("../../gifverse/pipecleanerzz.gif");
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+.gifbreeze {
+    width: inherit;
+    height: inherit;
+    background-image: url("../../gifverse/breeze.gif");
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+
+.gifsponge {
+    width: inherit;
+    height: inherit;
+    background-image: url("../../gifverse/sponge.gif");
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+/* 
+.gifpinkwave {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/circleswvae.gif');
+    background-size: 200px;
+    background-repeat: no-repeat;
+} */
+
+.giffold {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/fold.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.gifshadows {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/shadows.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.gifsplash {
+    background-image: url('../../gifverse/splashopt.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+
+.gifsplat {
+    background-image: url('../../gifverse/splat.gif');
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+.gifumbrella {
+    background-image: url('../../gifverse/umbrella.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.gifpoke {
+    background-image: url('../../gifverse/poke.gif');
+    background-size: 120px;
+    background-repeat: no-repeat;
+}
+
+.gifsquee {
+    background-image: url('../../gifverse/squeeeeeeee.gif');
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+.gifspash {
+    background-image: url('../../gifverse/splashopt.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.gifcompost {
+    background-image: url('../../gifverse/leftovers.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+
+.gifgradient {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/tumblr_pdwnnbjho91uzwgsuo1_400.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.staticSponge {
+    width: inherit;
+    height: inherit;
+    background-image: url("../../gifverse/sponge-4.gif");
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.staticSponge2 {
+    width: inherit;
+    height: inherit;
+    background-image: url("../../gifverse/sponges.png");
+    background-size: 100px;
+
+}
+
+.staticBlueChair {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/tinybluechair.gif');
+    background-size: 60px;
+    background-repeat: no-repeat;
+}
+
+
+
+.staticPingPong {
+    width: inherit;
+    height: inherit;
+    background-image: url("../../gifverse/pingpong.gif");
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.staticCompost {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/compost.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.staticFishy {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/fishy.gif');
+    background-size: 120px;
+    background-repeat: no-repeat;
+}
+
+.staticBlueBowl {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/bluebowlplant.png');
+    background-size: 80px;
+    background-repeat: no-repeat;
 }

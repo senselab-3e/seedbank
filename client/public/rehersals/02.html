@@ -24,6 +24,7 @@
             background-color: #fff;
             /* --varColor1: #4842bd;
             --varColor2: #B7BD42; */
+            --entrypatch-color: #ff1493;
             --varColor1: #4842bd;
             font-family: 'OpenSans', sans-serif;
             font-weight: 400;
@@ -167,7 +168,7 @@
             width: 7px;
             height: 7px;
             cursor: pointer;
-            background: deeppink;
+            background: var(--entrypatch-color);
             /* later, this color will be tied to the first color the user selected at the beginning*/
             -webkit-transition: width 0.5s, height 0.5s;
             -webkit-transition-timing-function: ease;
@@ -186,7 +187,7 @@
         .pixelColor {
             width: 5px;
             height: 5px;
-            background: deeppink;
+            background: var(--entrypatch-color);
         }
 
         .pseudoCode {

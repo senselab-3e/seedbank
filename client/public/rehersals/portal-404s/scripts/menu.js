@@ -1,79 +1,120 @@
-const imgClasses = ['img1', 'img2', 'img3', 'img4', 'img5']; // for each of these instances, a single imgmenu element will be created. ;
+const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gif404'] // for each of these instances, a single pixel element will be created. 
 
-var imgMenuOptions = [
-    ["aaa.jpg", "ssss.png"],
-    ["ccc.png", "bbb.png"],
-    ["ggg.png", "fff.png"],
-    ["hhh.png", "iii.png"],
-    ["aaa.jpg"]
-]
 
-var imgMenuSingles = [
-    "aaa.jpg",
-    "ccc.png", "bbb.png",
-    "ggg.png", "fff.png",
-    "hhh.png", "iii.png",
-    "aaa.jpg"
-]
 
-const trueOrFalse = () => {
-    //i can bias the return by having the mathrandom compare to 0.5  ( a 50/50 split) ooorrr a 70/30 split for true with 0.7 etc etc
-    return Math.random() < 0.7
+const createPixelPatch = () => {
+    var pxlContainer = document.createElement('div');
+    pxlContainer.className = 'pixelContainer';
+    document.body.appendChild(pxlContainer);
 }
 
-
-const imageMenu = () => {
-    const container = document.createElement('div');
-    container.className = "imgmenuContainer "
-
-    //i needed the index number to be passed to imgReplacement(i) so switched to a for loop over foreach
-    for (let i = 0; i < imgClasses.length; i++) {
-        const clearImgs = true //trueOrFalse();
-        console.log(clearImgs)
-        let imgPixel = document.createElement('div');
-        imgPixel.className = "imgmenuPatch";
-        imgPixel.classList.add(imgClasses[i])
-        imgPixel.style.left = 0;
-        imgPixel.style.top = 0;
-        imgPixel.addEventListener('click', function (event) {
-            imgReplacement(i, clearImgs)
-        })
-        container.appendChild(imgPixel)
+const getRandomColor = () => {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
     }
-
-    const menuArea = document.querySelector('.menu')
-    menuArea.appendChild(container)
+    return color;
 }
 
-const imgReplacement = (index, clearImgs) => {
-    //NOTE:added a conditional true or false for whether the image array would be emptied to 'just' add the images associated with a particular button, or if they would be added cumulatively to an array with previous values still remaining in it. this gives different results in the user view of how new images are being integrated and returned with what they have already viewed. 
-    //this is more useful when i'm loading single images. 
-    clearImgs ? imgOptions.splice(0, imgOptions.length) : console.log('let it ride')
+const createPixel = (isFirst) => {
+    const pixelContainer = document.querySelector('.pixelContainer'); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
+    var patch = document.createElement('div');
+    patch.className = 'pixelPatch';
+    isFirst ? patch.style.width = '20px' : patch.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
+    pixelContainer.appendChild(patch)
+    pixelContainer.style.left = Math.random(window.innerWidth) * (window.innerWidth / 4 * 3) + 'px';
+    pixelContainer.style.top = Math.random(window.innerHeight) * (window.innerHeight / 4) + 'px';
+    //addListener(pixelContainer)
+}
 
-    //NOTE -- doing this because i'm forgoing the true/false check on claering the images. beacuse i'm now scrambling the tiles by clicking directly on them, rathet then from the menu, i maybe
-    //don't need to have these random mixings happening from the menu clicks as well. 
-    // imgOptions.splice(0, imgOptions.length)
+const revealPixelPortal = () => {
+    //const pixelContainer = document.querySelector('.pixelContainer');
+    const pixelPortal = document.querySelectorAll('.pixelPatch'); // this number should be the same as the number of gifVerse
+    //remember that i changed the iteration to start at 1, instead of 0, to exclude the first pixel from changing color or having a gif on it, because  i want the first pixel to remain consistently a pinkestpink anchor'
+    for (let m = 0; m < pixelPortal.length - 1; m++) { // the last pixel has no accompanying class on rollover - it's purely there for the nudge
+        //NOTE: this is a bit convuluted but can refactor later. for now i'm isolating the first pixel that i want to be steadily the pinkestpink anchor. but because i wanted to double its size and that styling was applied in javascript i'm having to re-assign in javascript the styling on each mouse action. i'm better off just creating a whole new class. will review tomorrow. 
+        if (m === 0) {
+            pixelPortal[m].addEventListener("mouseover", function (event) {
+                this.style.removeProperty('width');
+                this.style.background = 'deeppink' //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
+            });
+            pixelPortal[m].addEventListener("mouseout", function (event) {
+                this.classList.remove(gifVerse[m]);
+                this.style.width = '20px';
+            })
+        } else {
 
-    // this clears out all existing images in the array
-    //imgOptions.splice(0, imgOptions.length); 
+            pixelPortal[m].addEventListener("mouseover", function (event) {
+                this.classList.add(gifVerse[m]);
+                this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
+            });
+            pixelPortal[m].addEventListener("mouseout", function (event) {
+                this.classList.remove(gifVerse[m]);
+                this.style.setProperty('background', getRandomColor());
+            })
+            //NOTE: for later
+            // pixelPortal[m].addEventListener("mouseclick", function (event) {
+            //     this.classList.add(gifVerse[m]);
+            //     this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
+            // });
+            // pixelPortal[m].addEventListener("mouseup", function (event) {
+            //     this.classList.remove(gifVerse[m]);
+            //     this.style.setProperty('background', getRandomColor());
+            // })
+        }
+    }
+}
 
-    //NOTE:random image pull 
-    //const newImgView = imgMenuOptions[Math.floor(Math.random() * imgMenuOptions.length)];
-
-    //NOTE:specific image combo array pull 
-    const newImgView = imgMenuOptions[index]
-    newImgView.forEach(img => {
-        imgOptions.push('./' + img)
+const nudgePixels = () => {
+    const pixelContainer = document.querySelector('.pixelContainer');
+    const pixelPatches = document.querySelectorAll('.pixelPatch');
+    const nudgeAmtCalc = gifVerse.length; // needs to be adjusted according to how long the pixel line is
+    console.log(pixelPatches.length)
+    //have this also be mouseclick for touch devices? 
+    pixelPatches[0].addEventListener("mouseover", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+        //     "top");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
+        newNum + nudgeAmtCalc < window.innerWidth - nudgeAmtCalc * 2 ? pixelContainer.style.setProperty('left', newNum + 5 + 'px') : pixelContainer.style.setProperty('left', 5 + nudgeAmtCalc + 'px');
+        // pixelContainer.style.setProperty('top', currentY + 'px');
     })
-
-    //NOTE: this pulls only a single image each time and 'may' scramble with others based on truthy or falsey value of clearImgs boolean, passed into this function
-    // const newImgView = imgMenuSingles[index]
-    // imgOptions.push('./' + newImgView);
-
-    const holder = document.querySelector('.tileHolder'); // i thought i could use a global var for this, but no. i has to be queried uniquely within each function. 
-    holder.remove();
-    numTiles = 0;
-    init(); // this calls on a function in sss.js which is a reset. 
+    pixelPatches[pixelPatches.length - 1].addEventListener("mouseover", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - nudgeAmtCalc * 6 + 'px') : pixelContainer.style.setProperty('left', newNum - 5 + 'px');
+    })
+    ///not convinced this is doing what's necessary on mobile devices
+    pixelPatches[0].addEventListener("click", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        // let currentY = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+        //     "top");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        // to make the test that the position doesn't exceed the window size, i need it to remain and inT - leading to the not as elegant passing of a string concatination in the setProperty
+        newNum + 5 < window.innerWidth ? pixelContainer.style.setProperty('left', newNum + 15 + 'px') : pixelContainer.style.setProperty('left', nudgeAmtCalc + 'px');
+        // pixelContainer.style.setProperty('top', currentY + 'px');
+    })
+    pixelPatches[pixelPatches.length - 1].addEventListener("click", function (event) {
+        let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
+            "left");
+        const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
+        newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 25 + 'px') : pixelContainer.style.setProperty('left', newNum - 15 + 'px');
+    })
 }
 
-imageMenu()
+window.onload = () => {
+
+    createPixelPatch() //container for pixels
+    //this will be a dummy first pixel, purely for the nudgepixel function - which works when the first and last pixel is hit on a rollover
+    createPixel(true)
+    for (let i = 0; i < gifVerse.length; i++) {
+        createPixel()
+    }
+    nudgePixels()
+    revealPixelPortal()
+}
