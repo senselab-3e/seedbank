@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .item {
+            flex-shrink: 3;
+            /* default 1 */
+        }
+
+        .chairContainer {
+            display: flex;
+            /* or inline-flex */
+            flex-direction: row-reverse;
+            flex-wrap: nowrap;
+            /* align-items: flex-end; */
+
+        }
+
+        .alignleft {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img class="item" src="../gifverse/fanspin.gif">
+    </div>
+    <div class="chairContainer ">
+        <p>
+            <img class="gif-container" src="./img/stool.gif">
+            <img class="gif-container" height="300px" src="./img/tinybluechair.gif">
+            <img class="gif-container" src="./img/yellowchair.gif">
+            <img class="gif-container" src="./img/chairpink.gif">
+        </p>
+    </div>
+</body>
+
+</html>
