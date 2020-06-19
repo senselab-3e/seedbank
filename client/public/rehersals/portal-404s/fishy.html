@@ -4,25 +4,44 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-
-    <link rel="stylesheet" href="style/global.css" />
+    <!-- <link rel="stylesheet" href="style/global.css" /> -->
     <style>
         html,
         body {
             background-image: linear-gradient(#71c98a, #cca13d);
+            margin: 15em;
         }
 
         .fishie {
-            margin-top: -100px;
-            width: 200px;
+            top: -4em;
+            left: -1em;
+            position: absolute;
+            cursor: pointer;
+            height: 30vh;
+
+            -webkit-transition: top 0.5s;
+            -moz-transition: top 0.5s;
+            -ms-transition: top 0.5s;
+            -o-transition: top 0.5s;
+            transition: top 0.5s;
+            transition-timing-function: ease;
+            transition-timing-function: ease;
+
 
             /* animation-iteration-count: infinite; */
         }
 
+        .fishie:hover {
+            top: -3em;
+        }
+
         .fishieswing {
             animation-name: fishswing;
-            animation-duration: 10s;
+            animation-duration: 5s;
+            /* animation-iteration-count: infinite; */
         }
+
+
 
         @keyframes fishswing {
             0% {
@@ -36,12 +55,12 @@
 
             50% {
                 margin-left: 100%;
-                transform: rotate(-45deg);
+                transform: rotate(-35deg);
             }
 
             100% {
                 margin-left: 0%;
-                transform: rotate(45deg);
+                transform: rotate(30deg);
             }
         }
     </style>
@@ -49,13 +68,16 @@
 </head>
 
 <body>
-    <img id="fishie" class="fishie" onClick="fishie()"
-        src="https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Ffishy2.gif?v=1583774022221" />
+    <img class="fishie" src="img/fishy2.gif" />
     <script type="text/javascript">
-        function fishie() {
-            var element = document.getElementById("fishie");
-            element.classList.add("fishieswing");
+        const fish = document.querySelector('.fishie');
+        const moveThingy = () => {
+            fish.classList.add("fishieswing")
+            setTimeout(function () {
+                fish.classList.remove('fishieswing');
+            }, 5000); // 1000 = 1s
         }
+        fish.addEventListener('click', moveThingy);
     </script>
     <script src="scripts/menu.js"></script>
 </body>
