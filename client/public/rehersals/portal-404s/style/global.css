@@ -9,6 +9,64 @@ body {
 
 }
 
+#palette1 {
+    cursor: crosshair;
+    width: 20vw;
+    height: 100vh;
+    --h: 63;
+    --s: 48%;
+    --l: 50%;
+    --hsl: hsl(var(--h), var(--s), var(--l));
+    background-color: var(--hsl);
+    -webkit-transition: width 3s;
+    -moz-transition: width 3s;
+    -ms-transition: width 3s;
+    -o-transition: width 3s;
+    transition: width 3s;
+
+}
+
+.palette1 {
+    width: 100vw;
+    height: 100vh;
+    /* --h: 150;
+    --s: 78%;
+    --l: 50%;
+    --hsl: hsl(var(--h), var(--s), var(--l));
+    background-color: var(--hsl);
+    -webkit-transition: width 3s;
+    -moz-transition: width 3s;
+    -ms-transition: width 3s;
+    -o-transition: width 3s;
+    transition: width 3s; */
+    animation: palette1 500s;
+
+}
+
+@keyframes palette1 {
+    0% {
+        background-color: white
+    }
+
+    25% {
+        background-color: turquoise
+    }
+
+    50% {
+        background-color: cornflowerblue
+    }
+
+    75% {
+        background-color: darkslateblue;
+    }
+
+    100% {
+        background-color: white;
+    }
+
+}
+
+
 .glitch {
     background-color: lightslategray;
     background-image: url('../../gifverse/404_glitch2.gif');
