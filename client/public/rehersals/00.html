@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:400,400i,700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <script src="./scripts/00.js"></script>
     <link rel="stylesheet" type="text/css" href="./style/hover.css">
@@ -17,9 +19,27 @@
             -webkit-animation: colorScroll 100s infinite;
             animation: colorScroll 100s infinite;
             --entrypatch-color: #ff1493;
-            color: #999;
+            --varColor1: #5c0232;
+            font-family: 'OpenSans', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
 
         }
+
+
+        label {
+            color: var(--varColor1)
+        }
+
+        .colorBox {
+            z-index: 12;
+            position: absolute;
+            margin: 0;
+            padding: 1em;
+            top: 0;
+
+        }
+
 
         .link-special:link {
             color: deeppink;
@@ -183,8 +203,10 @@
     <!-- <div class="pixel prePicnicPatch" alt="link to another page"></div> -->
     <div class="pseudoCode hide"> <a href="01.html" class="link-special">/* --reherasl threshold: warming up with warm
             up colorality--> */</a></div>
-    <label>Choose patch color:
+    <div class="colorBox">
+        <label>Choose patch color:</label>
         <input type="color" value="#ff1493">
+    </div>
 </body>
 
 <script>

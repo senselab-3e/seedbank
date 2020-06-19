@@ -42,8 +42,7 @@ window.onload = () => {
     });
     const input = document.querySelector('input');
     input.addEventListener('change', function () {
-        firstPatch.style.setProperty('--entrypatch-color', input.value)
-        //firstPatch.style.setProperty('background', input.value)
+        firstPatch.style.setProperty('--entrypatch-color', input.value);
     })
 }
 const entryPatch = () => createPixel()
@@ -53,21 +52,15 @@ const entryNotes = () => { // hides and shows div that has text message in it. m
 }
 
 const createPixel = () => {
-    // var link = document.createElement('a')
-    // link.title = 'link';
-    // link.className = 'entry';
-    // link.href = '00.html';
+
     var xpos = Math.random(window.innerWidth) * window.innerWidth / 2 + 'px'; // i need this because if the a link is  parent of pixel, it needs to share the coors of pixel;
     var ypos = Math.random(window.innerHeight) * window.innerHeight / 2 - 15 + 'px';
-    // link.style.left = xpos;
-    // link.style.top = ypos;
+
     var pixel = document.createElement('div');
     pixel.className = 'pixel'
     pixel.classList.add('prePicnicPatch');
     pixel.style.left = xpos;
     pixel.style.top = ypos;
-    // link.appendChild(pixel);
-    // document.body.appendChild(link)
     document.body.appendChild(pixel)
     addListener(pixel)
 }
@@ -76,13 +69,10 @@ const createPatch = () => {
     var patch = document.createElement('div');
     patch.className = 'pixel'
     patch.classList.add('picnicPatch');
-    //this is if i want all the patches to match the coloring of the input patch color. not necessarily but here to remember the logic
     const input = document.querySelector('input');
     patch.style.setProperty('--entrypatch-color', input.value)
     patch.style.marginLeft = Math.random(window.innerWidth) * window.innerWidth + 'px';
     patch.style.marginTop = Math.random(window.innerHeight) * window.innerHeight + 'px';
     document.body.appendChild(patch)
     addListener(patch)
-    let allPatches = document.querySelectorAll(".picnicPatch"); //sanity check that only one patch is being added at a time, and not expodentially
-    //console.log(allPatches)
 }
