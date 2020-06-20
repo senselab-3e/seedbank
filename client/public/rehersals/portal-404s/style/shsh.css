@@ -1,0 +1,154 @@
+body {
+    background-color: aquamarine;
+}
+
+/* div {
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    position: fixed;
+  } */
+
+.dot {
+    height: 65px;
+    width: 65px;
+
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    z-index: 100;
+}
+
+
+a.dotlinks:hover .dot {
+    border: 0.1rem solid white;
+    color: hsla(hue, saturation, lightness, alpha)
+}
+
+a.dotlinks:visited .dot {
+    border: 0.1rem solid grey;
+}
+
+.reloadsquare {
+    height: 15px;
+    width: 15px;
+    background-color: grey;
+
+}
+
+#dotreload {
+    z-index: 100;
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+a#dotreload {
+    color: white;
+    cursor: pointer;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+a#dotreload:hover {
+    color: rgb(67, 67, 65);
+}
+
+
+#dotreload p {
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#patchreload {
+
+    height: 15px;
+    width: 15px;
+    background-color: lightgrey;
+    /* border-radius: 50%; */
+    /*   display: inline-block; */
+
+
+    z-index: 100;
+}
+
+
+
+
+
+.text-setposition {
+    /* background-color: lightblue; */
+    width: 350px;
+    height: 110px;
+    overflow: scroll;
+    z-index: 10;
+    position: absolute;
+}
+
+
+.skew {
+    /* transform: skew(-45deg, 0deg); */
+    background-color: deeppink;
+    transform: skewX(-55deg) scaleX(2) scale(0.4)
+}
+
+.scale-transform {
+    transform: scale(0.6);
+}
+
+.scale-transform-smaller {
+    /* transform: scale(0.4); */
+}
+
+.scale-tinier {
+    transform: scale(0.2);
+}
+
+.thingy {
+    /* transform: scale(0.2); */
+    /* transform: scale3d(0.4, 0.4, 0.4); */
+    transform: scale3d(0.2, 0.2, 0.2);
+    /* transform: scale(0.6); */
+    /* height: 250px; */
+    /* width: 150px; */
+    /* height: 250px; */
+    /* //if i don't state a width every image will just load 'as is' */
+    /* transition: all .2s ease-in-out; */
+    position: fixed;
+    background-repeat: no-repeat;
+
+}
+
+.thingy:active {
+    touch-action: none;
+    user-select: none;
+}
+
+.thingy:hover {
+    cursor: pointer;
+    transform: scale3d(0.4, 0.4, 0.4);
+    /* border-width: 20px;
+    border: 3px solid rgba(249, 151, 3, 0.852); */
+}
+
+.mondayfile {
+    z-index: 100;
+    width: 250px;
+}
+
+#galaxy {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    z-index: -20;
+    touch-action: none;
+    user-select: none;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+
+    touch-action: none;
+}
