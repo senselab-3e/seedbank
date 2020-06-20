@@ -16,6 +16,46 @@
   <link rel="stylesheet" href="style/global.css" />
 </head>
 
+<style>
+  .zzz {
+    /* color: black; */
+    padding: 0em;
+    margin: 0em;
+    height: 60em;
+    width: 100%;
+    background: repeating-linear-gradient(25deg,
+        transparent,
+        transparent 0px,
+        rgb(243, 213, 45)20px,
+        rgb(243, 213, 45) 40px),
+      linear-gradient(to bottom,
+        #0f75bf,
+        #0f75bf);
+    -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 100% 0);
+    clip-path: polygon(0 0, 0 0, 0 100%, 100% 0);
+
+  }
+
+  .zzzFlip {
+    /* color: black; */
+    padding: 0em;
+    margin: 0em;
+    height: 60em;
+    width: 100%;
+    background: repeating-linear-gradient(-25deg,
+        transparent,
+        transparent 0px,
+        rgb(243, 213, 45)20px,
+        rgb(243, 213, 45) 40px),
+      linear-gradient(to bottom,
+        #0f75bf,
+        #0f75bf);
+    -webkit-clip-path: polygon(0 0, 0 0, 0px 40em, 100% 60em);
+    clip-path: polygon(0 0, 0 0, 0px 60em, 100% 60em);
+
+  }
+</style>
+
 <body>
 
   <div id="container" class="container">
@@ -173,19 +213,34 @@
 
   </div>
   <!-- file:///Users/lplumb/Downloads/cosmicdigest.html -->
-  <div id="container" class="container">
+  <div id="container3" class="container3">
 
     <ul id="scene6" class="scene6">
-      <li class="layer expand-width" data-depth-y="12.00" data-depth-x="9.0"><img src="img/Aaaa-22.jpg"></li>
-      <li class="layer expand-width" data-depth-y="-24.00" data-depth-x="-13.0"><img src="img/zzz-13.jpg"></li>
+      <li class="layer expand-width" data-depth-y="12.00" data-depth-x="9.0"><img src="img/zzz-5.jpg"></li>
+      <li class="layer expand-width" data-depth-y="-24.00" data-depth-x="-13.0"><img src="img/zzz-9.jpg"></li>
       <li class="layer expand-width" data-depth-y="28.80" data-depth-x="19.0"><img src="img/zzz-8.jpg" width="400px"
           height="300px"></li>
-      <li class="layer expand-width" data-depth-y="33" data-depth-x="-21.0"><img src="img/zzz-12.jpg" width="300px"
+      <li class="layer expand-width" data-depth-y="33" data-depth-x="-21.0"><img src="img/zzz-3.jpg" width="300px"
           height="400px"></li>
-      <li class="layer expand-width" data-depth-y="-24.20" data-depth-x="26.0"><img src="img/zzz-00.jpg"></li>
+      <li class="layer expand-width" data-depth-y="-24.20" data-depth-x="26.0"><img src="img/zzz-6.jpg"></li>
       <li class="layer expand-width" data-depth-y="15" data-depth-x="-29.0"><img src="img/zzz-7.jpg"></li>
 
     </ul>
+  </div>
+
+  <div id="container" class="container-big">
+    <ul id="scene7" class="scene7">
+      <li class="layer expand-width" data-depth-y="-5.00" data-depth-x="-2.0"><img src="img/zzz-test.jpg">
+      <li class="layer expand-width" data-depth-y="12.00" data-depth-x="9.0"><img src="img/zzz-00.jpg"></li>
+    </ul>
+  </div>
+
+
+  <div class="zzzFlip">
+    dfadsf
+  </div>
+  <div class="zzz">
+    dfadsf
   </div>
 
   </div>
@@ -211,6 +266,9 @@
 
     var scene6 = document.getElementById('scene6');
     var parallax6 = new Parallax(scene6);
+
+    var scene7 = document.getElementById('scene7');
+    var parallax7 = new Parallax(scene7);
   </script>
   <script src="scripts/menu.js"></script>
   <link href="style/fixed-positioning.css" rel="stylesheet" type="text/css" />

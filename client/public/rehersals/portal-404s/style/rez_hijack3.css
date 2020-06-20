@@ -23,29 +23,29 @@ label {
 }
 
 button {
-	border: 10px solid #00FFAA;
-	font-family: monospace;
-	position: absolute;
-	line-height: 60px;
-	text-align: right;
-	padding: 0 1.2em;
-	background: #444;
-	font-size: 24px;
-	cursor: pointer;
-	display: block;
-	outline: none;
-	height: 80px;
-	width: 80%;
-	top: 241px;
-	margin: 0;
-	left: -1px;
+  border: 10px solid #00FFAA;
+  font-family: monospace;
+  position: absolute;
+  line-height: 60px;
+  text-align: right;
+  padding: 0 1.2em;
+  background: #444;
+  font-size: 24px;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  height: 80px;
+  width: 80%;
+  top: 241px;
+  margin: 0;
+  left: -1px;
 }
 
 button:hover {
   background: #00FFAA;
 }
 
-input[type=checkbox] + label:before {
+input[type=checkbox]+label:before {
   display: inline-block;
   position: relative;
   background: #444;
@@ -56,16 +56,17 @@ input[type=checkbox] + label:before {
   top: 1px;
 }
 
-input[type=checkbox]:checked + label:before {
+input[type=checkbox]:checked+label:before {
   background: #00FFAA;
 }
 
 .container {
   position: relative;
-  max-width: 300px; /*adjusting  this allowed all the images to also be resized, but also keep true center - unlike changing it via the scene div */
+  max-width: 300px;
+  /*adjusting  this allowed all the images to also be resized, but also keep true center - unlike changing it via the scene div */
   margin: 0 auto;
   padding: 5%;
-	/* this doesn't work because it applie the opacity to the entire div tag, not each individual image // opacity: 0.5;  */ 
+  /* this doesn't work because it applie the opacity to the entire div tag, not each individual image // opacity: 0.5;  */
 }
 
 
@@ -78,7 +79,7 @@ input[type=checkbox]:checked + label:before {
 
 .container3 {
   position: relative;
-  max-width: 300px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 5%;
 }
@@ -87,6 +88,13 @@ input[type=checkbox]:checked + label:before {
 .container4 {
   position: relative;
   max-width: 300px;
+  margin: 0 auto;
+  padding: 5%;
+}
+
+.container-big {
+  position: relative;
+  max-width: 900px;
   margin: 0 auto;
   padding: 5%;
 }
@@ -111,8 +119,9 @@ input[type=checkbox]:checked + label:before {
 .scene {
   padding: 0;
   margin: 0;
-	/*width: 300px; adjusting this allowed me to resize all the images dynamically - BUT it makes the center no longer true center - it shrinks the whole div container - rather then each image container layer*/
+  /*width: 300px; adjusting this allowed me to resize all the images dynamically - BUT it makes the center no longer true center - it shrinks the whole div container - rather then each image container layer*/
 }
+
 .scene2 {
   padding: 0;
   margin: 0;
@@ -128,6 +137,21 @@ input[type=checkbox]:checked + label:before {
   margin: 0;
 }
 
+.scene5 {
+  padding: 0;
+  margin: 0;
+}
+
+.scene6 {
+  padding: 0;
+  margin: 0;
+}
+
+.scene7 {
+  padding: 0;
+  margin: 0;
+}
+
 .fill {
   position: absolute;
   bottom: 5%;
@@ -139,6 +163,7 @@ input[type=checkbox]:checked + label:before {
 .expand-width {
   width: 100%;
 }
+
 /*.border {
   border: 2px dashed #00FFAA;
 }*/
@@ -150,71 +175,75 @@ input[type=checkbox]:checked + label:before {
 /*these are the children for each individual image -- this is where i can customize how each individual image appears */
 
 .layer:nth-child(1) {
-	opacity: 0.8;
-	
-  
+  opacity: 0.8;
+
+
 }
+
 .layer:nth-child(1) button {
   -webkit-transform: rotate(150deg);
 }
 
 .layer:nth-child(2) {
-	opacity: 0.8;
- 
+  opacity: 0.8;
+
 }
+
 .layer:nth-child(2) button {
   -webkit-transform: rotate(120deg);
 }
 
 .layer:nth-child(3) {
-	opacity: 0.7;
-	
-  
+  opacity: 0.7;
+
+
 }
+
 .layer:nth-child(3) button {
   -webkit-transform: rotate(90deg);
 }
 
 .layer:nth-child(4) {
-	opacity: 0.7;
-  
+  opacity: 0.7;
+
 }
+
 .layer:nth-child(4) button {
   -webkit-transform: rotate(60deg);
 }
 
 .layer:nth-child(5) {
-	opacity: 0.7;
-  
+  opacity: 0.7;
+
 }
+
 .layer:nth-child(5) button {
   -webkit-transform: rotate(30deg);
-	
+
 }
 
 .layer:nth-child(6) {
-	opacity: 0.6;
-  
+  opacity: 0.6;
+
 }
 
 
 .layer:nth-child(7) {
-	opacity: 0.6;
-  
+  opacity: 0.6;
+
 }
 
 .layer:nth-child(8) {
-	opacity: 0.6;
-  
+  opacity: 0.6;
+
 }
 
 .layer:nth-child(9) {
-	opacity: 0.8;
-  
+  opacity: 0.8;
+
 }
 
 .layer:nth-child(10) {
-	opacity: 0.8;
-  
-}
+  opacity: 0.8;
 
+}
