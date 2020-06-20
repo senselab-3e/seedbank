@@ -22,7 +22,7 @@ const posNeg = () => {
 
 const randDegrees = () => {
     let negPos = posNeg()
-    return negPos + Math.floor(Math.random() * 40 + 40 - 20) + 'deg';
+    return negPos + Math.floor(Math.random() * 40 + 20) + 'deg';
 }
 
 tapeList.forEach(tape => {

@@ -395,3 +395,15 @@ main>h3 {
     background-size: 80px;
     background-repeat: no-repeat;
 }
+
+
+.magicTape {
+    height: 0.52em;
+    width: 200%;
+    top: -100px;
+    left: -5em;
+    position: relative;
+    transform: rotate(-15deg);
+    background: deeppink;
+    background-size: 100%;
+}
