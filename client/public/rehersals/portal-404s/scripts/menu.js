@@ -1,6 +1,6 @@
 const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404'] // for each of these instances, a single pixel element will be created. 
 
-const linkVerse = ['aeo.html', 'eee.html', 'fff.html', 'fishy.html', 'kite.html', 'lll.html', 'mmm.html', 'shsh.html', 'sss.html', 'uuu.html', 'vvv.html', 'ozglob.html', 'mondayfiles.html']
+const linkVerse = ['eee.html', 'aeo.html', 'sss.html', 'fishy.html', 'kite.html', 'vvv.html', 'mmm.html', 'shsh.html', 'fff.html', 'uuu.html', 'lll.html', 'ozglob.html', 'mondayfiles.html']
 
 console.log(linkVerse.length, gifVerse.length)
 
