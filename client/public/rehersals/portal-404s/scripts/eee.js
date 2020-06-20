@@ -1254,14 +1254,12 @@ var c = [{
 }]
 
 
-const imagePick = ['bbb.png', 'fff.png', 'aaa.jpg']
+const imagePick = ['./img/bbb-up.png', './img/ggg-up.png', './img/ssss-up.png', 'aaa.jpg']
 
 const randomImage = (array) => {
 
     return imagePick[Math.floor(Math.random(array.length) * array.length)];
 }
-
-
 
 
 function preload() {
@@ -1271,27 +1269,29 @@ function preload() {
 function setup() {
     createCanvas(windowWidth, windowHeight, WEBGL);
     var frameCount = 0;
+
     //console.log(randomImage(imagePick))
 }
+
+
 
 function draw() {
 
     orbitControl();
     textureWrap(CLAMP);
     textureMode(NORMAL);
-
     fill(255);
-
-    //translate(-windowHeight / 2, -windowHeight / 2, -windowHeight / 2);
     translate(-200, -200, -200);
+    // translate(-width / 2, -width / 2, -width / 2);
+
     beginShape(TRIANGLE_STRIP);
     for (let i = 0; i < c.length; i++) {
         texture(img);
         let coord = c[i];
-        let u = map(coord.x, -img.width * uval, img.width * 0.5, 0, 1);
-        let v = map(coord.y, -img.height * uval, img.height * 0.5, 1, 0);
+        let u = map(coord.x, -img.width * uval, img.width * 0.3, 0, 1); // changed location to a 1/3 from 0.5
+        let v = map(coord.y, -img.height * uval, img.height * 0.3, 1, 0);
         if (dist(mouseX - width / 2, mouseY - height / 2, coord.x - 200, coord.y - 200) < 70) {
-            coord.z += 20;
+            coord.z += 10;
         }
         vertex(coord.x, coord.y, coord.z, u, v);
     }
@@ -1299,5 +1299,7 @@ function draw() {
 }
 
 function mousePressed() {
-    uval = random(0, 1);
+    uval = random(0, 0.6); // changed this from 1
+
+    //img = loadImage(randomImage(imagePick));
 }
