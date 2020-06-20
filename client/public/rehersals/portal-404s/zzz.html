@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>ReZ</title>
+
+  <!-- Behavioral Meta Data -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="style/rez_hijack3.css" />
+
+</head>
+
+<body>
+
+  <div id="container" class="container">
+
+    <ul id="scene" class="scene border fill">
+      <li class="layer expand-width" data-depth-y="12.00" data-depth-x="9.0"><img src="img/Aaaa-01.jpg"></li>
+      <li class="layer expand-width" data-depth-y="-24.00" data-depth-x="-13.0"><img src="img/Aaaa-02.jpg"></li>
+      <li class="layer expand-width" data-depth-y="28.80" data-depth-x="19.0"><img src="img/Aaaa-03.jpg" width="400px"
+          height="300px"></li>
+      <li class="layer expand-width" data-depth-y="33" data-depth-x="-21.0"><img src="img/Aaaa-04.jpg" width="300px"
+          height="400px"></li>
+      <li class="layer expand-width" data-depth-y="-24.20" data-depth-x="26.0"><img src="img/Aaaa-05.jpg"></li>
+      <li class="layer expand-width" data-depth-y="15" data-depth-x="-29.0"><img src="img/Aaaa-06.jpg"></li>
+
+    </ul>
+  </div>
+
+
+  <div id="intro" data-0="display:none" data-100="display:block; left:25%;top:5%;" data-1800="top:45%"
+    data-9000="top:50%" data-9900="display:none;">
+    <h4>&nbsp;</h4>
+
+    <div id="container2" class="container2">
+      <ul id="scene2" class="scene2">
+        <li class="layer expand-width" data-depth-x="12"><img src="img/Aaaa-07.jpg"></li>
+        <li class="layer expand-width" data-depth-x="-9.0"><img src="img/Aaaa-10.jpg"></li>
+        <li class="layer expand-width" data-depth-x="-12.0" data-depth-y="8"><img src="img/Aaaa-22.jpg"></li>
+        <li class="layer expand-width" data-depth-x="30.0" data-depth-y="-28"><img src="img/Aaaa-25.jpg"></li>
+        <li class="layer expand-width" data-depth-x="-27.0" data-depth-y="-13"><img src="img/Aaaa-27.jpg"></li>
+        <li class="layer expand-width" data-depth-x="22.0" data-depth-y="19"><img src="img/Aaaa-26.jpg"></li>
+        <li class="layer expand-width" data-depth-x="-40.0" data-depth-y="-19"><img src="img/Aaaa-24.jpg"></li>
+      </ul>
+    </div>
+
+  </div>
+
+
+  <div id="container" class="container">
+    <ul id="scene3" class="scene3">
+      <li class="layer expand-width" data-depth-x="22"><img src="img/Aaaa-21.jpg"></li>
+      <li class="layer expand-width" data-depth-x="-19.0"><img src="img/Aaaa-23.jpg"></li>
+      <li class="layer expand-width" data-depth-x="-9.0"><img src="img/Aaaa-20.jpg"></li>
+    </ul>
+
+  </div>
+
+  <!-- Scripts -->
+  <!-- 
+  <script type="text/javascript" src="scripts/java2.js"></script> -->
+
+
+  <!-- <script type="text/javascript" src="scripts/skrollr.min.js"></script> -->
+
+  <!--[if lt IE 9]>
+	<script type="text/javascript" src="../skrollr-ie/dist/skrollr.ie.min.js"></script>
+	<![endif]-->
+
+  <!-- <script type="text/javascript">
+    var s = skrollr.init({
+      edgeStrategy: 'set',
+      easing: {
+        WTF: Math.random,
+        inverted: function (p) {
+          return 1 - p;
+        }
+      }
+    });
+  </script> -->
+
+
+
+
+
+  <script src="scripts/parallax.js"></script>
+  <script>
+    // Nothing new here...it's all in the CSS!
+    var scene = document.getElementById('scene');
+    var parallax = new Parallax(scene);
+
+    var scene2 = document.getElementById('scene2');
+    var parallax = new Parallax(scene2);
+
+
+
+    var scene3 = document.getElementById('scene3');
+    var parallax3 = new Parallax(scene3);
+
+    // var scene4 = document.getElementById('scene4');
+    // var parallax4 = new Parallax(scene4);
+
+    // var scene5 = document.getElementById('scene5');
+    // var parallax5 = new Parallax(scene5);
+  </script>
+
+  <link href="style/fixed-positioning.css" rel="stylesheet" type="text/css" />
+
+
+</body>
+
+</html>

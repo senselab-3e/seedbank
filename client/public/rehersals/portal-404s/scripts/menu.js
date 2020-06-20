@@ -1,8 +1,8 @@
 const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404'] // for each of these instances, a single pixel element will be created. 
 
-const linkVerse = ['eee.html', 'aeo.html', 'sss.html', 'fishy.html', 'kite.html', 'vvv.html', 'mmm.html', 'shsh.html', 'fff.html', 'uuu.html', 'lll.html', 'ozglob.html', 'mondayfiles.html']
+const linkVerse = ['eee.html', 'fishy.html', 'sss.html', 'aeo.html', 'kite.html', 'vvv.html', 'mmm.html', 'shsh.html', 'fff.html', 'uuu.html', 'lll.html', 'ozglob.html', 'mondayfiles.html']
 
-console.log(linkVerse.length, gifVerse.length)
+//note. there are 2 more gifs extra, with no paired link
 
 const createPixelPatch = () => {
     var pxlContainer = document.createElement('div');
@@ -48,7 +48,7 @@ const createPixel = () => {
 const addLinks = () => {
     const linkList = document.querySelectorAll('.menuLinks');
     for (let i = 0; i < linkList.length; i++) {
-        linkVerse[i] ? linkList[i].href = linkVerse[i] : console.log('nolinkforthispixel');
+        linkVerse[i] ? linkList[i].href = linkVerse[i] : linkVerse[i]; // checks if there is a valid index in the array of links in relation to the current index in the gifverses making up the pixel menu. if so, the a gets href. if not, nothing
     }
 }
 
@@ -83,7 +83,6 @@ const nudgePixels = () => {
     const pixelPatches = document.querySelectorAll('.pixelPatch');
     const anchorPixel = document.querySelector('.anchorPixel');
     const nudgeAmtCalc = gifVerse.length; // needs to be adjusted according to how long the pixel line is
-    console.log(pixelPatches.length)
     //have this also be mouseclick for touch devices? 
     anchorPixel.addEventListener("mouseover", function (event) {
         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
