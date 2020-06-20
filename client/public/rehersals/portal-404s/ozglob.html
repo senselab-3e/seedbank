@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Oz.gl0b</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.js"></script>
+    <link rel="stylesheet" href="style/global.css" />
+    <script src="scripts/ozglob.js" defer></script>
+
+    <style>
+        p {
+            font-size: 6px;
+            color: #00ff00;
+            transform: rotate(20deg);
+            margin-top: -30px;
+        }
+
+        .circleBase {
+
+            border-radius: 50%;
+            behavior: url(PIE.htc);
+            position: absolute;
+            background-color: lightblue;
+        }
+
+        .collectors {
+            width: 300px;
+            height: 300px;
+            z-index: -1;
+        }
+
+        .speedy {
+            width: 200px;
+            height: 200px;
+            top: 600px;
+            left: 800px;
+        }
+
+        .tenuous {
+            width: 150px;
+            height: 150px;
+            top: 2000px;
+            left: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="circleBase collectors"></div>
+    <div class="circleBase speedy"></div>
+    <div class="circleBase tenuous"></div>
+
+    <p hidden>Thinking of animals, plants, rocks, the soil, the earth, air, water, their manners of forming, their
+        moments of satisfaction, and their perishing … and forming, differently, once more. And all of this, with “us”,
+        as the “us” that becomes “us”, that makes the time of “us”, again, in each moment. Thinking of the conceptual
+        feelings throughout this. Thinking this as forests, mountain ranges, or each breath, each instant of contact,
+        meals, train trips, conversations, movings-with. Of all kinds of collectivities in their living a life, with
+        each manner of moving/being/becoming in the world, in and as each moment.</p>
+
+    <p hidden>And thinking also of Miguel Norambuena’s “invented spaces”—</p>
+    <p hidden>"…where we allow our dialogical framework to position itself and emerge,
+        a possible future in the midst of our memories, being there, present, that
+        weaves an open and shared present, a transtemporal and transversal polyphony"</p>
+
+    <p hidden>And thinking-feeling something like the dissenting relationship” between Guattari and David Cooper—</p>
+    <p hidden>An old collaborative relationship. A ‘dissenting’ relationship, with a
+        great respect for each other’s positions on psychotherapies and politics. And
+        of ‘sensitive ways of building relationships, the result of a process of years
+        of a ‘schizoanalytic’, friendly and micropolitical relationship” that can make previously
+        difficult things possible.</p>
+
+    <p hidden>Thinking also of-</p>
+    <p hidden>the flows of abstract machines, a notion proposed by Deleuze and
+        Guattari, which have neither form nor content, nor structure nor language. But
+        they can be there as virtualities, as pure a-signifiers, pre-semiotic
+        processes. These virtualities are updated–or not – prior to encounters,
+        peculiar synaptic connections, thus generating Invented Spaces
+        of creation, of possibilities, of subjective and social innovation. David and
+        Félix knew how to create a space for dissent between them: a peculiar and
+        co-creative rhizome for their divergent positions. Being able to reach that
+        intersection of dissent is truly an art!</p>
+
+    <p hidden>And thinking also of Erin's discussion of children—</p>
+    <p hidden>The child is not an empty vessel hoping to be filled by content devised
+        by adults. Nor is the child a neutral entity moving along a pre-constituted
+        developmental path. A child is a researcher of life, and a maker of worlds.</p>
+
+    <p hidden>And of Erin’s comments that—</p>
+    <p hidden>The real moves here, at the cusp where the line and the network
+        co-compose, in the field of relation their co-composition sparks.</p>
+
+    <p hidden>And inspired by Lone’s work on rethinking/refeeling/socialising democracy, and by Matisse’s glitch-based
+        minor keyword assemblage, and by watching the making of the pinkest pink, and Alexis and Andrew’s work on food,
+        and everyone who has cooked’s cooking, and the many conversations with all so far … in short, and unavoidably,
+        inspired by the vectors of influence in everything that has happened, happens and will happen .. no anxiety of
+        influence here. It’s all influence.</p>
+    <p hidden>And then thinking of the sophistication, or better, responsiveness so finely attuned, of play, of
+        animal-play (of Brian’s What Animals Teach Us About Politics ..) and perhaps differently, of plant-play, and the
+        play of soils, and of movements of the air, of radiant energies (sunshine, moonshine, electricities). </p>
+    <p hidden>And thinking of Fred Moten's "we know what we know". That we are not lacking in knowledge (as “we”,
+        whoever we are, and the world we are within, are always told), and do not need to be “fixed”, and certainly not
+        according to major, poorly formed concepts that so often seem to impose themselves on us.</p>
+    <p hidden>Then thinking of/feeling the movements of ontologies through the making of moments. Which is to say
+        thinking-feeling the multiplicity of concepts, abstractions, that are always lived, each as partial “vectors for
+        the transmission of influence”. Becoming aware of the movements of these ontologies, even if some of those seem
+        to work against the manner of living we have, or that we need. And with this, as this, living a multiplicity of
+        conceptual feelings, of feelings of the concept, of the concepts (themselves assemblages) as comings together of
+        feelings, of graspings full or part, of movements, of different speeds.</p>
+    <p hidden>Thinking and moving with concepts that are territorialising, in the moment … which is to say of major
+        onto-theological concepts (large, dominant concepts, concepts with a history, officially “in and as the
+        archive”, you might say). Feeling the shifts in tone as shards of these major concepts, with their conceptual
+        feeling, come into the moment in the making of moments. Yet thinking-feeling also of the polyphony/cacophony of
+        minor concepts, always also there, in movement. Thinking-feeling, in short, of the mess of different ontologies,
+        as lived, as as these move, change, transform.</p>
+    <p hidden>Thinking perhaps also of the way perhaps that concepts themselves have a life, a manner of living.
+        Sometimes these concepts seem to want to bite. Sometimes though they play. They do an infinity of things that
+        can be done. They have different moods. They move differently. They can of course be violent. They might be
+        snide. They might have no subtlety. They love. They hate. They fit. They don’t fit (as Deleuze might say, it’s
+        whether a concept fits you or doesn’t fit that matters). Some bring exhaustion. Some energise. Some release,
+        Some capture. Sometimes they care. Sometimes they catalyse care. Sometimes they don’t care less. Perhaps some
+        movements are concepts that don't appear to be concepts. Perhaps many events are in a state of becoming-concepts
+        or are unbecoming concepts, perishing.</p>
+    <p hidden>Perhaps in each moments many such concepts come together, as animals, plants, rocks, the ground, soil,
+        concept-animals, plant-concepts, soil-rock-air-water-concepts, hybrids ...as well as thoughts, feeling,
+        thinking-feelings, relations, vague fringes, potentials. Or part of all of these.</p>
+    <p hidden>Perhaps there are signaletic ontologies, the ontologies by which other ontologies come to us, through
+        bodies, across bodies, extracted from bodies. Perhaps there are concepts that facilitate a kind of collectivity
+        of dreaming. Perhaps that is always what concepts are. Perhaps what this proposition proposes is a kind of lucid
+        collective dreaming—a feeling into how to lucidly dream, through concepts, differently. Perhaps social dreaming
+        is the conceptual’s conceptual feeling.</p>
+    <p hidden>And then, (not) finally, I was thinking about the fugitivity from, final escape from, or just letting go
+        of the concept of the concept, of the Kantian, etc/Western inhabiting of the concept, by means of the concept.
+        From the bifurcation of nature to the divvying up of the faculties on. And letting go not only of the
+        reactionary inhabiting of the concept but of the living of the concept. Of the poorly formed abstraction that
+        still inhabits so much of the concept of the concept, and permeates so much of what happens (psychology,
+        education, management, economics, politics, communication, mediation). It inhabits as, for example, "cognition"
+        and much else (and this even as the West itself becomes the PostWest and moves to a kind of stochasticism beyond
+        the concept). Is it possible to let go of the concept itself in order to achieve the movement of thought?</p>
+
+    <p hidden>For us, reading is a condition of making, and reading together is a
+        condition of making together. Like the work and the concepts we produce in the
+        official university, the art we make, curate and organise is vulnerable to
+        breaking loose from its groundings in reading, and therefore its social
+        reproduction, and in particular it is vulnerable to breaking loose from its
+        groundings in study, in reading together, in social reproduction for our thing,
+        not for their machine. —Tonika Sealy Thompson and Stefano Harney (2018) ‘Ground
+        Provisions’,
+        Afterall: A Journal of Art, Context and Enquiry
+        : 123-124</p>
+
+    <p hidden>On Speculative Pragmatics: I will define speculative pragmatics as ranging somewhere between any active
+        double becoming of metaphysics and ecologies of practice—always found in media, communication, the like of
+        computing and indeed technics of all kinds—and some more rigorously ethical-philosophical understandings. As
+        follows:</p>
+    <p hidden>... speculative pragmatism .. must offer not just a system based on the
+        evidence it sees, but it must account for the fact that different philosophies
+        differ as to what constitutes the nature of evidence. It must offer not just a
+        theory of truth, but it must account for the fact that different philosophies
+        differ as to what constitutes the nature of truth. It must offer not just
+        foundations, but it must account for the fact that different philosophies
+        differ concerning the very foundations of philosophy. ... A philosophy, like
+        any knowledge structure, does not conform to a pregiven world that is
+        ''there" and that one philosophy will "find" in spectator
+        fashion. Rather it is a perspective on a common-sense world infused with the
+        meanings of various derived worlds. This world is constantly in the process of remaking,
+        and as it changes, the philosophic reflection upon it changes. Such reflection
+        in turn infuses with new meanings the world from which it emerged. Second-level
+        reflections, including the reflections of philosophy, not only emerge from
+        prephilosophical worlds, but enrich them with new meanings that in turn
+        partially change these worlds. Indeed, "the world is ceaselessly becoming
+        what it means."—Sandra B. Rosenthal (1986)
+        Speculative Pragmatism</p>
+
+    <p hidden>SenseLab makes the threshold its practice. We are interested not only in
+        the first doorway, but in discovering where else the thresholds may appear for
+        those who are neurodiverse, for those whose bodies don’t pass as easily as the
+        speaking, white body inevitably does in the context of the university. We are
+        interested in why some of cross so easily, and how it has come to be that so
+        many of us don’t even perceive the threshold.—From Erin Mannning’s
+        For a Pragmatics of the Useless</p>
+
+    <p hidden>The thinking of the thing must be open to the unplayed-out in advance:
+        it must be speculative. The image of thought at issue here is an odd bird: a
+        speculative pragmatism. Speculative pragmatism must actively affirm — accompany
+        — the potential of what it thinks. The philosopher cannot take a seat of
+        judgment outside or above. She must take the plunge. She must mutually include
+        her own thought/activity in the process at issue.—Brian Massumi (2015)
+        ‘Undigesting Deleuze’, LA Review of Books, November 8,</p>
+
+    <p hidden>What we need to activate today is a thinking that commits to a possible,
+        by means of resisting the probable—fighting any interpretation subscribing to
+        the irresistible nature of unbounded capitalism as if that were our immutable
+        destiny, even the conduit conveying the message of progress and emancipation,
+        whereas in fact it denotes the desertification of our worlds and our inability
+        to think that what we care about might have a future.... Speculative gestures,
+        plural by definition, have the truth of the relative, the truth of an always
+        situated. One does not decide to perform a speculative gesture, one risks it in
+        so far as one feels “bound” by a situation, bound to respond to virtualities
+        made perceptible only by the way in which one is bound. To feel bound and to
+        present oneself as such is the mark of minority thinking in a double sense: in
+        not dreaming of thinking on behalf of others and in not seeking to follow at
+        any price the postulates of one’s own inspiration. The situation which binds us
+        and makes us think is that which unsettles or enrages any majority thinking. —
+        Didier Debaise and Isabelle Stengers (2017) ‘The Insistence of Possibles:
+        Towards a Speculative Pragmatism’, Parse Journal, 7(Autumn): 18-19</p>
+
+    <p hidden>I think we were committed to the idea that study is what you do with
+        other people. It’s talking and walking around with other people, working, dancing,
+        suffering, some irreducible convergence of all three, held under the name of
+        speculative practice. The notion of a rehearsal – being in a kind of workshop,
+        playing in a band, in a jam session, or old men sitting on a porch, or people
+        working together in a factory – there are these various modes of activity. The
+        point of calling it ‘study’ is to mark that the incessant and irreversible
+        intellectuality of these activities was already there. These activities aren’t
+        ennobled by the fact that we now say, ‘oh, if you did these things in a certain
+        way, you could be said to be have been studying.’ To do these things is to be
+        involved in a kind of common intellectual practice. What’s important is to
+        recognize that that has been the case—because that recognition allows you to
+        access a whole, varied, alternative history of thought.—Fred Moten in Fred
+        Moten, Stefano Harney, Stevphen Shukaitis (2012) ‘Studying Through the
+        Undercommons: Stefano Harney & Fred Moten – interviewed by Stevphen
+        Shukaitis’, Classwar University, November 12</p>
+
+    <p hidden>... only the end of the world as we know it, I am convinced, can
+        dissolve cultural differences’ production of human collectives as “strangers” with fixed and irreconcilable
+        moral attributes. This requires that we release thinking
+        from the grip of certainty and embrace the imagination’s power to create with
+        unclear and confused, or uncertain impressions, which Kant (1724-1804)
+        postulated are inferior to what is produced by the formal tools of the
+        Understanding. A figuring of The World nourished by the imagination would
+        inspire us to rethink sociality without the abstract fixities produced by the
+        Understanding and the partial and total violence they authorize – against
+        humanity’s cultural (non-white/non-European) and physical (more-than-human)
+        “Others.”—Denise Ferreira Da Silva (2016) ‘On Difference without Separability’,
+        Catalogue of the 32nd Bienal De São Paulo: Incerteza Viva: 56-65 (59)</p>
+
+    <!--       <p >peripheral collectors toward fine tuned tendings, edgewise rotations, reeling rolling. nimble in ways a flaunting hollows, long billows alighten lofty, glooping bog gulping stodge, porous plobs un/in-folding, the widest spice, bouleversé.</p>
+      <p hidden>blistering, swollen, gliding, peripheral jitters, landing, liken here they roll and clump and bounce. speedy edge operators, flagrant oscillators, full ledge pendulous parsings. onieric trajectories, creatures lustfully cling to curves, screaching with laughter through latent surrounds</p>
+      <p hidden>tenuous agitations see an ecology of speeds, a processual rotunda, finding tinies in-between. an operative consistency holds a field in its spread. crispy green rhythmmachines, slow big and blowy, oozing fabulatory ontologies of vibrational force, no tax as yet grown on them.</p>
+    
+      <p>peripheral collectors toward fine tuned tendings, edgewise rotations, reeling rolling. nimble in ways a flaunting hollows, long billows alighten lofty, glooping bog gulping stodge, porous plobs un/in-folding, the widest spice, bouleversé.</p>
+      <p>blistering, swollen, gliding, peripheral jitters, landing, liken here they roll and clump and bounce. speedy edge operators, flagrant oscillators, full ledge pendulous parsings. onieric trajectories, creatures lustfully cling to curves, screaching with laughter through latent surrounds</p>
+      <p>tenuous agitations see an ecology of speeds, a processual rotunda, finding tinies in-between. an operative consistency holds a field in its spread. crispy green rhythmmachines, slow big and blowy, oozing fabulatory ontologies of vibrational force, no tax as yet grown on them.</p> -->
+</body>
+<script src="scripts/menu.js"></script>
+
+</html>
