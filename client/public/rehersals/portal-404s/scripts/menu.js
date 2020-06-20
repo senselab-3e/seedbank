@@ -1,6 +1,6 @@
 const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404'] // for each of these instances, a single pixel element will be created. 
 
-const linkVerse = ['eee.html', 'fishy.html', 'sss.html', 'aeo.html', 'kite.html', 'vvv.html', 'mmm.html', 'shsh.html', 'fff.html', 'uuu.html', 'lll.html', 'ozglob.html', 'mondayfiles.html']
+const linkVerse = ['eee.html', 'fishy.html', 'sss.html', 'aeo.html', 'kite.html', 'vvv.html', 'mmm.html', 'shsh.html', 'fff.html', 'uuu.html', 'lll.html', 'ozglob.html', 'zzz.html', 'mondayfiles.html']
 
 //note. there are 2 more gifs extra, with no paired link
 
