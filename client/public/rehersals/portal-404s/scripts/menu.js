@@ -1,6 +1,8 @@
 const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404'] // for each of these instances, a single pixel element will be created. 
 
+const linkVerse = ['aeo.html', 'eee.html', 'fff.html', 'fishy.html', 'kite.html', 'lll.html', 'mmm.html', 'shsh.html', 'sss.html', 'uuu.html', 'vvv.html', 'ozglob.html', 'mondayfiles.html']
 
+console.log(linkVerse.length, gifVerse.length)
 
 const createPixelPatch = () => {
     var pxlContainer = document.createElement('div');
@@ -19,20 +21,35 @@ const getRandomColor = () => {
 
 const createAnchorPixel = () => {
     const pixelContainer = document.querySelector('.pixelContainer');
+    var linkWrapper = document.createElement('a');
+    linkWrapper.href = '../02.html'
     var anchor = document.createElement('div');
     anchor.className = 'anchorPixel';
-    pixelContainer.appendChild(anchor)
+    linkWrapper.appendChild(anchor)
+    pixelContainer.appendChild(linkWrapper)
 }
 
 const createPixel = () => {
     const pixelContainer = document.querySelector('.pixelContainer'); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
+
+    var alink = document.createElement('a');
+    alink.className = 'menuLinks';
     var pixel = document.createElement('div');
     pixel.className = 'pixelPatch';
     pixel.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
-    pixelContainer.appendChild(pixel)
+    alink.appendChild(pixel);
+    pixelContainer.appendChild(alink);
+    //pixelContainer.appendChild(pixel)
     pixelContainer.style.left = Math.random(window.innerWidth) * (window.innerWidth / 4 * 3) + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * (window.innerHeight / 4) + 'px';
     //addListener(pixelContainer)
+}
+
+const addLinks = () => {
+    const linkList = document.querySelectorAll('.menuLinks');
+    for (let i = 0; i < linkList.length; i++) {
+        linkVerse[i] ? linkList[i].href = linkVerse[i] : console.log('nolinkforthispixel');
+    }
 }
 
 const revealPixelPortal = () => {
@@ -112,4 +129,5 @@ window.onload = () => {
     }
     nudgePixels()
     revealPixelPortal()
+    addLinks()
 }
