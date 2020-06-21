@@ -1,4 +1,4 @@
-const frogs = ['img/frog-3.png', 'img/frog-doublecri.png', 'img/frog-froggg.png', 'img/frog-frog3.png', 'img/frog-froggybouncy.png', 'img/frog-gggggoooo.png', 'img/frog-grog1.png', 'img/frog-ooogrog.png', 'img/frog-orangegrog.png', 'img/frog-popup.png', 'img/frog-spongeyfrog.png'];
+const frogs = ['img/frog-3.png', 'img/frog-doublecri.png', 'img/frog-froggg.png', 'img/frog-frog3.png', 'img/frog-froggybouncy.png', 'img/frog-gggggoooo.png', 'img/frog-ooogrog.png', 'img/frog-orangegrog.png', 'img/frog-spongeyfrog.png'];
 
 const gradientList = ['../gifverse/gradients/tumblr_pdtr7chsID1uzwgsuo1_400.gif',
     '../gifverse/gradients/tumblr_pduu51oGdY1uzwgsuo1_400.gif',
@@ -22,14 +22,16 @@ const positionGenerator = () => {
     return pos;
 };
 
+
 frogs.forEach(frog => {
-    console.log(frog)
+
     let frogbox = document.createElement('div');
     let position = positionGenerator();
     frogbox.className = 'grog';
     frogbox.style.backgroundImage = 'url(' + frog + ')';
-    frogbox.style.top = position.y
-    frogbox.style.left = position.x
+    frogbox.style.top = position.y;
+    frogbox.style.left = position.x;
+    frogbox.style.zindex = 1;
     document.body.appendChild(frogbox);
 });
 
@@ -40,8 +42,21 @@ const frogReposition = () => {
         var newCoor = positionGenerator();
         frog.style.top = newCoor.y
         frog.style.left = newCoor.x
+
     })
 }
+
+
+const anchorFrog = document.createElement('div');
+anchorFrog.className = 'grogStatic';
+
+
+anchorFrog.addEventListener('click', function () {
+    frogReposition()
+})
+document.body.appendChild(anchorFrog);
+
+
 
 // const galaxy = document.querySelector('.galaxy');
 
