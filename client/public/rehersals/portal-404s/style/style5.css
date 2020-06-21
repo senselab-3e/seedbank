@@ -1,0 +1,55 @@
+.c-rolodex {
+	position: absolute;
+	top: -70%;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	perspective: 500px;
+	transform-style: preserve-3d;
+	overflow: hidden;
+	/* background-color: #000; */
+}
+
+.c-rolodex__container {
+	position: absolute;
+	height: 60%;
+	display: flex;
+	align-items: center;
+	top: 0;
+	right: 0;
+	width: 50%;
+	perspective: 500px;
+	transform-style: preserve-3d;
+
+	&>* {
+		width: 340px;
+		position: absolute;
+		cursor: pointer;
+		transform-style: preserve-3d;
+		top: 50%;
+		margin-top: -120px;
+
+		&:after {
+			content: '';
+			display: block;
+			padding-bottom: 100%;
+			position: relative;
+			background: rgba(0, 0, 0, 0.5);
+		}
+	}
+}
+
+.c-rolodex__container>* {
+	width: 340px;
+	position: absolute;
+	cursor: pointer;
+	transform-style: preserve-3d;
+	top: 70%;
+	margin-top: -120px;
+}
+
+.bg-cover {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
