@@ -94,7 +94,7 @@ input[type=checkbox]:checked+label:before {
 
 .container-big {
   position: relative;
-  max-width: 900px;
+  max-width: 70%;
   margin: 0 auto;
   padding: 5%;
 }
