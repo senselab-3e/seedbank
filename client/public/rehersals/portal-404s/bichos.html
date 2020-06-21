@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <style>
+        #floatdiv {
+
+            width: 45%;
+            height: 90%;
+            margin-top: 2%;
+            margin-left: 4%;
+            position: absolute;
+
+
+
+        }
+
+        #floatdiv2 {
+
+            width: 43%;
+            height: 90%;
+            margin-top: 2%;
+            margin-left: 54%;
+            margin-right: 5%;
+            position: absolute;
+
+
+
+        }
+
+        p {
+
+
+            color: #fff;
+            font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 400;
+            line-height: 25px;
+
+        }
+
+        .noselect {
+            -webkit-user-select: none;
+        }
+    </style>
+    <link rel="stylesheet" href="style/global.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.min.js">
+
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" href="style/global.css" />
+</head>
+
+<body>
+
+    <section id="textOutput-content"></section>
+
+
+    <script type="text/javascript">
+        var centerX = 0.0,
+            centerY = 0.0;
+
+        var radius = 23,
+            rotAngle = -1;
+        var accelX = 0.0,
+            accelY = 0.0;
+        var deltaX = 0.0,
+            deltaY = 0.0;
+        var springing = 0.009,
+            damping = 0.9;
+
+        //corner nodes
+        var nodes = 37;
+
+        //zero fill arrays
+        var nodeStartX = [];
+        var nodeStartY = [];
+        var nodeX = [];
+        var nodeY = [];
+        var angle = [];
+        var frequency = [];
+
+        // soft-body dynamics
+        var organicConstant = 1.0;
+
+        function setup() {
+            let canvas = createCanvas(1200, 800);
+            / *background(255, 0, 0, 0.8); doesn't work : <*/
+
+            //center shape in window
+            centerX = width / 2;
+            centerY = height / 2;
+
+            canvas.class("lemon");
+
+            //initialize arrays to 0
+            for (var i = 0; i < nodes; i++) {
+                nodeStartX[i] = 0;
+                nodeStartY[i] = 0;
+                nodeY[i] = 0;
+                nodeY[i] = 0;
+                angle[i] = 0;
+            }
+
+            // iniitalize frequencies for corner nodes
+            for (var i = 0; i < nodes; i++) {
+                frequency[i] = random(5, 12);
+            }
+
+            noStroke();
+            frameRate(30);
+        }
+
+
+        function draw() {
+            background(55, 232, 192)
+            /* fade background */
+            fill(0, 0);
+            rect(0, 0, width, height);
+            for (var i = 0; i < 5; i++) {
+                drawSpikey(i * 4, i * 4, i * 0.01);
+                //drawWavy(i * 4, i * 4, i * 0.01);
+                drawBuzzy(i * -4, i * -4, i * 0.005);
+            }
+            moveShape();
+        }
+
+        function drawSpikey(offsetX, offsetY, rate) {
+            let spacer = 0
+            //  calculate node  starting locations
+            for (var i = 0; i < nodes; i++) {
+                /* spacer += i*0.002 */
+                nodeStartX[i] = centerX + cos(radians(rotAngle)) * radius;
+                nodeStartY[i] = centerY + sin(radians(rotAngle)) * radius;
+                rotAngle += 360.0 / nodes;
+            }
+            /* change to 220 */
+            // draw polygon
+            curveTightness(organicConstant);
+            fill(237, 34, 93);
+            beginShape();
+            let spacer2 = 0;
+            for (var i = 0; i < nodes; i++) {
+                spacer2 += i;
+                curveVertex((nodeX[i] + 0.4 * (100 * sin(nodeX[i] * (rate + PI / nodes))) + offsetX), (nodeY[floor(
+                    spacer2 /
+                    2)] + 0.4 * (100 * cos(nodeY[i] * (rate + PI / nodes))) + offsetY));
+                curveVertex(nodeX[i] + 0.4 * (sin(nodeX[i] * (rate + PI / nodes))) + offsetX, nodeY[floor(spacer2 /
+                        2)] + 0.4 *
+                    (cos(nodeY[i] * (rate + PI / nodes))) + offsetY);
+            }
+            endShape(CLOSE);
+
+        }
+
+        function drawWavy(offsetX, offsetY, rate) {
+
+            curveTightness(organicConstant);
+            fill(125, 34, 255);
+            //fill(193,4,237);
+            beginShape();
+            let spacer2 = 0;
+            for (var i = 0; i < nodes; i++) {
+                spacer2 += i;
+                curveVertex((nodeX[i] + offsetX + 0.4 * (100 * sin(nodeX[i] * (rate + PI / nodes)))) + (250 + 100 * abs(
+                    deltaX)) * sin(((frameCount % 120) * (accelX * 0.2) * PI / 240)), (nodeY[floor(spacer2 /
+                        2)] + offsetY +
+                    0.4 * (100 * cos(nodeY[i] * (rate + PI / nodes))) + (250 + 100 * abs(deltaY)) * cos(((
+                            frameCount % 120) *
+                        (accelY * 0.2) * PI / 240))));
+                //curveVertex(nodeX[i]+ 0.4*(sin(nodeX[i]*(rate+PI/nodes)))+offsetX, nodeY[floor(spacer2/2)]+ 0.4*(cos(nodeY[i]*(rate+PI/nodes)))+offsetY);
+            }
+            endShape(CLOSE);
+        }
+
+        function drawBuzzy(offsetX, offsetY, rate) {
+            curveTightness(organicConstant);
+            fill(283, 54, 197);
+            beginShape();
+            let spacer2 = 0;
+            for (var i = 0; i < floor(nodes / 2); i++) {
+                spacer2 += i * 2;
+                curveVertex((nodeX[i] + offsetX + 0.4 * (15 * sin(nodeX[i * 2] * (rate + PI / nodes)))) - (400 + 200 *
+                    abs(
+                        accelX * 0.2)) * sin(((frameCount % 360) * (PI / 360) + deltaX)), (nodeY[i * 2] +
+                    offsetY + 0.4 * (15 *
+                        cos(nodeY[i * 2] * (rate + PI / nodes))) - (100 + 200 * abs(accelY * 0.2)) * cos(((
+                        frameCount % 360) * (
+                        PI / 360) + deltaY))));
+                curveVertex((nodeX[i] + offsetX + 0.2 * (15 * sin(nodeX[i * 2] * (rate + PI / nodes)))) - (400 + 200 *
+                    abs(
+                        accelX * 0.2)) * sin(((frameCount % 180) * (PI / 360) + deltaX)), (nodeY[i * 2] +
+                    offsetY + 0.2 * (15 *
+                        cos(nodeY[i * 2] * (rate + PI / nodes))) - (100 + 200 * abs(accelY * 0.2)) * cos(((
+                        frameCount % 180) * (
+                        PI / 360) + deltaY))));
+
+            }
+            endShape(CLOSE);
+        }
+        //
+
+        function moveShape() {
+            //move center point
+            deltaX = (mouseX - centerX) * 0.5;
+            deltaY = (mouseY - centerY) * 0.5;
+
+            // create springing effect
+            deltaX *= springing;
+            deltaY *= springing;
+            accelX += deltaX;
+            accelY += deltaY;
+
+            // move predator's center
+            centerX += accelX;
+            centerY += accelY;
+
+            // slow down springing
+            accelX *= damping;
+            accelY *= damping;
+
+            // change curve tightness
+            organicConstant = 0.5 - ((abs(accelX) + abs(accelY)) * 0.1);
+
+            //move nodes
+            for (var i = 0; i < nodes; i++) {
+                nodeX[i] = nodeStartX[i] + sin(radians(angle[i])) * (accelX * 0.1); //originally a 2
+                nodeY[i] = nodeStartY[i] + sin(radians(angle[i])) * (accelY * 0.1); //originally a 2
+                angle[i] += frequency[i];
+            }
+        }
+    </script>
+
+
+
+    <div id="floatdiv" style="overflow:auto;">
+        <p class="noselect">
+        </p>
+    </div>
+
+
+
+</body>
+<script src="scripts/menu.js"></script>
+
+</html>

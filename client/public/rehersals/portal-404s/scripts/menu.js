@@ -1,6 +1,8 @@
-const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404'] // for each of these instances, a single pixel element will be created. 
+const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404', 'gifpinkwave', 'gifwave'] // for each of these instances, a single pixel element will be created. 
 
-const linkVerse = ['rrr.html', 'eee.html', 'fishy.html', 'sss.html', 'aeo.html', 'kite.html', 'vvv.html', 'mmm.html', 'shsh.html', 'fff.html', 'uuu.html', 'lll.html', 'ozglob.html', 'zzz.html', 'mondayfiles.html']
+const linkVerse = ['rrr.html', 'fishy.html', 'sss.html', 'fff.html', 'aeo.html', 'vvv.html', 'kite.html', 'mmm.html', 'llli.html', 'eee.html', 'uuu.html', 'shsh.html', 'zzz.html', 'jardin.html', 'mondayfiles.html', 'bichos.html', 'ozglob.html']
+
+console.log(gifVerse.length, linkVerse.length)
 
 //note. there are 2 more gifs extra, with no paired link
 
@@ -126,6 +128,7 @@ window.onload = () => {
     for (let i = 0; i < gifVerse.length; i++) {
         createPixel()
     }
+    createPixel()
     nudgePixels()
     revealPixelPortal()
     addLinks()

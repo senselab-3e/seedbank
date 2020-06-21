@@ -256,14 +256,14 @@ main>h3 {
     background-repeat: no-repeat;
 }
 
-/* 
+
 .gifpinkwave {
     width: inherit;
     height: inherit;
     background-image: url('../../gifverse/circleswvae.gif');
     background-size: 200px;
     background-repeat: no-repeat;
-} */
+}
 
 .giffold {
     width: inherit;
@@ -337,6 +337,15 @@ main>h3 {
     background-image: url('../../gifverse/tumblr_pdwnnbjho91uzwgsuo1_400.gif');
     background-size: 100px;
     background-repeat: no-repeat;
+}
+
+.gifwave {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/wave.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+
 }
 
 .staticSponge {
