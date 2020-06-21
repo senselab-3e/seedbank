@@ -11,12 +11,39 @@
             background-image: linear-gradient(#71c98a, #cca13d);
             -webkit-animation: colorScroll 20s infinite;
             animation: colorScroll 20s infinite;
-            margin: 5em;
+            margin-top: 5em;
         }
+
+        .container {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .swimmingFish {
+            top: -4em;
+
+            position: relative;
+            cursor: pointer;
+            height: 30vh;
+
+            -webkit-transition: top 0.5s;
+            -moz-transition: top 0.5s;
+            -ms-transition: top 0.5s;
+            -o-transition: top 0.5s;
+            transition: top 0.5s;
+            transition-timing-function: ease;
+            transition-timing-function: ease;
+            /* animation-iteration-count: infinite; */
+        }
+
+        .swimmingFish:hover {
+            top: -3em;
+        }
+
 
         .fishie {
             top: -4em;
-            left: -1em;
+
             position: absolute;
             cursor: pointer;
             height: 30vh;
@@ -84,19 +111,18 @@
 </head>
 
 <body>
-    <img class="fishie" src="img/fishy2.gif" />
-    <script type="text/javascript">
-        const fish = document.querySelector('.fishie');
-        const moveThingy = () => {
-            fish.classList.add("fishieswing")
-            setTimeout(function () {
-                fish.classList.remove('fishieswing');
-            }, 5000); // 1000 = 1s
-        }
-        fish.addEventListener('click', moveThingy);
-    </script>
+    <div class="container">
+        <img class="fishie" src="img/fishy2.gif" />
+        <img class="fishie" src="img/fish2.png" />
+        <img class="fishie" src="img/fish3.png" />
+        <img class="swimmingFish" src="img/fish4.png" />
+        <img class="swimmingFish" src="img/fish5.png" />
+    </div>
+
+
 
 </body>
 <script src="scripts/menu.js"></script>
+<script src="scripts/fishie.js"></script>
 
 </html>
