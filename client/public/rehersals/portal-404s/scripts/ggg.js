@@ -1,4 +1,4 @@
-const frogs = ['img/frog-3.png', 'img/frog-doublecri.png', 'img/frog-froggg.png', 'img/frog-frog3.png', 'img/frog-froggybouncy.png', 'img/frog-gggggoooo.png', 'img/frog-ooogrog.png', 'img/frog-orangegrog.png', 'img/frog-spongeyfrog.png'];
+const frogs = ['img/frog-3.png', 'img/frog-doublecri.png', 'img/frog-froggg.png', 'img/frog-frog3.png', 'img/frog-froggybouncy.png', 'img/frog-ooogrog.png', 'img/frog-orangegrog.png'];
 
 const gradientList = ['../gifverse/gradients/tumblr_pdtr7chsID1uzwgsuo1_400.gif',
     '../gifverse/gradients/tumblr_pduu51oGdY1uzwgsuo1_400.gif',
