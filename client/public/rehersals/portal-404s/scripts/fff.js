@@ -45,11 +45,11 @@ var array10 = ['img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky
 
 var array11 = ['img/plob12.gif', 'img/processual-operator-1b.gif', 'img/rainbow-triangles.gif', 'img/plob-catherder-2.gif', 'img/spong5.gif', 'img/picnic-7.gif', 'img/plob12.gif', 'img/plob12.gif', 'img/plob12.gif', 'img/patch-rainbow.gif']
 
-var array12 = ['img/smooth-card.gif', 'img/splash-card2.gif', 'img/splash-card.gif', 'img/tiny-card.gif', 'img/smooth-card.gif', 'img/splash-card2.gif', 'img/splash-card.gif', 'img/tiny-card.gif', 'img/smooth-card.gif', 'img/splash-card2.gif', 'img/splash-card.gif', 'img/tiny-card.gif', 'img/smooth-card.gif', 'img/splash-card2.gif', 'img/splash-card.gif', 'img/tiny-card.gif']
+var array12 = ['img/rollo-0.gif', 'img/rollo-0.gif', 'img/rollo-0.gif', 'img/rollo-0.gif', 'img/rollo-1.gif', 'img/rollo-1.gif', 'img/rollo-1.gif', 'img/rollo-1.gif', 'img/rollo-2.gif', 'img/rollo-2.gif', 'img/rollo-2.gif', 'img/rollo-2.gif', 'img/rollo-3.gif', 'img/rollo-3.gif', 'img/rollo-3.gif', 'img/rollo-3.gif', 'img/rollo-4.gif', 'img/rollo-4.gif', 'img/rollo-4.gif', 'img/rollo-4.gif', 'img/rollo-5.gif', 'img/rollo-5.gif', 'img/rollo-5.gif', 'img/rollo-5.gif', 'img/rollo-6.gif', 'img/rollo-6.gif', 'img/rollo-6.gif', 'img/rollo-6.gif', 'img/rollo-7.gif', 'img/rollo-7.gif', 'img/rollo-7.gif', 'img/rollo-8.gif', 'img/rollo-8.gif', 'img/rollo-8.gif', 'img/rollo-9.gif', 'img/rollo-9.gif', 'img/rollo-9.gif', 'img/rollo-10.gif', 'img/rollo-10.gif', 'img/rollo-10.gif', 'img/rollo-11.gif', 'img/rollo-11.gif', 'img/rollo-11.gif', 'img/rollo-12.gif', 'img/rollo-12.gif', 'img/rollo-12.gif']
 
+var array13 = ['img/rock7.png', 'img/purplerock.png', 'img/spongerock.png', 'img/rock8.png', 'img/rock5.png', 'img/rock5.png', 'img/posterpatch.png', 'img/posterpatch.png', 'img/posterpatch.png', 'img/bubblerock.png', 'img/bubblerock.png', 'img/bubblerock.png', 'img/posterpatch.png', 'img/posterpatch.png', 'img/spongerock.png', 'img/spongerock.png', 'img/purplerock.png', 'img/spongerock.png', 'img/rock8.png']
 
-
-
+var array14 = ['img/bound6-small.gif', 'img/bound6-small.gif', 'img/bound3-small.gif', 'img/bound4-small.gif', 'img/bound5-small.gif', 'img/bound10-small.gif', 'img/bound10-small.gif']
 
 function createthingy(array) {
 
@@ -76,7 +76,7 @@ function createthingy(array) {
     }
 }
 
-const arrayoptions = [array1, array2, array3, array4, array5, array6, array7, array8, array9, array10, array11, array12]
+const arrayoptions = [array1, array2, array3, array4, array5, array6, array7, array8, array9, array10, array11, array12, array13, array14]
 
 
 const insertarry = () => {
