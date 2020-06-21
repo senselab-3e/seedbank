@@ -78,6 +78,7 @@ body {
     background-image: url('../../gifverse/tumblr_pdwnnbjho91uzwgsuo1_400.gif');
     width: 100vw;
     height: 100vh;
+    background-size: 100%;
 }
 
 .glitch {

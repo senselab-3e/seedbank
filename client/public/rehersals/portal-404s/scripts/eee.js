@@ -1256,10 +1256,10 @@ var c = [{
 
 // const imagePick = ['./img/bbb-up.png', './img/ggg-up.png', './img/ssss-up.png', 'aaa.jpg']
 
-const imagePick = ['./img/bbb-up.jpg', './img/ggg-up.jpg', './img/ssss-up.jpg', './img/aaa-up.jpg', './img/europortal-up.jpg']
+const imagePick = ['./img/bbb-up.jpg', './img/ggg-up.jpg', './img/ssss-up.jpg', './img/aaa-up.jpg', './img/europortal-']
 
 const randomImage = (array) => {
-    å
+
     return imagePick[Math.floor(Math.random(array.length) * array.length)];
 }
 
