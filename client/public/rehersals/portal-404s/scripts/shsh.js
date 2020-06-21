@@ -54,7 +54,7 @@ const patchReposition = () => {
     })
 }
 
-setInterval(patchReposition, 1500);
+// setInterval(patchReposition, 1500);
 
 //NOTES: For setInterval - Pass a function, but don’t run it
 // Novice developers sometimes make a mistake by adding brackets () after the function:
