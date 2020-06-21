@@ -348,6 +348,23 @@ main>h3 {
 
 }
 
+.gifjoy {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/howto.gif');
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+.gifducky {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/duck.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+
+}
+
 .staticSponge {
     width: inherit;
     height: inherit;
