@@ -1,6 +1,6 @@
 const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404', 'gifpinkwave', 'gifwave', 'gifducky'] // for each of these instances, a single pixel element will be created. 
 
-const linkVerse = ['rrr.html', 'fishy.html', 'sss.html', 'fff.html', 'aeo.html', 'vvv.html', 'kite.html', 'mmm.html', 'llli.html', 'eee.html', 'uuu.html', 'shsh.html', 'zzz.html', 'jardin.html', 'mondayfiles.html', 'bichos.html', 'ozglob.html', 'joy.html'] //creature.html
+const linkVerse = ['portal-404s/rrr.html', 'portal-404s/fishy.html', 'portal-404s/sss.html', 'portal-404s/fff.html', 'portal-404s/aeo.html', 'portal-404s/vvv.html', 'portal-404s/kite.html', 'portal-404s/mmm.html', 'portal-404s/llli.html', 'portal-404s/eee.html', 'portal-404s/uuu.html', 'portal-404s/shsh.html', 'portal-404s/zzz.html', 'portal-404s/jardin.html', 'portal-404s/mondayfiles.html', 'portal-404s/bichos.html', 'portal-404s/ozglob.html', 'portal-404s/joy.html'] //creature.html
 
 console.log(gifVerse.length, linkVerse.length)
 
