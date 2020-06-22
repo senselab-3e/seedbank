@@ -348,6 +348,14 @@ main>h3 {
 
 }
 
+.gifCreature {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/lizard.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
 .gifjoy {
     width: inherit;
     height: inherit;
