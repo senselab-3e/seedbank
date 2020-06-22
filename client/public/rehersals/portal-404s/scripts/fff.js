@@ -37,19 +37,43 @@ var array6 = ['img/spongerock.png', 'img/spong4.gif', 'img/spong13.gif', 'img/sp
 
 var array7 = ['img/alligator.gif', 'img/cephskin.png', 'img/cephskin.png', 'img/cephskin.png', 'img/onpic.png', 'img/alligator.gif', 'img/cephskin.png', 'img/cephskin.png', 'img/missingfrog.gif', 'img/patch-card.gif', 'img/alligator.gif', 'img/alligator.gif']
 
-var array8 = ['img/pillows2.gif', 'img/pillows2.gif', 'img/pillows2.gif', 'img/processual-operator-1b.gif', 'img/picnic-7.gif', 'img/pillows2.gif', 'img/pillows2.gif', 'img/pillows2.gif', 'img/pillows2.gif', ]
+var array8 = ['img/posters.png', 'img/posters.png', 'img/posters.png', 'img/processual-operator-1b.gif', 'img/picnic-7.gif', 'img/posters.png', 'img/posters.png', 'img/posters.png', 'img/posters.png', 'img/posters.png', 'img/posters.png', 'img/posters.png', 'img/posters.png', 'img/posters.png', 'img/posters.png']
 
 var array9 = ['img/pinata-1.png', 'img/pinata-1.png', 'img/pinata-1.png', 'img/pinata-1.png', 'img/pinata-1.png', 'img/pinata-1.png', 'img/pinata-1.png', 'img/pingpong.gif', 'img/pinup.png', 'img/pinata-1.png', 'img/pinata-1.png', 'img/pinata-1.png', 'img/pinata-1.png']
 
-var array10 = ['img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/picnic-7.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/picnic-7.gif', 'img/picnic-7.gif', 'img/picnic-7.gif', 'img/picnic-7.gif', 'img/corlarock.png', 'img/corlarock.png']
+var array10 = ['img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif']
 
-var array11 = ['img/plob12.gif', 'img/processual-operator-1b.gif', 'img/rainbow-triangles.gif', 'img/plob-catherder-2.gif', 'img/spong5.gif', 'img/picnic-7.gif', 'img/plob12.gif', 'img/plob12.gif', 'img/plob12.gif', 'img/patch-rainbow.gif']
+var array11 = ['img/plob12.gif', 'img/processual-operator-1b.gif', 'img/rainbow-triangles.gif', 'img/plob-catherder-2.gif', 'img/spong5.gif', 'img/picnic-7.gif', 'img/plob12.gif', 'img/island-clay.png', 'img/plob12.gif', 'img/island.gif', 'img/island.gif', 'img/patch-rainbow.gif', 'img/tissue-shapes.gif']
 
 var array12 = ['img/rollo-0.gif', 'img/rollo-0.gif', 'img/rollo-0.gif', 'img/rollo-0.gif', 'img/rollo-1.gif', 'img/rollo-1.gif', 'img/rollo-1.gif', 'img/rollo-1.gif', 'img/rollo-2.gif', 'img/rollo-2.gif', 'img/rollo-2.gif', 'img/rollo-2.gif', 'img/rollo-3.gif', 'img/rollo-3.gif', 'img/rollo-3.gif', 'img/rollo-3.gif', 'img/rollo-4.gif', 'img/rollo-4.gif', 'img/rollo-4.gif', 'img/rollo-4.gif', 'img/rollo-5.gif', 'img/rollo-5.gif', 'img/rollo-5.gif', 'img/rollo-5.gif', 'img/rollo-6.gif', 'img/rollo-6.gif', 'img/rollo-6.gif', 'img/rollo-6.gif', 'img/rollo-7.gif', 'img/rollo-7.gif', 'img/rollo-7.gif', 'img/rollo-8.gif', 'img/rollo-8.gif', 'img/rollo-8.gif', 'img/rollo-9.gif', 'img/rollo-9.gif', 'img/rollo-9.gif', 'img/rollo-10.gif', 'img/rollo-10.gif', 'img/rollo-10.gif', 'img/rollo-11.gif', 'img/rollo-11.gif', 'img/rollo-11.gif', 'img/rollo-12.gif', 'img/rollo-12.gif', 'img/rollo-12.gif']
 
-var array13 = ['img/rock7.png', 'img/purplerock.png', 'img/spongerock.png', 'img/rock8.png', 'img/rock5.png', 'img/rock5.png', 'img/posterpatch.png', 'img/posterpatch.png', 'img/posterpatch.png', 'img/bubblerock.png', 'img/bubblerock.png', 'img/bubblerock.png', 'img/posterpatch.png', 'img/posterpatch.png', 'img/spongerock.png', 'img/spongerock.png', 'img/purplerock.png', 'img/spongerock.png', 'img/rock8.png']
+var array13 = ['img/purplerock.png', 'img/purplerock.png', 'img/purplerock.png', 'img/rock8.png', 'img/rock7.png', 'img/coral.gif', 'img/coral.gif', 'img/coral.gif', 'img/rock5.png', 'img/rock5.png', 'img/coral.gif', 'img/posterpatch.png', 'img/clay-rock.gif', 'img/posterpatch.png', 'img/bubblerock.png', 'img/bubblerock.png', 'img/clay-rock.gif', 'img/bubblerock.png', 'img/posterpatch.png', 'img/posterpatch.png', 'img/spongerock.png', 'img/coral.gif', 'img/spongerock.png', 'img/purplerock.png', 'img/spongerock.png', 'img/rock8.png']
 
-var array14 = ['img/bound6-small.gif', 'img/bound6-small.gif', 'img/bound3-small.gif', 'img/bound4-small.gif', 'img/bound5-small.gif', 'img/bound10-small.gif', 'img/bound10-small.gif']
+var array14 = ['img/bound6-small.gif', 'img/bound6-small.gif', 'img/bound3-small.gif', 'img/bound4-small.gif', 'img/bound5-small.gif', 'img/bound10-small.gif', 'img/bound10-small.gif', 'img/bound3-small.gif', 'img/bound11-small.gif', 'img/bound4-small.gif', 'img/bound13-small.gif', 'img/bound13-small.gif', 'img/bound4-small.gif']
+
+var array15 = ['img/bluespectrechairs.gif', 'img/bluespectrechairs.gif', 'img/bluespectrechairs.gif', 'img/plob-1.gif', 'img/bluespectrechairs.gif', 'img/bluespectrechairs.gif', 'img/chairupside.gif', 'img/chairupside.gif', 'img/pile.gif', 'img/plob-1.gif', 'img/pile.gif', 'img/bluespectrechairs.gif', 'img/chairupside.gif']
+
+var array16 = ['img/hangingbowl.gif', 'img/hangingbowl.gif', 'img/hangingbowl.gif', 'img/hangingbowl.gif', 'img/hangingbowlblue.gif', 'img/hangingbowlblue.gif', 'img/hangingbowlblue.gif', 'img/pinata-fingers.gif', 'img/pinata2.gif', 'img/metallic-creature.gif', 'img/pinata2.gif', 'img/pinata-creature.gif', 'img/pinata-creature.gif']
+
+var array17 = ['img/type-slide.gif', 'img/sop-finishline.gif', 'img/sop-finishline.gif', 'img/moss-patch.gif', 'img/vine.gif', 'img/plob-1.gif', 'img/vine.gif', 'img/moss-patch.gif', 'img/vine.gif', 'img/plob-1.gif', 'img/vine.gif'];
+
+var array18 = ['img/green-patch-thingies.gif', 'img/green-patch-thingies.gif', 'img/red-pipe.gif', 'img/yellow-couch-patch.gif', 'img/island-clay.png', 'img/rainbowpatch-2.gif', 'img/rocks.gif', 'img/rocks.gif', 'img/picnic-6-small.gif']
+
+var array19 = ['img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/stack3.gif', 'img/stack2.gif', 'img/stack1.gif', 'img/stack3.gif', 'img/stack2.gif', 'img/stack1.gif', 'img/pingpongpair.gif', 'img/pingpongpair.gif', 'img/one-fall.gif', 'img/wooden-bowl.gif', 'img/pingpongpair.gif', 'img/stack2.gif', 'img/pingpongpair.gif', 'img/stack3.gif', 'img/stack2.gif', 'img/stack2.gif', 'img/stack1.gif', 'img/stack1.gif', 'img/stack1.gif', 'img/pingpongpair.gif', 'img/stack1.gif'];
+
+var array20 = ['img/rockbag.gif', 'img/rockbag.gif', 'img/rockbag.gif', 'img/water-pillow.gif', 'img/water-pillow.gif', 'img/rockbag.gif', 'img/triangles.gif', 'img/purple-bowl.gif', 'img/triangles.gif', 'img/purple-bowl.gif', 'img/triangles.gif', 'img/purple-bowl.gif', 'img/rainbowpatch-2.gif', 'img/rainbowpatch-2.gif', 'img/triangles.gif', 'img/rockbag.gif'];
+
+var array21 = ['img/metallic-sheet.gif', 'img/moss-patch.gif', 'img/metallic-sheet.gif', 'img/purplepatch.png', 'img/pink-table.gif', 'img/pink-table.gif', 'img/pink-table.gif', 'img/moss-patch.gif', 'img/multi-patch.gif', 'img/moss-patch.gif', 'img/moss-patch.gif', 'img/pink-table.gif', 'img/purplepatch.png', 'img/multi-patch.gif', 'img/multi-patch.gif', 'img/multi-patch.gif', 'img/purplepatch.png', 'img/multi-patch.gif', 'img/pink-table.gif', 'img/multi-patch.gif', 'img/multi-patch.gif', 'img/multi-patch.gif'];
+
+var array22 = ['img/hangingthingy.png', 'img/hangingthingy.png', 'img/hangingthingy.png', 'img/hangingthingy.png', 'img/yellowchair.gif', 'img/chairpink.gif', 'img/yellowchair.gif', 'img/chairpink.gif', 'img/yellowchair.gif', 'img/agatha-cat.png', 'img/hangingthingy.png', 'img/bundle-orange.gif', 'img/agatha-cat.png', 'img/agatha-cat.png', 'img/agatha-cat.png', 'img/hangingthingy.png', 'img/hangingthingy.png', 'img/hangingthingy.png', 'img/chairpink.gif', 'img/yellowchair.gif', 'img/agatha-cat.png', 'img/hangingthingy.png', 'img/agatha-cat.png', 'img/bundle-orange.gif', 'img/agatha-cat.png', 'img/agatha-cat.png', 'img/agatha-cat.png']
+
+var array23 = ['img/tinyblue-chairnfriends.gif', 'img/pillow-chair.gif', 'img/tinyblue-chairnfriends.gif', 'img/pillow-chair.gif', 'img/tinyblue-chairnfriends.gif', 'img/pillow-chair.gif', 'img/tinyblue-chairnfriends.gif', 'img/pillow-chair.gif', 'img/tinyblue-chairnfriends.gif', 'img/pillow-chair.gif', 'img/mesh-creature.gif', 'img/mesh-creature.gif', 'img/three-fall.gif', 'img/flyswatterocto.gif', 'img/mesh-creature.gif', 'img/three-fall.gif', 'img/three-fall.gif', 'img/flyswatterocto.gif', 'img/three-fall.gif', 'img/flyswatterocto.gif', ]
+
+var array24 = ['img/beehat.gif', 'img/beehat.gif', 'img/flyswatter.gif', 'img/beehat.gif', 'img/brush.gif', 'img/flyswatter.gif', 'img/beehat.gif', 'img/flyswatter.gif', 'img/beehat.gif', 'img/beehat.gif', 'img/brush.gif', 'img/sharky.gif', 'img/beehat.gif', 'img/sharky.gif', 'img/beehat.gif', 'img/beehat.gif', 'img/grog-bowl.png', 'img/sharky.gif', 'img/sharky.gif', 'img/flyswatterocto.gif', 'img/grog-bowl.png', 'img/grog-bowl.png', 'img/flyswatterocto.gif', 'img/grog-bowl.png', 'img/grog-bowl.png', 'img/flyswatterocto.gif', 'img/grog-bowl.png', 'img/green-sharpener.gif', 'img/green-sharpener.gif', 'img/weird-balloon.gif', 'img/tinyoops.gif', 'img/weird-balloon.gif', 'img/tinyoops.gif', 'img/grog-bowl.png', 'img/tinyoops.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif']
+
+var array25 = ['img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/poolchair.gif', 'img/poolchair.gif', 'img/couch.gif', 'img/couch.gif', 'img/poolchair.gif', 'img/compost.png', 'img/compost.png', 'img/compost.png', 'img/compost.png']
+
+
 
 function createthingy(array) {
 
@@ -76,7 +100,7 @@ function createthingy(array) {
     }
 }
 
-const arrayoptions = [array1, array2, array3, array4, array5, array6, array7, array8, array9, array10, array11, array12, array13, array14]
+const arrayoptions = [array1, array2, array3, array4, array5, array6, array7, array8, array9, array10, array11, array12, array13, array14, array15, array17, array18, array19, array20, array21, array22, array23, array24, array25]
 
 
 const insertarry = () => {
