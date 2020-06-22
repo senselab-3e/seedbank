@@ -73,6 +73,7 @@ var array24 = ['img/beehat.gif', 'img/beehat.gif', 'img/flyswatter.gif', 'img/be
 
 var array25 = ['img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/couch.gif', 'img/poolchair.gif', 'img/poolchair.gif', 'img/couch.gif', 'img/couch.gif', 'img/poolchair.gif', 'img/compost.png', 'img/compost.png', 'img/compost.png', 'img/compost.png']
 
+var array26 = ['img/orange1.png', 'img/orange2.png', 'img/orange3.png', 'img/orange6.png', 'img/orange5.png', 'img/orange1.png', 'img/orange3.png', 'img/orange6.png', 'img/orange5.png', 'img/peel1.png', 'img/peel3.png', 'img/peel14.png', 'img/peel6.png', 'img/peel16.png', 'img/peel21.png', 'img/peel3.png', 'img/peel5.png', 'img/orange3.png', 'img/orange6.png', 'img/peel1.png', 'img/peel3.png', 'img/peel14.png', 'img/orange3.png', 'img/orange5.png', 'img/peel16.png', 'img/peel21.png']
 
 
 function createthingy(array) {
@@ -100,7 +101,7 @@ function createthingy(array) {
     }
 }
 
-const arrayoptions = [array1, array2, array3, array4, array5, array6, array7, array8, array9, array10, array11, array12, array13, array14, array15, array17, array18, array19, array20, array21, array22, array23, array24, array25]
+const arrayoptions = [array1, array2, array3, array4, array5, array6, array7, array8, array9, array10, array11, array12, array13, array14, array15, array17, array18, array19, array20, array21, array22, array23, array24, array25, array26]
 
 
 const insertarry = () => {
