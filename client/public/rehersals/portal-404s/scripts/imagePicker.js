@@ -2,14 +2,16 @@
 // const imgClasses = ['img1', 'img2', 'img3', 'img4', 'img5']; // for each of these instances, a single imgmenu element will be created. ;
 
 var imgMenuOptions = [
+    ["sss-2.gif", "sss-2b.gif", "sss-2c.gif"],
     ["aaa.jpg", "ssss.png"],
     ["bbb.png"],
     ["ggg.png", "fff.png"],
     ["hhh.png", "iii.png"],
     ["sss-5.gif"],
     ["sss-1.gif", "sss-1c.gif"],
-    ["sss-2.gif", "sss-2b.gif", "sss-2c.gif"],
+    ["sss-27.jpg"],
     ["sss-9.gif", "sss-9b.gif", "sss-9c.gif"],
+    ["sss-22b.jpg"],
     ["sss-10.jpg", "sss-10c.jpg"],
     ["sss-11.jpg", "sss-11c.jpg"],
     ["sss-12.jpg", "sss-12b.jpg"],
@@ -17,14 +19,12 @@ var imgMenuOptions = [
     ["sss-16.jpg", "sss-16c.jpg", "sss-16b.jpg"],
     ["sss-17.jpg", "sss-17b.jpg"],
     ["sss-18.jpg", "sss-18b.jpg"],
+    ["sss-29.jpg"],
     ["sss-20.jpg", "sss-20c.jpg", "sss-20b.jpg"],
-    ["sss-22b.jpg"],
     ["sss-23b.jpg", "sss-23d.jpg"],
     ["sss-24b.jpg"],
-    ["sss-25.jpg", "sss-25b.jpg", "sss-25c.jpg"],
-    ["sss-27.jpg"],
+    ["sss-25b.jpg", "sss-25c.jpg"],
     ["sss-28.jpg", "sss-28b.jpg"],
-    ["sss-29.jpg"],
     ["sss-30.jpg", "sss-30b.jpg"]
 
 
