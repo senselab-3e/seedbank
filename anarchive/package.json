@@ -40,6 +40,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pm2": "^4.4.0",
+    "react-three-fiber": "^4.2.10",
     "rsyncwrapper": "^3.0.1"
   },
   "devDependencies": {
