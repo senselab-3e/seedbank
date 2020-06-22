@@ -41,6 +41,7 @@ function Palette(className, textStatus, imageStatus) {
         this.imgRq === true ? this.imageContent(palette) : console.log('no image requested');
 
         palette.addEventListener("click", function (event) {
+            console.log('clicking')
             palette.classList.contains('paletteClick') ? palette.classList.remove('paletteClick') : palette.classList.add('paletteClick')
 
         })
@@ -213,6 +214,7 @@ const addPaletteListener = () => {
     const mainPalettes = [palette1, palette2];
     mainPalettes.forEach(palette => {
         palette.addEventListener('click', function (e) {
+            console.log('clicking')
             getClickPosition(e);
             creatSliderPalettes()
             // var newPalletes = new Palette('palette', true);

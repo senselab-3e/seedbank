@@ -23,7 +23,7 @@ const getRandomColor = () => {
 const createAnchorPixel = () => {
     const pixelContainer = document.querySelector('.pixelContainer');
     var linkWrapper = document.createElement('a');
-    linkWrapper.href = '../02.html'
+    linkWrapper.href = '../04.html'
     var anchor = document.createElement('div');
     anchor.className = 'anchorPixel';
     linkWrapper.appendChild(anchor)

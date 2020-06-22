@@ -4,8 +4,9 @@ var notes;
 
 
 //NOTE --- i'm citing an array of texts called cosmic digest, that is in another js file called cosmic digest. this is because potentially i want all that file information to be accessible to there sketch spaces. 
-const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gif404'] // for each of these instances, a single pixel element will be created. 
+const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404', 'gifpinkwave', 'gifwave', 'gifducky'] // for each of these instances, a single pixel element will be created. 
 const thingyVerse = ['staticSponge2', 'staticPingPong', 'staticBlueChair', 'staticPingPong', 'staticCompost', 'staticFishy', 'staticBlueBowl', 'staticSponge']
+const linkVerse = ['portal-404s/rrr.html', 'portal-404s/fishy.html', 'portal-404s/sss.html', 'portal-404s/fff.html', 'portal-404s/aeo.html', 'portal-404s/vvv.html', 'portal-404s/kite.html', 'portal-404s/mmm.html', 'portal-404s/llli.html', 'portal-404s/eee.html', 'portal-404s/uuu.html', 'portal-404s/shsh.html', 'portal-404s/zzz.html', 'portal-404s/jardin.html', 'portal-404s/mondayfiles.html', 'portal-404s/bichos.html', 'portal-404s/ozglob.html', 'portal-404s/joy.html'] //creature.html
 
 //NOTES: text content is being pulled from arrays in cosmicdigest.js
 const masterPixelColor = 'deeppink'
@@ -201,6 +202,7 @@ window.onload = () => {
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     nudgePixels() // Temporatily disabling to add hover effects to pixels instead
     revealPixelPortal() //roloover gifverse reveals
+    addLinks()
     addPaletteListener()
     notes = document.querySelector('.pseudoCode'); // this is a global reference
 }
@@ -232,6 +234,13 @@ const getRandomColor = () => {
     return color;
 }
 
+const addLinks = () => {
+    const linkList = document.querySelectorAll('.menuLinks');
+    for (let i = 0; i < linkList.length; i++) {
+        linkVerse[i] ? linkList[i].href = linkVerse[i] : linkVerse[i]; // checks if there is a valid index in the array of links in relation to the current index in the gifverses making up the pixel menu. if so, the a gets href. if not, nothing
+    }
+}
+
 
 const createAnchorPixel = () => {
     const pixelContainer = document.querySelector('.pixelContainer');
@@ -242,10 +251,16 @@ const createAnchorPixel = () => {
 
 const createPixel = () => {
     const pixelContainer = document.querySelector('.pixelContainer'); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
+    var alink = document.createElement('a');
+    alink.className = 'menuLinks';
+
+
     var patch = document.createElement('div');
     patch.className = 'pixelPatch';
     patch.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
-    pixelContainer.appendChild(patch)
+
+    alink.appendChild(patch);
+    pixelContainer.appendChild(alink)
     pixelContainer.style.left = Math.random(window.innerWidth) * (window.innerWidth / 4 * 3) + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * (window.innerHeight / 4 * 3) + 'px';
     //addListener(pixelContainer)
