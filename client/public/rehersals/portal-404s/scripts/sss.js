@@ -1,6 +1,6 @@
 //set up checks for device compatability and if not present, simply display the image as is
 
-var imgOptions = ["./img/sss-2.gif", "./img/sss-2b.gif", "./img/sss-2c.gif"]
+var imgOptions = ["./img/sss-2.jpg", "./img/sss-2b.jpg", "./img/sss-2c.jpg"]
 
 function chooseImg() {
     var image = imgOptions[Math.floor(Math.random() * imgOptions.length)];
