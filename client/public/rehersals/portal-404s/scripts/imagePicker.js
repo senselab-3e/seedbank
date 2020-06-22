@@ -15,16 +15,13 @@ var imgMenuSingles = [
     "hhh.png", "iii.png",
     "aaa.jpg"
 ]
-
 const trueOrFalse = () => {
     //i can bias the return by having the mathrandom compare to 0.5  ( a 50/50 split) ooorrr a 70/30 split for true with 0.7 etc etc
     return Math.random() < 0.7
 }
-
-
 const imageMenu = () => {
     const container = document.createElement('div');
-    container.className = "imgmenuContainer "
+    container.className = "imgmenuContainer"
 
     //i needed the index number to be passed to imgReplacement(i) so switched to a for loop over foreach
     for (let i = 0; i < imgClasses.length; i++) {

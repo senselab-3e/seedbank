@@ -57,7 +57,7 @@ var array16 = ['img/hangingbowl.gif', 'img/hangingbowl.gif', 'img/hangingbowl.gi
 
 var array17 = ['img/type-slide.gif', 'img/sop-finishline.gif', 'img/sop-finishline.gif', 'img/moss-patch.gif', 'img/vine.gif', 'img/plob-1.gif', 'img/vine.gif', 'img/moss-patch.gif', 'img/vine.gif', 'img/plob-1.gif', 'img/vine.gif'];
 
-var array18 = ['img/green-patch-thingies.gif', 'img/green-patch-thingies.gif', 'img/red-pipe.gif', 'img/yellow-couch-patch.gif', 'img/island-clay.png', 'img/rainbowpatch-2.gif', 'img/rocks.gif', 'img/rocks.gif', 'img/picnic-6-small.gif']
+var array18 = ['img/green-patch-thingies.gif', 'img/green-patch-thingies.gif', 'img/red-pipe.gif', 'img/yellow-couch-patch.gif', 'img/island-clay.png', 'img/rainbowpatch-2.gif', 'img/rocks.gif', 'img/rocks.gif', 'img/green-patch-thingies.gif', 'img/green-patch-thingies.gif', 'img/red-pipe.gif', 'img/rainbowpatch-2.gif', 'img/rainbowpatch-2.gif', 'img/rocks.gif', 'img/island-clay.png', 'img/island-clay.png']
 
 var array19 = ['img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/wooden-bowl.gif', 'img/stack3.gif', 'img/stack2.gif', 'img/stack1.gif', 'img/stack3.gif', 'img/stack2.gif', 'img/stack1.gif', 'img/pingpongpair.gif', 'img/pingpongpair.gif', 'img/one-fall.gif', 'img/wooden-bowl.gif', 'img/pingpongpair.gif', 'img/stack2.gif', 'img/pingpongpair.gif', 'img/stack3.gif', 'img/stack2.gif', 'img/stack2.gif', 'img/stack1.gif', 'img/stack1.gif', 'img/stack1.gif', 'img/pingpongpair.gif', 'img/stack1.gif'];
 
@@ -119,3 +119,44 @@ const reloadThingy = () => {
     main.remove()
     createthingy(arrayoptions[insertarry()])
 }
+
+
+//IMAGE MENU PICKER
+
+const getRandomColors = () => {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+
+
+const imageMenu = () => {
+    const container = document.createElement('div');
+    container.className = "imgmenuContainer"
+
+    //i needed the index number to be passed to imgReplacement(i) so switched to a for loop over foreach
+    for (let i = 0; i < arrayoptions.length; i++) {
+
+        let imgPixel = document.createElement('div');
+        imgPixel.className = "imgmenuPatch";
+        //imgPixel.classList.add(imgClasses[i])
+        imgPixel.style.background = getRandomColors();
+        imgPixel.style.left = 0;
+        imgPixel.style.top = 0;
+        imgPixel.addEventListener('click', function (event) {
+            main = document.querySelector('.main');
+            main.remove()
+            createthingy(arrayoptions[i])
+        })
+        container.appendChild(imgPixel)
+    }
+
+    const menuArea = document.querySelector('.menu')
+    menuArea.appendChild(container)
+}
+
+imageMenu()
