@@ -1,3 +1,4 @@
+//originally i was assigning an image to each button on ssshtml page but it slowed down the ability to add images to the whole system, by needing to me then to grab an image for each button to accompnay each large image, and create a classname siting that smaller button image. too many steps. 
 // const imgClasses = ['img1', 'img2', 'img3', 'img4', 'img5']; // for each of these instances, a single imgmenu element will be created. ;
 
 var imgMenuOptions = [
@@ -5,7 +6,8 @@ var imgMenuOptions = [
     ["ccc.png", "bbb.png"],
     ["ggg.png", "fff.png"],
     ["hhh.png", "iii.png"],
-    ["aaa.jpg"]
+    ["aaa.jpg"],
+    ["sss-1.gif", "sss-1c.gif"]
 ]
 
 // var imgMenuSingles = [
@@ -61,7 +63,7 @@ const imgReplacement = (index, clearImgs) => {
     //NOTE:specific image combo array pull 
     const newImgView = imgMenuOptions[index]
     newImgView.forEach(img => {
-        imgOptions.push('./' + img)
+        imgOptions.push('./img/' + img)
     })
 
     //NOTE: this pulls only a single image each time and 'may' scramble with others based on truthy or falsey value of clearImgs boolean, passed into this function
