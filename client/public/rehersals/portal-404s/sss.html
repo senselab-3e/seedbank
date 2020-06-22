@@ -20,7 +20,35 @@
         top: 0;
     } */
     body {
-        background-color: lightslategray;
+        -webkit-animation: colorScroll 100s infinite;
+        animation: colorScroll 100s infinite;
+    }
+
+
+    @keyframes colorScroll {
+        0% {
+            background-color: white;
+        }
+
+        30% {
+            background-color: lightskyblue;
+        }
+
+        45% {
+            background-color: rgb(155, 154, 248);
+        }
+
+        60% {
+            background-color: lightseagreen;
+        }
+
+        75% {
+            background-color: lightskyblue;
+        }
+
+        90% {
+            background-color: lightgreen;
+        }
     }
 
     p {
@@ -108,22 +136,22 @@
 </style>
 
 <body>
-    <div class="aura">
-        <main role="main" class="flex-shrink-0">
 
-            <div class="container">
-                <div class="menu"></div>
+    <main role="main" class="flex-shrink-0">
+
+        <div class="container">
+            <div class="menu"></div>
 
 
-                <br />
-                <div class="tileSlider">
-                    <p>Adjust tile size</p>
-                    <input type="range" min="25" max="200" step="5" id="inputWidth">
-                    <input type="range" min="25" max="200" step="5" id="inputHeight" class="hidden">
-                </div>
-                <div class='tileContainer img-fluid'></div>
+            <br />
+            <div class="tileSlider">
+                <p>Adjust tile size</p>
+                <input type="range" min="25" max="200" step="5" id="inputWidth">
+                <input type="range" min="25" max="200" step="5" id="inputHeight" class="hidden">
             </div>
-    </div>
+            <div class='tileContainer img-fluid'></div>
+        </div>
+
     </main>
     </div>
 </body>

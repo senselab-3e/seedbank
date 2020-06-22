@@ -23,15 +23,47 @@
 
     }
 
-    .imgmenuContainer {
+    .container {
         display: flex;
         flex-direction: row;
+    }
+
+    .menu {
+        position: absolute;
+
+        top: 1em;
+        left: 1em;
+        padding: 1em;
+    }
+
+    .thingyBt {
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        background-color: var(--entrypatch-color);
+        /* later, this color will be tied to the first color the user selected at the beginning*/
+        -webkit-transition: width 0.5s, height 0.5s;
+        -webkit-transition-timing-function: ease;
+        transition: width 0.5s, height 0.5s;
+        transition-timing-function: ease;
+    }
+
+    .thingyBt:hover,
+    .thingyBt:focus {
+        cursor: pointer;
+        width: 100px;
+        /* height: 100px; */
+        /* background-color: hsla(0, 0%, 100%, 0) */
+    }
+
+    button {
+        margin-bottom: 1em;
     }
 </style>
 
 <body>
-    <div class="menu"></div>
-    <button onclick="reloadThingy()">thingy surprise!</button>
+    <div class="menu">
+        <button onclick="reloadThingy()">thingy surprise!</button></div>
 </body>
 <script src="scripts/fff.js"></script>
 <script src="scripts/menu.js"></script>

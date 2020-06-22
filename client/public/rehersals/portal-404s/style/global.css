@@ -138,7 +138,7 @@ main>h3 {
 .imgmenuPatch:focus {
     cursor: pointer;
     width: 100px;
-    height: 100px;
+    /* height: 100px; */
     /* background-color: hsla(0, 0%, 100%, 0) */
 }
 

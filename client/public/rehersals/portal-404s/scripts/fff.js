@@ -43,7 +43,7 @@ var array9 = ['img/pinata-1.png', 'img/pinata-1.png', 'img/pinata-1.png', 'img/p
 
 var array10 = ['img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/sharky.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif', 'img/bluechair.gif']
 
-var array11 = ['img/plob12.gif', 'img/processual-operator-1b.gif', 'img/rainbow-triangles.gif', 'img/plob-catherder-2.gif', 'img/spong5.gif', 'img/picnic-7.gif', 'img/plob12.gif', 'img/island-clay.png', 'img/plob12.gif', 'img/island.gif', 'img/island.gif', 'img/patch-rainbow.gif', 'img/tissue-shapes.gif']
+var array11 = ['img/plob12.gif', 'img/processual-operator-1b.gif', 'img/rainbow-triangles.gif', 'img/plob-catherder-2.gif', 'img/spong5.gif', 'img/picnic-7.gif', 'img/plob12.gif', 'img/island-clay.png', 'img/plob12.gif', 'img/patch-rainbow.gif', 'img/island.gif', 'img/island.gif', 'img/patch-rainbow.gif', 'img/tissue-shapes.gif', 'img/tissue-shapes.gif', 'img/plob12.gif', 'img/tissue-shapes.gif', 'img/tissue-shapes.gif', 'img/spong5.gif']
 
 var array12 = ['img/rollo-0.gif', 'img/rollo-0.gif', 'img/rollo-0.gif', 'img/rollo-0.gif', 'img/rollo-1.gif', 'img/rollo-1.gif', 'img/rollo-1.gif', 'img/rollo-1.gif', 'img/rollo-2.gif', 'img/rollo-2.gif', 'img/rollo-2.gif', 'img/rollo-2.gif', 'img/rollo-3.gif', 'img/rollo-3.gif', 'img/rollo-3.gif', 'img/rollo-3.gif', 'img/rollo-4.gif', 'img/rollo-4.gif', 'img/rollo-4.gif', 'img/rollo-4.gif', 'img/rollo-5.gif', 'img/rollo-5.gif', 'img/rollo-5.gif', 'img/rollo-5.gif', 'img/rollo-6.gif', 'img/rollo-6.gif', 'img/rollo-6.gif', 'img/rollo-6.gif', 'img/rollo-7.gif', 'img/rollo-7.gif', 'img/rollo-7.gif', 'img/rollo-8.gif', 'img/rollo-8.gif', 'img/rollo-8.gif', 'img/rollo-9.gif', 'img/rollo-9.gif', 'img/rollo-9.gif', 'img/rollo-10.gif', 'img/rollo-10.gif', 'img/rollo-10.gif', 'img/rollo-11.gif', 'img/rollo-11.gif', 'img/rollo-11.gif', 'img/rollo-12.gif', 'img/rollo-12.gif', 'img/rollo-12.gif']
 
@@ -133,16 +133,15 @@ const getRandomColors = () => {
 }
 
 
-
 const imageMenu = () => {
     const container = document.createElement('div');
-    container.className = "imgmenuContainer"
+    container.className = "container"
 
     //i needed the index number to be passed to imgReplacement(i) so switched to a for loop over foreach
     for (let i = 0; i < arrayoptions.length; i++) {
 
         let imgPixel = document.createElement('div');
-        imgPixel.className = "imgmenuPatch";
+        imgPixel.className = "thingyBt";
         //imgPixel.classList.add(imgClasses[i])
         imgPixel.style.background = getRandomColors();
         imgPixel.style.left = 0;
