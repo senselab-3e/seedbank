@@ -251,14 +251,14 @@ const creatSliderPalettes = () => {
 
     const sliderContainer = document.querySelector('.sliderContainer');
     //this checks if the number of palettes being requested exceeds the number needed for text that needs placing within them.
-    if (sliderContainer.childElementCount < thingyVerse.length) {
-        var newPalletes = new Palette('palette', true, true);
-        newPalletes.createDiv();
-    } else {
-        console.log('all thingies have a slider')
-    }
-    // var newPalletes = new Palette('palette', true, true);
-    // newPalletes.createDiv();
+    // if (sliderContainer.childElementCount < thingyVerse.length) {
+    //     var newPalletes = new Palette('palette', true, true);
+    //     newPalletes.createDiv();
+    // } else {
+    //     console.log('all thingies have a slider')
+    // }
+    var newPalletes = new Palette('palette', true, true);
+    newPalletes.createDiv();
 }
 
 const createPixelPatch = () => {
