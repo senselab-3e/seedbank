@@ -77,13 +77,12 @@ function Palette(className, textStatus, imageStatus) {
     //     target.appendChild(textBox)
     // }
 
-
-
+    console.log(typeof emailThread[3])
 
     this.textContent = function (target) {
         let text = ''
         const currentPalNum = document.body.querySelectorAll('.palette').length
-        anarchivingPropositions[currentPalNum] ? text = anarchivingPropositions[currentPalNum] : text = text;
+        emailThread[currentPalNum] ? text = emailThread[currentPalNum] : text = text;
         var textBox = document.createElement('div');
         textBox.className = 'textBox'; //this isn't entirely needed but could be use to specificy text styling
         textBox.textContent = text
