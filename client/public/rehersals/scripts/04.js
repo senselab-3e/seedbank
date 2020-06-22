@@ -4,8 +4,9 @@ var notes;
 
 
 //NOTE --- i'm citing an array of texts called cosmic digest, that is in another js file called cosmic digest. this is because potentially i want all that file information to be accessible to there sketch spaces. 
-//const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifpinkwave', 'gifshadows', 'gifgradient', 'gifsplat', 'gifumbrella', 'staticSponge2', 'staticPingPong', 'staticBlueChair', 'staticPingPong', 'staticCompost', 'staticFishy', 'staticBlueBowl', 'staticSponge'] // for each of these instances, a single pixel element will be created. 
+const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404', 'gifpinkwave', 'gifwave', 'gifducky'] // for each of these instances, a single pixel element will be created. 
 const thingyVerse = ['staticSponge2', 'staticPingPong', 'staticBlueChair', 'staticPingPong', 'staticCompost', 'staticFishy', 'staticBlueBowl', 'staticSponge'] // for each of these instances, a single pixel element will be created. 
+const linkVerse = ['portal-404s/rrr.html', 'portal-404s/fishy.html', 'portal-404s/sss.html', 'portal-404s/fff.html', 'portal-404s/aeo.html', 'portal-404s/vvv.html', 'portal-404s/kite.html', 'portal-404s/mmm.html', 'portal-404s/llli.html', 'portal-404s/eee.html', 'portal-404s/uuu.html', 'portal-404s/shsh.html', 'portal-404s/zzz.html', 'portal-404s/jardin.html', 'portal-404s/mondayfiles.html', 'portal-404s/bichos.html', 'portal-404s/ozglob.html', 'portal-404s/joy.html'] //creature.html
 
 
 const paletteTexts = ['When you ask DD, what kind of psychology this can be/come, this seems really key. What is a psychology without interiority? What is a psychology that is curious about the conditions of existence as they morph? What is a psychology that can move at the pace of a world making and remaking itself? For those of us familiar with Guattari, we would say “schizoanalysis” - the practice of activating techniques for the living-out (rather than the living-in) of experience.', 'oiajdsfojasdofoasdfo', 'oaisdfonaosdfnasdf', 'idafsojoadisjf']
@@ -41,7 +42,6 @@ function Palette(className, textStatus, imageStatus) {
         this.imgRq === true ? this.imageContent(palette) : console.log('no image requested');
 
         palette.addEventListener("click", function (event) {
-            console.log('clicking')
             palette.classList.contains('paletteClick') ? palette.classList.remove('paletteClick') : palette.classList.add('paletteClick')
 
         })
@@ -171,20 +171,22 @@ const retreiveColor = (el) => {
 //         newNum - 5 < 1 ? pixelContainer.style.setProperty('left', window.innerWidth - 15 + 'px') : pixelContainer.style.setProperty('left', newNum - 15 + 'px');
 //     })
 // }
-// const revealPixelPortal = () => {
-//     //const pixelContainer = document.querySelector('.pixelContainer');
-//     const pixelPortal = document.querySelectorAll('.pixelPatch'); // this number should be the same as the number of gifVerse
-//     for (let m = 0; m < pixelPortal.length; m++) { // the last pixel has no accompanying class on rollover - it's purely there for the nudge
-//         pixelPortal[m].addEventListener("mouseover", function (event) {
-//             this.classList.add(thingyVerse[m]);
-//             this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
-//         });
-//         pixelPortal[m].addEventListener("mouseout", function (event) {
-//             this.classList.remove(thingyVerse[m]);
-//             this.style.setProperty('background', getRandomColor());
-//         })
-//     }
-// }
+const revealPixelPortal = () => {
+    //const pixelContainer = document.querySelector('.pixelContainer');
+    const pixelPortal = document.querySelectorAll('.pixelPatch'); // this number should be the same as the number of gifVerse
+    //remember that i changed the iteration to start at 1, instead of 0, to exclude the first pixel from changing color or having a gif on it, because  i want the first pixel to remain consistently a pinkestpink anchor'
+    for (let m = 0; m < pixelPortal.length - 1; m++) { // the last pixel has no accompanying class on rollover - it's purely there for the nudge
+
+        pixelPortal[m].addEventListener("mouseover", function (event) {
+            this.classList.add(gifVerse[m]);
+            this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
+        });
+        pixelPortal[m].addEventListener("mouseout", function (event) {
+            this.classList.remove(gifVerse[m]);
+            this.style.setProperty('background', getRandomColor());
+        })
+    }
+}
 
 
 
@@ -214,7 +216,6 @@ const addPaletteListener = () => {
     const mainPalettes = [palette1, palette2];
     mainPalettes.forEach(palette => {
         palette.addEventListener('click', function (e) {
-            console.log('clicking')
             getClickPosition(e);
             creatSliderPalettes()
             // var newPalletes = new Palette('palette', true);
@@ -227,25 +228,26 @@ const addPaletteListener = () => {
 //i can still game the system to allow for the nudging effect by having the first and last pixel be elimated from gifverse loop so that they are just pink and indexable by the length of the element list
 
 window.onload = () => {
-    //createPixelPatch() //container for pixels
+    createPixelPatch() //container for pixels
     //this will be a dummy first pixel, purely for the nudgepixel function - which works when the first and last pixel is hit on a rollover
     // createPixel()
-    // for (let i = 0; i < thingyVerse.length - 1; i++) {
-    //     createPixel()
-    // }
+    for (let i = 0; i < gifVerse.length - 1; i++) {
+        createPixel()
+    }
     // createPixel()
     colorPicker() //initializizes color picker - which changes coloring of palette 1 and pixel 2
     //nudgePixels() // Temporatily disabling to add hover effects to pixels instead
-    //revealPixelPortal()
+    revealPixelPortal()
     addPaletteListener()
+    addLinks()
     notes = document.querySelector('.pseudoCode'); // this is a global reference
 
-    const numVerses = []
+    // const numVerses = []
 
-    for (const key in gifVerseObj) {
-        numVerses.push(key)
-        //console.log(gifVerseObj[key].className)
-    }
+    // for (const key in gifVerseObj) {
+    //     numVerses.push(key)
+    //     //console.log(gifVerseObj[key].className)
+    // }
     //console.log(numVerses.length)
 }
 
@@ -263,39 +265,47 @@ const creatSliderPalettes = () => {
     newPalletes.createDiv();
 }
 
-// const createPixelPatch = () => {
-//     var pxlContainer = document.createElement('div');
-//     pxlContainer.className = 'pixelContainer';
-//     document.body.appendChild(pxlContainer);
-// }
+const createPixelPatch = () => {
+    var pxlContainer = document.createElement('div');
+    pxlContainer.className = 'pixelContainer';
+    document.body.appendChild(pxlContainer);
+}
 
-// const getRandomColor = () => {
-//     var letters = '0123456789ABCDEF';
-//     var color = '#';
-//     for (var i = 0; i < 6; i++) {
-//         color += letters[Math.floor(Math.random() * 16)];
-//     }
-//     return color;
-// }
+const addLinks = () => {
+    const linkList = document.querySelectorAll('.menuLinks');
+    for (let i = 0; i < linkList.length; i++) {
+        linkVerse[i] ? linkList[i].href = linkVerse[i] : linkVerse[i]; // checks if there is a valid index in the array of links in relation to the current index in the gifverses making up the pixel menu. if so, the a gets href. if not, nothing
+    }
+}
+
+const getRandomColor = () => {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
 const oranges = ['orange1', 'orange2', 'orange3', 'orange4'];
 
 
-// const createPixel = () => {
-//     const bodySpace = document.querySelector('body');
-//     //const pixelContainer = document.querySelector('.pixelContainer'); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
-//     var patch = document.createElement('div');
-//     patch.className = 'pixelPatch';
-//     //patch.classList.add(oranges[Math.floor(Math.random() * oranges.length - 1)])
-//     patch.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
-//     //pixelContainer.appendChild(patch)
-//     //pixelContainer.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
-//     //pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
-//     //addListener(pixelContainer)
-//     patch.style.left = Math.random(window.innerWidth) * window.innerWidth + 'px';
-//     patch.style.top = Math.random(window.innerHeight) * window.innerHeight - 15 + 'px';
-//     bodySpace.append(patch);
-// }
+const createPixel = () => {
+    const pixelContainer = document.querySelector('.pixelContainer'); // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
+    var alink = document.createElement('a');
+    alink.className = 'menuLinks';
+
+
+    var patch = document.createElement('div');
+    patch.className = 'pixelPatch';
+    patch.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
+
+    alink.appendChild(patch);
+    pixelContainer.appendChild(alink)
+    pixelContainer.style.left = Math.random(window.innerWidth) * (window.innerWidth / 4 * 3) + 'px';
+    pixelContainer.style.top = Math.random(window.innerHeight) * (window.innerHeight / 4 * 3) + 'px';
+    //addListener(pixelContainer)
+}
 
 const replaceClassName = () => {
     notes.classList.contains('hide') ? notes.classList.remove('hide') : notes.classList.add('hide');
