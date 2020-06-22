@@ -66,8 +66,24 @@ function Palette(className, textStatus, imageStatus) {
     // }
     //     }
 
+
+    // this.textContent = function (target) {
+    //     let text = ''
+    //     const currentPalNum = document.body.querySelectorAll('.palette').length
+    //     anarchivingPropositions[currentPalNum] ? text = anarchivingPropositions[currentPalNum] : text = text;
+    //     var textBox = document.createElement('div');
+    //     textBox.className = 'textBox';
+    //     textBox.textContent = text
+    //     target.appendChild(textBox)
+    // }
+
+
+
+
     this.textContent = function (target) {
-        const text = poptechitecture[Math.floor(Math.random() * poptechitecture.length)]
+        let text = ''
+        const currentPalNum = document.body.querySelectorAll('.palette').length
+        anarchivingPropositions[currentPalNum] ? text = anarchivingPropositions[currentPalNum] : text = text;
         var textBox = document.createElement('div');
         textBox.className = 'textBox'; //this isn't entirely needed but could be use to specificy text styling
         textBox.textContent = text

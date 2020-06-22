@@ -7,7 +7,6 @@ const anarchivingPropositions = ['_anarchival composting_: what emerges in the m
 
 // NOTE the exact syntax for the image key , particularly the " '  ' " that is how you need it for the css. 
 
-
 //const gifVerse ='gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'staticSponge', 'staticSponge2', 'staticPingPong'] // for each of these instances, a single pixel element will be created. 
 
 const gifVerseObj = {
