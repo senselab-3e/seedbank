@@ -356,6 +356,22 @@ main>h3 {
     background-repeat: no-repeat;
 }
 
+.gifOz {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/pingpongroll.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.gifPot {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/pinkreflect.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
 .gifjoy {
     width: inherit;
     height: inherit;
