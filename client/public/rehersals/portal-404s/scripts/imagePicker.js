@@ -28,6 +28,7 @@ var imgMenuOptions = [
     ["sss-28.jpg", "sss-28b.jpg"],
     ["sss-30.jpg", "sss-30b.jpg"],
     ["sss-3.jpg"],
+    ["compost.jpg"]
 
 
 ]

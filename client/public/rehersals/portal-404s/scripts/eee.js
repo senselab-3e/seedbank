@@ -1256,7 +1256,7 @@ var c = [{
 
 // const imagePick = ['./img/bbb-up.png', './img/ggg-up.png', './img/ssss-up.png', 'aaa.jpg']
 
-const imagePick = ['./img/bbb-up.jpg', './img/ggg-up.jpg', './img/ssss-up.jpg', './img/aaa-up.jpg', './img/hhh.png', './img/sss-12.jpg', './img/sss-30-up.jpg', './img/sss-7.jpg', './img/sss-6.jpg', './img/sss-4b.jpg', './img/sss-3-up.jpg', './img/sss-8.jpg', './img/sss-27-up.jpg', "./img/sss-29.jpg"]
+const imagePick = ['./img/bbb-up.jpg', './img/ggg-up.jpg', './img/ssss-up.jpg', './img/aaa-up.jpg', './img/hhh.png', './img/sss-12.jpg', './img/sss-30-up.jpg', './img/sss-7.jpg', './img/sss-6.jpg', './img/sss-4b.jpg', './img/sss-3-up.jpg', './img/sss-8.jpg', './img/sss-27-up.jpg', "./img/sss-29.jpg", "./img/eyes.jpg", ".img/compost.jpg", ".img/compost-2.jpg"]
 
 const randomImage = (array) => {
 

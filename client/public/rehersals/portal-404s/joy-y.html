@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/global.css" />
+</head>
+<style>
+    body {
+        -webkit-animation: colorScroll 100s infinite;
+        animation: colorScroll 100s infinite;
+    }
+
+    .joy {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 2em;
+    }
+
+    .gifSizing {
+        width: 200px;
+    }
+
+    @keyframes colorScroll {
+        0% {
+            background-color: white;
+        }
+
+        30% {
+            background-color: var(--entrypatch-color);
+        }
+
+        45% {
+            background-color: lightgoldenrodyellow;
+        }
+
+        60% {
+            background-color: lightseagreen;
+        }
+
+        75% {
+            background-color: lightskyblue;
+        }
+
+        90% {
+            background-color: lightgreen;
+        }
+    }
+</style>
+
+<body>
+    <div class="joy">
+        <a href="joy.html">
+            <img src="../gifverse/slack-3.png">
+            <img src="../gifverse/slack-4.png">
+            <img src="../gifverse/slack-7.png">
+            <img src="../gifverse/slack-8.png">
+            <img src="../gifverse/slack-9.jpg">
+            <img src="../gifverse/slack-14.jpg">
+            <img src="../gifverse/slack-15.png">
+            <img src="../gifverse/slack-12.png">
+        </a>
+    </div>
+    <div class="joy">
+        <a href="joy.html">
+            <img class='gifSizing' src="../gifverse/ducky4.gif">
+            <img class='gifSizing' src="../gifverse/elephant1.gif">
+            <img class='gifSizing' src="../gifverse/orca.gif">
+            <img class='gifSizing' src="../gifverse/capybara6.gif">
+            <img class='gifSizing' src="../gifverse/sea1.gif">
+            <img class='gifSizing' src="../gifverse/octopus4.gif">
+        </a>
+    </div>
+    <div class="joy">
+        <a href="joyy.html">
+            <img src="../gifverse/howto.gif">
+        </a>
+    </div>
+
+</body>
+<script src="scripts/menu.js"></script>
+
+</html>

@@ -367,8 +367,16 @@ main>h3 {
 .gifPot {
     width: inherit;
     height: inherit;
-    background-image: url('../../gifverse/pinkreflect.gif');
+    background-image: url('../../gifverse/pinata2.gif');
     background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.gifPlob {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/plob.gif');
+    background-size: 200px;
     background-repeat: no-repeat;
 }
 
