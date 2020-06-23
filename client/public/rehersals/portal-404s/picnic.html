@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/global.css" />
+</head>
+<style>
+    body {
+        -webkit-animation: colorScroll 100s infinite;
+        animation: colorScroll 100s infinite;
+    }
+
+    .joy {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2em;
+    }
+
+    .imgSize {
+        width: 500px;
+    }
+
+    @keyframes colorScroll {
+        0% {
+            background-color: white;
+        }
+
+        30% {
+            background-color: orangered;
+        }
+
+        45% {
+            background-color: burlywood;
+        }
+
+        60% {
+            background-color: mediumslateblue;
+        }
+
+        75% {
+            background-color: lightskyblue;
+        }
+
+        90% {
+            background-color: burlywood
+        }
+    }
+</style>
+
+<body>
+    <div class="joy">
+        <img class="imgSize" src="img/patch4.jpg">
+        <p>picnic quality</p>
+        <img class="imgSize" src="img/patch1.jpg">
+        <p>patches quality</p>
+        <img class="imgSize" src="img/patch2.jpg">
+        <p>picnic with stackin'</p>
+        <img class="imgSize" src="img/patch5.jpg">
+        <p>picnic in bundle</p>
+
+    </div>
+
+</body>
+<script src="scripts/menu.js"></script>
+
+</html>

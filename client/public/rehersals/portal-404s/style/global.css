@@ -372,11 +372,20 @@ main>h3 {
     background-repeat: no-repeat;
 }
 
+.gifOrange {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/gradients/tumblr_pduu51oGdY1uzwgsuo1_400.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+
+}
+
 .gifPlob {
     width: inherit;
     height: inherit;
     background-image: url('../../gifverse/plob.gif');
-    background-size: 200px;
+    background-size: 100px;
     background-repeat: no-repeat;
 }
 

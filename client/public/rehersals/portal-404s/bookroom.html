@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/global.css" />
+</head>
+<style>
+    body {
+        -webkit-animation: colorScroll 100s infinite;
+        animation: colorScroll 100s infinite;
+    }
+
+    .joy {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 2em;
+    }
+
+
+    .spacer {
+        height: 20em;
+        width: 100%;
+    }
+
+
+    .flexAlignRight {
+
+        display: flex;
+        flex-direction: row;
+        flex-direction: row-reverse;
+    }
+
+    @keyframes colorScroll {
+        0% {
+            background-color: white;
+        }
+
+        30% {
+            background-color: orangered;
+        }
+
+        45% {
+            background-color: orange;
+        }
+
+        60% {
+            background-color: lightseagreen;
+        }
+
+        75% {
+            background-color: lightskyblue;
+        }
+
+        90% {
+            background-color: lightgreen;
+        }
+    }
+</style>
+
+<body>
+
+
+    <div class="joy">
+        <img src="img/bookroom.jpg">
+    </div>
+    <div class="flexAlignRight">
+        <img src="img/bookroom3.jpg">
+    </div>
+    <div>
+        <img src="img/bookroom2.jpg">
+    </div>
+    <div class="flexAlignRight">
+        <img src="img/bookroom5.jpg">
+    </div>
+    <div>
+        <img src="img/bookroom6.jpg">
+    </div>
+    <div class="flexAlignRight">
+        <img src="img/bookroom4.jpg">
+    </div>
+    <div>
+        <img src="img/bookroom8.jpg">
+    </div>
+    <div class="spacer"></div>
+    <div class="joy">
+        <img src="img/bookroom7.jpg">
+    </div>
+    <div class="spacer"></div>
+    <div class="flexAlignRight">
+        <img src="img/bookroom10.jpg">
+    </div>
+</body>
+<script src="scripts/menu.js"></script>
+
+</html>
