@@ -1,4 +1,18 @@
-html, body, div, span, p, a, del, em, img, ol, ul, li, fieldset, form, label {
+html,
+body,
+div,
+span,
+p,
+a,
+del,
+em,
+img,
+ol,
+ul,
+li,
+fieldset,
+form,
+label {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -7,133 +21,151 @@ html, body, div, span, p, a, del, em, img, ol, ul, li, fieldset, form, label {
 	vertical-align: baseline;
 }
 
-a:link{
-	color:#22b6cc;
-	
-	text-decoration:none;
+a:link {
+	color: #22b6cc;
+
+	text-decoration: none;
 }
 
 a:visited {
-color:#999;
-text-decoration:none;
+	color: #999;
+	text-decoration: none;
 }
 
-a:hover, a:active {
-    color:#22b6cc;
-}
-		
-		
-#easing4 a:link{
-	color:#666;
-	
-	text-decoration:none;
+a:hover,
+a:active {
+	color: #22b6cc;
 }
 
-#easing4 a:hover, a:active {
-    color:#22b6cc;
-}
-			
 
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+#easing4 a:link {
+	color: #666;
+
+	text-decoration: none;
+}
+
+#easing4 a:hover,
+a:active {
+	color: #22b6cc;
+}
+
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
 
-html, body {
+html,
+body {
 	line-height: 1;
-	min-height:100%;
-	
-	font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+	min-height: 100%;
+
+	font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
 }
 
 body {
-	
+
 	background: -webkit-linear-gradient(top, #FFF, #FFF 100%);
 	background: -moz-linear-gradient(top, #FFF, #FFF 100%);
 	background: -o-linear-gradient(top, #FFF, #FFF 100%);
 	background: -ms-linear-gradient(top, #FFF, #cccccc 100%);
 	background: linear-gradient(top, #FFF, #FFF 100%);
-	background-attachment:fixed;
-	font-weight:normal;
+	background-attachment: fixed;
+	font-weight: normal;
 }
 
-ol, ul {
+ol,
+ul {
 	list-style: none;
 }
 
-.style1 {color: #CCCCCC}
-.style2 {color: #000000}
+.style1 {
+	color: #CCCCCC
+}
+
+.style2 {
+	color: #000000
+}
 
 
 p {
-	margin:1em;
-	line-height:1.9em;
+	margin: 1em;
+	line-height: 1.9em;
 	font-size: 19px;
-	font-weight:lighter;
-	color:#5B5B5B;
-	opacity:1.0;
-	font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+	font-weight: lighter;
+	color: #5B5B5B;
+	opacity: 1.0;
+	font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
 }
 
 .red {
-	font-size:10px;
-	color:#CCC;
-	opacity:0;
+	font-size: 10px;
+	color: #CCC;
+	opacity: 0;
 }
 
 .p2 {
-	margin:1em;
-	line-height:1.9em;
-	font-size:1.4em 16px;
-	font-weight:normal;
-	color:#666666;
+	margin: 1em;
+	line-height: 1.9em;
+	font-size: 1.4em 16px;
+	font-weight: normal;
+	color: #666666;
 }
 
-#topmenulevel{
-position:fixed;
-z-index:140;
-top:0em;
-width:100%;
+#topmenulevel {
+	position: fixed;
+	z-index: 140;
+	top: 0em;
+	width: 100%;
 
 
 }
 
 #topmenu {
-	position:fixed;
+	position: fixed;
 	top: 0em;
-	z-index:120;
-	background:#09C;
-	width:100%;
+	z-index: 120;
+	background: #09C;
+	width: 100%;
 	opacity: 0.8;
-	
+
 }
 
 #rightpadding {
-padding: 16px 22px 8px 12px;
-display:block;
+	padding: 16px 22px 8px 12px;
+	display: block;
 }
 
 #rightmenu {
-position:fixed;
-top:8%;
-z-index:121;
-/*background-color:#CCCCCC;*/
-height:100%;
-text-align:right;
-right:0;
-vertical-align:top;
+	position: fixed;
+	top: 8%;
+	z-index: 121;
+	/*background-color:#CCCCCC;*/
+	height: 100%;
+	text-align: right;
+	right: 0;
+	vertical-align: top;
 
 }
 
 #nav {
-    overflow: hidden;
-        
-    height: 20px; 
-	right:0;
-	text-align:right;
-	position:fixed;
-	top:0em 0;
-	
+	overflow: hidden;
+
+	height: 20px;
+	right: 0;
+	text-align: right;
+	position: fixed;
+	top: 0em 0;
+
 }
 
 
@@ -145,13 +177,13 @@ vertical-align:top;
 #about {
 	position: absolute;
 	top: 25px;
-	}
-	
+}
+
 #n1 {
 	position: absolute;
 	top: 5900px;
-	}
-	
+}
+
 #n2 {
 	position: absolute;
 	top: 7800px;
@@ -211,7 +243,7 @@ vertical-align:top;
 	position: absolute;
 	top: 30700px;
 }
-	
+
 #t2 {
 	position: absolute;
 	top: 35200px;
@@ -223,150 +255,157 @@ vertical-align:top;
 	top: 38800px;
 }
 
-#properties p{
-	line-height:2.1em;
-}
-#properties2 p{
-	line-height:2.1em;
+#properties p {
+	line-height: 2.1em;
 }
 
-#easing2 p{
-	line-height:2.1em;
+#properties2 p {
+	line-height: 2.1em;
 }
 
-#easing p{
-	line-height:2.1em;
+#easing2 p {
+	line-height: 2.1em;
+}
+
+#easing p {
+	line-height: 2.1em;
 }
 
 q {
-	font-style:italic;
-	color:#333;
+	font-style: italic;
+	color: #333;
 }
 
 h1 {
 	/*font-size:2.91em;*/
-	font-size:1.7em 26px;
-	line-height:1.9em;
-	margin:0;
-	color:#333;
-	font-weight:normal;
+	font-size: 1.7em 26px;
+	line-height: 1.9em;
+	margin: 0;
+	color: #333;
+	font-weight: normal;
 }
 
 
 .timesexc {
-	font family:"Times New Roman", Times, serif;
+	font family: "Times New Roman", Times, serif;
 }
 
 
 h2 {
-	font-size:75px;
-	line-height:0.5em;
-	margin:0;
+	font-size: 75px;
+	line-height: 0.5em;
+	margin: 0;
 	/*font:"Times New Roman", Times, serif;*/
-	font-weight:normal;
-	opacity:0.2
+	font-weight: normal;
+	opacity: 0.2
 }
 
-container h2{
-	font:"Times New Roman", Times, serif;
+container h2 {
+	font: "Times New Roman", Times, serif;
 }
 
 
 
 h3 {
-	color:#666;
+	color: #666;
 	/*font-size:1.41em;*/
 	font-size: 1.2em;
-	line-height:0.1em;
-	margin:1em 0;
+	line-height: 0.1em;
+	margin: 1em 0;
 }
 
-h3:first-child {margin-top:0;}
+h3:first-child {
+	margin-top: 0;
+}
 
 
 
 h4 {
-	color:#444;
+	color: #444;
 	/*font-size:1.11em;*/
-	font-size:13px;
-	margin:1em 0;
-	line-height:1.9em;
-	font-weight:normal;
-	
+	font-size: 13px;
+	margin: 1em 0;
+	line-height: 1.9em;
+	font-weight: normal;
+
 }
 
 
 
 h5 {
-	margin-right:10%;
-	margin-left:5%;
-	line-height:1.8em;
+	margin-right: 10%;
+	margin-left: 5%;
+	line-height: 1.8em;
 	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
 	/*font-size:1.11em;*/
-	color:#fff;
-	text-align:right;
-	font-weight:normal;
+	color: #fff;
+	text-align: right;
+	font-weight: normal;
 }
 
-h6 { 
-	margin:5%;
-	line-height:0.8 em;
-	font-size:0.8em;
-	text-align:left;
-	font-weight:normal;
+h6 {
+	margin: 5%;
+	line-height: 0.8 em;
+	font-size: 0.8em;
+	text-align: left;
+	font-weight: normal;
 
 }
 
 #progress {
-	height:2%;
-	background:#999;
-	bottom:0;
-	z-index:200;
+	height: 2%;
+	background: #999;
+	bottom: 0;
+	z-index: 200;
 }
 
 #scrollbar {
-	position:fixed;
-	right:2px;
-	height:50px;
-	width:6px;
-	background:#444;
-	background:rgba(0,0,0,0.6);
-	border:1px solid rgba(255,255,255,0.6);
-	z-index:300;
-	border-radius:1px;
+	position: fixed;
+	right: 2px;
+	height: 50px;
+	width: 6px;
+	background: #444;
+	background: rgba(0, 0, 0, 0.6);
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	z-index: 300;
+	border-radius: 1px;
 }
 
-.skrollr-desktop #scrollbar {display:none;}
+.skrollr-desktop #scrollbar {
+	display: none;
+}
 
-#bg1, #bg2, #bg3 {
-	z-index:50;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	background:url(file:///Macintosh%20HD/Users/clear/Documents/frictions/examples/strobe_1.gif) repeat 0 0;
+#bg1,
+#bg2,
+#bg3 {
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(file:///Macintosh%20HD/Users/clear/Documents/frictions/examples/strobe_1.gif) repeat 0 0;
 }
 
 #bg2 {
-	z-index:49;
-	background-image:url(file:///Macintosh%20HD/Users/clear/Documents/frictions/examples/strobe_1.gif);
+	z-index: 0;
+	background-image: url(file:///Macintosh%20HD/Users/clear/Documents/frictions/examples/strobe_1.gif);
 }
 
 #bg3 {
-	z-index:48;
-	background-image:url(file:///Macintosh%20HD/Users/clear/Documents/frictions/examples/images/lighter.gif);
+	z-index: 0;
+	background-image: url(file:///Macintosh%20HD/Users/clear/Documents/frictions/examples/images/lighter.gif);
 }
 
 
 #intro2 {
-	width:77%;
-	height:2000px;
-	padding-top:5%;
-	text-align:left;
-	margin-left:0%;
-	z-index:110;
-	font-weight:normal;
-	border:0px;
+	width: 77%;
+	height: 2000px;
+	padding-top: 5%;
+	text-align: left;
+	margin-left: 0%;
+	z-index: 0;
+	font-weight: normal;
+	border: 0px;
 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -374,46 +413,46 @@ h6 {
 }
 
 #intro {
-	width:87%;
-	height:2000px;
-	padding-top:5%;
-	text-align:justified;
-	margin-left:5%;
-	z-index:110;
-	font-weight:normal;
-	border:0px;
-	
+	width: 87%;
+	height: 2000px;
+	padding-top: 5%;
+	text-align: justified;
+	margin-left: 5%;
+	z-index: 0;
+	font-weight: normal;
+	border: 0px;
+
 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-#intro p{
-font-weight:normal;
+#intro p {
+	font-weight: normal;
 }
 
 
 
 
 #transform {
-	width:70%;
-	left:50%;
-	top:20%;
-	margin-left:-35%;
-	text-align:center;
-	font-size:150%;
+	width: 70%;
+	left: 50%;
+	top: 20%;
+	margin-left: -35%;
+	text-align: center;
+	font-size: 150%;
 
 	/*transform-origin(50%, 50%);*/
 }
 
 #properties {
-	width:90%;
-	height:100%;
-	padding-top:10%;
-	text-align:justified;
-	margin-left:5%;
-	z-index:110;
+	width: 90%;
+	height: 100%;
+	padding-top: 10%;
+	text-align: justified;
+	margin-left: 5%;
+	z-index: 0;
 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -421,14 +460,14 @@ font-weight:normal;
 }
 
 #properties2 {
-	width:90%;
-	height:100%;
-	padding-top:5%;
-	margin-left:5%;
-	line-height:2.1em;
-	text-align:justify;
-	z-index:118;
-	
+	width: 90%;
+	height: 100%;
+	padding-top: 5%;
+	margin-left: 5%;
+	line-height: 2.1em;
+	text-align: justify;
+	z-index: 0;
+
 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -438,214 +477,216 @@ font-weight:normal;
 
 
 #easing_wrapper {
-	width:100%;
-	height:100%;
+	width: 100%;
+	height: 100%;
 }
 
 #drop_wrapper {
-	width:100%;
-	height:100%;
+	width: 100%;
+	height: 100%;
 }
 
-#article_wrapper{
-	width:90%;
-	height:100%;
-	margin-left:5%;
+#article_wrapper {
+	width: 90%;
+	height: 100%;
+	margin-left: 5%;
 }
 
 #easing {
-	top:5%;
-	width:85%;
-	z-index:101;
-	margin-left:5%;
+	top: 5%;
+	width: 85%;
+	z-index: 0;
+	margin-left: 5%;
 }
 
 #easingtest {
-	top:5%;
-	width:90%;
-	z-index:101;
-	margin-left:5%;
+	top: 5%;
+	width: 90%;
+	z-index: 0;
+	margin-left: 5%;
 }
 
 #easing3 {
-	top:5%;
-	width:90%;
-	z-index:101;
-	margin-left:5%;
-	height:100%;
+	top: 5%;
+	width: 90%;
+	z-index: 0;
+	margin-left: 5%;
+	height: 100%;
 }
 
 #easing4under {
 
-	top:5%;
-	width:90%;
-	z-index:100;
-	margin-left:0	%;
+	top: 5%;
+	width: 90%;
+	z-index: 0;
+	margin-left: 0 %;
 }
 
 #easing4over {
 
-	top:5%;
-	width:90%;
-	z-index:119;
-	margin-left:0	%;
+	top: 5%;
+	width: 90%;
+	z-index: 0;
+	margin-left: 0 %;
 }
 
 
 #easing4 {
 
-	top:5%;
-	width:90%;
-	z-index:101;
-	margin-left:0%;
+	top: 5%;
+	width: 90%;
+	z-index: 0;
+	margin-left: 0%;
 }
 
 
 #easing4margin {
 
-	top:5%;
-	width:30%;
-	z-index:101;
-	margin-left:0%;
+	top: 5%;
+	width: 30%;
+	z-index: 0;
+	margin-left: 0%;
 }
 
 #easing4margin2 {
 
-	top:5%;
-	width:75%;
-	z-index:101;
-	margin-left:0%;
+	top: 5%;
+	width: 75%;
+	z-index: 0;
+	margin-left: 0%;
 }
 
 
 #easing4tangents {
 
-	top:5%;
-	width:90%;
-	z-index:101;
-	margin-left:0	%;
+	top: 5%;
+	width: 90%;
+	z-index: 0;
+	margin-left: 0 %;
 }
 
-#easing4tangents h1{
-	margin-left:0%;
+#easing4tangents h1 {
+	margin-left: 0%;
 }
 
-#easing4tangents h3{
-	margin-left:0%;
+#easing4tangents h3 {
+	margin-left: 0%;
 }
 
 
-#easing4 h1{
-	margin-left:5%;
+#easing4 h1 {
+	margin-left: 5%;
 }
 
-#easing4 h3{
-	margin-left:5%;
+#easing4 h3 {
+	margin-left: 5%;
 }
 
 #easing5 {
-background-color:#000;
-	top:5%;
-	width:100%;
-	z-index:105;
-	margin-left:0%;
+	background-color: #000;
+	top: 5%;
+	width: 100%;
+	z-index: 105;
+	margin-left: 0%;
 }
 
-#easing5 p{
-margin-left:5%;
-margin-right:5%;
-font-weight:150;
+#easing5 p {
+	margin-left: 5%;
+	margin-right: 5%;
+	font-weight: 150;
 }
 
 #easing5text {
-	z-index:106;
-	margin-left:5%;
-width:90%;
+	z-index: 106;
+	margin-left: 5%;
+	width: 90%;
 }
 
 #network {
-background-image: url("file:///Macintosh HD/Users/clear/Documents/frictions/images/network.jpg"); 
-background-repeat: repeat-x;
-top:5%;
-	width:100%;
-	z-index:109;
-	margin-left:0%;
-	}
-
-#easing5 h1{
-	margin-left:5%;
+	background-image: url("file:///Macintosh HD/Users/clear/Documents/frictions/images/network.jpg");
+	background-repeat: repeat-x;
+	top: 5%;
+	width: 100%;
+	z-index: 109;
+	margin-left: 0%;
 }
 
-#easing5 h3{
-	margin-left:5%;
+#easing5 h1 {
+	margin-left: 5%;
+}
+
+#easing5 h3 {
+	margin-left: 5%;
 }
 
 #nest {
-	margin-left:5%;
+	margin-left: 5%;
 }
 
 .drop {
-	background:#fff;
+	background: #fff;
 	/*background-color:transparent;*/
-	font-weight:bold;
-	padding:1em;
+	font-weight: bold;
+	padding: 1em;
 }
 
 .drop2 {
-	background:#fff;
+	background: #fff;
 	/*background-color:transparent;*/
-	font-weight:bold;
-	padding:1em;
+	font-weight: bold;
+	padding: 1em;
 }
+
 .drop3 {
-	background:#666;
+	background: #666;
 	/*background-color:transparent;*/
-	font-weight:bold;
-	color:#FFF;
-	padding:1em;
+	font-weight: bold;
+	color: #FFF;
+	padding: 1em;
 }
 
 
-.drop3 a:link{
-	color:#fff;
+.drop3 a:link {
+	color: #fff;
 }
 
-.drop3 a:hover, a:active {
-    color:#22b6cc;
+.drop3 a:hover,
+a:active {
+	color: #22b6cc;
 }
 
 
 
 .dropimage {
-	
-	background-color:transparent;
+
+	background-color: transparent;
 	/*color:#FFF;*/
-	padding:1em;
+	padding: 1em;
 }
 
 .drop4 {
-	background:#fff;
-	background-color:transparent;
-	font-weight:bold;
-	padding:1em;
-	align:center;
+	background: #fff;
+	background-color: transparent;
+	font-weight: bold;
+	padding: 1em;
+	align: center;
 }
 
-.drop4 h5{
-	text-align:center;
+.drop4 h5 {
+	text-align: center;
 }
 
 
 
-.drop_intro{
-	background:#000;
-	color:#FFF;
-	font-weight:bold;
-	padding:1em;
+.drop_intro {
+	background: #000;
+	color: #FFF;
+	font-weight: bold;
+	padding: 1em;
 }
 
 .drop p {
-	font-size:18px;
+	font-size: 18px;
 }
 
 
@@ -653,6 +694,7 @@ top:5%;
 	color: #FFF;
 	font-family: "Century Gothic", Arial, Helvetica;
 }
+
 .whiteout_2 {
 	color: #FFF;
 }
@@ -662,99 +704,103 @@ top:5%;
 }
 
 .container {
-  position: relative;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 5%;
-  text-align:center; 
+	position: relative;
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 5%;
+	text-align: center;
 
 }
 
 .container2 {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 5%;
-  text-align:left;
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 5%;
+	text-align: left;
 }
+
 .container--offset {
-  margin-left: 10%;
+	margin-left: 10%;
 }
 
 .layer:nth-child(1) {
-  opacity: 1.00;
+	opacity: 1.00;
 }
+
 /*this is adjusting the opacity of subsequent layers -- which holds font sometimes*/
 
 .scene {
-  padding: 0;
-  margin: 0;
-  border:0;
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
+
 .scene2 {
-  padding: 0;
-  margin: 0;
-  border:0;
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
 
 .fill {
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-  left: 5%;
-  top: 5%;
+	position: absolute;
+	bottom: 5%;
+	right: 5%;
+	left: 5%;
+	top: 5%;
 }
 
 .fill2 {
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-  left: 9%;
-  top: 5%;
+	position: absolute;
+	bottom: 5%;
+	right: 5%;
+	left: 9%;
+	top: 5%;
 }
 
 .expand-width {
-  width: 100%;
+	width: 100%;
 	opacity: 0.9;
-  
+
 }
+
 .aspect {
-  opacity: 1.0;
+	opacity: 1.0;
 }
 
 
 #creature {
-	width:2000px;
-	height:2000px;
-	 
-	background-image:url(file:///Macintosh%20HD/Users/clear/Documents/frictions/creature_test.png)
+	width: 2000px;
+	height: 2000px;
+
+	background-image: url(file:///Macintosh%20HD/Users/clear/Documents/frictions/creature_test.png)
 }
 
 #creaturered {
-	width:2000px;
-	height:2000px;
-	 
-	background-image:url(file:///Macintosh%20HD/Users/clear/Documents/frictions/red_1.png)
+	width: 2000px;
+	height: 2000px;
+
+	background-image: url(file:///Macintosh%20HD/Users/clear/Documents/frictions/red_1.png)
 }
 
 #creatureblue {
-	width:2000px;
-	height:2000px;
-	 
-	background-image:url(file:///Macintosh%20HD/Users/clear/Documents/frictions/yellow_dot.png);
+	width: 2000px;
+	height: 2000px;
+
+	background-image: url(file:///Macintosh%20HD/Users/clear/Documents/frictions/yellow_dot.png);
 	background-repeat: no-repeat;
 }
 
 #creaturegreen {
-	width:2000px;
-	height:2000px;
-	 
-	background-image:url(file:///Macintosh%20HD/Users/clear/Documents/frictions/green.png)
+	width: 2000px;
+	height: 2000px;
+
+	background-image: url(file:///Macintosh%20HD/Users/clear/Documents/frictions/green.png)
 }
 
 #creaturestone {
-	width:2000px;
-	height:2000px;
-	 
-	background-image:url(file:///Macintosh%20HD/Users/clear/Documents/frictions/stone.png)
+	width: 2000px;
+	height: 2000px;
+
+	background-image: url(file:///Macintosh%20HD/Users/clear/Documents/frictions/stone.png)
 }
