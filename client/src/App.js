@@ -8,6 +8,7 @@ import Header from "./partials/Header";
 import Glitch from "./pages/Glitch";
 import ImagesPage from "./pages/Images";
 import Sponges from "./components/sponges"
+import Socketz from "./components/Socketz"
 
 function Home() {
   return (
@@ -28,6 +29,8 @@ class App extends Component {
           <Route path="/about3e" component={About} />
           <Route path="/oOoOs" component={Glitch} />
           <Route path="/sponges" component={Sponges} />
+          <Route path="/socketz" component={Socketz} />
+
           <Route path="/patches" render={() => <div>Patches</div>} />
           <Route path="/entryway" render={() => <div>Entry</div>} />
           <Route exact path="/auth" component={AuthPage} />
