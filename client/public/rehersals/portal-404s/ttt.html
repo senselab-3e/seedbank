@@ -39,8 +39,8 @@
 
     .gallery {
         display: grid;
-        grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(8, auto);
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, auto);
         grid-gap: 1.5rem;
     }
 
@@ -116,6 +116,15 @@
         /* grid-column: 5 / span 4; */
         /* grid-row: 6 / span 3; */
     }
+
+    .flexBox {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .cell {
+        flex-shrink: 3;
+    }
 </style>
 
 <body>
@@ -141,6 +150,15 @@
             </figure>
         </div>
     </div>
+    <div class="flexBox">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+
+    </div>
+    </div>
+
 </body>
 <script src="scripts/menu.js"></script>
 

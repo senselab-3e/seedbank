@@ -1,6 +1,6 @@
-const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifOrange', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404', 'gifCreature', 'gifpinkwave', 'gifOz', 'gifwave', 'gifducky', 'gifPot', 'gifPlob'] // for each of these instances, a single pixel element will be created. 
+const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifOrange', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404', 'gifEscape', 'gifCreature', 'gifpinkwave', 'gifOz', 'gifwave', 'gifducky', 'gifSpze', 'gifPot', 'gifPlob', 'gifDance', 'gifOops'] // for each of these instances, a single pixel element will be created. 
 
-const linkVerse = ['rrr.html', 'fishy.html', 'sss.html', 'fff.html', 'aeo.html', 'vvv.html', 'kite.html', 'mmm.html', 'lll.html', 'eee.html', 'bookroom.html', 'uuu.html', 'shsh.html', 'zzz.html', 'jardin.html', 'mondayfiles.html', 'creatures.html', 'ozglob.html', 'bichos.html', 'gggrog.html', 'joy.html', 'ppp.html', 'picnic.html'] //creature.html
+const linkVerse = ['rrr.html', 'fishy.html', 'sss.html', 'fff.html', 'aeo.html', 'vvv.html', 'kite.html', 'mmm.html', 'lll.html', 'eee.html', 'bookroom.html', 'uuu.html', 'shsh.html', 'zzz.html', 'yyy.html', 'jardin.html', 'mondayfiles.html', 'creatures.html', 'ozglob.html', 'bichos.html', 'gggrog.html', 'joy.html', 'spze.html', 'ppp.html', 'picnic.html', 'bbb.html', 'oioi.html']; //creature.html
 
 console.log(gifVerse.length, linkVerse.length)
 
@@ -37,7 +37,7 @@ const createPixel = () => {
     alink.className = 'menuLinks';
     var pixel = document.createElement('div');
     pixel.className = 'pixelPatch';
-    pixel.style.background = getRandomColor() // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
+    pixel.style.background = getRandomColor(); // NOTE: because the background color was dynamically assigned, it was overriding the css class based way in which i was adding a background image to appear, on a rollover. this is bc of the inline styling it injects. therefore i have had to do a removeProperty action to game that limitation, on the revealPortal function.
     alink.appendChild(pixel);
     pixelContainer.appendChild(alink);
     //pixelContainer.appendChild(pixel)

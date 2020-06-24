@@ -397,6 +397,43 @@ main>h3 {
     background-repeat: no-repeat;
 }
 
+.gifDance {
+
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/soundbutton.gif');
+    background-size: 150px;
+    background-repeat: no-repeat;
+
+
+}
+
+.gifOops {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/leafwave.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+
+.gifEscape {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/shakeshake.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+
+}
+
+.gifSpze {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/frog.gif');
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
 .gifducky {
     width: inherit;
     height: inherit;
