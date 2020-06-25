@@ -195,6 +195,8 @@ const addPaletteListener = () => {
 
 window.onload = () => {
     createPixelPatch() //container for pixels
+    createEntryPatch() //container for 04 linking pixel patch
+    createEntryPixel()
     createAnchorPixel() //this also nudges
     for (let i = 0; i < gifVerse.length; i++) {
         createPixel()
@@ -223,6 +225,39 @@ const createPixelPatch = () => {
     var pxlContainer = document.createElement('div');
     pxlContainer.className = 'pixelContainer';
     document.body.appendChild(pxlContainer);
+}
+
+
+
+
+const createEntryPatch = () => {
+    var entryContainer = document.createElement('div');
+    entryContainer.className = 'entryContainer';
+    document.body.appendChild(entryContainer);
+}
+
+
+const createEntryPixel = () => {
+    let sample = document.body.querySelector('#palette1');
+
+    let container = document.querySelector('.entryContainer')
+    // const pixelContainer = document.querySelector('.pixelContainer');
+    //console.log(pixelContainer);
+    const linkWrapper = document.createElement('a');
+    // linkWrapper.href = '04.html';
+    var patch = document.createElement('div');
+    patch.className = 'pixelPatch';
+    patch.style.border = "1px inset white";
+    container.style.left = '300px'
+    container.style.top = '300px'
+    patch.style.backgroundColor = window.getComputedStyle(sample, null).getPropertyValue(
+        "--hsl");
+    // patch.style.opacity = 0.6;
+    linkWrapper.appendChild(patch);
+    // pixelContainer.appendChild(linkWrapper);
+    container.appendChild(linkWrapper);
+    // entryContainer.appendChild(linkWrapper);
+
 }
 
 const getRandomColor = () => {

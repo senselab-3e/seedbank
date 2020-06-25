@@ -117,7 +117,7 @@ const nudgePixels = () => {
 
     pixelPatches[0].addEventListener("click", function (event) {
         //this is the link hidden text added after clicking
-        // replaceClassName()
+        replaceClassName()
         if (textAdded) { // textAdded is a Boolean -- to see if AnararchiveDef text content and palettes for them, has already loaded. 
             creatSliderPalettes(false, true)
 
