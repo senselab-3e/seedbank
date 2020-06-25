@@ -4,9 +4,11 @@ var notes;
 
 
 //NOTE --- i'm citing an array of texts called cosmic digest, that is in another js file called cosmic digest. this is because potentially i want all that file information to be accessible to there sketch spaces. 
-const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404', 'gifpinkwave', 'gifwave', 'gifducky'] // for each of these instances, a single pixel element will be created. 
+const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifOrange', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404', 'gifEscape', 'gifCreature', 'gifpinkwave', 'gifOz', 'gifwave', 'gifducky', 'gifSpze', 'gifPot', 'gifPlob', 'gifDance', 'gifOops', 'gifthreshold'] // for each of these instances, a single pixel element will be created. 
+
+const linkVerse = ['portal-404s/rrr.html', 'portal-404s/fishy.html', 'portal-404s/sss.html', 'portal-404s/fff.html', 'portal-404s/aeo.html', 'portal-404s/vvv.html', 'portal-404s/kite.html', 'portal-404s/mmm.html', 'portal-404s/lll.html', 'portal-404s/eee.html', 'portal-404s/bookroom.html', 'portal-404s/uuu.html', 'portal-404s/shsh.html', 'portal-404s/zzz.html', 'portal-404s/yyy.html', 'portal-404s/jardin.html', 'portal-404s/mondayfiles.html', 'portal-404s/creatures.html', 'portal-404s/ozglob.html', 'portal-404s/bichos.html', 'portal-404s/gggrog.html', 'portal-404s/joy.html', 'portal-404s/spze.html', 'portal-404s/ppp.html', 'portal-404s/picnic.html', 'portal-404s/bbb.html', 'portal-404s/oioi.html', '04.html']; // // for each of these instances, a single pixel element will be created. 
 const thingyVerse = ['staticSponge2', 'staticPingPong', 'staticBlueChair', 'staticPingPong', 'staticCompost', 'staticFishy', 'staticBlueBowl', 'staticSponge']
-const linkVerse = ['portal-404s/rrr.html', 'portal-404s/fishy.html', 'portal-404s/sss.html', 'portal-404s/fff.html', 'portal-404s/aeo.html', 'portal-404s/vvv.html', 'portal-404s/kite.html', 'portal-404s/mmm.html', 'portal-404s/llli.html', 'portal-404s/eee.html', 'portal-404s/uuu.html', 'portal-404s/shsh.html', 'portal-404s/zzz.html', 'portal-404s/jardin.html', 'portal-404s/mondayfiles.html', 'portal-404s/bichos.html', 'portal-404s/ozglob.html', 'portal-404s/joy.html'] //creature.html
+// const linkVerse = ['portal-404s/rrr.html', 'portal-404s/fishy.html', 'portal-404s/sss.html', 'portal-404s/fff.html', 'portal-404s/aeo.html', 'portal-404s/vvv.html', 'portal-404s/kite.html', 'portal-404s/mmm.html', 'portal-404s/llli.html', 'portal-404s/eee.html', 'portal-404s/uuu.html', 'portal-404s/shsh.html', 'portal-404s/zzz.html', 'portal-404s/jardin.html', 'portal-404s/mondayfiles.html', 'portal-404s/bichos.html', 'portal-404s/ozglob.html', 'portal-404s/joy.html'] //creature.html
 
 //NOTES: text content is being pulled from arrays in cosmicdigest.js
 const masterPixelColor = 'deeppink'
@@ -279,9 +281,12 @@ const addLinks = () => {
 
 const createAnchorPixel = () => {
     const pixelContainer = document.querySelector('.pixelContainer');
+    var linkWrapper = document.createElement('a');
+    linkWrapper.href = '04.html'
     var anchor = document.createElement('div');
     anchor.className = 'anchorPixel';
-    pixelContainer.appendChild(anchor)
+    linkWrapper.appendChild(anchor)
+    pixelContainer.appendChild(linkWrapper)
 }
 
 const createPixel = () => {

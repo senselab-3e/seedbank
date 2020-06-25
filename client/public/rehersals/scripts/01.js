@@ -220,7 +220,7 @@ const createEntryPixel = () => {
     const linkWrapper = document.createElement('a');
     linkWrapper.href = '02.html';
     var patch = document.createElement('div');
-    patch.className = 'pixelPatch';
+    patch.className = 'rehersal3Portal';
     patch.style.border = "1px inset white";
     container.style.left = '300px'
     container.style.top = '300px'
