@@ -100,6 +100,7 @@ const nudgePixels = () => {
     });
     //NOTE: REFACTOR: split up into a separate function. 
     picnicPatch[0].addEventListener("click", function (event) {
+        replaceClassName()
         if (textAdded) {
             creatSliderPalettes(false, true)
         } else {

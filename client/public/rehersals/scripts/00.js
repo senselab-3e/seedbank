@@ -6,7 +6,7 @@ const vibrationClasses = ["hvr-wobble-horizontal", "hvr-skew-forward", "hvr-floa
 const checkPatchNum = () => {
     const numPatches = document.querySelectorAll('.picnicPatch');
     console.log(numPatches.length)
-    numPatches.length > 10 ? window.location.href = '/rehersals/00.html' : console.log('not enough patches');
+    numPatches.length > 2 ? window.location.href = '/rehersals/01.html' : console.log('not enough patches');
 }
 
 const createCube = (target) => {
@@ -69,7 +69,7 @@ const createPatch = () => {
     var linkWrapper = document.createElement('a');
     linkWrapper.href = '01.html';
     var patch = document.createElement('div');
-    patch.className = 'pixel'
+    patch.className = 'pixel';
     patch.classList.add('picnicPatch');
     const input = document.querySelector('input');
     patch.style.setProperty('--entrypatch-color', input.value)
