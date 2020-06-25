@@ -66,13 +66,16 @@ const createPixel = () => {
 }
 
 const createPatch = () => {
+    var linkWrapper = document.createElement('a');
+    linkWrapper.href = '01.html';
     var patch = document.createElement('div');
     patch.className = 'pixel'
     patch.classList.add('picnicPatch');
     const input = document.querySelector('input');
     patch.style.setProperty('--entrypatch-color', input.value)
-    patch.style.marginLeft = Math.random(window.innerWidth) * window.innerWidth + 'px';
-    patch.style.marginTop = Math.random(window.innerHeight) * window.innerHeight + 'px';
-    document.body.appendChild(patch)
+    patch.style.marginLeft = Math.random(window.innerWidth) * window.innerWidth / 2 + 'px';
+    patch.style.marginTop = Math.random(window.innerHeight) * window.innerHeight / 2 + 'px';
+    linkWrapper.appendChild(patch)
+    document.body.appendChild(linkWrapper)
     addListener(patch)
 }

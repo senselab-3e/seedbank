@@ -91,7 +91,7 @@ let textAdded = false // this is an imperfect way of checking if text panels hav
 const nudgePixels = () => {
     const pixelContainer = document.querySelector('.pixelContainer');
     const pixelPatches = document.querySelectorAll('.pixelPatch');
-    pixelPatches[1].addEventListener("mouseover", function (event) {
+    pixelPatches[pixelPatches.length - 1].addEventListener("mouseover", function (event) {
         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
             "left");
         const newNum = parseInt(currentX.replace(/[^0-9.]+/, ''));
@@ -99,13 +99,15 @@ const nudgePixels = () => {
     });
     //NOTE: REFACTOR: split up into a separate function. 
     pixelPatches[0].addEventListener("click", function (event) {
-        replaceClassName()
+        //this is the link hidden text added after clicking
+        // replaceClassName()
         if (textAdded) { // textAdded is a Boolean -- to see if AnararchiveDef text content and palettes for them, has already loaded. 
             creatSliderPalettes(false, true)
 
         } else {
             textAdded = true
-
+            //createPixel()
+            createEntryPixel()
             anarchiveDef.forEach(def => {
                 creatSliderPalettes(true, false) // true is for text content. false indicates a need for colors to be randomly generated. colors are not yet available in relation. 
 
@@ -182,6 +184,26 @@ const createPixelPatch = () => {
     document.body.appendChild(pxlContainer);
 }
 
+
+const createEntryPixel = () => {
+    let sample = document.body.querySelector('#palette1');
+    const pixelContainer = document.querySelector('.pixelContainer');
+    var linkWrapper = document.createElement('a');
+    linkWrapper.href = '02.html';
+    var patch = document.createElement('div');
+    patch.className = 'pixelPatch';
+    patch.style.border = "1px inset white";
+    patch.style.left = Math.random() * (window.innerWidth / 4 * 3) + 'px';
+    patch.style.top = Math.random() * (window.innerHeight / 4 * 3) + 'px';
+    patch.style.backgroundColor = window.getComputedStyle(sample, null).getPropertyValue(
+        "--hsl");
+    // patch.style.opacity = 0.6;
+    linkWrapper.appendChild(patch);
+    pixelContainer.appendChild(linkWrapper);
+    //document.body.appendChild(linkWrapper);
+}
+
+
 const createPixel = (size, hidden) => {
     const pixelContainer = document.querySelector('.pixelContainer')
     // it doesn't seem like it's possible to grab the value of the colors being calculated from that css animation.... so i can't color the block with it, unfortunately
@@ -194,7 +216,6 @@ const createPixel = (size, hidden) => {
     pixelContainer.style.left = Math.random(window.innerWidth) * (window.innerWidth / 4 * 3) + 'px';
     pixelContainer.style.top = Math.random(window.innerHeight) * window.innerHeight / 2 + 'px';
     addListener(pixelContainer)
-
 }
 
 const replaceClassName = () => {
