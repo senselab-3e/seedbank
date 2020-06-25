@@ -172,12 +172,19 @@
 
         }
 
+        .entryContainer {
+            position: absolute;
+            z-index: 12;
+
+        }
+
         .pixelPatch {
             width: 10px;
             height: 10px;
             cursor: pointer;
+            z-index: 12;
             background: deeppink;
-
+            /* margin-right: 0.2em; */
             /* later, this color will be tied to the first color the user selected at the beginning*/
             -webkit-transition: width 7s, height 7s;
             -webkit-transition-timing-function: ease;
@@ -188,6 +195,27 @@
         .pixelPatch:hover {
             width: 20em;
             height: 20em;
+        }
+
+        .picnicPatch {
+            width: 10px;
+            height: 10px;
+            background: deeppink;
+            /* border: 1px inset white; */
+            cursor: pointer;
+            -webkit-transition: width 1s ease-in-out 0.1ms, height 1s ease-in 1s;
+            -moz-transition: width 1s ease-in-out 0.1ms, height 1s ease-in 1s;
+            -ms-transition: width 1s ease-in-out 0.1ms, height 1s ease-in 1s;
+            -o-transition: width 1s ease-in-out 0.1ms, height 1s ease-in 1s;
+            transition: width 1s ease-in-out 0.1ms, height 1s ease-in 1s;
+        }
+
+        .picnicPatch:hover {
+            width: 25vw;
+            height: 25vw;
+            cursor: pointer;
+            /* animation: line 5s forwards; */
+            /* decided not to use this method */
         }
 
         .pseudoCode {
@@ -232,6 +260,7 @@
 </head>
 
 <body>
+
     <div class="paletteContainer">
         <div id="palette1"></div>
         <div id="palette2"></div>
