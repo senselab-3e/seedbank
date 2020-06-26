@@ -1,6 +1,6 @@
-const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifOrange', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404', 'gifEscape', 'gifCreature', 'gifpinkwave', 'gifOz', 'gifwave', 'gifducky', 'gifSpze', 'gifPot', 'gifPlob', 'gifDance', 'gifOops', 'gifthreshold'] // for each of these instances, a single pixel element will be created. 
+const gifVerse = ['gif404', 'gifmeowmix', 'gifpipecleaners', 'gifsponge', 'gifbreeze', 'giffold', 'gifshadows', 'gifsplash', 'gifsquee', 'gifsplat', 'gifOrange', 'gifumbrella', 'gifpoke', 'gifcompost', 'gifplanttrap', 'gif404', 'gifEscape', 'gifCreature', 'gifpinkwave', 'gifOz', 'gifwave', 'gifducky', 'gifSpze', 'gifPot', 'gifPlob', 'gifDance', 'gifOops', 'gifthreshold', 'gif404'] // for each of these instances, a single pixel element will be created.
 
-const linkVerse = ['rrr.html', 'fishy.html', 'sss.html', 'fff.html', 'aeo.html', 'vvv.html', 'kite.html', 'mmm.html', 'lll.html', 'eee.html', 'bookroom.html', 'uuu.html', 'shsh.html', 'zzz.html', 'yyy.html', 'jardin.html', 'mondayfiles.html', 'creatures.html', 'ozglob.html', 'bichos.html', 'gggrog.html', 'joy.html', 'spze.html', 'ppp.html', 'picnic.html', 'bbb.html', 'oioi.html', '../04.html']; //creature.html
+const linkVerse = ['rrr.html', 'fishy.html', 'sss.html', 'fff.html', 'aeo.html', 'vvv.html', 'kite.html', 'mmm.html', 'lll.html', 'eee.html', 'bookroom.html', 'uuu.html', 'shsh.html', 'zzz.html', 'yyy.html', 'jardin.html', 'mondayfiles.html', 'creatures.html', 'ozglob.html', 'bichos.html', 'gggrog.html', 'joy.html', 'spze.html', 'ppp.html', 'picnic.html', 'bbb.html', 'oioi.html', '../04.html', 'sponges.html']; //creature.html
 
 console.log(gifVerse.length, linkVerse.length)
 
@@ -60,7 +60,7 @@ const revealPixelPortal = () => {
     for (let m = 0; m < pixelPortal.length - 1; m++) { // the last pixel has no accompanying class on rollover - it's purely there for the nudge
         pixelPortal[m].addEventListener("mouseover", function (event) {
             this.classList.add(gifVerse[m]);
-            this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
+            this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again.
         });
         pixelPortal[m].addEventListener("mouseout", function (event) {
             this.classList.remove(gifVerse[m]);
@@ -69,7 +69,7 @@ const revealPixelPortal = () => {
         //NOTE: for later
         // pixelPortal[m].addEventListener("mouseclick", function (event) {
         //     this.classList.add(gifVerse[m]);
-        //     this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again. 
+        //     this.style.removeProperty('background'); //NOTE: see createPixel comments for details. but this became necessary because styling heirarchives for the dynamically assigned background color were causing the background images in the class i added to be overriden. removing that inline styline became necessary so that the class i and its image would be visible again.
         // });
         // pixelPortal[m].addEventListener("mouseup", function (event) {
         //     this.classList.remove(gifVerse[m]);
@@ -84,7 +84,7 @@ const nudgePixels = () => {
     const pixelPatches = document.querySelectorAll('.pixelPatch');
     const anchorPixel = document.querySelector('.anchorPixel');
     const nudgeAmtCalc = gifVerse.length; // needs to be adjusted according to how long the pixel line is
-    //have this also be mouseclick for touch devices? 
+    //have this also be mouseclick for touch devices?
     anchorPixel.addEventListener("mouseover", function (event) {
         let currentX = window.getComputedStyle(pixelContainer, null).getPropertyValue(
             "left");
@@ -123,7 +123,7 @@ const nudgePixels = () => {
 window.onload = () => {
     createPixelPatch() //container for pixels
     //this will be a dummy first pixel, purely for the nudgepixel function - which works when the first and last pixel is hit on a rollover
-    createAnchorPixel() // this was created instead of re-using the create pixel because i was applying so many unique stylings to the first pixel i was added lines of code. just creating a whole new class for the first pixel simplifies things. 
+    createAnchorPixel() // this was created instead of re-using the create pixel because i was applying so many unique stylings to the first pixel i was added lines of code. just creating a whole new class for the first pixel simplifies things.
     for (let i = 0; i < gifVerse.length; i++) {
         createPixel()
     }
