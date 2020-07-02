@@ -1,7 +1,6 @@
-import socketIOClient from "socket.io-client";
 import "p5/lib/addons/p5.sound";
 import boing from "../assets/img/boing.mp3";
-const ENDPOINT = "http://localhost:3000";
+import io from "socket.io-client"
 
 export default function sketch(p){
     let canvas;
@@ -13,7 +12,7 @@ export default function sketch(p){
       canvas = p.createCanvas(500, 500);
       p.noStroke();
       p.background('orangered');
-      socket = socketIOClient(ENDPOINT);
+      socket = io();
       socket.on("mouse", data => {
       p.newDrawing(data);
       });
