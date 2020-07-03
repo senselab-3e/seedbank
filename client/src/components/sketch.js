@@ -21,11 +21,6 @@ export default function sketch(p){
 
     }
 
-    // p.draw = () => {
-    //   // p.background('orangered');
-    //   // p.ellipse(150, 100, 100, 100);
-    // }
-
     p.newDrawing = (data) =>{
       console.log(data);
       p.noStroke();
@@ -50,16 +45,6 @@ export default function sketch(p){
 
     }
 
-    // p.mousePressed = () => {
-    //   if (song.isPlaying()) {
-    //     // .isPlaying() returns a boolean
-    //     song.stop();
-    //     // background(255, 0, 0);
-    //   } else {
-    //     song.play();
-    //     // background(0, 255, 0);
-    //   }
-    // }
 
     p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
       if(canvas) //Make sure the canvas has been created
