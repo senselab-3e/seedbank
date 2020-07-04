@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style/global.css" />
+</head>
+<style>
+  body {
+    -webkit-animation: colorScroll 100s infinite;
+    animation: colorScroll 100s infinite;
+  }
+
+  .joy {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2em;
+  }
+
+  .books {
+    padding: 6em;
+  }
+
+  .spacer {
+    height: 20em;
+    width: 100%;
+  }
+
+  .flexAlignRight {
+    display: flex;
+    flex-direction: row;
+    flex-direction: row-reverse;
+  }
+
+  @keyframes colorScroll {
+    0% {
+      background-color: white;
+    }
+
+    30% {
+      background-color: orangered;
+    }
+
+    45% {
+      background-color: orange;
+    }
+
+    60% {
+      background-color: lightseagreen;
+    }
+
+    75% {
+      background-color: lightskyblue;
+    }
+
+    90% {
+      background-color: lightgreen;
+    }
+  }
+
+  .slip {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    /* height: 10em; */
+    width: 100%;
+    padding-right: 40em;
+    padding-left: 20em;
+    position: absolute;
+    z-index: 0;
+    transform-origin: top left;
+    transform: scale(0.7);
+    /* cursor: pointer; */
+    left: -33em;
+    -webkit-transition: transform 1s, left 500ms ease-in-out;
+    -moz-transition: transform 1s, left 500ms ease-in-out;
+    -ms-transition: transform 1s, left 500ms ease-in-out;
+    -o-transition: transform 1s, left 500ms ease-in-out;
+    transition: transform 1s, left 500ms ease-in-out;
+  }
+
+  .slip:hover {
+    /* transform: scale(1.0); */
+    left: 0em;
+
+  }
+</style>
+
+
+</script>
+
+<body></body>
+<script src="scripts/slips.js"></script>
+<script src="scripts/menu.js"></script>
+
+
+</html>

@@ -443,6 +443,24 @@ main>h3 {
 
 }
 
+.gifSheets {
+
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/bouncesheet.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+.gifRainbow {
+    width: inherit;
+    height: inherit;
+    background-image: url('../../gifverse/compost.gif');
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+
 .staticSponge {
     width: inherit;
     height: inherit;
