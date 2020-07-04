@@ -7,6 +7,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+const socket = require('socket.io');
 
 const node_env = process.env.NODE_ENV;
 const app = express();
@@ -61,9 +62,7 @@ console.log('Running in ' + node_env + ' mode');
 
 var server = app.listen(process.env.HTTP_PORT, () => console.log(`Listening on port ${process.env.HTTP_PORT}`));
 
-var socket = require('socket.io');
 var io = socket(server);
-
 
 io.sockets.on('connection', newConnection);
 
