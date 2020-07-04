@@ -11,7 +11,7 @@ function get_type(url) {
 };
 
 function get_path(asset, type='images') {
-	return path.resolve(process.cwd(), 'assets', type, asset['path'], asset['name']);
+	return path.resolve(process.env.HOST, 'assets', type, asset['path'], asset['name']);
 };
 
 function hash_path(filename, type='images') {
