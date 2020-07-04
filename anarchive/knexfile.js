@@ -4,7 +4,7 @@ const env = process.env;
 module.exports = {
   client: 'mysql',
   connection: {
-    host: env.DB_HOST,
+    host: env.HOST,
     database: env.DB_NAME,
     user:     env.DB_USER,
     password: env.DB_PASSWORD,
