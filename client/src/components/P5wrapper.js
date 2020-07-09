@@ -5,7 +5,7 @@ import P5Wrapper from "react-p5-wrapper";
 // import sketch4 from "./sketches/sketch4";
 // import sketch5 from "./sketches/sketch5";
 // import sketch6 from "./sketches/sketch6";
-import sketch7 from "./sketches/sketch7";
+// import sketch7 from "./sketches/sketch7";
 // import sketch8 from "./sketches/sketch8";
 // import sketch9 from "./sketches/sketch9";
 // import sketch10 from "./sketches/sketch10";
@@ -20,17 +20,17 @@ import sketch7 from "./sketches/sketch7";
 // import sketch19 from "./sketches/sketch19";
 // import sketch20 from "./sketches/sketch20";
 // import sketch21 from "./sketches/sketch21";
-// import sketch22 from "./sketches/sketch22";
-// import sketch23 from "./sketches/sketch23";
-// import sketch24 from "./sketches/sketch24";
-// import sketch25 from "./sketches/sketch25";
-// import sketch26 from "./sketches/sketch26";
-// import sketch27 from "./sketches/sketch27";
+import sketch22 from "./sketches/sketch22";
+//import sketch23 from "./sketches/sketch23"; // remove squares from top. adjust shape and coloring
+// import sketch24 from "./sketches/sketch24"; //elliptical  - not interesting yet
+//import sketch25 from "./sketches/sketch25"; // not sure what the intention of this one is yet. vibrating points on shape draw.
+//import sketch26 from "./sketches/sketch26";
+//import sketch27 from "./sketches/sketch27";
 // import sketch28 from "./sketches/sketch28";
-// import sketch29 from "./sketches/sketch29";
-// import sketch30 from "./sketches/sketch30";
-// import sketch30perlin from "./sketches/sketch30-perlinnoisefield";
-// import sketch31 from "./sketches/sketch31";
+//import sketch29 from "./sketches/sketch29"; //noise sine wave
+//import sketch30 from "./sketches/sketch30";
+import sketch30perlin from "./sketches/sketch30-perlinnoisefield";
+//import sketch31 from "./sketches/sketch31";
 // import sketch32 from "./sketches/sketch32";
 // import sketch33 from "./sketches/sketch33";
 // import sketch34 from "./sketches/sketch34";
@@ -48,14 +48,15 @@ class P5wrapper extends React.Component {
   render() {
     return (
       <div>
-        <h1>ddd</h1>
-        {/* <P5Wrapper sketch={sketch22} /> */}
-        <P5Wrapper sketch={sketch7} />
+        <P5Wrapper sketch={sketch22} />
+        {/* <P5Wrapper sketch={sketch23} />
+        <P5Wrapper sketch={sketch27} /> */}
+        <P5Wrapper sketch={sketch30perlin} />
         {/* <P5Wrapper sketch={sketch39} />
-        <P5Wrapper sketch={sketch16} /> */}
-        {/* <P5Wrapper sketch={imageprinting} /> */}
-        {/* <P5Wrapper sketch={sketch3} /> */}
-        {/* <P5Wrapper sketch={sketch4} />
+        <P5Wrapper sketch={sketch16} />
+        <P5Wrapper sketch={imageprinting} />
+        <P5Wrapper sketch={sketch3} />
+        <P5Wrapper sketch={sketch4} />
         <P5Wrapper sketch={sketch5} />
         <P5Wrapper sketch={sketch6} />
         <P5Wrapper sketch={sketch7} />
@@ -86,10 +87,8 @@ class P5wrapper extends React.Component {
         <P5Wrapper sketch={sketch32} />
         <P5Wrapper sketch={sketch33} />
         <P5Wrapper sketch={sketch35} />
-
         <P5Wrapper sketch={sketch34} />
         <P5Wrapper sketch={sketch36} />
-
         <P5Wrapper sketch={sketch38} />
         <P5Wrapper sketch={sketch39} />
         <P5Wrapper sketch={sketch40b} />

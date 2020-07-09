@@ -242,7 +242,7 @@ export default function sketch27(p) {
 
         var fontNum = 22
         let ceiling = 1
-        console.log(p.mouseX)
+        // console.log(p.mouseX)
         // p.mouseX > 300 ? ceiling = 20 : ceiling = 1
 
         // p.mouseX > 10 && p.mouseX < 200 ? fontNum = p.mouseX * ceiling : fontNum = 10 * ceiling
@@ -250,7 +250,7 @@ export default function sketch27(p) {
         for (var n = 0; n < words2.length; n++) {
             p.push();
             p.rotate(n * spacing2);
-            console.log(fontNum)
+            // console.log(fontNum)
             let letter = new Letter(words2[n], 0 + radius2, 0, 90, randomNumbers2[n], fontNum);
             //let letter = new Letter(words2[n], 0 + radius2, 0, 90, randomNumbers2[n], fontNum);
             //let letter = new Letter('1', 0 + radius2, 0, 90, randomNumbers[n]);

@@ -4,7 +4,7 @@ export default function sketch30perlin(p) {
 
     var width = 900
     var height = 900
-    const numParticles = 500
+    //const numParticles = 3 //500
 
     // var xoff1 = 0;
     // var xoff2 = 10000
@@ -64,19 +64,26 @@ export default function sketch30perlin(p) {
 
         flowfield = new Array(cols * rows);
 
-        for (let m = 0; m < numParticles; m++) {
+        for (let m = 0; m < 3; m++) {
             //calls the function each time for generating a random color value
             p.getColors()
+            console.log(colorPicks, m)
             //passes the object with random color value into each Particle at the instance of its creation
-            particles[m] = new Particle(colorPicks);
+            particles[m] = new Particle(colorPicks, 3);
 
         }
         p.background(0)
     }
+
+
+
     p.draw = function () {
         var yoff = 0;
         //p.randomSeed(10)  /// this was for the vector line angle tiling
         //p.background(0, 7)
+
+
+
         for (var y = 0; y < rows; y++) {
             var xoff = 0;
             for (var x = 0; x < cols; x++) {
@@ -106,7 +113,7 @@ export default function sketch30perlin(p) {
                 // p.pop()
             }
             yoff += inc;
-            zoff += 0.0001; /// softer the smaller the number
+            zoff += 0.0001 //p.random(0.0001, 0.001); /// softer the smaller the number
         }
 
         fr.html(p.floor(p.frameRate()))
@@ -127,29 +134,60 @@ export default function sketch30perlin(p) {
         //p.noLoop()
     }
 
-    let colorShift = 0
+    // let colorShift = 0
 
-    let colorInc = 0.02
+    p.mousePressed = function () {
+        p.getColors()
+        //passes the object with random color value into each Particle at the instance of its creation
+        let weight = p.floor(p.random(1, 15));
+        let newParticle = new Particle(colorPicks, weight);
+
+        particles.push(newParticle);
+
+    }
+
+
+
+
+    let colorInc = 0.5
     class Particle {
-        constructor(color) {
-            this.pos = p.createVector(p.floor(p.random(width)), p.floor(p.random(height)));
+        constructor(color, weight, mult) {
+            //this.pos = p.createVector(p.floor(p.random(width)), p.floor(p.random(height)));
+            this.pos = p.createVector(p.mouseX, p.mouseY);
             //this.vel = p5.Vector.random2D()
             this.vel = p.createVector(0, 0)
             this.acc = p.createVector(0, 0);
-            this.maxspeed = 2;
-            this.prevPos = this.pos.copy()
-            this.color = color
-
+            this.maxspeed = 2; //p.random(1, 2) //3;
+            this.prevPos = this.pos.copy();
+            this.color = color;
+            this.weight = weight; //p.random(1, 35) // so when i put these on randoms i get the weird in isn't avlued amount...
+            this.dir = 1 // if i ever don't want that hard color transition from 255 to 0, this is where i would apply it this.color.r += 0.5 *this.dir
+            this.mult = 2; //p.random(1, 3) // DON"T MESS WITH THIS. it keeps producing errors of n infinit. even when using mathfloor or ceiling.
         }
 
         update() {
+
             //this.prevPos.set(this.pos) // this won't work in this case
             //NOTE::: :CHANGED this.vel.add(this.acc) to this.acc.mult(0.2)
-            this.vel.add(this.acc.mult(0.2))
+            //console.log(this.acc)
+            this.vel.add(this.acc.mult(0.4))
+            // this.vel.add(this.acc.mult(0.2))
             //set the limit of the velocity that can be added to whichever following position
             this.vel.limit(this.maxspeed)
             this.pos.add(this.vel)
-            this.acc.mult(0) // i changed this from 0 to 2. 
+            this.acc.mult(this.mult) // i changed this from 0 to 2. 
+
+
+            // this.color.r < 255 ? this.color.r += colorInc : this.color.r = 0;
+            if (this.color.r === 255) {
+                this.dir = -1
+            } else if (this.color.r === 0) {
+                this.dir = 1
+            }
+            console.log(this.color.r)
+            this.color.r += colorInc * this.dir
+
+
 
         }
 
@@ -182,12 +220,12 @@ export default function sketch30perlin(p) {
             //but it is confusing why i'm getting negative value numbers, at all, when the floor limit value is set at zero....
             //console.log(colorB, 'colorB')
             //i'm not convinved of these two funcitons, as they are returning values that exceed 255 or is negative. rather then just going to a zero... it's not constructed well. 
-            console.log(this.color.r)
+            // console.log(this.color.r)
 
             //this.color.r < 255 ? this.color.r += colorInc : this.color.r -= 255;
-            p.stroke(p.color(this.color.r, 255, 255));
+            p.stroke(p.color(this.color.r, this.color.g, this.color.b));
             //p.stroke(this.color.r, this.color.g, this.color.b);
-            //p.strokeWeight(5)
+            p.strokeWeight(this.weight)
             //p.point(this.pos.x, this.pos.y)
             p.line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y)
             //this is important. after it draws the movement, if i don't update it with the the prev continuously at this stage, it will continue to draw a line from it's origin beginning position

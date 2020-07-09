@@ -9,7 +9,7 @@ export default function sketch26(p) {
         p.background('teal')
         //this thing here, overrides the different sizes the the function below.... for some reason
         //var fontFamily = p.textFont('Georgia');
-        var sentence = "progress doesn't happen in a\n  straight line"
+        var sentence = "progress doesn't happen in a\r\n  straight line"
         //p.textSize(30);
         // var textstyling = p.textFont('Georgia', 30)
         //p.textFont(fontFamily)
