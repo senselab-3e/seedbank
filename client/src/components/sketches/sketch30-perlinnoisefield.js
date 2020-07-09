@@ -139,7 +139,7 @@ export default function sketch30perlin(p) {
     p.mousePressed = function () {
         p.getColors()
         //passes the object with random color value into each Particle at the instance of its creation
-        let weight = p.floor(p.random(1, 15));
+        let weight = p.floor(p.random(1, 100));
         let newParticle = new Particle(colorPicks, weight);
 
         particles.push(newParticle);
@@ -151,7 +151,7 @@ export default function sketch30perlin(p) {
 
     let colorInc = 0.5
     class Particle {
-        constructor(color, weight, mult) {
+        constructor(color, weight) {
             //this.pos = p.createVector(p.floor(p.random(width)), p.floor(p.random(height)));
             this.pos = p.createVector(p.mouseX, p.mouseY);
             //this.vel = p5.Vector.random2D()
@@ -160,8 +160,10 @@ export default function sketch30perlin(p) {
             this.maxspeed = 2; //p.random(1, 2) //3;
             this.prevPos = this.pos.copy();
             this.color = color;
+            this.startweight = weight;
             this.weight = weight; //p.random(1, 35) // so when i put these on randoms i get the weird in isn't avlued amount...
             this.dir = 1 // if i ever don't want that hard color transition from 255 to 0, this is where i would apply it this.color.r += 0.5 *this.dir
+            this.wdir = 1
             this.mult = 2; //p.random(1, 3) // DON"T MESS WITH THIS. it keeps producing errors of n infinit. even when using mathfloor or ceiling.
         }
 
@@ -188,6 +190,12 @@ export default function sketch30perlin(p) {
             this.color.r += colorInc * this.dir
 
 
+            if (this.weight === this.startweight * 30) {
+                this.wdir = -1
+            } else if (this.weight === this.startweight - 1) {
+                this.wdir = 1
+            }
+            this.weight += colorInc * this.wdir
 
         }
 
