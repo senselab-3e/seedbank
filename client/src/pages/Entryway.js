@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 const colorScroll = keyframes`
-    15% {
+    0% {
         background-color: var(--entrypatch-color);
     }
 
@@ -15,16 +15,12 @@ const colorScroll = keyframes`
         background-color: var(--entrypatch-color);
     }
 
-    60% {
+    70% {
         background-color: black;
     }
 
-    75% {
-        background-color: var(--entrypatch-color);
-    }
-
     95% {
-        background-color: white;
+      background-color: var(--entrypatch-color);
     }
 }`;
 
@@ -47,39 +43,30 @@ const InputColor = styled.div`
   left: 20px;
 `;
 
+const Pixel = styled.div`
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: ${(props) => props.top};
+  left: ${(props) => props.left};
+  background-color: var(--entrypatch-color);
+`;
+
+//i could also do ${(props) => props.color} or just as easily reference var(--entrypatch-color)
+
 //import styled, { keyframes } from "styled-components";
 
+var xpos = (Math.random(window.innerWidth) * window.innerWidth) / 2 + "px"; // i need this because if the a link is  parent of pixel, it needs to share the coors of pixel;
+var ypos =
+  (Math.random(window.innerHeight) * window.innerHeight) / 2 - 15 + "px";
+
 export default function Entryway() {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { color: "#ffffff" };
+  //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
+  const [bcolor, setColor] = useState("#f812c0");
 
-  //   // This binding is necessary to make `this` work in the callback
-  //   //this.handleClick = this.handleClick.bind(this);
-  // }
-
-  /* <input
-            className="inputColor"
-            type="color"
-            defaultValue={bcolor}
-            onChange={() => setColor("")}
-          ></input> */
-
-  const [bcolor, setColor] = useState("");
-
-  // const changeColor = (e) => {
-  //   console.log(e);
-  //   //console.log(e.target.value);
-  //   // this.setState((state) => ({
-  //   //   color: e.target.value,
-  //   // }));
-  //   // setColor(input.defaultValue);
-  //   //return e.target.value;
-  // };
-
-  //onChange={(e) => console.log(e.target.value, "apples")}
   return (
     <BodyColor color={bcolor}>
+      <Pixel color={bcolor} left={xpos} top={ypos}></Pixel>
       <div className="colorBox">
         <InputColor>
           <p>{bcolor}</p>
