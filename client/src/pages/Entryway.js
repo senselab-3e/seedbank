@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 //import "../style/00.css";
 import styled, { keyframes } from "styled-components";
+import Pixel from "../components/Pixel";
 
 const colorScroll = keyframes`
     0% {
@@ -43,14 +44,14 @@ const InputColor = styled.div`
   left: 20px;
 `;
 
-const Pixel = styled.div`
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  top: ${(props) => props.top};
-  left: ${(props) => props.left};
-  background-color: var(--entrypatch-color);
-`;
+// const Pixel = styled.div`
+//   position: absolute;
+//   width: 100px;
+//   height: 100px;
+//   top: ${(props) => props.top};
+//   left: ${(props) => props.left};
+//   background-color: var(--entrypatch-color);
+// `;
 
 //i could also do ${(props) => props.color} or just as easily reference var(--entrypatch-color)
 
@@ -64,9 +65,11 @@ export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
   const [bcolor, setColor] = useState("#f812c0");
 
+  //<Pixel color={bcolor} left={xpos} top={ypos}></Pixel>
+
   return (
     <BodyColor color={bcolor}>
-      <Pixel color={bcolor} left={xpos} top={ypos}></Pixel>
+      <Pixel></Pixel>
       <div className="colorBox">
         <InputColor>
           <p>{bcolor}</p>
