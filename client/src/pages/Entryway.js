@@ -58,25 +58,36 @@ export default function Entryway() {
   //   //this.handleClick = this.handleClick.bind(this);
   // }
 
-  const [bcolor, setColor] = useState("#6c49e0");
+  /* <input
+            className="inputColor"
+            type="color"
+            defaultValue={bcolor}
+            onChange={() => setColor("")}
+          ></input> */
 
-  // function changeColor(e) {
-  //   console.log(e.target.value);
+  const [bcolor, setColor] = useState("");
+
+  // const changeColor = (e) => {
+  //   console.log(e);
+  //   //console.log(e.target.value);
   //   // this.setState((state) => ({
   //   //   color: e.target.value,
   //   // }));
-  //   setColor(e.target.value);
+  //   // setColor(input.defaultValue);
   //   //return e.target.value;
-  // }
+  // };
+
+  //onChange={(e) => console.log(e.target.value, "apples")}
   return (
     <BodyColor color={bcolor}>
       <div className="colorBox">
         <InputColor>
+          <p>{bcolor}</p>
           <input
             className="inputColor"
             type="color"
             defaultValue={bcolor}
-            onChange={() => setColor("#e09b49")}
+            onChange={(e) => setColor(e.target.value)}
           ></input>
         </InputColor>
       </div>
