@@ -8,9 +8,10 @@ import withAuth from "./helpers/withAuth";
 
 import EventsPage from "./pages/events";
 import AuthPage from "./pages/auth";
-import About from "./pages/About";
+// import About from "./pages/About"; // TEMPORARILY DISABLED to stop all the noisy alerts about sketches
 //import Header from "./partials/Header";
 //import Grid from "./Grid";
+import Entryway from "./pages/Entryway";
 import Glitch from "./pages/Glitch";
 import Play from "./pages/Play";
 import ImagesPage from "./pages/Images";
@@ -33,13 +34,13 @@ function App() {
 
           <Switch>
             <Route exact path="/" render={() => <div>Home</div>} />
-            <Route path="/about3e" component={About} />
+            {/* <Route path="/about3e" component={About} /> */}
             <Route path="/oOoOs" component={Glitch} />
             <Route path="/play">
               <Play />
             </Route>
             <Route path="/patches" component={EeE} />
-            <Route path="/entryway" render={() => <div>Entry</div>} />
+            <Route path="/entryway" component={Entryway} />
             <Route exact path="/auth" component={AuthPage} />
             <Route
               exact

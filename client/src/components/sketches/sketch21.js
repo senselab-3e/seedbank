@@ -1,4 +1,8 @@
 export default function sketch21(p) {
+
+    const propText = "What is it to move with a proposition? What does that do differently?\n\n\n THIS IS A MOVEMENT PRACTICE PROPOSITION (It should take between 1 hour to 2 hours) \n\n\n \t It is a STUDY time, so it will require TENDING time. As a proposition it also carries the quality of being a GIFT. As a gift it also carries the appetite to generate gestures of FEED-back to the process and FEEDING-forward. But we don't know in advance what feeding forward and feeding back is. we generate it in and with the practice! FIGURE: the cell as process\n TOOLS: \n \t- [ ] a colour patch to create a zone of intensity of colorality to hold and suspend a region of contrast as a way to modulate the field for engagement into an acossioning of experience moving this way this time.\n \t- [ ] a bag to fill with water. preferably warm and cold water to experiment with different temperature as contrasts.\n \t- [ ] one or two pieces of fabric with interesting colour and texture or that carry sparks for an affinity of tonality with the capacity to lure a RELATION DIAGRAM: every movement proposition should take around 15-20 minutes but feel free to shorten and//or expand but keep it time limited so that it finds itself in THIS way, THIS time.\n\n";
+    let splitpropText = p.split(propText, ' ');
+    const secondText = ["MOVEMENT PROPOSITION #1: FLUIDS\n *note: consider study as movement and movement as study already yet practice modalities and try to catch the transversal! *note: stop at any time and go for water or wander around, then come back. practice an immersion that does not detach itself from surroundings.\n\n STUDY To build a relation with environment as fluid. environment not necessarily an external. not necessarily internal either. -Watch a small part of this video: https://youtu.be/URUJD5NEXC8’\n -Try to build a relation with the fluid consistency that the video makes come forth.\n -See what else sparks from there, it can be resistances too.\n\n MOVEMENT\n Preparation of the field: fill one or two or three or five bags of water with different temperatures that are amicable when in contact with skin. -Play with the fabulatory concept of fluidity.\n -Start by walking and pausing. (you can also sit or lay down if that's a more intuitive pull for you)\n\n \t-Think-Feel FLUIDITY\n\n \t-Take time to feel fields of affectation of FLUIDITY.\n -we are not encountering fluidity as a metaphor of something else. we are trying to play with ACTUAL/VIRTUAL fluidity\n as a tapping into a process that is active unfolding and folding constantly.\n -play with the affectations as minuscule they may be felt. \n \t-move around the feelings feeling and try to feel how that feels\n \t-keep moving around\n \t-at some point when movement is moving; reach toward the bags filled with water.\n \t-PLAY with the bags, rolling them, placing them, sliding them one by one or more than one at a time around different bodying relations. see how it feels differently and consider if you can move it around perhaps even toward a togetherness of the already movement moving. -PRACTICE different relations.\n \t-Remember to PAUSE. And practice different velocities of encounter.\n -Tend and attune to when a singularizing RELATION starts building its own proposition. Attune to the proposition's mode of life. or life-ing. \n \t-Carry the proposition around in movement. Feel it's peak. Feel its time signature. Feel its limit. Feel its shifting point. -SHIFT either as a gradual tending to another FORM-ing nascent proposition or as a JUMP to an urgent CONTRAST with a relevant necessity to be moved.\n -Try some music on, recommended: Album 'VRIOON' by Alva Noto Ryuichi Sakamoto\n -Try in silence again.\n -Let the differences percolate.\n \t-Find a surface where to rest the movements.\n -Collect final notes and thinking-feeling occurrences.\n \t-End of proposition #1\n\n STUDY (5 minutes)\n carry the movements moving into a drawing, sketch, written dancing wordings, or a sip of coffee or tea."]
     const width = 500;
     const height = 500;
     //Bring this back when you bring back the bounce class
@@ -53,23 +57,28 @@ export default function sketch21(p) {
     }
 
     class Perlin {
-        constructor(x, y, diam, steps) {
+        constructor(x, y, diam, steps, word) {
             this.x = x;
             this.y = y;
             this.diam = diam;
             this.steps = steps;
             this.opacity = 102;
+            this.word = word
         }
         display() {
-            var x = width * p.noise(this.steps);
-            var y = height * p.noise(this.steps + 5);
+            var x = this.x * p.noise(this.steps);
+            var y = this.y * p.noise(this.steps + 5);
             var r = 255 * p.noise(this.steps + 10);
             var g = 255 * p.noise(this.steps + 15);
             var b = 255 * p.noise(this.steps + 20);
 
             p.noStroke();
             p.fill(r, g, b);
-            p.ellipse(x, y, this.diam, this.diam);
+            // to expedite testing i repaced the ellipses to texts but it should get it's own object
+            // p.ellipse(x, y, this.diam, this.diam);
+
+            p.textSize(27)
+            p.text(this.word, x, y)
         }
         update() {
             this.steps += 0.01;
@@ -126,8 +135,10 @@ export default function sketch21(p) {
             //p.stroke(lineColor);
             //p.noStroke()
             //p.stroke(this.stroke);
+            p.push()
             p.textSize(this.fontSize);
             p.text(this.word, this.x, this.y);
+            p.pop()
         }
         update() {
             //   if (this.y > height) {
@@ -291,7 +302,17 @@ export default function sketch21(p) {
     p.setup = function () {
         p.createCanvas(width, height);
         p.background("teal");
-        p.noFill()
+        // p.noFill()
+        // p.push()
+        //p.textFont('Georgia');
+        //p.push();
+        // p.fill(p.random(255), p.random(255), p.random(255))
+        //p.pop();
+        //p.textSize(14)
+        // p.text(letter, x, 300)
+        // p.fill('#333')
+        //p.text('THIS IS A MOVEMENT PRACTICE PROPOSITION \n(It should take between 1 hour to 2 hours)', width / 6, height / 2)
+        // p.pop()
         //p.frameRate(13) //this value needs to be an integer, not a string number
         // preload()
         // for (let i = 0; i < 10; i++) {
@@ -309,9 +330,12 @@ export default function sketch21(p) {
         //p.stroke("255");
         p.noStroke()
         p.ellipseMode(p.CENTER);
-
-
-        //p.noFill();
+        p.push()
+        p.textSize(10)
+        p.fill('#333')
+        p.text('THIS IS A MOVEMENT PRACTICE PROPOSITION \n (It should take between 1 hour to 2 hours)', width / 4, height / 2)
+        p.pop()
+        p.noFill();
         // p.text(sourceText, width / 2, height / 2)
 
         ///NOTE: A method is just a function that is the value for a key in an object. For example, try running this code in an empty p5.js sketch:
@@ -368,6 +392,15 @@ export default function sketch21(p) {
     }];
 
     p.mousePressed = function () {
+        //let letter = sentence.charAt(i)
+
+        if (splitpropText.length > 0) {
+            let newWord = new Perlin(p.mouseX, p.mouseY, 5, 0, splitpropText[0]);
+
+            perlins.push(newWord);
+            //console.log(words)
+        }
+        splitpropText.splice(0, 1);
 
         let newPerlin = new Perlin(p.mouseX, p.mouseY, 5, 0);
         perlins.push(newPerlin)

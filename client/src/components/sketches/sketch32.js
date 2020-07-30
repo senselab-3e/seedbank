@@ -4,10 +4,6 @@ export default function sketch32(p) {
 
     var width = 500
     var height = 500
-
-
-
-
     let drawing
     let drawing2
     let drawing3

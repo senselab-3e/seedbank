@@ -61,7 +61,7 @@ export default function sketch15(p) {
             this.opacity = 102;
         }
         display() {
-            var x = width * p.noise(this.steps);
+            var x = this.x + width * p.noise(this.steps / 2);
             var y = height * p.noise(this.steps + 5);
             var r = 255 * p.noise(this.steps + 10);
             var g = 255 * p.noise(this.steps + 15);
