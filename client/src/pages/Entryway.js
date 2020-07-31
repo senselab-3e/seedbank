@@ -46,24 +46,38 @@ const InputColor = styled.div`
   left: 20px;
 `;
 
-var ypos = (Math.random(window.innerWidth) * window.innerWidth) / 2 + "px"; // i need this because if the a link is  parent of pixel, it needs to share the coors of pixel;
+//var ypos = (Math.random(window.innerWidth) * window.innerWidth) / 2 + "px"; // i need this because if the a link is  parent of pixel, it needs to share the coors of pixel;
 // var xpos =
 //   (Math.random(window.innerHeight) * window.innerHeight - 10) / 2 - 15 + "px";
 
-const num = () => {
-  let num = Math.ceil(Math.random(window.innerHeight) * window.innerHeight);
-  num < 50 && num > window.innerHeight - 100 ? ypos() : console.log("nothing");
+//this isn't working properly -- revisit
+const numVal = (limit) => {
+  let num = Math.ceil(Math.random(limit) * limit);
+  //num < 50 && num > limit - 200 ? numVal(limit) : (num += "px");
 
-  return num + "px";
+  if (num < 50 || num > limit - 200) {
+    console.log("limit hit");
+    numVal(limit);
+  } else {
+    num += "px";
+    return num;
+  }
+
+  //return num;
 };
 
-const xpos = num(); // by doing it this way, rather then having xpos be a function (as is seen in num) - i prevent that value from being called repeatedly, each time the components re-render. this would cause the position to change continually. but maybe i want that.
+//const xpos = numVal(); // by doing it this way, rather then having xpos be a function (as is seen in num) - i prevent that value from being called repeatedly, each time the components re-render. this would cause the position to change continually. but maybe i want that.
 
 export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
   const [bcolor, setColor] = useState("#f812c0");
 
-  //<Pixel color={bcolor} left={xpos} top={ypos}></Pixel>
+  //inline approach <div className="pixel picnicPatch" style={{top: '300px', left: '300px'}}></div>
+  //this is useful because i could re-use it for handing random position to many elements -- as the numVal() will call a unique position every time
+  const portalStyling = {
+    top: numVal(window.innerHeight),
+    left: numVal(window.innerWidth),
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -72,11 +86,12 @@ export default function Entryway() {
 
   return (
     <BodyColor color={bcolor}>
-      <div
-        className="pixel picnicPatch"
-        style={{ top: "300px", left: "300px" }}
-      ></div>
-      <Pixel top={xpos} left={ypos} func={handleClick}></Pixel>
+      <div className="pixel picnicPatch" style={portalStyling}></div>
+      <Pixel
+        top={numVal(window.innerHeight)}
+        left={numVal(window.innerWidth)}
+        func={handleClick}
+      ></Pixel>
       <InputColor>
         <p>{bcolor}</p>
         <input
