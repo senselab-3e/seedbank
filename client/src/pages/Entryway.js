@@ -57,15 +57,27 @@ const InputColor = styled.div`
 
 //import styled, { keyframes } from "styled-components";
 
-var xpos = (Math.random(window.innerWidth) * window.innerWidth) / 2 + "px"; // i need this because if the a link is  parent of pixel, it needs to share the coors of pixel;
-var ypos =
-  (Math.random(window.innerHeight) * window.innerHeight - 10) / 2 - 15 + "px";
+var ypos = (Math.random(window.innerWidth) * window.innerWidth) / 2 + "px"; // i need this because if the a link is  parent of pixel, it needs to share the coors of pixel;
+// var ypos =
+//   (Math.random(window.innerHeight) * window.innerHeight - 10) / 2 - 15 + "px";
+
+const xpos = () => {
+  let num = Math.ceil(Math.random(window.innerHeight) * window.innerHeight);
+  num < 50 ? ypos() : (num = num);
+
+  return num + "px";
+};
 
 export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
   const [bcolor, setColor] = useState("#f812c0");
 
   //<Pixel color={bcolor} left={xpos} top={ypos}></Pixel>
+
+  function handleClick(e) {
+    e.preventDefault();
+    console.log("The link was clicked.");
+  }
 
   return (
     <BodyColor color={bcolor}>

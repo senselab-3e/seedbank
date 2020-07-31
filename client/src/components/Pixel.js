@@ -24,7 +24,11 @@ const PixelPatch = styled.div`
 export default function Pixel(prop) {
   return (
     <div>
-      <PixelPatch left={prop.left} top={prop.top}></PixelPatch>
+      <PixelPatch
+        left={prop.left}
+        top={prop.top}
+        onClick={() => console.log("clicked")}
+      ></PixelPatch>
     </div>
   );
 }
