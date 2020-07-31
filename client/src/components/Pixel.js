@@ -22,12 +22,13 @@ const PixelPatch = styled.div`
 // --entrypatch-color value is accurately being shared based on the changes in the parent Entryway.
 // hypothetically, this means i should be able to keep all css in css accept where perhaps is used the reassignment of values in javascript, in the vanilla version.
 export default function Pixel(prop) {
+  //omg... so. a lot of traditional patter for setting of the onClick={(){thing}}... but since i was passing down a function as a prop, by calling it within another function it was an anonymous function being triggered rather then the prop function
   return (
     <div>
       <PixelPatch
         left={prop.left}
         top={prop.top}
-        onClick={() => console.log("clicked")}
+        onClick={prop.func}
       ></PixelPatch>
     </div>
   );
