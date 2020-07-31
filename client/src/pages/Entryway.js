@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import "../style/00.css";
+import "../style/00.css";
 import styled, { keyframes } from "styled-components";
 import Pixel from "../components/Pixel";
 
@@ -27,6 +27,8 @@ const colorScroll = keyframes`
 
 const BodyColor = styled.div`
   background-color: var(--entrypatch-color);
+  padding: 0px;
+  margin: 0px;
   height: 100vh;
   width: 100vw;
   -webkit-animation: ${colorScroll} 60s infinite;
@@ -44,29 +46,18 @@ const InputColor = styled.div`
   left: 20px;
 `;
 
-// const Pixel = styled.div`
-//   position: absolute;
-//   width: 100px;
-//   height: 100px;
-//   top: ${(props) => props.top};
-//   left: ${(props) => props.left};
-//   background-color: var(--entrypatch-color);
-// `;
-
-//i could also do ${(props) => props.color} or just as easily reference var(--entrypatch-color)
-
-//import styled, { keyframes } from "styled-components";
-
 var ypos = (Math.random(window.innerWidth) * window.innerWidth) / 2 + "px"; // i need this because if the a link is  parent of pixel, it needs to share the coors of pixel;
-var xpos =
-  (Math.random(window.innerHeight) * window.innerHeight - 10) / 2 - 15 + "px";
+// var xpos =
+//   (Math.random(window.innerHeight) * window.innerHeight - 10) / 2 - 15 + "px";
 
-// const xpos = () => {
-//   let num = Math.ceil(Math.random(window.innerHeight) * window.innerHeight);
-//   num < 50 && num > window.innerHeight - 100 ? ypos() : console.log("nothing");
+const num = () => {
+  let num = Math.ceil(Math.random(window.innerHeight) * window.innerHeight);
+  num < 50 && num > window.innerHeight - 100 ? ypos() : console.log("nothing");
 
-//   return num + "px";
-// };
+  return num + "px";
+};
+
+const xpos = num(); // by doing it this way, rather then having xpos be a function (as is seen in num) - i prevent that value from being called repeatedly, each time the components re-render. this would cause the position to change continually. but maybe i want that.
 
 export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
@@ -81,18 +72,20 @@ export default function Entryway() {
 
   return (
     <BodyColor color={bcolor}>
+      <div
+        className="pixel picnicPatch"
+        style={{ top: "300px", left: "300px" }}
+      ></div>
       <Pixel top={xpos} left={ypos} func={handleClick}></Pixel>
-      <div className="colorBox">
-        <InputColor>
-          <p>{bcolor}</p>
-          <input
-            className="inputColor"
-            type="color"
-            defaultValue={bcolor}
-            onChange={(e) => setColor(e.target.value)}
-          ></input>
-        </InputColor>
-      </div>
+      <InputColor>
+        <p>{bcolor}</p>
+        <input
+          className="inputColor"
+          type="color"
+          defaultValue={bcolor}
+          onChange={(e) => setColor(e.target.value)}
+        ></input>
+      </InputColor>
     </BodyColor>
   );
 }
