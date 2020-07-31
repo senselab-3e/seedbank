@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const PixelPatch = styled.div`
   position: absolute;
-  width: 15px;
-  height: 15px;
+  width: 25px;
+  height: 25px;
   top: ${(props) => props.top};
   left: ${(props) => props.left};
   cursor: pointer;

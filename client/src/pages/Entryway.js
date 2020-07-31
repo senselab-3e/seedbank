@@ -51,22 +51,12 @@ const InputColor = styled.div`
 //   (Math.random(window.innerHeight) * window.innerHeight - 10) / 2 - 15 + "px";
 
 //this isn't working properly -- revisit
-const numVal = (limit) => {
-  let num = Math.ceil(Math.random(limit) * limit);
-  //num < 50 && num > limit - 200 ? numVal(limit) : (num += "px");
-
-  if (num < 50 || num > limit - 200) {
-    console.log("limit hit");
-    numVal(limit);
-  } else {
-    num += "px";
-    return num;
-  }
-
-  //return num;
-};
 
 //const xpos = numVal(); // by doing it this way, rather then having xpos be a function (as is seen in num) - i prevent that value from being called repeatedly, each time the components re-render. this would cause the position to change continually. but maybe i want that.
+
+const numVal = (min, max) => {
+  return Math.random() * (max - min) + min;
+};
 
 export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
@@ -75,8 +65,8 @@ export default function Entryway() {
   //inline approach <div className="pixel picnicPatch" style={{top: '300px', left: '300px'}}></div>
   //this is useful because i could re-use it for handing random position to many elements -- as the numVal() will call a unique position every time
   const portalStyling = {
-    top: numVal(window.innerHeight),
-    left: numVal(window.innerWidth),
+    top: numVal(100, window.innerHeight - 100) + "px",
+    left: numVal(100, window.innerWidth - 100) + "px",
   };
 
   const handleClick = (e) => {
@@ -88,8 +78,8 @@ export default function Entryway() {
     <BodyColor color={bcolor}>
       <div className="pixel picnicPatch" style={portalStyling}></div>
       <Pixel
-        top={numVal(window.innerHeight)}
-        left={numVal(window.innerWidth)}
+        top={numVal(100, window.innerHeight - 100) + "px"}
+        left={numVal(100, window.innerWidth - 100) + "px"}
         func={handleClick}
       ></Pixel>
       <InputColor>
