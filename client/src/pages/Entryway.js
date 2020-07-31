@@ -52,9 +52,9 @@ const InputColor = styled.div`
 
 //this isn't working properly -- revisit
 
-//const xpos = numVal(); // by doing it this way, rather then having xpos be a function (as is seen in num) - i prevent that value from being called repeatedly, each time the components re-render. this would cause the position to change continually. but maybe i want that.
+//const xpos = ranValMinMax(); // by doing it this way, rather then having xpos be a function (as is seen in num) - i prevent that value from being called repeatedly, each time the components re-render. this would cause the position to change continually. but maybe i want that.
 
-const numVal = (min, max) => {
+const ranValMinMax = (min, max) => {
   return Math.random() * (max - min) + min;
 };
 
@@ -63,11 +63,27 @@ export default function Entryway() {
   const [bcolor, setColor] = useState("#f812c0");
 
   //inline approach <div className="pixel picnicPatch" style={{top: '300px', left: '300px'}}></div>
-  //this is useful because i could re-use it for handing random position to many elements -- as the numVal() will call a unique position every time
-  const portalStyling = {
-    top: numVal(100, window.innerHeight - 100) + "px",
-    left: numVal(100, window.innerWidth - 100) + "px",
+  //this is useful because i could re-use it for handing random position to many elements -- as the ranValMinMax() will call a unique position every time
+
+  const createPositions = (dim) => {
+    let num = "";
+    switch (dim) {
+      case "top":
+        num = ranValMinMax(100, window.innerHeight - 100);
+        num += "px";
+        break;
+      case "left":
+        num = ranValMinMax(100, window.innerWidth - 100);
+        num += "px";
+        break;
+      default:
+        num = ranValMinMax(100, window.innerHeight - 100);
+        num += "px";
+    }
+    return num;
   };
+
+  console.log(createPositions("top"));
 
   // const checkDisplay = (e) => {
   //   e.preventDefault();
@@ -79,13 +95,18 @@ export default function Entryway() {
   //     : el.classList.add("hidden");
   // };
 
+  const portalStyling = {
+    top: createPositions("top"),
+    left: createPositions("left"),
+  };
+
   const createEl = (e) => {
     e.preventDefault();
     var pixel = document.createElement("div");
     pixel.className = "pixel";
     pixel.classList.add("picnicPatch");
-    pixel.style.left = numVal(100, window.innerWidth - 100) + "px";
-    pixel.style.top = numVal(100, window.innerHeight - 100) + "px";
+    pixel.style.left = createPositions("left");
+    pixel.style.top = createPositions("top");
     const container = document.querySelector(".container");
     container.appendChild(pixel);
   };
@@ -95,8 +116,8 @@ export default function Entryway() {
       <div className="container">
         <div className="pixel picnicPatch hidden" style={portalStyling}></div>
         <Pixel
-          top={numVal(100, window.innerHeight - 100) + "px"}
-          left={numVal(100, window.innerWidth - 100) + "px"}
+          top={createPositions("top")}
+          left={createPositions("left")}
           func={createEl}
         ></Pixel>
         <InputColor>
