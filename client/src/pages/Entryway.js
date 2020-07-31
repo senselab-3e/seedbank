@@ -69,33 +69,46 @@ export default function Entryway() {
     left: numVal(100, window.innerWidth - 100) + "px",
   };
 
-  const handleClick = (e) => {
+  // const checkDisplay = (e) => {
+  //   e.preventDefault();
+  //   console.log("The link was clicked.");
+  //   const el = document.querySelector(".picnicPatch");
+  //   console.log(el);
+  //   el.classList.contains("hidden")
+  //     ? el.classList.remove("hidden")
+  //     : el.classList.add("hidden");
+  // };
+
+  const createEl = (e) => {
     e.preventDefault();
-    console.log("The link was clicked.");
-    const el = document.querySelector(".picnicPatch");
-    console.log(el);
-    el.classList.contains("hidden")
-      ? el.classList.remove("hidden")
-      : el.classList.add("hidden");
+    var pixel = document.createElement("div");
+    pixel.className = "pixel";
+    pixel.classList.add("picnicPatch");
+    pixel.style.left = numVal(100, window.innerWidth - 100) + "px";
+    pixel.style.top = numVal(100, window.innerHeight - 100) + "px";
+    const container = document.querySelector(".container");
+    container.appendChild(pixel);
   };
 
   return (
     <BodyColor color={bcolor}>
-      <div className="pixel picnicPatch hidden" style={portalStyling}></div>
-      <Pixel
-        top={numVal(100, window.innerHeight - 100) + "px"}
-        left={numVal(100, window.innerWidth - 100) + "px"}
-        func={handleClick}
-      ></Pixel>
-      <InputColor>
-        <p>{bcolor}</p>
-        <input
-          className="inputColor"
-          type="color"
-          defaultValue={bcolor}
-          onChange={(e) => setColor(e.target.value)}
-        ></input>
-      </InputColor>
+      <div className="container">
+        <div className="pixel picnicPatch hidden" style={portalStyling}></div>
+        <Pixel
+          top={numVal(100, window.innerHeight - 100) + "px"}
+          left={numVal(100, window.innerWidth - 100) + "px"}
+          func={createEl}
+        ></Pixel>
+        <InputColor>
+          <p>{bcolor}</p>
+          <input
+            className="inputColor"
+            type="color"
+            defaultValue={bcolor}
+            onChange={(e) => setColor(e.target.value)}
+          ></input>
+        </InputColor>
+      </div>
     </BodyColor>
   );
 }
