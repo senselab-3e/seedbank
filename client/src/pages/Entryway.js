@@ -59,7 +59,7 @@ const InputColor = styled.div`
 
 var xpos = (Math.random(window.innerWidth) * window.innerWidth) / 2 + "px"; // i need this because if the a link is  parent of pixel, it needs to share the coors of pixel;
 var ypos =
-  (Math.random(window.innerHeight) * window.innerHeight) / 2 - 15 + "px";
+  (Math.random(window.innerHeight) * window.innerHeight - 10) / 2 - 15 + "px";
 
 export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
@@ -69,7 +69,7 @@ export default function Entryway() {
 
   return (
     <BodyColor color={bcolor}>
-      <Pixel></Pixel>
+      <Pixel top={xpos} left={ypos}></Pixel>
       <div className="colorBox">
         <InputColor>
           <p>{bcolor}</p>
