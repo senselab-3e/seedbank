@@ -23,3 +23,7 @@
     /* animation: line 5s forwards; */
     /* decided not to use this method */
 }
+
+.hidden {
+    display: none;
+}

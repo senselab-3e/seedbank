@@ -72,11 +72,16 @@ export default function Entryway() {
   const handleClick = (e) => {
     e.preventDefault();
     console.log("The link was clicked.");
+    const el = document.querySelector(".picnicPatch");
+    console.log(el);
+    el.classList.contains("hidden")
+      ? el.classList.remove("hidden")
+      : el.classList.add("hidden");
   };
 
   return (
     <BodyColor color={bcolor}>
-      <div className="pixel picnicPatch" style={portalStyling}></div>
+      <div className="pixel picnicPatch hidden" style={portalStyling}></div>
       <Pixel
         top={numVal(100, window.innerHeight - 100) + "px"}
         left={numVal(100, window.innerWidth - 100) + "px"}
