@@ -9,11 +9,11 @@
     border: 1px inset white;
     cursor: pointer;
     background: var(--entrypatch-color);
-    -webkit-transition: width 3s ease-in-out 0.1ms, height 1s ease-in 3s;
-    -moz-transition: width 3s ease-in-out 0.1ms, height 1s ease-in 3s;
-    -ms-transition: width 3s ease-in-out 0.1ms, height 1s ease-in 3s;
-    -o-transition: width 3s ease-in-out 0.1ms, height 1s ease-in 3s;
-    transition: width 3s ease-in-out 0.1ms, height 1s ease-in 3s;
+    -webkit-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
+    -moz-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
+    -ms-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
+    -o-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
+    transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
 }
 
 .picnicPatch:hover {

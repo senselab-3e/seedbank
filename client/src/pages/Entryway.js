@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../style/00.css";
 import styled, { keyframes } from "styled-components";
 import Pixel from "../components/Pixel";
+import Portal from "../components/Portal";
 
 const colorScroll = keyframes`
     0% {
@@ -61,6 +62,12 @@ const ranValMinMax = (min, max) => {
 export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
   const [bcolor, setColor] = useState("#f812c0");
+  const [portalnum, setPorts] = useState(0);
+
+  //  How do I update state with values that depend on the current state?
+  // Pass a function instead of an object to setState to ensure the call always uses the most updated version of state (see below).
+
+  const addPortals = () => setPorts(portalnum + 1);
 
   //inline approach <div className="pixel picnicPatch" style={{top: '300px', left: '300px'}}></div>
   //this is useful because i could re-use it for handing random position to many elements -- as the ranValMinMax() will call a unique position every time
@@ -83,45 +90,53 @@ export default function Entryway() {
     return num;
   };
 
-  console.log(createPositions("top"));
-
-  // const checkDisplay = (e) => {
-  //   e.preventDefault();
-  //   console.log("The link was clicked.");
-  //   const el = document.querySelector(".picnicPatch");
-  //   console.log(el);
-  //   el.classList.contains("hidden")
-  //     ? el.classList.remove("hidden")
-  //     : el.classList.add("hidden");
-  // };
+  //using this approach so that you can more cleanly read and then inject inline styling with a single object
 
   const portalStyling = {
     top: createPositions("top"),
     left: createPositions("left"),
   };
 
-  const createEl = (e) => {
-    e.preventDefault();
-    var pixel = document.createElement("div");
-    pixel.className = "pixel";
-    pixel.classList.add("picnicPatch");
-    pixel.style.left = createPositions("left");
-    pixel.style.top = createPositions("top");
-    const container = document.querySelector(".container");
-    container.appendChild(pixel);
-  };
+  //another, non component based approach. this function can be passed into func= of pixel or portal component. just different approaches.
+  // const createEl = (e) => {
+  //   e.preventDefault();
+  //   var pixel = document.createElement("div");
+  //   pixel.className = "pixel";
+  //   pixel.classList.add("picnicPatch");
+  //   pixel.style.left = createPositions("left");
+  //   pixel.style.top = createPositions("top");
+  //   const container = document.querySelector(".container");
+  //   container.appendChild(pixel);
+  // };
+
+  let portals = [];
+  //portalnum's state is being updated on the component function click, and that hook state then re-loops the creation of the portal component
+  for (let i = 0; i < portalnum; i++) {
+    portals.push(
+      <Portal
+        key={Math.random(portalnum)}
+        top={createPositions("top")}
+        left={createPositions("left")}
+        func={addPortals}
+      />
+    );
+  }
 
   return (
     <BodyColor color={bcolor}>
       <div className="container">
+        {portals}
+
         <div className="pixel picnicPatch hidden" style={portalStyling}></div>
         <Pixel
           top={createPositions("top")}
           left={createPositions("left")}
-          func={createEl}
+          func={addPortals}
         ></Pixel>
         <InputColor>
-          <p>{bcolor}</p>
+          <p>
+            {bcolor} {portalnum}
+          </p>
           <input
             className="inputColor"
             type="color"
@@ -130,6 +145,7 @@ export default function Entryway() {
           ></input>
         </InputColor>
       </div>
+      {console.log(typeof portalnum)}
     </BodyColor>
   );
 }
