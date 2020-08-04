@@ -68,12 +68,5 @@ export default function Portal(prop) {
   var xPos = createPositions("top");
   var yPos = createPositions("left");
 
-  return (
-    <PortalPixel
-      left={yPos}
-      top={xPos}
-      onClick={prop.func}
-      //   background="#333"
-    ></PortalPixel>
-  );
+  return <PortalPixel left={yPos} top={xPos} onClick={prop.func}></PortalPixel>;
 }

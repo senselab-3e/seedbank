@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../style/00.css";
 import styled, { keyframes } from "styled-components";
 import Pixel from "../components/Pixel";
+import Palette from "../components/Palette";
 // import Portal from "../components/Portal";
 
 const colorScroll = keyframes`
@@ -93,7 +94,7 @@ const createPositions = (dim) => {
 export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
   const [bcolor, setColor] = useState("#f812c0");
-  const [portalnum, setPorts] = useState(0);
+  // const [portalnum, setPorts] = useState(0);
 
   //  How do I update state with values that depend on the current state?
   // Pass a function instead of an object to setState to ensure the call always uses the most updated version of state (see below).
@@ -123,6 +124,7 @@ export default function Entryway() {
     pixel.classList.add("picnicPatch");
     pixel.style.left = createPositions("left");
     pixel.style.top = createPositions("top");
+    pixel.onclick = createEl;
     const container = document.querySelector(".container");
     container.appendChild(pixel);
   };
@@ -132,7 +134,7 @@ export default function Entryway() {
   //ANOTHER APPROACH using a portal Component. But there is seemingly no way around not having the location prop continually updating the locatin of alll instances of the Patches -- and so i'm going back to an js element based apprach.
   //let portals = [];
   //portalnum's state is being updated on the component function click, and that hook state then re-loops the creation of the portal component
-
+  // this is also because it's in a loop.
   // for (let i = 0; i < portalnum; i++) {
   //   // var xPos = createPositions("top");
   //   // var yPos = createPositions("left");
@@ -150,6 +152,8 @@ export default function Entryway() {
   //   );
   // }
 
+  //NOTE this container div is being used to append child new elements - even though there are no significant csss
+
   return (
     <BodyColor color={bcolor}>
       <div className="container">
@@ -162,9 +166,7 @@ export default function Entryway() {
           background={bcolor}
         ></Pixel>
         <InputColor>
-          <p>
-            {bcolor} {portalnum}
-          </p>
+          <p>{bcolor}</p>
           <input
             className="inputColor"
             type="color"
@@ -172,8 +174,11 @@ export default function Entryway() {
             onChange={(e) => setColor(e.target.value)}
           ></input>
         </InputColor>
+        <div className="paletteContainer">
+          <Palette hue="160" master={bcolor}></Palette>
+          <Palette hue="55" master={bcolor}></Palette>
+        </div>
       </div>
-      {console.log(typeof portalnum)}
     </BodyColor>
   );
 }
