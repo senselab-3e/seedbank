@@ -174,10 +174,10 @@ export default function Entryway() {
             onChange={(e) => setColor(e.target.value)}
           ></input>
         </InputColor>
-        <div className="paletteContainer">
-          <Palette hue="160" master={bcolor}></Palette>
-          <Palette hue="55" master={bcolor}></Palette>
-        </div>
+        {/* <div className="paletteContainer"> */}
+        <Palette hue="160" hex={bcolor}></Palette>
+        {/* <Palette hue="55" master={bcolor}></Palette> */}
+        {/* </div> */}
       </div>
     </BodyColor>
   );
