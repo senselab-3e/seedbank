@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../style/00.css";
 import styled, { keyframes } from "styled-components";
 import Pixel from "../components/Pixel";
-import Portal from "../components/Portal";
+// import Portal from "../components/Portal";
 
 const colorScroll = keyframes`
     0% {
@@ -59,6 +59,37 @@ const ranValMinMax = (min, max) => {
   return Math.random() * (max - min) + min;
 };
 
+const createPositions = (dim) => {
+  let num = "";
+  switch (dim) {
+    case "top":
+      num = ranValMinMax(100, window.innerHeight - 100);
+      num += "px";
+      break;
+    case "left":
+      num = ranValMinMax(100, window.innerWidth - 100);
+      num += "px";
+      break;
+    default:
+      num = ranValMinMax(100, window.innerHeight - 100);
+      num += "px";
+  }
+  return num;
+};
+
+// var locations = [];
+
+// let portNum = (n) => n;
+
+// for (let i = 0; i < portNum; i++) {
+//   var xPos = createPositions("top");
+//   var yPos = createPositions("left");
+//   locations.push({
+//     x: xPos,
+//     y: yPos,
+//   });
+// }
+
 export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
   const [bcolor, setColor] = useState("#f812c0");
@@ -67,28 +98,15 @@ export default function Entryway() {
   //  How do I update state with values that depend on the current state?
   // Pass a function instead of an object to setState to ensure the call always uses the most updated version of state (see below).
 
-  const addPortals = () => setPorts(portalnum + 1);
+  // const addPortals = () => setPorts(portalnum + 1);
+
+  // const addPortals = (e) => {
+  //   e.preventDefault();
+  //   setPorts(portalnum + 1);
+  // };
 
   //inline approach <div className="pixel picnicPatch" style={{top: '300px', left: '300px'}}></div>
   //this is useful because i could re-use it for handing random position to many elements -- as the ranValMinMax() will call a unique position every time
-
-  const createPositions = (dim) => {
-    let num = "";
-    switch (dim) {
-      case "top":
-        num = ranValMinMax(100, window.innerHeight - 100);
-        num += "px";
-        break;
-      case "left":
-        num = ranValMinMax(100, window.innerWidth - 100);
-        num += "px";
-        break;
-      default:
-        num = ranValMinMax(100, window.innerHeight - 100);
-        num += "px";
-    }
-    return num;
-  };
 
   //using this approach so that you can more cleanly read and then inject inline styling with a single object
 
@@ -98,40 +116,50 @@ export default function Entryway() {
   };
 
   //another, non component based approach. this function can be passed into func= of pixel or portal component. just different approaches.
-  // const createEl = (e) => {
-  //   e.preventDefault();
-  //   var pixel = document.createElement("div");
-  //   pixel.className = "pixel";
-  //   pixel.classList.add("picnicPatch");
-  //   pixel.style.left = createPositions("left");
-  //   pixel.style.top = createPositions("top");
-  //   const container = document.querySelector(".container");
-  //   container.appendChild(pixel);
-  // };
+  const createEl = (e) => {
+    e.preventDefault();
+    var pixel = document.createElement("div");
+    pixel.className = "pixel";
+    pixel.classList.add("picnicPatch");
+    pixel.style.left = createPositions("left");
+    pixel.style.top = createPositions("top");
+    const container = document.querySelector(".container");
+    container.appendChild(pixel);
+  };
 
-  let portals = [];
+  // console.log(locations[0] ? locations[0].x : locations);
+
+  //ANOTHER APPROACH using a portal Component. But there is seemingly no way around not having the location prop continually updating the locatin of alll instances of the Patches -- and so i'm going back to an js element based apprach.
+  //let portals = [];
   //portalnum's state is being updated on the component function click, and that hook state then re-loops the creation of the portal component
-  for (let i = 0; i < portalnum; i++) {
-    portals.push(
-      <Portal
-        key={Math.random(portalnum)}
-        top={createPositions("top")}
-        left={createPositions("left")}
-        func={addPortals}
-      />
-    );
-  }
+
+  // for (let i = 0; i < portalnum; i++) {
+  //   // var xPos = createPositions("top");
+  //   // var yPos = createPositions("left");
+  //   portals.push(
+  //     <Portal
+  //       key={Math.random(portalnum)}
+  //       // top={createPositions("top")}
+  //       // left={createPositions("left")}
+  //       // top={locations[i].y}
+  //       // left={locations[i].x}
+  //       // top={xPos}
+  //       // left={yPos}
+  //       func={addPortals}
+  //     />
+  //   );
+  // }
 
   return (
     <BodyColor color={bcolor}>
       <div className="container">
-        {portals}
-
+        {/* {portals} this is/was for another component based way of addin Portals. see notes above */}
         <div className="pixel picnicPatch hidden" style={portalStyling}></div>
         <Pixel
-          top={createPositions("top")}
-          left={createPositions("left")}
-          func={addPortals}
+          // top={createPositions("top")}
+          // left={createPositions("left")}
+          func={createEl}
+          background={bcolor}
         ></Pixel>
         <InputColor>
           <p>

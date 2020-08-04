@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const PortalPixel = styled.div`
+const PortalPixel = styled.div.attrs((props) => ({
+  style: {
+    tops: props.top,
+    left: props.left,
+  },
+}))`
   width: 25px;
   height: 25px;
   border: 1px inset white;
@@ -36,14 +41,39 @@ const PortalPixel = styled.div`
 //   container2.appendChild(pixel);
 // };
 
+const ranValMinMax = (min, max) => {
+  return Math.random() * (max - min) + min;
+};
+
+const createPositions = (dim) => {
+  let num = "";
+  switch (dim) {
+    case "top":
+      num = ranValMinMax(100, window.innerHeight - 100);
+      num += "px";
+      break;
+    case "left":
+      num = ranValMinMax(100, window.innerWidth - 100);
+      num += "px";
+      break;
+    default:
+      num = ranValMinMax(100, window.innerHeight - 100);
+      num += "px";
+  }
+  return num;
+};
+
 export default function Portal(prop) {
   //   createEl();
+  var xPos = createPositions("top");
+  var yPos = createPositions("left");
 
   return (
     <PortalPixel
-      left={prop.left}
-      top={prop.top}
+      left={yPos}
+      top={xPos}
       onClick={prop.func}
+      //   background="#333"
     ></PortalPixel>
   );
 }
