@@ -88,19 +88,32 @@ export default function Palette(props) {
   //complimentary color generator to match the current colorpicker set by the input val
   let hexHslComp = complimyHSL(hexHsl);
 
-  // console.log(hexHsl.h, "apples");
-  //const [p1Color, setColor] = useState(hexHsl);
-  const [p1Color, setColor] = useState(hexHsl);
-  const [p2Color, setColor2] = useState(hexHslComp);
-  //const [seconds, setSeconds] = useState(1);
+  const [p1Color, setColor] = useState(HEXtoHSL(props.hex));
+  const [p2Color, setColor2] = useState(props.hex);
+
+  //both of the above - the reference to a function converting the prop, and the direct prop are both
+  //updating at the moment the colorpick input is triggered.
+  //the hook however, is NOT updating with the props value.
+  // console.log(
+  //   "converted:",
+  //   hexHsl.h,
+  //   "original prop:",
+  //   props.hex,
+  //   "hook:",
+  //   p1Color.h
+  // );
+
+  //the useRef hook can also be used to store a mutable variable
+  //*********that will not trigger an update of the component when changed. --> so refHex = useRef(hexHsl) is NOT what i want because i do want it to trigger a render // but it IS useful for within my useeffect for the var value
 
   let mult = 1;
-
+  const refContainer = useRef(mult);
+  //var colorStatus = useRef(hexHsl.h);// using this yields the same results as using p1Color.h in the updateVal function below
   //this is a new hook type --- if i were using mult, it would be reset to 1, at each re-render. // aka not work the way i'd think
   //it would within regular javascript. but in react the useRef() Hook isn’t just for DOM refs (side-effects). The “ref” object is a generic container whose current property is mutable and can hold any value, similar to an instance property on a class.
   //by utalizing the '.current' on my Ref, within the useEffect hook it will look at the value of that instance within the hook and not its continually reset value at 1
-  const refContainer = useRef(mult);
 
+  ///Does useEffect run after every render? Yes! By default, it runs both after the first render and after every update.
   useEffect(() => {
     if (p1Color.h === 0) {
       refContainer.current = 1;
@@ -109,8 +122,17 @@ export default function Palette(props) {
       refContainer.current = -1;
     }
 
+    if (
+      hexHsl.h !== p1Color.h &&
+      hexHsl.h + 1 !== p1Color.h &&
+      hexHsl.h - 1 !== p1Color.h
+    ) {
+      setColor(HEXtoHSL(props.hex));
+    }
+
+    //this version updates the shifts in the color, but not the latest color picker value.
     var updateVal = {
-      h: (p1Color.h += refContainer.current),
+      h: (p1Color.h += refContainer.current), // within the context of just this - the refColor works, but it's not updating with the latest prop hex value. the current stays with the originally assigned value
       s: p1Color.s,
       l: p1Color.l,
     };
@@ -123,7 +145,6 @@ export default function Palette(props) {
   });
 
   return (
-    // <div className="paletteContainer">
     <>
       <PaletteSlide
         id="pWidth1"
@@ -140,6 +161,5 @@ export default function Palette(props) {
         onClick={getPosition}
       ></PaletteSlide>
     </>
-    // </div>
   );
 }
