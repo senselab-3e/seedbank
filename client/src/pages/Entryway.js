@@ -33,6 +33,7 @@ const BodyColor = styled.div`
   margin: 0px;
   height: 100vh;
   width: 100vw;
+  z-index: 0;
   -webkit-animation: ${colorScroll} 60s infinite;
   animation: ${colorScroll} 60s infinite;
   --entrypatch-color: ${(props) => props.color};
