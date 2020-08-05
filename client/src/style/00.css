@@ -1,3 +1,9 @@
+html,
+body {
+    padding: 0em;
+    margin: 0em;
+}
+
 .pixel {
     position: absolute;
     z-index: 10;
@@ -67,11 +73,19 @@
     /* display: inline-block; */
     /*use float if going with vertical)*/
     /* position: relative; use this if going with horizontal stripes*/
-    padding: 0;
-    margin: 0;
+    padding: 0em;
+    margin: 0em;
 }
 
-
+.containerPalette {
+    padding: 0em;
+    margin: 0em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    background-color: yellowgreen;
+}
 
 .palette {
     cursor: pointer;
@@ -83,6 +97,8 @@
     -ms-transition: width 3s;
     -o-transition: width 3s;
     transition: width 3s;
+    padding: 0em;
+    margin: 0em;
 }
 
 
@@ -117,6 +133,8 @@
     -ms-transition: width 3s;
     -o-transition: width 3s;
     transition: width 3s;
+    padding: 0em;
+    margin: 0em;
 
 }
 
@@ -136,5 +154,7 @@
     -ms-transition: width 3s;
     -o-transition: width 3s;
     transition: width 3s;
+    padding: 0em;
+    margin: 0em;
 
 }

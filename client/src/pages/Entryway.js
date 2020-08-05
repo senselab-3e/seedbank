@@ -1,47 +1,50 @@
 import React, { useState } from "react";
 import "../style/00.css";
-import styled, { keyframes } from "styled-components";
+//import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Pixel from "../components/Pixel";
 import Palette from "../components/Palette";
 // import Portal from "../components/Portal";
 
-const colorScroll = keyframes`
-    0% {
-        background-color: var(--entrypatch-color);
-    }
+///this was the 00.js
 
-    30% {
-        background-color: white;
-    }
+// const colorScroll = keyframes`
+//     0% {
+//         background-color: var(--entrypatch-color);
+//     }
 
-    45% {
-        background-color: var(--entrypatch-color);
-    }
+//     30% {
+//         background-color: white;
+//     }
 
-    70% {
-        background-color: black;
-    }
+//     45% {
+//         background-color: var(--entrypatch-color);
+//     }
 
-    95% {
-      background-color: var(--entrypatch-color);
-    }
-}`;
+//     70% {
+//         background-color: black;
+//     }
 
-const BodyColor = styled.div`
-  background-color: var(--entrypatch-color);
-  padding: 0px;
-  margin: 0px;
-  height: 100vh;
-  width: 100vw;
-  z-index: 0;
-  -webkit-animation: ${colorScroll} 60s infinite;
-  animation: ${colorScroll} 60s infinite;
-  --entrypatch-color: ${(props) => props.color};
-  --varColor1: #5c0232;
-  font-family: "OpenSans", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-`;
+//     95% {
+//       background-color: var(--entrypatch-color);
+//     }
+// }`;
+
+// const BodyColor = styled.div`
+//   background-color: var(--entrypatch-color);
+//   padding: 0px;
+//   margin: 0px;
+//   height: 100vh;
+//   width: 100vw;
+//   z-index: 0;
+//   -webkit-animation: ${colorScroll} 60s infinite;
+//   animation: ${colorScroll} 60s infinite;
+//   --entrypatch-color: ${(props) => props.color};
+//   --varColor1: #5c0232;
+//   font-family: "OpenSans", sans-serif;
+//   font-weight: 400;
+//   font-size: 14px;
+// `;
 
 const InputColor = styled.div`
   position: absolute;
@@ -112,10 +115,10 @@ export default function Entryway() {
 
   //using this approach so that you can more cleanly read and then inject inline styling with a single object
 
-  const portalStyling = {
-    top: createPositions("top"),
-    left: createPositions("left"),
-  };
+  // const portalStyling = {
+  //   top: createPositions("top"),
+  //   left: createPositions("left"),
+  // };
 
   //another, non component based approach. this function can be passed into func= of pixel or portal component. just different approaches.
   const createEl = (e) => {
@@ -126,7 +129,7 @@ export default function Entryway() {
     pixel.style.left = createPositions("left");
     pixel.style.top = createPositions("top");
     pixel.onclick = createEl;
-    const container = document.querySelector(".container");
+    const container = document.querySelector(".containerPalette");
     container.appendChild(pixel);
   };
 
@@ -156,30 +159,30 @@ export default function Entryway() {
   //NOTE this container div is being used to append child new elements - even though there are no significant csss
 
   return (
-    <BodyColor color={bcolor}>
-      <div className="container">
-        {/* {portals} this is/was for another component based way of addin Portals. see notes above */}
-        <div className="pixel picnicPatch hidden" style={portalStyling}></div>
-        <Pixel
-          // top={createPositions("top")}
-          // left={createPositions("left")}
-          func={createEl}
-          background={bcolor}
-        ></Pixel>
-        <InputColor>
-          <p>{bcolor}</p>
-          <input
-            className="inputColor"
-            type="color"
-            defaultValue={bcolor}
-            onChange={(e) => setColor(e.target.value)}
-          ></input>
-        </InputColor>
-        {/* <div className="paletteContainer"> */}
-        <Palette hue="160" hex={bcolor}></Palette>
-        {/* <Palette hue="55" master={bcolor}></Palette> */}
-        {/* </div> */}
-      </div>
-    </BodyColor>
+    <div className="containerPalette">
+      {/* <BodyColor color={bcolor}>
+       */}
+      {/* {portals} this is/was for another component based way of addin Portals. see notes above */}
+      {/* <div className="pixel picnicPatch hidden" style={portalStyling}></div> */}
+      <Pixel
+        // top={createPositions("top")}
+        // left={createPositions("left")}
+        func={createEl}
+        background={bcolor}
+      ></Pixel>
+      <InputColor>
+        <p>{bcolor}</p>
+        <input
+          className="inputColor"
+          type="color"
+          defaultValue={bcolor}
+          onChange={(e) => setColor(e.target.value)}
+        ></input>
+      </InputColor>
+
+      <Palette hex={bcolor}></Palette>
+
+      {/* </BodyColor> */}
+    </div>
   );
 }
