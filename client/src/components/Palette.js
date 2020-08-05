@@ -86,10 +86,10 @@ export default function Palette(props) {
 
   let hexHsl = HEXtoHSL(props.hex);
   //complimentary color generator to match the current colorpicker set by the input val
-  let hexHslComp = complimyHSL(hexHsl);
+  //let hexHslComp = complimyHSL(hexHsl);
 
   const [p1Color, setColor] = useState(HEXtoHSL(props.hex));
-  const [p2Color, setColor2] = useState(props.hex);
+  const [p2Color, setColor2] = useState(complimyHSL(hexHsl));
   // let something = "a";
 
   // const updateHook = (props) => {
@@ -130,6 +130,7 @@ export default function Palette(props) {
   // this is now updating the value of the color, to the palette components.
   useEffect(() => {
     setColor(HEXtoHSL(props.hex));
+    setColor2(complimyHSL(HEXtoHSL(props.hex)));
   }, [props.hex]);
 
   useEffect(() => {
