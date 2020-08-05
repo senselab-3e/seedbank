@@ -90,18 +90,29 @@ export default function Palette(props) {
 
   const [p1Color, setColor] = useState(HEXtoHSL(props.hex));
   const [p2Color, setColor2] = useState(props.hex);
+  // let something = "a";
+
+  // const updateHook = (props) => {
+  //   // p1Color !== HEXtoHSL(props.hex)
+  //   //   ? console.log("changed")
+  //   //   : (something = "b");
+
+  //   console.log(HEXtoHSL(props.hex), p1Color);
+  // };
+
+  //updateHook(props);
 
   //both of the above - the reference to a function converting the prop, and the direct prop are both
   //updating at the moment the colorpick input is triggered.
   //the hook however, is NOT updating with the props value.
-  // console.log(
-  //   "converted:",
-  //   hexHsl.h,
-  //   "original prop:",
-  //   props.hex,
-  //   "hook:",
-  //   p1Color.h
-  // );
+  console.log(
+    "converted:",
+    hexHsl.h,
+    "original prop:",
+    props.hex,
+    "hook:",
+    p1Color.h
+  );
 
   //the useRef hook can also be used to store a mutable variable
   //*********that will not trigger an update of the component when changed. --> so refHex = useRef(hexHsl) is NOT what i want because i do want it to trigger a render // but it IS useful for within my useeffect for the var value
@@ -114,35 +125,39 @@ export default function Palette(props) {
   //by utalizing the '.current' on my Ref, within the useEffect hook it will look at the value of that instance within the hook and not its continually reset value at 1
 
   ///Does useEffect run after every render? Yes! By default, it runs both after the first render and after every update.
+  //---->>>
+
+  // useEffect(() => {
+  //   if (p1Color.h === 0) {
+  //     refContainer.current = 1;
+  //   }
+  //   if (p1Color.h === 360) {
+  //     refContainer.current = -1;
+  //   }
+
+  //   // if (hexHsl.h + 1 !== p1Color.h || hexHsl.h - 1 !== p1Color.h) {
+  //   //   setColor(HEXtoHSL(props.hex));
+  //   // }
+
+  //   //this version updates the shifts in the color, but not the latest color picker value.
+  //   var updateVal = {
+  //     h: (p1Color.h += refContainer.current), // within the context of just this - the refColor works, but it's not updating with the latest prop hex value. the current stays with the originally assigned value
+  //     s: p1Color.s,
+  //     l: p1Color.l,
+  //   };
+
+  //   const timer = setInterval(() => {
+  //     setColor(updateVal);
+  //   }, 1000);
+  //   // clearing interval
+  //   return () => clearInterval(timer);
+  // });
+
+  //---->
+  // this is now updating the value of the color, to the palette components.
   useEffect(() => {
-    if (p1Color.h === 0) {
-      refContainer.current = 1;
-    }
-    if (p1Color.h === 360) {
-      refContainer.current = -1;
-    }
-
-    if (
-      hexHsl.h !== p1Color.h &&
-      hexHsl.h + 1 !== p1Color.h &&
-      hexHsl.h - 1 !== p1Color.h
-    ) {
-      setColor(HEXtoHSL(props.hex));
-    }
-
-    //this version updates the shifts in the color, but not the latest color picker value.
-    var updateVal = {
-      h: (p1Color.h += refContainer.current), // within the context of just this - the refColor works, but it's not updating with the latest prop hex value. the current stays with the originally assigned value
-      s: p1Color.s,
-      l: p1Color.l,
-    };
-
-    const timer = setInterval(() => {
-      setColor(updateVal);
-    }, 100);
-    // clearing interval
-    return () => clearInterval(timer);
-  });
+    setColor(HEXtoHSL(props.hex));
+  }, [props.hex]);
 
   return (
     <>
