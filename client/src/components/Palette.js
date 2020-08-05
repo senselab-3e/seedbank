@@ -105,14 +105,14 @@ export default function Palette(props) {
   //both of the above - the reference to a function converting the prop, and the direct prop are both
   //updating at the moment the colorpick input is triggered.
   //the hook however, is NOT updating with the props value.
-  console.log(
-    "converted:",
-    hexHsl.h,
-    "original prop:",
-    props.hex,
-    "hook:",
-    p1Color.h
-  );
+  // console.log(
+  //   "converted:",
+  //   hexHsl.h,
+  //   "original prop:",
+  //   props.hex,
+  //   "hook:",
+  //   p1Color.h
+  // );
 
   //the useRef hook can also be used to store a mutable variable
   //*********that will not trigger an update of the component when changed. --> so refHex = useRef(hexHsl) is NOT what i want because i do want it to trigger a render // but it IS useful for within my useeffect for the var value
@@ -130,6 +130,7 @@ export default function Palette(props) {
   // this is now updating the value of the color, to the palette components.
   useEffect(() => {
     setColor(HEXtoHSL(props.hex));
+    //useEffect can't reference p2Color because its outside the scope and this is a callback
     setColor2(complimyHSL(HEXtoHSL(props.hex)));
   }, [props.hex]);
 

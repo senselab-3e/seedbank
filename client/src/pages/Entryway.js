@@ -128,6 +128,7 @@ export default function Entryway() {
     pixel.classList.add("picnicPatch");
     pixel.style.left = createPositions("left");
     pixel.style.top = createPositions("top");
+    pixel.style.backgroundColor = bcolor;
     pixel.onclick = createEl;
     const container = document.querySelector(".containerPalette");
     container.appendChild(pixel);

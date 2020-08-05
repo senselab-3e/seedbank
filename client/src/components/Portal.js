@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+// as soon as i use the attrs method the ---entrypatchcolor no-longer travels as a patch
+
 const PortalPixel = styled.div.attrs((props) => ({
   style: {
     tops: props.top,
@@ -64,6 +66,7 @@ const createPositions = (dim) => {
 };
 
 export default function Portal(prop) {
+  console.log(prop);
   //   createEl();
   var xPos = createPositions("top");
   var yPos = createPositions("left");
