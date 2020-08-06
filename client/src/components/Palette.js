@@ -26,10 +26,25 @@ const colorScroll = keyframes`
       background-color: var(--hsl);
     }
 }`;
-const PaletteSlide = styled.div`
+
+//unfortunately the -- trips up the script in the attr object section and i need the -- to be present for the traditional css vars.
+// h: props.hue.h,
+// s: props.hue.s,
+// l: props.hue.l,
+// --inverseh: props.inverse.h,
+// --inverses: props.inverse.s,
+// --inversel: props.inverse.l,
+
+const PaletteSlide = styled.div.attrs((props) => ({
+  style: {
+    width: props.width,
+    top: props.top,
+    left: props.left,
+  },
+}))`
   cursor: crosshair;
   whichpallete: ${(props) => props.className};
-  width: ${(props) => props.width};
+  //width: ${(props) => props.width};
   height: 100vh;
   --h: ${(props) => props.hue.h};
   --s: ${(props) => props.hue.s};
@@ -105,14 +120,14 @@ export default function Palette(props) {
   //both of the above - the reference to a function converting the prop, and the direct prop are both
   //updating at the moment the colorpick input is triggered.
   //the hook however, is NOT updating with the props value.
-  // console.log(
-  //   "converted:",
-  //   hexHsl.h,
-  //   "original prop:",
-  //   props.hex,
-  //   "hook:",
-  //   p1Color.h
-  // );
+  console.log(
+    "converted:",
+    hexHsl.h,
+    "original prop:",
+    props.hex,
+    "hook:",
+    p1Color.h
+  );
 
   //the useRef hook can also be used to store a mutable variable
   //*********that will not trigger an update of the component when changed. --> so refHex = useRef(hexHsl) is NOT what i want because i do want it to trigger a render // but it IS useful for within my useeffect for the var value
