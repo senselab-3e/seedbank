@@ -134,13 +134,9 @@ export default function Entryway() {
     container.appendChild(pixel);
   };
 
-  function checkOpen(e) {
-    e.classList.contains("sliderOpen")
-      ? e.classList.remove("sliderOpen")
-      : e.classList.add("sliderOpen");
-  }
-
   let momentaryColor = {};
+
+  //this could also be adapted to a class constructor
 
   const createSlider = () => {
     //e.preventDefault();
