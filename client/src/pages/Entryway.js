@@ -134,6 +134,47 @@ export default function Entryway() {
     container.appendChild(pixel);
   };
 
+  function checkOpen(e) {
+    e.classList.contains("sliderOpen")
+      ? e.classList.remove("sliderOpen")
+      : e.classList.add("sliderOpen");
+  }
+
+  let momentaryColor = {};
+
+  const createSlider = () => {
+    //e.preventDefault();
+    var slider = document.createElement("div");
+    slider.className = "slider";
+    slider.style.left = createPositions("left");
+    slider.style.top = createPositions("top");
+    console.log(momentaryColor);
+    slider.style.backgroundColor = currentHue();
+    //momentaryColor;
+    // slider.style.backgroundColor = bcolor;
+    slider.onclick = function () {
+      slider.classList.contains("sliderOpen")
+        ? slider.classList.remove("sliderOpen")
+        : slider.classList.add("sliderOpen");
+    };
+    const container = document.querySelector(".sliderContainer");
+    container.appendChild(slider);
+  };
+
+  const currentColor = (val) => {
+    //returning an hsl val of the current palette1 color, as it's scrolling. so this is happening quite continuously
+    console.log(val);
+    momentaryColor = val;
+  };
+
+  //this is a bit of a js html way. with current Color i'm trying to pass up the vals through the props in react. refactor and get the prop method working later.
+  const currentHue = () => {
+    let sample = document.body.querySelector("#pWidth1"); // just for testing purposes.
+    //this is actually not to tricky. query Selector will choose the first instance, so even if i put palette instead of palette1, it will still grab hue information from the first palette, even if i don't reference it by a single id name
+    let hsl = window.getComputedStyle(sample, null).getPropertyValue("--hsl");
+    return hsl;
+  };
+
   // console.log(locations[0] ? locations[0].x : locations);
 
   //ANOTHER APPROACH using a portal Component. But there is seemingly no way around not having the location prop continually updating the locatin of alll instances of the Patches -- and so i'm going back to an js element based apprach.
@@ -181,7 +222,7 @@ export default function Entryway() {
         ></input>
       </InputColor>
 
-      <Palette hex={bcolor}></Palette>
+      <Palette hex={bcolor} func={currentColor} func2={createSlider}></Palette>
 
       {/* </BodyColor> */}
     </div>

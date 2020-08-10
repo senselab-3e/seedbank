@@ -63,6 +63,15 @@ body {
     }
 }
 
+
+.paletteClick {
+    cursor: pointer;
+    width: 25vw;
+}
+
+
+
+
 .paletteContainer {
     cursor: crosshair;
     z-index: 10;
@@ -157,4 +166,31 @@ body {
     padding: 0em;
     margin: 0em;
 
+}
+
+.sliderContainer {
+    /* display: none; */
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.slider {
+    overflow: scroll;
+    cursor: pointer;
+    z-index: 10;
+    width: 0.3vw;
+    height: 100vh;
+    -webkit-transition: width 3s;
+    -moz-transition: width 3s;
+    -ms-transition: width 3s;
+    -o-transition: width 3s;
+    transition: width 3s;
+}
+
+.sliderOpen {
+    cursor: pointer;
+    width: 25vw;
 }

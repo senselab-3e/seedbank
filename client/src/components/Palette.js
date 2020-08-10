@@ -95,8 +95,10 @@ export default function Palette(props) {
 
     // //calculate position as 100 - value so i can use it like a percentage val but with vw css
     // let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
-
     resetCubeWidth(percentageWidth, target);
+    console.log(p1Color); // this value does apear to be changing....
+    props.func(p1Color); // seems to be retreiving the color at the right moment...
+    props.func2(e.clientX); // this is to create the new slider element // this is messsyyy. better to separating everything out.
   };
 
   let hexHsl = HEXtoHSL(props.hex);
@@ -120,14 +122,14 @@ export default function Palette(props) {
   //both of the above - the reference to a function converting the prop, and the direct prop are both
   //updating at the moment the colorpick input is triggered.
   //the hook however, is NOT updating with the props value.
-  console.log(
-    "converted:",
-    hexHsl.h,
-    "original prop:",
-    props.hex,
-    "hook:",
-    p1Color.h
-  );
+  // console.log(
+  //   "converted:",
+  //   hexHsl.h,
+  //   "original prop:",
+  //   props.hex,
+  //   "hook:",
+  //   p1Color.h
+  // );
 
   //the useRef hook can also be used to store a mutable variable
   //*********that will not trigger an update of the component when changed. --> so refHex = useRef(hexHsl) is NOT what i want because i do want it to trigger a render // but it IS useful for within my useeffect for the var value
@@ -169,6 +171,8 @@ export default function Palette(props) {
     return () => clearInterval(timer);
   });
 
+  //p1Color is continually being set, with the above timer, triggering the function below, instead of at the moment i want - which is at the click.
+
   return (
     <>
       <PaletteSlide
@@ -178,6 +182,7 @@ export default function Palette(props) {
         hue={p1Color}
         onClick={getPosition}
       ></PaletteSlide>
+      <div className="sliderContainer"></div>
       <PaletteSlide
         id="pWidth2"
         width={pWidth2}

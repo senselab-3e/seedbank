@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+///THIS IS NOT CURRENTLY BEING USED. a 'createEl function' is being used in Entryway.js instead. there were too many issues with the location of the portal el continually changing as the props were being re-rendered as the colors were being updated.
+
 // as soon as i use the attrs method the ---entrypatchcolor no-longer travels as a patch
 
 const PortalPixel = styled.div.attrs((props) => ({
