@@ -85,10 +85,8 @@ export default function Palette(props) {
     // //calculate position as 100 - value so i can use it like a percentage val but with vw css
     // let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
     resetCubeWidth(percentageWidth, target);
-    console.log(p1Color); // this value does apear to be changing....
+
     props.func(p1Color); // seems to be retreiving the color at the right moment...
-    props.func2(e.clientX); // this is to create the new slider element // this is messsyyy. better to separating everything out.
-    //props.func3(p1Color);
   };
 
   const addSliderComp = () => {
@@ -163,7 +161,7 @@ export default function Palette(props) {
     };
     const timer = setInterval(() => {
       setColor(updateVal);
-    }, 1000);
+    }, 100);
     // clearing interval
     return () => clearInterval(timer);
   });

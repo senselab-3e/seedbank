@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../style/00.css";
 //import styled, { keyframes } from "styled-components";
 import styled from "styled-components";
@@ -6,59 +6,13 @@ import Pixel from "../components/Pixel";
 import Palette from "../components/Palette";
 import Container from "../components/Container";
 // import Portal from "../components/Portal";
-import { HEXtoHSL } from "../helpers/HexConverter";
-
-///this was the 00.js
-
-// const colorScroll = keyframes`
-//     0% {
-//         background-color: var(--entrypatch-color);
-//     }
-
-//     30% {
-//         background-color: white;
-//     }
-
-//     45% {
-//         background-color: var(--entrypatch-color);
-//     }
-
-//     70% {
-//         background-color: black;
-//     }
-
-//     95% {
-//       background-color: var(--entrypatch-color);
-//     }
-// }`;
-
-// const BodyColor = styled.div`
-//   background-color: var(--entrypatch-color);
-//   padding: 0px;
-//   margin: 0px;
-//   height: 100vh;
-//   width: 100vw;
-//   z-index: 0;
-//   -webkit-animation: ${colorScroll} 60s infinite;
-//   animation: ${colorScroll} 60s infinite;
-//   --entrypatch-color: ${(props) => props.color};
-//   --varColor1: #5c0232;
-//   font-family: "OpenSans", sans-serif;
-//   font-weight: 400;
-//   font-size: 14px;
-// `;
+//import { HEXtoHSL } from "../helpers/HexConverter";
 
 const InputColor = styled.div`
   position: absolute;
   top: 100px;
   left: 20px;
 `;
-
-//var ypos = (Math.random(window.innerWidth) * window.innerWidth) / 2 + "px"; // i need this because if the a link is  parent of pixel, it needs to share the coors of pixel;
-// var xpos =
-//   (Math.random(window.innerHeight) * window.innerHeight - 10) / 2 - 15 + "px";
-
-//this isn't working properly -- revisit
 
 //const xpos = ranValMinMax(); // by doing it this way, rather then having xpos be a function (as is seen in num) - i prevent that value from being called repeatedly, each time the components re-render. this would cause the position to change continually. but maybe i want that.
 
@@ -84,39 +38,13 @@ const createPositions = (dim) => {
   return num;
 };
 
-// var locations = [];
-
-// let portNum = (n) => n;
-
-// for (let i = 0; i < portNum; i++) {
-//   var xPos = createPositions("top");
-//   var yPos = createPositions("left");
-//   locations.push({
-//     x: xPos,
-//     y: yPos,
-//   });
-// }
-
-let sliderNum = {
-  key0: {
-    num: [1],
-    color: "#333",
-  },
-};
-
-let arraySliders = [];
-
-class Slider {
-  constructor(key, color) {
-    this.key = key;
-    this.color = color;
-  }
-}
+//this is a variable I later accumulatively add to +1 to, on each palette click, creating a num val later passed as a prop to the container and child slider component.
+let numSliders = 0;
 
 export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
   const [bcolor, setColor] = useState("#f812c0");
-  const [sliderComp, setSliders] = useState();
+  // const [sliderComp, setSliders] = useState();
   const [sliderColor, setSliderColor] = useState(
     '{h: 317, s: "94%", l: "52%"}'
   );
@@ -158,40 +86,19 @@ export default function Entryway() {
     container.appendChild(pixel);
   };
 
-  let momentaryColor = {};
-
-  //this could also be adapted to a class constructor
-
-  const createSlider = () => {
-    //e.preventDefault();
-    var slider = document.createElement("div");
-    slider.className = "slider";
-    // console.log(momentaryColor);
-    slider.style.backgroundColor = currentHue();
-    //momentaryColor;
-    // slider.style.backgroundColor = bcolor;
-    slider.onclick = function () {
-      slider.classList.contains("sliderOpen")
-        ? slider.classList.remove("sliderOpen")
-        : slider.classList.add("sliderOpen");
-    };
-    const container = document.querySelector(".sliderContainer");
-    container.appendChild(slider);
-  };
-
+  let momentaryColor = {}; // eventually contains h, s, l key value pairs when capturing color information, from child component palette1
+  //NOTE: returning an hsl val of the current palette1 color, as it's scrolling. so this is happening quite continuously
   const currentColor = (val) => {
-    //returning an hsl val of the current palette1 color, as it's scrolling. so this is happening quite continuously
-    console.log(val);
     momentaryColor = val;
   };
 
   //this is a bit of a js html way. with current Color i'm trying to pass up the vals through the props in react. refactor and get the prop method working later.
-  const currentHue = () => {
-    let sample = document.body.querySelector("#pWidth1"); // just for testing purposes.
-    //this is actually not to tricky. query Selector will choose the first instance, so even if i put palette instead of palette1, it will still grab hue information from the first palette, even if i don't reference it by a single id name
-    let hsl = window.getComputedStyle(sample, null).getPropertyValue("--hsl");
-    return hsl;
-  };
+  // const currentHue = () => {
+  //   let sample = document.body.querySelector("#pWidth1"); // just for testing purposes.
+  //   //this is actually not to tricky. query Selector will choose the first instance, so even if i put palette instead of palette1, it will still grab hue information from the first palette, even if i don't reference it by a single id name
+  //   let hsl = window.getComputedStyle(sample, null).getPropertyValue("--hsl");
+  //   return hsl;
+  // };
 
   // console.log(locations[0] ? locations[0].x : locations);
 
@@ -219,47 +126,29 @@ export default function Entryway() {
   //NOTE this container div is being used to append child new elements - even though there are no significant csss
 
   // useEffect(() => {
-  //   arraySliders.push(newby);
-  //   setSliders(arraySliders);
+  //   numSliders.push(newby);
+  //   setSliders(numSliders);
   //   //useEffect can't reference p2Color because its outside the scope and this is a callback
-  // }, arraySliders);
+  // }, numSliders);
 
   // useEffect(() => {
-  //   setSliders(arraySliders);
+  //   setSliders(numSliders);
   // });
 
   const requestNewSlider = (color) => {
-    console.log(sliderNum.key0, color);
-    let newby = new Slider(arraySliders.length, color); // so this push isn't working.
-    arraySliders.push(newby);
-    // // console.log(arraySliders[arraySliders.length - 1]);
-    // console.log(arraySliders.length);
-    setSliders(arraySliders);
-    setAmount(arraySliders.length);
-    console.log(sliderComp);
-    console.log(amt, "slidercomp");
-    console.log(arraySliders[arraySliders.length - 1].color);
-    //setSliderColor(HEXtoHSL(color));
-    console.log(color, "color grabbed on click");
-    setSliderColor(color);
+    //caps the number of sliders you can add at 30.
+    numSliders < 40 ? (numSliders += 1) : (numSliders = numSliders);
+    setAmount(numSliders); // sets the hook value for the num of sliders --- > amt ---> which is then passed down to child components.
+    setSliderColor(color); // sets hook for color value passed to slider // this originates from a callback function that was passed to the palette component, which grabs the current hook value, an hsl color value, for palette 1 - within the current phase of its scrolling color value. that value is being passed up to the parent component through the func passed down to it
   };
 
   // useEffect(() => {
-  //   setSliders(arraySliders);
-  // }, arraySliders);
+  //   setSliders(numSliders);
+  // }, numSliders);
 
   return (
     <div className="containerPalette">
-      {/* <BodyColor color={bcolor}>
-       */}
-      {/* {portals} this is/was for another component based way of addin Portals. see notes above */}
-      {/* <div className="pixel picnicPatch hidden" style={portalStyling}></div> */}
-      <Pixel
-        // top={createPositions("top")}
-        // left={createPositions("left")}
-        func={createEl}
-        background={bcolor}
-      ></Pixel>
+      <Pixel func={createEl} background={bcolor}></Pixel>
       <InputColor>
         <p>{bcolor}</p>
         <input
@@ -273,7 +162,6 @@ export default function Entryway() {
       <Palette
         hex={bcolor}
         func={currentColor}
-        func2={createSlider}
         func3={requestNewSlider}
       ></Palette>
       <Container
