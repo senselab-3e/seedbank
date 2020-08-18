@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import Container from "./Container";
+import SliderContainer from "./SliderContainer";
 import styled from "styled-components";
 import { HEXtoHSL, complimyHSL } from "../helpers/HexConverter";
 
@@ -45,32 +45,22 @@ func:${(props) => props.func}
 `;
 
 export default function Palettes(props) {
-  // console.log(window.innerWidth);
-  const [pWidth1, setWidth] = useState("50vw");
-  const [pWidth2, setWidth2] = useState("50vw");
+  const [palette1Width, setWidth] = useState("50vw");
+  const [palette2Width, setWidth2] = useState("50vw");
 
-  // console.log(props.hex);
-
-  const resetCubeWidth = (newWidth, target) => {
+  const resetPaletteW = (newWidth, target) => {
+    //target is a parameter in case i want to know which palette was clicked.
     setWidth(newWidth + "vw");
     setWidth2(100 - newWidth + "vw");
-    //if i want to set up a scerio where
-    // if (target === "pWidth1") {
-    //   setWidth(newWidth + "vw");
-    //   setWidth2(100 - newWidth + "vw");
-    // } else if (target === "pWidth2") {
-    //   setWidth2(newWidth + "vw");
-    //   setWidth(100 - newWidth + "vw");
-    // }
   };
 
-  const getPosition = (e) => {
+  const getClickPos = (e) => {
     const target = e.target.id;
     const xPosition = e.clientX;
     const intViewportWidth = window.innerWidth;
     let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
     // //calculate position as 100 - value so i can use it like a percentage val but with vw css
-    resetCubeWidth(percentageWidth, target);
+    resetPaletteW(percentageWidth, target);
   };
 
   //this function triggers a function in the parent entryway, that addes a new Slider Obj, passed down through the props.amt
@@ -78,7 +68,7 @@ export default function Palettes(props) {
     //this grabs and updates the background color for the dynamically added slider slices, while asking for a new Slider Obj to be created and added to a an array that is looped through in the Slider component to display all the slice sliders
     props.funcAddSlider(p1Color);
     //i needed to do this because i could only attach one function to the listener onlick in the palette component.
-    getPosition(e);
+    getClickPos(e);
   };
 
   let hexHsl = HEXtoHSL(props.bgHex);
@@ -117,9 +107,10 @@ export default function Palettes(props) {
       s: p1Color.s,
       l: p1Color.l,
     };
+    //the continuous reseting of this hook, which is passed as a prop into the styling component, causes a new class name to be generated each time. this is not ideal. i keep attempting vanilla javascript approaches, but it won't update without the use of hook or prop values to tell the system what the current background color is. tricky. a plan css version of scrolling through color doesn't work either. it can move between color, but doesn't know how to move incrementally up until a  limit is reached.
     const timer = setInterval(() => {
       setColor(updateVal);
-    }, 100);
+    }, 1000);
     // clearing interval
     return () => clearInterval(timer);
   });
@@ -129,21 +120,20 @@ export default function Palettes(props) {
   return (
     <>
       <PaletteSlide
-        id="pWidth1"
-        width={pWidth1}
+        id="palette1Width"
+        width={palette1Width}
         hue={p1Color}
         onClick={addSliderComp}
       ></PaletteSlide>
-      <div className="sliderContainer"></div>
-      <Container
+      <SliderContainer
         testAdd={true}
         amtSliders={props.amtSliders}
         hex={props.bgHex}
         indivColor={props.indivColor}
-      ></Container>
+      ></SliderContainer>
       <PaletteSlide
-        id="pWidth2"
-        width={pWidth2}
+        id="palette2Width"
+        width={palette2Width}
         hue={p2Color}
         onClick={addSliderComp}
       ></PaletteSlide>
