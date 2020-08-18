@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 
 import styled, { keyframes } from "styled-components";
 import { HEXtoHSL, complimyHSL } from "../helpers/HexConverter";
+import Container from "../components/Container";
 //import { ArrayOptions } from "../helpers/ArrayOptions"; //just here to test
 
 const colorScroll = keyframes`
@@ -66,6 +67,12 @@ export default function Palette(props) {
   const [pWidth1, setWidth] = useState("50vw");
   const [pWidth2, setWidth2] = useState("50vw");
 
+  const [sliderComp, setSliders] = useState();
+  const [sliderColor, setSliderColor] = useState(
+    '{h: 317, s: "94%", l: "52%"}'
+  );
+  const [amt, setAmount] = useState(0);
+
   // console.log(props.hex);
 
   const resetCubeWidth = (newWidth, target) => {
@@ -97,8 +104,24 @@ export default function Palette(props) {
     //props.func3(p1Color);
   };
 
+  const requestNewSlider = (color) => {
+    console.log(sliderNum.key0, color);
+    let newby = new Slider(arraySliders.length, color); // so this push isn't working.
+    arraySliders.push(newby);
+    // // console.log(arraySliders[arraySliders.length - 1]);
+    // console.log(arraySliders.length);
+    setSliders(arraySliders);
+    setAmount(arraySliders.length);
+    // console.log(sliderComp);
+    // console.log(amt, "slidercomp");
+    // console.log(arraySliders[arraySliders.length - 1].color);
+    // //setSliderColor(HEXtoHSL(color));
+    // console.log(color, "color grabbed on click");
+    setSliderColor(color);
+  };
+
   const addSliderComp = () => {
-    props.func3(p1Color);
+    requestNewSlider(p1Color);
   };
 
   let hexHsl = HEXtoHSL(props.hex);
@@ -182,6 +205,13 @@ export default function Palette(props) {
         onClick={getPosition}
       ></PaletteSlide>
       <div className="sliderContainer"></div>
+      <Container
+        testAdd={true}
+        amt={props.amt}
+        // hex={bcolor}
+        //indivcolor={props.color}
+        // func={currentColor}
+      ></Container>
       <PaletteSlide
         id="pWidth2"
         width={pWidth2}

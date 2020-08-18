@@ -3,6 +3,12 @@ import Slider from "../components/Slider";
 import { HEXtoHSL } from "../helpers/HexConverter";
 
 export default function Container(props) {
+  // const [sliderComp, setSliders] = useState();
+  // const [sliderColor, setSliderColor] = useState(
+  //   '{h: 317, s: "94%", l: "52%"}'
+  // );
+  // const [amt, setAmount] = useState(0);
+
   // console.log(props.sliderInfo);
   // console.log(props.sliderInfo ? props.sliderInfo.length : 0);
   console.log(props.indivcolor, "container");

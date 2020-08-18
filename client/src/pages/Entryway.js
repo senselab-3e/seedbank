@@ -116,12 +116,12 @@ class Slider {
 export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
   const [bcolor, setColor] = useState("#f812c0");
-  const [sliderComp, setSliders] = useState();
-  const [sliderColor, setSliderColor] = useState(
-    '{h: 317, s: "94%", l: "52%"}'
-  );
+  // const [sliderComp, setSliders] = useState();
+  // const [sliderColor, setSliderColor] = useState(
+  //   '{h: 317, s: "94%", l: "52%"}'
+  // );
 
-  const [amt, setAmount] = useState(0);
+  // const [amt, setAmount] = useState(0);
   // const [portalnum, setPorts] = useState(0);
 
   //  How do I update state with values that depend on the current state?
@@ -228,21 +228,21 @@ export default function Entryway() {
   //   setSliders(arraySliders);
   // });
 
-  const requestNewSlider = (color) => {
-    console.log(sliderNum.key0, color);
-    let newby = new Slider(arraySliders.length, color); // so this push isn't working.
-    arraySliders.push(newby);
-    // // console.log(arraySliders[arraySliders.length - 1]);
-    // console.log(arraySliders.length);
-    setSliders(arraySliders);
-    setAmount(arraySliders.length);
-    console.log(sliderComp);
-    console.log(amt, "slidercomp");
-    console.log(arraySliders[arraySliders.length - 1].color);
-    //setSliderColor(HEXtoHSL(color));
-    console.log(color, "color grabbed on click");
-    setSliderColor(color);
-  };
+  // const requestNewSlider = (color) => {
+  //   console.log(sliderNum.key0, color);
+  //   let newby = new Slider(arraySliders.length, color); // so this push isn't working.
+  //   arraySliders.push(newby);
+  //   // // console.log(arraySliders[arraySliders.length - 1]);
+  //   // console.log(arraySliders.length);
+  //   setSliders(arraySliders);
+  //   setAmount(arraySliders.length);
+  //   console.log(sliderComp);
+  //   console.log(amt, "slidercomp");
+  //   console.log(arraySliders[arraySliders.length - 1].color);
+  //   //setSliderColor(HEXtoHSL(color));
+  //   console.log(color, "color grabbed on click");
+  //   setSliderColor(color);
+  // };
 
   // useEffect(() => {
   //   setSliders(arraySliders);
@@ -274,15 +274,17 @@ export default function Entryway() {
         hex={bcolor}
         func={currentColor}
         func2={createSlider}
-        func3={requestNewSlider}
+        //func3={requestNewSlider}
+        amt={amt}
+        //indivcolor={sliderColor}
       ></Palette>
-      <Container
+      {/* <Container
         testAdd={true}
         amt={amt}
         hex={bcolor}
         indivcolor={sliderColor}
         func={currentColor}
-      ></Container>
+      ></Container> */}
       {/* </BodyColor> */}
     </div>
   );

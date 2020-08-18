@@ -56,7 +56,6 @@ export default function Slider(props) {
     `hsl(${props.color.h}, ${props.color.s},${props.color.l})`
   );
   const sliderStyling = {
-    width: "30px",
     background: colorSlide,
   };
 
