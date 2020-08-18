@@ -1,29 +1,22 @@
 import React, { useEffect, useState, useRef } from "react";
-// import "../style/00.css";
+import Container from "./Container";
+import styled from "styled-components";
+import { HEXtoHSL, complimyHSL } from "../helpers/HexConverter";
 
-import styled, { keyframes } from "styled-components";
-import { HEXtoHSL, complimyHSL, scrollHSL } from "../helpers/HexConverter";
-//import { ArrayOptions } from "../helpers/ArrayOptions"; //just here to test
+// const colorScroll = keyframes`
+//     0% {
+//         background-color: var(--hsl);
+//     }
+//     50% {
+//         background-color: var(--inverseHsl);
+//     }
+//     95% {
+//       background-color: var(--hsl);
+//     }
+// }`;
 
-const colorScroll = keyframes`
-    0% {
-        background-color: var(--hsl);
-    }
-    50% {
-        background-color: var(--inverseHsl);
-    }
-    95% {
-      background-color: var(--hsl);
-    }
-}`;
-
-//unfortunately the -- trips up the script in the attr object section and i need the -- to be present for the traditional css vars.
-// h: props.hue.h,
-// s: props.hue.s,
-// l: props.hue.l,
-// --inverseh: props.inverse.h,
-// --inverses: props.inverse.s,
-// --inversel: props.inverse.l,
+//  -webkit-animation: ${colorScroll} 60s infinite;
+//  animation: ${colorScroll} 60s infinite;
 
 const PaletteSlide = styled.div.attrs((props) => ({
   style: {
@@ -38,14 +31,10 @@ func:${(props) => props.func}
   --h: ${(props) => props.hue.h};
   --s: ${(props) => props.hue.s};
   --l: ${(props) => props.hue.l};
-  --inverseh: props.hue2.h,
---inverses: props.hue2.s,
---inversel: props.hue2.l,
---inverseHsl: hsl(var(--inverseh), var(--inverses), var(--inversel));
+
+
   --hsl: hsl(var(--h), var(--s), var(--l));
   background-color: var(--hsl);
-  //  -webkit-animation: ${colorScroll} 60s infinite;
-  //  animation: ${colorScroll} 60s infinite;
   -webkit-transition: width 3s;
   -moz-transition: width 3s;
   -ms-transition: width 3s;
@@ -55,7 +44,7 @@ func:${(props) => props.func}
   margin: 0em;
 `;
 
-export default function Palette(props) {
+export default function Palettes(props) {
   // console.log(window.innerWidth);
   const [pWidth1, setWidth] = useState("50vw");
   const [pWidth2, setWidth2] = useState("50vw");
@@ -79,50 +68,27 @@ export default function Palette(props) {
     const target = e.target.id;
     const xPosition = e.clientX;
     const intViewportWidth = window.innerWidth;
-
     let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
-
     // //calculate position as 100 - value so i can use it like a percentage val but with vw css
-    // let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
     resetCubeWidth(percentageWidth, target);
-
-    props.func(p1Color); // seems to be retreiving the color at the right moment...
   };
 
-  const addSliderComp = () => {
-    props.func3(p1Color);
+  //this function triggers a function in the parent entryway, that addes a new Slider Obj, passed down through the props.amt
+  const addSliderComp = (e) => {
+    //this grabs and updates the background color for the dynamically added slider slices, while asking for a new Slider Obj to be created and added to a an array that is looped through in the Slider component to display all the slice sliders
+    props.funcAddSlider(p1Color);
+    //i needed to do this because i could only attach one function to the listener onlick in the palette component.
+    getPosition(e);
   };
 
-  let hexHsl = HEXtoHSL(props.hex);
+  let hexHsl = HEXtoHSL(props.bgHex);
   //complimentary color generator to match the current colorpicker set by the input val
   //let hexHslComp = complimyHSL(hexHsl);
 
-  const [p1Color, setColor] = useState(HEXtoHSL(props.hex));
+  const [p1Color, setColor] = useState(HEXtoHSL(props.bgHex));
   const [p2Color, setColor2] = useState(complimyHSL(hexHsl));
-  const [p3Color, setColor3] = useState(scrollHSL(hexHsl));
+
   // let something = "a";
-
-  // const updateHook = (props) => {
-  //   // p1Color !== HEXtoHSL(props.hex)
-  //   //   ? console.log("changed")
-  //   //   : (something = "b");
-
-  //   console.log(HEXtoHSL(props.hex), p1Color);
-  // };
-
-  //updateHook(props);
-
-  //both of the above - the reference to a function converting the prop, and the direct prop are both
-  //updating at the moment the colorpick input is triggered.
-  //the hook however, is NOT updating with the props value.
-  // console.log(
-  //   "converted:",
-  //   hexHsl.h,
-  //   "original prop:",
-  //   props.hex,
-  //   "hook:",
-  //   p1Color.h
-  // );
 
   //the useRef hook can also be used to store a mutable variable
   //*********that will not trigger an update of the component when changed. --> so refHex = useRef(hexHsl) is NOT what i want because i do want it to trigger a render // but it IS useful for within my useeffect for the var value
@@ -130,21 +96,13 @@ export default function Palette(props) {
   let mult = 1;
   const refContainer = useRef(mult);
   //var colorStatus = useRef(hexHsl.h);// using this yields the same results as using p1Color.h in the updateVal function below
-  //this is a new hook type --- if i were using mult, it would be reset to 1, at each re-render. // aka not work the way i'd think
-  //it would within regular javascript. but in react the useRef() Hook isn’t just for DOM refs (side-effects). The “ref” object is a generic container whose current property is mutable and can hold any value, similar to an instance property on a class.
-  //by utalizing the '.current' on my Ref, within the useEffect hook it will look at the value of that instance within the hook and not its continually reset value at 1
+  //NOTES ON useRef : this is a new hook type --- if i were using mult, it would be reset to 1, at each re-render. // aka not work the way i'd think it would within regular javascript. but in react the useRef() Hook isn’t just for DOM refs (side-effects). The “ref” object is a generic container whose current property is mutable and can hold any value, similar to an instance property on a class. by utalizing the '.current' on my Ref, within the useEffect hook it will look at the value of that instance within the hook and not its continually reset value at 1 Does useEffect run after every render? Yes! By default, it runs both after the first render and after every update.
 
-  ///Does useEffect run after every render? Yes! By default, it runs both after the first render and after every update.
-
-  //---->
-  // this is now updating the value of the color, to the palette components.
+  // ---->this is now updating the value of the color, to the palette components.
   useEffect(() => {
-    setColor(HEXtoHSL(props.hex));
-    //useEffect can't reference p2Color because its outside the scope and this is a callback
-    setColor2(complimyHSL(HEXtoHSL(props.hex)));
-  }, [props.hex]);
-
-  // props.hex += 1;
+    setColor(HEXtoHSL(props.bgHex));
+    setColor2(complimyHSL(HEXtoHSL(props.bgHex)));
+  }, [props.bgHex]); //useEffect can't reference p2Color, because its outside the scope, hence references props directly. and this is a callback
 
   useEffect(() => {
     if (p1Color.h === 0) {
@@ -174,15 +132,19 @@ export default function Palette(props) {
         id="pWidth1"
         width={pWidth1}
         hue={p1Color}
-        hue2={p3Color}
-        onClick={getPosition}
+        onClick={addSliderComp}
       ></PaletteSlide>
       <div className="sliderContainer"></div>
+      <Container
+        testAdd={true}
+        amtSliders={props.amtSliders}
+        hex={props.bgHex}
+        indivColor={props.indivColor}
+      ></Container>
       <PaletteSlide
         id="pWidth2"
         width={pWidth2}
         hue={p2Color}
-        hue2={p1Color}
         onClick={addSliderComp}
       ></PaletteSlide>
     </>
