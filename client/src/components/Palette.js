@@ -42,18 +42,13 @@ const PaletteSlide = styled.div.attrs((props) => ({
     left: props.left,
   },
 }))`
+func:${(props) => props.func}
   cursor: crosshair;
-  whichpallete: ${(props) => props.className};
-  //width: ${(props) => props.width};
   height: 100vh;
   --h: ${(props) => props.hue.h};
   --s: ${(props) => props.hue.s};
   --l: ${(props) => props.hue.l};
   --hsl: hsl(var(--h), var(--s), var(--l));
-  --inverseh: ${(props) => props.inverse.h};
-  --inverses: ${(props) => props.inverse.s};
-  --inversel: ${(props) => props.inverse.l};
-  --inversehsl: hsl(var(--inverseh), var(--inverses), var(--inversel));
   background-color: var(--hsl);
   // -webkit-animation: ${colorScroll} 60s infinite;
   // animation: ${colorScroll} 60s infinite;
@@ -99,6 +94,11 @@ export default function Palette(props) {
     console.log(p1Color); // this value does apear to be changing....
     props.func(p1Color); // seems to be retreiving the color at the right moment...
     props.func2(e.clientX); // this is to create the new slider element // this is messsyyy. better to separating everything out.
+    //props.func3(p1Color);
+  };
+
+  const addSliderComp = () => {
+    props.func3(p1Color);
   };
 
   let hexHsl = HEXtoHSL(props.hex);
@@ -178,7 +178,6 @@ export default function Palette(props) {
       <PaletteSlide
         id="pWidth1"
         width={pWidth1}
-        inverse={p2Color}
         hue={p1Color}
         onClick={getPosition}
       ></PaletteSlide>
@@ -186,9 +185,8 @@ export default function Palette(props) {
       <PaletteSlide
         id="pWidth2"
         width={pWidth2}
-        inverse={p1Color}
         hue={p2Color}
-        onClick={getPosition}
+        onClick={addSliderComp}
       ></PaletteSlide>
     </>
   );

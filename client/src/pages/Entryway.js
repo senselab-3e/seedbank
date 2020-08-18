@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../style/00.css";
 //import styled, { keyframes } from "styled-components";
 import styled from "styled-components";
 import Pixel from "../components/Pixel";
 import Palette from "../components/Palette";
+import Container from "../components/Container";
 // import Portal from "../components/Portal";
+import { HEXtoHSL } from "../helpers/HexConverter";
 
 ///this was the 00.js
 
@@ -95,9 +97,31 @@ const createPositions = (dim) => {
 //   });
 // }
 
+let sliderNum = {
+  key0: {
+    num: [1],
+    color: "#333",
+  },
+};
+
+let arraySliders = [];
+
+class Slider {
+  constructor(key, color) {
+    this.key = key;
+    this.color = color;
+  }
+}
+
 export default function Entryway() {
   //when i left the state blank '' - it would cause problems for the delegation of its value as a prop for the styled components
   const [bcolor, setColor] = useState("#f812c0");
+  const [sliderComp, setSliders] = useState();
+  const [sliderColor, setSliderColor] = useState(
+    '{h: 317, s: "94%", l: "52%"}'
+  );
+
+  const [amt, setAmount] = useState(0);
   // const [portalnum, setPorts] = useState(0);
 
   //  How do I update state with values that depend on the current state?
@@ -142,9 +166,7 @@ export default function Entryway() {
     //e.preventDefault();
     var slider = document.createElement("div");
     slider.className = "slider";
-    slider.style.left = createPositions("left");
-    slider.style.top = createPositions("top");
-    console.log(momentaryColor);
+    // console.log(momentaryColor);
     slider.style.backgroundColor = currentHue();
     //momentaryColor;
     // slider.style.backgroundColor = bcolor;
@@ -196,6 +218,36 @@ export default function Entryway() {
 
   //NOTE this container div is being used to append child new elements - even though there are no significant csss
 
+  // useEffect(() => {
+  //   arraySliders.push(newby);
+  //   setSliders(arraySliders);
+  //   //useEffect can't reference p2Color because its outside the scope and this is a callback
+  // }, arraySliders);
+
+  // useEffect(() => {
+  //   setSliders(arraySliders);
+  // });
+
+  const requestNewSlider = (color) => {
+    console.log(sliderNum.key0, color);
+    let newby = new Slider(arraySliders.length, color); // so this push isn't working.
+    arraySliders.push(newby);
+    // // console.log(arraySliders[arraySliders.length - 1]);
+    // console.log(arraySliders.length);
+    setSliders(arraySliders);
+    setAmount(arraySliders.length);
+    console.log(sliderComp);
+    console.log(amt, "slidercomp");
+    console.log(arraySliders[arraySliders.length - 1].color);
+    //setSliderColor(HEXtoHSL(color));
+    console.log(color, "color grabbed on click");
+    setSliderColor(color);
+  };
+
+  // useEffect(() => {
+  //   setSliders(arraySliders);
+  // }, arraySliders);
+
   return (
     <div className="containerPalette">
       {/* <BodyColor color={bcolor}>
@@ -218,8 +270,19 @@ export default function Entryway() {
         ></input>
       </InputColor>
 
-      <Palette hex={bcolor} func={currentColor} func2={createSlider}></Palette>
-
+      <Palette
+        hex={bcolor}
+        func={currentColor}
+        func2={createSlider}
+        func3={requestNewSlider}
+      ></Palette>
+      <Container
+        testAdd={true}
+        amt={amt}
+        hex={bcolor}
+        indivcolor={sliderColor}
+        func={currentColor}
+      ></Container>
       {/* </BodyColor> */}
     </div>
   );
