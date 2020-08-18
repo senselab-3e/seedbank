@@ -56,3 +56,13 @@ export const complimyHSL = (props) => {
   }
   return compHSL
 };
+
+export const scrollHSL = (props) => {
+
+  const scrollHSL = {
+    h: Math.abs(props.h - 360),
+    s: props.s,
+    l: props.l,
+  }
+  return scrollHSL
+};

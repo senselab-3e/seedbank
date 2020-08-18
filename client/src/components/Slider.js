@@ -33,13 +33,12 @@ const PaletteSlide = styled.div.attrs((props) => ({
     left: props.left,
   },
 }))`
-func:${(props) => props.func}
   cursor: crosshair;
   height: 100vh;
-  
+
   //--hsl: hsl(var(--h), var(--s), var(--l));
   //background-color: var(--hsl);
-  
+
   -webkit-transition: width 3s;
   -moz-transition: width 3s;
   -ms-transition: width 3s;
@@ -56,9 +55,23 @@ export default function Slider(props) {
     `hsl(${props.color.h}, ${props.color.s},${props.color.l})`
   );
   const sliderStyling = {
-    width: "30px",
     background: colorSlide,
   };
 
-  return <div className="slider hel" style={sliderStyling}></div>;
+  const checkOpen = function (e) {
+    const target = e.target.classList;
+    e.target.classList.contains("sliderOpen")
+      ? e.target.classList.remove("sliderOpen")
+      : e.target.classList.add("sliderOpen");
+  };
+
+  // slider.onclick = function () {
+  //   e.target.classList.contains("sliderOpen")
+  //     ? e.target.classList.remove("sliderOpen")
+  //     : e.target.classList.add("sliderOpen");
+  // };
+
+  return (
+    <div className="slider" style={sliderStyling} onClick={checkOpen}></div>
+  );
 }

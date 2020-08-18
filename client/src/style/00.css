@@ -193,7 +193,7 @@ body {
 
 .slider:hover {
     border: 1px inset white;
-    width: 3vw;
+    /* width: 3vw; */
     cursor: pointer;
 }
 

@@ -2,26 +2,16 @@ import React, { useEffect, useState, useRef } from "react";
 // import "../style/00.css";
 
 import styled, { keyframes } from "styled-components";
-import { HEXtoHSL, complimyHSL } from "../helpers/HexConverter";
+import { HEXtoHSL, complimyHSL, scrollHSL } from "../helpers/HexConverter";
 //import { ArrayOptions } from "../helpers/ArrayOptions"; //just here to test
 
 const colorScroll = keyframes`
     0% {
         background-color: var(--hsl);
     }
-
-    30% {
-        background-color: var(--inversehsl);
+    50% {
+        background-color: var(--inverseHsl);
     }
-
-    40% {
-        background-color: var(--hsl);
-    }
-
-    70% {
-        background-color: var(--inversehsl);
-    }
-
     95% {
       background-color: var(--hsl);
     }
@@ -48,10 +38,14 @@ func:${(props) => props.func}
   --h: ${(props) => props.hue.h};
   --s: ${(props) => props.hue.s};
   --l: ${(props) => props.hue.l};
+  --inverseh: props.hue2.h,
+--inverses: props.hue2.s,
+--inversel: props.hue2.l,
+--inverseHsl: hsl(var(--inverseh), var(--inverses), var(--inversel));
   --hsl: hsl(var(--h), var(--s), var(--l));
   background-color: var(--hsl);
-  // -webkit-animation: ${colorScroll} 60s infinite;
-  // animation: ${colorScroll} 60s infinite;
+  //  -webkit-animation: ${colorScroll} 60s infinite;
+  //  animation: ${colorScroll} 60s infinite;
   -webkit-transition: width 3s;
   -moz-transition: width 3s;
   -ms-transition: width 3s;
@@ -107,6 +101,7 @@ export default function Palette(props) {
 
   const [p1Color, setColor] = useState(HEXtoHSL(props.hex));
   const [p2Color, setColor2] = useState(complimyHSL(hexHsl));
+  const [p3Color, setColor3] = useState(scrollHSL(hexHsl));
   // let something = "a";
 
   // const updateHook = (props) => {
@@ -151,6 +146,8 @@ export default function Palette(props) {
     setColor2(complimyHSL(HEXtoHSL(props.hex)));
   }, [props.hex]);
 
+  // props.hex += 1;
+
   useEffect(() => {
     if (p1Color.h === 0) {
       refContainer.current = 1;
@@ -179,6 +176,7 @@ export default function Palette(props) {
         id="pWidth1"
         width={pWidth1}
         hue={p1Color}
+        hue2={p3Color}
         onClick={getPosition}
       ></PaletteSlide>
       <div className="sliderContainer"></div>
@@ -186,6 +184,7 @@ export default function Palette(props) {
         id="pWidth2"
         width={pWidth2}
         hue={p2Color}
+        hue2={p1Color}
         onClick={addSliderComp}
       ></PaletteSlide>
     </>
