@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, {
+  useState
+} from "react";
 import styled from "styled-components";
-import { ArrayOptions } from "../helpers/ArrayOptions";
-import { Link } from "react-router-dom";
-import { chooseElement } from "../helpers/popCalculators";
-import { linkLocations } from "../helpers/ArrayOptions";
+import {
+  ArrayOptions
+} from "../helpers/ArrayOptions";
+import {
+  Link
+} from "react-router-dom";
+import {
+  chooseElement
+} from "../helpers/popCalculators";
+import {
+  linkLocations
+} from "../helpers/ArrayOptions";
 
-const BodyColor = styled.div`
+const BodyColor = styled.div `
   background-color: ${props => props.color};
   top: -10px;
   left: 0;
@@ -13,7 +23,7 @@ const BodyColor = styled.div`
   // height: 100vh;
 `;
 
-const MenuTitles = styled.p`
+const MenuTitles = styled.p `
   margin: 0em;
   margin-left: 1em;
   margin-right: 0.3em;
@@ -24,7 +34,7 @@ const MenuTitles = styled.p`
   }
 `;
 
-const Titles = styled.p`
+const Titles = styled.p `
   margin: 0em;
   margin-left: 1em;
   margin-right: 0.3em;
@@ -33,16 +43,16 @@ const Titles = styled.p`
   style: bold;
 `;
 
-const ColorBar = styled.div`
+const ColorBar = styled.div `
   height: 40px;
   width: 100vw;
-  // z-index: 30;
+   z-index: 50;
   position: fixed;
   top: 5;
   left: 5;
 `;
 
-const ColorSquares = styled.div`
+const ColorSquares = styled.div `
   background-color: ${props => props.color};
   // width: 20px;
   height: 20px;
@@ -93,35 +103,59 @@ function MenuPicker() {
     return word.replace(regEx, " ");
   };
 
-  return (
-    <BodyColor color={bcolor}>
-      <ColorBar>
-        {linkLocations.map(i => (
-          <Link to={i} key={i}>
-            <ColorSquares
-              color={chooseElement(paletteSquares)}
-              key={i}
-              onClick={function() {
-                //setColor(chooseElement(paletteSquares));
-                setLoc(pageNameClean(i));
-              }}
-              onTouchEnd={function() {
-                //setColor(chooseElement(paletteSquares));
-                setLoc(pageNameClean(i));
-              }}
-            >
-              <MenuTitles color="black">{pageNameClean(i)}</MenuTitles>
-            </ColorSquares>
-          </Link>
-        ))}
-        <ColorSquares
-          color=""
-          onClick={() => setColor("")}
-          onTouchStart={() => setColor("")}
-        />
-        <Titles color="black">{loc}</Titles>
-      </ColorBar>
-    </BodyColor>
+  return ( <
+    BodyColor color = {
+      bcolor
+    } >
+    <
+    ColorBar > {
+      linkLocations.map(i => ( <
+        Link to = {
+          i
+        }
+        key = {
+          i
+        } >
+        <
+        ColorSquares color = {
+          chooseElement(paletteSquares)
+        }
+        key = {
+          i
+        }
+        onClick = {
+          function () {
+            //setColor(chooseElement(paletteSquares));
+            setLoc(pageNameClean(i));
+          }
+        }
+        onTouchEnd = {
+          function () {
+            //setColor(chooseElement(paletteSquares));
+            setLoc(pageNameClean(i));
+          }
+        } >
+        <
+        MenuTitles color = "black" > {
+          pageNameClean(i)
+        } < /MenuTitles> <
+        /ColorSquares> <
+        /Link>
+      ))
+    } <
+    ColorSquares color = ""
+    onClick = {
+      () => setColor("")
+    }
+    onTouchStart = {
+      () => setColor("")
+    }
+    /> <
+    Titles color = "black" > {
+      loc
+    } < /Titles> <
+    /ColorBar> <
+    /BodyColor>
   );
 }
 

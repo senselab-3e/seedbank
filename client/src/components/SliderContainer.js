@@ -1,6 +1,4 @@
-import React, {
-  useState
-} from "react";
+import React, { useState } from "react";
 import Slider from "./Slider";
 
 export default function SliderContainer(props) {
@@ -23,16 +21,8 @@ export default function SliderContainer(props) {
 
   let slideSet = [];
   for (let i = 0; i < sliderAmt; i++) {
-    slideSet.push( < Slider key = {
-        i.toString()
-      }
-      color = {
-        indivColor
-      }
-      />);
-    }
-
-    return <div className = "sliderContainer" > {
-      slideSet
-    } < /div>;
+    slideSet.push(<Slider key={i.toString()} color={indivColor} />);
   }
+
+  return <div className="sliderContainer"> {slideSet} </div>;
+}
