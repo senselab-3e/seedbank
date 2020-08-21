@@ -42,11 +42,7 @@ function App() {
             <Route path="/patches" component={EeE} />
             <Route path="/entryway" component={Entryway} />
             <Route exact path="/auth" component={AuthPage} />
-            <Route
-              exact
-              path="/events"
-              component={withAuth(EventsPage, "/events")}
-            />
+            <Route exact path="/events" component={EventsPage} />
             <Route
               exact
               path="/traces"

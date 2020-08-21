@@ -9,19 +9,31 @@ export class EventsPage extends Component {
   constructor() {
     super();
     this.state = {
-      events: []
+      events: [],
     };
   }
 
   checkForUpdates = () => {
     axios
       .get("/api/events")
-      .then(events => {
+      .then((events) => {
         this.setState({
-          events: events.data
+          events: events.data,
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
+  };
+
+  deleteItem = (id) => {
+    axios
+      .delete(`/api/events/${id}`)
+      .then((event) => {
+        console.log("Deleted event: " + id);
+      })
+      .catch((err) => {
+        console.log(err, "target: " + id);
+      });
+    this.checkForUpdates();
   };
 
   componentDidMount() {
@@ -32,7 +44,7 @@ export class EventsPage extends Component {
     return (
       <div>
         <EventCreate checkForUpdates={this.checkForUpdates} />
-        <EventList events={this.state.events} />
+        <EventList events={this.state.events} deletefunc={this.deleteItem} />
         <br />
         <br />
         <Link to="/">Back to entryway</Link>

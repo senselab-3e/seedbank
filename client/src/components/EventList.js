@@ -10,6 +10,13 @@ class EventList extends Component {
           {this.props.events.map(({ id, name, data }) => (
             <li key={id.toString()}>
               {name} {data}
+              <button
+                onClick={() => {
+                  this.props.deletefunc(id);
+                }}
+              >
+                x
+              </button>
             </li>
           ))}
         </ul>
