@@ -44,7 +44,7 @@ export class EventsPage extends Component {
     return (
       <div>
         <EventCreate checkForUpdates={this.checkForUpdates} />
-        <EventList events={this.state.events} deletefunc={this.deleteItem} />
+        <EventList events={this.state.events} deleteItem={this.deleteItem} />
         <br />
         <br />
         <Link to="/">Back to entryway</Link>

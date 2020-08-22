@@ -12,7 +12,7 @@ class EventList extends Component {
               {name} {data}
               <button
                 onClick={() => {
-                  this.props.deletefunc(id);
+                  this.props.deleteItem(id);
                 }}
               >
                 x

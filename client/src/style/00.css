@@ -201,3 +201,10 @@ body {
     cursor: pointer;
     width: 25vw;
 }
+
+.textSub-container {
+    position: absolute;
+    top: 600px;
+    left: 5vw;
+    z-index: 100;
+}

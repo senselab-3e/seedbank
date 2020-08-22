@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import SliderContainer from "./SliderContainer";
 import styled from "styled-components";
 import { HEXtoHSL, complimyHSL } from "../helpers/HexConverter";
+import TextBox from "../components/TextBox";
 
 // const colorScroll = keyframes`
 //     0% {
@@ -31,7 +32,6 @@ func:${(props) => props.func}
   --h: ${(props) => props.hue.h};
   --s: ${(props) => props.hue.s};
   --l: ${(props) => props.hue.l};
-
 
   --hsl: hsl(var(--h), var(--s), var(--l));
   background-color: var(--hsl);
@@ -137,6 +137,7 @@ export default function Palettes(props) {
         hue={p2Color}
         onClick={addSliderComp}
       ></PaletteSlide>
+      <TextBox></TextBox>
     </>
   );
 }
