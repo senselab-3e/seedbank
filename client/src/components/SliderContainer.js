@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "./Slider";
 import axios from "axios";
 
@@ -32,7 +32,7 @@ export default function SliderContainer(props) {
       .get("/api/events")
       .then((events) => {
         setData(events.data);
-        console.log(events.data[sliderAmt].name);
+        //sconsole.log(events.data[sliderAmt].name);
         events.data[sliderAmt].name
           ? setText(events.data[sliderAmt].name)
           : setText("no Text content");
