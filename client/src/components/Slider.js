@@ -11,18 +11,14 @@ export default function Slider(props) {
 
   const swapClassOpen = function (e) {
     const target = e.target.classList;
-    console.log(e.target.childNodes[0].classList, "apples");
-
-    // target.contains("sliderOpen")
-    //   ? target.remove("sliderOpen")
-    //   : target.add("sliderOpen");
-
+    //console.log(e.target.childNodes[0].classList, "apples");
+    console.log(textContent);
     if (target.contains("sliderOpen")) {
       target.remove("sliderOpen");
+      e.target.childNodes[0].classList.add("hidden"); //reveals the div with text content inside of it
     } else {
       target.add("sliderOpen");
       e.target.childNodes[0].classList.remove("hidden");
-      console.log(e.target.childNodes);
     }
   };
 
@@ -33,8 +29,7 @@ export default function Slider(props) {
   return (
     <div className="slider" style={sliderStyling} onClick={swapClassOpen}>
       <div className="hidden">
-        {textContent}
-        <p>asdfadsfdfasdfsdf</p>
+        <p>{textContent} asdfadsfdfasdfsdf</p>
       </div>
     </div>
   );

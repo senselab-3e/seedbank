@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Slider from "./Slider";
 import axios from "axios";
 
@@ -6,81 +6,66 @@ export default function SliderContainer(props) {
   // const [sliderAmt, setAmount] = useState(
   //   props.amtSliders ? props.amtSliders : 0
   // );
-  const [indivColor, setColor] = useState(props.indivColor);
-  const [textObj, setText] = useState([]);
-  //const [sliderAmt, setAmount] = useState(textObj ? textObj.length : 0);
-  const [sliderAmt, setAmount] = useState(0);
 
-  const getbyId = (id) => {
+  const [indivColor, setColor] = useState("#333");
+  const [textData, setData] = useState("orange");
+  const [textObj, setText] = useState("textEmpty");
+  //const [sliderAmt, setAmount] = useState(textObj ? textObj.length : 0);
+  const [sliderAmt, setAmount] = useState(props.amtSliders);
+
+  //let id = 7;
+  // let refId = useRef(id); this is the direction i go if i want to quote a specific index - -but since i want things to be connected to the sliders --- i need the state changes in this number rendered --- aka use useState --
+
+  useEffect(() => {
+    setAmount(props.amtSliders);
+  }, [props.amtSliders]); ///every time a change in this prop is detected a callback is trigered and the state is re set.
+
+  console.log(sliderAmt);
+
+  useEffect(() => {
+    setColor(props.indivColor);
+  }, [props.indivColor]);
+
+  //console.log(id);
+  useEffect(() => {
     axios
       .get("/api/events")
       .then((events) => {
-        setText(events.data);
-        //console.log(events.data);
-        for (const key in textObj) {
-          if (textObj[key].id === id) {
-            setText(textObj[key].name);
-            //console.log(textObj[key].name, id);
-          }
-          // console.log(element.id);
-        }
-        // setText({
-        //   events: events.data,
-        // });
+        setData(events.data);
+        console.log(events.data[sliderAmt].name);
+        events.data[sliderAmt].name
+          ? setText(events.data[sliderAmt].name)
+          : setText("no Text content");
+        //setText(events.data[refId.current].name);
+        //ALT1: if i want to randomly choose which text is added.
+        // console.log(
+        //   events.data[
+        //     Math.floor(Math.random(events.data.length) * events.data.length)
+        //   ].name
+        // );
+
+        //ALT2: if i want to index a specific key/name combo in relation to an id
+        // for (const key in events.data) {
+        //   if (events.data[key].id === refId.current) {
+        //     setText(events.data[key].name);
+        //   }
+        // }
       })
       .catch((err) => console.log(err));
-  };
+  }, [sliderAmt]);
 
-  // useEffect(() => {
-  //   let id = 7;
-  //   getbyId(id);
-  // }, []);
-
-  // useEffect(() => {
-  // axios
-  //   .get("/api/events")
-  //   .then((events) => {
-  //     setText(events.data);
-  //     // setText({
-  //     //   events: events.data,
-  //     // });
-  //   })
-  //   .catch((err) => console.log(err));
-  // }, []);
-
-  // console.log(textObj.length);
-
-  // for (const key in textObj) {
-  //   if (textObj[key].id === 1) {
-  //     console.log(textObj[key].name, textObj[key].data);
-  //   }
-  //   // console.log(element.id);
-  // }
-  //console.log(textObj.events);
+  console.log(textData);
+  console.log(textObj, "iddd");
 
   //We don’t want to load the events each time the component re-renders, so we pass an empty array as second argument.
 
-  //the hooks will not update on their own - despite the props value changing. it only runs on load. so this
-  //is a quick way to have it update the value being passed into the components below, if it is a different value. it's a bit more stable
-  // because then the prop valuing isn't just passing over and over continuously -- but the color value IS changing conintuously, so it doesn't make that much of difference. but retaining the same pattern logic for legibility.
-  if (props.amtSliders !== sliderAmt) {
-    setAmount(props.amtSliders);
-  }
-
-  // if (sliderAmt !== textObj.length) {
-  //   setAmount(textObj.length);
-  //   setColor(props.indivColor);
-  // }
-
-  if (props.indivColor !== indivColor) {
-    setColor(props.indivColor);
-  }
+  // console.log(indivColor);
   //i moved to passing the props value directly into the colors and slider amounts, so it would update immediately and not need  a hooks reassignment
 
   let slideSet = [];
   for (let i = 0; i < sliderAmt; i++) {
     slideSet.push(
-      <Slider key={i.toString()} color={indivColor} textContent={"test"} />
+      <Slider key={i.toString()} color={indivColor} textContent={textObj} />
     );
   }
 
