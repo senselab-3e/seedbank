@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import SliderContainer from "./SliderContainer";
 import styled from "styled-components";
 import { HEXtoHSL, complimyHSL } from "../helpers/HexConverter";
@@ -44,7 +44,11 @@ func:${(props) => props.func}
   margin: 0em;
 `;
 
+let subTextArray = [];
+
 export default function Palettes(props) {
+  const [textVal, setTextVal] = useState("");
+
   const [palette1Width, setWidth] = useState("50vw");
   const [palette2Width, setWidth2] = useState("50vw");
 
@@ -136,6 +140,13 @@ export default function Palettes(props) {
 
   //p1Color is continually being set, with the above timer, triggering the function below, instead of at the moment i want - which is at the click.
 
+  const subCapture = (val) => {
+    console.log("palette level:", val);
+    subTextArray.push(val);
+
+    setTextVal(val);
+  };
+  console.log(subTextArray, "array");
   return (
     <>
       <PaletteSlide
@@ -146,6 +157,8 @@ export default function Palettes(props) {
       ></PaletteSlide>
       <SliderContainer
         testAdd={true}
+        submittedText={textVal}
+        textArray={subTextArray}
         amtSliders={props.amtSliders}
         hex={props.bgHex}
         indivColor={props.indivColor}
@@ -156,7 +169,7 @@ export default function Palettes(props) {
         hue={p2Color}
         onClick={addSliderComp}
       ></PaletteSlide>
-      <TextBox></TextBox>
+      <TextBox funcSubCap={subCapture}></TextBox>
     </>
   );
 }

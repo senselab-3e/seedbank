@@ -6,12 +6,14 @@ export default function SliderContainer(props) {
   // const [sliderAmt, setAmount] = useState(
   //   props.amtSliders ? props.amtSliders : 0
   // );
+  console.log("textArrayprop:", props.textArray);
 
   const [indivColor, setColor] = useState("#333");
   const [textData, setData] = useState("orange");
   const [textObj, setText] = useState("textEmpty");
   //const [sliderAmt, setAmount] = useState(textObj ? textObj.length : 0);
   const [sliderAmt, setAmount] = useState(props.amtSliders);
+  const [subText, setSubText] = useState(props.submittedText);
 
   //let id = 7;
   // let refId = useRef(id); this is the direction i go if i want to quote a specific index - -but since i want things to be connected to the sliders --- i need the state changes in this number rendered --- aka use useState --
@@ -25,6 +27,10 @@ export default function SliderContainer(props) {
   useEffect(() => {
     setColor(props.indivColor);
   }, [props.indivColor]);
+
+  useEffect(() => {
+    setSubText(props.submittedText);
+  }, [props.submittedText]);
 
   //console.log(id);
   useEffect(() => {
@@ -54,8 +60,8 @@ export default function SliderContainer(props) {
       .catch((err) => console.log(err));
   }, [sliderAmt]);
 
-  console.log(textData);
-  console.log(textObj, "iddd");
+  // console.log(textData);
+  // console.log(textObj, "iddd");
 
   //We don’t want to load the events each time the component re-renders, so we pass an empty array as second argument.
 
@@ -65,7 +71,12 @@ export default function SliderContainer(props) {
   let slideSet = [];
   for (let i = 0; i < sliderAmt; i++) {
     slideSet.push(
-      <Slider key={i.toString()} color={indivColor} textContent={textObj} />
+      <Slider
+        key={i.toString()}
+        color={indivColor}
+        textContent={textObj}
+        subText={subText}
+      />
     );
   }
 

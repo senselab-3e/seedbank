@@ -4,6 +4,7 @@ export default function Slider(props) {
   //const [sliderColor, setColor] = props.color;
   // console.log(props.color.s, "slider level");
   const [textContent] = useState(props.textContent);
+  const [subText] = useState(props.subText);
 
   const [colorSlide] = useState(
     `hsl(${props.color.h}, ${props.color.s},${props.color.l})`
@@ -29,7 +30,9 @@ export default function Slider(props) {
   return (
     <div className="slider" style={sliderStyling} onClick={swapClassOpen}>
       <div className="hidden">
-        <p>{textContent} asdfadsfdfasdfsdf</p>
+        <p>
+          axios: {textContent} submittedText: {subText}
+        </p>
       </div>
     </div>
   );
