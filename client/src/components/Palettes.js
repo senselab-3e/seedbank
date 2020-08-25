@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import SliderContainer from "./SliderContainer";
 import styled from "styled-components";
 import { HEXtoHSL, complimyHSL } from "../helpers/HexConverter";
@@ -72,7 +72,10 @@ export default function Palettes(props) {
     //this grabs and updates the background color for the dynamically added slider slices, while asking for a new Slider Obj to be created and added to a an array that is looped through in the Slider component to display all the slice sliders
     props.funcAddSlider(p1Color);
     //i needed to do this because i could only attach one function to the listener onlick in the palette component.
-    getClickPos(e);
+    //this addSliderComp is being triggered not just in the palette but also in the textbox submit. for the form submit there is no e target - wanted or needed to be passed on to the palette resizing that happens with the getclickpos function.
+    if (e) {
+      getClickPos(e);
+    }
   };
 
   let hexHsl = HEXtoHSL(props.bgHex);
@@ -169,7 +172,7 @@ export default function Palettes(props) {
         hue={p2Color}
         onClick={addSliderComp}
       ></PaletteSlide>
-      <TextBox funcSubCap={subCapture}></TextBox>
+      <TextBox funcSubCap={subCapture} addSliderComp={addSliderComp}></TextBox>
     </>
   );
 }

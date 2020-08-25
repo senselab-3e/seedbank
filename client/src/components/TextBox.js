@@ -10,6 +10,7 @@ export default function TextBox(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    props.addSliderComp();
     //console.log("handlesubmit inputVal", inputVal);
     if (inputVal) {
       props.funcSubCap(inputVal);
