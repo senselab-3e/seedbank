@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import "../style/00.css";
-//import styled, { keyframes } from "styled-components";
+import { createPositions } from "../helpers/popCalculators";
 import styled from "styled-components";
 import Pixel from "../components/Pixel";
 import Palettes from "../components/Palettes";
-//import Container from "../components/Container";
-// import Portal from "../components/Portal";
-//import { HEXtoHSL } from "../helpers/HexConverter";
 
 const InputColor = styled.div`
   position: absolute;
@@ -16,27 +13,27 @@ const InputColor = styled.div`
 
 //const xpos = ranValMinMax(); // by doing it this way, rather then having xpos be a function (as is seen in num) - i prevent that value from being called repeatedly, each time the components re-render. this would cause the position to change continually. but maybe i want that.
 
-const ranValMinMax = (min, max) => {
-  return Math.random() * (max - min) + min;
-};
+// const ranValMinMax = (min, max) => {
+//   return Math.random() * (max - min) + min;
+// };
 
-const createPositions = (dim) => {
-  let num = "";
-  switch (dim) {
-    case "top":
-      num = ranValMinMax(100, window.innerHeight - 100);
-      num += "px";
-      break;
-    case "left":
-      num = ranValMinMax(100, window.innerWidth - 100);
-      num += "px";
-      break;
-    default:
-      num = ranValMinMax(100, window.innerHeight - 100);
-      num += "px";
-  }
-  return num;
-};
+// const createPositions = (dim) => {
+//   let num = "";
+//   switch (dim) {
+//     case "top":
+//       num = ranValMinMax(100, window.innerHeight - 100);
+//       num += "px";
+//       break;
+//     case "left":
+//       num = ranValMinMax(100, window.innerWidth - 100);
+//       num += "px";
+//       break;
+//     default:
+//       num = ranValMinMax(100, window.innerHeight - 100);
+//       num += "px";
+//   }
+//   return num;
+// };
 
 //this is a variable I later accumulatively add to +1 to, on each palette click, creating a num val later passed as a prop to the container and child slider component.
 let numSliders = 0;
@@ -94,22 +91,24 @@ export default function Entryway() {
   // I originally had the container and slicepalettes at the entryway level, but later nested them within Palettes
   return (
     <div className="containerPalette">
-      <Pixel func={createEl} background={bcolor}></Pixel>
+      <Pixel func={createEl} background={bcolor}>
+        {" "}
+      </Pixel>{" "}
       <InputColor>
-        <p>{bcolor}</p>
+        <p> {bcolor} </p>{" "}
         <input
           className="inputColor"
           type="color"
           defaultValue={bcolor}
           onChange={(e) => setColor(e.target.value)}
-        ></input>
-      </InputColor>
+        ></input>{" "}
+      </InputColor>{" "}
       <Palettes
         bgHex={bcolor}
         amtSliders={amt}
         indivColor={sliderColor}
         funcAddSlider={requestNewSlider}
-      ></Palettes>
+      ></Palettes>{" "}
     </div>
   );
 }

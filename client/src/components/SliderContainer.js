@@ -3,12 +3,10 @@ import Slider from "./Slider";
 import axios from "axios";
 
 export default function SliderContainer(props) {
-  // const [sliderAmt, setAmount] = useState(
-  //   props.amtSliders ? props.amtSliders : 0
-  // );
   console.log("textArrayprop:", props.textArray);
 
   const [indivColor, setColor] = useState("#333");
+  // eslint-disable-next-line
   const [textData, setData] = useState("orange");
   const [textObj, setText] = useState("textEmpty");
   //const [sliderAmt, setAmount] = useState(textObj ? textObj.length : 0);
@@ -22,7 +20,7 @@ export default function SliderContainer(props) {
     setAmount(props.amtSliders);
   }, [props.amtSliders]); ///every time a change in this prop is detected a callback is trigered and the state is re set.
 
-  console.log(sliderAmt);
+  //console.log(sliderAmt);
 
   useEffect(() => {
     setColor(props.indivColor);
@@ -38,7 +36,6 @@ export default function SliderContainer(props) {
       .get("/api/events")
       .then((events) => {
         setData(events.data);
-        //sconsole.log(events.data[sliderAmt].name);
         events.data[sliderAmt].name
           ? setText(events.data[sliderAmt].name)
           : setText("no Text content");

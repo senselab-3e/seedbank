@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Text from "../components/Text";
 
 export default function TextBox(props) {
@@ -6,7 +6,7 @@ export default function TextBox(props) {
   // with axios i will need to follow each reques for data with an onChange()
 
   const [inputVal, setInput] = useState(null);
-  const [subVal, setVal] = useState(inputVal);
+  //const [subVal, setVal] = useState(inputVal); // no use for this yet
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +14,7 @@ export default function TextBox(props) {
     //console.log("handlesubmit inputVal", inputVal);
     if (inputVal) {
       props.funcSubCap(inputVal);
-      setVal(inputVal);
+      //setVal(inputVal);
     }
     //setVal(inputVal),
 

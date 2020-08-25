@@ -7,6 +7,8 @@ export const randomColors = () => {
   return color;
 };
 
+//returns both a x and y position
+
 export const uniquePositions = () => {
   let h, w, newheight, newwidth;
   h = window.innerHeight - 100;
@@ -26,4 +28,28 @@ export const chooseElement = props => {
   } else {
     return index;
   }
+};
+
+const ranValMinMax = (min, max) => {
+  return Math.random() * (max - min) + min;
+};
+
+//returns only an x or a y position
+
+export const createPositions = (dim) => {
+  let num = "";
+  switch (dim) {
+    case "top":
+      num = ranValMinMax(100, window.innerHeight - 100);
+      num += "px";
+      break;
+    case "left":
+      num = ranValMinMax(100, window.innerWidth - 100);
+      num += "px";
+      break;
+    default:
+      num = ranValMinMax(100, window.innerHeight - 100);
+      num += "px";
+  }
+  return num;
 };
