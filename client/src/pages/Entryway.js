@@ -72,6 +72,7 @@ export default function Entryway() {
     pixel.onclick = createEl;
     const container = document.querySelector(".containerPalette");
     container.appendChild(pixel);
+    console.log(pixel);
   };
 
   //didn't end up needing this because of hooks -- but stashing in case it proves helpful for passing up and down values later.

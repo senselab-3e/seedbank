@@ -49,10 +49,10 @@ export const Row = styled.div`
 `;
 
 const media = {
-  xs: styles => `
+  xs: (styles) => `
   @media only screen and (max-width: 480px) {
     ${styles}
-  }`
+  }`,
 };
 
 export const Col = styled.div`
@@ -61,8 +61,8 @@ export const Col = styled.div`
   // border-style: solid;
   display: flex;
   justify-content: space-around;
-  flex: ${props => props.size};
-  ${props =>
+  flex: ${(props) => props.size};
+  ${(props) =>
     props.collapse &&
     media[props.collapse](`
     display:none;
@@ -84,43 +84,44 @@ function Header(props) {
         <Row>
           <Col size={1} collapse="xs">
             <Button onClick={() => themeToggle.toggle()}>
+              {" "}
               {props.theme.mode === "dark"
                 ? "Switch to Light Mode"
-                : "Switch to Dark Mode"}
-            </Button>
-          </Col>
+                : "Switch to Dark Mode"}{" "}
+            </Button>{" "}
+          </Col>{" "}
           <Col size={1}>
-            <NavItem to="/events"> hello ? </NavItem>
-          </Col>
+            <NavItem to="/events"> hello ? </NavItem>{" "}
+          </Col>{" "}
           <Col size={1}>
-            <NavItem to="/"> Home </NavItem>
-          </Col>
+            <NavItem to="/"> Home </NavItem>{" "}
+          </Col>{" "}
           <Col size={1}>
-            <NavItem to="/events"> EventList - oldway </NavItem>
-          </Col>
+            <NavItem to="/events"> EventList - oldway </NavItem>{" "}
+          </Col>{" "}
           <Col size={1}>
-            <NavItem to="/auth"> Login or signup </NavItem>
-          </Col>
+            <NavItem to="/auth"> Login or signup </NavItem>{" "}
+          </Col>{" "}
           <Col size={1}>
-            <NavItem to="/entryway"> EntryWay </NavItem>
-          </Col>
+            <NavItem to="/entryway"> EntryWay </NavItem>{" "}
+          </Col>{" "}
           <Col size={1}>
-            <NavItem to="/about3e"> 3 E About </NavItem>
-          </Col>
+            <NavItem to="/about3e"> 3 E About </NavItem>{" "}
+          </Col>{" "}
           <Col size={1}>
-            <NavItem to="/play"> Play--spot for random </NavItem>
-          </Col>
+            <NavItem to="/play"> Play--spot for random </NavItem>{" "}
+          </Col>{" "}
           <Col size={1}>
-            <NavItem to="/oOoOs"> EventList w / Context / Hooks </NavItem>
-          </Col>
+            <NavItem to="/oOoOs"> EventList w / Context / Hooks </NavItem>{" "}
+          </Col>{" "}
           <Col size={1}>
-            <NavItem to="/patches"> Patches </NavItem>
-          </Col>
+            <NavItem to="/patches"> Patches </NavItem>{" "}
+          </Col>{" "}
           <Col size={1}>
-            <NavItem to="/traces"> Register a trace </NavItem>
-          </Col>
-        </Row>
-      </StickyGrid>
+            <NavItem to="/traces"> Register a trace </NavItem>{" "}
+          </Col>{" "}
+        </Row>{" "}
+      </StickyGrid>{" "}
     </React.Fragment>
   );
 }

@@ -14,15 +14,18 @@ router.get("/", (req, res) => {
 });
 
 // POST api/events
-router.post("/", (req, res) => {
-	knex("events")
+router.post('/', (req, res) => {
+	knex('events')
 		.insert({
 			name: req.body.name,
-			data: "{sponges: " + req.body.sponges.toString() + "}"
+			data: '{sponges: ' + req.body.sponges.toString() + '}'
+		})
+		.then(id => {
+			res.send('Created event')
 		})
 		.catch(err => {
 			console.log(err);
-		});
+		})
 });
 
 //DELETE api/events

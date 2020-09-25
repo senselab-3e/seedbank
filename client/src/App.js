@@ -28,29 +28,32 @@ function App() {
 
   return (
     <React.Fragment>
-      <GlobalProvider theme={{ mode: "light" }}>
+      <GlobalProvider
+        theme={{
+          mode: "light",
+        }}
+      >
         <Router>
           <MenuPicker />
-
           <Switch>
-            <Route exact path="/" render={() => <div>Home</div>} />
-            {/* <Route path="/about3e" component={About} /> */}
-            <Route path="/oOoOs" component={Glitch} />
+            <Route exact path="/" render={() => <div> Home </div>} />{" "}
+            {/* <Route path="/about3e" component={About} /> */}{" "}
+            <Route path="/oOoOs" component={Glitch} />{" "}
             <Route path="/play">
               <Play />
-            </Route>
-            <Route path="/patches" component={EeE} />
-            <Route path="/entryway" component={Entryway} />
-            <Route exact path="/auth" component={AuthPage} />
-            <Route exact path="/events" component={EventsPage} />
+            </Route>{" "}
+            <Route path="/patches" component={EeE} />{" "}
+            <Route path="/entryway" component={Entryway} />{" "}
+            <Route exact path="/auth" component={AuthPage} />{" "}
+            <Route exact path="/events" component={EventsPage} />{" "}
             <Route
               exact
               path="/traces"
               component={withAuth(ImagesPage, "/traces")}
-            />
-          </Switch>
-        </Router>
-      </GlobalProvider>
+            />{" "}
+          </Switch>{" "}
+        </Router>{" "}
+      </GlobalProvider>{" "}
     </React.Fragment>
   );
 }

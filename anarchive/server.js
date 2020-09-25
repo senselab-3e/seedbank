@@ -9,6 +9,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+const socket = require('socket.io');
 
 const node_env = process.env.NODE_ENV;
 const app = express();
@@ -41,7 +42,7 @@ if (['production', 'local-bundled'].includes(node_env)) {
 
 function start_connection() {
 	const db = mysql.createConnection({
-		host: process.env.DB_HOST,
+		host: process.env.HOST,
 		database: process.env.DB_NAME,
 		user: process.env.DB_USER,
 		password: process.env.DB_PASSWORD
@@ -66,4 +67,19 @@ start_connection();
 
 //console.log('Running in ' + node_env + ' mode');
 
-app.listen(process.env.HTTP_PORT, () => console.log(`Listening on port ${process.env.HTTP_PORT}`));
+var server = app.listen(process.env.HTTP_PORT, () => console.log(`Listening on port ${process.env.HTTP_PORT}`));
+
+var io = socket(server);
+
+io.sockets.on('connection', newConnection);
+
+function newConnection(socket) {
+	console.log("newconnection " + socket.id);
+
+	socket.on('mouse', mouseMsg);
+
+	function mouseMsg(data) {
+		socket.broadcast.emit('mouse', data);
+		console.log(data);
+	}
+}

@@ -10,3 +10,5 @@ devNotes.md
 /client/src/components/sketches/classconstructorvsfunctions.js
 
 /client/public/sketches/404-1.js
+
+# /anarchive/db/migrations/20200826002546_create_texts_table.js
