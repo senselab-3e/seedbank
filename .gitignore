@@ -3,3 +3,6 @@
 /anarchive/node_modules
 /anarchive/assets
 /client/node_modules
+/client/build/
+/anarchive/db/migrations/20200520153844_create_texts_table.js
+/anarchive/db/migrations/20200529155915_drop_image_filetype.js
