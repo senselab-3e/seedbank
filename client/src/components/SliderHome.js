@@ -47,6 +47,7 @@ export class SliderHome extends Component {
   }
   render() {
     var texts = this.state.texts;
+    console.log(texts);
     return (
       <div>
         <SliderCreate />
