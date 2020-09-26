@@ -4,14 +4,13 @@ import axios from "axios";
 export class SliderCreate extends Component {
   constructor(props) {
     super(props);
-    // this.state = {eventname: '', sponges: ''};
     this.state = { title: "", body: "" };
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
   }
 
   handleChange(e) {
-    console.log(e.target.name, e.target.value);
+    //console.log(e.target.name, e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -28,6 +27,7 @@ export class SliderCreate extends Component {
       .catch((err) => {
         console.log(err);
       });
+    //this.props.apiRequest();
   }
 
   render() {

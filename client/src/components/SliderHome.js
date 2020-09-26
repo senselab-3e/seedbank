@@ -37,7 +37,17 @@ export class SliderHome extends Component {
       texts: [],
     };
   }
+
+  //   apiRequest() {
+  //     axios
+  //       .get("/api/sliderTexts")
+  //       .then((sliderTexts) => {
+  //         this.setState({ texts: sliderTexts.data });
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
   componentDidMount() {
+    //this.apiRequest();
     axios
       .get("/api/sliderTexts")
       .then((sliderTexts) => {

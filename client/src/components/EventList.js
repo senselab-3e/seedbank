@@ -3,27 +3,15 @@ import axios from "axios";
 export default function EventList(props) {
   const events = props.events;
 
-  //   <button onClick={() => } className="delete-btn">
-  //   x
-  // </button>
-  // eslint-disable-next-line
-  const deleteItem = (id, e) => {
-    e.preventDefault();
+  const deleteItem = (id) => {
     axios
       .delete(`/api/events/${id}`)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  const itemId = (id) => {
-    axios
-      .get(`/api/events/${id}`)
-      .then(console.log(id))
-      .catch((err) => console.log(err));
   };
 
   return (
@@ -32,7 +20,7 @@ export default function EventList(props) {
         {events.map(({ id, name, data }) => (
           <li key={id.toString()}>
             {name} {data}
-            <button onClick={(e) => itemId(id)} className="delete-btn">
+            <button onClick={() => deleteItem(id)} className="delete-btn">
               x
             </button>
           </li>
