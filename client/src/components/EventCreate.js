@@ -22,7 +22,7 @@ export default function EventCreate(props) {
         console.log(err);
       });
     //after the data is submitted - then alert that a newEvent has been added, to refresh the view of eventList
-    props.listUpdated();
+    props.updateList();
   };
 
   useEffect(() => {});

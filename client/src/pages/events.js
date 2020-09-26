@@ -7,7 +7,7 @@ import EventList from "../components/EventList";
 
 //   return (
 //     <div>
-//       <EventCreate newEvent={updateEventList} />
+//       <EventCreate newEvent={getEventList} />
 //       <EventList />
 //       <br />
 //       <br />
@@ -26,7 +26,7 @@ export class events extends Component {
     };
   }
 
-  updateEventList = () => {
+  getEventList = () => {
     console.log("new event added");
     axios
       .get("/api/events")
@@ -37,13 +37,13 @@ export class events extends Component {
   };
 
   componentDidMount() {
-    this.updateEventList();
+    this.getEventList();
   }
 
   render() {
     return (
       <div>
-        <EventCreate listUpdated={this.updateEventList} />
+        <EventCreate updateList={this.getEventList} />
         <EventList events={this.state.events} />
         <br />
         <br />

@@ -11,15 +11,14 @@ export class SliderCreate extends Component {
   }
 
   handleChange(e) {
-    this.setState({ [e.target.title]: e.target.value });
+    console.log(e.target.name, e.target.value);
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   submit(e) {
     e.preventDefault();
     axios
       .post("/api/sliderTexts", {
-        // name: this.state.eventname,
-        // sponges: this.state.sponges
         title: this.state.title,
         body: this.state.body,
       })
