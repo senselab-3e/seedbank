@@ -43,7 +43,7 @@ export class events extends Component {
   render() {
     return (
       <div>
-        <EventCreate newEvent={this.updateEventList} />
+        <EventCreate listUpdated={this.updateEventList} />
         <EventList events={this.state.events} />
         <br />
         <br />
