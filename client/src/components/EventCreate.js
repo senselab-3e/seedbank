@@ -7,6 +7,9 @@ export default function EventCreate(props) {
 
   const [eventName, setName] = useState("");
   const [eventSponges, setSponges] = useState("");
+  //const [currentUser, setUser]= useState('');
+
+  //const currentUser = () =>{}
 
   const onSubmit = (e) => {
     e.preventDefault();
