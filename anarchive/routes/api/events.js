@@ -20,9 +20,32 @@ router.post("/", (req, res) => {
 			name: req.body.name,
 			data: "{sponges: " + req.body.sponges.toString() + "}",
 		})
-
+		.then(id => {
+			res.send('Created event')
+		})
 		.catch((err) => {
 			console.log(err);
+		});
+});
+
+// DELETE api/events/:id
+
+router.delete("/:id", (req, res) => {
+	let select = parseInt(req.params.id);
+	console.log('Deleting Id: ' + select)
+	knex("events")
+		.where({
+			id: select
+		})
+		.del()
+		.then(res.send({
+			id: select
+		}))
+		.catch(err => {
+			res.sendStatus(500).json({
+				status: 'Error :(',
+				error: err
+			})
 		});
 });
 
