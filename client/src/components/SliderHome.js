@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SliderCreate from "../components/SliderCreate";
 import axios from "axios";
+import DeleteBt from "../components/DeleteBt";
 export class SliderHome extends Component {
   //   constructor() {
   //     super();
@@ -38,6 +39,15 @@ export class SliderHome extends Component {
     };
   }
 
+  updateList() {
+    axios
+      .get("/api/sliderTexts")
+      .then((sliderTexts) => {
+        console.log("coming soon");
+        // this.setState({ texts: sliderTexts.data });
+      })
+      .catch((err) => console.log(err));
+  }
   //   apiRequest() {
   //     axios
   //       .get("/api/sliderTexts")
@@ -66,6 +76,11 @@ export class SliderHome extends Component {
           {texts.map(({ body, title, id }) => (
             <li key={id.toString()}>
               {body} {title}
+              <DeleteBt
+                id={id}
+                path={"sliderTexts"}
+                updateList={this.updateList}
+              />
             </li>
           ))}
         </ul>

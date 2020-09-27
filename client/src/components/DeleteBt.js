@@ -13,7 +13,13 @@ export default function DeleteBt(props) {
       .catch((err) => {
         console.log(err);
       });
-    props.updateList(); // callback up the parent stack to events page for re-querying the db for the list of events
+    if (props.updateList) {
+      props.updateList();
+    } else {
+      console.log(
+        "prop for GET of the db list has not been passed to this component"
+      );
+    } // callback up the parent stack to events page for re-querying the db for the list of events
   };
   return (
     <div>
