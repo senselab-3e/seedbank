@@ -13,6 +13,7 @@ export default function EventList(props) {
       .catch((err) => {
         console.log(err);
       });
+    props.updateList();
   };
 
   return (

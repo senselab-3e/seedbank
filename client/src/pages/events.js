@@ -44,7 +44,7 @@ export class events extends Component {
     return (
       <div>
         <EventCreate updateList={this.getEventList} />
-        <EventList events={this.state.events} />
+        <EventList events={this.state.events} updateList={this.getEventList} />
         <br />
         <br />
         <Link to="/">Back to entryway</Link>
