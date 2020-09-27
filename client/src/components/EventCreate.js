@@ -19,8 +19,8 @@ export default function EventCreate(props) {
         name: eventName,
         sponges: eventSponges,
       })
-      .then((e) => {
-        console.log("Created event: " + e);
+      .then(() => {
+        console.log("Created event: " + eventName, eventSponges);
       })
       .catch((err) => {
         console.log(err);
