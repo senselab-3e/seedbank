@@ -2,8 +2,7 @@ import React from "react";
 import axios from "axios";
 
 export default function DeleteBt(props) {
-  const id = props.id;
-  //const callbackUpdate = props.update
+  const id = props.id; //id for individual el
 
   const deleteItem = (id) => {
     axios
@@ -14,7 +13,7 @@ export default function DeleteBt(props) {
       .catch((err) => {
         console.log(err);
       });
-    props.updateList();
+    props.updateList(); // callback up the parent stack to events page for re-querying the db for the list of events
   };
   return (
     <div>
