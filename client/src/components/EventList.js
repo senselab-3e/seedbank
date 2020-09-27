@@ -8,7 +8,7 @@ export default function EventList(props) {
         {events.map(({ id, name, data }) => (
           <li key={id.toString()}>
             {name} {data}
-            <DeleteBt updateList={props.updateList} id={id} />
+            <DeleteBt updateList={props.updateList} id={id} path={"events"} />
           </li>
         ))}
       </ul>
