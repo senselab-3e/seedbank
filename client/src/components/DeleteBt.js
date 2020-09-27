@@ -14,6 +14,7 @@ export default function DeleteBt(props) {
       .catch((err) => {
         console.log(err);
       });
+    props.updateList();
   };
   return (
     <div>

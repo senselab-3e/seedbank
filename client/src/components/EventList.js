@@ -1,5 +1,5 @@
 import React from "react";
-//import DeleteBt from "./DeleteBt";
+import DeleteBt from "./DeleteBt";
 import axios from "axios";
 export default function EventList(props) {
   const events = props.events;
@@ -25,6 +25,7 @@ export default function EventList(props) {
             <button onClick={() => deleteItem(id)} className="delete-btn">
               x
             </button>
+            <DeleteBt updateList={props.updateList} id={id} />
           </li>
         ))}
       </ul>
