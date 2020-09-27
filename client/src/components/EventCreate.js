@@ -12,6 +12,7 @@ export default function EventCreate(props) {
   //const currentUser = () =>{}
 
   const onSubmit = (e) => {
+    console.log(eventName, eventSponges);
     e.preventDefault();
     axios
       .post("/api/events", {
@@ -19,7 +20,7 @@ export default function EventCreate(props) {
         sponges: eventSponges,
       })
       .then((e) => {
-        console.log("Created event: ");
+        console.log("Created event: " + e);
       })
       .catch((err) => {
         console.log(err);
@@ -62,7 +63,7 @@ export default function EventCreate(props) {
 //   constructor(props) {
 //     super(props);
 //     this.state = {
-//       eventname: "",
+//       name: "",
 //       sponges: "",
 //     };
 //     this.handleChange = this.handleChange.bind(this);
@@ -80,7 +81,7 @@ export default function EventCreate(props) {
 //     this.props.newEvent();
 //     axios
 //       .post("/api/events", {
-//         name: this.state.eventname,
+//         name: this.state.name,
 //         sponges: this.state.sponges,
 //       })
 //       .then((event) => {
@@ -99,7 +100,7 @@ export default function EventCreate(props) {
 //           Create an evenmnnfdt <br /> <br />
 //           <input
 //             type="text"
-//             name="eventname"
+//             name="name"
 //             placeholder="name"
 //             value={this.state.value}
 //             onChange={this.handleChange}
