@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
+//import jwt_decode from "jwt-decode";
 // import app from "./axiosConfig";
 
 // wraps component in router config to require authentication
@@ -16,20 +17,32 @@ export default function withAuth(ComponentToProtect) {
     }
     componentDidMount() {
       const headers = {
-        'authorization': 'Bearer ' + localStorage.getItem('token')
+        authorization: "Bearer " + localStorage.getItem("token"),
       };
 
-      axios.get('/api/auth/verify', { headers: headers })
-      .then(res => {
-        if (res.status === 200) {
-            this.setState({ loading: false });
-        } else {
-            this.setState({ loading: false, redirect: true });
-        }
-      })
-      .catch(err => {
-        this.setState({ loading: false, redirect: true });
-      });
+      axios
+        .get("/api/auth/verify", {
+          headers: headers,
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res);
+            this.setState({
+              loading: false,
+            });
+          } else {
+            this.setState({
+              loading: false,
+              redirect: true,
+            });
+          }
+        })
+        .catch((err) => {
+          this.setState({
+            loading: false,
+            redirect: true,
+          });
+        });
     }
     render() {
       const { loading, redirect } = this.state;
@@ -41,9 +54,9 @@ export default function withAuth(ComponentToProtect) {
       }
       return (
         <React.Fragment>
-          <ComponentToProtect {...this.props} />
+          <ComponentToProtect {...this.props} />{" "}
         </React.Fragment>
       );
     }
-  }
+  };
 }
