@@ -28,7 +28,7 @@ class App extends Component {
           <Route path="/patches" render={() => <div>Patches</div>} />
           <Route path="/entryway" render={() => <div>Entry</div>} />
           <Route exact path="/auth" component={AuthPage} />
-          <Route exact path="/events" component={EventsPage} />
+          <Route exact path="/events" component={withAuth(EventsPage)} />
           <Route exact path="/traces" component={withAuth(ImagesPage)} />
         </Switch>
       </Router>
