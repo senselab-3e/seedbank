@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import DeleteBt from "./DeleteBt";
-import GetUser from "./GetUser";
+import { UserId, UserName } from "./GetUser";
 export default function EventList(props) {
   const events = props.events; //entire list of events saved on the db
+  const [currentUserName, setName] = useState("" || UserName);
+  const [currentUserId, setId] = useState("" || UserId);
+  console.log(currentUserName, currentUserId);
   return (
     <div>
-      <GetUser />
       <ul>
         {events.map(({ id, name, data }) => (
           <li key={id.toString()}>
