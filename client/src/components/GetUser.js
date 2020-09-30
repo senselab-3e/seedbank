@@ -1,23 +1,32 @@
 import React from "react";
 import jwt_decode from "jwt-decode";
 
-const headers = {
-  authorization: "Bearer " + localStorage.getItem("token"),
+const headers2 = {
+    authorization: "Bearer " + localStorage.getItem("token"),
 };
 
-const token = headers.authorization.split(" ")[1];
+const token = headers2.authorization.split(" ")[1];
 const decoded = jwt_decode(token);
 
 export const UserId = () => {
-  return decoded.data.id;
+    if (decoded) {
+        return decoded.data.id;
+    } else {
+        return null;
+    }
 };
 
+
 export const UserName = () => {
-  return decoded.data.username;
+    if (decoded) {
+        return decoded.data.username;
+    } else {
+        return null;
+    }
 };
 
 export default function GetUser() {
-  console.log(decoded);
+    console.log(decoded);
 
-  return <div></div>;
+    return <div > < /div>;
 }
