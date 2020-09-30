@@ -2,48 +2,24 @@ import React, { Component } from "react";
 import SliderCreate from "../components/SliderCreate";
 import axios from "axios";
 import DeleteBt from "../components/DeleteBt";
+import { UserId, UserName } from "./GetUser";
 export class SliderHome extends Component {
-  //   constructor() {
-  //     super();
-  //     this.state = {
-  //       events: [],
-  //     };
-  //   }
-  //   componentDidMount() {
-  //     axios
-  //       .get("/api/events")
-  //       .then((events) => {
-  //         this.setState({ events: events.data });
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  //   render() {
-  //     var events = this.state.events;
-  //     return (
-  //       <div>
-  //         <p>Events:</p>
-  //         <ul>
-  //           {events.map(({ id, name, data }) => (
-  //             <li key={id.toString()}>
-  //               {name} {data}
-  //             </li>
-  //           ))}
-  //         </ul>
-  //       </div>
-  //     );
-  //   }
   constructor() {
     super();
     this.state = {
       texts: [],
+      userId: null,
+      userName: null,
     };
   }
 
   updateList() {
     axios
       .get("/api/sliderTexts")
-      .then((sliderTexts) => {
-        console.log("coming soon");
+      .then(() => {
+        console.log(
+          "coming soon this will be where a prop fuction is called to re-initialis the axio request for the lates slidertext el view"
+        );
         // this.setState({ texts: sliderTexts.data });
       })
       .catch((err) => console.log(err));
@@ -58,6 +34,9 @@ export class SliderHome extends Component {
   //   }
   componentDidMount() {
     //this.apiRequest();
+    this.setState({ userId: UserId() });
+    this.setState({ userName: UserName() });
+
     axios
       .get("/api/sliderTexts")
       .then((sliderTexts) => {
