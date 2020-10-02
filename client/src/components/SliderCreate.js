@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { UserId } from "./GetUser";
 
 export class SliderCreate extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ export class SliderCreate extends Component {
     this.state = {
       title: "",
       body: "",
-      userId: this.props.userId,
+      userId: UserId(),
     };
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
@@ -20,14 +21,14 @@ export class SliderCreate extends Component {
 
   submit(e) {
     //weirdly, the state for userId is staying at null. this is nnot a long term fix but for now
-    this.setState({ userId: this.props.userId });
+    this.setState({ userId: UserId() });
     console.log(this.state.userId, this.props.userId, "hello");
     e.preventDefault();
     axios
       .post("/api/sliderTexts", {
         title: this.state.title,
         body: this.state.body,
-        user_id: this.props.userId,
+        userId: this.state.userId,
       })
       .then((sliderText) => {
         console.log("Created event: " + sliderText);
