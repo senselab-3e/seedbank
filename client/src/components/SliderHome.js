@@ -3,6 +3,7 @@ import SliderCreate from "../components/SliderCreate";
 import axios from "axios";
 import DeleteBt from "../components/DeleteBt";
 import { UserId, UserName } from "./GetUser";
+import SliderbyId from "../components/SliderbyId";
 export class SliderHome extends Component {
   constructor() {
     super();
@@ -49,6 +50,7 @@ export class SliderHome extends Component {
     console.log(texts, this.state);
     return (
       <div>
+        <SliderbyId />
         <SliderCreate userId={this.state.userId} />
         <p> Slider Textsddd:</p>
         <ul>

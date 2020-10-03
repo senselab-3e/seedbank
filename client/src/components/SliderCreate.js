@@ -8,7 +8,7 @@ export class SliderCreate extends Component {
     this.state = {
       title: "",
       body: "",
-      userId: UserId(),
+      userId: UserId(), ///this.props.userId didn't work
     };
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
