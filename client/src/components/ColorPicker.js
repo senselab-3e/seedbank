@@ -10,6 +10,7 @@ export default function ColorPicker(props) {
         type="color"
         id="htmlColorPicker"
         onClick={(e) => setColorPick(e.target.value)}
+        onChange={(e) => console.log(e.target.value)}
         defaultValue={colorPick}
       ></input>
     </div>
