@@ -28,6 +28,7 @@ class App extends Component {
   }
 
   colorCapture(val) {
+    console.log(val, "applevel");
     //this.setState({ patchColor: val });
     //written this way, the function will be continually called.
   }

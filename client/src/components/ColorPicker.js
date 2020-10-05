@@ -14,7 +14,8 @@ export default function ColorPicker(props) {
 
   useEffect(() => {
     setColorPick(props.patchColor);
-  });
+  }, []);
+  //NOTE: The way to ensure useEffect is run only once is to use an empty dependency array.  --->   }, []);
 
   const submitColorVal = (e) => {
     const userId = UserId();
@@ -40,7 +41,7 @@ export default function ColorPicker(props) {
         className="colorPicker"
         // id="htmlColorPicker"
         onClick={(e) => setColorPick(e.target.value)}
-        onChange={(e) => console.log(e.target.value)}
+        onChange={(e) => props.colorCapture(e.target.value)}
         defaultValue={colorPick}
       ></input>
       <button onClick={submitColorVal}>submit to database</button>
