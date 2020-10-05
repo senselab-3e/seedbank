@@ -9,7 +9,10 @@ export default function Header(props) {
       <div className="header">
         <ul>
           <li>
-            <ColorPicker colorCapture={props.colorCapture} />
+            <ColorPicker
+              colorCapture={props.colorCapture}
+              patchColor={props.patchColor}
+            />
           </li>
           <li>
             <Link to="/">Home</Link>

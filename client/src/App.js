@@ -24,7 +24,14 @@ class App extends Component {
     this.state = {
       patchColor: "#ff03ea",
     };
+    this.colorCapture = this.colorCapture.bind(this);
   }
+
+  colorCapture(val) {
+    //this.setState({ patchColor: val });
+    //written this way, the function will be continually called.
+  }
+
   render() {
     return (
       <Router>
@@ -32,7 +39,10 @@ class App extends Component {
           className="
           root-container"
         >
-          <Header />
+          <Header
+            colorCapture={this.colorCapture}
+            patchColor={this.state.patchColor}
+          />
           <div className="main-container">
             <Switch>
               <Route exact path="/" component={Home} />

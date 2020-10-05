@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { UserId } from "./GetUser";
 import axios from "axios";
 
 //UPDATE `users` SET `patch_color` = '#ffffff' WHERE `users`.`id` = 16;
 
 export default function ColorPicker(props) {
-  const [colorPick, setColorPick] = useState("#ffffff");
+  const [colorPick, setColorPick] = useState(props.patchColor || "#000000");
   console.log(colorPick);
 
   if (props.colorCapture) {
     //if a prop function is passed down to this component, to bring that color value to other components, run it here
-    props.colorCapture(colorPick);
   }
+
+  useEffect(() => {
+    setColorPick(props.patchColor);
+  });
 
   const submitColorVal = (e) => {
     const userId = UserId();
