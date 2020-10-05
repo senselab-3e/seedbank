@@ -18,23 +18,10 @@
       return [newheight, newwidth];
   };
 
-  export const chooseElement = props => {
-      //   console.log(props.array, "full array passing to choose element component");
-      //let element = 'nothing to return'
-      let index = "no array";
-      if (props) {
-          index = Math.floor(Math.random() * props.length);
-          return props[index];
-      } else {
-          return index;
-      }
-  };
-
   const ranValMinMax = (min, max) => {
       return Math.random() * (max - min) + min;
   };
 
-  //returns only an x or a y position
 
   export const createPositions = (dim) => {
       let num = "";
@@ -52,4 +39,17 @@
               num += "px";
       }
       return num;
+  };
+
+
+  export const chooseElement = props => {
+      //   console.log(props.array, "full array passing to choose element component");
+      //let element = 'nothing to return'
+      let index = "no array";
+      if (props) {
+          index = Math.floor(Math.random() * props.length);
+          return props[index];
+      } else {
+          return index;
+      }
   };

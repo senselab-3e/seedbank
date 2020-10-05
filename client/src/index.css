@@ -1,3 +1,10 @@
+html {
+    --text-color-normal: #0a244d;
+    --text-color-light: #8cabd9;
+    --color-bg: #ffffff;
+}
+
+
 .root-container {}
 
 .main-container {

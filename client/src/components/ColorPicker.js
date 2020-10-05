@@ -48,7 +48,7 @@ export default function ColorPicker(props) {
         }
         defaultValue={colorPick}
       ></input>
-      <button onClick={submitColorVal}>submit to database</button>
+      <button onClick={submitColorVal}>Save Color Preference</button>
     </div>
   );
 }

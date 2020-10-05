@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../style/entryway.css";
 // import { createPositions } from "../helpers/Calculators";
+import Pixel from "../components/Pixel";
 import styled from "styled-components";
 
 const ContainerPalette = styled.div`
@@ -28,5 +29,9 @@ export default function Entryway(props) {
     setColor(props.patchColor);
   }, [props.patchColor]);
 
-  return <ContainerPalette bgHex={bcolor}></ContainerPalette>;
+  return (
+    <ContainerPalette bgHex={bcolor}>
+      <Pixel bgHex={bcolor} />
+    </ContainerPalette>
+  );
 }
