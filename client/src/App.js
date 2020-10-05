@@ -51,7 +51,7 @@ class App extends Component {
               <Route path="/oOoOs" component={Glitch} />
               <Route path="/patches" render={() => <div>Patches</div>} />
               <Route path="/entryway">
-                <Entryway patchColor={this.patchColor} />
+                <Entryway patchColor={this.state.patchColor} />
               </Route>
               <Route exact path="/auth" component={AuthPage} />
               <Route exact path="/events" component={withAuth(EventsPage)} />

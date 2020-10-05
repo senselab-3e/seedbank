@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../style/entryway.css";
 // import { createPositions } from "../helpers/Calculators";
 import styled from "styled-components";
-//import ColorPicker from "../components/ColorPicker";
 
-const InputColor = styled.div`
-  position: absolute;
-  top: 100px;
-  left: 20px;
+const ContainerPalette = styled.div`
+  padding-top: 8em;
+  margin: 0em;
+  z-index: -1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  background-color: ${(props) => props.bgHex};
+  height: 100vh;
+  width: 100vw;
 `;
 
 export default function Entryway(props) {
@@ -17,17 +23,10 @@ export default function Entryway(props) {
   //     '{h: 317, s: "94%", l: "52%"}'
   //   );
   //const [amt, setAmount] = useState(0);
-  return (
-    <div className="containerPalette">
-      {/* <InputColor>
-        <p> {bcolor} </p>
-        <input
-          className="inputColor"
-          type="color"
-          defaultValue={bcolor}
-          onChange={(e) => setColor(e.target.value)}
-        ></input>
-      </InputColor> */}
-    </div>
-  );
+
+  useEffect(() => {
+    setColor(props.patchColor);
+  }, [props.patchColor]);
+
+  return <ContainerPalette bgHex={bcolor}></ContainerPalette>;
 }
