@@ -33,16 +33,19 @@ export default function ColorPicker(props) {
       .catch((err) => {
         console.log(err);
       });
-    //this.props.apiRequest();
   };
   return (
     <div>
       <input
         type="color"
         className="colorPicker"
-        // id="htmlColorPicker"
+        id="htmlColorPicker"
         onClick={(e) => setColorPick(e.target.value)}
-        onChange={(e) => props.colorCapture(e.target.value)}
+        onChange={(e) =>
+          props.colorCapture
+            ? props.colorCapture(e.target.value)
+            : console.log(e.target.value)
+        }
         defaultValue={colorPick}
       ></input>
       <button onClick={submitColorVal}>submit to database</button>
