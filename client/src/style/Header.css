@@ -1,11 +1,15 @@
 .header {
     z-index: 10;
     position: fixed;
+    top: 0em;
     /* text-align: center; */
 
 }
 
+
 .header li {
-    display: inline;
+    display: inline-block;
     margin: 0px 25px 0px 5px;
 }
+
+.colorPicker {}

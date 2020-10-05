@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../style/entryway.css";
 // import { createPositions } from "../helpers/Calculators";
 import styled from "styled-components";
+//import ColorPicker from "../components/ColorPicker";
 
 const InputColor = styled.div`
   position: absolute;
@@ -18,7 +19,7 @@ export default function Entryway() {
   const [amt, setAmount] = useState(0);
   return (
     <div className="containerPalette">
-      <InputColor>
+      {/* <InputColor>
         <p> {bcolor} </p>
         <input
           className="inputColor"
@@ -26,7 +27,7 @@ export default function Entryway() {
           defaultValue={bcolor}
           onChange={(e) => setColor(e.target.value)}
         ></input>
-      </InputColor>
+      </InputColor> */}
     </div>
   );
 }

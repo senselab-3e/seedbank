@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { UserId } from "./GetUser";
 import axios from "axios";
 
+//UPDATE `users` SET `patch_color` = '#ffffff' WHERE `users`.`id` = 16;
+
 export default function ColorPicker(props) {
   const [colorPick, setColorPick] = useState("#ffffff");
-
   console.log(colorPick);
 
-  const submit = (e) => {
-    //weirdly, the state for userId is staying at null. this is nnot a long term fix but for now
+  if (props.colorCapture) {
+    //if a prop function is passed down to this component, to bring that color value to other components, run it here
+    props.colorCapture(colorPick);
+  }
+
+  const submitColorVal = (e) => {
     const userId = UserId();
     console.log(colorPick, userId, "clicked");
     e.preventDefault();
@@ -29,12 +34,13 @@ export default function ColorPicker(props) {
     <div>
       <input
         type="color"
-        id="htmlColorPicker"
+        className="colorPicker"
+        // id="htmlColorPicker"
         onClick={(e) => setColorPick(e.target.value)}
         onChange={(e) => console.log(e.target.value)}
         defaultValue={colorPick}
       ></input>
-      <button onClick={submit}>submit to database</button>
+      <button onClick={submitColorVal}>submit to database</button>
     </div>
   );
 }

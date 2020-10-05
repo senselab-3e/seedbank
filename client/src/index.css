@@ -1,3 +1,7 @@
-body img {
-    text-align: center;
+.root-container {}
+
+.main-container {
+    padding-top: 3em;
 }
+
+.header-container {}

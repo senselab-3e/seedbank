@@ -8,6 +8,7 @@ import Header from "./partials/Header";
 import Glitch from "./pages/Glitch";
 import ImagesPage from "./pages/Images";
 import Entryway from "./pages/Entryway";
+import "./index.css";
 
 function Home() {
   return (
@@ -18,24 +19,32 @@ function Home() {
 }
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      patchColor: "#ff03ea",
+    };
+  }
   render() {
     return (
       <Router>
         <div
-          class="
-        root-container"
+          className="
+          root-container"
         >
           <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about3e" component={About} />
-            <Route path="/oOoOs" component={Glitch} />
-            <Route path="/patches" render={() => <div>Patches</div>} />
-            <Route path="/entryway" component={Entryway} />
-            <Route exact path="/auth" component={AuthPage} />
-            <Route exact path="/events" component={withAuth(EventsPage)} />
-            <Route exact path="/traces" component={withAuth(ImagesPage)} />
-          </Switch>
+          <div className="main-container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about3e" component={About} />
+              <Route path="/oOoOs" component={Glitch} />
+              <Route path="/patches" render={() => <div>Patches</div>} />
+              <Route path="/entryway" component={Entryway} />
+              <Route exact path="/auth" component={AuthPage} />
+              <Route exact path="/events" component={withAuth(EventsPage)} />
+              <Route exact path="/traces" component={withAuth(ImagesPage)} />
+            </Switch>
+          </div>
         </div>
       </Router>
     );
