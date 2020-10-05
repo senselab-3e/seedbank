@@ -29,7 +29,7 @@ class App extends Component {
 
   colorCapture(val) {
     console.log(val, "applevel");
-    //this.setState({ patchColor: val });
+    this.setState({ patchColor: val });
     //written this way, the function will be continually called.
   }
 
@@ -50,7 +50,9 @@ class App extends Component {
               <Route path="/about3e" component={About} />
               <Route path="/oOoOs" component={Glitch} />
               <Route path="/patches" render={() => <div>Patches</div>} />
-              <Route path="/entryway" component={Entryway} />
+              <Route path="/entryway">
+                <Entryway patchColor={this.patchColor} />
+              </Route>
               <Route exact path="/auth" component={AuthPage} />
               <Route exact path="/events" component={withAuth(EventsPage)} />
               <Route exact path="/traces" component={withAuth(ImagesPage)} />

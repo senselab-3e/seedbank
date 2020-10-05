@@ -10,13 +10,13 @@ const InputColor = styled.div`
   left: 20px;
 `;
 
-export default function Entryway() {
+export default function Entryway(props) {
   // eslint-disable-next-line
-  const [bcolor, setColor] = useState("#f812c0");
-  const [sliderColor, setSliderColor] = useState(
-    '{h: 317, s: "94%", l: "52%"}'
-  );
-  const [amt, setAmount] = useState(0);
+  const [bcolor, setColor] = useState(props.patchColor || "#f812c0");
+  //   const [sliderColor, setSliderColor] = useState(
+  //     '{h: 317, s: "94%", l: "52%"}'
+  //   );
+  //const [amt, setAmount] = useState(0);
   return (
     <div className="containerPalette">
       {/* <InputColor>

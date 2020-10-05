@@ -14,7 +14,8 @@ export default function ColorPicker(props) {
 
   useEffect(() => {
     setColorPick(props.patchColor);
-  }, []);
+  }, [props.patchColor]); //the setColorPick will run only when this prop value changes
+
   //NOTE: The way to ensure useEffect is run only once is to use an empty dependency array.  --->   }, []);
 
   const submitColorVal = (e) => {
