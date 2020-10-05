@@ -1,11 +1,9 @@
-.Header {
-    text-align: center;
+.header {
+    /* text-align: center; */
+
 }
 
-.Cup {
-    text-align: center;
-    width: 50%;
-    height: 50%;
-    align-items: center;
-    justify-content: center;
+.header li {
+    display: inline;
+    margin: 0px 25px 0px 5px;
 }
