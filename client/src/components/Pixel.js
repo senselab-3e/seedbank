@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Card } from "./PixelPortal";
 // extracts function that will generate x and y positions, based on propsed passed to it. currently calculates for the whole of the browser window
 import { createPositions } from "../helpers/Calculators";
 
@@ -58,7 +59,9 @@ export default function Pixel(prop) {
         left={yPos}
         background={pColor}
         onClick={(e) => {
-          createEl(e);
+          //createEl(e);
+          const card = new Card();
+          card.create();
         }}
       ></PixelPatch>
     </div>
