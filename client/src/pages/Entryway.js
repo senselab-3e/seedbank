@@ -33,10 +33,41 @@ const ContainerPalette = styled.div`
   width: 100vw;
 `;
 
+const WhitePalette = styled.div`
+  --animationmode: hue-rotate;
+
+  padding-top: 8em;
+  margin: 0em;
+  z-index: -1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  background-color: "#333333";
+  height: 100vh;
+  width: 100vw;
+`;
+
+const SplitPalette = styled.div`
+  --animationmode: hue-rotate;
+
+  padding-top: 8em;
+  margin: 0em;
+  z-index: -1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  background-color: ${(props) => props.bgHex};
+  height: 100vh;
+  width: 100vw;
+`;
+
 export default function Entryway(props) {
   // eslint-disable-next-line
   const [mainBG, setColor] = useState(props.patchColor || "#f812c0");
-
+  // eslint-disable-next-line
+  const [currentMode, setMode] = useState("01");
   useEffect(() => {
     setColor(props.patchColor);
     // potentially, one solution to the css hue-rotate animation issue - where-in i need it to restart when a new color update for the background color is passed to it, is putting that animation in a seperate class that i add and remove at the instant that the colorprop changes
@@ -55,9 +86,20 @@ export default function Entryway(props) {
   //     return () => clearInterval(timer);
   //   });
 
+  function Background(props) {
+    const mode = props.currentMode;
+    if (mode === "01") {
+      return <ContainerPalette bgHex={mainBG} />;
+    } else if (mode === "02") {
+      return <SplitPalette bgHex={"blue"} />;
+    }
+    return <WhitePalette />;
+  }
+
   return (
     <>
-      <ContainerPalette bgHex={mainBG} />
+      <Background currentMode={"02"} />
+
       <Pixel bgHex={mainBG} />
     </>
   );
