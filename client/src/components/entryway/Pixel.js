@@ -27,17 +27,19 @@ const PixelPatch = styled.div.attrs((props) => ({
 
 export default function Pixel(prop) {
   const [pColor, setColor] = useState(prop.bgHex);
+  // eslint-disable-next-line
   const [xPos, setXpos] = useState(createPositions("top"));
+  // eslint-disable-next-line
   const [yPos, setYpos] = useState(createPositions("left"));
 
   //bring this back once the background color is scrolling hues again.
-  //   useEffect(() => {
-  //     setColor(prop.bgHex);
-  //   }, [prop.bgHex]);
+  useEffect(() => {
+    setColor(prop.bgHex);
+  }, [prop.bgHex]);
 
   //... so. a lot of traditional patterns for setting of the onClick={(){thing}}... but since i was passing down a function as a prop, by calling it within another function it was an anonymous function being triggered rather then the prop function. i erroneously had onClick={() => prop.func}}
   return (
-    <div class="containerPalette">
+    <div className="containerPalette">
       <PixelPatch
         // left={prop.left}
         // top={prop.top}

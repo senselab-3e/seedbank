@@ -5,6 +5,7 @@ import Pixel from "../components/entryway/Pixel";
 import styled from "styled-components";
 
 const ContainerPalette = styled.div`
+  --animationmode: hue-rotate;
   @keyframes hue-rotate {
     from {
       -webkit-filter: hue-rotate(0);
@@ -27,25 +28,25 @@ const ContainerPalette = styled.div`
   flex-wrap: nowrap;
   justify-content: flex-start;
   background-color: ${(props) => props.bgHex};
-  animation: hue-rotate 45s linear infinite;
+  animation: var(--animationmode) 45s linear infinite;
   height: 100vh;
   width: 100vw;
 `;
 
 export default function Entryway(props) {
   // eslint-disable-next-line
-  const [bcolor, setColor] = useState(props.patchColor || "#f812c0");
-  //   const [sliderColor, setSliderColor] = useState(
-  //     '{h: 317, s: "94%", l: "52%"}'
-  //   );
-  //const [amt, setAmount] = useState(0);
-  const [seconds, setSeconds] = useState(1);
+  const [mainBG, setColor] = useState(props.patchColor || "#f812c0");
 
   useEffect(() => {
     setColor(props.patchColor);
+    // potentially, one solution to the css hue-rotate animation issue - where-in i need it to restart when a new color update for the background color is passed to it, is putting that animation in a seperate class that i add and remove at the instant that the colorprop changes
+    //aka const thing = document.querylistSelect('target')
+    //thing.classList.remove("run-animation");
   }, [props.patchColor]);
 
   //NOTE: this is only hear to remember the logic if i want to set up some kind of timer-based call. but a css way of shifting the colors was found, so this is no longer needed for it's original purpose
+
+  //   const [seconds, setSeconds] = useState(1);
   //   useEffect(() => {
   //     const timer = setInterval(() => {
   //       setSeconds(seconds + 1);
@@ -55,9 +56,9 @@ export default function Entryway(props) {
   //   });
 
   return (
-    <ContainerPalette bgHex={bcolor}>
-      <p>{seconds}</p>
-      <Pixel bgHex={bcolor} />
-    </ContainerPalette>
+    <>
+      <ContainerPalette bgHex={mainBG} />
+      <Pixel bgHex={mainBG} />
+    </>
   );
 }

@@ -9,7 +9,7 @@ export class PixelPop {
         this.color = hexBg;
     }
     onClick() {
-        const card = new PixelPop;
+        const card = new PixelPop(this.color); //sometimes the color is passed on, sometimes not. 
         card.create();
     }
     create() {
