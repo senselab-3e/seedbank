@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../style/entryway.css";
 // import { createPositions } from "../helpers/Calculators";
-import Pixel from "../components/Pixel";
+import Pixel from "../components/entryway/Pixel";
 import styled from "styled-components";
 
 const ContainerPalette = styled.div`

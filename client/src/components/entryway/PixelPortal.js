@@ -1,6 +1,6 @@
 import {
     createPositions
-} from "../helpers/Calculators";
+} from "../../helpers/Calculators";
 
 export class Card {
     constructor(hexBg) {
