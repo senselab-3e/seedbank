@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
     createPositions
 } from "../helpers/Calculators";
@@ -10,14 +8,17 @@ export class Card {
         this.yPos = createPositions("top");
         this.color = hexBg;
     }
-
+    onClick() {
+        const card = new Card;
+        card.create();
+    }
     create() {
         var pixel = document.createElement("div");
         pixel.className = "pixel";
         pixel.classList.add("picnicPatch");
-        pixel.style.left = this.xPos
-        pixel.style.top = this.yPos
-        pixel.onclick = new Card;
+        pixel.style.left = this.xPos;
+        pixel.style.top = this.yPos;
+        pixel.onclick = this.onClick;
         const container = document.querySelector(".containerPalette");
         container.appendChild(pixel);
     }
