@@ -14,7 +14,7 @@ body {
     height: 25px;
     border: 1px inset white;
     cursor: pointer;
-    background: var(--entrypatch-color);
+    /* background: var(--entrypatch-color); */
     -webkit-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
     -moz-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
     -ms-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;

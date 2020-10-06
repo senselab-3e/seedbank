@@ -2,14 +2,14 @@ import {
     createPositions
 } from "../../helpers/Calculators";
 
-export class Card {
+export class PixelPop {
     constructor(hexBg) {
         this.xPos = createPositions("left");
         this.yPos = createPositions("top");
         this.color = hexBg;
     }
     onClick() {
-        const card = new Card;
+        const card = new PixelPop;
         card.create();
     }
     create() {
@@ -18,6 +18,7 @@ export class Card {
         pixel.classList.add("picnicPatch");
         pixel.style.left = this.xPos;
         pixel.style.top = this.yPos;
+        pixel.style.backgroundColor = this.color;
         pixel.onclick = this.onClick;
         const container = document.querySelector(".containerPalette");
         container.appendChild(pixel);
