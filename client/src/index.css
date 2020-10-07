@@ -1,14 +1,15 @@
 html {
-    --text-color-normal: #0a244d;
-    --text-color-light: #8cabd9;
-    --color-bg: #ffffff;
+  --text-color-normal: #0a244d;
+  --text-color-light: #8cabd9;
+  --color-bg: #ffffff;
 }
 
-
-.root-container {}
+.root-container {
+}
 
 .main-container {
-    padding-top: 3em;
+  padding-top: 3em;
 }
 
-.header-container {}
+.header-container {
+}
