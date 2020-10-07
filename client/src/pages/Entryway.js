@@ -68,50 +68,65 @@ export default function Entryway(props) {
   //NOTE: this is only here as a reminder for how to conditionally show different components - in the future
   function Background(props) {
     const numDivPal = props.paletteNum || 1;
-    if (numDivPal === 2) {
-      return (
-        <>
-          <ContainerPalette
-            bgHex={mainBG}
-            colorMode={animationMode}
-            width={100 / numDivPal + "vh"}
-          />
-          <ContainerPalette
-            bgHex={mainBG}
-            colorMode={"hue-rotate"}
-            width={100 / numDivPal + "vh"}
-          />
-        </>
-      );
-    } else if (numDivPal === 3) {
-      return (
-        <>
-          <ContainerPalette
-            bgHex={mainBG}
-            colorMode={animationMode}
-            width={100 / numDivPal + "vh"}
-          />
-          <ContainerPalette
-            bgHex={mainBG}
-            colorMode={"hue-rotate"}
-            width={100 / numDivPal + "vh"}
-          />
-          <ContainerPalette
-            bgHex={mainBG}
-            colorMode={animationMode}
-            width={100 / numDivPal + "vh"}
-          />
-        </>
-      );
-    } else {
-      return (
+
+    let palettes = [];
+
+    for (let num = 0; num < numDivPal; num++) {
+      palettes.push(
         <ContainerPalette
+          key={num}
           bgHex={mainBG}
           colorMode={animationMode}
           width={100 / numDivPal + "vh"}
         />
       );
     }
+
+    return palettes;
+    // if (numDivPal === 2) {
+    //   return (
+    //     <>
+    //       <ContainerPalette
+    //         bgHex={mainBG}
+    //         colorMode={animationMode}
+    //         width={100 / numDivPal + "vh"}
+    //       />
+    //       <ContainerPalette
+    //         bgHex={mainBG}
+    //         colorMode={"hue-rotate"}
+    //         width={100 / numDivPal + "vh"}
+    //       />
+    //     </>
+    //   );
+    // } else if (numDivPal === 3) {
+    //   return (
+    //     <>
+    //       <ContainerPalette
+    //         bgHex={mainBG}
+    //         colorMode={animationMode}
+    //         width={100 / numDivPal + "vh"}
+    //       />
+    //       <ContainerPalette
+    //         bgHex={mainBG}
+    //         colorMode={"hue-rotate"}
+    //         width={100 / numDivPal + "vh"}
+    //       />
+    //       <ContainerPalette
+    //         bgHex={mainBG}
+    //         colorMode={animationMode}
+    //         width={100 / numDivPal + "vh"}
+    //       />
+    //     </>
+    //   );
+    // } else {
+    //   return (
+    //     <ContainerPalette
+    //       bgHex={mainBG}
+    //       colorMode={animationMode}
+    //       width={100 / numDivPal + "vh"}
+    //     />
+    //   );
+    // }
   }
 
   return (
