@@ -67,39 +67,56 @@ export default function Entryway(props) {
 
   //NOTE: this is only here as a reminder for how to conditionally show different components - in the future
   function Background(props) {
-    const num = props.paletteNum;
-    if (num === "2") {
+    const numDivPal = props.paletteNum || 1;
+    if (numDivPal === 2) {
       return (
         <>
-          <ContainerPalette colorMode={animationMode} width="2" />
-          <ContainerPalette colorMode={animationMode} width="2" />
+          <ContainerPalette
+            bgHex={mainBG}
+            colorMode={animationMode}
+            width={100 / numDivPal + "vh"}
+          />
+          <ContainerPalette
+            bgHex={mainBG}
+            colorMode={"hue-rotate"}
+            width={100 / numDivPal + "vh"}
+          />
         </>
       );
-    } else if (num === "3") {
+    } else if (numDivPal === 3) {
       return (
         <>
-          <ContainerPalette colorMode={animationMode} width="3" />
-          <ContainerPalette colorMode={animationMode} width="3" />
-          <ContainerPalette colorMode={animationMode} width="3" />
+          <ContainerPalette
+            bgHex={mainBG}
+            colorMode={animationMode}
+            width={100 / numDivPal + "vh"}
+          />
+          <ContainerPalette
+            bgHex={mainBG}
+            colorMode={"hue-rotate"}
+            width={100 / numDivPal + "vh"}
+          />
+          <ContainerPalette
+            bgHex={mainBG}
+            colorMode={animationMode}
+            width={100 / numDivPal + "vh"}
+          />
         </>
       );
     } else {
-      return <ContainerPalette colorMode={animationMode} />;
+      return (
+        <ContainerPalette
+          bgHex={mainBG}
+          colorMode={animationMode}
+          width={100 / numDivPal + "vh"}
+        />
+      );
     }
   }
 
   return (
     <Container>
-      <ContainerPalette
-        bgHex={mainBG}
-        colorMode={animationMode}
-        width={"50vh"}
-      />
-      <ContainerPalette
-        bgHex={mainBG}
-        colorMode={"hue-rotate"}
-        width={"50vh"}
-      />
+      <Background paletteNum={3} />
       <Pixel bgHex={mainBG} setMode={setMode} />
     </Container>
   );
