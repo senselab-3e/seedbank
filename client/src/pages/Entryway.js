@@ -56,7 +56,8 @@ export default function Entryway(props) {
   // eslint-disable-next-line
   const [mainBG, setColor] = useState(props.patchColor || "#f812c0");
   // eslint-disable-next-line
-  const [animationMode, setMode] = useState("gradient-shift");
+  const [animationMode, setAniMode] = useState("gradient-shift");
+
   useEffect(() => {
     setColor(props.patchColor);
   }, [props.patchColor]);
@@ -70,69 +71,27 @@ export default function Entryway(props) {
     const numDivPal = props.paletteNum || 1;
 
     let palettes = [];
+    let colorModeAlt = ""; // this allows for if 2+ palettes are side by side they won't all have the exact same animation mode, so you can visually see their difference.
 
     for (let num = 0; num < numDivPal; num++) {
+      num % 2 === 0 ? (colorModeAlt = animationMode) : (colorModeAlt = "none");
       palettes.push(
         <ContainerPalette
           key={num}
           bgHex={mainBG}
-          colorMode={animationMode}
+          colorMode={colorModeAlt}
           width={100 / numDivPal + "vh"}
         />
       );
     }
 
     return palettes;
-    // if (numDivPal === 2) {
-    //   return (
-    //     <>
-    //       <ContainerPalette
-    //         bgHex={mainBG}
-    //         colorMode={animationMode}
-    //         width={100 / numDivPal + "vh"}
-    //       />
-    //       <ContainerPalette
-    //         bgHex={mainBG}
-    //         colorMode={"hue-rotate"}
-    //         width={100 / numDivPal + "vh"}
-    //       />
-    //     </>
-    //   );
-    // } else if (numDivPal === 3) {
-    //   return (
-    //     <>
-    //       <ContainerPalette
-    //         bgHex={mainBG}
-    //         colorMode={animationMode}
-    //         width={100 / numDivPal + "vh"}
-    //       />
-    //       <ContainerPalette
-    //         bgHex={mainBG}
-    //         colorMode={"hue-rotate"}
-    //         width={100 / numDivPal + "vh"}
-    //       />
-    //       <ContainerPalette
-    //         bgHex={mainBG}
-    //         colorMode={animationMode}
-    //         width={100 / numDivPal + "vh"}
-    //       />
-    //     </>
-    //   );
-    // } else {
-    //   return (
-    //     <ContainerPalette
-    //       bgHex={mainBG}
-    //       colorMode={animationMode}
-    //       width={100 / numDivPal + "vh"}
-    //     />
-    //   );
-    // }
   }
 
   return (
     <Container>
-      <Background paletteNum={3} />
-      <Pixel bgHex={mainBG} setMode={setMode} />
+      <Background paletteNum={2} />
+      <Pixel bgHex={mainBG} setAniMode={setAniMode} />
     </Container>
   );
 }
