@@ -6,21 +6,26 @@ import styled from "styled-components";
 
 const checkThing = (mode) => {
   switch (mode) {
-    case "00":
-      return "green";
-    case "01":
-      return "yellow";
-    case "02":
-      return "blue";
-    case "03":
-      return "blue";
+    // case "00":
+    //   return "green";
+    // case "01":
+    //   return "yellow";
+    // case "02":
+    //   return "blue";
+    // case "03":
+    //   return "blue";
+    case "gradient-shift":
+      return "gradient-shift";
+    case "hue-rotate":
+      return "hue-rotate";
     default:
-      return "black";
+      return "none";
   }
 };
 
 const ContainerPalette = styled.div`
   --animationmode: hue-rotate;
+  --color-mode: ${(props) => checkThing(props.colorMode)};
   @keyframes hue-rotate {
     from {
       -webkit-filter: hue-rotate(0);
@@ -35,6 +40,18 @@ const ContainerPalette = styled.div`
       filter: hue-rotate(360deg);
     }
   }
+  @keyframes gradient-shift {
+    0% {
+      background-color: ${(props) => props.bgHex};
+    }
+    50% {
+      background-color: #ffffff;
+    }
+    100% {
+      background-color: ${(props) => props.bgHex};
+    }
+  }
+
   padding-top: 8em;
   margin: 0em;
   z-index: -1;
@@ -43,7 +60,7 @@ const ContainerPalette = styled.div`
   flex-wrap: nowrap;
   justify-content: flex-start;
   background-color: ${(props) => props.bgHex};
-  animation: var(--animationmode) 45s linear infinite;
+  animation: var(--color-mode) 45s linear infinite;
   height: 100vh;
   width: 100vw;
 `;
@@ -106,8 +123,9 @@ export default function Entryway(props) {
 
   function Background(props) {
     const mode = props.currentMode;
+    const animationMode = props.animationMode;
     if (mode === "01") {
-      return <ContainerPalette bgHex={mainBG} />;
+      return <ContainerPalette bgHex={mainBG} colorMode={animationMode} />;
     } else if (mode === "02") {
       return <SplitPalette bgHex={"blue"} />;
     } else if (mode === "00") {
@@ -117,7 +135,7 @@ export default function Entryway(props) {
 
   return (
     <>
-      <Background currentMode={"00"} />
+      <Background currentMode={"01"} animationMode={"gradient-shift"} />
 
       <Pixel bgHex={mainBG} currentMode={currentMode} setMode={setMode} />
     </>
