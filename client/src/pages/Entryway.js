@@ -49,19 +49,19 @@ export default function Entryway(props) {
   // eslint-disable-next-line
   const [mainBG, setColor] = useState(props.patchColor || "#f812c0");
   // eslint-disable-next-line
-  const [currentMode, setMode] = useState("01");
+  const [animationMode, setMode] = useState("gradient-shift");
   useEffect(() => {
     setColor(props.patchColor);
   }, [props.patchColor]);
 
   useEffect(() => {
-    console.log(`current mode has switched ${currentMode}`);
-  }, [currentMode]);
+    console.log(`current mode has switched ${animationMode}`);
+  }, [animationMode]);
 
   return (
     <>
-      <ContainerPalette bgHex={mainBG} colorMode={"gradient-shift"} />
-      <Pixel bgHex={mainBG} currentMode={currentMode} setMode={setMode} />
+      <ContainerPalette bgHex={mainBG} colorMode={animationMode} />
+      <Pixel bgHex={mainBG} setMode={setMode} />
     </>
   );
 }
