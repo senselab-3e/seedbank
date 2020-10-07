@@ -49,6 +49,7 @@ export default function Pixel(prop) {
         onClick={(e) => {
           //this could be where the background color of palettes is passed.
           const card = new PixelPop(pColor);
+          prop.setPalNum(2);
           card.create();
         }}
       ></PixelPatch>

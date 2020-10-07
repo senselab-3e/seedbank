@@ -58,6 +58,8 @@ export default function Entryway(props) {
   // eslint-disable-next-line
   const [animationMode, setAniMode] = useState("gradient-shift");
 
+  const [paletteNum, setPalNum] = useState(1);
+
   useEffect(() => {
     setColor(props.patchColor);
   }, [props.patchColor]);
@@ -90,8 +92,8 @@ export default function Entryway(props) {
 
   return (
     <Container>
-      <Background paletteNum={2} />
-      <Pixel bgHex={mainBG} setAniMode={setAniMode} />
+      <Background paletteNum={paletteNum} />
+      <Pixel bgHex={mainBG} setAniMode={setAniMode} setPalNum={setPalNum} />
     </Container>
   );
 }
