@@ -4,6 +4,21 @@ import "../style/entryway.css";
 import Pixel from "../components/entryway/Pixel";
 import styled from "styled-components";
 
+const checkThing = (mode) => {
+  switch (mode) {
+    case "00":
+      return "green";
+    case "01":
+      return "yellow";
+    case "02":
+      return "blue";
+    case "03":
+      return "blue";
+    default:
+      return "black";
+  }
+};
+
 const ContainerPalette = styled.div`
   --animationmode: hue-rotate;
   @keyframes hue-rotate {
@@ -35,7 +50,6 @@ const ContainerPalette = styled.div`
 
 const WhitePalette = styled.div`
   --animationmode: hue-rotate;
-
   padding-top: 8em;
   margin: 0em;
   z-index: -1;
@@ -43,7 +57,7 @@ const WhitePalette = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  background-color: "#333333";
+  background-color: ${(props) => checkThing(props.bgHex)};
   height: 100vh;
   width: 100vw;
 `;
@@ -75,6 +89,10 @@ export default function Entryway(props) {
     //thing.classList.remove("run-animation");
   }, [props.patchColor]);
 
+  useEffect(() => {
+    console.log(`current mode has switched ${currentMode}`);
+  }, [currentMode]);
+
   //NOTE: this is only hear to remember the logic if i want to set up some kind of timer-based call. but a css way of shifting the colors was found, so this is no longer needed for it's original purpose
 
   //   const [seconds, setSeconds] = useState(1);
@@ -92,15 +110,16 @@ export default function Entryway(props) {
       return <ContainerPalette bgHex={mainBG} />;
     } else if (mode === "02") {
       return <SplitPalette bgHex={"blue"} />;
+    } else if (mode === "00") {
+      return <WhitePalette bgHex={"00"} />;
     }
-    return <WhitePalette />;
   }
 
   return (
     <>
-      <Background currentMode={"02"} />
+      <Background currentMode={"00"} />
 
-      <Pixel bgHex={mainBG} />
+      <Pixel bgHex={mainBG} currentMode={currentMode} setMode={setMode} />
     </>
   );
 }
