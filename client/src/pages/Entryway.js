@@ -4,28 +4,9 @@ import "../style/entryway.css";
 import Pixel from "../components/entryway/Pixel";
 import styled from "styled-components";
 
-const checkThing = (mode) => {
-  switch (mode) {
-    // case "00":
-    //   return "green";
-    // case "01":
-    //   return "yellow";
-    // case "02":
-    //   return "blue";
-    // case "03":
-    //   return "blue";
-    case "gradient-shift":
-      return "gradient-shift";
-    case "hue-rotate":
-      return "hue-rotate";
-    default:
-      return "none";
-  }
-};
-
 const ContainerPalette = styled.div`
   --animationmode: hue-rotate;
-  --color-mode: ${(props) => checkThing(props.colorMode)};
+  --color-mode: ${(props) => props.colorMode};
   @keyframes hue-rotate {
     from {
       -webkit-filter: hue-rotate(0);
@@ -51,7 +32,6 @@ const ContainerPalette = styled.div`
       background-color: ${(props) => props.bgHex};
     }
   }
-
   padding-top: 8em;
   margin: 0em;
   z-index: -1;
@@ -65,35 +45,6 @@ const ContainerPalette = styled.div`
   width: 100vw;
 `;
 
-const WhitePalette = styled.div`
-  --animationmode: hue-rotate;
-  padding-top: 8em;
-  margin: 0em;
-  z-index: -1;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  background-color: ${(props) => checkThing(props.bgHex)};
-  height: 100vh;
-  width: 100vw;
-`;
-
-const SplitPalette = styled.div`
-  --animationmode: hue-rotate;
-
-  padding-top: 8em;
-  margin: 0em;
-  z-index: -1;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  background-color: ${(props) => props.bgHex};
-  height: 100vh;
-  width: 100vw;
-`;
-
 export default function Entryway(props) {
   // eslint-disable-next-line
   const [mainBG, setColor] = useState(props.patchColor || "#f812c0");
@@ -101,42 +52,15 @@ export default function Entryway(props) {
   const [currentMode, setMode] = useState("01");
   useEffect(() => {
     setColor(props.patchColor);
-    // potentially, one solution to the css hue-rotate animation issue - where-in i need it to restart when a new color update for the background color is passed to it, is putting that animation in a seperate class that i add and remove at the instant that the colorprop changes
-    //aka const thing = document.querylistSelect('target')
-    //thing.classList.remove("run-animation");
   }, [props.patchColor]);
 
   useEffect(() => {
     console.log(`current mode has switched ${currentMode}`);
   }, [currentMode]);
 
-  //NOTE: this is only hear to remember the logic if i want to set up some kind of timer-based call. but a css way of shifting the colors was found, so this is no longer needed for it's original purpose
-
-  //   const [seconds, setSeconds] = useState(1);
-  //   useEffect(() => {
-  //     const timer = setInterval(() => {
-  //       setSeconds(seconds + 1);
-  //     }, 1000);
-  //     // clearing interval
-  //     return () => clearInterval(timer);
-  //   });
-
-  function Background(props) {
-    const mode = props.currentMode;
-    const animationMode = props.animationMode;
-    if (mode === "01") {
-      return <ContainerPalette bgHex={mainBG} colorMode={animationMode} />;
-    } else if (mode === "02") {
-      return <SplitPalette bgHex={"blue"} />;
-    } else if (mode === "00") {
-      return <WhitePalette bgHex={"00"} />;
-    }
-  }
-
   return (
     <>
-      <Background currentMode={"01"} animationMode={"gradient-shift"} />
-
+      <ContainerPalette bgHex={mainBG} colorMode={"gradient-shift"} />
       <Pixel bgHex={mainBG} currentMode={currentMode} setMode={setMode} />
     </>
   );
