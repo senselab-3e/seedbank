@@ -25,31 +25,39 @@ const PixelPatch = styled.div.attrs((props) => ({
   }
 `;
 
-export default function Pixel(prop) {
-  const [pColor, setColor] = useState(prop.bgHex);
+export default function Pixel(props) {
+  const [pColor, setColor] = useState(props.bgHex);
   // eslint-disable-next-line
   const [xPos, setXpos] = useState(createPositions("top"));
   // eslint-disable-next-line
   const [yPos, setYpos] = useState(createPositions("left"));
 
+  let [currentPaletteNum, setPalNum] = useState(props.paletteNum);
+
   //bring this back once the background color is scrolling hues again.
   useEffect(() => {
-    setColor(prop.bgHex);
-  }, [prop.bgHex]);
+    setColor(props.bgHex);
+  }, [props.bgHex]);
 
-  //... so. a lot of traditional patterns for setting of the onClick={(){thing}}... but since i was passing down a function as a prop, by calling it within another function it was an anonymous function being triggered rather then the prop function. i erroneously had onClick={() => prop.func}}
+  useEffect(() => {
+    props.paletteNum < 10
+      ? setPalNum(props.paletteNum)
+      : console.log("limit on palette amts hit");
+  }, [props.paletteNum]);
+
+  //... so. a lot of traditional patterns for setting of the onClick={(){thing}}... but since i was passing down a function as a props, by calling it within another function it was an anonymous function being triggered rather then the props function. i erroneously had onClick={() => props.func}}
   return (
     <div className="containerPalette">
       <PixelPatch
-        // left={prop.left}
-        // top={prop.top}
+        // left={props.left}
+        // top={props.top}
         top={xPos}
         left={yPos}
         background={pColor}
         onClick={(e) => {
           //this could be where the background color of palettes is passed.
           const card = new PixelPop(pColor);
-          prop.setPalNum(2);
+          props.setPalNum((currentPaletteNum += 1));
           card.create();
         }}
       ></PixelPatch>

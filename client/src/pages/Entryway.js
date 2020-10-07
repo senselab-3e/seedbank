@@ -93,7 +93,12 @@ export default function Entryway(props) {
   return (
     <Container>
       <Background paletteNum={paletteNum} />
-      <Pixel bgHex={mainBG} setAniMode={setAniMode} setPalNum={setPalNum} />
+      <Pixel
+        bgHex={mainBG}
+        setAniMode={setAniMode}
+        paletteNum={paletteNum}
+        setPalNum={setPalNum}
+      />
     </Container>
   );
 }
