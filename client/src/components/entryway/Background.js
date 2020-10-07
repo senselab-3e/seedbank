@@ -44,6 +44,7 @@ export default function Background(props) {
   let palettes = [];
   let colorMode = ""; // sole color value passed to Container Pallete
   let animationModeAlt = ""; // container for alt switch modes so each palette can be visually differentiated by the css anmiation applied to it
+  let widthPalette = 100 / numDivPal;
 
   //Below only works if there are only 2 potentional animation choices but it's more clear writing things here
   animationMode === "gradient-shift"
@@ -51,15 +52,20 @@ export default function Background(props) {
     : (animationModeAlt = "gradient-shift");
 
   for (let num = 0; num < numDivPal; num++) {
+    if (numDivPal > 1) {
+      if (num === 0 && props.clickPos) widthPalette = props.clickPos;
+      if (num === 1 && props.clickPosInv) widthPalette = props.clickPosInv;
+    }
     num % 2 === 0
       ? (colorMode = animationMode)
       : (colorMode = animationModeAlt); /// can also be set to 'none'. this is more for the visual purpose of differentiating each added palette. but will become more useful as i add and customize variance in the palette css
+
     palettes.push(
       <ContainerPalette
         key={num}
         bgHex={props.mainBG}
         colorMode={colorMode}
-        width={100 / numDivPal + "vh"}
+        width={widthPalette + "vh"}
       />
     );
   }

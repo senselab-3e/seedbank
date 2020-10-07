@@ -24,6 +24,10 @@ export default function Entryway(props) {
 
   const [paletteNum, setPalNum] = useState(1); // this is being passed down to Pixel component, as well as Background, for when a click on a pixel element causes a palette to be added to the view.
 
+  const [clickPos, setPos] = useState(null);
+
+  const [clickPosInv, setPosInv] = useState(null);
+
   useEffect(() => {
     setColor(props.patchColor);
   }, [props.patchColor]);
@@ -32,12 +36,29 @@ export default function Entryway(props) {
     console.log(`current mode has switched ${animationMode}`);
   }, [animationMode]);
 
+  useEffect(() => {
+    console.log(clickPos, clickPosInv);
+  }, [clickPos, clickPosInv]);
+
+  const getClickPos = (e) => {
+    //const target = e.target.className;
+    const xPosition = e.clientX;
+    const intViewportWidth = window.innerWidth;
+    let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
+    setPos(percentageWidth);
+    setPosInv(100 - percentageWidth);
+    // //calculate position as 100 - value so i can use it like a percentage val but with vw css
+    // resetPaletteW(percentageWidth, target);
+  };
+
   return (
-    <Container>
+    <Container onClick={getClickPos}>
       <Background
         paletteNum={paletteNum}
         animationMode={animationMode}
         mainBG={mainBG}
+        clickPos={clickPos}
+        clickPosInv={clickPosInv}
       />
       <Pixel
         bgHex={mainBG}
