@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import SlideText from "./SlideText";
+
 const ContainerPalette = styled.div.attrs((props) => ({
   style: {
     background: props.bgHex,
@@ -34,7 +36,7 @@ const ContainerPalette = styled.div.attrs((props) => ({
       background-color: --var(--colorPickColor);
     }
   }
-  padding-top: 8em;
+  padding-top: 2em;
   margin: 0em;
   z-index: -1;
   
@@ -51,6 +53,9 @@ const ContainerPalette = styled.div.attrs((props) => ({
 export default function Background(props) {
   const numDivPal = props.paletteNum || 1; // number of palettes divided by 100 = indiv width of each palette in the total view port
   const animationMode = props.animationMode;
+  //const [slideTexts, setSlideTexts] = useState(SlideText);
+  //console.log(SlideText());
+
   let palettes = [];
   let colorMode = ""; // sole color value passed to Container Pallete
   let animationModeAlt = ""; // container for alt switch modes so each palette can be visually differentiated by the css anmiation applied to it
@@ -78,7 +83,11 @@ export default function Background(props) {
         bgHex={props.mainBG}
         colorMode={colorMode}
         width={widthPalette + "vh"}
-      />
+      >
+        <div className="textBox">
+          <SlideText />
+        </div>
+      </ContainerPalette>
     );
   }
 

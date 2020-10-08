@@ -1,91 +1,85 @@
 html,
 body {
-    padding: 0em;
-    margin: 0em;
+  padding: 0em;
+  margin: 0em;
 }
 
 .pixel {
-    position: absolute;
-    z-index: 10;
+  position: absolute;
+  z-index: 10;
 }
 
 .picnicPatch {
-    width: 25px;
-    height: 25px;
-    border: 1px inset white;
-    cursor: pointer;
-    /* background: var(--entrypatch-color); */
-    -webkit-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
-    -moz-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
-    -ms-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
-    -o-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
-    transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
+  width: 25px;
+  height: 25px;
+  border: 1px inset white;
+  cursor: pointer;
+  /* background: var(--entrypatch-color); */
+  -webkit-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
+  -moz-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
+  -ms-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
+  -o-transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
+  transition: width 2s ease-in 0.1ms, height 0.5s ease-in 2s;
 }
 
 .picnicPatch:hover {
-    width: 25vw;
-    height: 25vw;
-    cursor: pointer;
-    /* animation: line 5s forwards; */
-    /* decided not to use this method */
+  width: 25vw;
+  height: 25vw;
+  cursor: pointer;
+  /* animation: line 5s forwards; */
+  /* decided not to use this method */
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
-
 @keyframes palette1 {
-    0% {
-        background-color: var(--hsl1);
-    }
+  0% {
+    background-color: var(--hsl1);
+  }
 
-    50% {
-        background-color: var(--hsl2);
-    }
+  50% {
+    background-color: var(--hsl2);
+  }
 
-    100% {
-        background-color: var(--hsl1);
-    }
+  100% {
+    background-color: var(--hsl1);
+  }
 }
 
 @keyframes palette2 {
-    0% {
-        background-color: var(--hsl2);
-    }
+  0% {
+    background-color: var(--hsl2);
+  }
 
-    50% {
-        background-color: var(--hsl1);
-    }
+  50% {
+    background-color: var(--hsl1);
+  }
 
-    100% {
-        background-color: var(--hsl2);
-    }
+  100% {
+    background-color: var(--hsl2);
+  }
 }
-
 
 .paletteClick {
-    cursor: pointer;
-    width: 25vw;
+  cursor: pointer;
+  width: 25vw;
 }
-
-
-
 
 .paletteContainer {
-    cursor: crosshair;
-    z-index: 10;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    /* display: inline-block; */
-    /*use float if going with vertical)*/
-    /* position: relative; use this if going with horizontal stripes*/
-    padding: 0em;
-    margin: 0em;
+  cursor: crosshair;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  /* display: inline-block; */
+  /*use float if going with vertical)*/
+  /* position: relative; use this if going with horizontal stripes*/
+  padding: 0em;
+  margin: 0em;
 }
-
 
 /* 
 THIS IS NOW BEING HANDLED BY STYLED COMPONENTS.
@@ -103,20 +97,19 @@ THIS IS NOW BEING HANDLED BY STYLED COMPONENTS.
 } */
 
 .palette {
-    cursor: pointer;
-    z-index: 11;
-    width: 0.3vw;
-    height: 100vh;
+  cursor: pointer;
+  z-index: 11;
+  width: 0.3vw;
+  height: 100vh;
 
-    -webkit-transition: width 3s;
-    -moz-transition: width 3s;
-    -ms-transition: width 3s;
-    -o-transition: width 3s;
-    transition: width 3s;
-    padding: 0em;
-    margin: 0em;
+  -webkit-transition: width 3s;
+  -moz-transition: width 3s;
+  -ms-transition: width 3s;
+  -o-transition: width 3s;
+  transition: width 3s;
+  padding: 0em;
+  margin: 0em;
 }
-
 
 /* .palette:hover,
 .palette:focus {
@@ -125,88 +118,92 @@ THIS IS NOW BEING HANDLED BY STYLED COMPONENTS.
 } */
 
 .paletteClick {
-
-    cursor: pointer;
-    width: 25vw;
+  cursor: pointer;
+  width: 25vw;
 }
 
 #palette1 {
-    cursor: crosshair;
-    width: 20vw;
-    height: 100vh;
-    --h: 63;
-    --s: 48%;
-    --l: 50%;
-    --hsl: hsl(var(--h), var(--s), var(--l));
-    background-color: var(--hsl);
-    -webkit-transition: width 3s;
-    -moz-transition: width 3s;
-    -ms-transition: width 3s;
-    -o-transition: width 3s;
-    transition: width 3s;
-    padding: 0em;
-    margin: 0em;
-
+  cursor: crosshair;
+  width: 20vw;
+  height: 100vh;
+  --h: 63;
+  --s: 48%;
+  --l: 50%;
+  --hsl: hsl(var(--h), var(--s), var(--l));
+  background-color: var(--hsl);
+  -webkit-transition: width 3s;
+  -moz-transition: width 3s;
+  -ms-transition: width 3s;
+  -o-transition: width 3s;
+  transition: width 3s;
+  padding: 0em;
+  margin: 0em;
 }
 
 #palette2 {
-    cursor: crosshair;
-    width: 80vw;
-    height: 100vh;
-    /* --h2: 243;
+  cursor: crosshair;
+  width: 80vw;
+  height: 100vh;
+  /* --h2: 243;
     --hsl2: hsl(var(--h2), 48%, 50%); */
-    --h: 243;
-    --s: 48%;
-    --l: 50%;
-    --hsl: hsl(var(--h), var(--s), var(--l));
-    background-color: var(--hsl);
-    -webkit-transition: width 3s;
-    -moz-transition: width 3s;
-    -ms-transition: width 3s;
-    -o-transition: width 3s;
-    transition: width 3s;
-    padding: 0em;
-    margin: 0em;
-
+  --h: 243;
+  --s: 48%;
+  --l: 50%;
+  --hsl: hsl(var(--h), var(--s), var(--l));
+  background-color: var(--hsl);
+  -webkit-transition: width 3s;
+  -moz-transition: width 3s;
+  -ms-transition: width 3s;
+  -o-transition: width 3s;
+  transition: width 3s;
+  padding: 0em;
+  margin: 0em;
 }
 
 .sliderContainer {
-    /* display: none; */
-    z-index: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
+  /* display: none; */
+  z-index: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
 }
 
 .slider {
-    overflow: scroll;
+  overflow: scroll;
 
-    z-index: 0;
-    width: 1.5vw;
-    height: 100vh;
-    -webkit-transition: width 3s;
-    -moz-transition: width 3s;
-    -ms-transition: width 3s;
-    -o-transition: width 3s;
-    transition: width 3s;
+  z-index: 0;
+  width: 1.5vw;
+  height: 100vh;
+  -webkit-transition: width 3s;
+  -moz-transition: width 3s;
+  -ms-transition: width 3s;
+  -o-transition: width 3s;
+  transition: width 3s;
 }
 
 .slider:hover {
-    border: 1px inset white;
-    /* width: 3vw; */
-    cursor: pointer;
+  border: 1px inset white;
+  /* width: 3vw; */
+  cursor: pointer;
 }
 
 .sliderOpen {
-    cursor: pointer;
-    width: 25vw;
+  cursor: pointer;
+  width: 25vw;
 }
 
 .textSub-container {
-    position: absolute;
-    top: 600px;
-    left: 5vw;
-    z-index: 100;
+  position: absolute;
+  top: 600px;
+  left: 5vw;
+  z-index: 100;
+}
+.textBox {
+  cursor: pointer;
+  color: rgb(236, 236, 236);
+  font-family: "Quicksand", sans-serif;
+  font-size: 15px;
+  padding: 1em;
 }

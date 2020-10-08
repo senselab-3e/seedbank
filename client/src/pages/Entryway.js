@@ -22,7 +22,7 @@ export default function Entryway(props) {
   // eslint-disable-next-line
   const [animationMode, setAniMode] = useState("gradient-shift");
 
-  const [paletteNum, setPalNum] = useState(1); // this is being passed down to Pixel component, as well as Background, for when a click on a pixel element causes a palette to be added to the view.
+  const [paletteNum, setPalNum] = useState(2); // this is being passed down to Pixel component, as well as Background, for when a click on a pixel element causes a palette to be added to the view.
 
   const [clickPos, setPos] = useState(null);
 
