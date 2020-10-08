@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-// for some reason, when i try to pass var(--colorPickColor) to background color, it stops working....
-const ContainerPalette = styled.div`
+const ContainerPalette = styled.div.attrs((props) => ({
+  style: {
+    background: props.bgHex,
+  },
+}))`
 --colorPickColor : ${(props) => props.bgHex}
   --animationmode: hue-rotate;
   --color-mode: ${(props) => props.colorMode};
@@ -34,7 +37,7 @@ const ContainerPalette = styled.div`
   padding-top: 8em;
   margin: 0em;
   z-index: -1;
-  background-color: ${(props) => props.bgHex};
+  
   animation: var(--color-mode) 45s linear infinite;
   height: 100vh;
   width: ${(props) => props.width};
