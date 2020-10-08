@@ -8,9 +8,12 @@ export default function ColorPicker(props) {
   const [colorPick, setColorPick] = useState(props.patchColor || "#000000");
   console.log(colorPick);
 
-  if (props.colorCapture) {
-    //if a prop function is passed down to this component, to bring that color value to other components, run it here
-  }
+  const sendColor = (e) => {
+    if (props.colorCapture) {
+      console.log(e.target.value, " assignment");
+      props.colorCapture(e.target.value);
+    }
+  };
 
   useEffect(() => {
     setColorPick(props.patchColor);
@@ -41,11 +44,7 @@ export default function ColorPicker(props) {
         className="colorPicker"
         id="htmlColorPicker"
         onClick={(e) => setColorPick(e.target.value)}
-        onChange={(e) =>
-          props.colorCapture
-            ? props.colorCapture(e.target.value)
-            : console.log(e.target.value)
-        }
+        onChange={(e) => sendColor(e)}
         defaultValue={colorPick}
       ></input>
       <button onClick={submitColorVal}>Save Color Preference</button>
