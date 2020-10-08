@@ -15,36 +15,25 @@ export class SliderHome extends Component {
     };
   }
 
-  updateList() {
-    axios
-      .get("/api/sliderTexts")
-      .then(() => {
-        console.log(
-          "coming soon this will be where a prop fuction is called to re-initialis the axio request for the lates slidertext el view"
-        );
-        // this.setState({ texts: sliderTexts.data });
-      })
-      .catch((err) => console.log(err));
-  }
-  //   apiRequest() {
-  //     axios
-  //       .get("/api/sliderTexts")
-  //       .then((sliderTexts) => {
-  //         this.setState({ texts: sliderTexts.data });
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  componentDidMount() {
-    //this.apiRequest();
-    this.setState({ userId: UserId() });
-    this.setState({ userName: UserName() });
-
+  apiListUpdate() {
     axios
       .get("/api/sliderTexts")
       .then((sliderTexts) => {
+        // console.log(
+        //   "coming soon this will be where a prop fuction is called to re-initialis the axio request for the lates slidertext el view"
+        // );
         this.setState({ texts: sliderTexts.data });
       })
       .catch((err) => console.log(err));
+  }
+
+  componentDidMount() {
+    this.setState({ userId: UserId() });
+    this.setState({ userName: UserName() });
+    this.apiListUpdate();
+  }
+  componentDidUpdate() {
+    this.apiListUpdate();
   }
   render() {
     var texts = this.state.texts;
@@ -53,7 +42,10 @@ export class SliderHome extends Component {
       <div>
         <ColorPicker />
         <SliderbyId />
-        <SliderCreate userId={this.state.userId} />
+        <SliderCreate
+          userId={this.state.userId}
+          apiListUpdate={this.apiListUpdate}
+        />
         <p> Slider Textsddd:</p>
         <ul>
           {texts.map(({ body, title, id }) => (
@@ -62,7 +54,7 @@ export class SliderHome extends Component {
               <DeleteBt
                 id={id}
                 path={"sliderTexts"}
-                updateList={this.updateList}
+                apiListUpdate={this.apiListUpdate}
               />
             </li>
           ))}
