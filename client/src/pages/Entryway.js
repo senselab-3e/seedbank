@@ -32,23 +32,22 @@ export default function Entryway(props) {
     setColor(props.patchColor);
   }, [props.patchColor]);
 
-  useEffect(() => {
-    console.log(`current mode has switched ${animationMode}`);
-  }, [animationMode]);
+  ////NOTE: this is only here to double check to check the animation Mode that is being passed down as a prop
+  //   useEffect(() => {
+  //     console.log(`current mode has switched ${animationMode}`);
+  //   }, [animationMode]);
 
-  useEffect(() => {
-    console.log(clickPos, clickPosInv);
-  }, [clickPos, clickPosInv]);
+  //NOTE: this is only here to double check the x-axis position for the mouse click being passed down to the Background component
+  //   useEffect(() => {
+  //     console.log(clickPos, clickPosInv);
+  //   }, [clickPos, clickPosInv]);
 
   const getClickPos = (e) => {
-    //const target = e.target.className;
     const xPosition = e.clientX;
     const intViewportWidth = window.innerWidth;
     let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
-    setPos(percentageWidth);
+    setPos(percentageWidth); // these 2 values are being passed to the Background component. the first is the palette 1 width and the second is the palette 2 width (palette 1 - 100)
     setPosInv(100 - percentageWidth);
-    // //calculate position as 100 - value so i can use it like a percentage val but with vw css
-    // resetPaletteW(percentageWidth, target);
   };
 
   return (
