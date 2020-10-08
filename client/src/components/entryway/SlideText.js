@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function SlideText() {
+export default function SlideText(props) {
   const [textList, setTextList] = useState({});
 
   const getList = () => {
@@ -25,6 +25,9 @@ export default function SlideText() {
       <li key={textList.texts[key].id}>{textList.texts[key].body}</li>
     );
   }
+
+  props.alltheThings(texts);
+  //console.log(texts[0]);
 
   return (
     <div>

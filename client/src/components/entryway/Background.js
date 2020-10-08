@@ -62,6 +62,12 @@ export default function Background(props) {
 
   let widthPalette = 100 / numDivPal; ///this is the width if not factoring in a width set by where the user clicks in the overall background view. this will be updated based on the pixel clicks - via the pixel component. each click on this component adds a new palette, under a limit of 10.
 
+  //var things = [];
+
+  const alltheThings = (val) => {
+    console.log(val);
+  };
+
   //Below only works if there are only 2 potentional animation choices but it's more clear writing things here
   animationMode === "gradient-shift"
     ? (animationModeAlt = "hue-rotate")
@@ -85,11 +91,13 @@ export default function Background(props) {
         width={widthPalette + "vh"}
       >
         <div className="textBox">
-          <SlideText />
+          <SlideText alltheThings={alltheThings} />
         </div>
       </ContainerPalette>
     );
   }
+
+  //console.log(things);
 
   return <>{palettes}</>;
 }
