@@ -9,17 +9,16 @@ export default function SliderbyId(props) {
   const [userId, setUserId] = useState(UserId());
 
   const getSliderList = () => {
+    //double checks if a current user matches
     setUserId(UserId());
-    //     console.log("new event added");
     axios
-      // .get("/api/sliderTexts/:user_id")
       .get(`/api/sliderTexts/${userId}`)
       .then((sliderTexts) => {
         setSliders(sliderTexts.data);
       })
       .catch((err) => console.log(err));
   };
-  console.log(sliders, userId);
+
   return (
     <div>
       <button onClick={getSliderList}>GET BY ID</button>
@@ -28,7 +27,7 @@ export default function SliderbyId(props) {
         <ul>
           {sliders.map(({ body, title, id }) => (
             <li key={id.toString()}>
-              {body} {title}
+              {title} {body}
             </li>
           ))}
         </ul>

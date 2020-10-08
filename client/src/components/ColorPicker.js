@@ -6,7 +6,6 @@ import axios from "axios";
 
 export default function ColorPicker(props) {
   const [colorPick, setColorPick] = useState(props.patchColor || "#000000");
-  console.log(colorPick);
 
   const sendColor = (e) => {
     if (props.colorCapture) {

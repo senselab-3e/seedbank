@@ -15,14 +15,12 @@ export class SliderCreate extends Component {
   }
 
   handleChange(e) {
-    //console.log(e.target.name, e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   }
 
   submit(e) {
     //weirdly, the state for userId is staying at null. this is nnot a long term fix but for now
     this.setState({ userId: UserId() });
-    console.log(this.state.userId, this.props.userId, "hello");
     e.preventDefault();
     axios
       .post("/api/sliderTexts", {
@@ -31,16 +29,15 @@ export class SliderCreate extends Component {
         userId: this.state.userId,
       })
       .then((sliderText) => {
-        console.log("Created event: " + sliderText);
+        this.props.apiListUpdate();
+        //console.log("Created event: " + sliderText);
       })
       .catch((err) => {
         console.log(err);
       });
-    //this.props.apiRequest();
   }
 
   render() {
-    console.log(this.props.userId);
     return (
       <form onSubmit={this.submit}>
         <label>

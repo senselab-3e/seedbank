@@ -4,12 +4,15 @@ import axios from "axios";
 export default function DeleteBt(props) {
   const id = props.id; //id for individual el
   const pathway = props.path; //added for reusability of component. this allows the pathway for the api to change based on prop passed to it.
-  const deleteItem = (id) => {
-    console.log(props.apiListUpdate === true);
+  const submitDel = (id) => {
     axios
       .delete(`/api/${pathway}/${id}`)
       .then(() => {
-        props.apiListUpdate();
+        props.apiListUpdate
+          ? props.apiListUpdate()
+          : console.log(
+              "missing callback function for updating list of db items"
+            );
         // console.log("deleted el : " + id); // if you bring this check back, pass 'id' in the () parameters again
       })
       .catch((err) => {
@@ -18,7 +21,7 @@ export default function DeleteBt(props) {
   };
   return (
     <div>
-      <button onClick={() => deleteItem(id)} className="delete-btn">
+      <button onClick={() => submitDel(id)} className="delete-btn">
         x
       </button>
     </div>
