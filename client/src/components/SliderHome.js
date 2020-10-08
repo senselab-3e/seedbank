@@ -13,6 +13,7 @@ export class SliderHome extends Component {
       userId: null,
       userName: null, // i may not end up using this, as the id will never be duplicated by the username could be - buttt maybe i want to personalize the text view of a page for a user so keeping this here for now
     };
+    this.apiListUpdate = this.apiListUpdate.bind(this);
   }
 
   apiListUpdate() {

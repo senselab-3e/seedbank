@@ -29,7 +29,11 @@ export class SliderCreate extends Component {
         userId: this.state.userId,
       })
       .then((sliderText) => {
-        this.props.apiListUpdate();
+        this.props.apiListUpdate
+          ? this.props.apiListUpdate()
+          : console.log(
+              "missing callback function for updating list of db items"
+            );
         //console.log("Created event: " + sliderText);
       })
       .catch((err) => {
@@ -41,7 +45,7 @@ export class SliderCreate extends Component {
     return (
       <form onSubmit={this.submit}>
         <label>
-          Create an event
+          Add a Slider Text
           <br />
           <br />
           <input

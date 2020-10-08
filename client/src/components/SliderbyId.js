@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { UserId } from "./GetUser";
-//import DeleteBt from "../components/DeleteBt";
+
 export default function SliderbyId(props) {
-  //const [id, setId] = useState("");
   const [sliders, setSliders] = useState([]);
   // eslint-disable-next-line
   const [userId, setUserId] = useState(UserId());
