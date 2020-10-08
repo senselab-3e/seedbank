@@ -26,7 +26,7 @@ export default function SlideText(props) {
     );
   }
 
-  props.alltheThings(texts);
+  props.alltheThings(textList.texts);
   //console.log(texts[0]);
 
   return (

@@ -62,10 +62,14 @@ export default function Background(props) {
 
   let widthPalette = 100 / numDivPal; ///this is the width if not factoring in a width set by where the user clicks in the overall background view. this will be updated based on the pixel clicks - via the pixel component. each click on this component adds a new palette, under a limit of 10.
 
-  //var things = [];
+  var things = [];
 
   const alltheThings = (val) => {
     console.log(val);
+    // for (const key in val) {
+
+    //   things.push(<li key={val[key].id}>{val[key].body}</li>);
+    // }
   };
 
   //Below only works if there are only 2 potentional animation choices but it's more clear writing things here
