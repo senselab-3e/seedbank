@@ -11,6 +11,7 @@ const Container = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
+  width: 100vw;
 
   padding: 0;
   margin: 0;
@@ -42,6 +43,8 @@ export default function Entryway(props) {
   //     console.log(clickPos, clickPosInv);
   //   }, [clickPos, clickPosInv]);
 
+  //TEMPORarily not being used
+  // eslint-disable-next-line
   const getClickPos = (e) => {
     const xPosition = e.clientX;
     const intViewportWidth = window.innerWidth;
@@ -49,9 +52,10 @@ export default function Entryway(props) {
     setPos(percentageWidth); // these 2 values are being passed to the Background component. the first is the palette 1 width and the second is the palette 2 width (palette 1 - 100)
     setPosInv(100 - percentageWidth);
   };
+  //if you want to bring back the shifting background palettes add  <Container onClick={getClickPos}>
 
   return (
-    <Container onClick={getClickPos}>
+    <Container>
       <Background
         paletteNum={paletteNum}
         animationMode={animationMode}

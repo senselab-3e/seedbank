@@ -9,7 +9,7 @@ export default function ColorPicker(props) {
 
   const sendColor = (e) => {
     if (props.colorCapture) {
-      console.log(e.target.value, " assignment");
+      //console.log(e.target.value, " assignment");
       props.colorCapture(e.target.value);
     }
   };

@@ -174,7 +174,7 @@ THIS IS NOW BEING HANDLED BY STYLED COMPONENTS.
   overflow: scroll;
 
   z-index: 0;
-  width: 1.5vw;
+  width: 1vw;
   height: 100vh;
   -webkit-transition: width 3s;
   -moz-transition: width 3s;
@@ -205,5 +205,5 @@ THIS IS NOW BEING HANDLED BY STYLED COMPONENTS.
   color: rgb(236, 236, 236);
   font-family: "Quicksand", sans-serif;
   font-size: 15px;
-  padding: 1em;
+  padding: 1.2em;
 }

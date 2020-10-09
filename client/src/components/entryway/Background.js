@@ -62,15 +62,15 @@ export default function Background(props) {
 
   let widthPalette = 100 / numDivPal; ///this is the width if not factoring in a width set by where the user clicks in the overall background view. this will be updated based on the pixel clicks - via the pixel component. each click on this component adds a new palette, under a limit of 10.
 
-  var things = [];
+  //NOT currently in use, but it's a callback function for grabbing list items from db, via child component
+  //   var things = [];
 
-  const alltheThings = (val) => {
-    console.log(val);
-    // for (const key in val) {
-
-    //   things.push(<li key={val[key].id}>{val[key].body}</li>);
-    // }
-  };
+  //   const alltheThings = (val) => {
+  //     for (const key in val) {
+  //       //things.push(<li key={val[key].id}>{val[key].body}</li>);
+  //       things.push(val[key].body);
+  //     }
+  //   };
 
   //Below only works if there are only 2 potentional animation choices but it's more clear writing things here
   animationMode === "gradient-shift"
@@ -92,16 +92,28 @@ export default function Background(props) {
         key={num}
         bgHex={props.mainBG}
         colorMode={colorMode}
-        width={widthPalette + "vh"}
-      >
-        <div className="textBox">
-          <SlideText alltheThings={alltheThings} />
-        </div>
-      </ContainerPalette>
+        width={widthPalette + "vw"}
+      ></ContainerPalette>
     );
   }
 
   //console.log(things);
 
-  return <>{palettes}</>;
+  return (
+    <>
+      {palettes}
+      <SlideText />
+    </>
+  );
 }
+
+/* <ContainerPalette
+key={num}
+bgHex={props.mainBG}
+colorMode={colorMode}
+width={widthPalette + "vh"}
+>
+<div className="textBox">
+  <SlideText alltheThings={alltheThings} />
+</div>
+</ContainerPalette> */
