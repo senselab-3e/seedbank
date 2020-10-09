@@ -92,7 +92,7 @@ export default function Background(props) {
         key={num}
         bgHex={props.mainBG}
         colorMode={colorMode}
-        width={widthPalette + "vh"}
+        width={widthPalette + "vw"}
       >
         <div className="textBox">
           <SlideText alltheThings={alltheThings} />
