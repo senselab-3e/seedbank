@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Text from "./Text";
 
 export const randomColors = () => {
@@ -11,7 +11,9 @@ export const randomColors = () => {
 };
 
 export default function Slide(props) {
-  const styling = { background: randomColors() };
+  // eslint-disable-next-line
+  const [color, setColor] = useState(randomColors());
+  const styling = { background: color };
 
   const replaceClassName = (e) => {
     const sliderDiv = e.target;
