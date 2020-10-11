@@ -10,39 +10,33 @@ export const randomColors = () => {
   }
   return color;
 };
+
 export default function Slider(props) {
-  //props.paletteNum
-  //const [color, setColor] = useState(randomColors());
+  console.log("SLIDER CHILD LEVEL db res:", props.dataList);
+  // eslint-disable-next-line
   const [currentPaletteNum, setPalNum] = useState(12);
-  //let [apiList, setApiList] = useState([]);
-  //   const apiGetList = (pathway) => {
-  //     axios
-  //       .get(`/api/${pathway}`)
-  //       .then((sliderTexts) => {
-  //         // console.log(
-  //         //   "coming soon this will be where a prop fuction is called to re-initialis the axio request for the lates slidertext el view"
-  //         // );
-  //         setApiList({ texts: sliderTexts.data });
-  //       })
-  //       .catch((err) => console.log(err));
-  //   };
-  //   useEffect(() => {
-  //     apiGetList("sliderTexts");
-  //   }, []);
 
-  //   useEffect(() => {
-  //     setPalNum(props.paletteNum);
-  //   }, [props.paletteNum]);
-
-  //   console.log(apiList);
+  // eslint-disable-next-line
+  const [dataList, setDataList] = useState(props.dataList);
   const sliders = [];
+  //const colors = [];
 
-  const colors = [];
+  useEffect(() => {
+    setDataList(props.dataList);
+  }, [props.dataList]);
 
-  for (let i = 0; i < currentPaletteNum; i++) {
-    let acolor = randomColors();
-    colors.push(acolor);
-    sliders.push(<Slide key={i} color={colors[i]}></Slide>);
+  // console.log('SLIDER LEVEL',dataList);
+
+  for (const key in dataList) {
+    //console.log(dataList[key].length, "ehll");
+    for (let i = 0; i < dataList[key].length; i++) {
+      //const element = dataList[key][i];
+      sliders.push(
+        <Slide key={i} color={randomColors()} text={dataList[key][i].body}>
+          ddd
+        </Slide>
+      );
+    }
   }
 
   return <>{sliders}</>;

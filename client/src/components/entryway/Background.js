@@ -78,7 +78,7 @@ export default function Background(props) {
   //callback function for all axios retrieved db objects that isn't currently being used for anything
   const dataRetrieve = (val) => {
     setDataList(val);
-    console.log(val);
+    console.log("PARENT LEVEL DB res", val);
   };
 
   //Below only works if there are only 2 potentional animation choices but it's more clear writing things here

@@ -17,7 +17,7 @@ export default function Slide(props) {
   };
   return (
     <div className="slider" style={styling} onClick={replaceClassName}>
-      <Text />
+      <Text text={props.text} />
     </div>
   );
 }
