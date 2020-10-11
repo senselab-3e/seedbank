@@ -50,8 +50,10 @@ export default function Entryway(props) {
     setPosInv(100 - percentageWidth);
   };
 
+  //onClick={getClickPos}  // by having this at such a top level, its causing all the props on child components to re-render - aka change the colors on all the mini sliders... which is not desired.
+
   return (
-    <Container onClick={getClickPos}>
+    <Container>
       <Background
         paletteNum={paletteNum}
         animationMode={animationMode}

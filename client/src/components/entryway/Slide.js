@@ -1,8 +1,17 @@
 import React from "react";
 import Text from "./Text";
 
+export const randomColors = () => {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
 export default function Slide(props) {
-  const styling = { background: props.color };
+  const styling = { background: randomColors() };
 
   const replaceClassName = (e) => {
     const sliderDiv = e.target;

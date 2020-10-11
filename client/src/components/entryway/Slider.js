@@ -25,18 +25,13 @@ export default function Slider(props) {
     setDataList(props.dataList);
   }, [props.dataList]);
 
-  // console.log('SLIDER LEVEL',dataList);
-
   for (const key in dataList) {
-    //console.log(dataList[key].length, "ehll");
-    for (let i = 0; i < dataList[key].length; i++) {
-      //const element = dataList[key][i];
-      sliders.push(
-        <Slide key={i} color={randomColors()} text={dataList[key][i].body}>
-          ddd
-        </Slide>
-      );
-    }
+    // console.log(dataList[key].body, "ehll");
+    sliders.push(
+      <Slide key={key} color={randomColors()} text={dataList[key].body}>
+        ddd
+      </Slide>
+    );
   }
 
   return <>{sliders}</>;

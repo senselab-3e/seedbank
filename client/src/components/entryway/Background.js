@@ -81,6 +81,14 @@ export default function Background(props) {
     console.log("PARENT LEVEL DB res", val);
   };
 
+  //   const getClickPos = (e) => {
+  //     const xPosition = e.clientX;
+  //     const intViewportWidth = window.innerWidth;
+  //     let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
+  //     setPos(percentageWidth); // these 2 values are being passed to the Background component. the first is the palette 1 width and the second is the palette 2 width (palette 1 - 100)
+  //     setPosInv(100 - percentageWidth);
+  //   };
+
   //Below only works if there are only 2 potentional animation choices but it's more clear writing things here
 
   //this is if i ever wanted to increase the number of large color palettes.
