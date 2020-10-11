@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
-import SlideText from "./SlideText";
 import Slider from "./Slider";
+import DataRequest from "./DataRequest";
 
 const ContainerPalette = styled.div.attrs((props) => ({
   style: {
@@ -66,6 +65,8 @@ export default function Background(props) {
   const [firstPalWidth, setfirstWidth] = useState(props.clickPos); //this is set to a default of the 100/palettNum, in the parent component
   const [lastPalWidth, setlastWidth] = useState(props.clickPosInv);
 
+  const [dataList, setDataList] = useState([]);
+
   useEffect(() => {
     setfirstWidth(props.clickPos);
   }, [props.clickPos]);
@@ -75,23 +76,16 @@ export default function Background(props) {
   }, [props.clickPosInv]);
 
   //callback function for all axios retrieved db objects that isn't currently being used for anything
-  //   const alltheThings = (val) => {
-  //     console.log(val);
-  //   };
+  const dataRetrieve = (val) => {
+    setDataList(val);
+    console.log(val);
+  };
 
   //Below only works if there are only 2 potentional animation choices but it's more clear writing things here
 
   //this is if i ever wanted to increase the number of large color palettes.
   let palettes = [];
   for (let num = 2; num < numDivPal; num++) {
-    //only adjust width of palette if more then on is in the field.
-    //   if (numDivPal > 1) {
-    //     if (num === 0 && props.clickPos) widthPalette = props.clickPos;
-    //     if (num === numDivPal-1 && props.clickPosInv) widthPalette = props.clickPosInv;
-    //   }
-    //   num % 2 === 0
-    //     ? (colorMode = animationMode)
-    //     : (colorMode = animationModeAlt); /// can also be set to 'none'. this is more for the visual purpose of differentiating each added palette. but will become more useful as i add and customize variance in the palette css
     palettes.push(
       <ContainerPalette
         key={num}
@@ -102,8 +96,6 @@ export default function Background(props) {
     );
   }
 
-  //console.log(things);
-
   return (
     <>
       <ContainerPalette
@@ -112,7 +104,8 @@ export default function Background(props) {
         colorMode={animationMode}
         width={firstPalWidth + "vw"}
       ></ContainerPalette>
-      <Slider paletteNum={props.paletteNum}></Slider>
+      <DataRequest pathway="sliderTexts" dataRetrieve={dataRetrieve} />
+      <Slider paletteNum={props.paletteNum} dataList={dataList}></Slider>
       <ContainerPalette
         key={2}
         bgHex={props.mainBG}

@@ -1,4 +1,5 @@
 import React from "react";
+import Text from "./Text";
 
 export default function Slide(props) {
   const styling = { background: props.color };
@@ -16,7 +17,7 @@ export default function Slide(props) {
   };
   return (
     <div className="slider" style={styling} onClick={replaceClassName}>
-      <div className="textBox"></div>
+      <Text />
     </div>
   );
 }
