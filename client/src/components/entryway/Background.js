@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Slider from "./Slider";
 import DataRequest from "./DataRequest";
+import { GetPosition } from "../../helpers/Calculators";
 
 const ContainerPalette = styled.div.attrs((props) => ({
   style: {
@@ -57,37 +58,36 @@ const checkAniMode = (mode) => {
 };
 
 export default function Background(props) {
-  const numDivPal = props.paletteNum; // || 1; // number of palettes divided by 100 = indiv width of each palette in the total view port
+  const [elNum, setElNum] = useState(props.paletteNum); //
   const [firstPalWidth, setfirstWidth] = useState(100 / props.paletteNum); //this is set to a default of the 100/palettNum, in the parent component
   const [lastPalWidth, setlastWidth] = useState(100 / props.paletteNum);
 
-  console.log(numDivPal, firstPalWidth);
   const animationMode = props.animationMode;
   let animationModeAlt = checkAniMode(animationMode);
 
   const [dataList, setDataList] = useState([]);
 
+  useEffect(() => {
+    setElNum(props.paletteNum);
+  }, [props.paletteNum]);
+
   //callback function for all axios retrieved db objects that isn't currently being used for anything
   const dataRetrieve = (val) => {
     setDataList(val);
-    console.log("PARENT LEVEL DB res", val);
   };
 
+  //this shifts the position of all the palettes and sliders relative to where the user clicks on view
   const getClickPos = (e) => {
-    //e.preventDefault();
-    console.log("clicking");
-    const xPosition = e.clientX;
-    const intViewportWidth = window.innerWidth;
-    let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
-    setfirstWidth(percentageWidth); // these 2 values are being passed to the Background component. the first is the palette 1 width and the second is the palette 2 width (palette 1 - 100)
-    setlastWidth(100 - percentageWidth);
+    const xPosRelative = GetPosition(e);
+    console.log(xPosRelative);
+    setfirstWidth(xPosRelative.leftSide);
+    setlastWidth(xPosRelative.rightSide);
   };
 
-  //Below only works if there are only 2 potentional animation choices but it's more clear writing things here
-
+  //CURRENTLY being triggered by clicking on Pixel component, but purely for backpocket testing purposes. future iterations i'll likely want to add more then 2 color palettes, so this i just being written ahead of time.
   //this is if i ever wanted to increase the number of large color palettes.
   let palettes = [];
-  for (let num = 2; num < numDivPal; num++) {
+  for (let num = 2; num < elNum; num++) {
     palettes.push(
       <ContainerPalette
         key={num}
@@ -108,7 +108,6 @@ export default function Background(props) {
         onClick={getClickPos}
       ></ContainerPalette>
       <DataRequest pathway="sliderTexts" dataRetrieve={dataRetrieve} />
-      xd
       <Slider dataList={dataList}></Slider>
       <ContainerPalette
         key={2}

@@ -53,3 +53,18 @@
           return index;
       }
   };
+
+
+  ///this function calculats where the user clicked, and then exports 2 values that can be assigned to 2 palettes/elements, one on either side of that click position, 
+  export const GetPosition = (e) => {
+      let relativePos = {
+          leftSide: 50,
+          rightSide: 50
+      }
+      const xPosition = e.clientX;
+      const intViewportWidth = window.innerWidth;
+      let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
+      relativePos.leftSide = percentageWidth;
+      relativePos.rightSide = 100 - percentageWidth;
+      return relativePos
+  };
