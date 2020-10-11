@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Slider from "./Slider";
 import DataRequest from "./DataRequest";
@@ -38,9 +38,7 @@ const ContainerPalette = styled.div.attrs((props) => ({
   }
   padding-top: 2em;
   margin: 0em;
-  z-index: -1;
-  
-  animation: var(--color-mode) 45s linear infinite;
+    animation: var(--color-mode) 45s linear infinite;
   height: 100vh;
   width: ${(props) => props.width};
   -webkit-transition: width 3s;
@@ -60,20 +58,14 @@ const checkAniMode = (mode) => {
 
 export default function Background(props) {
   const numDivPal = props.paletteNum; // || 1; // number of palettes divided by 100 = indiv width of each palette in the total view port
+  const [firstPalWidth, setfirstWidth] = useState(100 / props.paletteNum); //this is set to a default of the 100/palettNum, in the parent component
+  const [lastPalWidth, setlastWidth] = useState(100 / props.paletteNum);
+
+  console.log(numDivPal, firstPalWidth);
   const animationMode = props.animationMode;
   let animationModeAlt = checkAniMode(animationMode);
-  const [firstPalWidth, setfirstWidth] = useState(props.clickPos); //this is set to a default of the 100/palettNum, in the parent component
-  const [lastPalWidth, setlastWidth] = useState(props.clickPosInv);
 
   const [dataList, setDataList] = useState([]);
-
-  useEffect(() => {
-    setfirstWidth(props.clickPos);
-  }, [props.clickPos]);
-
-  useEffect(() => {
-    setlastWidth(props.clickPosInv);
-  }, [props.clickPosInv]);
 
   //callback function for all axios retrieved db objects that isn't currently being used for anything
   const dataRetrieve = (val) => {
@@ -81,13 +73,15 @@ export default function Background(props) {
     console.log("PARENT LEVEL DB res", val);
   };
 
-  //   const getClickPos = (e) => {
-  //     const xPosition = e.clientX;
-  //     const intViewportWidth = window.innerWidth;
-  //     let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
-  //     setPos(percentageWidth); // these 2 values are being passed to the Background component. the first is the palette 1 width and the second is the palette 2 width (palette 1 - 100)
-  //     setPosInv(100 - percentageWidth);
-  //   };
+  const getClickPos = (e) => {
+    //e.preventDefault();
+    console.log("clicking");
+    const xPosition = e.clientX;
+    const intViewportWidth = window.innerWidth;
+    let percentageWidth = Math.floor((xPosition / intViewportWidth) * 100);
+    setfirstWidth(percentageWidth); // these 2 values are being passed to the Background component. the first is the palette 1 width and the second is the palette 2 width (palette 1 - 100)
+    setlastWidth(100 - percentageWidth);
+  };
 
   //Below only works if there are only 2 potentional animation choices but it's more clear writing things here
 
@@ -111,14 +105,17 @@ export default function Background(props) {
         bgHex={props.mainBG}
         colorMode={animationMode}
         width={firstPalWidth + "vw"}
+        onClick={getClickPos}
       ></ContainerPalette>
       <DataRequest pathway="sliderTexts" dataRetrieve={dataRetrieve} />
-      <Slider paletteNum={props.paletteNum} dataList={dataList}></Slider>
+      xd
+      <Slider dataList={dataList}></Slider>
       <ContainerPalette
         key={2}
         bgHex={props.mainBG}
         colorMode={animationModeAlt}
         width={lastPalWidth + "vw"}
+        onClick={getClickPos}
       ></ContainerPalette>
       {palettes}
     </>
