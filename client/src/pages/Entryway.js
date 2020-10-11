@@ -24,9 +24,9 @@ export default function Entryway(props) {
 
   const [paletteNum, setPalNum] = useState(2); // this is being passed down to Pixel component, as well as Background, for when a click on a pixel element causes a palette to be added to the view.
 
-  const [clickPos, setPos] = useState(null);
+  const [clickPos, setPos] = useState(100 / paletteNum); //this is set to this amount so that it loads the palette slices at center, with the bookend enlarged Palettes in the Background component
 
-  const [clickPosInv, setPosInv] = useState(null);
+  const [clickPosInv, setPosInv] = useState(100 / paletteNum);
 
   useEffect(() => {
     setColor(props.patchColor);
@@ -59,6 +59,7 @@ export default function Entryway(props) {
         clickPos={clickPos}
         clickPosInv={clickPosInv}
       />
+
       <Pixel
         bgHex={mainBG}
         setAniMode={setAniMode}

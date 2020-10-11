@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import SlideText from "./SlideText";
+import Slider from "./Slider";
 
 const ContainerPalette = styled.div.attrs((props) => ({
   style: {
@@ -50,58 +51,75 @@ const ContainerPalette = styled.div.attrs((props) => ({
   transition: width 3s;
 `;
 
+const checkAniMode = (mode) => {
+  if (mode === "gradient-shift") {
+    return "hue-rotate";
+  } else {
+    return "gradient-shift";
+  }
+};
+
 export default function Background(props) {
-  const numDivPal = props.paletteNum || 1; // number of palettes divided by 100 = indiv width of each palette in the total view port
+  const numDivPal = props.paletteNum; // || 1; // number of palettes divided by 100 = indiv width of each palette in the total view port
   const animationMode = props.animationMode;
-  //const [slideTexts, setSlideTexts] = useState(SlideText);
-  //console.log(SlideText());
+  let animationModeAlt = checkAniMode(animationMode);
+  const [firstPalWidth, setfirstWidth] = useState(props.clickPos); //this is set to a default of the 100/palettNum, in the parent component
+  const [lastPalWidth, setlastWidth] = useState(props.clickPosInv);
 
-  let palettes = [];
-  let colorMode = ""; // sole color value passed to Container Pallete
-  let animationModeAlt = ""; // container for alt switch modes so each palette can be visually differentiated by the css anmiation applied to it
+  useEffect(() => {
+    setfirstWidth(props.clickPos);
+  }, [props.clickPos]);
 
-  let widthPalette = 100 / numDivPal; ///this is the width if not factoring in a width set by where the user clicks in the overall background view. this will be updated based on the pixel clicks - via the pixel component. each click on this component adds a new palette, under a limit of 10.
+  useEffect(() => {
+    setlastWidth(props.clickPosInv);
+  }, [props.clickPosInv]);
 
-  var things = [];
-
-  const alltheThings = (val) => {
-    console.log(val);
-    // for (const key in val) {
-
-    //   things.push(<li key={val[key].id}>{val[key].body}</li>);
-    // }
-  };
+  //callback function for all axios retrieved db objects that isn't currently being used for anything
+  //   const alltheThings = (val) => {
+  //     console.log(val);
+  //   };
 
   //Below only works if there are only 2 potentional animation choices but it's more clear writing things here
-  animationMode === "gradient-shift"
-    ? (animationModeAlt = "hue-rotate")
-    : (animationModeAlt = "gradient-shift");
 
-  for (let num = 0; num < numDivPal; num++) {
+  //this is if i ever wanted to increase the number of large color palettes.
+  let palettes = [];
+  for (let num = 2; num < numDivPal; num++) {
     //only adjust width of palette if more then on is in the field.
-    if (numDivPal > 1) {
-      if (num === 0 && props.clickPos) widthPalette = props.clickPos;
-      if (num === 1 && props.clickPosInv) widthPalette = props.clickPosInv;
-    }
-    num % 2 === 0
-      ? (colorMode = animationMode)
-      : (colorMode = animationModeAlt); /// can also be set to 'none'. this is more for the visual purpose of differentiating each added palette. but will become more useful as i add and customize variance in the palette css
-
+    //   if (numDivPal > 1) {
+    //     if (num === 0 && props.clickPos) widthPalette = props.clickPos;
+    //     if (num === numDivPal-1 && props.clickPosInv) widthPalette = props.clickPosInv;
+    //   }
+    //   num % 2 === 0
+    //     ? (colorMode = animationMode)
+    //     : (colorMode = animationModeAlt); /// can also be set to 'none'. this is more for the visual purpose of differentiating each added palette. but will become more useful as i add and customize variance in the palette css
     palettes.push(
       <ContainerPalette
         key={num}
         bgHex={props.mainBG}
-        colorMode={colorMode}
-        width={widthPalette + "vw"}
-      >
-        <div className="textBox">
-          <SlideText alltheThings={alltheThings} />
-        </div>
-      </ContainerPalette>
+        colorMode={animationMode}
+        width={5 + "vw"}
+      ></ContainerPalette>
     );
   }
 
   //console.log(things);
 
-  return <>{palettes}</>;
+  return (
+    <>
+      <ContainerPalette
+        key={1}
+        bgHex={props.mainBG}
+        colorMode={animationMode}
+        width={firstPalWidth + "vw"}
+      ></ContainerPalette>
+      <Slider paletteNum={props.paletteNum}></Slider>
+      <ContainerPalette
+        key={2}
+        bgHex={props.mainBG}
+        colorMode={animationModeAlt}
+        width={lastPalWidth + "vw"}
+      ></ContainerPalette>
+      {palettes}
+    </>
+  );
 }

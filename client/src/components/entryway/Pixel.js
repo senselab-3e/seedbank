@@ -46,21 +46,21 @@ export default function Pixel(props) {
   }, [props.paletteNum]);
 
   //... so. a lot of traditional patterns for setting of the onClick={(){thing}}... but since i was passing down a function as a props, by calling it within another function it was an anonymous function being triggered rather then the props function. i erroneously had onClick={() => props.func}}
+  // containerPalette is also being used as the appendChild target of new Background component palettes added to the view, when pixel component is clicked
+
   return (
-    <div className="containerPalette">
-      <PixelPatch
-        // left={props.left}
-        // top={props.top}
-        top={xPos}
-        left={yPos}
-        background={pColor}
-        onClick={(e) => {
-          //this could be where the background color of palettes is passed.
-          const card = new PixelPop(pColor);
-          props.setPalNum((currentPaletteNum += 1));
-          card.create();
-        }}
-      ></PixelPatch>
-    </div>
+    <PixelPatch
+      // left={props.left}
+      // top={props.top}
+      top={xPos}
+      left={yPos}
+      background={pColor}
+      onClick={(e) => {
+        //this could be where the background color of palettes is passed.
+        const card = new PixelPop(pColor);
+        props.setPalNum((currentPaletteNum += 1));
+        card.create();
+      }}
+    ></PixelPatch>
   );
 }

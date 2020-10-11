@@ -20,7 +20,7 @@ export class PixelPop {
         pixel.style.top = this.yPos;
         pixel.style.backgroundColor = this.color;
         pixel.onclick = this.onClick;
-        const container = document.querySelector(".containerPalette");
+        const container = document.querySelector(".mainContainer");
         container.appendChild(pixel);
     }
 }

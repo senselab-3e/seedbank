@@ -43,7 +43,7 @@ class App extends Component {
             colorCapture={this.colorCapture}
             patchColor={this.state.patchColor}
           />
-          <div className="main-container">
+          <div className="mainContainer">
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/about3e" component={About} />
