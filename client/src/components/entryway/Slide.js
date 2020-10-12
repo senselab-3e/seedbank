@@ -2,15 +2,6 @@ import React, { useState } from "react";
 import Text from "./Text";
 import { randomColors } from "../../helpers/Calculators";
 
-// export const randomColors = () => {
-//   var letters = "0123456789ABCDEF";
-//   var color = "#";
-//   for (var i = 0; i < 6; i++) {
-//     color += letters[Math.floor(Math.random() * 16)];
-//   }
-//   return color;
-// };
-
 export default function Slide(props) {
   // eslint-disable-next-line
   const [color, setColor] = useState(randomColors());

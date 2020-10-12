@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { UserId } from "../GetUser";
+// import styled from "styled-components";
 
-export class AddText extends Component {
+export class DataCreate extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,7 +48,7 @@ export class AddText extends Component {
 
   render() {
     return (
-      <form onSubmit={this.submit}>
+      <form className="slideTextForm" onSubmit={this.submit}>
         <label>
           <br />
           <br />
@@ -57,15 +58,15 @@ export class AddText extends Component {
             placeholder="title"
             value={this.state.value}
             onChange={this.handleChange}
-          />{" "}
+          />
           <input
             type="text"
             name="body"
             placeholder="body"
             value={this.state.value}
             onChange={this.handleChange}
-          />{" "}
-        </label>{" "}
+          />
+        </label>
         <br />
         <input type="submit" value="Create" />
       </form>
@@ -73,4 +74,4 @@ export class AddText extends Component {
   }
 }
 
-export default AddText;
+export default DataCreate;

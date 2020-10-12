@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Slider from "./Slider";
+import DataCreate from "./DataCreate";
 import DataRequest from "./DataRequest";
 import { GetPosition } from "../../helpers/Calculators";
 
@@ -76,6 +77,10 @@ export default function Background(props) {
     setDataList(val);
   };
 
+  const apiListUpdate = () => {
+    console.log("ask for api request");
+  };
+
   //this shifts the position of all the palettes and sliders relative to where the user clicks on view
   const getClickPos = (e) => {
     const xPosRelative = GetPosition(e);
@@ -106,6 +111,7 @@ export default function Background(props) {
         width={firstPalWidth + "vw"}
         onClick={getClickPos}
       ></ContainerPalette>
+      <DataCreate apiListUpdate={apiListUpdate} />
       <DataRequest pathway="sliderTexts" dataRetrieve={dataRetrieve} />
       <Slider dataList={dataList}></Slider>
       <ContainerPalette
