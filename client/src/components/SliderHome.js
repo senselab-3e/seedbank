@@ -9,6 +9,7 @@ export class SliderHome extends Component {
   constructor() {
     super();
     this.state = {
+      loading: false,
       texts: [],
       userId: null,
       userName: null, // i may not end up using this, as the id will never be duplicated by the username could be - buttt maybe i want to personalize the text view of a page for a user so keeping this here for now
@@ -32,9 +33,18 @@ export class SliderHome extends Component {
     this.setState({ userId: UserId() });
     this.setState({ userName: UserName() });
     this.apiListUpdate();
+    this.setState({ loading: true });
   }
+  //this is to address a memory leak issue
   componentDidUpdate() {
-    this.apiListUpdate();
+    if (this.state.loading) {
+    } else {
+      this.apiListUpdate();
+    }
+  }
+
+  componentWillUnmount() {
+    this.setState({ loading: false });
   }
   render() {
     var texts = this.state.texts;
