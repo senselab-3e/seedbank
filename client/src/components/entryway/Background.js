@@ -79,7 +79,6 @@ export default function Background(props) {
   //this shifts the position of all the palettes and sliders relative to where the user clicks on view
   const getClickPos = (e) => {
     const xPosRelative = GetPosition(e);
-    console.log(xPosRelative);
     setfirstWidth(xPosRelative.leftSide);
     setlastWidth(xPosRelative.rightSide);
   };

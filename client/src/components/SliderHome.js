@@ -35,14 +35,14 @@ export class SliderHome extends Component {
     this.apiListUpdate();
     this.setState({ loading: true });
   }
-  //this is to address a memory leak issue
+
   componentDidUpdate() {
     if (this.state.loading) {
     } else {
       this.apiListUpdate();
     }
   }
-
+  //this is to address a memory leak issue
   componentWillUnmount() {
     this.setState({ loading: false });
   }
