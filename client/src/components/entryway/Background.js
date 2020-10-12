@@ -67,6 +67,9 @@ export default function Background(props) {
   let animationModeAlt = checkAniMode(animationMode);
 
   const [dataList, setDataList] = useState([]);
+  const [dataUpdate, setDataUpdate] = useState(false);
+  //this is being updated from datacreate to true -- but it's value is still not being passed down to datarequest
+  console.log(dataUpdate);
 
   useEffect(() => {
     setElNum(props.paletteNum);
@@ -77,8 +80,13 @@ export default function Background(props) {
     setDataList(val);
   };
 
+  //   useEffect(() => {
+  //     setDataUpdate(false);
+  //   }, [dataUpdate]);
+
   const apiListUpdate = () => {
     console.log("ask for api request");
+    setDataUpdate(true);
   };
 
   //this shifts the position of all the palettes and sliders relative to where the user clicks on view
@@ -111,8 +119,18 @@ export default function Background(props) {
         width={firstPalWidth + "vw"}
         onClick={getClickPos}
       ></ContainerPalette>
-      <DataCreate apiListUpdate={apiListUpdate} />
-      <DataRequest pathway="sliderTexts" dataRetrieve={dataRetrieve} />
+      <DataCreate
+        apiListUpdate={apiListUpdate}
+        setDataUpdate={setDataUpdate}
+        dataRetrieve={dataRetrieve}
+        pathway="sliderTexts"
+      />
+      <DataRequest
+        pathway="sliderTexts"
+        dataRetrieve={dataRetrieve}
+        dataUpdate={dataUpdate}
+        setDataUpdate={setDataUpdate}
+      />
       <Slider dataList={dataList}></Slider>
       <ContainerPalette
         key={2}

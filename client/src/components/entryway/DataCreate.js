@@ -9,6 +9,8 @@ export class DataCreate extends Component {
     this.state = {
       title: "",
       body: "",
+      list: {},
+      pathway: this.props.pathway,
       userId: UserId(), ///this.props.userId didn't work
     };
     this.handleChange = this.handleChange.bind(this);
@@ -21,6 +23,16 @@ export class DataCreate extends Component {
     });
   }
 
+  apiGetList = (pathway) => {
+    axios
+      .get(`/api/${pathway}`)
+      .then((list) => {
+        this.setState({ list: list.data });
+        this.props.dataRetrieve(this.state.list);
+      })
+      .catch((err) => console.log(err));
+  };
+
   submit(e) {
     //weirdly, the state for userId is staying at null. this is nnot a long term fix but for now
     this.setState({
@@ -28,7 +40,7 @@ export class DataCreate extends Component {
     });
     e.preventDefault();
     axios
-      .post("/api/sliderTexts", {
+      .post(`/api/${this.state.pathway}`, {
         title: this.state.title,
         body: this.state.body,
         userId: this.state.userId,
@@ -39,7 +51,13 @@ export class DataCreate extends Component {
           : console.log(
               "missing callback function for updating list of db items"
             );
+        //REVIEW HERE ///NOT WORKING AS INTENDEd
+        this.props.setDataUpdate
+          ? this.props.setDataUpdate(true)
+          : console.log("no updateapi test");
         //console.log("Created event: " + sliderText);
+
+        this.apiGetList(this.state.pathway);
       })
       .catch((err) => {
         console.log(err);
