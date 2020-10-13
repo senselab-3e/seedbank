@@ -1,15 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+
 html {
   --text-color-normal: #0a244d;
   --text-color-light: #8cabd9;
   --color-bg: #ffffff;
+  font-family: "Roboto", sans-serif;
+  --linkPink: rgb(216, 29, 216);
+  --linkPurple: rgb(98, 16, 250);
+  --linkGrey: #333;
 }
 
 .root-container {
+  /* margin: 0 auto; */
 }
 
-.main-container {
-  padding-top: 3em;
+.mainContainer {
+  /* padding-top: 3em; */
 }
 
 .header-container {
+}
+
+a {
+  position: relative;
+  text-decoration: none;
+}
+
+a::before {
+  /* content: "";
+  position: absolute;
+  height: 3px;
+  right: 0px;
+  bottom: -3px;
+  left: 0px; */
+  /* background-color: var(--linkPink); */
 }

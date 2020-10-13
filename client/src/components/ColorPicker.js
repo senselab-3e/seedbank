@@ -35,16 +35,15 @@ export default function ColorPicker(props) {
       });
   };
   return (
-    <div>
+    <li>
       <input
         type="color"
-        className="colorPicker"
         id="htmlColorPicker"
         onClick={(e) => setColorPick(e.target.value)}
         onChange={(e) => sendColor(e)}
         defaultValue={colorPick}
       ></input>
-      <button onClick={submitColorVal}>Save Color Preference</button>
-    </div>
+      <button onClick={submitColorVal}>Save Color</button>
+    </li>
   );
 }

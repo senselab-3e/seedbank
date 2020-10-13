@@ -4,7 +4,7 @@ import axios from "axios";
 import DeleteBt from "../components/DeleteBt";
 import { UserId, UserName } from "./GetUser";
 import SliderbyId from "../components/SliderbyId";
-import ColorPicker from "../components/ColorPicker";
+//import ColorPicker from "../components/ColorPicker";
 export class SliderHome extends Component {
   constructor() {
     super();
@@ -50,7 +50,7 @@ export class SliderHome extends Component {
     var texts = this.state.texts;
     return (
       <div>
-        <ColorPicker />
+        {/* <ColorPicker /> */}
         <SliderbyId />
         <SliderCreate
           userId={this.state.userId}

@@ -38,6 +38,8 @@ export class DataRequest extends Component {
       this.props.dataUpdate
     );
 
+    this.props.setDataUpdate(false);
+
     //add the memory leak stuff you had from glitch component
     //so the state is not updating with the new value of props passed to it. but if I call setState react gets mad
 
