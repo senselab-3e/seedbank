@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaAlignRight } from "react-icons/fa";
+// import { FaAlignRight } from "react-icons/fa";
 import { SiNextdoor } from "react-icons/si";
 import { RiDoorOpenFill } from "react-icons/ri";
 import { RiLoginBoxFill } from "react-icons/ri";
@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import ColorPicker from "../components/ColorPicker";
 
 export default function Header(props) {
+  // eslint-disable-next-line
   const [toggle, setToggle] = useState(false);
 
   // const Toggle = () => {
@@ -46,16 +47,16 @@ export default function Header(props) {
           </Link>
         </li>
         <li>
+          <Link to="/about3e">
+            <RiQuestionLine />
+          </Link>
+        </li>
+        <li>
           <Link to="/events">
             <BiChair />
           </Link>
         </li>
-        <li>
-          <Link to="/about3e">
-            <RiQuestionLine />
-            About
-          </Link>
-        </li>
+
         <li className="user">
           <Link to="/">
             <SiNextdoor />

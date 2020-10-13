@@ -67,9 +67,8 @@ export default function Background(props) {
   let animationModeAlt = checkAniMode(animationMode);
 
   const [dataList, setDataList] = useState([]);
-  const [dataUpdate, setDataUpdate] = useState(false);
+  const [dataUpdate, setDataUpdate] = useState(false); // this isn't being actively used right now. it was originally to see if i could have 2 discrete components, one for retrieving data another for adding/creating data to the db. but passing props back and forth to signal to datarequest component to update only once more, because very complicated and so for now its just running the requests to re-populate the data list all through datacreate upon a new entry being posted to the db
   //this is being updated from datacreate to true -- but it's value is still not being passed down to datarequest
-  console.log(dataUpdate);
 
   useEffect(() => {
     setElNum(props.paletteNum);
@@ -79,10 +78,6 @@ export default function Background(props) {
   const dataRetrieve = (val) => {
     setDataList(val);
   };
-
-  //   useEffect(() => {
-  //     setDataUpdate(false);
-  //   }, [dataUpdate]);
 
   const apiListUpdate = () => {
     console.log("ask for api request");

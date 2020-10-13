@@ -1,75 +1,19 @@
-/* .header {
-    z-index: 10;
-    position: fixed;
-    top: 0em;
-    padding-top: 0.5em;
-    background-color: white;
-    opacity: 0.8;
-    width: 100vw;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: left;
-     text-align: center; 
-
-}*/
-
-/* .header a {
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-.header a:hover {
-    text-transform: uppercase;
-
-}
-
-
-.header li {
-    display: inline-block;
-    margin: 0px 25px 15px 5px;
-}
-
-.colorPicker {}  */
-
-/* .li {
-  padding: 10px 0;
-} */
-
-/* .navBar button {
-   font-size: 30px;
-  margin-right: 30px;
-  color: black;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  float: right;
-} */
-
 /* Class */
 .navBar {
-  /* justify-content: space-between; */
-  /* align-items: center; */
-
   width: 100%;
-  /* background: rgb(184, 184, 184); */
-  color: var(--linkGrey);
-  /* padding: 10px; */
 }
 
 .navBar a {
   font-weight: 300;
   letter-spacing: 2px;
   text-decoration: none;
-  background: rgb(184, 184, 184);
   padding: 20px 5px;
   display: inline-block;
   width: 100%;
   text-align: center;
 }
 
-.navBar a:hover {
+.navBar li:hover {
   background: var(--linkGrey);
 }
 
@@ -80,7 +24,8 @@
   margin: 0px;
   padding: 0px;
   display: flex;
-  background: rgb(184, 184, 184);
+
+  background: var(--lightGrey);
   /* border: 1px solid rgb(212, 20, 20); */
   /* this border helps me see the true space layout of the element */
 }
@@ -94,8 +39,13 @@
   flex: 1;
 }
 
-.colorPicker {
-  /* align-items: center; DOESNOTHING*/
+#menuColorPicker {
+  padding: 20px 5px;
+  border-style: none; /* these are all to override the userAgent styling on the typical input button so it appears seamlessly in the menu navbar */
+  border: none;
+  background: none;
+  /* background: var(--lightGrey); */
+  /* background: var(--lightGrey); */
 }
 
 .navBar .user li {
@@ -137,7 +87,7 @@
     flex: 1 1 50%;
   }
   .navBar .user {
-    flex: 1 1 33.33%;
+    flex: 1 1 50%;
   }
 }
 

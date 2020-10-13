@@ -8,6 +8,7 @@ html {
   --linkPink: rgb(216, 29, 216);
   --linkPurple: rgb(98, 16, 250);
   --linkGrey: #333;
+  --lightGrey: rgb(184, 184, 184);
 }
 
 .root-container {
