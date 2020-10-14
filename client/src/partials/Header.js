@@ -10,7 +10,7 @@ import { BiCast } from "react-icons/bi";
 
 import "../style/header.css";
 import { Link } from "react-router-dom";
-import ColorPicker from "../components/ColorPicker";
+import ColorPicker from "../components/entryway/ColorPicker";
 
 export default function Header(props) {
   // eslint-disable-next-line

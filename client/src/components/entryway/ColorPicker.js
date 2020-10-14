@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { UserId } from "./GetUser";
+import { UserId } from "../GetUser";
 import axios from "axios";
 
 //UPDATE `users` SET `patch_color` = '#ffffff' WHERE `users`.`id` = 16;
@@ -35,17 +35,20 @@ export default function ColorPicker(props) {
       });
   };
   return (
-    <li>
-      <input
-        type="color"
-        className="menuColorPicker"
-        onClick={(e) => setColorPick(e.target.value)}
-        onChange={(e) => sendColor(e)}
-        defaultValue={colorPick}
-      ></input>
-      <button className="menuColorPicker" onClick={submitColorVal}>
-        Save Color
-      </button>
-    </li>
+    <>
+      <li>
+        <input
+          type="color"
+          className="menuColorPicker"
+          onClick={(e) => setColorPick(e.target.value)}
+          onChange={(e) => sendColor(e)}
+          defaultValue={colorPick}
+        ></input>
+
+        <div className="menuColorPicker" onClick={submitColorVal}>
+          Save Color
+        </div>
+      </li>
+    </>
   );
 }

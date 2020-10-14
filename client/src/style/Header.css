@@ -1,6 +1,8 @@
 /* Class */
 .navBar {
   width: 100%;
+  font-weight: 300;
+  letter-spacing: 2px;
 }
 
 .navBar a {
@@ -11,6 +13,15 @@
   display: inline-block;
   width: 100%;
   text-align: center;
+  color: var(--linkGrey);
+}
+
+.navBar a:hover {
+  color: deeppink;
+}
+
+.navBar a:active {
+  color: greenyellow;
 }
 
 .navBar li:hover {
@@ -41,7 +52,7 @@
 }
 
 .menuColorPicker {
-  padding: 20px 5px;
+  padding: 2.5px 5px;
   border-style: none; /* these are all to override the userAgent styling on the typical input button so it appears seamlessly in the menu navbar */
   border: none;
   background: none;
