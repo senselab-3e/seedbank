@@ -4,17 +4,28 @@ import axios from "axios";
 import styled from "styled-components";
 
 const Button = styled.button`
+  z-index: 10;
   display: inline-block;
   border-radius: 3px;
   padding: 0.5rem 0;
   margin: 0.5rem 1rem;
   width: 11rem;
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: var(--linkGrey);
+  border: 2px solid var(--linkGrey);
   position: absolute;
-  top: 400px;
-  left: 30px;
+  bottom: 10%;
+  left: 1%;
+  font-weight: 300;
+  font-size: medium;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  &:hover {
+    color: white;
+    background: var(--linkGrey);
+  }
 `;
 
 export default function SaveColorPick(props) {
@@ -24,11 +35,9 @@ export default function SaveColorPick(props) {
     setColorPick(props.mainBG);
   }, [props.mainBG]);
 
-  console.log(props.mainBG, colorPick, "savecolorlevel");
-
   const submitColorVal = (e) => {
     const userId = UserId();
-    console.log(colorPick, userId, "clicked");
+    // console.log(colorPick, userId, "clicked");
     e.preventDefault();
     axios
       .put(`/api/auth/${userId}`, {
@@ -43,9 +52,5 @@ export default function SaveColorPick(props) {
       });
   };
 
-  return (
-    <div className="colorPickSave">
-      <button onClick={submitColorVal}> Save Color </button>
-    </div>
-  );
+  return <Button onClick={submitColorVal}>Save Color</Button>;
 }
