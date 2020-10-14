@@ -7,14 +7,15 @@ const Button = styled.button`
   z-index: 10;
   display: inline-block;
   border-radius: 3px;
+  background: var(--header-primary);
   padding: 0.5rem 0;
   margin: 0.5rem 1rem;
   width: 11rem;
-  background: transparent;
   color: var(--linkGrey);
-  border: 2px solid var(--linkGrey);
+  opacity: 0.7;
+  border: 1.5px solid var(--header-primary);
   position: absolute;
-  bottom: 10%;
+  bottom: 20%;
   left: 1%;
   font-weight: 300;
   font-size: medium;
@@ -23,6 +24,8 @@ const Button = styled.button`
   text-align: center;
   font-family: "Roboto", sans-serif;
   &:hover {
+    opacity: 1;
+    display: block;
     color: white;
     background: var(--linkGrey);
   }

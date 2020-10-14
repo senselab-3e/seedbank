@@ -38,13 +38,15 @@
   margin: 0px;
   padding: 0px;
   display: flex;
-  background: var(--lightGrey);
+  background: var(--header-primary);
+  opacity: 0.8;
   /* border: 1px solid rgb(212, 20, 20); */
   /* this border helps me see the true space layout of the element */
 }
 
 .navBar li {
   flex: 3;
+  white-space: nowrap; /* this is keeping, in particular, the name select color, in the header, from wrapping on medium width media displays*/
 }
 
 /* /if i end up wanting to target icons on the far right, so they take up less space, this is how i would do it.  */
@@ -103,6 +105,12 @@
   }
 } */
 
+@media screen and (min-width: 1001px) {
+  .miniMenu {
+    display: none;
+  }
+}
+
 @media all and (max-width: 1000px) {
   .navBar ul {
     flex-wrap: wrap;
@@ -116,6 +124,10 @@
 }
 
 @media all and (max-width: 480px) {
+  .miniMenu {
+    display: block;
+  }
+
   .navBar li {
     flex-basis: 100%;
   }

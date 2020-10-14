@@ -9,6 +9,7 @@ html {
   --linkPurple: rgb(98, 16, 250);
   --linkGrey: #333;
   --lightGrey: rgb(184, 184, 184);
+  --header-primary: #ffffff;
 }
 
 .root-container {

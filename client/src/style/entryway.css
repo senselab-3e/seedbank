@@ -6,6 +6,15 @@ body {
   --textbox-width: var(--slider-width);
 }
 
+/* BUTTON FOR saving selected color patch from menu*/
+.colorPickSave {
+  position: absolute;
+  top: 400px;
+  left: 30px;
+}
+
+/* pinkestpink Pixel element that on click, adds more portal pixels to the view - also a way to get to next rehersal pages*/
+
 .pixel {
   position: absolute;
   z-index: 10;
@@ -166,6 +175,8 @@ THIS IS NOW BEING HANDLED BY STYLED COMPONENTS.
   margin: 0em;
 }
 
+/*COLOR SLICE SLIDES that expand and contract on user interaction. contains textBox with text retrieved from slideText database table*/
+
 .sliderContainer {
   /* display: none; */
   z-index: 0;
@@ -215,11 +226,13 @@ THIS IS NOW BEING HANDLED BY STYLED COMPONENTS.
   padding: var(--slider-width);
 }
 
+/* FORM FOR ADDING TEXT to database */
+
 .slideTextForm {
   z-index: 10;
   position: absolute;
-  bottom: 40px;
-  left: 30px;
+  bottom: 5%;
+  left: 3%;
 }
 
 .slideTextForm input {

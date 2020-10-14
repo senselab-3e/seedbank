@@ -68,8 +68,6 @@ export class DataCreate extends Component {
     return (
       <form className="slideTextForm" onSubmit={this.submit}>
         <label>
-          <br />
-          <br />
           <input
             type="text"
             name="title"
