@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Slider from "./Slider";
 import DataCreate from "./DataCreate";
 import DataRequest from "./DataRequest";
+import SaveColorPicker from "./SaveColorPick";
 import { GetPosition } from "../../helpers/Calculators";
 
 const ContainerPalette = styled.div.attrs((props) => ({
@@ -114,6 +115,7 @@ export default function Background(props) {
         width={firstPalWidth + "vw"}
         onClick={getClickPos}
       ></ContainerPalette>
+      <SaveColorPicker mainBG={props.mainBG} />
       <DataCreate
         apiListUpdate={apiListUpdate}
         setDataUpdate={setDataUpdate}

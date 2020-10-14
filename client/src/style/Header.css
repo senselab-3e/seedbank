@@ -24,10 +24,12 @@
   color: greenyellow;
 }
 
-.navBar li:hover {
-  /*this controls the hover essentially just for the one li item that isn't a link, aka the input and button for colorpicker*/
+.navBar a:hover {
+  /*this controls the hover for each colorpick*/
   background: var(--linkGrey);
 }
+
+/* can be changed to .navBar ul:hover { if i want each block highlighted, including selectcolor */
 
 .navBar ul {
   list-style: none;
@@ -36,7 +38,6 @@
   margin: 0px;
   padding: 0px;
   display: flex;
-
   background: var(--lightGrey);
   /* border: 1px solid rgb(212, 20, 20); */
   /* this border helps me see the true space layout of the element */
@@ -52,15 +53,24 @@
 }
 
 .menuColorPicker {
-  padding: 2.5px 5px;
+  padding: 18px 5px;
+  /* padding: 5px 25%; */
   border-style: none; /* these are all to override the userAgent styling on the typical input button so it appears seamlessly in the menu navbar */
   border: none;
   background: none;
 
-  /* width: 80%; */
+  /* width: 100%; */
   /* background: var(--lightGrey); */
   /* background: var(--lightGrey); */
 }
+
+.navBar input:hover {
+  background-color: var(--linkGrey);
+}
+
+/* .menuColorPicker:hover {
+  background-color: deeppink;
+} */
 
 .navBar .user li {
   display: flex;

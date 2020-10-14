@@ -36,3 +36,9 @@ a::before {
   left: 0px; */
   /* background-color: var(--linkPink); */
 }
+
+.colorPickSave {
+  position: absolute;
+  top: 400px;
+  left: 30px;
+}
