@@ -46,27 +46,26 @@ export default function Header(props) {
             Login
           </Link>
         </li>
-
         <li>
-          <Link to="/events">
-            <BiChair />
+          <Link to="/oOoOs">
+            <BiCast />
+            404
           </Link>
         </li>
-        <li>
+        <li className="user">
           <Link to="/traces">
             <MdAddToPhotos />
+          </Link>
+        </li>
+        <li className="user">
+          <Link to="/events">
+            <BiChair />
           </Link>
         </li>
 
         <li className="user">
           <Link to="/">
             <SiNextdoor />
-          </Link>
-        </li>
-        <li className="user">
-          <Link to="/oOoOs">
-            <BiCast />
-            404
           </Link>
         </li>
 

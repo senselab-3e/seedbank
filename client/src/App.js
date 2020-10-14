@@ -54,7 +54,7 @@ class App extends Component {
               </Route>
               <Route exact path="/auth" component={AuthPage} />
               <Route exact path="/events" component={withAuth(EventsPage)} />
-              <Route exact path="/traces" component={withAuth(ImagesPage)} />
+              <Route exact path="/traces" component={ImagesPage} />
             </Switch>
           </div>
         </div>
