@@ -46,14 +46,15 @@ export default function Header(props) {
             Login
           </Link>
         </li>
-        <li>
-          <Link to="/about3e">
-            <RiQuestionLine />
-          </Link>
-        </li>
+
         <li>
           <Link to="/events">
             <BiChair />
+          </Link>
+        </li>
+        <li>
+          <Link to="/traces">
+            <MdAddToPhotos />
           </Link>
         </li>
 
@@ -68,9 +69,10 @@ export default function Header(props) {
             404
           </Link>
         </li>
+
         <li className="user">
-          <Link to="/traces">
-            <MdAddToPhotos />
+          <Link to="/about3e">
+            <RiQuestionLine />
           </Link>
         </li>
       </ul>

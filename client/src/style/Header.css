@@ -7,13 +7,14 @@
   font-weight: 300;
   letter-spacing: 2px;
   text-decoration: none;
-  padding: 20px 5px;
+  padding: 20px 0px;
   display: inline-block;
   width: 100%;
   text-align: center;
 }
 
 .navBar li:hover {
+  /*this controls the hover essentially just for the one li item that isn't a link, aka the input and button for colorpicker*/
   background: var(--linkGrey);
 }
 
@@ -39,11 +40,13 @@
   flex: 1;
 }
 
-#menuColorPicker {
+.menuColorPicker {
   padding: 20px 5px;
   border-style: none; /* these are all to override the userAgent styling on the typical input button so it appears seamlessly in the menu navbar */
   border: none;
   background: none;
+
+  /* width: 80%; */
   /* background: var(--lightGrey); */
   /* background: var(--lightGrey); */
 }
