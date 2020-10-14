@@ -6,20 +6,23 @@ body {
   --textbox-width: var(--slider-width);
 }
 
-/* BUTTON FOR saving selected color patch from menu*/
-.colorPickSave {
-  position: absolute;
-  top: 400px;
-  left: 30px;
+/*NOTE: the styling for the Save color button element is being handled by a react style-component, in SaveColorPick */
+/* THIS IS NOW BEING HANDLED BY styled components in the react component SAVE COLOR PICK -->BUTTON FOR saving selected color patch from menu*/
+
+.entrywaySubmit:hover {
+  display: block;
+  color: white;
+  background: var(--linkGrey);
 }
 
-/* pinkestpink Pixel element that on click, adds more portal pixels to the view - also a way to get to next rehersal pages*/
+/* Pixel element 'pinkestpink' that on click, adds more portal pixels to the view - also a way to get to next rehersal pages*/
 
 .pixel {
   position: absolute;
   z-index: 10;
 }
 
+/* subclass of pixel, that handles rolover animations etc */
 .picnicPatch {
   width: 25px;
   height: 25px;
@@ -44,6 +47,8 @@ body {
 .hidden {
   display: none;
 }
+
+/*LARGE Color Palette elements that bookened the color slice elements - the color slices are the thin color elements that on mouse click open to reveal text inside */
 
 @keyframes palette1 {
   0% {
@@ -99,16 +104,6 @@ body {
 /* 
 THIS IS NOW BEING HANDLED BY STYLED COMPONENTS.
 .containerPalette {
-    padding-top: 8em;
-    margin: 0em;
-    z-index: -1;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    background-color: yellowgreen;
-    height: 100vh;
-    width: 100vw;
 } */
 
 .palette {
@@ -125,12 +120,6 @@ THIS IS NOW BEING HANDLED BY STYLED COMPONENTS.
   padding: 0em;
   margin: 0em;
 }
-
-/* .palette:hover,
-.palette:focus {
-    cursor: pointer;
-    width: 25vw;
-} */
 
 .paletteClick {
   cursor: pointer;
@@ -232,10 +221,53 @@ THIS IS NOW BEING HANDLED BY STYLED COMPONENTS.
   z-index: 10;
   position: absolute;
   bottom: 5%;
-  left: 3%;
+  margin: 0.5rem 1rem;
+  /* left: 3%; */
 }
 
-.slideTextForm input {
-  width: 200px;
-  height: 20px;
+.slideTextForm input[type="text"] {
+  margin: 0.5rem 0.5rem 0.5rem 0rem;
+  -webkit-transition: width 1s;
+  -moz-transition: width 1s;
+  transition: width 1s;
+  width: 10.8rem;
+}
+
+.slideTextForm input[type="text"]:focus {
+  letter-spacing: 1px;
+  width: 70vw;
+}
+
+/* this is stylings applied to the same elements cited above (.slideTextForm input[type="text"]), but in case i want this styling to be reusable, i'm giving it a unique classname - data entered here, with the submit button, is added to the sliderText table in the database*/
+.entrywayDataWrite {
+  padding: 0.5rem 0;
+  border-radius: 3px;
+  font-size: medium;
+  letter-spacing: 5px;
+  text-align: center;
+  /* width: 10.8rem; */
+  height: 2em;
+  color: var(
+    --linkPink
+  ); /*color of text when you start typing inside the box, not the label text*/
+}
+
+/* BUTTON FOR posting text data to database - specifically the sliderText table*/
+.entrywaySubmit {
+  z-index: 10;
+  display: inline-block;
+  border-radius: 3px;
+  background: var(--header-primary);
+  padding: 0.5rem 0;
+  width: 11rem;
+  color: var(--linkGrey);
+  opacity: 0.9;
+  border: 1.5px solid var(--header-primary);
+  font-weight: 300;
+  font-size: medium;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
 }

@@ -64,27 +64,30 @@ export class DataCreate extends Component {
       });
   }
 
+  //NOTE : I've temporarily disable the 'title' data field -- it is a non-manditory entry in the database, but i may want to have this capacity to post it, in the future. But at the moment it feels unnecessary in the UI
   render() {
     return (
       <form className="slideTextForm" onSubmit={this.submit}>
         <label>
-          <input
+          {/* <input
+            className="entrywayDataWrite"
             type="text"
             name="title"
-            placeholder="title"
+            placeholder="enter"
             value={this.state.value}
             onChange={this.handleChange}
-          />
+          /> */}
           <input
+            className="entrywayDataWrite"
             type="text"
             name="body"
-            placeholder="body"
+            placeholder="add Text"
             value={this.state.value}
             onChange={this.handleChange}
           />
         </label>
         <br />
-        <input type="submit" value="Create" />
+        <input className="entrywaySubmit" type="submit" value="Save Text" />
       </form>
     );
   }

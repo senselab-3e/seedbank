@@ -122,6 +122,7 @@ export default function Background(props) {
         dataRetrieve={dataRetrieve}
         pathway="sliderTexts"
       />
+
       <DataRequest
         pathway="sliderTexts"
         dataRetrieve={dataRetrieve}

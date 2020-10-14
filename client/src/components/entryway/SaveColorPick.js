@@ -10,21 +10,21 @@ const Button = styled.button`
   background: var(--header-primary);
   padding: 0.5rem 0;
   margin: 0.5rem 1rem;
+  //NOTE if you change this margin, note that it matches åwhat is being used in the DataCreate component, for the input form element, whose styling is in a traditional css in entryway.css
   width: 11rem;
   color: var(--linkGrey);
-  opacity: 0.7;
+  opacity: 0.9;
   border: 1.5px solid var(--header-primary);
   position: absolute;
   bottom: 20%;
-  left: 1%;
   font-weight: 300;
   font-size: medium;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-decoration: none;
   text-align: center;
   font-family: "Roboto", sans-serif;
+  cursor: pointer;
   &:hover {
-    opacity: 1;
     display: block;
     color: white;
     background: var(--linkGrey);
