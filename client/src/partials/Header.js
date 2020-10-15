@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import debounce from "lodash.debounce";
 
 import { FaAlignRight } from "react-icons/fa";
@@ -22,7 +22,7 @@ export default function Header(props) {
   // eslint-disable-next-line
   const [isMobile, setMobile] = useState(false);
   // eslint-disable-next-line
-  const [value, setValue] = useState("");
+  const [miniMenu, setminiMenu] = useState(false);
 
   const [dimensions, setDimensions] = React.useState({
     height: window.innerHeight,
@@ -39,35 +39,56 @@ export default function Header(props) {
   //get window size
 
   // const checkWindow = (val) => {
-  //   console.log(val < 900);
-  //   //setMobile(true)
+  //   //console.log(isMobile);
+  //   console.log("INSIDE: mobile: ", isMobile, "toggle: ", toggle);
+  //   //setDimensions(val);
+  //   if (val.width < 1000) {
+  //     //console.log("BIG WINDOW: toggle: ", toggle);
+
+  //     setMobile(true); // this isn't working. WHY.
+  //     setToggle(true); // the toggle value, however, IS being reset. ARG.maybe this is because the condition its checking isnt against itself. ARG.
+  //   } else if (val.width > 1000) {
+  //     console.log("BIG WINDOW: toggle: ", toggle);
+  //     //val.width > 1000 &&
+  //     //console.log("greater then 1000", val.width);
+  //     console.log(
+  //       "greater then 1000",
+  //       "mobile: ",
+  //       isMobile,
+  //       "toggle: ",
+  //       toggle
+  //     );
+  //     //setMobile(false); // this isn't being applied or updated...
+  //     setToggle(false);
+  //   }
 
   // };
+  // console.log("OUTSIDE : mobile: ", isMobile, "toggle: ", toggle);
 
-  console.log(dimensions);
+  // const debouncedSave = useCallback(
+  //   //passing isMobile at this level, made no difference
+  //   debounce((nextVal) => checkWindow(nextVal), 100),
+  //   [] // will be created only once initially
+  //   // when i had the timer set to 1000 i got setTimeOut warnings - tried setting this to 100, but still got a warning.
+  // );
 
-  const debouncedSave = useCallback(
-    debounce((nextVal) => setDimensions(nextVal), 300),
-    [] // will be created only once initially
-  );
-
-  const onChange = () => {
-    const dimensions = {
-      height: window.innerHeight,
-      width: window.innerWidth,
-    };
-    // const { value: nextValue } = e.target;
-    //setValue(nextValue);
-    // Even though handleChange is created on each render and executed
-    // it references the same debouncedSave that was created initially
-    debouncedSave(dimensions);
-  };
-
-  window.addEventListener("resize", onChange);
+  // const onChange = () => {
+  //   const dimensions = {
+  //     height: window.innerHeight,
+  //     width: window.innerWidth,
+  //   };
+  //   // const { value: nextValue } = e.target;
+  //   //setValue(nextValue);
+  //   // Even though handleChange is created on each render and executed
+  //   // it references the same debouncedSave that was created initially
+  //   debouncedSave(dimensions);
+  // };
+  // //i think i need the debounce to happen on this listener....
+  // window.addEventListener("resize", onChange);
 
   return (
     <nav className="navBar">
-      <ul>
+      <ul className={toggle ? "hide-nav" : "show-nav"}>
         <ColorPicker
           colorCapture={props.colorCapture}
           patchColor={props.patchColor}
@@ -113,7 +134,9 @@ export default function Header(props) {
             <RiQuestionLine />
           </Link>
         </li>
-        <li>
+      </ul>
+      <ul>
+        <li className="miniMenu">
           <button onClick={Toggle}>
             <FaAlignRight />
           </button>
