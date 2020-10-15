@@ -136,6 +136,9 @@
   .show-nav {
     /* display: none; */
   }
+  .navBar .miniMenu {
+    flex-basis: 50%;
+  }
 }
 
 .hide-nav {
@@ -148,4 +151,19 @@
 
 .expanded-menu {
   display: block;
+}
+
+.miniMenu {
+  display: inline-block;
+  width: 100%;
+  padding: 20px 0px;
+  /* text-align: right; */
+}
+
+.miniMenu:hover {
+  /*this controls the hover for each colorpick*/
+
+  background: var(--linkGrey);
+  color: white;
+  cursor: pointer;
 }

@@ -9,25 +9,14 @@ import { MdAddToPhotos } from "react-icons/md";
 import { RiQuestionLine } from "react-icons/ri";
 import { BiChair } from "react-icons/bi";
 import { BiCast } from "react-icons/bi";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 import "../style/header.css";
 import { Link } from "react-router-dom";
 import ColorPicker from "../components/entryway/ColorPicker";
 
-//www.pluralsight.com/guides/re-render-react-component-on-window-resize
-
 export default function Header(props) {
-  // eslint-disable-next-line
   const [toggle, setToggle] = useState(false);
-  // eslint-disable-next-line
-  const [isMobile, setMobile] = useState(false);
-  // eslint-disable-next-line
-  const [miniMenu, setminiMenu] = useState(false);
-  // eslint-disable-next-line
-  const [dimensions, setDimensions] = React.useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  });
 
   const Toggle = () => {
     setToggle(!toggle);
@@ -44,7 +33,6 @@ export default function Header(props) {
     mql.matches ? setToggle(true) : setToggle(false);
   };
   const memoizedCallback = useCallback(
-    //passing isMobile at this level, made no difference
     debounce(() => checkWindow(), 300),
     []
   );
@@ -54,6 +42,7 @@ export default function Header(props) {
   }, [memoizedCallback]);
 
   window.addEventListener("resize", memoizedCallback);
+  console.log(toggle);
 
   return (
     <nav className="navBar">
@@ -103,12 +92,8 @@ export default function Header(props) {
             <RiQuestionLine />
           </Link>
         </li>
-      </ul>
-      <ul>
-        <li className="miniMenu">
-          <button onClick={Toggle}>
-            <FaAlignRight />
-          </button>
+        <li className="miniMenu" onClick={Toggle}>
+          {toggle ? <FaAlignRight /> : <IoIosCloseCircleOutline />}
         </li>
       </ul>
     </nav>
