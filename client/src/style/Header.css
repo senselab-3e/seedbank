@@ -61,7 +61,6 @@
   border-style: none; /* these are all to override the userAgent styling on the typical input button so it appears seamlessly in the menu navbar */
   border: none;
   background: none;
-  /* width: 100%; */
   /* background: var(--lightGrey); */
   /* background: var(--lightGrey); */
 }
@@ -117,6 +116,9 @@
   .navBar .user {
     flex: 1 1 25%;
   }
+  .menuColorPicker {
+    width: 50%;
+  }
 }
 
 @media all and (max-width: 480px) {
@@ -154,7 +156,6 @@
   width: 100%;
   padding: 20px 0px;
   outline: 1px solid var(--lightGrey);
-
   /* VERY IMPORTANT -- do not set a display mode here. it will prevent all the conditional displays set in the media queries above*/
 }
 
