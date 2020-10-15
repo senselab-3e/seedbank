@@ -18,17 +18,18 @@
 }
 
 .navBar a:hover {
-  color: deeppink;
+  color: white;
 }
 
-.navBar a:active {
+/* .navBar a:active {
   color: greenyellow;
-}
+} */
 
-.navBar a:hover {
-  /*this controls the hover for each colorpick*/
+/* .navBar a:hover {
+ 
   background: var(--linkGrey);
 }
+*/
 
 /* can be changed to .navBar ul:hover { if i want each block highlighted, including selectcolor */
 
@@ -60,19 +61,15 @@
   border-style: none; /* these are all to override the userAgent styling on the typical input button so it appears seamlessly in the menu navbar */
   border: none;
   background: none;
-
   /* width: 100%; */
   /* background: var(--lightGrey); */
   /* background: var(--lightGrey); */
 }
 
-.navBar input:hover {
+.navBar li:hover {
   background-color: var(--linkGrey);
+  color: white;
 }
-
-/* .menuColorPicker:hover {
-  background-color: deeppink;
-} */
 
 .navBar .user li {
   display: flex;
@@ -163,7 +160,7 @@
 .miniMenu:hover {
   /*this controls the hover for each colorpick*/
 
-  background: var(--linkGrey);
+  /* background: var(--linkGrey); */
   color: white;
   cursor: pointer;
 }

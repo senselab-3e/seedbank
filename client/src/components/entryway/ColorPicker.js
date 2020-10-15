@@ -23,13 +23,14 @@ export default function ColorPicker(props) {
     <>
       <li>
         <input
+          id="picker"
           type="color"
           className="menuColorPicker"
           onClick={(e) => setColorPick(e.target.value)}
           onChange={(e) => onChange(e)}
           defaultValue={colorPick}
         ></input>
-        Select Color
+        <label htmlFor="picker">Select Color</label>
       </li>
     </>
   );
