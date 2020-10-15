@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import debounce from "lodash.debounce";
 // import { UserId } from "../GetUser";
 // import axios from "axios";
 
@@ -6,6 +7,7 @@ import React, { useState, useEffect } from "react";
 
 export default function ColorPicker(props) {
   const [colorPick, setColorPick] = useState(props.patchColor || "#000000");
+  const [debouncedVal, saveToDb] = useState(""); // would be an API call normally
 
   const sendColor = (e) => {
     if (props.colorCapture) {

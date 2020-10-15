@@ -19,6 +19,7 @@ export class PixelPop {
         pixel.style.left = this.xPos;
         pixel.style.top = this.yPos;
         pixel.style.backgroundColor = this.color;
+        pixel.style.zIndex = 0;
         pixel.onclick = this.onClick;
         const container = document.querySelector(".mainContainer");
         container.appendChild(pixel);

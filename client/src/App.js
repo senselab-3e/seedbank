@@ -8,6 +8,7 @@ import Header from "./partials/Header";
 import Glitch from "./pages/Glitch";
 import ImagesPage from "./pages/Images";
 import Entryway from "./pages/Entryway";
+
 import "./index.css";
 
 function Home() {

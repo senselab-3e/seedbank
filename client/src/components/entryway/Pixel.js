@@ -11,6 +11,7 @@ const PixelPatch = styled.div.attrs((props) => ({
     left: props.left,
   },
 }))`
+  z-index: 1;
   position: absolute;
   width: 25px;
   height: 25px;

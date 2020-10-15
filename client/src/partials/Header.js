@@ -12,19 +12,17 @@ import "../style/header.css";
 import { Link } from "react-router-dom";
 import ColorPicker from "../components/entryway/ColorPicker";
 
+//www.pluralsight.com/guides/re-render-react-component-on-window-resize
+
 export default function Header(props) {
   // eslint-disable-next-line
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
+  // eslint-disable-next-line
+  const [isMobile, setMobile] = useState(false);
 
   const Toggle = () => {
     setToggle(!toggle);
   };
-
-  //this is useful for appearing disappearing accordian
-  //<ul className={toggle ? "nav-links show-nav" : "nav-links"}></ul>
-  // <button onClick={Toggle}>
-  //       <FaAlignRight />
-  //     </button>
 
   return (
     <nav className="navBar">
@@ -33,43 +31,43 @@ export default function Header(props) {
           colorCapture={props.colorCapture}
           patchColor={props.patchColor}
         />
-        <li className={toggle ? "show-nav" : "hide-nav"}>
+        <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/entryway">
             <RiDoorOpenFill />
             Entryway
           </Link>
         </li>
 
-        <li className={toggle ? "show-nav" : "hide-nav"}>
+        <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/auth">
             <RiLoginBoxFill />
             Login
           </Link>
         </li>
-        <li className={toggle ? "show-nav" : "hide-nav"}>
+        <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/oOoOs">
             <BiCast />
             404
           </Link>
         </li>
-        <li className={toggle ? "show-nav user" : "hide-nav user"}>
+        <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/traces">
             <MdAddToPhotos />
           </Link>
         </li>
-        <li className={toggle ? "show-nav user" : "hide-nav user"}>
+        <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/events">
             <BiChair />
           </Link>
         </li>
 
-        <li className={toggle ? "show-nav user" : "hide-nav user"}>
+        <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/">
             <SiNextdoor />
           </Link>
         </li>
 
-        <li className={toggle ? "show-nav user" : "hide-nav user"}>
+        <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/about3e">
             <RiQuestionLine />
           </Link>
@@ -83,18 +81,3 @@ export default function Header(props) {
     </nav>
   );
 }
-
-// className="miniMenu"
-
-// <div className="navBar">
-//   <button onClick={Toggle}>
-//     <FaAlignRight />
-//   </button>
-
-//   <ul className={toggle ? "nav-links show-nav" : "nav-links"}>
-//     <li>
-//       <ColorPicker
-//         colorCapture={props.colorCapture}
-//         patchColor={props.patchColor}
-//       />
-//     </li>
