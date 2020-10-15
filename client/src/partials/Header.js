@@ -88,7 +88,7 @@ export default function Header(props) {
 
   return (
     <nav className="navBar">
-      <ul className={toggle ? "hide-nav" : "show-nav"}>
+      <ul className="show-nav">
         <ColorPicker
           colorCapture={props.colorCapture}
           patchColor={props.patchColor}
