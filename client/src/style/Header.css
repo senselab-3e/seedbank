@@ -108,6 +108,9 @@
 }
 
 @media all and (max-width: 1000px) {
+  .miniMenu {
+    display: block;
+  }
   .navBar ul {
     flex-wrap: wrap;
   }
