@@ -1,9 +1,8 @@
 import React, { useState, useCallback } from "react";
 import debounce from "lodash.debounce";
-// import { UserId } from "../GetUser";
-// import axios from "axios";
+//method draw from https://divyanshu013.dev/blog/react-debounce-throttle-hooks/
 
-//UPDATE `users` SET `patch_color` = '#ffffff' WHERE `users`.`id` = 16;
+//SQL values are being set and passed up to app where UPDATE `users` SET `patch_color` = '#ffffff' WHERE `users`.`id` = 16;
 
 export default function ColorPicker(props) {
   const [colorPick, setColorPick] = useState(props.patchColor || "#000000");

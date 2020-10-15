@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
+import debounce from "lodash.debounce";
+
 import { FaAlignRight } from "react-icons/fa";
 import { SiNextdoor } from "react-icons/si";
 import { RiDoorOpenFill } from "react-icons/ri";
@@ -19,10 +21,49 @@ export default function Header(props) {
   const [toggle, setToggle] = useState(false);
   // eslint-disable-next-line
   const [isMobile, setMobile] = useState(false);
+  // eslint-disable-next-line
+  const [value, setValue] = useState("");
+
+  const [dimensions, setDimensions] = React.useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
 
   const Toggle = () => {
     setToggle(!toggle);
   };
+
+  ///ok. if window size below blah, call Toggle() to 'hide' select part of menu.
+  //useCallback - to debounce
+  //handleResize
+  //get window size
+
+  // const checkWindow = (val) => {
+  //   console.log(val < 900);
+  //   //setMobile(true)
+
+  // };
+
+  console.log(dimensions);
+
+  const debouncedSave = useCallback(
+    debounce((nextVal) => setDimensions(nextVal), 300),
+    [] // will be created only once initially
+  );
+
+  const onChange = () => {
+    const dimensions = {
+      height: window.innerHeight,
+      width: window.innerWidth,
+    };
+    // const { value: nextValue } = e.target;
+    //setValue(nextValue);
+    // Even though handleChange is created on each render and executed
+    // it references the same debouncedSave that was created initially
+    debouncedSave(dimensions);
+  };
+
+  window.addEventListener("resize", onChange);
 
   return (
     <nav className="navBar">
