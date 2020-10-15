@@ -98,7 +98,7 @@
   }
 } */
 
-@media screen and (min-width: 1001px) {
+@media screen and (max-width: 3001px) {
   .miniMenu {
     display: none;
   }
@@ -106,7 +106,7 @@
 
 @media all and (max-width: 1000px) {
   .miniMenu {
-    display: block;
+    display: inline-block;
   }
   .navBar ul {
     flex-wrap: wrap;
@@ -121,7 +121,7 @@
 
 @media all and (max-width: 480px) {
   .miniMenu {
-    display: block;
+    display: inline-block;
   }
 
   .navBar li {
@@ -151,16 +151,14 @@
 }
 
 .miniMenu {
-  display: inline-block;
   width: 100%;
   padding: 20px 0px;
-  /* text-align: right; */
+  outline: 1px solid var(--lightGrey);
+
+  /* VERY IMPORTANT -- do not set a display mode here. it will prevent all the conditional displays set in the media queries above*/
 }
 
 .miniMenu:hover {
-  /*this controls the hover for each colorpick*/
-
-  /* background: var(--linkGrey); */
   color: white;
   cursor: pointer;
 }

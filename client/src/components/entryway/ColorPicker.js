@@ -18,7 +18,7 @@ export default function ColorPicker(props) {
     setColorPick(nextValue);
     debouncedSave(nextValue);
   };
-
+  //Associating a <label> with an <input> element increases the onclick areas space for input. hurray.
   return (
     <>
       <li>
@@ -30,7 +30,9 @@ export default function ColorPicker(props) {
           onChange={(e) => onChange(e)}
           defaultValue={colorPick}
         ></input>
-        <label htmlFor="picker">Select Color</label>
+        <label htmlFor="picker" style={{ width: "100%" }}>
+          Select Color
+        </label>
       </li>
     </>
   );

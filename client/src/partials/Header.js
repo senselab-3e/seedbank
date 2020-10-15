@@ -9,7 +9,7 @@ import { MdAddToPhotos } from "react-icons/md";
 import { RiQuestionLine } from "react-icons/ri";
 import { BiChair } from "react-icons/bi";
 import { BiCast } from "react-icons/bi";
-import { IoIosCloseCircleOutline } from "react-icons/io";
+import { IoIosCloseCircle } from "react-icons/io";
 
 import "../style/header.css";
 import { Link } from "react-router-dom";
@@ -54,20 +54,20 @@ export default function Header(props) {
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/entryway">
             <RiDoorOpenFill />
-            Entryway
+            <label>Entryway</label>
           </Link>
         </li>
 
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/auth">
             <RiLoginBoxFill />
-            Login
+            <label>Login</label>
           </Link>
         </li>
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/oOoOs">
             <BiCast />
-            404
+            <label>404</label>
           </Link>
         </li>
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
@@ -93,9 +93,11 @@ export default function Header(props) {
           </Link>
         </li>
         <li className="miniMenu" onClick={Toggle}>
-          {toggle ? <FaAlignRight /> : <IoIosCloseCircleOutline />}
+          {toggle ? <FaAlignRight size={20} /> : <IoIosCloseCircle size={30} />}
         </li>
       </ul>
     </nav>
   );
 }
+
+//{toggle ? <FaAlignRight size={20} /> : <IoIosCloseCircle size={30} />}
