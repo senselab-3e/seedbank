@@ -1,7 +1,10 @@
 import React, { useState, useCallback } from "react";
 import debounce from "lodash.debounce";
+import { Link } from "react-router-dom";
+import ColorPicker from "../components/entryway/ColorPicker";
+import "../style/header.css";
 
-import { FaAlignRight } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { SiNextdoor } from "react-icons/si";
 import { RiDoorOpenFill } from "react-icons/ri";
 import { RiLoginBoxFill } from "react-icons/ri";
@@ -11,21 +14,12 @@ import { BiChair } from "react-icons/bi";
 import { BiCast } from "react-icons/bi";
 import { IoIosCloseCircle } from "react-icons/io";
 
-import "../style/header.css";
-import { Link } from "react-router-dom";
-import ColorPicker from "../components/entryway/ColorPicker";
-
 export default function Header(props) {
   const [toggle, setToggle] = useState(false);
 
   const Toggle = () => {
     setToggle(!toggle);
   };
-
-  ///ok. if window size below blah, call Toggle() to 'hide' select part of menu.
-  //useCallback - to debounce
-  //handleResize
-  //get window size
 
   const checkWindow = () => {
     let mql = window.matchMedia("(max-width: 1000px)");
@@ -94,7 +88,11 @@ export default function Header(props) {
           </Link>
         </li>
         <li className="miniMenu" onClick={Toggle}>
-          {toggle ? <FaAlignRight size={20} /> : <IoIosCloseCircle size={30} />}
+          {toggle ? (
+            <GiHamburgerMenu size={20} />
+          ) : (
+            <IoIosCloseCircle size={30} />
+          )}
         </li>
       </ul>
     </nav>

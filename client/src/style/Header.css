@@ -4,6 +4,8 @@
   font-weight: 300;
   letter-spacing: 2px;
   z-index: 15;
+  position: fixed;
+  outline: 1px solid var(--lightGrey);
 }
 
 /*NOTE this was recently changed to display flex, from display inline block -- with align-items center etc  */
@@ -43,7 +45,7 @@
   margin: 0px;
   padding: 0px;
   background: var(--header-primary);
-  opacity: 0.8;
+  /* opacity: 0.9; */
 
   /* border: 1px solid rgb(212, 20, 20); */
   /* this border helps me see the true space layout of the element */
@@ -66,6 +68,7 @@
   border-style: none; /* these are all to override the userAgent styling on the typical input button so it appears seamlessly in the menu navbar */
   border: none;
   background: none;
+  cursor: pointer;
   /* display: flex; */
   /* align-items: center;
   justify-content: center; */
