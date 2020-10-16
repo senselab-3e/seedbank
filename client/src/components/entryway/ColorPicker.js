@@ -21,7 +21,7 @@ export default function ColorPicker(props) {
   //Associating a <label> with an <input> element increases the onclick areas space for input. hurray.
   return (
     <>
-      <li>
+      <li id="colorPickLi">
         <input
           id="picker"
           type="color"

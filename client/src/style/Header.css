@@ -55,8 +55,19 @@
   flex: 1;
 }
 
+/* font-weight: 300;
+    letter-spacing: 2px;
+    text-decoration: none;
+    padding: 20px 0px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: var(--linkGrey); */
+
 .menuColorPicker {
-  padding: 18px 5px;
+  font-weight: 300;
+  padding: 20px 5px;
+
   /* padding: 5px 25%; */
   border-style: none; /* these are all to override the userAgent styling on the typical input button so it appears seamlessly in the menu navbar */
   border: none;
