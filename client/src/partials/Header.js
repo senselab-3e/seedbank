@@ -54,20 +54,20 @@ export default function Header(props) {
         />
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/entryway">
-            <RiDoorOpenFill size={20} />
+            <RiDoorOpenFill size={23} />
             <label>Entryway</label>
           </Link>
         </li>
 
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/auth">
-            <RiLoginBoxFill size={20} />
+            <RiLoginBoxFill size={23} />
             <label>Login</label>
           </Link>
         </li>
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/oOoOs">
-            <BiCast size={20} />
+            <BiCast size={23} />
             <label>404</label>
           </Link>
         </li>
@@ -78,19 +78,19 @@ export default function Header(props) {
         </li>
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/events">
-            <BiChair size={25} />
+            <BiChair size={23} />
           </Link>
         </li>
 
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/">
-            <SiNextdoor size={25} />
+            <SiNextdoor size={23} />
           </Link>
         </li>
 
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/about3e">
-            <RiQuestionLine size={25} />
+            <RiQuestionLine size={23} />
           </Link>
         </li>
         <li className="miniMenu" onClick={Toggle}>
