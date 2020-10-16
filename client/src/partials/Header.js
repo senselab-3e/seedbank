@@ -44,6 +44,7 @@ export default function Header(props) {
   window.addEventListener("resize", memoizedCallback);
   console.log(toggle);
 
+  //if i put the size of the icons with text beside them, above 20, then their baseline no longer lines up with the first non link list item in the header.
   return (
     <nav className="navBar">
       <ul className="show-nav">
@@ -53,43 +54,43 @@ export default function Header(props) {
         />
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/entryway">
-            <RiDoorOpenFill />
+            <RiDoorOpenFill size={20} />
             <label>Entryway</label>
           </Link>
         </li>
 
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/auth">
-            <RiLoginBoxFill />
+            <RiLoginBoxFill size={20} />
             <label>Login</label>
           </Link>
         </li>
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/oOoOs">
-            <BiCast />
+            <BiCast size={20} />
             <label>404</label>
           </Link>
         </li>
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/traces">
-            <MdAddToPhotos />
+            <MdAddToPhotos size={23} />
           </Link>
         </li>
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/events">
-            <BiChair />
+            <BiChair size={25} />
           </Link>
         </li>
 
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/">
-            <SiNextdoor />
+            <SiNextdoor size={25} />
           </Link>
         </li>
 
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/about3e">
-            <RiQuestionLine />
+            <RiQuestionLine size={25} />
           </Link>
         </li>
         <li className="miniMenu" onClick={Toggle}>
