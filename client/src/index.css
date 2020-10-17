@@ -14,10 +14,12 @@ html {
 
 .root-container {
   /* margin: 0 auto; */
+  min-height: 100vh;
 }
 
 .mainContainer {
   padding-top: 4em;
+  /* display: flex; messes up the skinny palettes...*/
 }
 
 .header-container {

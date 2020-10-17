@@ -58,6 +58,7 @@ class App extends Component {
               <Route exact path="/traces" component={ImagesPage} />
             </Switch>
           </div>
+          <footer></footer>
         </div>
       </Router>
     );

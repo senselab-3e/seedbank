@@ -1,0 +1,69 @@
+.main {
+    min-height: 100vh;
+}
+
+.main,
+.main-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 2em 2em;
+}
+
+.main-content {
+    flex: 0 1 auto;
+    -webkit-flex: 0 1 auto;
+    margin: 0 auto;
+    padding: 2em
+        /* max-width: 32em; */
+}
+
+.main-sidebar-1 {
+    order: -1;
+}
+
+.section-left {
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.section-right {
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.footer {
+    height: 1.8em;
+    line-height: 1.8em;
+    text-align: center;
+    background: #222;
+    color: #f9f9f9
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+.item {
+    margin: 1em;
+}
+
+@media (min-width: 768px) {
+
+    /**
+	 * Body items are now side by side
+	 */
+    .main-body {
+        flex-direction: row;
+    }
+
+    /**
+	 * Sidebars have a basic 260 width
+	 * and are not really flexible anymore
+	 */
+    .hg-sidebar {
+        flex: 0 0 260px;
+    }
+}

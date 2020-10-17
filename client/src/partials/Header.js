@@ -15,6 +15,7 @@ import { BiCast } from "react-icons/bi";
 import { IoIosCloseCircle } from "react-icons/io";
 
 export default function Header(props) {
+  //toggle true means expanded menu open - false = minified hamburger menu is visible only
   const [toggle, setToggle] = useState(false);
 
   const Toggle = () => {
