@@ -23,8 +23,9 @@ class ImageCreate extends Component {
     e.preventDefault();
 
     let formData = new FormData();
-    await formData.append("image", this.state.image);
-
+    await Object.keys(this.state).map((key) => {
+      formData.append(key, this.state[key]);
+    });
     axios
       .post("/api/assets/images", formData, {
         "content-type": "multipart/form-data",
