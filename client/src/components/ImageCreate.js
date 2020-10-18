@@ -12,7 +12,6 @@ class ImageCreate extends Component {
   onChange(e) {
     switch (e.target.name) {
       case "image":
-        console.log(e.target.files[0]);
         this.setState({ image: e.target.files[0] });
         break;
       default:
@@ -24,14 +23,13 @@ class ImageCreate extends Component {
     e.preventDefault();
 
     let formData = new FormData();
-    await formData.append("image", this.state.image);
+    await Object.keys(this.state).map((key) => {
+      formData.append(key, this.state[key]);
+    });
 
     axios
       .post("/api/assets/images", formData, {
         "content-type": "multipart/form-data",
-      })
-      .then((image) => {
-        console.log("Created image: " + image + formData);
       })
       .catch((err) => {
         console.log(err);
