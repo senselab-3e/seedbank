@@ -5,30 +5,30 @@ export default function ImageRecent() {
   const [lastImage, setLastImage] = React.useState("");
   const [id, setId] = React.useState(null);
 
-  const getRecent = () => {
+  const getbyId = () => {
     axios
       .get(`/api/assets/images/lookup/${id}`)
       .then((image) => {
         console.log(image.data[0]);
-        //setLastImage(image);
+        // setLastImage(image.data[0]);
       })
       .catch((err) => console.log(err));
   };
 
-  const getImageEntry = () => {
+  const getTopEntryId = () => {
     axios
       .get("/api/assets/images/latest")
       .then((images) => {
         //setLastImage(images.data);
         console.log(images.data["max(`id`)"]);
         setId(images.data["max(`id`)"]);
-        // getRecent(images.data["max(`id`)"]);
+        getbyId(images.data["max(`id`)"]);
       })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    getImageEntry();
+    getTopEntryId();
   }, []);
 
   console.log(id, lastImage);
@@ -36,8 +36,8 @@ export default function ImageRecent() {
   return (
     <div>
       {lastImage}
-      <button onClick={getImageEntry}>first</button>
-      <button onClick={getRecent}>second</button>
+      <button onClick={getTopEntryId}>first</button>
+      <button onClick={getbyId}>second</button>
     </div>
   );
 }
