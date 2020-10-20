@@ -26,10 +26,7 @@ export default function ImagesGet() {
         <li key={key}>
           {images[key].name}
           <img
-            src={
-              "https://3ecologies-seedbank.com/assets/images/" +
-              images[key].path
-            }
+            src={"../anarchive/assets/images" + images[key].path}
             alt={images[key].name}
           />
         </li>
