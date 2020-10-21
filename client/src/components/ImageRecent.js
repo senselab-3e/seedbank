@@ -76,7 +76,8 @@ export default function ImageRecent() {
   console.log(typeof target);
 
   //   NOTES://0
-  //https://stackoverflow.com/questions/52109907/react-require-error-cannot-find-module
+  //WRONG: https://stackoverflow.com/questions/45334874/load-images-based-on-dynamic-path-in-reactjs
+  //HINT ON WHY ITS NOT WORKING: https://stackoverflow.com/questions/52109907/react-require-error-cannot-find-module
   //The problem is require() itself. require() get's fired, when the app starts.
   //When a path is passed statically, require() knows where to look when the app
   //starts and all is good. However, when the path gets passed dynamically, require()
