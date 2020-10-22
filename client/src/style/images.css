@@ -1,0 +1,118 @@
+.main {
+    min-height: 100vh;
+}
+
+.main,
+.main-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 2em 2em;
+    border: 1px solid yellow;
+}
+
+.main-content {
+    flex: 3;
+    /* -webkit-flex: 0 1 auto; */
+    margin: 0 auto;
+    padding: 2em;
+    border: 1px solid deeppink;
+    /* max-width: 32em; */
+}
+
+.main-content input[type=text] {
+    width: 100%;
+    height: 100px;
+    margin: 0.5em 0em 2em 0em;
+}
+
+.main-sidebar-1 {
+    order: -1;
+}
+
+.section-left {
+    -webkit-flex: 1;
+    flex: 1;
+    border: 1px solid blue;
+}
+
+.section-right {
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.footer {
+    height: 1.8em;
+    line-height: 1.8em;
+    text-align: center;
+    background: #222;
+    color: #f9f9f9
+}
+
+.container {
+    /* display: flex; */
+
+    flex-wrap: wrap;
+    padding-bottom: 5px;
+
+}
+
+.item {
+    margin: 1em;
+}
+
+.image {
+    /* width: 100%; */
+    height: 100%;
+    max-height: 30em;
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
+    padding: 5px;
+    /* justify-content: space-around; */
+}
+
+@media (min-width: 768px) {
+
+    /**
+	 * Body items are now side by side
+     */
+
+    /* .section-left {
+        display: none;
+    } */
+
+    .main-body {
+        flex-direction: row;
+    }
+
+    /**
+	 * Sidebars have a basic 260 width
+	 * and are not really flexible anymore
+	 */
+    .hg-sidebar {
+        flex: 0 0 260px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    /**
+	 * Body items are now side by side
+     */
+
+    .section-left {
+        display: none;
+    }
+
+    .section-right {
+        display: none;
+    }
+
+    .main-body {
+        flex-direction: row;
+    }
+
+
+
+}

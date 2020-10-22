@@ -5,11 +5,53 @@ const assets = require('../../services/asset_helpers');
 const path = require('path');
 const fs = require('fs');
 
-// GET api/assets/images
+
+router.get('/images/', (req, res) => {
+    knex('images')
+        .then(image => {
+            res.send(image)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+});
+
+//GET api/assets/images/${latestentry}
+
+router.get('/images/latest/', (req, res) => {
+    knex('images')
+        .max('id').first()
+        .then(image => {
+            res.send(image);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+});
+
+// GET api/assets/images/${id}
+router.get('/images/lookup/:id', (req, res) => {
+    console.log(req.params.id, 'hello')
+    knex('images')
+        .where({
+            id: req.params.id
+        })
+        .then(image => {
+            //res.send(image, console.log(req.body.id, 'hello'))
+            res.send(image)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+});
+
+// this was written by joel - likely with for other purposes so passing the hackney lookup path above, for now
+// GET api/assets/images/${id}
 router.get('/images/:id', (req, res) => {
     knex('images')
         .where({
             id: req.params.id
+
         }).first()
         .then(image => {
             res.sendFile(assets.get_path(image, assets.get_type(req.url)))

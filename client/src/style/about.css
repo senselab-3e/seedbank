@@ -41,9 +41,11 @@
 }
 
 .container {
-    display: flex;
+    /* display: flex; */
+
     flex-wrap: wrap;
     padding: 5px;
+
 }
 
 .item {
