@@ -22,8 +22,7 @@ html {
   /* display: flex; messes up the skinny palettes...*/
 }
 
-.header-container {
-}
+.header-container {}
 
 a {
   position: relative;
@@ -38,4 +37,8 @@ a::before {
   bottom: -3px;
   left: 0px; */
   /* background-color: var(--linkPink); */
+}
+
+.imgUploadPreview {
+  width: 20%;
 }

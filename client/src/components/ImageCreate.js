@@ -4,7 +4,7 @@ import axios from "axios";
 class ImageCreate extends Component {
   constructor(props) {
     super(props);
-    this.state = { image: "", tendencies: "", notes: "" };
+    this.state = { image: "", tendencies: "", notes: "", urlObj: "" };
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
   }
@@ -13,6 +13,8 @@ class ImageCreate extends Component {
     switch (e.target.name) {
       case "image":
         this.setState({ image: e.target.files[0] });
+        const uplImg = window.URL.createObjectURL(e.target.files[0]);
+        this.setState({ urlObj: uplImg });
         break;
       default:
         this.setState({ [e.target.name]: e.target.value });
@@ -37,33 +39,36 @@ class ImageCreate extends Component {
 
   render() {
     return (
-      <form encType="multipart/form-data">
-        <label>
-          Upload an image
-          <br />
-          <br />
-          <input
-            type="text"
-            name="tendencies"
-            placeholder="tendencies (comma-separated)"
-            value={this.state.value}
-            onChange={this.onChange}
-          />
-          <input
-            type="text"
-            name="notes"
-            placeholder="notes"
-            value={this.state.value}
-            onChange={this.onChange}
-          />
-          <br />
-          <br />
-          <input type="file" name="image" onChange={this.onChange} />
-          <br />
-          <br />
-          <input type="button" value="Upload" onClick={this.submit} />
-        </label>
-      </form>
+      <>
+        <img className="imgUploadPreview" src={this.state.urlObj} alt="" />
+        <form encType="multipart/form-data">
+          <label>
+            Upload an image
+            <br />
+            <br />
+            <input
+              type="text"
+              name="tendencies"
+              placeholder="tendencies (comma-separated)"
+              value={this.state.value}
+              onChange={this.onChange}
+            />
+            <input
+              type="text"
+              name="notes"
+              placeholder="notes"
+              value={this.state.value}
+              onChange={this.onChange}
+            />
+            <br />
+            <br />
+            <input type="file" name="image" onChange={this.onChange} />
+            <br />
+            <br />
+            <input type="button" value="Upload" onClick={this.submit} />
+          </label>
+        </form>
+      </>
     );
   }
 }

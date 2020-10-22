@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import bluesponge from "../assets/images/63/26/f3/a1/image_from_ios_720_1.jpg";
 
+import { chooseElement } from "../helpers/Calculators";
+import { imgThingies, imageList } from "../helpers/ArrayOptions";
+
 export default function ImageRecent() {
   const [lastImage, setLastImage] = React.useState({
     id: "",
@@ -11,9 +14,17 @@ export default function ImageRecent() {
     notes: "",
   });
 
+  const pathOrigin = process.env.HOST;
+
   const [id, setId] = React.useState(null);
 
-  const imgStorage = [];
+  const imgStorage = chooseElement(imgThingies);
+
+  console.log(imageList);
+
+  for (const key in imageList) {
+    console.log(imageList[key]);
+  }
 
   const getbyId = () => {
     axios
@@ -23,7 +34,7 @@ export default function ImageRecent() {
         console.log(image.data[0]);
         const { id, name, path, tendencies, notes } = image.data[0];
         setLastImage({
-          path: "../assets/images/" + path + "/" + name,
+          path: path + "/" + name,
           id: id,
           name: name,
           tendencies: tendencies,
@@ -73,6 +84,7 @@ export default function ImageRecent() {
   //   imageLoad.push(thing);
   const target = "../assets/images/63/26/f3/a1/image_from_ios_720_1.jpg";
 
+  const testRemote = "/assets/images/00/1e/2a/6f/mimo-feet.gif";
   console.log(typeof target);
 
   //   NOTES://0
@@ -83,15 +95,36 @@ export default function ImageRecent() {
   //starts and all is good. However, when the path gets passed dynamically, require()
   //does not know on start up of the app where to look for the image. Hence, it does not find it.
   //That is why requiere() cannot take a dynamically created path.
+
+  //Only partially dynamic statement are allowed for import().
+
+  //Packaging happens once before runtime so those variables don't have values yet.
   return (
     <div>
       Pathway: {lastImage.path}
       {/* {imageLoad} */}
-      <img
+      {/* <img
         src={require("../assets/images/63/26/f3/a1/image_from_ios_720_1.jpg")}
         alt="thing"
+      /> */}
+      dd
+      <img
+        className="imgUploadPreview"
+        src={
+          process.env.PUBLIC_URL + "/assets/images/00/1e/2a/6f/mimo-feet.gif"
+        }
+        alt=""
       />
-      {lastImage.path}
+      <img src={process.env.PUBLIC_URL + testRemote} alt="" />
+      <br></br>
+      {process.env.PUBLIC_URL + "/assets/images/00/1e/2a/6f/mimo-feet.gif"}
+      <br></br>
+      {process.env.PUBLIC_URL + testRemote}
+      <br></br>
+      {/* <img src={`${imgStorage}`} alt="ddd" /> */}
+      {/* <img
+        src={require(`../assets/images/${lastImage.path}${lastImage.name}`)}
+      /> */}
       {/* <img src={require(`${lastImage.path}`)} alt="product" /> */}
       {/* <img src={require(`${target}`)} alt="thing" /> */}
       {/* <img src={require('"' + target + '"')} alt="thing" /> */}

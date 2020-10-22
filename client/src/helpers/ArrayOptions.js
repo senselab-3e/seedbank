@@ -1,3 +1,49 @@
+import axios from 'axios'
+
+
+
+// const getData = () => {
+//     let imageList = []
+//     console.log("new event added");
+//     axios
+//         .get("/api/assets/images")
+//         .then((images) => {
+//             imageList.push(images.data);
+//             console.log(imageList);
+//         })
+//         .catch((err) => console.log(err));
+// };
+let list = []
+axios
+    .get("/api/assets/images")
+    .then((images) => {
+        list.push(images.data);
+        console.log(imageList);
+    })
+    .catch((err) => console.log(err));
+
+
+for (const key in list) {
+    console.log(list[key])
+}
+
+export const imageList = list;
+
+
+//   for (const key in images) {
+//     if (imageList.length < 10) {
+//       imageList.push(
+//         <li key={key}>
+//           {images[key].name}
+//           <img
+//             src={"../anarchive/assets/images" + images[key].path}
+//             alt={images[key].name}
+//           />
+//         </li>
+//       );
+//     }
+
+
 export const imgThingies = [
     "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2F404_glitch2.gif?v=1575674309400",
     "https://cdn.glitch.com/bc831c14-9a50-45a0-88b2-b8e94aa5b4f0%2Fcompost.gif?v=1575674555450",
