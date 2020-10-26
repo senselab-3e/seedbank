@@ -109,7 +109,6 @@ export default function ImageRecent() {
       /> */}
       dd
       <img
-        className="imgUploadPreview"
         src={
           process.env.PUBLIC_URL + "/assets/images/00/1e/2a/6f/mimo-feet.gif"
         }

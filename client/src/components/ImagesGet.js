@@ -15,7 +15,6 @@ export default function ImagesGet() {
       .then((images) => {
         setLoading(true);
         setImages(images.data);
-        //console.log(images.data);
       })
       .catch((err) => console.log(err));
   };
@@ -28,6 +27,7 @@ export default function ImagesGet() {
   //notes on using public folder: https://create-react-app.dev/docs/using-the-public-folder/
   let imageList = [];
   let message = "";
+
   for (const key in images) {
     if (isLoading) {
       message = "image list";
@@ -51,6 +51,7 @@ export default function ImagesGet() {
   return (
     <div>
       <p> {message}</p>
+
       <ul>{imageList}</ul>
     </div>
   );
