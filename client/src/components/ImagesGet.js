@@ -3,14 +3,19 @@ import axios from "axios";
 
 export default function ImagesGet() {
   const [images, setImages] = React.useState({});
+  const [isLoading, setLoading] = React.useState(false);
+  //for some reason the process.env isn't being read. in the documentation it sayssss that it is read in both dev and production modes, but in stack overflow, years prior, it wasnt. not sure whats going on but will do this for now.
+  // const root = process.env.PUBLIC_URL + "assets/images/";
+  const root = "https://3ecologies-seedbank.com/assets/images/";
 
   const getData = () => {
-    console.log("new event added");
+    console.log("getting images");
     axios
       .get("/api/assets/images")
       .then((images) => {
+        setLoading(true);
         setImages(images.data);
-        console.log(images.data);
+        //console.log(images.data);
       })
       .catch((err) => console.log(err));
   };
@@ -19,91 +24,34 @@ export default function ImagesGet() {
     getData();
   }, []);
 
-  const imageList = [];
+  //https://create-react-app.dev/docs/advanced-configuration/
+  //notes on using public folder: https://create-react-app.dev/docs/using-the-public-folder/
+  let imageList = [];
+  let message = "";
   for (const key in images) {
-    if (imageList.length < 10) {
-      imageList.push(
-        <li key={key}>
-          {images[key].name}
-          <img
-            src={"../anarchive/assets/images" + images[key].path}
-            alt={images[key].name}
-          />
-        </li>
-      );
+    if (isLoading) {
+      message = "image list";
+      if (imageList.length < 10) {
+        imageList.push(
+          <li key={key}>
+            {images[key].name}
+            <img
+              className="image"
+              src={root + images[key].path + "/" + images[key].name}
+              alt={images[key].name}
+            />
+          </li>
+        );
+      }
+    } else if (isLoading) {
+      message = "Loading";
     }
-    //console.log(images[key].name);
   }
-  //console.log(images);
 
   return (
     <div>
+      <p> {message}</p>
       <ul>{imageList}</ul>
     </div>
   );
 }
-
-// export class ImagesGet extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       images: {},
-//     };
-//     console.log(this.state.images, "images");
-//   }
-
-//   getData = () => {
-//     console.log("new event added");
-//     axios
-//       .get("/api/assets/images")
-//       .then((images) => {
-//         this.setState({
-//           images: images.data,
-//         });
-//         console.log(images.data);
-//       })
-//       .catch((err) => console.log(err));
-//   };
-
-//   componentDidMount() {
-//     this.getData();
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <ul>
-//           {this.state.images.map(({ id, name, path }) => (
-//             <li key={id.toString()}>
-//               {name} {path}
-//             </li>
-//           ))}
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
-
-// export default ImagesGet;
-
-// import React from "react";
-// import DeleteBt from "./DeleteBt";
-// //import { UserId, UserName } from "./GetUser";
-// export default function EventList(props) {
-//   const events = props.events; //entire list of events saved on the db
-//   //   const [currentUserName, setName] = useState("" || UserName);
-//   //   const [currentUserId, setId] = useState("" || UserId);
-//   //   console.log(currentUserName, currentUserId);
-//   return (
-//     <div>
-//       <ul>
-//         {events.map(({ id, name, data }) => (
-//           <li key={id.toString()}>
-//             {name} {data}
-//             <DeleteBt updateList={props.updateList} id={id} path={"events"} />
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }

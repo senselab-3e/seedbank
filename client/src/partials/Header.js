@@ -24,7 +24,7 @@ export default function Header(props) {
 
   const checkWindow = () => {
     let mql = window.matchMedia("(max-width: 1000px)");
-    console.log(mql.matches);
+    // console.log(mql.matches);
     mql.matches ? setToggle(true) : setToggle(false);
   };
   const memoizedCallback = useCallback(
@@ -37,7 +37,7 @@ export default function Header(props) {
   }, [memoizedCallback]);
 
   window.addEventListener("resize", memoizedCallback);
-  console.log(toggle);
+  //console.log(toggle);
 
   //if i put the size of the icons with text beside them, above 20, then their baseline no longer lines up with the first non link list item in the header.
   return (

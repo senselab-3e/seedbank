@@ -8,6 +8,7 @@ const fs = require('fs');
 
 router.get('/images/', (req, res) => {
     knex('images')
+        // .select('created_at')
         .then(image => {
             res.send(image)
         })
@@ -18,34 +19,34 @@ router.get('/images/', (req, res) => {
 
 //GET api/assets/images/${latestentry}
 
-router.get('/images/latest/', (req, res) => {
-    knex('images')
-        .max('id').first()
-        .then(image => {
-            res.send(image);
-        })
-        .catch(err => {
-            console.log(err)
-        })
-});
+//NOTE: ignore these for now. they were built when i wanted to show the latest upload, but then i settled for a local display of the image currently being uploaded. its enough for now
+// router.get('/images/latest/', (req, res) => {
+//     knex('images')
+//         .max('id').first()
+//         .then(image => {
+//             res.send(image);
+//         })
+//         .catch(err => {
+//             console.log(err)
+//         })
+// });
 
-// GET api/assets/images/${id}
-router.get('/images/lookup/:id', (req, res) => {
-    console.log(req.params.id, 'hello')
-    knex('images')
-        .where({
-            id: req.params.id
-        })
-        .then(image => {
-            //res.send(image, console.log(req.body.id, 'hello'))
-            res.send(image)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-});
+// // GET api/assets/images/${id}
+// router.get('/images/lookup/:id', (req, res) => {
+//     console.log(req.params.id, 'hello')
+//     knex('images')
+//         .where({
+//             id: req.params.id
+//         })
+//         .then(image => {
+//             //res.send(image, console.log(req.body.id, 'hello'))
+//             res.send(image)
+//         })
+//         .catch(err => {
+//             console.log(err)
+//         })
+// });
 
-// this was written by joel - likely with for other purposes so passing the hackney lookup path above, for now
 // GET api/assets/images/${id}
 router.get('/images/:id', (req, res) => {
     knex('images')
