@@ -4,6 +4,7 @@ import axios from "axios";
 export default function ImagesGet() {
   const [images, setImages] = React.useState({});
   const [isLoading, setLoading] = React.useState(false);
+  //this value could be reset via props. i'm keeping it discrete from the upperlimit value in case i want a button that continually resets it based on view 10 at a time, 30 at a time, etc.
   const [imgDispLmt, setLimit] = React.useState(30);
   const [lowerLimit, setLowerLimit] = React.useState(0);
   const [upperLimit, setUpperLimit] = React.useState(imgDispLmt);
@@ -26,9 +27,9 @@ export default function ImagesGet() {
     getData();
   }, []);
 
-  // React.useEffect(() => {
-  //   getData();
-  // }, []);
+  React.useEffect(() => {
+    setUpperLimit(imgDispLmt);
+  }, [imgDispLmt]);
 
   //https://create-react-app.dev/docs/advanced-configuration/
   //notes on using public folder: https://create-react-app.dev/docs/using-the-public-folder/
@@ -87,20 +88,23 @@ export default function ImagesGet() {
   }
 
   const resetImageSelection = () => {
-    console.log("resetting", lowerLimit);
     //image List needs to be set up as a hook for this to work
     // imageList.splice(0, 10);
     setLowerLimit(lowerLimit + 10);
     setUpperLimit(upperLimit + 10);
     //setLimit(imgDispLmt + 10);
-    console.log("resetting");
+    console.log("resetting", lowerLimit);
   };
 
   const loadMoreImages = () => {
     //imgDispLmt < 50 ? setLimit(imgDispLmt + 10) : resetImageSelection();
-    imageList.length < 50
+    imageList.length < imgDispLmt
       ? setUpperLimit(upperLimit + 10)
       : resetImageSelection();
+  };
+
+  const numImgDisplayed = (val) => {
+    setLimit(val);
   };
 
   //console.log(images);
@@ -118,6 +122,12 @@ export default function ImagesGet() {
 
   return (
     <>
+      <ul>
+        <button onClick={loadMoreImages}>View 10 more</button>
+        <button onClick={() => setLimit(10)}> View x 10</button>
+        <button onClick={() => setLimit(30)}> View x 30</button>
+        <button onClick={() => setLimit(50)}>View x 50</button>
+      </ul>
       <button>group by upload date</button>
       <button>group by tendency</button>
       <p> {message}</p>
