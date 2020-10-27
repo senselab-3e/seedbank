@@ -4,6 +4,7 @@ import axios from "axios";
 export default function ImagesGet() {
   const [images, setImages] = React.useState({});
   const [isLoading, setLoading] = React.useState(false);
+  const [imgDispLmt, setLimit] = React.useState(30);
 
   const root = "https://3ecologies-seedbank.com/assets/images/";
 
@@ -22,6 +23,10 @@ export default function ImagesGet() {
     getData();
   }, []);
 
+  // React.useEffect(() => {
+  //   getData();
+  // }, []);
+
   //https://create-react-app.dev/docs/advanced-configuration/
   //notes on using public folder: https://create-react-app.dev/docs/using-the-public-folder/
   let imageList = [];
@@ -30,7 +35,7 @@ export default function ImagesGet() {
   for (const key in images) {
     if (isLoading) {
       message = "image list";
-      if (imageList.length < 30) {
+      if (imageList.length < imgDispLmt) {
         var notes;
         var tendencies;
 
@@ -63,10 +68,10 @@ export default function ImagesGet() {
               alt={images[key].name}
             />
             <div key={images[key].name} className="text">
-              <p key={images[key].name}> {cardcaption}</p>
+              {/* <p key={images[key].name}> {cardcaption}</p>
               <p key={key + "notes"}> {notes}</p>
               <p key={key + "tendencies"}>{tendencies}</p>
-              <button>more</button>
+              <button>more</button> */}
             </div>
           </div>
         );
@@ -76,7 +81,18 @@ export default function ImagesGet() {
     }
   }
 
-  console.log(images);
+  const resetImageSelection = () => {
+    console.log("resetting", imageList);
+    //image List needs to be set up as a hook for this to work
+    // imageList.splice(0, 10);
+    console.log("resetting", imageList);
+  };
+
+  const loadMoreImages = () => {
+    imgDispLmt < 50 ? setLimit(imgDispLmt + 10) : resetImageSelection();
+  };
+
+  //console.log(images);
 
   //NOt being used right now. this is just a way to extract all the names -- into a separate array.
   //new objects where the key value is made into the key name, can also be handled here, but making things = {}
@@ -100,6 +116,7 @@ export default function ImagesGet() {
         <ul>{imageList}</ul>
       </div> */}
       <div className="cards">{imageList}</div>
+      <button onClick={loadMoreImages}>View 10 more</button>
     </>
   );
 }
