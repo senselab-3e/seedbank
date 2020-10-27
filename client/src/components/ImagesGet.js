@@ -5,6 +5,9 @@ export default function ImagesGet() {
   const [images, setImages] = React.useState({});
   const [isLoading, setLoading] = React.useState(false);
   const [imgDispLmt, setLimit] = React.useState(30);
+  const [lowerLimit, setLowerLimit] = React.useState(0);
+  const [upperLimit, setUpperLimit] = React.useState(imgDispLmt);
+  //const [imgList, setImgList] = React.useState([]);
 
   const root = "https://3ecologies-seedbank.com/assets/images/";
 
@@ -33,9 +36,11 @@ export default function ImagesGet() {
   let message = "";
 
   for (const key in images) {
+    //console.log(key);
     if (isLoading) {
       message = "image list";
-      if (imageList.length < imgDispLmt) {
+      // if (imageList.length < imgDispLmt) {
+      if (key >= lowerLimit && key <= upperLimit) {
         var notes;
         var tendencies;
 
@@ -82,14 +87,20 @@ export default function ImagesGet() {
   }
 
   const resetImageSelection = () => {
-    console.log("resetting", imageList);
+    console.log("resetting", lowerLimit);
     //image List needs to be set up as a hook for this to work
     // imageList.splice(0, 10);
-    console.log("resetting", imageList);
+    setLowerLimit(lowerLimit + 10);
+    setUpperLimit(upperLimit + 10);
+    //setLimit(imgDispLmt + 10);
+    console.log("resetting");
   };
 
   const loadMoreImages = () => {
-    imgDispLmt < 50 ? setLimit(imgDispLmt + 10) : resetImageSelection();
+    //imgDispLmt < 50 ? setLimit(imgDispLmt + 10) : resetImageSelection();
+    imageList.length < 50
+      ? setUpperLimit(upperLimit + 10)
+      : resetImageSelection();
   };
 
   //console.log(images);
