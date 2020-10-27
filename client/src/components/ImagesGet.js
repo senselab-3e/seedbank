@@ -4,8 +4,7 @@ import axios from "axios";
 export default function ImagesGet() {
   const [images, setImages] = React.useState({});
   const [isLoading, setLoading] = React.useState(false);
-  //for some reason the process.env isn't being read. in the documentation it sayssss that it is read in both dev and production modes, but in stack overflow, years prior, it wasnt. not sure whats going on but will do this for now.
-  // const root = process.env.PUBLIC_URL + "assets/images/";
+
   const root = "https://3ecologies-seedbank.com/assets/images/";
 
   const getData = () => {
@@ -31,16 +30,40 @@ export default function ImagesGet() {
   for (const key in images) {
     if (isLoading) {
       message = "image list";
-      if (imageList.length < 10) {
+      if (imageList.length < 30) {
+        // var notes;
+        // var tendencies;
+        var cardcaption = "Name: " + images[key].name;
+
+        if (images[key].notes) {
+          cardcaption += "Notes: " + images[key].notes;
+        }
+
+        if (images[key].tendencies) {
+          cardcaption += "Tendencies: " + images[key].tendencies;
+        }
+
         imageList.push(
-          <li key={key}>
-            {images[key].name}
+          //another styling approach which just handles displaying the image
+          // <img
+          //   className="item"
+          //   key={key}
+          //   src={root + images[key].path + "/" + images[key].name}
+          //   alt={images[key].name}
+          // />
+
+          //alternative styling approach using cards. not sure what i prefer yet.
+          <div className="card" key={key}>
             <img
-              className="image"
+              key={key}
               src={root + images[key].path + "/" + images[key].name}
               alt={images[key].name}
             />
-          </li>
+            <div key={images[key].name} className="text">
+              <p key={images[key].name}> {cardcaption}</p>
+              <button>more</button>
+            </div>
+          </div>
         );
       }
     } else if (isLoading) {
@@ -48,11 +71,30 @@ export default function ImagesGet() {
     }
   }
 
-  return (
-    <div>
-      <p> {message}</p>
+  console.log(images);
 
-      <ul>{imageList}</ul>
-    </div>
+  //NOt being used right now. this is just a way to extract all the names -- into a separate array.
+  //new objects where the key value is made into the key name, can also be handled here, but making things = {}
+  //things[item.name] = item.name
+  // let things = "";
+  // if (images.length > 1) {
+  //   things = images.map((item) => {
+  //     return item.name;
+  //   });
+  // }
+  //console.log(things); // gives me a new array with just the names
+
+  return (
+    <>
+      <button>group by upload date</button>
+      <button>group by tendency</button>
+      <p> {message}</p>
+      {/* <div className="gallery">
+        <p> {message}</p>
+
+        <ul>{imageList}</ul>
+      </div> */}
+      <div className="cards">{imageList}</div>
+    </>
   );
 }
