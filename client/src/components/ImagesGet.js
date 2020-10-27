@@ -31,16 +31,19 @@ export default function ImagesGet() {
     if (isLoading) {
       message = "image list";
       if (imageList.length < 30) {
-        // var notes;
-        // var tendencies;
-        var cardcaption = "Name: " + images[key].name;
+        var notes;
+        var tendencies;
+
+        //the slice removes the file extension .png .gif .jpg from the uploaded image, so the only name displayed is the file name. but do we like the file names??? is this important information?
+        //not yet... but maybe in the future
+        var cardcaption = images[key].name.slice(0, -4);
 
         if (images[key].notes) {
-          cardcaption += "Notes: " + images[key].notes;
+          notes = "Notes: " + images[key].notes;
         }
 
         if (images[key].tendencies) {
-          cardcaption += "Tendencies: " + images[key].tendencies;
+          tendencies = "Tendencies: " + images[key].tendencies;
         }
 
         imageList.push(
@@ -61,6 +64,8 @@ export default function ImagesGet() {
             />
             <div key={images[key].name} className="text">
               <p key={images[key].name}> {cardcaption}</p>
+              <p key={key + "notes"}> {notes}</p>
+              <p key={key + "tendencies"}>{tendencies}</p>
               <button>more</button>
             </div>
           </div>
