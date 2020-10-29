@@ -17,6 +17,19 @@ router.get('/images/', (req, res) => {
         })
 });
 
+
+// i'll need to research how to pull a max min list from the api, rather then a limit that will just pull from the top. 
+router.get('/images/${num}', (req, res) => {
+    knex('images')
+        .orderBy('created_at', 'desc').limit(req.params.num)
+        .then(image => {
+            res.send(image)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+});
+
 //GET api/assets/images/latest    // returns only one
 //NOTE: ignore these for now. they were built when i wanted to show the latest upload, but then i settled for a local display of the image currently being uploaded. its enough for now
 router.get('/images/latest/', (req, res) => {
