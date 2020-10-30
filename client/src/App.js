@@ -8,13 +8,16 @@ import Header from "./partials/Header";
 import Glitch from "./pages/Glitch";
 import ImagesPage from "./pages/Images";
 import Entryway from "./pages/Entryway";
+import P5Wrapper from "./components/P5Wrapper";
 
 import "./index.css";
 
 function Home() {
   return (
     <div>
-      <h2>Home Hello</h2>
+      <h2>
+        <P5Wrapper />
+      </h2>
     </div>
   );
 }

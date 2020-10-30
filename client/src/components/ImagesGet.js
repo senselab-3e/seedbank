@@ -42,19 +42,19 @@ export default function ImagesGet() {
       message = "image list";
       // if (imageList.length < imgDispLmt) {
       if (key >= lowerLimit && key <= upperLimit) {
-        var notes;
-        var tendencies;
+        //var notes;
+        //var tendencies;
 
-        //the slice removes the file extension .png .gif .jpg from the uploaded image, so the only name displayed is the file name. but do we like the file names??? is this important information?
+        // //the slice removes the file extension .png .gif .jpg from the uploaded image, so the only name displayed is the file name. but do we like the file names??? is this important information?
         //not yet... but maybe in the future
-        var cardcaption = images[key].name.slice(0, -4);
+        // var cardcaption = images[key].name.slice(0, -4);
 
         if (images[key].notes) {
-          notes = "Notes: " + images[key].notes;
+          //notes = "Notes: " + images[key].notes;
         }
 
         if (images[key].tendencies) {
-          tendencies = "Tendencies: " + images[key].tendencies;
+          //tendencies = "Tendencies: " + images[key].tendencies;
         }
 
         imageList.push(
@@ -75,9 +75,9 @@ export default function ImagesGet() {
             />
             <div key={images[key].name} className="text">
               {/* <p key={images[key].name}> {cardcaption}</p>
-              <p key={key + "notes"}> {notes}</p>
-              <p key={key + "tendencies"}>{tendencies}</p>
-              <button>more</button> */}
+                          <p key={key + "notes"}> {notes}</p>
+                          <p key={key + "tendencies"}>{tendencies}</p>
+                          <button>more</button> */}
             </div>
           </div>
         );
@@ -103,9 +103,9 @@ export default function ImagesGet() {
       : resetImageSelection();
   };
 
-  const numImgDisplayed = (val) => {
-    setLimit(val);
-  };
+  // const numImgDisplayed = (val) => {
+  //   setLimit(val);
+  // };
 
   //console.log(images);
 
@@ -123,21 +123,20 @@ export default function ImagesGet() {
   return (
     <>
       <ul>
-        <button onClick={loadMoreImages}>View 10 more</button>
-        <button onClick={() => setLimit(10)}> View x 10</button>
-        <button onClick={() => setLimit(30)}> View x 30</button>
-        <button onClick={() => setLimit(50)}>View x 50</button>
-      </ul>
-      <button>group by upload date</button>
-      <button>group by tendency</button>
-      <p> {message}</p>
+        <button onClick={loadMoreImages}> View 10 more </button>{" "}
+        <button onClick={() => setLimit(10)}> View x 10 </button>{" "}
+        <button onClick={() => setLimit(30)}> View x 30 </button>{" "}
+        <button onClick={() => setLimit(50)}> View x 50 </button>{" "}
+      </ul>{" "}
+      <button> group by upload date </button>{" "}
+      <button> group by tendency </button> <p> {message} </p>{" "}
       {/* <div className="gallery">
-        <p> {message}</p>
+              <p> {message}</p>
 
-        <ul>{imageList}</ul>
-      </div> */}
-      <div className="cards">{imageList}</div>
-      <button onClick={loadMoreImages}>View 10 more</button>
+              <ul>{imageList}</ul>
+            </div> */}{" "}
+      <div className="cards"> {imageList} </div>{" "}
+      <button onClick={loadMoreImages}> View 10 more </button>{" "}
     </>
   );
 }

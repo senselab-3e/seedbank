@@ -4,6 +4,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### npm install
+
+### SPECIAL NOTE FOR P5 sketches
+
+unfortunately the react p5 wrapper library does not work as a complete library upon the typical npm install. You have to manually/additionally create a folder within the p5-wrapper's dist folder, named node_modules, and place the p5.js file (https://github.com/processing/p5.js/releases/download/1.1.9/p5.js) within it. PATH: client/node_modules/react-p5-wrapper/dist/node_modules/p5.js
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
@@ -66,3 +72,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### SIDE NOTE
+
+known vulnerability in sublibrary of react-scripts - has no impact provided one avoids Don't use the includeInheritedProps: true options or the withInheritedProps instance if using a version >= 0.11.0. see https://github.com/advisories/GHSA-cwx2-736x-mf6w
