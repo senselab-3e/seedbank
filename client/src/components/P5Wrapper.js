@@ -7,7 +7,7 @@ import sketch1 from "./p5/sketch1";
 class P5wrapper extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { image: "", tendencies: "", notes: "", urlUploadImg: "" };
+    this.state = { image: "", tendencies: "", notes: "", urlUploadImg: null };
     this.onChange = this.onChange.bind(this);
     //this.submit = this.submit.bind(this);
   }
@@ -50,7 +50,7 @@ class P5wrapper extends React.Component {
         </form>
         dafds
         {/* <img src={photo} alt="test photo" /> */}
-        <img className="image" src={this.state.urlUploadImg} alt="" />
+        {/* <img className="image" src={this.state.urlUploadImg} alt="" /> */}
         <P5Wrapper sketch={sketch1} imgSource={this.state.urlUploadImg} />
       </div>
     );

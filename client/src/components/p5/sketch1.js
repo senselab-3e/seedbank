@@ -1281,12 +1281,13 @@ export default function sketch1(p) {
 
     p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
         console.log(props.imgSource)
-        // if (props.imgSource !== null) {
-        //     img = props.imgSource;
-        // }
+        if (props.imgSource !== null) {
+            img = p.loadImage(props.imgSource);
+        }
     };
 
     p.draw = function () {
+
         p.orbitControl();
         p.textureWrap(p.CLAMP);
         p.textureMode(p.NORMAL);
@@ -1294,6 +1295,7 @@ export default function sketch1(p) {
         p.translate(-200, -200, -200);
         p.beginShape(p.TRIANGLE_STRIP);
         for (let i = 0; i < c.length; i++) {
+            console.log(img)
             p.texture(img);
             let coord = c[i];
             let u = p.map(coord.x, -img.width * uval, img.width * 0.3, 0, 1); // changed location to a 1/3 from 0.5
