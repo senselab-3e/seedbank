@@ -1276,7 +1276,7 @@ export default function sketch1(p) {
     p.setup = function () {
         p.createCanvas(600, 500, p.WEBGL);
         //p.background(283, 54, 197);
-        p.background('white');
+        p.background(0);
         // eslint-disable-next-line
         var frameCount = 0;
 
@@ -1285,7 +1285,7 @@ export default function sketch1(p) {
     // this naming is non-negotiable aka it must be exactly this and was created specficially for this library to handle props. props can also only be passed through this function
     //https://github.com/and-who/react-p5-wrapper#usage
     p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
-        console.log(props.imgSource)
+        //console.log(props.imgSource)
         if (props.imgSource !== null) {
             img = p.loadImage(props.imgSource);
         }
@@ -1302,7 +1302,7 @@ export default function sketch1(p) {
 
         if (img !== null) {
             for (let i = 0; i < c.length; i++) {
-                console.log(img)
+
                 p.texture(img);
                 let coord = c[i];
                 let v = p.map(coord.x - 50, -img.width * 0.1, img.width * 0.3, 0, 1); // changed location to a 1/3 from 0.5

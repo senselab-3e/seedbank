@@ -3,6 +3,16 @@ import axios from "axios";
 import P5Wrapper from "react-p5-wrapper";
 import sketch1 from "./p5/sketch1";
 
+const styling = (
+  <div
+    style={{
+      border: "1px solid #ccc",
+      width: "300px",
+      height: "300px",
+    }}
+  ></div>
+);
+
 class ImageUpload extends Component {
   constructor(props) {
     super(props);
@@ -59,15 +69,17 @@ class ImageUpload extends Component {
         <P5Wrapper sketch={sketch1} imgSource={this.state.urlUploadImg} />
       );
     } else {
-      placeholder = "Select Image";
+      placeholder = styling;
     }
 
     return (
       <>
+        <div className="canvas-container">{placeholder}</div>
+
+        {/*
         <div className="container">
-          {placeholder}
-          {/* <img className="image" src={this.state.urlUploadImg} alt="" /> */}
-        </div>
+        <img className=" image" src={this.state.urlUploadImg} alt="" /> </div>*/}
+
         <form encType="multipart/form-data">
           <label>
             <input type="file" name="image" onChange={this.onChange} />
