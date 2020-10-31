@@ -1276,7 +1276,8 @@ export default function sketch1(p) {
     p.setup = function () {
         p.createCanvas(600, 500, p.WEBGL);
         //p.background(283, 54, 197);
-        p.background(0);
+        p.background(255);
+
         // eslint-disable-next-line
         var frameCount = 0;
 
@@ -1289,6 +1290,12 @@ export default function sketch1(p) {
         if (props.imgSource !== null) {
             img = p.loadImage(props.imgSource);
         }
+
+        if (props.saveImage === true && props.imgSource !== null) {
+            p.saveCanvas('saved-image', 'png');
+            props.saveStatus()
+        }
+
     };
 
     p.draw = function () {

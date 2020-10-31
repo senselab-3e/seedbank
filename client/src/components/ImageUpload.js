@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import P5Wrapper from "react-p5-wrapper";
 import sketch1 from "./p5/sketch1";
-
+// eslint-disable-next-line
 const styling = (
   <div
     style={{
       border: "1px solid #ccc",
-      width: "300px",
+      width: "100%",
       height: "300px",
     }}
   ></div>
@@ -21,9 +21,11 @@ class ImageUpload extends Component {
       tendencies: "",
       notes: "",
       urlUploadImg: null,
+      saveImage: false,
     };
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
+    this.saveStatus = this.saveStatus.bind(this);
   }
 
   onChange(e) {
@@ -44,6 +46,10 @@ class ImageUpload extends Component {
     }
   }
 
+  saveStatus() {
+    this.setState({ saveImage: false });
+  }
+
   async submit(e) {
     e.preventDefault();
 
@@ -61,46 +67,83 @@ class ImageUpload extends Component {
       });
   }
 
+  //unfinished business. the webgl in the p5 canvas is triggering a
+  //p5.js:82848 [Violation] Added non-passive event listener to a scroll-blocking 'wheel' event. Consider marking event handler as 'passive' to make the page more responsive.
+  //i really don't know where to begin with fixing this, because the even listeners aren't in the js or react... its all running in p5.  below is a bit of a schematic of how to solve this problem normally, but they dont work because i dont know what i'm targeting for the evenlistener.
+  componentDidMount() {
+    // this.input.addEventListener("keypress", this.onKeyPress, {
+    //   passive: false,
+    // });
+    // document.addEventListener(
+    //   document,
+    //   "touchstart",
+    //   function (e) {
+    //     console.log(e.defaultPrevented); // will be false
+    //     e.preventDefault(); // does nothing since the listener is passive
+    //     console.log(e.defaultPrevented); // still false
+    //   },
+    //   Modernizr.passiveeventlisteners ? { passive: true } : false
+    // );
+  }
+
+  componentWillUnmount() {
+    //this.input.removeEventListener("keypress", this.onKeyPress);
+  }
+
   render() {
     const imageSelected = this.state.urlUploadImg;
     let placeholder;
+    let inputVals;
     if (imageSelected) {
       placeholder = (
-        <P5Wrapper sketch={sketch1} imgSource={this.state.urlUploadImg} />
+        <div className="border">
+          <P5Wrapper
+            sketch={sketch1}
+            imgSource={this.state.urlUploadImg}
+            saveImage={this.state.saveImage}
+            saveStatus={this.saveStatus}
+          />
+        </div>
+      );
+      inputVals = (
+        <>
+          <input
+            type="text"
+            name="tendencies"
+            placeholder="enter some tendencies (comma-separated)"
+            value={this.state.value}
+            onChange={this.onChange}
+          />
+          <input
+            type="text"
+            name="notes"
+            placeholder=""
+            value={this.state.value}
+            onChange={this.onChange}
+          />
+          <input type="button" value="Upload" onClick={this.submit} />
+        </>
       );
     } else {
-      placeholder = styling;
+      //placeholder = <div className="border"></div>;
+      // inputVals = <div>placeholder</div>;
     }
 
     return (
       <>
-        <div className="canvas-container">{placeholder}</div>
-
-        {/*
-        <div className="container">
-        <img className=" image" src={this.state.urlUploadImg} alt="" /> </div>*/}
-
         <form encType="multipart/form-data">
           <label>
             <input type="file" name="image" onChange={this.onChange} />
-            <input
-              type="text"
-              name="tendencies"
-              placeholder="enter some tendencies (comma-separated)"
-              value={this.state.value}
-              onChange={this.onChange}
-            />
-            enter any notes
-            <input
-              type="text"
-              name="notes"
-              placeholder=""
-              value={this.state.value}
-              onChange={this.onChange}
-            />
-            <input type="button" value="Upload" onClick={this.submit} />
           </label>
         </form>
+        <div className="canvas-container">{placeholder}</div>
+        <form encType="multipart/form-data">{inputVals}</form>
+        <button onClick={() => this.setState({ saveImage: true })}>
+          Save Image
+        </button>
+        {/*
+        <div className="container">
+        <img className=" image" src={this.state.urlUploadImg} alt="" /> </div>*/}
       </>
     );
   }
