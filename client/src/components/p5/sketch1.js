@@ -1272,11 +1272,18 @@ export default function sketch1(p) {
     }
 
     p.setup = function () {
-        p.createCanvas(900, 900, p.WEBGL);
+        p.createCanvas(500, 500, p.WEBGL);
         p.background(283, 54, 197);
         // eslint-disable-next-line
         var frameCount = 0;
 
+    };
+
+    p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
+        console.log(props.imgSource)
+        // if (props.imgSource !== null) {
+        //     img = props.imgSource;
+        // }
     };
 
     p.draw = function () {
