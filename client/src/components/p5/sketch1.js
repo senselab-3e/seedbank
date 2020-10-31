@@ -1272,7 +1272,7 @@ export default function sketch1(p) {
     }
 
     p.setup = function () {
-        p.createCanvas(500, 500, p.WEBGL);
+        p.createCanvas(600, 600, p.WEBGL);
         p.background(283, 54, 197);
         // eslint-disable-next-line
         var frameCount = 0;
@@ -1298,12 +1298,12 @@ export default function sketch1(p) {
             console.log(img)
             p.texture(img);
             let coord = c[i];
-            let u = p.map(coord.x, -img.width * uval, img.width * 0.3, 0, 1); // changed location to a 1/3 from 0.5
-            let v = p.map(coord.y, -img.height * uval, img.height * 0.3, 1, 0);
+            let v = p.map(coord.x, -img.width * uval, img.width * 0.3, 0, 1); // changed location to a 1/3 from 0.5
+            let u = p.map(coord.y, -img.height * uval, img.height * 0.3, 1, 0);
             if (p.dist(p.mouseX - p.width / 2, p.mouseY - p.height / 2, coord.x - 200, coord.y - 200) < 70) {
                 coord.z += 10;
             }
-            p.vertex(coord.x, coord.y, coord.z, u, v);
+            p.vertex(coord.y, coord.x, coord.z, u, v);
         }
         p.endShape();
 
