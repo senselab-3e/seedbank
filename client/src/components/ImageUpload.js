@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
+import P5Wrapper from "react-p5-wrapper";
+import sketch1 from "./p5/sketch1";
 
-class ImageCreate extends Component {
+class ImageUpload extends Component {
   constructor(props) {
     super(props);
-    this.state = { image: "", tendencies: "", notes: "", urlUploadImg: "" };
+    this.state = {
+      image: "",
+      tendencies: "",
+      notes: "",
+      urlUploadImg: null,
+    };
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
   }
@@ -12,12 +19,18 @@ class ImageCreate extends Component {
   onChange(e) {
     switch (e.target.name) {
       case "image":
-        this.setState({ image: e.target.files[0] });
+        this.setState({
+          image: e.target.files[0],
+        });
         const uplImg = window.URL.createObjectURL(e.target.files[0]);
-        this.setState({ urlUploadImg: uplImg });
+        this.setState({
+          urlUploadImg: uplImg,
+        });
         break;
       default:
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({
+          [e.target.name]: e.target.value,
+        });
     }
   }
 
@@ -39,10 +52,21 @@ class ImageCreate extends Component {
   }
 
   render() {
+    const imageSelected = this.state.urlUploadImg;
+    let placeholder;
+    if (imageSelected) {
+      placeholder = (
+        <P5Wrapper sketch={sketch1} imgSource={this.state.urlUploadImg} />
+      );
+    } else {
+      placeholder = "Select Image";
+    }
+
     return (
       <>
         <div className="container">
-          <img className="image" src={this.state.urlUploadImg} alt="" />
+          {placeholder}
+          {/* <img className="image" src={this.state.urlUploadImg} alt="" /> */}
         </div>
         <form encType="multipart/form-data">
           <label>
@@ -70,4 +94,4 @@ class ImageCreate extends Component {
   }
 }
 
-export default ImageCreate;
+export default ImageUpload;
