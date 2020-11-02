@@ -6,9 +6,7 @@ import sketch1 from "./p5/sketch1";
 const styling = (
   <div
     style={{
-      border: "1px solid #ccc",
-      width: "100%",
-      height: "300px",
+      height: "100px",
     }}
   ></div>
 );
@@ -92,10 +90,12 @@ class ImageUpload extends Component {
 
   render() {
     const imageSelected = this.state.urlUploadImg;
-    let placeholder;
+    let p5placeholder;
+    let downloadBt;
     let inputVals;
+
     if (imageSelected) {
-      placeholder = (
+      p5placeholder = (
         <div className="border">
           <P5Wrapper
             sketch={sketch1}
@@ -104,6 +104,11 @@ class ImageUpload extends Component {
             saveStatus={this.saveStatus}
           />
         </div>
+      );
+      downloadBt = (
+        <button onClick={() => this.setState({ saveImage: true })}>
+          Download Rendered Image
+        </button>
       );
       inputVals = (
         <>
@@ -125,7 +130,15 @@ class ImageUpload extends Component {
         </>
       );
     } else {
-      //placeholder = <div className="border"></div>;
+      p5placeholder = (
+        <div
+          id="canvas"
+          className="border"
+          style={{
+            height: "300px",
+          }}
+        ></div>
+      );
       // inputVals = <div>placeholder</div>;
     }
 
@@ -136,14 +149,11 @@ class ImageUpload extends Component {
             <input type="file" name="image" onChange={this.onChange} />
           </label>
         </form>
-        <div className="canvas-container">{placeholder}</div>
+        {downloadBt}
+        <div id="canvas" className="canvas-container">
+          {p5placeholder}
+        </div>
         <form encType="multipart/form-data">{inputVals}</form>
-        <button onClick={() => this.setState({ saveImage: true })}>
-          Save Image
-        </button>
-        {/*
-        <div className="container">
-        <img className=" image" src={this.state.urlUploadImg} alt="" /> </div>*/}
       </>
     );
   }

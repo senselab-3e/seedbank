@@ -1,6 +1,6 @@
 /* Class */
 .navBar {
-  width: 100%;
+  width: 100vw;
   font-weight: 300;
   letter-spacing: 2px;
   z-index: 15;
@@ -41,7 +41,8 @@
 .navBar ul {
   list-style: none;
   align-items: center;
-  text-align: center; /* this is key to getting the sole colorpicker component that consists of the input and button, to also align center in the header */
+  text-align: center;
+  /* this is key to getting the sole colorpicker component that consists of the input and button, to also align center in the header */
   margin: 0px;
   padding: 0px;
   background: var(--header-primary);
@@ -53,7 +54,8 @@
 
 .navBar li {
   flex: 3;
-  white-space: nowrap; /* this is keeping, in particular, the name select color, in the header, from wrapping on medium width media displays*/
+  white-space: nowrap;
+  /* this is keeping, in particular, the name select color, in the header, from wrapping on medium width media displays*/
 }
 
 /* /if i end up wanting to target icons on the far right, so they take up less space, this is how i would do it.  */
@@ -65,7 +67,8 @@
 .menuColorPicker {
   font-weight: 300;
   padding: 20px 5px;
-  border-style: none; /* these are all to override the userAgent styling on the typical input button so it appears seamlessly in the menu navbar */
+  border-style: none;
+  /* these are all to override the userAgent styling on the typical input button so it appears seamlessly in the menu navbar */
   border: none;
   background: none;
   cursor: pointer;
@@ -116,15 +119,19 @@
   .miniMenu {
     display: inline-block;
   }
+
   .navBar ul {
     flex-wrap: wrap;
   }
+
   .navBar li {
     flex: 1 1 50%;
   }
+
   .navBar .user {
     flex: 1 1 25%;
   }
+
   .menuColorPicker {
     width: 50%;
   }
@@ -138,12 +145,15 @@
   .navBar li {
     flex-basis: 100%;
   }
+
   .navBar .user {
     flex-basis: 50%;
   }
+
   .show-nav {
     /* display: none; */
   }
+
   .navBar .miniMenu {
     flex-basis: 50%;
   }

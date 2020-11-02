@@ -8,13 +8,18 @@ import Header from "./partials/Header";
 import Glitch from "./pages/Glitch";
 import ImagesPage from "./pages/Images";
 import Entryway from "./pages/Entryway";
+import ImagesGet from "./components/ImagesGet";
 
 import "./index.css";
 
 function Home() {
   return (
-    <div>
-      <h2>Home</h2>
+    <div className="main">
+      <div className="main-body">
+        <div className="main-content">
+          <ImagesGet />
+        </div>
+      </div>
     </div>
   );
 }

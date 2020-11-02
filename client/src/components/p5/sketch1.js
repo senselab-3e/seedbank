@@ -1273,8 +1273,9 @@ export default function sketch1(p) {
         //img = p.loadImage('pot.jpg');
     }
 
+    //https://p5js.org/reference/#/p5.Element/parent
     p.setup = function () {
-        p.createCanvas(600, 500, p.WEBGL);
+        p.createCanvas(p.windowWidth * 0.8, 500, p.WEBGL);
         //p.background(283, 54, 197);
         p.background(255);
 
@@ -1296,7 +1297,15 @@ export default function sketch1(p) {
             props.saveStatus()
         }
 
+        if (props.canvasWidth !== null) {
+
+        }
+
     };
+
+    p.windowResized = function () {
+        p.resizeCanvas(p.windowWidth * 0.8, 500);
+    }
 
     p.draw = function () {
 
