@@ -9,7 +9,7 @@ const ImagesPage = () => {
   return (
     <div className="contain">
       {/* <div className="item"></div> */}
-      <div className="item-center">
+      <div className="element-center">
         <ImageUpload />
       </div>
     </div>

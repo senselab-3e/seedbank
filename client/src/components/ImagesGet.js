@@ -122,21 +122,21 @@ export default function ImagesGet() {
 
   return (
     <>
-      <ul>
-        <button onClick={loadMoreImages}> View 10 more </button>{" "}
-        <button onClick={() => setLimit(10)}> View x 10 </button>{" "}
-        <button onClick={() => setLimit(30)}> View x 30 </button>{" "}
-        <button onClick={() => setLimit(50)}> View x 50 </button>{" "}
-      </ul>{" "}
-      <button> group by upload date </button>{" "}
-      <button> group by tendency </button> <p> {message} </p>{" "}
+      <button onClick={loadMoreImages}> View 10 more </button>
+      <button onClick={() => setLimit(10)}> View x 10 </button>
+      <button onClick={() => setLimit(30)}> View x 30 </button>
+      <button onClick={() => setLimit(50)}> View x 50 </button>
+
+      {/* <button> group by upload date </button>
+      <button> group by tendency </button> <p> {message} </p> */}
+      {message}
       {/* <div className="gallery">
               <p> {message}</p>
 
               <ul>{imageList}</ul>
-            </div> */}{" "}
-      <div className="cards"> {imageList} </div>{" "}
-      <button onClick={loadMoreImages}> View 10 more </button>{" "}
+            </div> */}
+      <div className="cards"> {imageList} </div>
+      <button onClick={loadMoreImages}> View 10 more </button>
     </>
   );
 }

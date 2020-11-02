@@ -8,21 +8,9 @@ import Header from "./partials/Header";
 import Glitch from "./pages/Glitch";
 import ImagesPage from "./pages/Images";
 import Entryway from "./pages/Entryway";
-import ImagesGet from "./components/ImagesGet";
+import Traces from "./pages/Traces";
 
 import "./index.css";
-
-function Home() {
-  return (
-    <div className="main">
-      <div className="main-body">
-        <div className="main-content">
-          <ImagesGet />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 class App extends Component {
   constructor() {
@@ -51,7 +39,7 @@ class App extends Component {
           />
           <div className="mainContainer">
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Traces} />
               <Route path="/about3e" component={About} />
               <Route path="/oOoOs" component={Glitch} />
               <Route path="/patches" render={() => <div>Patches</div>} />

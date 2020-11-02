@@ -4,6 +4,11 @@
     border: 1px solid deeppink;
 }
 
+.element,
+.element-center button {
+    margin: 0.5em;
+}
+
 .element {
     height: 100px;
     width: 100px;
@@ -13,7 +18,7 @@
 
 .element-center {
     flex-grow: 1;
-
+    margin: 1em 1em;
 
     /* Set the middle element to grow and stretch */
 }
@@ -27,7 +32,7 @@
     /* display: flex; */
     border: 1px solid #ccc;
     flex-grow: 1;
-    padding: 1em 1em;
+    margin: 1em 0em;
     /* margin-bottom: 10px; */
     /* height: 300px; */
 
@@ -105,7 +110,7 @@
 }
 
 .p5Canvas {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
 }
@@ -147,7 +152,8 @@
 
 .card {
     flex: 0 0 200px;
-    margin: 10px;
+    /* the margin below matches the margin applied in the buttons */
+    margin: 0.5em;
     border: 1px solid #ccc;
     background-color: #eee;
     /* box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3); */
