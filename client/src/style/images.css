@@ -27,6 +27,7 @@
     /* display: flex; */
     border: 1px solid #ccc;
     flex-grow: 1;
+    padding: 1em 1em;
     /* margin-bottom: 10px; */
     /* height: 300px; */
 
@@ -98,6 +99,12 @@
 }
 
 .canvas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p5Canvas {
     display: flex;
     justify-content: center;
     align-items: center;
