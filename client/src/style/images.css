@@ -9,6 +9,11 @@
     margin: 0.5em;
 }
 
+.element,
+.element-center form {
+    margin: 0.5em;
+}
+
 .element {
     height: 100px;
     width: 100px;
