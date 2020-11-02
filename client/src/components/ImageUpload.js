@@ -96,14 +96,12 @@ class ImageUpload extends Component {
 
     if (imageSelected) {
       p5placeholder = (
-        <div className="border">
-          <P5Wrapper
-            sketch={sketch1}
-            imgSource={this.state.urlUploadImg}
-            saveImage={this.state.saveImage}
-            saveStatus={this.saveStatus}
-          />
-        </div>
+        <P5Wrapper
+          sketch={sketch1}
+          imgSource={this.state.urlUploadImg}
+          saveImage={this.state.saveImage}
+          saveStatus={this.saveStatus}
+        />
       );
       downloadBt = (
         <button onClick={() => this.setState({ saveImage: true })}>

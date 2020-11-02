@@ -1275,7 +1275,7 @@ export default function sketch1(p) {
 
     //https://p5js.org/reference/#/p5.Element/parent
     p.setup = function () {
-        p.createCanvas(p.windowWidth, 500, p.WEBGL);
+        p.createCanvas(p.windowWidth - 50, 500, p.WEBGL);
         //p.background(283, 54, 197);
         p.background(255);
 
@@ -1304,7 +1304,7 @@ export default function sketch1(p) {
     };
 
     p.windowResized = function () {
-        p.resizeCanvas(p.windowWidth, 500);
+        p.resizeCanvas(p.windowWidth - 50, 500);
     }
 
     p.draw = function () {
