@@ -1297,10 +1297,6 @@ export default function sketch1(p) {
             props.saveStatus()
         }
 
-        if (props.canvasWidth !== null) {
-
-        }
-
     };
 
     p.windowResized = function () {

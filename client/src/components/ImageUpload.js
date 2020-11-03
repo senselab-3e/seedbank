@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import P5Wrapper from "react-p5-wrapper";
-import sketch1 from "./p5/sketch1";
+// import P5Wrapper from "react-p5-wrapper";
+// import sketch1 from "./p5/sketch1";
+import P5Canvas from "./P5Canvas";
 
 class ImageUpload extends Component {
   constructor(props) {
@@ -83,8 +84,8 @@ class ImageUpload extends Component {
   }
 
   render() {
-    const imageSelected = this.state.urlUploadImg;
-    let p5placeholder;
+    //const imageSelected = this.state.urlUploadImg;
+    //let p5placeholder;
     let downloadBt;
     let inputVals;
 
@@ -124,31 +125,31 @@ class ImageUpload extends Component {
       </button>
     );
 
-    if (imageSelected) {
-      p5placeholder = (
-        <P5Wrapper
-          sketch={sketch1}
-          imgSource={this.state.urlUploadImg}
-          saveImage={this.state.saveImage}
-          saveStatus={this.saveStatus}
-        />
-      );
-    } else {
-      p5placeholder = (
-        <div
-          id="canvas"
-          className="border"
-          style={{
-            height: "300px",
-          }}
-        ></div>
-      );
-    }
+    // if (imageSelected) {
+    //   p5placeholder = (
+    //     <P5Wrapper
+    //       sketch={sketch1}
+    //       imgSource={this.state.urlUploadImg}
+    //       saveImage={this.state.saveImage}
+    //       saveStatus={this.saveStatus}
+    //     />
+    //   );
+    // } else {
+    //   p5placeholder = (
+    //     <div
+    //       id="canvas"
+    //       className="border"
+    //       style={{
+    //         height: "300px",
+    //       }}
+    //     ></div>
+    //   );
+    // }
 
     return (
       <>
         <div className="element">
-          <div>
+          <div style={{ margin: 0, padding: 0 }}>
             <form encType="multipart/form-data">
               <label>
                 <input type="file" name="image" onChange={this.onChange} />
@@ -156,11 +157,17 @@ class ImageUpload extends Component {
             </form>
             {downloadBt}
           </div>
+
           <form encType="multipart/form-data">{inputVals}</form>
         </div>
         <div className="element-center">
           <div id="canvas" className="canvas-container">
-            {p5placeholder}
+            {/* {p5placeholder} */}
+            <P5Canvas
+              urlUploadImg={this.state.urlUploadImg}
+              saveImage={this.state.saveImage}
+              saveStatus={this.saveStatus}
+            />
           </div>
         </div>
       </>
