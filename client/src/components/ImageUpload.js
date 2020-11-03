@@ -2,14 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import P5Wrapper from "react-p5-wrapper";
 import sketch1 from "./p5/sketch1";
-// eslint-disable-next-line
-const styling = (
-  <div
-    style={{
-      height: "100px",
-    }}
-  ></div>
-);
 
 class ImageUpload extends Component {
   constructor(props) {
@@ -20,6 +12,7 @@ class ImageUpload extends Component {
       notes: "",
       urlUploadImg: null,
       saveImage: false,
+      enabledClass: "disabled",
     };
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
@@ -36,6 +29,7 @@ class ImageUpload extends Component {
         this.setState({
           urlUploadImg: uplImg,
         });
+        this.setState({ enabledClass: "" });
         break;
       default:
         this.setState({
@@ -94,6 +88,42 @@ class ImageUpload extends Component {
     let downloadBt;
     let inputVals;
 
+    inputVals = (
+      <>
+        <input
+          className={this.state.enabledClass}
+          type="text"
+          name="tendencies"
+          placeholder="enter some tendencies (comma-separated)"
+          value={this.state.value}
+          onChange={this.onChange}
+        />
+        <input
+          className={this.state.enabledClass}
+          type="text"
+          name="notes"
+          placeholder=""
+          value={this.state.value}
+          onChange={this.onChange}
+        />
+        <input
+          className={this.state.enabledClass}
+          type="button"
+          value="Upload"
+          onClick={this.submit}
+        />
+      </>
+    );
+
+    downloadBt = (
+      <button
+        className={this.state.enabledClass}
+        onClick={() => this.setState({ saveImage: true })}
+      >
+        Download Rendered Image
+      </button>
+    );
+
     if (imageSelected) {
       p5placeholder = (
         <P5Wrapper
@@ -102,30 +132,6 @@ class ImageUpload extends Component {
           saveImage={this.state.saveImage}
           saveStatus={this.saveStatus}
         />
-      );
-      downloadBt = (
-        <button onClick={() => this.setState({ saveImage: true })}>
-          Download Rendered Image
-        </button>
-      );
-      inputVals = (
-        <>
-          <input
-            type="text"
-            name="tendencies"
-            placeholder="enter some tendencies (comma-separated)"
-            value={this.state.value}
-            onChange={this.onChange}
-          />
-          <input
-            type="text"
-            name="notes"
-            placeholder=""
-            value={this.state.value}
-            onChange={this.onChange}
-          />
-          <input type="button" value="Upload" onClick={this.submit} />
-        </>
       );
     } else {
       p5placeholder = (
@@ -137,21 +143,26 @@ class ImageUpload extends Component {
           }}
         ></div>
       );
-      // inputVals = <div>placeholder</div>;
     }
 
     return (
       <>
-        <form encType="multipart/form-data">
-          <label>
-            <input type="file" name="image" onChange={this.onChange} />
-          </label>
-        </form>
-        {downloadBt}
-        <div id="canvas" className="canvas-container">
-          {p5placeholder}
+        <div className="element">
+          <div>
+            <form encType="multipart/form-data">
+              <label>
+                <input type="file" name="image" onChange={this.onChange} />
+              </label>
+            </form>
+            {downloadBt}
+          </div>
+          <form encType="multipart/form-data">{inputVals}</form>
         </div>
-        <form encType="multipart/form-data">{inputVals}</form>
+        <div className="element-center">
+          <div id="canvas" className="canvas-container">
+            {p5placeholder}
+          </div>
+        </div>
       </>
     );
   }
