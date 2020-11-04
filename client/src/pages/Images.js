@@ -8,12 +8,8 @@ import ImageUpload from "../components/ImageUpload";
 const ImagesPage = () => {
   return (
     <div className="contain">
-      {/* <div className="item"></div> */}
-      <div className="element-center">
-        <ImageUpload />
-      </div>
+      <ImageUpload />
     </div>
   );
 };
-
 export default ImagesPage;

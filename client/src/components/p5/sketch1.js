@@ -1273,25 +1273,19 @@ export default function sketch1(p) {
         //img = p.loadImage('pot.jpg');
     }
 
-    //https://p5js.org/reference/#/p5.Element/parent
     p.setup = function () {
-        p.createCanvas(p.windowWidth - 50, 500, p.WEBGL);
-        //p.background(283, 54, 197);
+        p.createCanvas(p.windowWidth - 38, 500, p.WEBGL);
         p.background(255);
-
-        // eslint-disable-next-line
-        var frameCount = 0;
-
     };
 
-    // this naming is non-negotiable aka it must be exactly this and was created specficially for this library to handle props. props can also only be passed through this function
+    // this naming 'myCustomRedrawAccordingToNewPropsHandler', is non-negotiable aka it must be exactly this and was created specficially for this library to handle props. props can also only be passed through this function
     //https://github.com/and-who/react-p5-wrapper#usage
     p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
-        //console.log(props.imgSource)
+
         if (props.imgSource !== null) {
             img = p.loadImage(props.imgSource);
         }
-
+        //the props for saveimage turns truthy when a button outside the p5wrapper is clicked. combined with the condition checkfor an image being prsent, then an image is exported. but right after the saveimage boolean is reset to false. 
         if (props.saveImage === true && props.imgSource !== null) {
             p.saveCanvas('saved-image', 'png');
             props.saveStatus()
@@ -1300,7 +1294,7 @@ export default function sketch1(p) {
     };
 
     p.windowResized = function () {
-        p.resizeCanvas(p.windowWidth - 50, 500);
+        p.resizeCanvas(p.windowWidth - 38, 500);
     }
 
     p.draw = function () {

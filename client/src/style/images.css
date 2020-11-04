@@ -132,13 +132,12 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #ccc;
 }
 
 .p5Canvas {
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    margin: 0em 1em;
+    display: flex;
+
 }
 
 
