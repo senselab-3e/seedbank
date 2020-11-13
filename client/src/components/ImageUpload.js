@@ -3,6 +3,7 @@ import axios from "axios";
 // import P5Wrapper from "react-p5-wrapper";
 // import sketch1 from "./p5/sketch1";
 import P5Canvas from "./P5Canvas";
+import ImageFormSubmit from "./ImageFormSubmit";
 
 class ImageUpload extends Component {
   constructor(props) {
@@ -85,34 +86,34 @@ class ImageUpload extends Component {
 
   render() {
     let downloadBt;
-    let inputVals;
+    // let inputVals;
 
-    inputVals = (
-      <>
-        <input
-          className={this.state.enabledClass}
-          type="text"
-          name="tendencies"
-          placeholder="enter some tendencies (comma-separated)"
-          value={this.state.value}
-          onChange={this.onChange}
-        />
-        <input
-          className={this.state.enabledClass}
-          type="text"
-          name="notes"
-          placeholder=""
-          value={this.state.value}
-          onChange={this.onChange}
-        />
-        <input
-          className={this.state.enabledClass}
-          type="button"
-          value="Upload"
-          onClick={this.submit}
-        />
-      </>
-    );
+    // inputVals = (
+    //   <>
+    //     <input
+    //       className={this.state.enabledClass}
+    //       type="text"
+    //       name="tendencies"
+    //       placeholder="enter some tendencies (comma-separated)"
+    //       value={this.state.value}
+    //       onChange={this.onChange}
+    //     />
+    //     <input
+    //       className={this.state.enabledClass}
+    //       type="text"
+    //       name="notes"
+    //       placeholder=""
+    //       value={this.state.value}
+    //       onChange={this.onChange}
+    //     />
+    //     <input
+    //       className={this.state.enabledClass}
+    //       type="button"
+    //       value="Upload"
+    //       onClick={this.submit}
+    //     />
+    //   </>
+    // );
 
     downloadBt = (
       <button
@@ -135,7 +136,15 @@ class ImageUpload extends Component {
             {downloadBt}
           </div>
 
-          <form encType="multipart/form-data">{inputVals}</form>
+          <form encType="multipart/form-data">
+            {/* {inputVals} */}
+            <ImageFormSubmit
+              onChange={this.onChange}
+              value={this.state.value}
+              submit={this.submit}
+              enabledClass={this.state.enabledClass}
+            />
+          </form>
         </div>
         <div className="element-center">
           <div id="canvas" className="canvas-container">
