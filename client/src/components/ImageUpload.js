@@ -84,8 +84,6 @@ class ImageUpload extends Component {
   }
 
   render() {
-    //const imageSelected = this.state.urlUploadImg;
-    //let p5placeholder;
     let downloadBt;
     let inputVals;
 
@@ -125,27 +123,6 @@ class ImageUpload extends Component {
       </button>
     );
 
-    // if (imageSelected) {
-    //   p5placeholder = (
-    //     <P5Wrapper
-    //       sketch={sketch1}
-    //       imgSource={this.state.urlUploadImg}
-    //       saveImage={this.state.saveImage}
-    //       saveStatus={this.saveStatus}
-    //     />
-    //   );
-    // } else {
-    //   p5placeholder = (
-    //     <div
-    //       id="canvas"
-    //       className="border"
-    //       style={{
-    //         height: "300px",
-    //       }}
-    //     ></div>
-    //   );
-    // }
-
     return (
       <>
         <div className="element">
@@ -162,7 +139,6 @@ class ImageUpload extends Component {
         </div>
         <div className="element-center">
           <div id="canvas" className="canvas-container">
-            {/* {p5placeholder} */}
             <P5Canvas
               urlUploadImg={this.state.urlUploadImg}
               saveImage={this.state.saveImage}

@@ -172,6 +172,7 @@ html {
 .cards {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     align-items: stretch;
 }
 
@@ -210,6 +211,14 @@ html {
         display: none;
     } */
 
+
+
+
+    .card img {
+        flex: 1 1 25%;
+    }
+
+
     .main-body {
         flex-direction: row;
     }
@@ -226,9 +235,20 @@ html {
 
 @media all and (max-width: 1000px) {
 
+    .cards {
+        flex-flow: row wrap;
+
+        /* Then we define how is distributed the remaining space */
+        justify-content: space-around;
+    }
+
     /**
 	 * Body items are now side by side
      */
+
+    .card img {
+        flex: 1 1 50%;
+    }
 
     .section-left {
         display: none;
