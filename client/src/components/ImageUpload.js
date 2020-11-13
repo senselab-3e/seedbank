@@ -5,6 +5,7 @@ import axios from "axios";
 import P5Canvas from "./P5Canvas";
 import ImageFormSubmit from "./ImageFormSubmit";
 import DownloadBt from "./DownloadBt";
+import ChooseFile from "./ChooseFile";
 
 class ImageUpload extends Component {
   constructor(props) {
@@ -75,26 +76,18 @@ class ImageUpload extends Component {
       <>
         <div className="element">
           <div style={{ margin: 0, padding: 0 }}>
-            <form encType="multipart/form-data">
-              <label>
-                <input type="file" name="image" onChange={this.onChange} />
-              </label>
-            </form>
+            <ChooseFile onChange={this.onChange} />
             <DownloadBt
               setElement={this.setImage}
               enabledClass={this.state.enabledClass}
             />
           </div>
-
-          <form encType="multipart/form-data">
-            {/* {inputVals} */}
-            <ImageFormSubmit
-              onChange={this.onChange}
-              value={this.state.value}
-              submit={this.submit}
-              enabledClass={this.state.enabledClass}
-            />
-          </form>
+          <ImageFormSubmit
+            onChange={this.onChange}
+            value={this.state.value}
+            submit={this.submit}
+            enabledClass={this.state.enabledClass}
+          />
         </div>
         <div className="element-center">
           <div id="canvas" className="canvas-container">

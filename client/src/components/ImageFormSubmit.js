@@ -4,7 +4,7 @@ import React from "react";
 
 export default function ImageFormSubmit(props) {
   return (
-    <div>
+    <form encType="multipart/form-data">
       <input
         className={props.enabledClass}
         type="text"
@@ -27,7 +27,7 @@ export default function ImageFormSubmit(props) {
         value="Upload"
         onClick={props.submit}
       />
-    </div>
+    </form>
   );
 }
 
