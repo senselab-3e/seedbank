@@ -42,10 +42,6 @@ class ImageUpload extends Component {
     }
   }
 
-  saveStatus() {
-    this.setState({ saveImage: false });
-  }
-
   async submit(e) {
     e.preventDefault();
 
@@ -63,8 +59,15 @@ class ImageUpload extends Component {
       });
   }
 
+  //this is a condition that the p5 wrapper component checks for, in the props passed to it, for then downloading an image of the current canvas rendering
+  //these could potentially be combined into a single ternerary funciton
+
   setImage() {
     this.setState({ saveImage: true });
+  }
+
+  saveStatus() {
+    this.setState({ saveImage: false });
   }
 
   render() {
