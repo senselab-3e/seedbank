@@ -1,14 +1,11 @@
 import React from "react";
 
-export default function DownloadBt() {
+export default function DownloadBt(props) {
   return (
     <div>
-      {/* <button
-        className={this.state.enabledClass}
-        onClick={() => this.setState({ saveImage: true })}
-      >
+      <button className={props.enabledClass} onClick={props.setElement}>
         Download Rendered Image
-      </button> */}
+      </button>
     </div>
   );
 }

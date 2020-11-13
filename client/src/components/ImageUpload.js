@@ -4,6 +4,7 @@ import axios from "axios";
 // import sketch1 from "./p5/sketch1";
 import P5Canvas from "./P5Canvas";
 import ImageFormSubmit from "./ImageFormSubmit";
+import DownloadBt from "./DownloadBt";
 
 class ImageUpload extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class ImageUpload extends Component {
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
     this.saveStatus = this.saveStatus.bind(this);
+    this.setImage = this.setImage.bind(this);
   }
 
   onChange(e) {
@@ -61,69 +63,11 @@ class ImageUpload extends Component {
       });
   }
 
-  //unfinished business. the webgl in the p5 canvas is triggering a
-  //p5.js:82848 [Violation] Added non-passive event listener to a scroll-blocking 'wheel' event. Consider marking event handler as 'passive' to make the page more responsive.
-  //i really don't know where to begin with fixing this, because the even listeners aren't in the js or react... its all running in p5.  below is a bit of a schematic of how to solve this problem normally, but they dont work because i dont know what i'm targeting for the evenlistener.
-  componentDidMount() {
-    // this.input.addEventListener("keypress", this.onKeyPress, {
-    //   passive: false,
-    // });
-    // document.addEventListener(
-    //   document,
-    //   "touchstart",
-    //   function (e) {
-    //     console.log(e.defaultPrevented); // will be false
-    //     e.preventDefault(); // does nothing since the listener is passive
-    //     console.log(e.defaultPrevented); // still false
-    //   },
-    //   Modernizr.passiveeventlisteners ? { passive: true } : false
-    // );
-  }
-
-  componentWillUnmount() {
-    //this.input.removeEventListener("keypress", this.onKeyPress);
+  setImage() {
+    this.setState({ saveImage: true });
   }
 
   render() {
-    let downloadBt;
-    // let inputVals;
-
-    // inputVals = (
-    //   <>
-    //     <input
-    //       className={this.state.enabledClass}
-    //       type="text"
-    //       name="tendencies"
-    //       placeholder="enter some tendencies (comma-separated)"
-    //       value={this.state.value}
-    //       onChange={this.onChange}
-    //     />
-    //     <input
-    //       className={this.state.enabledClass}
-    //       type="text"
-    //       name="notes"
-    //       placeholder=""
-    //       value={this.state.value}
-    //       onChange={this.onChange}
-    //     />
-    //     <input
-    //       className={this.state.enabledClass}
-    //       type="button"
-    //       value="Upload"
-    //       onClick={this.submit}
-    //     />
-    //   </>
-    // );
-
-    downloadBt = (
-      <button
-        className={this.state.enabledClass}
-        onClick={() => this.setState({ saveImage: true })}
-      >
-        Download Rendered Image
-      </button>
-    );
-
     return (
       <>
         <div className="element">
@@ -133,7 +77,10 @@ class ImageUpload extends Component {
                 <input type="file" name="image" onChange={this.onChange} />
               </label>
             </form>
-            {downloadBt}
+            <DownloadBt
+              setElement={this.setImage}
+              enabledClass={this.state.enabledClass}
+            />
           </div>
 
           <form encType="multipart/form-data">
@@ -161,3 +108,26 @@ class ImageUpload extends Component {
 }
 
 export default ImageUpload;
+
+//unfinished business. the webgl in the p5 canvas is triggering a
+//p5.js:82848 [Violation] Added non-passive event listener to a scroll-blocking 'wheel' event. Consider marking event handler as 'passive' to make the page more responsive.
+//i really don't know where to begin with fixing this, because the even listeners aren't in the js or react... its all running in p5.  below is a bit of a schematic of how to solve this problem normally, but they dont work because i dont know what i'm targeting for the evenlistener.
+//componentDidMount() {
+// this.input.addEventListener("keypress", this.onKeyPress, {
+//   passive: false,
+// });
+// document.addEventListener(
+//   document,
+//   "touchstart",
+//   function (e) {
+//     console.log(e.defaultPrevented); // will be false
+//     e.preventDefault(); // does nothing since the listener is passive
+//     console.log(e.defaultPrevented); // still false
+//   },
+//   Modernizr.passiveeventlisteners ? { passive: true } : false
+// );
+//}
+
+//componentWillUnmount() {
+//this.input.removeEventListener("keypress", this.onKeyPress);
+//}
