@@ -2,15 +2,24 @@ import React, (useState) from "react";
 import axios from "axios";
 
 export default function ImageFormSubmit(props) {
-  // image: "",
-  // tendencies: "",
-  // notes: "",
-   //urlUploadImg: null,
-  // saveImage: false,
-  const [tendencies, setTendencies] = useState("")
-  const [notes, setNotes] = useState("")
-  const [urlUploadImg, setImg]  = useState(props.urlUploadImg)
-  const [enabledClass, setClassName] = useState(props.enabledClass)
+    constructor(props) {
+        super(props);
+        this.state = {
+          image: "",
+          tendencies: "",
+          notes: "",
+          urlUploadImg: null,
+          saveImage: false,
+          enabledClass: "disabled",
+        };
+        this.onChange = this.onChange.bind(this);
+        this.submit = this.submit.bind(this);
+        this.saveStatus = this.saveStatus.bind(this);
+      }
+//   const [tendencies, setTendencies] = useState("")
+//   const [notes, setNotes] = useState("")
+//   const [urlUploadImg, setImg]  = useState(props.urlUploadImg)
+//   const [enabledClass, setClassName] = useState(props.enabledClass)
 
   useEffect(()=>{
     setClassName(props.enabledClass)
