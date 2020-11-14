@@ -84,7 +84,6 @@ class ImageUpload extends Component {
           </div>
           <ImageFormSubmit
             onChange={this.onChange}
-            value={this.state.value}
             submit={this.submit}
             enabledClass={this.state.enabledClass}
           />

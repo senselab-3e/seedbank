@@ -1,28 +1,31 @@
 import React from "react";
-// import axios from "axios";
-// import { Component } from "react";
 
 export default function ImageFormSubmit(props) {
+  //i'm doing this in case i forget to passdown the prop element (or it's not needed), should i reuse this component
+  const [className, setClassName] = React.useState(props.enabledClass || "");
+
+  React.useEffect(() => {
+    setClassName(props.enabledClass);
+  }, [props.enabledClass]);
+
   return (
     <form encType="multipart/form-data">
       <input
-        className={props.enabledClass}
+        className={className}
         type="text"
         name="tendencies"
-        value={props.value}
         placeholder="enter some tendencies (comma-separated)"
         onChange={props.onChange}
       />
       <input
-        className={props.enabledClass}
+        className={className}
         type="text"
         name="notes"
         placeholder=""
-        value={props.value}
         onChange={props.onChange}
       />
       <input
-        className={props.enabledClass}
+        className={className}
         type="button"
         value="Upload"
         onClick={props.submit}
