@@ -254,15 +254,16 @@ html {
 
 
 
-@media only screen and (device-width: 768px) {
-    /* default iPad screens */
-}
+@media all and (max-device-width: 700px) {
 
-@media all and (max-device-width: 1000px) {
+    /* default iPad screens */
     .element {
         flex-direction: column;
         /* margin: 2em var(--leftmargin); */
     }
+}
+
+@media all and (max-device-width: 1000px) {
 
 
     .cards {

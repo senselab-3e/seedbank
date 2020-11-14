@@ -87,7 +87,10 @@ input[type="text"i] {
 }
 
 @media only screen and (min-width: 960px) {
+
   /* styles for browsers larger than 960px; */
+
+
 }
 
 @media only screen and (min-width: 1440px) {
@@ -102,6 +105,7 @@ input[type="text"i] {
   .mainContainer {
     padding-top: 6em;
   }
+
 
   /* styles for mobile browsers smaller than 480px; (iPhone) */
 }
