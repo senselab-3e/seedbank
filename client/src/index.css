@@ -11,6 +11,7 @@ body {
   --linkGrey: #333;
   --lightGrey: rgb(184, 184, 184);
   --header-primary: #ffffff;
+  --bt-primary: #2fa1d6;
 }
 
 .root-container {
@@ -53,7 +54,8 @@ button {
 
 button:hover,
 button:focus {
-  background: #0053ba;
+  background: var(--bt-primary);
+  color: white;
 }
 
 button:focus {
@@ -63,4 +65,59 @@ button:focus {
 
 button:active {
   transform: scale(0.99);
+}
+
+/* input {
+  font-weight: 300;
+  letter-spacing: 1px;
+} */
+
+input[type="file"] {
+  margin: 0px 0px 5px;
+  /* border-radius: 10px;
+  padding: 8px 12px;
+  vertical-align: middle; */
+  /* margin: 5px 0px; */
+}
+
+input[type="text"i] {
+  margin: 0px 5px 5px;
+  border-radius: 5px;
+  padding: 8px 12px;
+}
+
+@media only screen and (min-width: 960px) {
+  /* styles for browsers larger than 960px; */
+}
+
+@media only screen and (min-width: 1440px) {
+  /* styles for browsers larger than 1440px; */
+}
+
+@media only screen and (min-width: 2000px) {
+  /* for sumo sized (mac) screens */
+}
+
+@media only screen and (max-device-width: 480px) {
+  .mainContainer {
+    padding-top: 6em;
+  }
+
+  /* styles for mobile browsers smaller than 480px; (iPhone) */
+}
+
+@media only screen and (device-width: 768px) {
+
+  /* default iPad screens */
+
+}
+
+
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  /* For portrait layouts only */
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+  /* For landscape layouts only */
 }
