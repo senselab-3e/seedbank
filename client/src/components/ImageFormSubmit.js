@@ -9,28 +9,32 @@ export default function ImageFormSubmit(props) {
   }, [props.enabledClass]);
 
   return (
-    <form encType="multipart/form-data">
-      <input
-        className={className}
-        type="text"
-        name="tendencies"
-        placeholder="enter some tendencies (comma-separated)"
-        onChange={props.onChange}
-      />
-      <input
-        className={className}
-        type="text"
-        name="notes"
-        placeholder=""
-        onChange={props.onChange}
-      />
-      <input
-        className={className}
-        type="button"
-        value="Upload"
-        onClick={props.submit}
-      />
-    </form>
+    <div>
+      <form encType="multipart/form-data">
+        <input
+          className={className}
+          type="text"
+          name="tendencies"
+          placeholder="enter some tendencies (comma-separated)"
+          onChange={props.onChange}
+        />
+        <input
+          className={className}
+          type="text"
+          name="notes"
+          placeholder=""
+          onChange={props.onChange}
+        />
+      </form>
+      <form encType="multipart/form-data">
+        <input
+          className={className}
+          type="button"
+          value="Upload"
+          onClick={props.submit}
+        />
+      </form>
+    </div>
   );
 }
 
