@@ -158,6 +158,10 @@ html {
     margin: 1em;
 }
 
+input {
+    font-weight: 300;
+    letter-spacing: 2px;
+}
 
 .image {
     /* width: 100%; */

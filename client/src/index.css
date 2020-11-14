@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 
-html {
+html,
+body {
   --text-color-normal: #0a244d;
   --text-color-light: #8cabd9;
   --color-bg: #ffffff;
@@ -41,4 +42,25 @@ a::before {
 
 .imgUploadPreview {
   width: 20%;
+}
+
+button {
+  border-radius: 10px;
+  padding: 8px 12px;
+  vertical-align: middle;
+  margin: 5px 0px;
+}
+
+button:hover,
+button:focus {
+  background: #0053ba;
+}
+
+button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+button:active {
+  transform: scale(0.99);
 }
