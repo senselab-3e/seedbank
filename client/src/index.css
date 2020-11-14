@@ -86,7 +86,7 @@ input[type="text"i] {
   padding: 8px 12px;
 }
 
-[type="button"i] {
+input[type="button"i] {
   margin: 0px 5px 5px;
   border-radius: 5px;
   padding: 8px 12px;
