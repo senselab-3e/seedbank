@@ -261,6 +261,18 @@ html {
         flex-direction: column;
         /* margin: 2em var(--leftmargin); */
     }
+
+    /* input[type="text"i] {
+        margin: 5px 0px;
+    }
+
+    input[type="button"i] {
+        margin: 5px 0px;
+    } */
+
+    label {
+        width: 100%;
+    }
 }
 
 @media all and (max-device-width: 1000px) {
