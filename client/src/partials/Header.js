@@ -46,56 +46,51 @@ export default function Header(props) {
         <ColorPicker
           colorCapture={props.colorCapture}
           patchColor={props.patchColor}
-        />
+        />{" "}
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/entryway">
-            <RiDoorOpenFill size={23} />
-            <label>Entryway</label>
-          </Link>
+            <RiDoorOpenFill size={23} /> <label> Entryway </label>{" "}
+          </Link>{" "}
         </li>
-
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/auth">
-            <RiLoginBoxFill size={23} />
-            <label>Login</label>
-          </Link>
-        </li>
+            <RiLoginBoxFill size={23} /> <label> Login </label>{" "}
+          </Link>{" "}
+        </li>{" "}
         <li className={toggle ? "hide-nav" : "show-nav"}>
           <Link to="/oOoOs">
-            <BiCast size={23} />
-            <label>404</label>
-          </Link>
-        </li>
+            <BiCast size={23} /> <label> 404 </label>{" "}
+          </Link>{" "}
+        </li>{" "}
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/traces">
-            <MdAddToPhotos size={23} />
-          </Link>
-        </li>
+            <MdAddToPhotos size={23} />{" "}
+          </Link>{" "}
+        </li>{" "}
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/events">
-            <BiChair size={23} />
-          </Link>
+            <BiChair size={23} />{" "}
+          </Link>{" "}
         </li>
-
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/">
-            <SiNextdoor size={23} />
-          </Link>
+            <SiNextdoor size={23} />{" "}
+          </Link>{" "}
         </li>
-
         <li className={toggle ? "hide-nav user" : "show-nav user"}>
           <Link to="/about3e">
-            <RiQuestionLine size={23} />
-          </Link>
-        </li>
+            <RiQuestionLine size={23} />{" "}
+          </Link>{" "}
+        </li>{" "}
         <li className="miniMenu" onClick={Toggle}>
+          {" "}
           {toggle ? (
             <GiHamburgerMenu size={20} />
           ) : (
             <IoIosCloseCircle size={30} />
-          )}
-        </li>
-      </ul>
+          )}{" "}
+        </li>{" "}
+      </ul>{" "}
     </nav>
   );
 }
