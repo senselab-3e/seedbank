@@ -75,7 +75,7 @@ class ImageUpload extends Component {
     return (
       <>
         <div className="element">
-          <div className="first" style={{ margin: 0, padding: 0 }}>
+          <div className="first">
             <ChooseFile onChange={this.onChange} />
             <DownloadBt
               setElement={this.setImage}

@@ -128,22 +128,27 @@ input[type="button"i] {
     flex-direction: column;
   }
 
+  .element .first {
+    margin-right: 0em;
+    /* border-radius: 5px; */
+  }
+
   .element input {
     flex-wrap: wrap;
   }
 
-  .second {
+  .element .second {
     display: flex;
     flex-direction: column;
   }
 
-  .second form {
+  .element .second form {
     flex-wrap: wrap;
 
-    border: 1px solid rgb(56, 201, 121);
+    /* border: 1px solid rgb(56, 201, 121); */
   }
 
-  .second input {
+  .element .second input {
     flex: 1 1 100%;
     margin-right: 0.5em;
   }

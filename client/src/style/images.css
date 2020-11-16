@@ -42,11 +42,13 @@ html {
 
 .element .first {
   flex: 1;
+  margin-right: 1em;
   /* border: 1px solid #ccc; */
 }
 
 .element .second {
   flex: 1;
+  /* margin-right: 0em; */
   /* border: 1px solid #ccc; */
 }
 
