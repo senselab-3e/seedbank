@@ -64,7 +64,6 @@ html {
 /* these margins need to match the input type 'text', file, etc, in index.css*/
 .button-wrap {
   margin: 0px 0px;
-  margin-right: 5px;
 }
 
 .element button {
