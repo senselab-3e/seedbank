@@ -9,7 +9,7 @@ export default function ImageFormSubmit(props) {
   }, [props.enabledClass]);
 
   return (
-    <div>
+    <div className="second">
       <form encType="multipart/form-data">
         <input
           className={className}

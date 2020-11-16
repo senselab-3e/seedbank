@@ -74,9 +74,7 @@ button:active {
   letter-spacing: 1px;
 } */
 
-.button-wrap {
-  /* position: relative; */
-}
+
 
 .new-button {
   display: inline-block;
@@ -107,22 +105,30 @@ input[type="file"i] {
 }
 
 input[type="text"i] {
-  margin: 0px 5px 5px;
+  margin: 0px 0px 5px;
   border-radius: 5px;
   padding: 8px 12px;
 }
 
 input[type="button"i] {
-  margin: 0px 5px 5px;
+  margin: 0px 0px 5px;
   border-radius: 5px;
   padding: 8px 12px;
 }
 
 
-@media only screen and (min-width: 960px) {
+@media only screen and (max-width: 760px) {
+
+  .element {
+    flex-direction: column;
+
+  }
 
   /* styles for browsers larger than 960px; */
-
+  /* .element {
+        flex-direction: column;
+        
+    } */
 
 }
 
@@ -139,6 +145,11 @@ input[type="button"i] {
     padding-top: 6em;
   }
 
+  .element {
+    flex-direction: column;
+
+  }
+
   input[type="text"i] {
     margin: 5px 0px;
   }
@@ -146,6 +157,7 @@ input[type="button"i] {
   input[type="button"i] {
     margin: 5px 0px;
   }
+
 
   /* styles for mobile browsers smaller than 480px; (iPhone) */
 }

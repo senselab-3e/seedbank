@@ -29,11 +29,32 @@ html {
 .element {
     /* height: 100px;
     width: 100px; */
+    /* width: 100vw; */
     margin: 1em 1em;
+    /* margin: 0em 0em; */
+    /* margin-right: 20px; */
+    /* margin-right: 1em; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    /* border: 1px solid rgb(56, 201, 121); */
     /* A fixed width as the default */
+}
+
+
+
+/* .element form {
+    flex: 1;
+} */
+
+.element .first {
+    flex: 1;
+    /* border: 1px solid #ccc; */
+}
+
+.element .second {
+    flex: 1;
+    /* border: 1px solid #ccc; */
 }
 
 .element-center {
@@ -45,6 +66,15 @@ html {
 
 .element+.element {
     margin-left: 2%;
+}
+
+/* these margins need to match the input type 'text', file, etc, in index.css*/
+.button-wrap {
+    margin: 0px 0px 5px;
+}
+
+.element button {
+    margin: 0px 0px 5px;
 }
 
 
@@ -257,10 +287,10 @@ html {
 @media all and (max-device-width: 700px) {
 
     /* default iPad screens */
-    .element {
+    /* .element {
         flex-direction: column;
-        /* margin: 2em var(--leftmargin); */
-    }
+        
+    } */
 
     /* input[type="text"i] {
         margin: 5px 0px;
