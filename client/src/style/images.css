@@ -1,296 +1,266 @@
 html {
-    --leftmargin: 0.5em
+  --leftmargin: 0.5em;
 }
 
 .contain {
-    /* width: 100%; */
-    padding: 2em 0em;
-    border: 1px solid deeppink;
-
+  /* width: 100%; */
+  padding: 2em 0em;
+  border: 1px solid deeppink;
 }
 
 .element,
 .element-center button {
-    margin: 1em var(--leftmargin);
+  margin: 1em var(--leftmargin);
 }
 
 .element,
 .element-center form {
-    margin: 1em var(--leftmargin) 0em;
+  margin: 1em var(--leftmargin) 0em;
 }
 
 .element,
-.element-center input[type=text] {
-    /* width: 100%; */
-    /* height: 100px; */
-    margin: var(--leftmargin) 0em var(--leftmargin) 0em;
+.element-center input[type="text"] {
+  /* width: 100%; */
+  /* height: 100px; */
+  margin: var(--leftmargin) 0em var(--leftmargin) 0em;
 }
 
 .element {
-    /* height: 100px;
+  /* height: 100px;
     width: 100px; */
-    /* width: 100vw; */
-    margin: 1em 1em;
-    /* margin: 0em 0em; */
-    /* margin-right: 20px; */
-    /* margin-right: 1em; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* border: 1px solid rgb(56, 201, 121); */
-    /* A fixed width as the default */
+  /* width: 100vw; */
+  margin: 1em 1em;
+  /* margin: 0em 0em; */
+  /* margin-right: 20px; */
+  /* margin-right: 1em; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* border: 1px solid rgb(56, 201, 121); */
+  /* A fixed width as the default */
 }
 
-
-
-
-
 .element .first {
-    flex: 1;
-    /* border: 1px solid #ccc; */
+  flex: 1;
+  /* border: 1px solid #ccc; */
 }
 
 .element .second {
-    flex: 1;
-    /* border: 1px solid #ccc; */
+  flex: 1;
+  /* border: 1px solid #ccc; */
 }
 
 .element-center {
-    flex-grow: 1;
-    margin: 1em 1em;
+  flex-grow: 1;
+  margin: 1em 1em;
 
-    /* Set the middle element to grow and stretch */
+  /* Set the middle element to grow and stretch */
 }
 
-.element+.element {
-    margin-left: 2%;
+.element + .element {
+  margin-left: 2%;
 }
 
 /* these margins need to match the input type 'text', file, etc, in index.css*/
 .button-wrap {
-    margin: 0px 0px 5px;
+  margin: 0px 0px;
+  margin-right: 5px;
 }
 
 .element button {
-    margin: 0px 0px 5px;
+  margin: 0px 0px 5px;
 }
 
-
 .border {
-    /* display: flex; */
-    border: 1px solid #ccc;
-    flex-grow: 1;
-    margin: 1em var(--leftmargin);
-    /* margin-bottom: 10px; */
-    /* height: 300px; */
-
+  /* display: flex; */
+  border: 1px solid #ccc;
+  flex-grow: 1;
+  margin: 1em var(--leftmargin);
+  /* margin-bottom: 10px; */
+  /* height: 300px; */
 }
 
 .disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
-
 .main {
-    /* min-height: 100vh; */
+  /* min-height: 100vh; */
 }
 
 .main,
 .main-body {
-    display: flex;
-    /* flex: 1 1 auto; */
-    flex-direction: row;
-    /* padding: 2em 2em; */
-    border: 1px solid yellow;
+  display: flex;
+  /* flex: 1 1 auto; */
+  flex-direction: row;
+  /* padding: 2em 2em; */
+  border: 1px solid yellow;
 }
 
 .main-content {
-    flex-grow: 1;
-    /* -webkit-flex: 0 1 auto; */
-    /* margin: 0 auto; */
-    padding: 2em;
-    border: 1px solid deeppink;
-    flex-wrap: wrap;
-    /* max-width: 32em; */
+  flex-grow: 1;
+  /* -webkit-flex: 0 1 auto; */
+  /* margin: 0 auto; */
+  padding: 2em;
+  border: 1px solid deeppink;
+  flex-wrap: wrap;
+  /* max-width: 32em; */
 }
 
-.main-content input[type=text] {
-    width: 100%;
-    height: 100px;
-    margin: 0.5em 0em 2em 0em;
-    border-radius: 10px;
-    padding: 8px 12px;
-    vertical-align: middle;
-    /* margin: 5px 0px; */
+.main-content input[type="text"] {
+  width: 100%;
+  height: 100px;
+  margin: 0.5em 0em 2em 0em;
+  border-radius: 10px;
+  padding: 8px 12px;
+  vertical-align: middle;
+  /* margin: 5px 0px; */
 }
-
-
-
 
 .main-content button {
-    margin: var(--leftmargin) 0em var(--leftmargin) 0em;
+  margin: var(--leftmargin) 0em var(--leftmargin) 0em;
 }
 
 .main-sidebar-1 {
-    order: -1;
+  order: -1;
 }
 
 .section-left {
-    -webkit-flex: 1;
-    flex: 1;
-    border: 1px solid blue;
+  -webkit-flex: 1;
+  flex: 1;
+  border: 1px solid blue;
 }
 
 .section-right {
-    -webkit-flex: 1;
-    flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
 }
 
 .footer {
-    height: 1.8em;
-    line-height: 1.8em;
-    text-align: center;
-    background: #222;
-    color: #f9f9f9
+  height: 1.8em;
+  line-height: 1.8em;
+  text-align: center;
+  background: #222;
+  color: #f9f9f9;
 }
 
 .container {
-    /* display: flex; */
+  /* display: flex; */
 
-    flex-wrap: wrap;
-    padding-bottom: 5px;
-
+  flex-wrap: wrap;
+  padding-bottom: 5px;
 }
 
 .canvas-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
 }
 
 .p5Canvas {
-    display: flex;
-
+  display: flex;
 }
 
-
-
 .item {
-    margin: 1em;
+  margin: 1em;
 }
 
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 5px;
-    justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  justify-content: space-evenly;
 }
 
 .gallery img {
-    max-width: 10vw;
-    margin: 1em;
+  max-width: 10vw;
+  margin: 1em;
 }
 
-
-
-
-
 .image {
-    /* width: 100%; */
-    height: 100%;
-    max-height: 30em;
-    /* flex-wrap: wrap; */
-    /* align-items: center; */
-    padding: 5px;
-    /* justify-content: space-around; */
+  /* width: 100%; */
+  height: 100%;
+  max-height: 30em;
+  /* flex-wrap: wrap; */
+  /* align-items: center; */
+  padding: 5px;
+  /* justify-content: space-around; */
 }
 
 .cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
 }
 
 .card {
-    flex: 0 0 200px;
-    /* the margin below matches the margin applied in the buttons */
-    margin: 0.5em;
-    border: 1px solid #ccc;
-    background-color: #eee;
-    /* box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3); */
+  flex: 0 0 200px;
+  /* the margin below matches the margin applied in the buttons */
+  margin: 0.5em;
+  border: 1px solid #ccc;
+  background-color: #eee;
+  /* box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3); */
 }
 
 .card img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .card .text {
-    padding: 0 20px 20px;
+  padding: 0 20px 20px;
 }
 
-.card .text>button {
-    background: gray;
-    border: 0;
-    color: white;
-    padding: 10px;
-    width: 100%;
+.card .text > button {
+  background: gray;
+  border: 0;
+  color: white;
+  padding: 10px;
+  width: 100%;
 }
 
 @media all and(min-width: 768px) {
-
-    /**
+  /**
 	 * Body items are now side by side
      */
 
-    /* .section-left {
+  /* .section-left {
         display: none;
     } */
 
+  .card img {
+    flex: 1 1 25%;
+  }
 
+  .main-body {
+    flex-direction: row;
+  }
 
-
-
-    .card img {
-        flex: 1 1 25%;
-    }
-
-
-    .main-body {
-        flex-direction: row;
-    }
-
-    /**
+  /**
 	 * Sidebars have a basic 260 width
 	 * and are not really flexible anymore
 	 */
-    .hg-sidebar {
-        flex: 0 0 260px;
-    }
+  .hg-sidebar {
+    flex: 0 0 260px;
+  }
 }
 
 @media all and (min-device-width: 960px) {
-    /* .element {
+  /* .element {
         margin: 4em var(--leftmargin);
     } */
 }
 
-
-
-
-
-
 @media all and (max-device-width: 700px) {
-
-    /* default iPad screens */
-    /* .element {
+  /* default iPad screens */
+  /* .element {
         flex-direction: column;
         
     } */
 
-    /* input[type="text"i] {
+  /* input[type="text"i] {
         margin: 5px 0px;
     }
 
@@ -298,48 +268,44 @@ html {
         margin: 5px 0px;
     } */
 
-    label {
-        width: 100%;
-    }
+  label {
+    width: 100%;
+  }
 }
 
 @media all and (max-device-width: 1000px) {
+  .cards {
+    flex-flow: row wrap;
 
+    /* Then we define how is distributed the remaining space */
+    justify-content: space-around;
+  }
 
-    .cards {
-        flex-flow: row wrap;
-
-        /* Then we define how is distributed the remaining space */
-        justify-content: space-around;
-    }
-
-    /**
+  /**
 	 * Body items are now side by side
      */
 
-    .card img {
-        flex: 1 1 50%;
-    }
+  .card img {
+    flex: 1 1 50%;
+  }
 
-    .section-left {
-        display: none;
-    }
+  .section-left {
+    display: none;
+  }
 
-    .section-right {
-        display: none;
-    }
+  .section-right {
+    display: none;
+  }
 
-    .main,
-    .main-body {
-        padding: 0 0 0 0;
-        flex: 1
-    }
+  .main,
+  .main-body {
+    padding: 0 0 0 0;
+    flex: 1;
+  }
 
-    .main-content {
-        /* width: 100%; */
-        padding: 0 0 0 0;
-        flex-basis: 100%;
-    }
-
-
+  .main-content {
+    /* width: 100%; */
+    padding: 0 0 0 0;
+    flex-basis: 100%;
+  }
 }
