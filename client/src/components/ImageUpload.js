@@ -81,6 +81,7 @@ class ImageUpload extends Component {
             <DownloadBt
               setElement={this.setImage}
               enabledClass={this.state.enabledClass}
+              message="Download Rendered Image"
             />
           </div>
 

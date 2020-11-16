@@ -84,11 +84,6 @@ html {
   /* height: 300px; */
 }
 
-.disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
 .main {
   /* min-height: 100vh; */
 }
