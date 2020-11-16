@@ -45,19 +45,20 @@ class ImageUpload extends Component {
 
   async submit(e) {
     e.preventDefault();
-
-    let formData = new FormData();
-    // eslint-disable-next-line
-    await Object.keys(this.state).map((key) => {
-      formData.append(key, this.state[key]);
-    });
-    axios
-      .post("/api/assets/images", formData, {
-        "content-type": "multipart/form-data",
-      })
-      .catch((err) => {
-        console.log(err);
+    if (this.state.enabledClass !== "disabled") {
+      let formData = new FormData();
+      // eslint-disable-next-line
+      await Object.keys(this.state).map((key) => {
+        formData.append(key, this.state[key]);
       });
+      axios
+        .post("/api/assets/images", formData, {
+          "content-type": "multipart/form-data",
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   //this is a condition that the p5 wrapper component checks for, in the props passed to it, for then downloading an image of the current canvas rendering
