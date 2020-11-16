@@ -24,7 +24,8 @@ body {
   /* display: flex; messes up the skinny palettes...*/
 }
 
-.header-container {}
+.header-container {
+}
 
 a {
   position: relative;
@@ -51,7 +52,6 @@ button {
   padding: 8px 12px;
   vertical-align: middle;
   margin: 5px 0px;
-
 }
 
 button:hover,
@@ -74,8 +74,6 @@ button:active {
   letter-spacing: 1px;
 } */
 
-
-
 .new-button {
   display: inline-block;
   padding: 8px 0px;
@@ -86,7 +84,6 @@ button:active {
   /* font-size: 16px; */
   color: #fff;
 }
-
 
 input[type="file"i] {
   margin: 0px;
@@ -101,21 +98,21 @@ input[type="file"i] {
   /* font-size: 12px;
   padding-bottom: 2em; */
   /* color: blue; */
-
 }
 
 input[type="text"i] {
   margin: 0px 0px 5px;
+  width: 100%;
   border-radius: 5px;
-  padding: 8px 12px;
+  padding: 8px 0px;
 }
 
 input[type="button"i] {
   margin: 0px 0px 5px;
   border-radius: 5px;
-  padding: 8px 12px;
+  /* width: 30%; */
+  padding: 8px 0px;
 }
-
 
 @media only screen and (max-width: 480px) {
   .mainContainer {
@@ -124,10 +121,8 @@ input[type="button"i] {
 }
 
 @media only screen and (max-width: 760px) {
-
   .element {
     flex-direction: column;
-
   }
 
   .element input {
@@ -154,13 +149,11 @@ input[type="button"i] {
     /* flex: 1 1 100%; */
   }
 
-
   /* styles for browsers larger than 960px; */
   /* .element {
         flex-direction: column;
         
     } */
-
 }
 
 @media only screen and (min-width: 1440px) {
@@ -178,7 +171,6 @@ input[type="button"i] {
 
   .element {
     flex-direction: column;
-
   }
 
   input[type="text"i] {
@@ -189,22 +181,18 @@ input[type="button"i] {
     margin: 5px 0px;
   }
 
-
   /* styles for mobile browsers smaller than 480px; (iPhone) */
 }
 
 @media only screen and (device-width: 768px) {
-
   /* default iPad screens */
-
 }
 
-
 /* different techniques for iPad screening */
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
   /* For portrait layouts only */
 }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
   /* For landscape layouts only */
 }
