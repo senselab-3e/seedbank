@@ -3,7 +3,7 @@ import React from "react";
 export default function DownloadBt(props) {
   //this classname is for disabling and enabling the component, should a certain condition be met. this is useful in the imageformsubmit component, but not for others.
   const [className, setClassName] = React.useState(props.enabledClass || "");
-  const [buttonMessage, setMessage] = React.useState("");
+  const [buttonMessage, setMessage] = React.useState("Awaiting Image");
 
   React.useEffect(() => {
     setClassName(props.enabledClass);
@@ -11,7 +11,7 @@ export default function DownloadBt(props) {
       setMessage(props.message);
     }
     // setMessage(props.message);
-  }, [props.enabledClass]);
+  }, [props.enabledClass, props.message]);
 
   //   React.useEffect(() => {
   //     setMessage(props.message);

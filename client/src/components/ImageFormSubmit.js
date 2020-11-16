@@ -22,7 +22,7 @@ export default function ImageFormSubmit(props) {
           className={className}
           type="text"
           name="notes"
-          placeholder=""
+          placeholder="enter notes"
           onChange={props.onChange}
         />
       </form>

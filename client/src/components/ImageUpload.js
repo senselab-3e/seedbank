@@ -37,6 +37,7 @@ class ImageUpload extends Component {
         this.setState({ enabledClass: "" });
         break;
       default:
+        //notes and tendencies are accounted for here.
         this.setState({
           [e.target.name]: e.target.value,
         });
@@ -45,6 +46,7 @@ class ImageUpload extends Component {
 
   async submit(e) {
     e.preventDefault();
+    console.log(this.state.tendencies, "otherstates");
     if (this.state.enabledClass !== "disabled") {
       let formData = new FormData();
       // eslint-disable-next-line
