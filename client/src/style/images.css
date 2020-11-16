@@ -63,7 +63,10 @@ html {
 
 /* these margins need to match the input type 'text', file, etc, in index.css*/
 .button-wrap {
-  margin: 0px 0px;
+  /* margin: 0px 0px; */
+  /* margin-right: 5px; 
+  THIS ISNT BEHAVING LIKE ID LIKE
+  */
 }
 
 .element button {
@@ -228,6 +231,13 @@ html {
   /* .section-left {
         display: none;
     } */
+
+  .button-wrap {
+    /* margin-right: 5px; 
+    
+    
+    THIS ISNT WORKING THE WAY ID LIKE*/
+  }
 
   .card img {
     flex: 1 1 25%;
