@@ -117,12 +117,43 @@ input[type="button"i] {
 }
 
 
+@media only screen and (max-width: 480px) {
+  .mainContainer {
+    padding-top: 6em;
+  }
+}
+
 @media only screen and (max-width: 760px) {
 
   .element {
     flex-direction: column;
 
   }
+
+  .element input {
+    flex-wrap: wrap;
+  }
+
+  .second {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .second form {
+    flex-wrap: wrap;
+
+    border: 1px solid rgb(56, 201, 121);
+  }
+
+  .second input {
+    flex: 1 1 100%;
+    margin-right: 0.5em;
+  }
+
+  .second button {
+    /* flex: 1 1 100%; */
+  }
+
 
   /* styles for browsers larger than 960px; */
   /* .element {
