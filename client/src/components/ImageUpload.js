@@ -16,6 +16,8 @@ class ImageUpload extends Component {
       notes: "",
       urlUploadImg: null,
       saveImage: false,
+      validEntry: true,
+
       enabledClass: "disabled",
     };
     this.onChange = this.onChange.bind(this);
@@ -35,6 +37,17 @@ class ImageUpload extends Component {
           urlUploadImg: uplImg,
         });
         this.setState({ enabledClass: "" });
+        break;
+      case "tendencies":
+        if (e.target.value.length > 10) {
+          console.log("entry is too long");
+          this.setState({ validEntry: false });
+        } else {
+          this.setState({ validEntry: true });
+          this.setState({
+            [e.target.name]: e.target.value,
+          });
+        }
         break;
       default:
         //notes and tendencies are accounted for here.
@@ -91,6 +104,7 @@ class ImageUpload extends Component {
             onChange={this.onChange}
             submit={this.submit}
             enabledClass={this.state.enabledClass}
+            validEntry={this.state.validEntry}
           />
         </div>
         <div className="element-center">

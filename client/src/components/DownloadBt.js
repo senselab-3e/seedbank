@@ -10,12 +10,7 @@ export default function DownloadBt(props) {
     if (props.enabledClass !== "disabled") {
       setMessage(props.message);
     }
-    // setMessage(props.message);
   }, [props.enabledClass, props.message]);
-
-  //   React.useEffect(() => {
-  //     setMessage(props.message);
-  //   }, [props.message]);
 
   return (
     <div>

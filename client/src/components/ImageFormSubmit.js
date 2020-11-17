@@ -3,10 +3,29 @@ import React from "react";
 export default function ImageFormSubmit(props) {
   //i'm doing this in case i forget to passdown the prop element (or it's not needed), should i reuse this component
   const [className, setClassName] = React.useState(props.enabledClass || "");
+  const [warningMsg, setMsg] = React.useState("Upload");
+  //   const [warningClass, setWarningClass] = React.useState("");
 
   React.useEffect(() => {
     setClassName(props.enabledClass);
   }, [props.enabledClass]);
+
+  React.useEffect(() => {
+    if (props.validEntry) {
+      setMsg("Upload");
+      setClassName(`${props.enabledClass}`);
+    } else {
+      setMsg("Exceeds Allowable Length");
+      //         setWarningClass("");
+      setClassName(`${props.enabledClass}  warningMsg`);
+    }
+    // props.validEntry ? setMsg("Upload") : setMsg("Exceeds Allowable Length");
+    // props.validEntry ? setWarningClass("warningMsg") : setWarningClass("");
+
+    // props.warningMsg === "Upload"
+    //   ? setWarningClass("")
+    //   : setWarningClass("warningMsg");
+  }, [props.validEntry, props.enabledClass]);
 
   return (
     <div className="second">
@@ -26,14 +45,16 @@ export default function ImageFormSubmit(props) {
           onChange={props.onChange}
         />
       </form>
-      <form encType="multipart/form-data">
-        <input
-          className={className}
-          type="button"
-          value="Upload"
-          onClick={props.submit}
-        />
-      </form>
+      <div>
+        <form encType="multipart/form-data">
+          <input
+            className={className}
+            type="button"
+            value={warningMsg}
+            onClick={props.submit}
+          />
+        </form>
+      </div>
     </div>
   );
 }
