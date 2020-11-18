@@ -21,7 +21,10 @@ export class PixelPop {
         pixel.style.backgroundColor = this.color;
         pixel.style.zIndex = 0;
         pixel.onclick = this.onClick;
-        const container = document.querySelector(".mainContainer");
+        const container = document.querySelector(".pixelParent");
         container.appendChild(pixel);
+    }
+    remove(el) {
+        el.remove()
     }
 }
