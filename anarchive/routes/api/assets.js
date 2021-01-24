@@ -6,25 +6,25 @@ const path = require('path');
 const fs = require('fs');
 
 // GET api/assets/images
-router.get('/images/:id', (req, res) => {
+router.get('/images', (req, res) => {
 	knex('images')
-		.where({ id: req.params.id }).first()
-		.then(image => { res.sendFile(assets.get_path(image, assets.get_type(req.url))) })
+		.where({ id: req.query.id }).first()
+		// .then(image => { res.send(image.external_url) })
+		.then(image => { res.sendFile(assets.get_path(image)) }) // this needs some more handling, perhaps especially for dev mode at least (because it looks for the files on the local machine)
 		.catch(err => { console.log(err) })
 });
 
 // GET api/assets/gifverse
-router.get('/gifverse/:id', (req, res) => {
-	knex('gifverse')
-		.where({ id: req.params.id }).first()
-		.then(gif => { res.sendFile(assets.get_path(gif, assets.get_type(req.url))) })
-		.catch(err => { console.log(err) })
-});
+// router.get('/gifverse', (req, res) => {
+// 	knex('gifverse')
+// 		.where({ id: req.query.id }).first()
+// 		.then(gif => { res.sendFile(assets.get_path(gif, 'gifverse')) })
+// 		.catch(err => { console.log(err) })
+// });
 
 // POST api/assets/images
 router.post('/images', assets.upload_form().single('image'), async (req, res) => {
 	if (process.env.NODE_ENV != 'production') { res.send(console.log(req.file)); }
-	// else { assets.db_insert(req.file, req.body, (result) => { res.send(result) }); }
 	else { res.send(await assets.db_insert(req.file, req.body)); }
 });
 

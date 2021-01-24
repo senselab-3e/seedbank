@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import withAuth from "./helpers/withAuth";
 import EventsPage from "./pages/events";
 import AuthPage from "./pages/auth";
+import ConvoTracesPage from "./pages/ConvoTraces";
 import About from "./pages/About";
 import Header from "./partials/Header";
 import Glitch from "./pages/Glitch";
 import ImagesPage from "./pages/Images";
-import Sponges from "./components/sponges"
-import Socketz from "./components/Socketz"
+import Sponges from "./components/sponges";
+import Socketz from "./components/Socketz";
 
 function Home() {
   return (
@@ -41,8 +42,13 @@ class App extends Component {
           />
           <Route
             exact
-            path="/traces"
-            component={withAuth(ImagesPage, "/traces")}
+            path="/register-a-trace"
+            component={withAuth(ImagesPage, "/register-a-trace")}
+          />
+          <Route
+            exact
+            path="/convotraces"
+            component={withAuth(ConvoTracesPage, "/convotraces")}
           />
         </Switch>
       </Router>

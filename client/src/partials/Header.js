@@ -21,9 +21,9 @@ export default class Header extends Component {
         <li><Link to="/about3e">3E About</Link></li>
         <li><Link to="/oOoOs">404 oOoO Portal</Link></li>
         <li><Link to="/patches">Patches</Link></li>
-        <li><Link to="/traces">Register a trace</Link></li>
         <li><Link to="/socketz">sox</Link></li>
-
+        <li><Link to="/register-a-trace">Register a trace</Link></li>
+        <li><Link to="/convotraces">Convotraces</Link></li>
       </ul>
     </nav>
     </React.Fragment>

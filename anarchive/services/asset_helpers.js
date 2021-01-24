@@ -4,35 +4,38 @@ const fs = require('fs');
 const https = require('https');
 const multer = require('multer');
 const knex = require('../db/knex.js');
-const default_loc = './assets';
+const assets_folder = process.env.ASSETS_FOLDER;
 
 function get_type(url) {
 	return url.split('/')[1];
 };
 
 function get_path(asset, type='images') {
-	return path.resolve(process.env.HOST, 'assets', type, asset['path'], asset['name']);
+	return path.join(assets_folder, type, asset['path'], asset['name']);
 };
 
 function hash_path(filename, type='images') {
 	var hash = md5(filename);
 	var chunked = hash.match(/.{1,2}/g).slice(0,4).join('/');
-    return path.join('./assets', type, chunked);
+    return path.join(assets_folder, type, chunked);
 };
 
 function set_dest(filename, type='images') {
 	return new Promise((resolve, reject) => {
-		var dir = (process.env.NODE_ENV == 'production') ? hash_path(filename, type) : default_loc;
+		var dir = (process.env.NODE_ENV == 'production') ? hash_path(filename, type) : assets_folder;
 		fs.access(dir, notfound => {
-			if (notfound) { fs.mkdir(dir, {recursive: true}, err => { reject(err) })}
-			resolve(dir);
+			if (notfound) { 
+				fs.mkdir(dir, {recursive: true}, err => { if (err) { console.log(err) } else { resolve(dir) } });
+			} else {
+				resolve(dir);
+			};
 		})
 	})
 };
 
 function set_filename(originalname, type='images') {
 	return new Promise((resolve, reject) => {
-		var dir = (process.env.NODE_ENV == 'production') ? hash_path(originalname, type) : default_loc;
+		var dir = (process.env.NODE_ENV == 'production') ? hash_path(originalname, type) : assets_folder;
 		var file_loc = path.join(dir, originalname);
 	  	fs.access(file_loc, notfound => {
 	  		if (notfound) { resolve(originalname) }
@@ -93,9 +96,7 @@ function db_insert(file, meta, return_id=false) {
 		var row = { name: file.filename,
 					path: file.destination.split(/assets\/.+?\//).pop() };
 
-		if (typeof meta.type !== 'undefined') { row.type = meta.type };
-		if (typeof meta.tendencies !== 'undefined') { row.tendencies = meta.tendencies };
-		if (typeof meta.notes !== 'undefined') { row.notes = meta.notes };
+		Object.keys(meta).map(k => { row[k] = meta[k] });
 
 		knex(table)
 			.insert(row)
