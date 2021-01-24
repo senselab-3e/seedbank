@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../../db/knex.js');
-const axios = require('axios');
 
 const slack = require('../../services/slack_helpers');
 
