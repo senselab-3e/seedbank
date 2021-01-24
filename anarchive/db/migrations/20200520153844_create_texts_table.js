@@ -6,7 +6,7 @@ exports.up = function(knex) {
     t.timestamps(false, true)
     t.string('source')
     t.string('body')
-    t.string('image_ids')
+    t.string('images')
   })
   .then(() => { console.log('created texts table') })
   .catch((err) => { throw err} )
