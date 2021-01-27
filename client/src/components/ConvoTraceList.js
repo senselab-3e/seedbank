@@ -5,12 +5,12 @@ class ConvoTraceList extends Component {
     return (
       <div>
         <ul>
-          {this.props.traces.map(({ id, title, body, img }) => (
+          {this.props.traces.map(({ id, title, body, img=null }) => (
             <>
             <li key={id.toString()}>
               {title} {body}
             </li>
-            {/*<img src={img}/>*/}
+            { img ? <img src={img} height="130px" width="130px"/> : <></> }
             </>
           ))}
         </ul>
