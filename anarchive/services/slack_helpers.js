@@ -32,9 +32,9 @@ function process_message(message) {
 			var image_url = message.files[0].url_private;
 			var file = await assets.upload_from_url(image_url, auth_token);
 			var meta = { type: 'anarchival_trace', external_url: image_url };
-			var id = await assets.db_insert(file, meta, true); 
-
-			result.image = { id: id, external_url: image_url };
+			var image_data = await assets.db_insert(file, meta, true);
+			image_data.external_url = image_url;
+			result.image = image_data;
 		}
 		resolve(result);
 	})

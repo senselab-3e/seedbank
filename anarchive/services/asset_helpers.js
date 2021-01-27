@@ -90,17 +90,18 @@ function upload_from_url(url, auth_token) {
 	})
 };
 
-function db_insert(file, meta, return_id=false) {
+function db_insert(file, meta, return_data=false) {
 	return new Promise((resolve, reject) => {
+		var path = file.destination.split(/assets\/.+?\//).pop();
 		var table = file.destination.split('assets/').pop().split('/')[0];
 		var row = { name: file.filename,
-					path: file.destination.split(/assets\/.+?\//).pop() };
+					path: path };
 
 		Object.keys(meta).map(k => { row[k] = meta[k] });
 
 		knex(table)
 			.insert(row)
-			.then(id => { resolve(return_id ? id[0].toString() : 'uploaded asset!') })
+			.then(id => { resolve(return_data ? { id: id[0].toString(), path: path, name: row.name } : 'uploaded asset!') })
 			.catch(err => { reject(err) });
 	})
 };
