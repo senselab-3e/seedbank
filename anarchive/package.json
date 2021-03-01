@@ -45,7 +45,7 @@
     "react-three-fiber": "^4.2.10",
     "rsyncwrapper": "^3.0.1",
     "socket.io": "^2.4.1",
-    "three": "^0.115.0"
+    "three": "^0.125.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
