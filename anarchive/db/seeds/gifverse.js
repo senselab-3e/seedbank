@@ -29,7 +29,7 @@ exports.seed = function(knex) {
         }
       };
 
-      const ssh = 'senselab@webhosting2014.is.cc:/home/senselab/public_html/seedbank/anarchive/';
+      const ssh = 'senselab@webhosting2014.is.cc:/home/senselab/seedbank/anarchive/';
       const remote_dest = ssh + local_dest_path;
       await rsync({ src: local_dest_path, dest: remote_dest, ssh: true, recursive: true });
 
